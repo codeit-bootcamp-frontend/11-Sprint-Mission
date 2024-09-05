@@ -93,7 +93,8 @@ body {
 }
 
 /* component */
-#header {
+.header {
+  max-width: 1920px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -101,20 +102,18 @@ body {
   top: 0;
   padding: 10px 200px;
 }
-#header .root-link {
+.header .root-link {
   display: flex;
   gap: 8px;
   align-items: center;
 }
-#header .site-name {
+.header .site-name {
   margin: 0;
 }
-#header .btn {
+.header .btn {
   width: 128px;
 }
-.header.container {
-  max-width: 1920px;
-}
+
 
 .hero .container,
 .bottom-visual .container {
