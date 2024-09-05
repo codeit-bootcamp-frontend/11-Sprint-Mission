@@ -1,0 +1,244 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: Pretendard, sans-serif;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+header {
+  width: 100%;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1120px;
+  height: 70px;
+  margin: 0 auto;
+  padding: 9.5px 0;
+}
+
+@media (max-width: 1919px) {
+  .header-content {
+    width: auto;
+    padding: 9.5px 200px;
+  }
+}
+
+.header-content .logo {
+  display: flex;
+  align-items: center;
+  font-size: 25.63px;
+  font-weight: 700;
+  line-height: 34.6px;
+  gap: 8.59px;
+}
+
+.header-content .logo a {
+  background: url(./img/판다마켓.png) no-repeat;
+  background-position: center;
+  width: 103px;
+  height: 35px;
+}
+
+.header-content .logo > img {
+  width: 40px;
+  height: 40.14px;
+}
+
+.header-content .login {
+  padding: 11px 43px;
+  background-color: #3692ff;
+  color: #f3f4f6;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  border: none;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.landing-page {
+  display: flex;
+  align-items: flex-end;
+  background-color: #cfe5ff;
+  width: 100%;
+  height: 540px;
+}
+
+.landing-page .content {
+  width: 1120px;
+  display: flex;
+  margin: 0 auto;
+  white-space: nowrap;
+}
+
+.landing-page .content div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.landing-page .content p {
+  color: #374151;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+}
+
+.landing-page.top .content {
+  margin-top: 200px;
+  gap: 7px;
+}
+
+.landing-page.top .content p {
+  margin-bottom: 32px;
+}
+
+.landing-page.top .content .items {
+  /* 검색해보기 */
+  color: #f9fafb;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  text-align: center;
+  background-color: #3692ff;
+  border: none;
+  border-radius: 40px;
+  padding: 12px 124px;
+  margin-bottom: 60px;
+}
+
+.landing-page.bottom .content {
+  margin-top: 143px;
+}
+
+.landing-page.bottom .content div {
+  padding-right: 69px;
+}
+
+.landing-page.bottom .content p {
+  padding-bottom: 60px;
+}
+
+.landing-page-main {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 138px;
+}
+
+.landing-page-main .content {
+  width: 988px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 138px auto;
+}
+
+.landing-page-main .content > .wrap {
+  display: flex;
+  justify-content: center;
+  width: 988px;
+}
+
+.landing-page-main .content:nth-child(1) .info {
+  padding: 103px 23.5px 103px 64px;
+}
+
+.landing-page-main .content:nth-child(2) .info {
+  text-align: right;
+  padding: 103px 64px 103px 14px;
+}
+
+.landing-page-main .content:nth-child(3) .info {
+  padding: 103px 0 103px 50px; /* 질문 */
+}
+
+.landing-page-main .content .info p:nth-child(1) {
+  color: #3692ff;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  margin-bottom: 12px;
+}
+
+.landing-page-main .content .info p:nth-child(2) {
+  color: #374151;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+  margin-bottom: 24px;
+}
+
+.landing-page-main .content .info p:nth-child(3) {
+  color: #374151;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+footer {
+  width: 100%;
+  background-color: #111827;
+  height: 160px;
+}
+
+@media (max-width: 1120px) {
+  header {
+    width: 1120px;
+  }
+
+  .landing-page {
+    width: 1120px;
+  }
+
+  footer {
+    width: 1120px;
+  }
+}
+
+.footer-content {
+  width: 1120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #9ca3af;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.09px;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 32px;
+}
+
+.footer-content p {
+  flex-basis: 160px;
+  display: flex;
+}
+
+.footer-content div {
+  font-size: 16px;
+  display: flex;
+  gap: 30px;
+}
+
+.footer-content a {
+  color: #e5e7eb;
+  align-items: center;
+  cursor: pointer;
+}
+
+.footer-content .sns-icon {
+  flex-basis: 160px;
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+}
