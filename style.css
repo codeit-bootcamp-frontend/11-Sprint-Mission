@@ -96,7 +96,7 @@ body{
 }
 
 .login-btn {
-  border-radius: 8px;
+  border-radius: 0.5rem;
   padding: 0.75rem 1.4317rem;
   width: 8rem;
   height: 3rem;
