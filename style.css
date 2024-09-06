@@ -81,3 +81,17 @@ body {
   text-align: center;
   color: #F9FAFB;
 }
+
+/* infomation style */
+.information {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+}
+
+.information > section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 138px 466px;
+}
