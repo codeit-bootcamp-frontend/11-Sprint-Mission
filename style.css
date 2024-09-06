@@ -3,6 +3,10 @@ a {
   color: inherit;
 }
 
+body {
+  box-sizing: border-box;
+}
+
 /* header style */
 .header {
   display: flex;
@@ -43,6 +47,37 @@ a {
 
 .banner {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
   padding: 200px 405px 0 405px;
   background-color: #CFE5FF;
+}
+
+.banner > div{
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 0 0 60px 0;
+}
+
+.banner > div > h3 {
+  font-family: Pretendard;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #374151;
+}
+
+.banner > div > a {
+  padding: 12px 123px;
+  border-radius: 40px;
+  background-color: #3692FF;
+
+  font-family: Pretendard;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  text-align: center;
+  color: #F9FAFB;
 }
