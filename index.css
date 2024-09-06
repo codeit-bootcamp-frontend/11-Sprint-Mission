@@ -26,6 +26,7 @@ header {
 .logo {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .logo-img{
@@ -52,6 +53,8 @@ header {
 
   background-color: rgba(54, 146, 255, 1);
   color: rgba(243, 244, 246, 1);
+
+  cursor: pointer;
 }
 
 .outside {
@@ -106,6 +109,8 @@ header {
 
   background-color: rgba(54, 146, 255, 1);
   color: rgba(249, 250, 251, 1);
+
+  cursor: pointer;
 }
 
 
