@@ -1,3 +1,9 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 400px;
+}
+
 .header > div {
   display: flex;
   align-items: center;
