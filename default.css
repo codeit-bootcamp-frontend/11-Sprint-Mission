@@ -1,0 +1,101 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+header{
+    max-width: 1,920px;
+    height: 70px;
+    padding: 9px 200px;
+    border-bottom: 1px;
+    opacity: 0px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #DFDFDF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.loginBtn{
+    width: 88px;
+    height: 42px;
+    top: 20px;
+    left: 20px;
+    padding: 12px 23px;
+    gap: 10px;
+    border: #3692FF;
+    border-radius: 8px;
+    opacity: 0px;
+    background: #3692FF;
+    color: #FFFFFF;
+}
+.canClick:hover{
+    cursor: pointer;
+}
+.loginBtn:hover{
+    background: #1967D6;
+}
+.sect1{
+    background: #CFE5FF;
+}
+section{
+    max-width: 1920px;
+    height: 540px;
+    position: relative;
+}
+.homeTop{
+    position: absolute;
+    width: 1,110px;
+    height: 340px;
+    top: 200px;
+    left: 405px;
+    right: 405px;
+    gap: 20px;
+    display: flex;
+    
+}
+.innerHomeTop{
+    font-family: Pretendard;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 56px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.innerHomeTop > button{
+    width: 357px;
+    height: 56px;
+    padding: 16px 124px;
+    border: #3692FF;
+    gap: 10px;
+    border-radius: 40px;
+    background: #3692FF;
+    color: #FFFFFF;
+}
+article{
+    display: flex;
+    flex-direction: column;
+}
+.centerSect{
+    max-width: 1920px;
+    height: 720px;
+    padding: 138px 466px;
+    gap: 10px;
+}
+.descriptFrame{
+    max-width: 988px;
+    height: 444px;
+    display: flex;
+    background: #FCFCFC;
+    
+}
+.centerDescript{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-grow: 1;
+    justify-content: center;
+    text-align: left;
+    position: relative;
+    left: 100px;
+}
