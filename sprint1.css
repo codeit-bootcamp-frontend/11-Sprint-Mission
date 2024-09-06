@@ -36,6 +36,7 @@ body {
   align-items: center;
   border-radius: 8px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 
@@ -61,7 +62,6 @@ body {
 }
 
 .banner-button {
-  cursor: pointer;
   color: #F9FAFB;
   font-size: 20px;
   font-weight: 600;
@@ -73,7 +73,8 @@ body {
   justify-content: center;
   align-items: center;
   border-radius: 40px;
-  
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .features-section {
