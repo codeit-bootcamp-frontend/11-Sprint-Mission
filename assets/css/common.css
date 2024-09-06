@@ -2,7 +2,8 @@
 @import url(variable.css);
 /* 공통 css */
 
-@import url(main.css);
+/* @import url(main.css); */
+@import url(main-copy.css);
 /* 페이지 css */
 
 @font-face {
@@ -55,13 +56,20 @@ body > *{
 }
 
 .container{
+  width: 100%; height: 100%;
   max-width: 1120px;
   margin: 0 auto;
+}
+@media screen and (max-width:1199px) {
+  .container{
+    max-width: 100%;
+  }
 }
 
 div[class ^= "btn-"]{
   display: flex;
-  gap: 12px;
+  gap: 1.2rem;
+  white-space: nowrap;
 }
 
 .button{
@@ -70,36 +78,28 @@ div[class ^= "btn-"]{
   cursor: pointer;
 }
 
+
 .button.round{
-  border-radius: 40px;
+  border-radius: 4rem;
 }
 .button.square{
-  border-radius: 8px;
+  border-radius: .8rem;
 }
 
-.button.large{
-  padding: 12px 124px;
-  font-size: 20px;
-  line-height: 32px;
-}
-.button.medium{
-  padding: 11px 71px;
-  font-size: 18px;
-  line-height: 26px;
-}
-.button.small40{
-  padding: 8px 23px;
-  font-size: 16px;
-  line-height: 26px;
-}
-.button.small48{
-  padding: 11px 30px;
-  font-size: 16px;
-  line-height: 26px;
+@media screen and (max-width: 767px){
+  .button.round{
+    border-radius: 10.6667vw;
+  }
+  .button.square{
+    border-radius: 2.1333vw;
+  }
 }
 
 .button.blue{
   background-color: var(--blue-100);
+}
+.button.blue:hover{
+  background-color: var(--blue-300);
 }
 .button.gray{
   background-color: var(--gray-400);
