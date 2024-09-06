@@ -182,17 +182,25 @@ footer {
 
 .footer-left {
   color: rgba(156, 163, 175, 1);
+  font-size: 1em;
+  font-weight: 300;
 }
 
-.footer-mid {
+.footer-mid > a {
   color: rgba(229, 231, 235, 1);
+  font-size: 1em;
+  font-weight: 300;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .footer-mid a:not(:last-child) {
   margin-right: 30px;
 }
 
-
+.footer-right > a {
+  cursor: pointer;
+}
 
 .footer-right a:not(:last-child){
   margin-right: 12px;
