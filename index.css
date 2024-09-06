@@ -3,6 +3,8 @@
 
 * {
   box-sizing: border-box;
+  margin: 0; /*html안에 margin과 padding 여백 없애주기*/
+  padding: 0;
 }
 
 body {
@@ -161,6 +163,40 @@ header {
 }
 
 
+footer {
+  width: 100%;
+  padding-top: 32px;
+  padding-bottom: 108px;
+  
+  background-color: rgba(17, 24, 39, 1);
+}
+
+.footer-container {
+  width: 1120px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.footer-left {
+  color: rgba(156, 163, 175, 1);
+}
+
+.footer-mid {
+  color: rgba(229, 231, 235, 1);
+}
+
+.footer-mid a:not(:last-child) {
+  margin-right: 30px;
+}
+
+
+
+.footer-right a:not(:last-child){
+  margin-right: 12px;
+}
 
 
 
