@@ -45,7 +45,7 @@ body {
 
 /* banner style */
 
-.banner {
+.top_banner {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,14 +54,14 @@ body {
   background-color: #CFE5FF;
 }
 
-.banner > div{
+.top_banner > div{
   display: flex;
   flex-direction: column;
   gap: 32px;
   padding: 0 0 60px 0;
 }
 
-.banner > div > h3 {
+.top_banner > div > h3 {
   font-family: Pretendard;
   font-size: 40px;
   font-weight: 700;
@@ -69,7 +69,7 @@ body {
   color: #374151;
 }
 
-.banner > div > a {
+.top_banner > div > a {
   padding: 12px 123px;
   border-radius: 40px;
   background-color: #3692FF;
