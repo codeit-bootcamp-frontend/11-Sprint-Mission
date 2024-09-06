@@ -1,3 +1,9 @@
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* header style */
 .header {
   display: flex;
   justify-content: space-between;
@@ -31,9 +37,4 @@
   font-size: 16px;
   font-weight: 600;
   line-height: 26px;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
 }
