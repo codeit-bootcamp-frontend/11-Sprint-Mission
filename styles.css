@@ -1,0 +1,269 @@
+@media all and (max-width: 1520px) {
+    header, .visual-info, .banner h1, .foot-info {
+        padding: 0 160px;
+    }
+
+    .visual-text, .banner h1 {
+        top: 40px;
+        z-index: 1;
+    }
+
+    .visual-img {
+        position: relative;
+        bottom: 235px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .visual img {
+        width: auto;
+        height: 300px;
+    }
+
+    .feature {
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+        text-align: center;
+    }
+
+    .feature:nth-child(2) {
+        flex-direction: column-reverse;
+    }
+
+    .feature img {
+        width: 90%;
+        height: auto;
+    }
+
+    .banner {
+        display: flex;
+        align-items: center;
+    }
+
+    .banner h1 {
+        text-align: center;
+        left: 0;
+        right: 0;
+    }
+    
+    .banner img {
+        width: auto;
+        height: 290px;
+    }
+}
+
+@media all and (max-width: 768px) {
+    header, .visual-info, .banner h1, .foot-info {
+        padding: 0 80px;
+    }
+    
+    .visual {
+        position: relative;
+    }
+
+    .visual img {
+        position: absolute;
+        right: 0;
+    }
+
+    .feature img {
+        width: 70%;
+        height: auto;
+    }
+}
+
+html {
+    font-family: pretendard, sans-serif;
+    word-break: keep-all;
+}
+
+body {
+    background-color: #fff;
+    color: #374151;
+    margin: 0;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 140%;
+}
+
+header {
+    max-width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #dfdfdf;
+}
+
+.header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+button {
+    background-color: #3692FF;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    border: 0;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #1967D6;
+}
+
+header button {
+    width: 128px;
+    height: 48px;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.visual {
+    height: 540px;
+    background-color: #CFE5FF;
+}
+
+.header-info, .visual-info, .features, .banner-info, .foot-info {
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.visual-button {
+    margin: 0;
+    padding: 0;
+}
+
+.visual-text {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    bottom: 260px;
+}
+
+.visual button {
+    bottom: 100px;
+    width: 357px;
+    height: 56px;
+    font-size: 20px;
+    border-radius: 40px;
+    white-space: nowrap;
+}
+
+.visual h1{
+    bottom: 200px;
+}
+
+.visual-img, .banner-img {
+    justify-content: flex-end;
+    align-items: flex-end;
+    max-width: 1120px;
+    min-width: 30%;
+    height: 540px;
+}
+
+.visual-img {
+    display: inline-flex;
+}
+
+.banner-img {
+    display: flex;
+}
+
+.features {
+    display: flex;
+    flex-direction: column;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    margin: 138px 0;
+    gap: 64px;
+}
+
+.feature:not(:nth-child(odd)) {
+    justify-content: flex-end;
+}
+
+.features-info * {
+    margin: 0;
+}
+
+.feature img{
+    max-width: 588px;
+    min-width: 40%;
+    height: auto;
+}
+
+.sub-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #3692FF;
+    margin-bottom: 12px;
+}
+
+.description {
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 24px;
+    line-height: 32px;
+}
+
+.banner {
+    position: relative;
+    background-color: #CFE5FF;
+    height: 540px;
+    margin-top: 138px;
+}
+
+.banner-info h1 {
+    position: absolute;
+    bottom: 140px;
+}
+
+footer {
+    width: 100%;
+    height: 160px;
+    background-color: #111827;
+    font-size: 16px;
+    font-weight: 400;
+    padding-top: 32px;
+}
+
+.foot-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.company, .foot-menu * {
+    margin: 0;
+    text-decoration: none;
+    color: inherit;
+}
+
+.company {
+    color: #9CA3AF;
+    flex-basis: 300px;
+}
+
+.foot-menu {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    color: #E5E7EB;
+}
+
+.sns {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    flex-basis: 300px;
+}
