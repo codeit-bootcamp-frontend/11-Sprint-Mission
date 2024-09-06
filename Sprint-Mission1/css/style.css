@@ -182,6 +182,7 @@ main {
   width: 100%;
   background-color: var(--gray10);
   margin: 0 auto;
+  border-radius: 12px;
 }
 .main-contents-container .inner-wrap .main-content1-box .main-con-txt-box{
   margin-left: 64px;
@@ -232,6 +233,7 @@ main {
   width: 100%;
   background-color: var(--gray10);
   margin: 0 auto;
+  border-radius: 12px;
 }
 
 .main-contents-container .inner-wrap .main-contnt2-right .main-content2-box .main-con-img {
@@ -263,7 +265,7 @@ main {
 
 .main-gray-box {
   width: 100%;
-  height: 200px;
+  height: 138px;
   background-color: var(--gray10);
 
 }
