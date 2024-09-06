@@ -38,3 +38,11 @@ a {
   font-weight: 600;
   line-height: 26px;
 }
+
+/* banner style */
+
+.banner {
+  display: flex;
+  padding: 200px 405px 0 405px;
+  background-color: #CFE5FF;
+}
