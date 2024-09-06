@@ -3,3 +3,23 @@
   align-items: center;
   gap: 8px;
 }
+
+.header > button {
+  padding: 11px 43px;
+  background-color: #3692FF;
+  color: #F3F4F6;
+  border-radius: 8px;
+  border: none; 
+}
+
+.header > button > span {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+.header > button > span > a {
+  text-decoration: none;
+  color: inherit;
+}
