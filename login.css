@@ -1,0 +1,140 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  word-break: keep-all;
+  font-family: 'Pretendard', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+body {
+  padding-top: 231px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.logo  img {
+  width: 396px;
+  height: 132px;
+  gap: 0px;
+  opacity: 0px;
+}
+
+form {
+  width: 640px;
+  gap: 24px;
+}
+
+label {
+  color: #1F2937;
+  display: block;
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  text-align: left;
+  text-decoration: none;
+}
+input::placeholder {
+font-size: 16px;
+font-weight: 400;
+line-height: 26px;
+text-align: left;
+color:#9CA3AF 
+}
+.password-field {
+  position: relative;
+}
+input:focus {
+  background-color: 3692FF;
+}
+input {
+  border: none; 
+  background-color:#F3F4F6;
+  padding: 16px 24px 16px 24px;
+  border: none;
+  opacity: 0px;
+  border-radius: 12px;
+  width: 100%;
+  height: 56px;
+  margin-bottom: 24px ;
+}
+.password-toggle {
+  position: absolute;
+  top: 16px;
+  right: 14px;
+  cursor: pointer;
+}
+
+.password-toggle img {
+  width: 24px;
+  height: 24px;
+}
+
+button {
+  height: 56px;
+  background: #9CA3AF;
+  border-radius: 40px;
+  border: none;
+  color: #ffffff;
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  text-align: center;
+  width: 100%;
+}
+.simple-login {
+  background-color: #E6F2FF;
+  width: 100%;
+  height: 74px;
+  padding: 16px 23px;
+  gap: 10px;
+  border-radius: 8px; 
+  opacity: 0px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  color: #1F2937;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 24px 0;
+  text-decoration: none;
+}
+
+.icons {
+  display: flex;
+  gap: 16px;
+}
+
+.sns-icon img {
+  width: 42px;
+  height: 42px;
+}
+.signup {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: center;
+}
+.signup-title {
+font-size: 14px;
+font-weight: 500;
+line-height: 24px;
+text-align: left;
+}
+.signup-button {
+font-size: 14px;
+font-weight: 500;
+line-height: 16.71px;
+text-align: left;
+color:#3692FF;
+text-decoration: underline;
+}
