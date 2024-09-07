@@ -173,3 +173,39 @@ body {
 
   color: #374151;
 }
+
+/* footer style */
+.footer {
+  padding: 32px 400px 108px 400px;
+  background-color: #111827;
+}
+
+.footer > div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.footer > div > p {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.09px;
+  color: #9CA3AF;
+}
+
+.footer_links {
+  display: flex;
+  gap: 30px;
+  
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.09px;
+  color: #E5E7EB;
+}
+
+.footer_social-media{
+  display: flex;
+  gap: 12px;
+}
