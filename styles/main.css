@@ -1,13 +1,10 @@
 * {
     box-sizing: border-box;
-}
-
-body {
-    margin:0;
+    font-family: "Pretendard Variable";
 }
 
 header {
-    padding: 9px 200px;
+    padding: 0 200px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -77,9 +74,10 @@ footer {
 
 .contents {
     display: flex;
-    padding: 138px 400px;
+    padding: 138px 466px;
     gap: 10px;
     justify-content: center;
+    white-space: nowrap;
 }
 
 .contents-item {
