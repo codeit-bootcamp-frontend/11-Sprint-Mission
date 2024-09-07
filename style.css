@@ -1,0 +1,216 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Pretendard,'Noto Sans KR', sans-serif;
+}
+
+/*
+header <logos (logo title)> <nav>
+main main section <articles (article [img wordBox2 { point h3 detail }])>
+section <mainBox (wordBox { mainWord button }) img >
+footer < p div(p p)SNS (img)>
+*/
+
+.headers {
+  max-width: 1920px;
+  width: 100%;
+  height: 70px;
+  border-bottom: 1px solid #dfdfdf;
+  padding: 9px 400px;
+  gap:10px;
+  background-color: ffffff;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.logos {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 153px;
+  height: 51px;
+
+  position: relative;
+}
+
+.logo {
+  width: 40px;
+  height: 40.14px;
+  /*top:5.02px*/
+  border-radius: 11.18px;
+
+}
+
+#title {
+  /* width height top left */
+  font-size: 25.63px;
+  font-weight: 700;
+  line-height: 34.6px;
+  color: #3692ff;
+
+}
+#login {
+  width: 128px;
+  height: 48px;
+  border-radius: 8px;
+  padding: 12px 23px;
+  gap: 10px;
+  background-color: #3692FF;
+  
+  text-align: center;
+  color: #f3f4f6;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+
+}
+
+main {
+  margin: 0 auto;
+  background-color: #fcfcfc;
+}
+
+section {
+  width: 100%;
+  height: 540px;
+  background-color: #CFE5FF;
+
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  position: relative;
+}
+.mainBox {
+  display: flex;
+  /* width height top left */
+  gap: 7px;
+  width: 1110px;
+  height: 340px;
+
+}
+.wordBox {
+  padding: 0 0 60px;
+  gap: 32px;
+}
+.mainWord {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #374151;
+}
+#see {
+  border-radius: 40px;
+  padding: 16px 124px;
+  gap: 10px;
+  background-color: #3692ff;
+
+  color: #f9fafb;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.articles {
+  background-color: #ffffff;
+  width: 1920px;
+  padding: 138px 466px;
+  gap: 10px;
+}
+article {
+  width: 988px;
+  border-radius: 12px;
+  gap: 64px;
+  background-color: #fcfcfc;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.wordBox2 {
+ padding-bottom: 24px;
+ gap:12px;
+}
+
+.point {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  color: #3692FF;
+}
+
+h3 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #374151;
+  /*letter?....*/
+}
+
+.detail {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  color: #374151;
+}
+
+#word2 {
+  text-align: right;
+}
+
+#bottom {
+  margin-top: 150px;
+}
+
+footer {
+  margin: 0 auto;
+  background-color: #111827;
+  width: 1920px;
+  height: 160px;
+  padding: 32px 400px;
+  gap: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.codeit {
+  color: #9ca3af;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.09px;
+  text-align: center;
+}
+
+#center {
+  display: flex;
+  gap:30px;
+  
+  color: #e5e7eb; /*색 적용이안되는 이유 color: inherit 추가함.*/
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.09px;
+  text-align: center;
+}
+
+.SNS {
+  width: 116px;
+  gap: 12px;
+}
+
+.button {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
