@@ -211,8 +211,8 @@ body {
   gap: 12px;
 }
 
-@media screen and (max-width: 1920px) {
+@media (0px < width < 1920px) {
   .header {
-        padding: 8px 200px;
-    }
-} 
+    padding: 8px 200px;
+  } 
+}
