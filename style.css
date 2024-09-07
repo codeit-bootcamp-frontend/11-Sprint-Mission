@@ -71,8 +71,8 @@ body {
 
 .top_banner > div > a {
   padding: 12px 123px;
-  border-radius: 40px;
   background-color: #3692FF;
+  border-radius: 40px;
 
   font-family: Pretendard;
   font-size: 20px;
@@ -93,5 +93,73 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 138px 466px;
+  padding: 138px 0;
 }
+
+.information > section > div {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  background-color: #FCFCFC;
+  border-radius: 12px;
+}
+ 
+.infomation_image {
+  width: 579px;
+  height: 444px;
+}
+
+.information_article {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 50px;
+}
+
+.information_article_reverse {
+  padding-left: 20px;
+}
+
+.information_article > span { 
+  font-family: Pretendard;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  color: #3692FF;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.content > h3 {
+  font-family: Pretendard;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+  letter-spacing: 0.02em;
+  color: #374151;
+}
+
+.content > p {
+  font-family: Pretendard;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  color: #374151;
+}
+
+.reverse {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-left: 50px;
+  gap: 12px;
+}
+
+.reverse > .content {
+  text-align: end;
+}
+
