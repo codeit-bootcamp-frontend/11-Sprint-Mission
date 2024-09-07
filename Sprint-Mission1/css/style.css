@@ -30,6 +30,14 @@ button {
   border: unset;
 }
 
+section {
+  position: relative;
+}
+
+footer {
+  position: relative;
+}
+
 :root {
   --skyblue: #3692FF;
   --middeblue: #1967D6;
@@ -49,15 +57,7 @@ button {
   --bgcolor: #CFE5FF;
 
 }
-
-section {
-  position: relative;
-}
-
-footer {
-  position: relative;
-}
-
+/* 헤더 */
 header {
   position: fixed;
   top: 0;
@@ -97,6 +97,7 @@ header .inner-wrap .hd-container .login-btn a {
   font-size: 1rem;
 }
 
+/* 메인 */
 main {
   margin-top: 70px;
 }
@@ -308,7 +309,8 @@ main {
   font-weight: 700;
   line-height: 56px;
 }
-
+/* 로그인 */
+/* 푸터 */
 footer {
   width: 100%;
   background-color: var(--gray900);
