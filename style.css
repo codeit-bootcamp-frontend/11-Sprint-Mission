@@ -1,6 +1,7 @@
 a {
   text-decoration: none;
   color: inherit;
+  cursor: pointer;
 }
 
 body {
@@ -209,3 +210,9 @@ body {
   display: flex;
   gap: 12px;
 }
+
+@media screen and (max-width: 1920px) {
+  .header {
+        padding: 8px 200px;
+    }
+} 
