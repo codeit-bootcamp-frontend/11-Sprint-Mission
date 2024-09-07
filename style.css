@@ -1,0 +1,317 @@
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+*{
+    font-family: "Pretendard";
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+}
+
+.icon-login {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-btn { 
+    background-color: #3692FF;
+    border-radius: 8px;
+    width: 128px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#F3F4F6;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+}
+
+.login-btn:hover{
+    background-color: #9CA3AF;
+    color: #FFFFFF; 
+}
+
+.header-flexbox {
+    display: flex;
+    justify-content: space-between;
+
+    height: 51px;
+    width: 1120px;
+    
+}
+
+.main-1 {
+    background-color: #CFE5FF;
+    height: 540px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 0px 0px 0px 0px;
+}
+ 
+.main-detail-1 {
+    position: relative;
+    height: 340px;
+    width: 1110px;
+    left: 405px;
+
+}
+
+.main-1-img {
+    position: absolute;
+    right: 0;
+}
+
+.main-detail-1-box {
+    position: absolute;
+    left: 0;
+    width: 357px;
+    height: 260px;
+}
+
+.main-detail-1-box-text {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 295px;
+    height: 112px;
+    font-family: Pretendard;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 56px;
+    color: #374151;
+}
+
+.main-detail-1-btn {
+    height: 56px;
+    width: 357px;
+    position: absolute;
+    border: none;
+    background: #3692FF;
+    color: #F9FAFB;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: Pretendard;
+    border-radius: 40px;
+    line-height: 32px;
+    cursor: pointer; 
+    bottom: 30px;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 16px 124px;
+    cursor: pointer;
+}
+
+.main-detail-1-btn:hover {
+    background-color: #9CA3AF;
+    color: #FFFFFF; 
+}
+
+
+
+
+
+
+.main-2 {
+    height: 720px;
+    background-color: #ffffff;
+    /* padding: 138px 466px 138px 466px;  */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.main-2-detail-box {
+    height: 444px;
+    width: 988px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    
+}
+
+.Hot-item {
+    color: #3692FF;
+    font-weight: 700;
+    font-size: 18px;
+    font-family: Pretendard;
+    
+    
+}
+
+.main-2-detail-textbox-text {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.main-2-detail-textbox-text-1 {
+    font-size:40px;
+    font-family: Pretendard;
+    font-weight: 700;
+    color:#374151;
+    padding: 16px 0px 16px 0px;
+    
+}
+
+.main-2-detail-textbox-text-2 {
+    color: #374151;
+    font-weight:500;
+    font-size: 24px;
+    font-family: Pretendard;
+    
+}
+
+.main-3 {
+    height: 720px;
+    background-color: #ffffff;
+    /* padding: 138px 466px 138px 466px;  */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.main-3-detail-box {
+    height: 444px;
+    width: 988px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+
+}
+
+.main-3-detail-textbox {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+
+.Search {
+    color: #3692FF;
+    font-weight: 700;
+    font-size: 18px;
+    font-family: Pretendard;
+    
+    
+    
+}
+
+.main-3-detail-textbox-text {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.main-3-detail-textbox-text-1 {
+    font-size:40px;
+    font-family: Pretendard;
+    font-weight: 700;
+    color:#374151;
+    padding: 16px 0px 16px 0px;
+
+
+}
+
+.main-3-detail-textbox-text-2 {
+    color: #374151;
+    font-weight:500;
+    font-size: 24px;
+    font-family: Pretendard;
+
+}
+
+
+.main-5 {
+    background-color: #CFE5FF;
+    margin-top: 200px;
+    height: 540px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+
+.main-5-detail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+
+.main-5-img-5 {
+    margin-right: 20px; 
+}
+
+.main-5-detail-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.main-5-detail-box-text {
+    color: #374151;
+    font-family: Pretendard;
+    font-size: 40px;
+    font-weight: 700;
+    
+}
+
+.footer {
+    height: 160px;
+    background-color: #111827;
+    display: flex;
+    justify-content: center;
+
+}
+
+.codeit-yyyy, .privacy, .faq {
+    color: #9CA3AF;
+    font-size: 16px;
+    font-family: Pretendard;
+    font-weight: 400;
+}
+
+.footer-detail {
+    width: 1120px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    top: 40px;
+}
+
+.privacy-faq {
+    display: flex;
+    flex-direction: row;
+    width: 159px;
+    justify-content: space-between;
+}
+
+.sns-icon {
+    display: flex;
+    flex-direction: row;
+    width: 116px;
+    justify-content: space-around;
+    
+}
+
