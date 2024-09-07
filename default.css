@@ -33,7 +33,7 @@ header{
 .loginBtn:hover{
     background: #1967D6;
 }
-.sect1{
+.sect1, .sect2{
     background: #CFE5FF;
 }
 section{
@@ -50,7 +50,6 @@ section{
     right: 405px;
     gap: 20px;
     display: flex;
-    
 }
 .innerHomeTop{
     font-family: Pretendard;
@@ -72,6 +71,33 @@ section{
     background: #3692FF;
     color: #FFFFFF;
 }
+.homeBottom{
+    width: 1,110px;
+    height: 397px;
+    position:absolute;
+    top: 143px;
+    left: 405px;
+    gap: 69px;
+    opacity: 0px;
+    align-items: center;
+    display: flex;
+}
+.homeBottom > div{
+    width: 295px;
+    height: 172px;
+    padding: 0px 0px 60px 0px;
+    gap: 5px;
+    opacity: 0px;
+}
+.homeBottom > div >h1{
+    font-family: Pretendard;
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 56px;
+    text-align: left;
+    color: #374151;
+}
+
 article{
     display: flex;
     flex-direction: column;
@@ -98,4 +124,14 @@ article{
     text-align: left;
     position: relative;
     left: 100px;
+}
+
+footer{
+    width: 1,920px;
+    height: 160px;
+    top: 3448px;
+    padding: 32px 400px;
+    gap: 10px;
+    opacity: 0px;
+
 }
