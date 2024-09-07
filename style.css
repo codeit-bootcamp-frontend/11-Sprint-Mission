@@ -1,0 +1,172 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Pretendard-Regular', sans-serif;
+}
+
+body {
+    font-size: 16px;
+    overflow: scroll;
+    margin: 0 auto;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+}
+
+main {
+    margin: 0 auto;
+    width : 720px;
+}
+
+footer {
+    width: 100%;
+    min-width: 1080px;
+    height: 100px;
+    background-color: #0B173B;
+    color: #ffffff;
+}
+
+a{
+    text-decoration-line: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+#header {
+    max-width: 100vw;
+    margin-left: 200px;
+    margin-right: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+#logo {
+    height: 48px;
+    cursor: pointer;
+}
+
+#login {
+    height: 32px;
+    cursor: pointer;
+}
+
+#home {
+    width: 100%;
+    min-width: 1080px;
+    height: 480px;
+    background-color: #CEE3F6;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+#home-top {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    width: 1080px;
+    margin : 0 auto;
+}
+
+#home-info {
+    text-align: left;
+    font-size: 2rem;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 36px;
+    margin-bottom: 64px;
+}
+
+#show-items {
+    cursor: pointer;
+}
+
+.home-img {
+    height: 280px;
+}
+
+.card, .card-right{
+    width : 630px;
+    background-color: #fafafa;
+    display: flex;
+    margin : 160px auto;
+    border-radius: 16px;
+    gap: 30px;
+}
+
+.card-img {
+    width: 360px;
+}
+
+.card-info, .card-info-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card-right {
+    justify-content: flex-end;
+}
+
+.card-info-right {
+    text-align: right;
+    margin-right: 0;
+    margin-left: 30px;
+}
+
+.card-title {
+    color: #0174DF;
+    font-weight: 600;
+}
+
+.card-info-big {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+#bottom-img {
+    width: 100%;
+    min-width: 1080px;
+    height: 420px;
+    background-color: #CEE3F6;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#bottom-info {
+    width: 1080px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 700;
+    gap: 40px;
+    margin: 0 auto;
+}
+
+#footer-info {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 15px;
+}
+
+.social-media-img {
+    height: 20px;
+}
