@@ -40,7 +40,7 @@ header{
     height: 48px;          
     text-align: center;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 300;
 }     
   
@@ -61,7 +61,7 @@ header{
 }
 
 .home-top-content{
-    font-size: 40px;
+    font-size: 2.5rem;
     font-weight: 700;
     line-height: 56px;
 }
@@ -79,14 +79,14 @@ header{
 }
 
 .subtitle{
-    font-size: 40px;
+    font-size: 2.5rem;
     line-height: 56px;
     font-weight: 700;
     margin-bottom: 24px;
 }
 
 .sub-content{
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 500;
     line-height: 32px ;
 }
@@ -99,7 +99,7 @@ header{
     height: 56px;
     text-align: center;
     border-radius: 40px;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 300 ;
     gap: 10px;
     margin: 10% 0;
@@ -112,7 +112,7 @@ header{
 
 .badge{
     color: #3692FF;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 700;
     margin-bottom: 12px;
 }
@@ -189,7 +189,7 @@ header{
 }
 
 .home-bottom-all{
-    font-size: 40px;
+    font-size: 2.5rem;
     font-weight: 700;
     line-height: 56px;
      display: flex;
@@ -223,14 +223,14 @@ footer{
 .footer-01{
     color: 
     #9CA3AF;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 400;
 }
 
 .footer-02 a{
     text-decoration: none;
     color: #E5E7EB;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 400; 
 }
 
