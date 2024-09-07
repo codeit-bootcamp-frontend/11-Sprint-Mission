@@ -3,9 +3,86 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>판다마켓</title>
+	<link rel="icon" href="img/logo/favicon.ico">
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	
+	<!--로고 & 로그인버튼 구현-->
+	<header>
+		<a href="/">
+			<img src="img/logo/panda-market-logo.png" alt="판다마켓로고">
+		</a>
+		<a href="login.html" id="loginBtn" class="btn">로그인</a>
+	</header>
+
+	<!---->
+	<main>
+		<section id="thing" class="banner">
+			<div class="wrapper">
+				<h1>일상의 모든 물건을 거래해 보세요</h1>
+				<a href="item.html" class="btn watch-btn">구경하러 가기</a>
+			</div>
+		</section>
+
+		<section id="features" class="wrapper">
+			<div class="feature">
+				<!--너무 커서 가시성이 안좋아 일단 줄여놓음-->
+				<img src="img/home/feature1-image.png" alt="인기상품" width="20%">
+				<div class="feature-content">
+					<h2>Hot item</h2>
+					<h1>인기 상품을 확인해 보세요</h1>
+					<p>가장 HOT한 중고거래 물품을 판다마켓에서 확인해보세요</p>
+				</div>
+			</div>
+			<div class="feature">
+				<div class="feature-content">
+					<h2>검색</h2>
+					<h1>구매를 원하는 상품을 검색하세요</h1>
+					<p>구매하고싶은 물품은 검색해서 쉽게 찾아보세요</p>
+				</div>
+				<!--너무 커서 가시성이 안좋아 일단 줄여놓음-->
+				<img src="img/home/feature2-image.png" alt="검색" width="20%">
+			</div>
+			<div class="feature">
+				<!--너무 커서 가시성이 안좋아 일단 줄여놓음-->
+				<img src="img/home/feature3-image.png" alt="등록" Width="20%">
+				<div class="feature-content">
+					<h2>등록</h2>
+					<h1>판매를 원하는 상품을 등록하세요</h1>
+					<p>어떤 물건이든 판매하고 싶은 상품을 쉽게 등록하세요</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="bottomBanner" class="banner">
+			<div class="wrapper">
+				<h1>믿을 수 있는 판다마켓 중고거래</h1>
+			</div>
+		</section>
+
+		<footer>
+			<div id="footerMenu">
+				<a href="privacy.html">privacy</a>
+				<a href="faq.html">FAQ</a>
+			</div>
+			<div id="socialMedia">
+				<!--target="_blank" 링크가 새로운 탭에서 열림-->
+          		<!--새 창에서 하이퍼링크를 열 때에는 보안상 취약점 또는 퍼포먼스 이슈가 발생할 수 있기 때문에 rel="noopener noreferrer"-->
+				<a href="www.facebook.com/" target="_blank" rel="noopener noreferrer">
+					<img src="img/social/facebook-logo.svg" alt="페북" witdh="20">
+				</a>
+				<a href="www.twitter.com" target="_blank" rel="noopener noreferrer">
+					<img src="img/social/twitter-logo.svg" alt="트위터" witdh="20">
+				</a>
+				<a href="www.youtu.be" target="_blank" rel="noopener noreferrer">
+					<img src="img/social/youtube-logo.svg" alt="유투브" witdh="20">
+				</a>
+				<a href="www.instagram.com" target="_blank" rel="noopener noreferrer">
+					<img src="img/social/instagram-logo.svg" alt="인스타" witdh="20">
+				</a>
+			</div>
+		</footer>
+	</main>
 </body>
 </html>
