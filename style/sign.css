@@ -1,0 +1,132 @@
+/*
+login.html과 signup.html을 스타일링
+*/
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+:root {
+    --gray900: #111827;
+    --gray800: #1f2937;
+    --gray700: #374151;
+    --gray600: #4b5563;
+    --gray500: #6b7280;
+    --gray400: #9ca3af;
+    --gray200: #e5e7eb;
+    --gray100: #f3f4f6;
+    --gray50: #f9fafb;
+    --blue: #3692ff;
+}
+
+#login_home {
+    margin-top: 1.25em;
+    width: 40em;
+    display: flex;
+    flex-direction: column;
+    color: var(--gray800);
+    margin-bottom: 1.875em;
+}
+
+#login_logo {
+    display: flex;
+    justify-content: center;
+}
+
+.info {
+    margin: 1.5625em 0 1.875em;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.625rem;   
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1111em;
+}
+
+#email,#password,#password_repeat,#username {
+    width: 100%;
+    height: 3.5em;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.625rem;
+    background-color: var(--gray100);
+    padding: 1em 1.5em;
+    margin: 0.75em 0;
+}
+
+.password,.password_repeat {
+    position: relative;
+}
+
+/* 비밀번호 눈모양 임시 */
+.see_blind {
+    position: absolute;
+    left: 92%;
+    top: 3.457rem;
+}
+
+input {
+    outline: none;
+    border: none;
+}
+
+input:focus {
+    border: 2px solid var(--blue);
+}
+
+input::placeholder {
+    color: var(--gray400);
+}
+
+
+#login_button {
+    background-color: var(--gray400);
+    height: 3.111em;
+    border-radius: 2.5rem;
+    color: var(--gray100);
+    line-height: 2rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.simple_login {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.625rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e6f2ff;
+    padding: 1em 1.4375em;
+}
+
+.signup {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    margin-top: 0.9375em;
+    gap: 4px;
+}
+
+#textdecoration_underline{
+    text-decoration: underline;
+}
+
+/*
+로그인 부분은 아직 조건이 안 나와서 임시로 div로 감싼 후 css로 스타일 적용
+*/
+#singup_button {
+    color: var(--blue);
+    line-height: 1.0625rem;
+}
