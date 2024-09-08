@@ -1,0 +1,125 @@
+* { 
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Pretendard Variable", sans-serif;
+  color: #374151;
+}
+
+a {
+  text-decoration: none; 
+  color: inherit; /* 링크 색깔 없애기 */
+}
+
+/* header */
+
+header {
+  width: 100%;
+  height: 70px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #DFDFDF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 200px;
+}
+
+#header-banner {
+  height: 540px;
+  background-color: #CFE5FF;
+  display: flex;
+  align-items: center;
+  padding: 200px 405px 0 405px;
+}
+
+/* 창을 줄여도 로그인 버튼이 줄어들지 않게 하려면 어떻게 해야하나요? */
+
+#loginbutton {
+  min-width: 128px; 
+  height: 48px;
+  background-color: #3692FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #F3F4F6;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.banner .text {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 60px;
+}
+
+.watch-button {
+  width: 357px; 
+  height: 56px;
+  background-color: #3692FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #F9FAFB;
+  border-radius: 40px;
+}
+
+/* main */
+
+.first, .second, .third {
+  width: 1920px; 
+  height: 720px;
+  display: flex;
+  align-items: center;
+  padding: 138px 466px;
+  gap: 64px;
+}
+
+.second .text {
+  text-align: right;
+}
+
+
+.keyword {
+  color: #3692FF;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+}
+
+/* footer */
+
+#footer-banner {
+  height: 540px;
+  background-color: #CFE5FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  background-color: #111827;
+  padding: 32.5px 200px 108px 200px;
+  color: #9CA3AF;
+  font-weight: 400;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#footerlink {
+  display: flex;
+  gap: 30px;
+  color: #E5E7EB;
+}
+
+#snslink {
+  display: flex;
+  gap: 12px;
+}
