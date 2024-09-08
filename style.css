@@ -71,7 +71,8 @@ header{
 }
 
 .home-top-img{
-    height: 340px;;
+    height: 340px;
+    object-fit: cover;
 }
 
 .sub{
@@ -103,11 +104,6 @@ header{
     font-weight: 300 ;
     gap: 10px;
     margin: 10% 0;
-}
-
-.home-top-img{
-    height: 340px;
-    object-fit: cover;
 }
 
 .badge{
