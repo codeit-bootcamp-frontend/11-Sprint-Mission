@@ -1,0 +1,433 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.header {
+    width: 1520px;
+    height: 69px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 200px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #dfdfdf;
+  }
+
+.container{
+    margin: auto;
+    width: 1120px;
+    height: 51px;
+}
+
+.판다얼굴 {
+    position: relative;
+    width: 40px;
+    height: 40.14px;
+    top: 5.02px;
+    border-radius: 11.18px;
+}
+
+.panda {
+    display:inline-block;
+    font-family: 'ROKAF SANS';
+    width: 103px;
+    height: 35px;
+    top: 9.76px;
+    left: 48.59px;
+    font-weight: 700;
+    font-size: 25.63px;
+    line-height: 34.6px;
+    color: #3692ff;
+    
+}
+
+.logo{
+    width: 153px;
+    height: 51px;
+}
+
+.login {
+    float: right;
+    font-weight: 600;
+    size: 16px;
+    line-height: 26px;
+    color: #f3f4f6;
+    padding: 12px 23px;
+    background-color: #3692FF;
+    border-radius: 16px;
+    gap: 10px;
+    width: 82px;
+    height: 24px;
+    text-align: center;
+}
+
+.second {
+    width: 1520px;
+    height: 540px;
+    background-color: #CFE5FF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 200px;
+
+}
+
+.logo2{
+    margin:auto ;
+    width: 1110px;
+    height: 340px;
+    top: 200px;
+    left: 405px;
+    gap: 7px;
+    margin-bottom: 0;
+    
+}
+
+.두번째{
+    float: right;
+}
+
+.세번째{
+    position: relative;
+    display:grid;
+    width: 357px;
+    height: 260px;
+    padding: 0px 0px 60px 0px;
+    gap: 32px;
+    opacity: 0px;
+}
+
+.일상{
+    width: 295;
+    height: 112px;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 56px;
+    color:#374151
+}
+
+.buy a {
+    text-decoration: none;
+    height: 24px;
+    display: grid;
+    padding: 16px 124px 16px 124px;
+    gap: 10px;
+    border-radius: 40px;
+    opacity: 0px;
+    background-color: #3692FF;
+    color: #f9fafb;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    line-height: 32px;
+}
+
+.third{
+    width: 988px;
+    height: 444px;
+    padding: 138px 466px 138px 466px;
+    gap: 10px;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo3{
+    display:flex;
+    margin:auto;
+    width: 988px;
+    height: 444px;
+    border-radius: 12px;
+    gap: 64px;
+    background-color: #FCFCFC;
+}
+
+.third2{
+    margin: auto;
+    display: grid;
+    width: 298px;
+    height: 238px;
+    padding: 0px 24px 0px 0px;
+    gap: 12px
+}
+
+.third3{
+    display: grid;
+    width: 274px;
+    height: 200px;
+    gap: 24px;
+}
+
+.home1{
+    width: 588px;
+    height: 444px;
+    background-color: #F3F4F6;
+}
+
+.hot{
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    color: #3692FF;
+}
+
+.popular{
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 56px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: #374151;
+}
+
+.most{
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    color: #374151;
+}
+
+
+.fourth{
+    width: 988px;
+    height: 444px;
+    padding: 138px 466px 138px 466px;
+    gap: 10px;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo4{
+    display: flex;
+    margin:auto;
+    width: 988px;
+    height: 444px;
+    gap: 64px;
+    border-radius: 12px;
+    background-color: #FCFCFC;
+}
+
+.home2{
+    
+    width: 579px;
+    height: 444px;
+    background-color: #F3F4F6;
+}
+
+.fourth2{
+    width: 317px;
+    height: 238px;
+    padding: 0px 0px 0px 24px;
+    gap: 12px;
+    margin: auto;
+    display: grid;
+}
+
+.search{
+    text-align: left;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    color: #3692FF;
+}
+
+.buywant{
+    font-weight: 700;
+    font-size: 39px;
+    line-height: 56px;
+    letter-spacing: 0.02em;
+    text-align: right;
+    color: #374151;
+}
+
+.easy{
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 32px;
+    text-align: right;
+    color: #374151;
+}
+
+.fourth3{
+    width: 293px;
+    height: 200px;
+    gap: 24px;
+    display: grid;
+}
+
+.searchlayout{
+    text-align: right;
+    
+}
+
+.fifth{
+    position: relative;
+    width: 988px;
+    height: 444px;
+    padding: 138px 466px 138px 466px;
+    gap: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo5{
+    width: 988px;
+    height: 444px;
+    border-radius: 12px;
+    gap: 64px;
+    display: flex;
+    margin: auto;
+    background-color: #FCFCFC;
+}
+
+.fifth2{
+    margin:auto;
+    width:359px;
+    height: 238px;
+    padding: 0px 24px 0px 0px;
+    gap: 12px;
+    display: grid;
+}
+
+.Register{
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26px;
+    text-align: left;
+    color: #3692FF;
+}
+
+.fifth3{
+    width: 335px;
+    height: 200px;
+    gap: 24px;
+    display: grid;
+}
+
+.sell{
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 56px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: #374151;
+}
+
+.any{
+    text-align: left;
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 32px;
+    color: #374151;
+
+}
+
+.bottom{
+    width: 1920px;
+    height: 520px;
+    top: 2908px;
+    background-color: #cfe5ff;
+}
+
+.logo6{
+    position:relative;
+    width: 1110px;
+    height: 397px;
+    top: 123px;
+    left: 405px;
+    gap: 69px;
+    display: flex;
+
+}
+
+.bottom2{
+    width: 295px;
+    height: 172px;
+    padding: 0px 0px 60px 0px;
+    gap: 10px;
+    margin:auto;
+}
+
+.믿음{
+    margin:auto;
+    display: grid;
+    align-items: center;
+    text-align: left;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 56px;
+    color: #374151;
+}
+
+.homebottom{
+    margin: auto;
+    width: 746px;
+    height:397px; 
+    margin-bottom: 0px;   
+}
+
+.foot{
+    width: 1120px;
+    height: 96px;
+    top: 3448px;
+    padding: 32px 400px 32px 400px;
+    gap: 10px;
+    display: grid;
+    background-color: #111827;
+}
+
+.foot2{
+    display: flex;
+    width: 1120px;
+    height: 20px;
+    justify-content: space-between;
+}
+
+.code{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19.09px;
+    text-align: center;
+    color: #9Ca3Af;
+}
+
+.privacy {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19.09px;
+    text-align: center;
+    color: #E5E7EB
+}
+
+.fa{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19.09px;
+    text-align: center;
+    color:#E5E7EB;
+}
+
+.중간 {
+    width: 159px;
+    height: 19px;
+    gap: 30px;
+    display: flex;
+}
+
+.마지막{
+    width: 116px;
+    height: 20px;
+    gap: 12px;
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+}
