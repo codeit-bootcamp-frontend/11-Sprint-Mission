@@ -1,0 +1,40 @@
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face{
+  font-family: 'ROKAF Sans';
+  src: url('/public/fonts/ROKAF_Sans/ROKAF\ Sans\ Medium.ttf') format('truetype');
+}
+
+:root{
+  font-size: 16px;
+  --max-width : 1520px;
+
+  --gray-900 : #111827;
+  --gray-800 : #1F2937;
+  --gray-700 : #374151;
+  --gray-600 : #4B5563;
+  --gray-500 : #6B7280;
+  --gray-400 : #9CA3AF;
+  --gray-300 : #E5E7EB;
+  --gray-200 : #F3F4F6;
+  --gray-100 : #F9FAFB; 
+
+  --blue : #3692FF;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Pretendard-Regular';
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

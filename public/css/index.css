@@ -1,46 +1,7 @@
-@font-face {
-  font-family: 'Pretendard-Regular';
-  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face{
-  font-family: 'ROKAF Sans';
-  src: url('/public/fonts/ROKAF_Sans/ROKAF\ Sans\ Medium.ttf') format('truetype');
-}
-
-:root{
-  font-size: 16px;
-  --max-width : 1520px;
-
-  --gray-900 : #111827;
-  --gray-800 : #1F2937;
-  --gray-700 : #374151;
-  --gray-600 : #4B5563;
-  --gray-500 : #6B7280;
-  --gray-400 : #9CA3AF;
-  --gray-300 : #E5E7EB;
-  --gray-200 : #F3F4F6;
-  --gray-100 : #F9FAFB; 
-
-  --blue : #3692FF
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  font-family: 'Pretendard-Regular';
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
+@import url(style.css);
 
 body{
-  background-color: #111827;
+  background-color: var(--gray-900);
 }
 
 main {
@@ -69,7 +30,7 @@ main {
 }
 
 .btn.inactive{
-  background-color: #9CA3AF;
+  background-color: var(--gray-400);
   color: #FFFFFF;
 }
 
@@ -114,7 +75,7 @@ main {
 
   font-size: 1.601875rem;
   font-weight: 700;
-  color: #3692ff;
+  color: var(--blue);
   text-decoration: none;
   font-family : 'ROKAF Sans'
 }
@@ -128,13 +89,13 @@ main {
   padding: 0.75rem 1.4317rem;
   width: 8rem;
   height: 3rem;
-  background-color: #3692ff;
+  background-color: var(--blue);
   text-align: center;
 
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.625rem;
-  color: #f3f4f6;
+  color: var(--gray-200);
 }
 
 /* navigation end */
@@ -172,7 +133,7 @@ main {
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 3.5rem;
-  color: #374151;
+  color: var(--gray-700);
 }
 
 .banner-btn {
@@ -180,12 +141,12 @@ main {
   height: 3.5rem;
   border-radius: 2.5rem;
   padding: 1rem 0;
-  background-color: #3692ff;
+  background-color: var(--blue);
 
   font-size: 1.25rem;
   font-weight: 600;
   text-align: center;
-  color: #F9FAFB;
+  color: var(--gray-100);
 }
 
 .banner-img {
@@ -230,21 +191,21 @@ main {
 }
 
 .card-badge{
-  color: #3692FF;
+  color: var(--blue);
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.625rem;
 }
 
 .card-title{
-  color: #374151;
+  color: var(--gray-700);
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 3.5rem;
 }
 
 .card-content{
-  color: #374151;
+  color: var(--gray-700);
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 2rem;
@@ -254,7 +215,7 @@ main {
 /* footer start */
 footer{
   height: 10rem;
-  background-color: #111827;
+  background-color: var(--gray-900);
   padding: 2rem 0;
 }
 
@@ -269,12 +230,12 @@ footer{
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.193125rem;
-  color: #E5E7EB;
+  color: var(--gray-300);
 }
 
 .footer-info{
   flex: 0 1 50%;
-  color: #9CA3AF;
+  color: var(--gray-400);
 }
 
 .footer-support{
