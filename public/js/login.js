@@ -1,5 +1,18 @@
-const inputPassword = document.querySelector('#input-password')
-const visibleBtn = document.querySelector('.visible-btn')
+const inputEmail = document.querySelector('#input-email');
+const inputPassword = document.querySelector('#input-password');
+const submitBtn = document.querySelector('#login-submit-btn');
+const visibleBtn = document.querySelector('.visible-btn');
+
+function checkAllInputFill(){
+  const email = inputEmail.value !== '';
+  const password = inputPassword.value !== '';
+  
+  if(email && password){
+    submitBtn.classList.add('active')
+  } else {
+    submitBtn.classList.remove('active')
+  }
+}
 
 visibleBtn.addEventListener('click', function (e) {
   const type = inputPassword.getAttribute('type');
@@ -16,3 +29,6 @@ visibleBtn.addEventListener('click', function (e) {
     eyeSlash.classList.remove('active');
   }
 })
+
+inputEmail.addEventListener('input', checkAllInputFill)
+inputPassword.addEventListener('input', checkAllInputFill)

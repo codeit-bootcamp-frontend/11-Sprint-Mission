@@ -137,6 +137,12 @@ label[for="input-password-repeat"]{
   font-size: 20px;
   font-weight: 600;
 }
+
+#login-submit-btn.active,
+#signup-submit-btn.active{
+  background-color: var(--blue);
+  color: var(--gray-100);
+}
 /* form end */
 
 
