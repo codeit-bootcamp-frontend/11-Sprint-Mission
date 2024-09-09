@@ -1,0 +1,66 @@
+@import url(style.css);
+
+body{
+  background-color : #FCFCFC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.login-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 640px;
+}
+
+.login-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 396px;
+}
+
+.logi-icon{
+  width: 103.53px;
+}
+
+.logo-text{
+  font-family : 'ROKAF Sans';
+  font-size: 66.34px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+#login-form{
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+}
+
+.social-login{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background-color: #E6F2FF;
+  width: 100%;
+  padding: 16px 23px;
+  border-radius: 8px;
+}
+
+.social-login p{
+  flex-grow: 1;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+.social-login-btn{
+  height: 42px;
+}
