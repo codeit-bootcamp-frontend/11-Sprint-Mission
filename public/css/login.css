@@ -127,6 +127,19 @@ label[for="input-password-repeat"]{
   top: 424px;
 }
 
+.repeat-alert{
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.repeat-alert.correct{
+  color: #759545;
+}
+
+.repeat-alert.warning{
+  color: #EA866E;
+}
+
 #login-submit-btn,
 #signup-submit-btn{
   background-color: var(--gray-400);

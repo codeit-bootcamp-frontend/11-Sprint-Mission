@@ -7,13 +7,26 @@ const submitBtn = document.querySelector('#signup-submit-btn');
 const visibleBtn1 = document.querySelector('.visible-btn.first');
 const visibleBtn2 = document.querySelector('.visible-btn.second');
 
-function checkAllInputFill(){
+function comparePassword() {
+  const pw = inputPassword.value;
+  const rpw = inputPasswordRepeat.value;
+
+  if (pw === rpw) return true;
+  else return false;
+}
+
+function checkAllInputFill() {
   const email = inputEmail.value !== '';
   const nickname = inputNickname.value !== '';
   const password = inputPassword.value !== '';
   const repeat = inputPasswordRepeat.value !== '';
-  
-  if(email && nickname && password && repeat){
+
+  if (!comparePassword()) {
+    submitBtn.classList.remove('active')
+    return;
+  }
+
+  if (email && nickname && password && repeat) {
     submitBtn.classList.add('active')
   } else {
     submitBtn.classList.remove('active')
@@ -56,3 +69,16 @@ inputEmail.addEventListener('input', checkAllInputFill)
 inputNickname.addEventListener('input', checkAllInputFill)
 inputPassword.addEventListener('input', checkAllInputFill)
 inputPasswordRepeat.addEventListener('input', checkAllInputFill)
+inputPasswordRepeat.addEventListener('change', function () {
+  const alert = document.querySelector('.repeat-alert');
+
+  if (comparePassword()) {
+    alert.textContent = '비밀번호와 일치합니다.';
+    alert.classList.add('correct');
+    alert.classList.remove('warning');
+  } else {
+    alert.textContent = '비밀번호와 일치하지 않습니다.';
+    alert.classList.remove('correct');
+    alert.classList.add('warning');
+  }
+})
