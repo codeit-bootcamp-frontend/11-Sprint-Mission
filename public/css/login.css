@@ -19,6 +19,9 @@ body{
   width: 640px;
 }
 
+
+
+/* Logo start */
 .logo-wrap{
   display: flex;
   justify-content: space-between;
@@ -36,15 +39,87 @@ body{
   font-weight: 700;
   color: var(--blue);
 }
+/* Logo end */
 
+
+
+/* form start */
 #login-form{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 24px;
 
+  position: relative;
   width: 100%;
 }
+
+#input-email,
+#input-password{
+  background-color: var(--gray-200);
+  width: 100%;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 12px;
+  margin-bottom: 24px;
+
+  color: var(--gray-800);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+#input-email::placeholder,
+#input-password::placeholder{
+  color: var(--gray-400);
+}
+
+#input-email:focus-visible,
+#input-password:focus-visible{
+  outline-color: var(--blue);
+}
+
+label[for="input-email"],
+label[for="input-password"]{
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin-bottom: 16px;
+}
+
+.visible-btn{
+  position: absolute;
+  right: 24px;
+  top: 180px;
+
+  width: 30px;
+  text-align: center;
+
+  color: var(--gray-600);
+  font-size: 24px;
+}
+
+.visible-btn i{
+  display: none;
+}
+
+.visible-btn i.active{
+  display: block;
+}
+
+
+#login-submit-btn{
+  background-color: var(--gray-400);
+  width: 100%;
+  padding: 16px 124px;
+  border: none;
+  border-radius: 40px;
+
+  color: var(--gray-200);
+  font-size: 20px;
+  font-weight: 600;
+}
+/* form end */
 
 .social-login{
   display: flex;

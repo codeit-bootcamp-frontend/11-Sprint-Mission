@@ -18,10 +18,14 @@
 
     <form id="login-form" action="" method="">
       <label for="input-email">이메일</label>
-      <input id="input-email" name="email" type="text" required>
+      <input id="input-email" name="email" type="text" placeholder="이메일을 입력해주세요" required>
       <label for="input-password">비밀번호</label>
-      <input id="input-password" name="password" type="password" required>
-      <button type="submit">로그인</button>
+      <input id="input-password" name="password" type="password" placeholder="비밀번호를 입력해주세요" required>
+      <div class="visible-btn">
+        <i class="fa-regular fa-eye active"></i>
+        <i class="fa-regular fa-eye-slash"></i>
+      </div>
+      <button id="login-submit-btn" type="submit">로그인</button>
     </form>
 
     <div class="social-login">
@@ -38,6 +42,8 @@
       <p>판다마켓이 처음이신가요?<a href="/views/signup.html">회원가입</a></p>
     </div>
   </main>
+
+  <script src="/public/js/login.js"></script>
 </body>
 
 </html>
