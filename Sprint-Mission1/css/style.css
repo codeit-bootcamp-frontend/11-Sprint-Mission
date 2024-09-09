@@ -368,22 +368,42 @@ display: flex;
 flex-direction: column;
 gap: 24px;
 }
-input {
+.login-container .password-wrap{
+  position: relative;
+}
+.login-container .password-wrap .eyes-img-wrap{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 24px;
+  width: 22px;
+  height: 19px;
+}
+.login-container .password-wrap .eyes-img-wrap .close-eyes{
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.login-container .password-wrap .eyes-img-wrap .close-eyes img{
+  width: 100%;
+  height: 100%;
+}
+.login-container input {
   border: none;
   width: 100%;
 }
-input:focus {
+.login-container input:focus {
   outline: none;
   border: 2px solid var(--skyblue);
 }
-input::placeholder{
+.login-container input::placeholder{
   color: var(--gray400);
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   left: 24px;
 }
-label {
+.login-container label {
   display: inline-block;
   margin-bottom: 16px;
   font-size: 1.125rem;
@@ -391,24 +411,24 @@ label {
   color: var(--gray800);
 }
 
-#pandaEmail,
+.login-container #pandaEmail,
 #pandaPassword{
   height: 56px;
   background-color: var(--gray100);
   border-radius: 12px;
   padding-left: 24px;
 }
-.login-btn input{
+.login-container .login-btn{
   height: 56px;
   border-radius: 40px;
   background-color: var(--gray400);
-}
-.login-btn input{
   font-weight: 600;
   font-size: 1.25rem;
   color: var(--gray100);
   cursor: pointer;
+
 }
+/* 로그인 회원가입 공통 css */
 .quick-login-box{
   width: 100%;
   background-color: var(--bgquicklogin);
@@ -455,6 +475,132 @@ a{
   color: var(--skyblue);
   text-decoration: underline;
 }
+/* 회원가입 */
+.signup-container{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signup-container .signup-wrapper {
+  max-width: 640px;
+  width: 100%;
+}
+
+.signup-container .signup-wrapper .signup-logo-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 55px;
+}
+
+.signup-container .signup-wrapper .signup-logo-box a {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.signup-container .signup-wrapper .signup-logo-box a img {
+  width: 100%;
+}
+
+.signup-container .signup-wrapper .signup-logo-box a .logo-face {
+  max-width: 104px;
+  width: 100%;
+}
+
+.signup-container .signup-wrapper .signup-logo-box a .logo-txt {
+  max-width: 259px;
+  width: 100%;
+}
+.signup-container .signup-wrapper .signup-wrap{
+display: flex;
+flex-direction: column;
+gap: 24px;
+}
+.signup-container input {
+  border: none;
+  width: 100%;
+}
+.signup-container input:focus {
+  outline: none;
+  border: 2px solid var(--skyblue);
+}
+.signup-container input::placeholder{
+  color: var(--gray400);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 24px;
+}
+.signup-container label {
+  display: inline-block;
+  margin-bottom: 16px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--gray800);
+}
+.signup-container #signupEmail,
+#signupName, #singupPassword, #checkPassword{
+  height: 56px;
+  background-color: var(--gray100);
+  border-radius: 12px;
+  padding-left: 24px;
+}
+.signup-container .singup-btn{
+  height: 56px;
+  border-radius: 40px;
+  background-color: var(--gray400);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--gray100);
+  cursor: pointer;
+
+}
+.signup-container .password-wrap{
+  position: relative;
+}
+.signup-container .password-wrap .eyes-img-wrap{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 24px;
+  width: 22px;
+  height: 19px;
+}
+.signup-container .password-wrap .eyes-img-wrap .close-eyes{
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.signup-container .password-wrap .eyes-img-wrap .close-eyes img{
+  width: 100%;
+  height: 100%;
+}
+.signup-container .check-p-wrap{
+  position: relative;
+}
+.signup-container .check-p-wrap .eyes-img-wrap{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 24px;
+  width: 22px;
+  height: 19px;
+}
+.signup-container .check-p-wrap .eyes-img-wrap .close-eyes{
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.signup-container .check-p-wrap .eyes-img-wrap .close-eyes img{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
 /* 푸터 */
 footer {
   width: 100%;
@@ -490,26 +636,6 @@ footer .inner-wrap .footer-info-container .ft-policy a {
 footer .inner-wrap .footer-info-container .ft-sns {
   display: flex;
   gap: 12px;
-}
-.password-wrap{
-  position: relative;
-}
-.password-wrap .eyes-img-wrap{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 24px;
-  width: 22px;
-  height: 19px;
-}
-.password-wrap .eyes-img-wrap .close-eyes{
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-}
-.password-wrap .eyes-img-wrap .close-eyes img{
-  width: 100%;
-  height: 100%;
 }
 footer .inner-wrap .footer-info-container .ft-sns a {
   max-width: 20px;
