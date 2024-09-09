@@ -1,8 +1,24 @@
-const inputPassword = document.querySelector('#input-password')
-const inputPasswordRepeat = document.querySelector('#input-password-repeat')
-const visibleBtn1 = document.querySelector('.visible-btn.first')
-const visibleBtn2 = document.querySelector('.visible-btn.second')
+const inputEmail = document.querySelector('#input-email');
+const inputNickname = document.querySelector('#input-nickname');
+const inputPassword = document.querySelector('#input-password');
+const inputPasswordRepeat = document.querySelector('#input-password-repeat');
+const submitBtn = document.querySelector('#signup-submit-btn');
 
+const visibleBtn1 = document.querySelector('.visible-btn.first');
+const visibleBtn2 = document.querySelector('.visible-btn.second');
+
+function checkAllInputFill(){
+  const email = inputEmail.value !== '';
+  const nickname = inputNickname.value !== '';
+  const password = inputPassword.value !== '';
+  const repeat = inputPasswordRepeat.value !== '';
+  
+  if(email && nickname && password && repeat){
+    submitBtn.classList.add('active')
+  } else {
+    submitBtn.classList.remove('active')
+  }
+}
 
 visibleBtn1.addEventListener('click', function (e) {
   const type = inputPassword.getAttribute('type');
@@ -35,3 +51,8 @@ visibleBtn2.addEventListener('click', function (e) {
     eyeSlash.classList.remove('active');
   }
 })
+
+inputEmail.addEventListener('input', checkAllInputFill)
+inputNickname.addEventListener('input', checkAllInputFill)
+inputPassword.addEventListener('input', checkAllInputFill)
+inputPasswordRepeat.addEventListener('input', checkAllInputFill)
