@@ -107,6 +107,8 @@ label[for="input-password-repeat"]{
 
   color: var(--gray-600);
   font-size: 24px;
+
+  cursor: pointer;
 }
 
 .visible-btn i{
@@ -136,12 +138,16 @@ label[for="input-password-repeat"]{
   color: var(--gray-200);
   font-size: 20px;
   font-weight: 600;
+
+  cursor: no-drop;
 }
 
 #login-submit-btn.active,
 #signup-submit-btn.active{
   background-color: var(--blue);
   color: var(--gray-100);
+
+  cursor: pointer;
 }
 /* form end */
 
