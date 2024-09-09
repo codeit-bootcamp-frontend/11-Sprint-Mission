@@ -14,18 +14,19 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 40px;
 
   width: 640px;
 }
 
-.login-header{
+.logo-wrap{
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 396px;
 }
 
-.logi-icon{
+.logo-icon{
   width: 103.53px;
 }
 
@@ -39,6 +40,8 @@ body{
 #login-form{
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
 
   width: 100%;
 }
