@@ -9,7 +9,8 @@ body{
   height: 100vh;
 }
 
-.login-container{
+.login-container,
+.signup-container{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,7 +45,8 @@ body{
 
 
 /* form start */
-#login-form{
+#login-form,
+#signup-form{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -54,7 +56,9 @@ body{
 }
 
 #input-email,
-#input-password{
+#input-password,
+#input-nickname,
+#input-password-repeat{
   background-color: var(--gray-200);
   width: 100%;
   padding: 16px 24px;
@@ -69,17 +73,23 @@ body{
 }
 
 #input-email::placeholder,
-#input-password::placeholder{
+#input-password::placeholder,
+#input-nickname::placeholder,
+#input-password-repeat::placeholder{
   color: var(--gray-400);
 }
 
 #input-email:focus-visible,
-#input-password:focus-visible{
+#input-password:focus-visible,
+#input-nickname:focus-visible,
+#input-password-repeat:focus-visible{
   outline-color: var(--blue);
 }
 
 label[for="input-email"],
-label[for="input-password"]{
+label[for="input-password"],
+label[for="input-nickname"],
+label[for="input-password-repeat"]{
   font-size: 18px;
   line-height: 26px;
   font-weight: 700;
@@ -107,8 +117,16 @@ label[for="input-password"]{
   display: block;
 }
 
+.visible-btn.first{
+  top: 302px;
+}
 
-#login-submit-btn{
+.visible-btn.second{
+  top: 424px;
+}
+
+#login-submit-btn,
+#signup-submit-btn{
   background-color: var(--gray-400);
   width: 100%;
   padding: 16px 124px;
@@ -150,13 +168,13 @@ label[for="input-password"]{
 
 
 /* signup start */
-.singup-wrap{
+.goto-wrap{
   color: var(--gray-800);
   font-size: 14px;
   font-weight: 500;
 }
 
-.signup-wrap a{
+.goto-wrap a{
   color: var(--blue);
   text-decoration: underline;
 }
