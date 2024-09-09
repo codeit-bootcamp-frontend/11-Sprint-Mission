@@ -1,0 +1,112 @@
+@import url(reset.css);
+@import url(variable.css);
+/* 공통 css */
+
+/* @import url(main.css); */
+@import url(main-copy.css);
+/* 페이지 css */
+
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/ttf/Pretendard-Regular.ttf), 
+      url(../fonts/otf/Pretendard-Regular.otf) format("otf"),
+      url(../fonts/woff/Pretendard-Regular.woff) format("woff"),
+      url(../fonts/woff2/Pretendard-Regular.woff2) format("woff2"),
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 500;
+  src: url(../fonts/ttf/Pretendard-Medium.ttf), 
+      url(../fonts/otf/Pretendard-Medium.otf) format("otf"),
+      url(../fonts/woff/Pretendard-Medium.woff) format("woff"),
+      url(../fonts/woff2/Pretendard-Medium.woff2) format("woff2"),
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 600;
+  src: url(../fonts/ttf/Pretendard-SemiBold.ttf), 
+      url(../fonts/otf/Pretendard-SemiBold.otf) format("otf"),
+      url(../fonts/woff/Pretendard-SemiBold.woff) format("woff"),
+      url(../fonts/woff2/Pretendard-SemiBold.woff2) format("woff2"),
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/ttf/Pretendard-Bold.ttf), 
+      url(../fonts/otf/Pretendard-Bold.otf) format("otf"),
+      url(../fonts/woff/Pretendard-Bold.woff) format("woff"),
+      url(../fonts/woff2/Pretendard-Bold.woff2) format("woff2"),
+}
+
+/* 다른 방법 1 */
+/* @font-face {
+  font-family: 'Pretendard';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+} */
+
+body > *{
+  font-family: 'Pretendard', sans-serif;
+}
+
+.container{
+  width: 100%; height: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+@media screen and (max-width:1199px) {
+  .container{
+    max-width: 100%;
+  }
+}
+
+div[class ^= "btn-"]{
+  display: flex;
+  gap: 1.2rem;
+  white-space: nowrap;
+}
+
+.button{
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+.button.round{
+  border-radius: 4rem;
+}
+.button.square{
+  border-radius: .8rem;
+}
+
+@media screen and (max-width: 767px){
+  .button.round{
+    border-radius: 10.6667vw;
+  }
+  .button.square{
+    border-radius: 2.1333vw;
+  }
+}
+
+.button.blue{
+  background-color: var(--blue-100);
+}
+.button.blue:hover{
+  background-color: var(--blue-300);
+}
+.button.gray{
+  background-color: var(--gray-400);
+}
+.button.white{
+  background-color: var(--gray-50);
+  color: var(--blue-100);
+  border: 1px solid var(--blue-100);
+}
+
