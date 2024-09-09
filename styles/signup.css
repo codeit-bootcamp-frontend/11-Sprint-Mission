@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Pretendard', sans-serif;
+    font-size: #1f2937; /*"로그인" <a>을 제외하고는 모두 해당 color사용*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login_container {
+    width: 640px;
+    height: auto;
+  }
+  
+  .logo_and_market_name {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  
+  .logo_image {
+    width: 396px;
+    height: 132px;
+  }
+  
+  .login_form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login_form label {
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+  }
+  
+  .login_form input {
+    width: 100%;
+    height: 56px;
+    padding: 24px;
+    margin: 16px 0 24px;
+    border: none;
+    border-radius: 12px;
+    background-color: #f3f4f6;
+    font-size: 16px;
+  }
+
+  .login_form .password_box {
+    width: 100%;
+    position: relative;
+  }
+
+  .login_form .hide_eye {
+    position: absolute;
+    right: 24px;
+    top: 32px;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .login_button {
+    background-color: #9CA3AF;
+    color: white;
+    height: 56px;
+    margin-bottom: 24px;
+    border-radius: 40px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .login_button:hover {
+    background-color: #5a6268;
+  }
+  
+  .social_login {
+    background-color: #E6F2FF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    height: 74px;
+    padding: 23px;
+    margin-bottom: 24px;
+  }
+
+  .social_login span {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+
+  
+  .social_buttons {
+    display: flex;
+    gap: 10px;
+    margin-right: 23px;
+  }
+  
+  .social_buttons button {
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    padding: 10px;
+    width: 48px;
+    height: 48px;
+  }
+  
+  .signup {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+  }
+  
+  .signup a {
+    color: #3692FF;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .signup a:hover {
+    text-decoration: underline;
+  }
