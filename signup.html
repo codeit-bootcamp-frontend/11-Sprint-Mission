@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입</title>
+  <link rel="icon" href="images/logo/favicon.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="./styles/global.css">
+  <link rel="stylesheet" href="./styles/signup.css">
+</head>
+<body>
+  <div class="login_container">
+    <div class="logo_and_market_name">
+      <img src="./images/logo/panda-market-logo.png" alt="판다마켓 로고" class="logo_image">
+    </div>
+
+    <form class="login_form">
+      <label for="email">이메일</label>
+      <input type="email" id="email" placeholder="이메일을 입력해주세요" required>
+
+      <label for="nickname">닉네임</label>
+      <input id="nickname" placeholder="닉네임을 입력해주세요" required>
+
+      <label for="password">비밀번호</label>
+      <div class="password_box">
+        <input type="password" id="password" placeholder="비밀번호를 입력해주세요"required>
+        <img class="hide_eye" id="first_password_eye" src="./images/eye-password-hide.svg" alt="hide_eye">
+      </div>
+
+      <label for="second_password">비밀번호 확인</label>
+      <div class="password_box">
+        <input type="password" id="second_password" placeholder="비밀번호를 다시 한 번 입력해주세요" required>
+        <img class="hide_eye"  id="second_password_eye" src="./images/eye-password-hide.svg" alt="hide_eye">
+      </div>
+      
+
+      <button type="submit" class="login_button">로그인</button>
+    </form>
+
+    <div class="social_login">
+      <span>간편 로그인하기</span>
+      <div class="social_buttons">
+        <button class="instagram">
+          <img src="./images/social/instagram-logo.svg" alt="인스타그램 로그인"> <!--화면에 이미지 노출이 안 됩니다 ㅜㅡㅜ -->
+        </button>
+        <button class="x_login">
+          <img src="./images/social/twitter-logo.svg" alt="X 로그인">
+        </button>
+      </div>
+    </div>
+
+    <div class="signup">
+      <span>이미 회원이신가요?</span> <a href="#">로그인</a>
+    </div>
+  </div>
+</body>
+</html>
