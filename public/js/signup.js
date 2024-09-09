@@ -23,13 +23,15 @@ function checkAllInputFill() {
 
   if (!comparePassword()) {
     submitBtn.classList.remove('active')
-    return;
+    return false;
   }
 
   if (email && nickname && password && repeat) {
     submitBtn.classList.add('active')
+    return true;
   } else {
     submitBtn.classList.remove('active')
+    return false;
   }
 }
 
@@ -81,4 +83,11 @@ inputPasswordRepeat.addEventListener('change', function () {
     alert.classList.remove('correct');
     alert.classList.add('warning');
   }
+})
+
+document.querySelector('#signup-form')
+.addEventListener('submit', function(e){
+  e.preventDefault();
+  const result = checkAllInputFill();
+  if(result) alert('전송 성공!');
 })
