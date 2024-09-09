@@ -33,7 +33,6 @@ main {
   background-color: var(--gray-400);
   color: #FFFFFF;
 }
-
 /* structure end */
 
 
@@ -70,18 +69,19 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin: 0.3125rem 0; */
   gap: 0.625rem;
+}
 
+.logo-icon{
+  width: 2.5rem;
+}
+
+.logo-text{
   font-size: 1.601875rem;
   font-weight: 700;
   color: var(--blue);
   text-decoration: none;
-  font-family : 'ROKAF Sans'
-}
-
-.logo-wrap img{
-  width: 2.5rem;
+  font-family : 'ROKAF Sans';
 }
 
 .login-btn {
@@ -97,7 +97,6 @@ main {
   line-height: 1.625rem;
   color: var(--gray-200);
 }
-
 /* navigation end */
 
 

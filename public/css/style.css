@@ -8,6 +8,8 @@
 @font-face{
   font-family: 'ROKAF Sans';
   src: url('/public/fonts/ROKAF_Sans/ROKAF\ Sans\ Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 :root{
