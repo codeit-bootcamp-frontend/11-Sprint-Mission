@@ -121,6 +121,9 @@ label[for="input-password"]{
 }
 /* form end */
 
+
+
+/* social start */
 .social-login{
   display: flex;
   align-items: center;
@@ -142,3 +145,19 @@ label[for="input-password"]{
 .social-login-btn{
   height: 42px;
 }
+/* social end */
+
+
+
+/* signup start */
+.singup-wrap{
+  color: var(--gray-800);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.signup-wrap a{
+  color: var(--blue);
+  text-decoration: underline;
+}
+/* signup end */
