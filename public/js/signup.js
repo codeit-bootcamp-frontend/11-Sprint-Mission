@@ -43,12 +43,12 @@ visibleBtn2.addEventListener('click', function (e) {
 
   if (type === 'password') {
     inputPasswordRepeat.setAttribute('type', 'text');
-    eye.classList.remove('active');
-    eyeSlash.classList.add('active');
-  } else if (type === 'text') {
-    inputPasswordRepeat.setAttribute('type', 'password');
     eye.classList.add('active');
     eyeSlash.classList.remove('active');
+  } else if (type === 'text') {
+    inputPasswordRepeat.setAttribute('type', 'password');
+    eye.classList.remove('active');
+    eyeSlash.classList.add('active');
   }
 })
 
