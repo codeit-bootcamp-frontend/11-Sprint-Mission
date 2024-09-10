@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>판다마켓</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="member/style.css">
+    <link rel="icon" href="images/favicon.ico">
+</head>
+<body>
+    <main>
+      <a class="logo" href="/"><img src="member/signup_images/logo.png" alt="판다마켓 로고"></a>
+      <form action="/" mothod="POST">
+        <label for="email">이메일</label>
+        <input type="email" placeholder="이메일을 입력해주세요." id="email" name="email" required>
+        <label for="text">닉네임</label>
+        <input type="text" placeholder="닉네임을 입력해주세요." id="text" name="text" required>
+        <label for="password">비밀번호</label>
+        <input class="password" type="password" placeholder="비밀번호를 입력해주세요." id="password" name="password" required minlength="7">
+        <label for="check_password">비밀번호 확인</label>
+        <input class="password" type="password" placeholder="비밀번호를 다시 한 번 입력해주세요." id="check_password" name="check_password" required minlength="7">
+        <button class="button--disabled" type="submit" disabled="true">회원가입</button>
+        <button class="button--enabled" type="submit">회원가입</button>
+      </form>
+        <div class="snslogin">
+          간편 로그인하기
+          <div class="snslogin__logo">
+            <a href="https://www.google.com"><img src="member/signup_images/google.png" alt="구글 로그인"></a>
+            <a href="https://www.kakaocorp.com/page"><img src="member/signup_images/kakao.png" alt="카카오 로그인"></a>
+        </div>
+        </div>
+        <div class="member">
+          이미 회원이신가요?
+          <a href="/login.html">로그인</a>
+        </div>
+    </main>
+</body>
+</html>
