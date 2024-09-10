@@ -1,3 +1,16 @@
+:root {
+  --blue: #3692ff;
+  --gray50: #f9fafb;
+  --gray100: #f3f4f6;
+  --gray200: #e5e7eb;
+  --gray400: #9ca3af;
+  --gray500: #6b7280;
+  --gray600: #4b5563;
+  --gray700: #374151;
+  --gray800: #1f2937;
+  --gray900: #111827;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,7 +20,7 @@
 }
 
 body {
-  color: #1f2937;
+  color: var(--gray800);
   font-family: Pretendard, sans-serif;
 }
 
@@ -38,7 +51,7 @@ body {
 
 .logo a {
   font-family: 'ROKAF sans', sans-serif;
-  color: #3692ff;
+  color: var(--blue);
   font-size: 66.34px;
   font-weight: 700;
   line-height: 89.56px;
@@ -63,20 +76,20 @@ body {
   height: 56px;
   width: 100%;
   padding: 16px 24px;
-  background: #f3f4f6;
+  background: var(--gray100);
   border-radius: 12px;
   margin-bottom: 24px;
 }
 
 .main-form input::placeholder {
-  color: #9ca3af;
+  color: var(--gray400);
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
 }
 
 .main-form input:focus {
-  border: 1px solid #3692ff;
+  border: 1px solid var(--blue);
   outline: none; /* 체크 */
 }
 
@@ -91,7 +104,7 @@ body {
 }
 
 .main-form button {
-  color: #f3f4f6;
+  color: var(--gray100);
   font-size: 20px;
   font-weight: 600;
   line-height: 32px;
@@ -103,7 +116,7 @@ body {
 }
 
 .main-form button:hover {
-  background: #3692ff;
+  background: var(--blue);
 }
 
 .sns-login {
@@ -145,5 +158,5 @@ footer {
 
 footer a {
   line-height: 16.71px;
-  color: #3692ff;
+  color: var(--blue);
 }
