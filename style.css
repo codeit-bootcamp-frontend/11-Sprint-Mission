@@ -16,14 +16,18 @@ body {
 
 
 header{
-  height: 70px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 200px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #dfdfdf;
+    position: sticky;
+    top: 0;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 200px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #dfdfdf;
 }
+
+
 
 #logo{
     height: 50px;
