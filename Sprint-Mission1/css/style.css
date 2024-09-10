@@ -194,31 +194,31 @@ main {
   border-radius: 12px;
 }
 
-.main-contents-container .inner-wrap .main-content1-box .main-con-txt-box {
+.main-contents-container .inner-wrap .main-content1-box .main-txt-box {
   margin-left: 64px;
 }
 
-.main-contents-container .inner-wrap .main-content1-box .main-con-img {
+.main-contents-container .inner-wrap .main-content1-box .main-img {
   max-width: 579px;
   width: 100%;
   margin-left: 14px;
 }
 
-.main-contents-container .inner-wrap .main-content1-box .main-con-img2 {
+.main-contents-container .inner-wrap .main-content1-box .main-img2 {
   margin-left: unset;
 }
 
-.main-contents-container .inner-wrap .main-content1-box .main-con-img img {
+.main-contents-container .inner-wrap .main-content1-box .main-img img {
   width: 100%;
 }
 
-.main-contents-container .inner-wrap .main-con-txt-box .mc-color-txt {
+.main-contents-container .inner-wrap .main-txt-box .mc-color-txt {
   font-weight: 700;
   color: var(--skyblue);
   font-size: 1.125rem;
 }
 
-.main-contents-container .inner-wrap .main-con-txt-box .mc-middle-txt {
+.main-contents-container .inner-wrap .main-txt-box .mc-middle-txt {
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 56px;
@@ -226,7 +226,7 @@ main {
   margin-bottom: 24px;
 }
 
-.main-contents-container .inner-wrap .main-con-txt-box .mc-last-txt {
+.main-contents-container .inner-wrap .main-txt-box .mc-last-txt {
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 32px;
@@ -249,30 +249,30 @@ main {
   border-radius: 12px;
 }
 
-.main-contents-container .inner-wrap .main-contnt2-right .main-content2-box .main-con-img {
+.main-contents-container .inner-wrap .main-contnt2-right .main-content2-box .main-img {
   max-width: 588px;
   width: 100%;
   margin-right: 14px;
 }
 
-.main-contents-container .inner-wrap .main-contnt2-right .main-content2-box .main-con-img img {
+.main-contents-container .inner-wrap .main-contnt2-right .main-content2-box .main-img img {
   width: 100%;
 }
 
-.main-contents-container .inner-wrap .main-content2-box .main-con-txt-box {
+.main-contents-container .inner-wrap .main-content2-box .main-txt-box {
   margin-right: 64px;
 
 }
 
-.main-contents-container .inner-wrap .main-contnt2-right .main-con-txt-box .mc-color-txt {
+.main-contents-container .inner-wrap .main-contnt2-right .main-txt-box .mc-color-txt {
   text-align: right;
 }
 
-.main-contents-container .inner-wrap .main-contnt2-right .main-con-txt-box .mc-middle-txt {
+.main-contents-container .inner-wrap .main-contnt2-right .main-txt-box .mc-middle-txt {
   text-align: right;
 }
 
-.main-contents-container .inner-wrap .main-contnt2-right .main-con-txt-box .mc-last-txt {
+.main-contents-container .inner-wrap .main-contnt2-right .main-txt-box .mc-last-txt {
   text-align: right;
 }
 
