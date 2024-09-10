@@ -1,3 +1,15 @@
+:root {
+  --blue: #3692ff;
+  --CoolGray100: #f3f4f6;
+  --Secondary50: #f9fafb;
+  --Secondary200: #e5e7eb;
+  --Secondary400: #9ca3af;
+  --Secondary700: #374151;
+  --Secondary900: #111827;
+  --landingBackground: #cfe5ff;
+  --footerBackground: #111827;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -32,6 +44,7 @@ header {
 
 .header-content .logo {
   display: flex;
+  justify-content: center;
   align-items: center;
   font-size: 25.63px;
   font-weight: 700;
@@ -40,10 +53,11 @@ header {
 }
 
 .header-content .logo a {
-  background: url(./img/판다마켓.png) no-repeat;
-  background-position: center;
-  width: 103px;
-  height: 35px;
+  font-family: 'ROKAF Sans', sans-serif;
+  color: var(--blue);
+  font-size: 25.63px;
+  font-weight: 700;
+  line-height: 34.6px;
 }
 
 .header-content .logo > img {
@@ -53,8 +67,8 @@ header {
 
 .header-content .login {
   padding: 11px 43px;
-  background-color: #3692ff;
-  color: #f3f4f6;
+  background-color: var(--blue);
+  color: var(--CoolGray100);
   font-size: 16px;
   font-weight: 600;
   line-height: 26px;
@@ -63,66 +77,69 @@ header {
   white-space: nowrap;
 }
 
-.landing-page {
+.landing-page-top,
+.landing-page-bottom {
   display: flex;
   align-items: flex-end;
-  background-color: #cfe5ff;
+  background-color: var(--landingBackground);
   width: 100%;
   height: 540px;
 }
 
-.landing-page .content {
+.landing-page-top .content,
+.landing-page-bottom .content {
   width: 1120px;
   display: flex;
   margin: 0 auto;
   white-space: nowrap;
 }
 
-.landing-page .content div {
+.landing-page-top .content div,
+.landing-page-bottom .content div {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.landing-page .content p {
-  color: #374151;
+.landing-page-top .content p,
+.landing-page-bottom .content p {
+  color: var(--Secondary700);
   font-size: 40px;
   font-weight: 700;
   line-height: 56px;
 }
 
-.landing-page.top .content {
+.landing-page-top .content {
   margin-top: 200px;
   gap: 7px;
 }
 
-.landing-page.top .content p {
+.landing-page-top .content p {
   margin-bottom: 32px;
 }
 
-.landing-page.top .content .items {
-  /* 검색해보기 */
-  color: #f9fafb;
+.landing-page-top .content .items {
+  color: var(--Secondary50);
   font-size: 20px;
   font-weight: 600;
   line-height: 32px;
   text-align: center;
-  background-color: #3692ff;
+  background-color: var(--blue);
   border: none;
   border-radius: 40px;
   padding: 12px 124px;
   margin-bottom: 60px;
 }
 
-.landing-page.bottom .content {
+.landing-page-bottom .content {
   margin-top: 143px;
 }
 
-.landing-page.bottom .content div {
+.landing-page-bottom .content div {
   padding-right: 69px;
 }
 
-.landing-page.bottom .content p {
+.landing-page-bottom .content p {
   padding-bottom: 60px;
 }
 
@@ -156,11 +173,11 @@ header {
 }
 
 .landing-page-main .content:nth-child(3) .info {
-  padding: 103px 0 103px 50px; /* 질문 */
+  padding: 103px 0 103px 50px;
 }
 
 .landing-page-main .content .info p:nth-child(1) {
-  color: #3692ff;
+  color: var(--blue);
   font-size: 18px;
   font-weight: 700;
   line-height: 26px;
@@ -168,7 +185,7 @@ header {
 }
 
 .landing-page-main .content .info p:nth-child(2) {
-  color: #374151;
+  color: var(--Secondary700);
   font-size: 40px;
   font-weight: 700;
   line-height: 56px;
@@ -176,7 +193,7 @@ header {
 }
 
 .landing-page-main .content .info p:nth-child(3) {
-  color: #374151;
+  color: var(--Secondary700);
   font-size: 24px;
   font-weight: 500;
   line-height: 32px;
@@ -184,7 +201,7 @@ header {
 
 footer {
   width: 100%;
-  background-color: #111827;
+  background-color: var(--footerBackground);
   height: 160px;
 }
 
@@ -207,7 +224,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #9ca3af;
+  color: var(--Secondary400);
   font-size: 16px;
   font-weight: 400;
   line-height: 19.09px;
@@ -228,7 +245,7 @@ footer {
 }
 
 .footer-content a {
-  color: #e5e7eb;
+  color: var(--Secondary200);
   align-items: center;
   cursor: pointer;
 }
