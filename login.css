@@ -11,10 +11,18 @@
   font-family: "Pretendard-Regular", sans-serif;
 }
 
-main {
+body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 160px;
+  gap: 10px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  gap: 20px;
 }
