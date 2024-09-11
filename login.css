@@ -35,6 +35,10 @@ input::placeholder {
   opacity: 0.7;
 }
 
+.thickText {
+  font-weight: 600;
+}
+
 .myInput {
   width: 530px;
   height: 45px;
@@ -72,4 +76,5 @@ input::placeholder {
 
 .signup {
   text-align: center;
+  font-size: 14px;
 }
