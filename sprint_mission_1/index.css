@@ -22,7 +22,12 @@ img {
 }
 
 header {
+  background: #ffffff;
+  position: fixed;
+  left: 0;
+  top: 0;
   width: 100%;
+  border-bottom: 1px solid #dfdfdf;
 }
 
 .header-content {
