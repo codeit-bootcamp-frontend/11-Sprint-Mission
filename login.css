@@ -10,3 +10,11 @@
   box-sizing: border-box;
   font-family: "Pretendard-Regular", sans-serif;
 }
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 160px;
+}
