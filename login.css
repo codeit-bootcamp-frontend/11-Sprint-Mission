@@ -57,6 +57,7 @@ input::placeholder {
   background: #3692ff;
   color: #ffffff;
   border-radius: 9999px;
+  cursor: pointer;
 }
 
 .easyLogin {
