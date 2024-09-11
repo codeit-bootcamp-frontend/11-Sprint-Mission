@@ -13,3 +13,32 @@ html {
     justify-content: center;
     align-items: center;
 }
+
+.loginlogo{
+    width: 396px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+
+input{
+    width: 640px;
+    height: 56px;
+}
+
+button{
+    width: 640px;
+    height: 56px;
+}
+
+.simple-login{
+    display: flex;
+}
+
+.login-icon img{
+    width: 42px;
+}
+
+.firstuser{
+    text-align: center;
+}
