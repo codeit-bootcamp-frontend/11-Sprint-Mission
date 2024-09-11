@@ -45,8 +45,23 @@ input::placeholder {
   justify-content: center;
   align-items: center;
   width: 530px;
-  height: 45px;
+  height: 50px;
   background: #3692ff;
   color: #ffffff;
   border-radius: 9999px;
+}
+
+.easyLogin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 530px;
+  height: 60px;
+  background: #e6f2ff;
+  padding: 0 20px;
+  border-radius: 8px;
+}
+
+.loginIcon {
+  height: 36px;
 }
