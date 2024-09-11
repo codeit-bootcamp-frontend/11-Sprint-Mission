@@ -10,7 +10,7 @@
 }
 
 body {
-  background: #ffffff;
+  background-color: var(--white-color);
   font-family: "Pretendard";
 }
 
@@ -18,7 +18,7 @@ h2 {
   font-size: 40px;
   font-weight: 700;
   line-height: 56px;
-  color: #374151;
+  color: var(--gray-700);
 }
 
 .header {
@@ -30,8 +30,8 @@ h2 {
 }
 
 .btn {
-  background-color: #3692ff;
-  color: #f3f4f6;
+  background-color: var(--Primary-100);
+  color: var(--gray-100);
   font-weight: 600;
   text-align: center;
   text-decoration: none;
@@ -84,7 +84,7 @@ h2 {
   justify-content: center;
   align-items: center;
   height: 720px;
-  background-color: #ffffff;
+  background-color: var(--white-color);
 }
 
 .section-container {
@@ -115,7 +115,7 @@ h2 {
 }
 
 .section-label {
-  color: #3692ff;
+  color: var(--Primary-100);
   font-size: 18px;
   font-weight: 700;
   line-height: 26px;
@@ -123,7 +123,7 @@ h2 {
 }
 
 .section-text {
-  color: #374151;
+  color: var(--gray-700);
   font-size: 24px;
   font-weight: 500;
   padding-top: 24px;
@@ -131,7 +131,7 @@ h2 {
 }
 
 footer {
-  background-color: #111827;
+  background-color: var(--gray-900);
   height: 160px;
 }
 
@@ -142,7 +142,7 @@ footer {
 }
 
 .footer-txt {
-  color: #9ca3af;
+  color: var(--gray-400);
   font-size: 16px;
   font-weight: 400;
 }
@@ -154,7 +154,7 @@ footer {
 
 .footer-page a {
   text-decoration: none;
-  color: #e5e7eb;
+  color: var(--gray-200);
   font-size: 16px;
   font-weight: 400;
 }
