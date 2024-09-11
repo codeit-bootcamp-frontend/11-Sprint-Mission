@@ -46,7 +46,7 @@ main {
   display: flex;
   flex-direction: column;
 }
-.banner_txt {
+.banner-txt {
   width: 350px;
   height: 112px;
   font-size: 2.2rem;
