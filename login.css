@@ -65,3 +65,7 @@ input::placeholder {
 .loginIcon {
   height: 36px;
 }
+
+.signup {
+  text-align: center;
+}
