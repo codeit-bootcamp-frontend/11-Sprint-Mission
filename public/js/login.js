@@ -1,34 +1,33 @@
-const inputEmail = document.querySelector('#input-email');
-const inputPassword = document.querySelector('#input-password');
+const inputTags = document.querySelectorAll('#login-form input')
 const submitBtn = document.querySelector('#login-submit-btn');
-const visibleBtn = document.querySelector('.visible-btn');
 
-function checkAllInputFill(){
-  const email = inputEmail.value !== '';
-  const password = inputPassword.value !== '';
+// 입력란을 모두 채웠는지 확인
+function checkAllInputFill() {
+  let isAllFill = true; 
+  inputTags.forEach(tag => {
+    if(tag.value === '') isAllFill = false;
+  })
   
-  if(email && password){
-    submitBtn.classList.add('active')
+  if(isAllFill){
+    submitBtn.classList.add('active');
   } else {
-    submitBtn.classList.remove('active')
+    submitBtn.classList.remove('active');
   }
 }
 
-visibleBtn.addEventListener('click', function (e) {
-  const type = inputPassword.getAttribute('type');
-  const eye = visibleBtn.querySelector('.fa-eye');
-  const eyeSlash = visibleBtn.querySelector('.fa-eye-slash');
+// 비밀번호 표기 토글 이벤트 핸들러
+function togglePasswordVisibility(event) {
+  const inputTag = this.previousElementSibling;
+  const type = inputTag.getAttribute('type') === 'password' ? 'text' : 'password';
 
-  if (type === 'password') {
-    inputPassword.setAttribute('type', 'text');
-    eye.classList.add('active');
-    eyeSlash.classList.remove('active');
-  } else if (type === 'text') {
-    inputPassword.setAttribute('type', 'password');
-    eye.classList.remove('active');
-    eyeSlash.classList.add('active');
+  // 비밀번호 입력란을 가리킴
+  inputTag.setAttribute('type', type);
+  for (const icon of this.children) {
+    icon.classList.toggle('hide');
   }
-})
+}
 
-inputEmail.addEventListener('input', checkAllInputFill)
-inputPassword.addEventListener('input', checkAllInputFill)
+
+document.querySelector('.visibility-btn')
+  .addEventListener('click', togglePasswordVisibility)
+document.addEventListener('input', checkAllInputFill)

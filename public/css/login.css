@@ -50,8 +50,6 @@ body{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
-  position: relative;
   width: 100%;
 }
 
@@ -90,6 +88,7 @@ label[for="input-email"],
 label[for="input-password"],
 label[for="input-nickname"],
 label[for="input-password-repeat"]{
+  display: block;
   font-size: 18px;
   line-height: 26px;
   font-weight: 700;
@@ -97,34 +96,24 @@ label[for="input-password-repeat"]{
   margin-bottom: 16px;
 }
 
-.visible-btn{
-  position: absolute;
-  right: 24px;
-  top: 180px;
+.input-fieldset{
+  width: 100%;
+  border: none;
+  position: relative;
+}
 
-  width: 30px;
-  text-align: center;
+.visibility-btn{
+  position: absolute;
+  top: 58px;
+  right: 24px;
 
   color: var(--gray-600);
-  font-size: 24px;
 
   cursor: pointer;
 }
 
-.visible-btn i{
+.visibility-btn img.hide{
   display: none;
-}
-
-.visible-btn i.active{
-  display: block;
-}
-
-.visible-btn.first{
-  top: 302px;
-}
-
-.visible-btn.second{
-  top: 424px;
 }
 
 .repeat-alert{

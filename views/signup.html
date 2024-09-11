@@ -19,25 +19,34 @@
 
     <!-- 로그인 폼 -->
     <form id="signup-form" action="" method="">
+      <!-- 이메일 입력 -->
       <label for="input-email">이메일</label>
       <input id="input-email" name="email" type="text" placeholder="이메일을 입력해주세요" required>
+      <!-- 닉네임 입력 -->
       <label for="input-nickname">닉네임</label>
       <input id="input-nickname" name="nickname" type="text" placeholder="닉네임을 입력해주세요" required>
-      <label for="input-password">비밀번호</label>
-      <input id="input-password" name="password" type="password" placeholder="비밀번호를 입력해주세요" required>
-      <div class="visible-btn first">
-        <img src="/public/images/icon/btn_visibility_on_24px.png" alt="비밀번호 보임">
-        <img src="/public/images/icon/btn_visibility_off_24px.png" class="active" alt="비밀번호 가림">
-      </div>
-      <label for="input-password-repeat">
-        비밀번호 확인
-        <span class="repeat-alert"></span>
-      </label>
-      <input id="input-password-repeat" name="password-repeat" type="password" placeholder="비밀번호를 다시 한 번 입력해주세요" required>
-      <div class="visible-btn second">
-        <img src="/public/images/icon/btn_visibility_on_24px.png" alt="비밀번호 확인 보임">
-        <img src="/public/images/icon/btn_visibility_off_24px.png" class="active" alt="비밀번호 확인 가림">
-      </div>
+      <!-- 비밀번호 입력 -->
+      <fieldset class="input-fieldset">
+        <label for="input-password">비밀번호</label>
+        <input id="input-password" name="password" type="password" placeholder="비밀번호를 입력해주세요" required>
+        <div class="visibility-btn">
+          <img src="/public/images/icon/btn_visibility_on.png" alt="비밀번호 보임" class="hide">
+          <img src="/public/images/icon/btn_visibility_off.png" alt="비밀번호 가림">
+        </div>
+      </fieldset>
+      <!-- 비밀번호 확인 입력 -->
+      <fieldset class="input-fieldset">
+        <label for="input-password-repeat">
+          비밀번호 확인
+          <span class="repeat-alert"></span>
+        </label>
+        <input id="input-password-repeat" name="password-repeat" type="password" placeholder="비밀번호를 다시 한 번 입력해주세요"
+          required>
+        <div class="visibility-btn">
+          <img src="/public/images/icon/btn_visibility_on.png" class="hide" alt="비밀번호 확인 보임">
+          <img src="/public/images/icon/btn_visibility_off.png" alt="비밀번호 확인 가림">
+        </div>
+      </fieldset>
       <button id="signup-submit-btn" type="submit">회원가입</button>
     </form>
 
