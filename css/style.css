@@ -3,6 +3,13 @@ html {
   font-family: Pretendard,'Noto Sans KR', sans-serif;
 }
 
+header{
+  
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+
 .headers {
   max-width: 1920px;
   width: 100%;
@@ -17,8 +24,8 @@ html {
   align-items: center;
   margin: 0 auto;
 
-  position: sticky;
 }
+
 
 .logos {
   display: flex;
