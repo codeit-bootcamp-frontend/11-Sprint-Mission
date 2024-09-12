@@ -1,0 +1,118 @@
+@import "reset.css";
+
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+}
+
+:root {
+    --gray-900: #111827;
+    --gray-800: #1F2937;
+    --gray-700: #374151;
+    --gray-600: #4B5563;
+    --gray-500: #6B7280;
+    --gray-400: #9CA3AF;
+    --gray-200: #E5E7EB;
+    --gray-100: #F3F4F6;
+    --gray-50:  #F9FAFB;
+    
+    --blue: #3692FF;
+}
+
+
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginlogo {
+    width: 396px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.inputarea {
+    margin-bottom: 24px;
+}
+
+label {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+input {
+    width: 592px;
+    height: 26px;
+    padding: 16px 24px;
+    background-color: var(--gray-100);
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    margin-top: 16px;
+}
+
+input:focus {
+    border: solid var(--blue);
+}
+
+::placeholder {
+    color: var(--gray-400);
+    width: 592px;
+}
+
+button {
+    width: 640px;
+    height: 56px;
+    background-color: var(--gray-400);
+    border-radius: 40px;
+    color: var(--gray-100);
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    margin-bottom: 24px;
+}
+
+.simple-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E6F2FF;
+    height: 74px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+
+.simple-login-in {
+    width: 594px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    justify-content: space-between;
+}
+
+.login-icon {
+    display: flex;
+    gap: 16px;
+}
+
+.login-icon img {
+    width: 42px;
+}
+
+.firstuser {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500px;
+    color: var(--gray-800);
+}
+
+.firstuser a {
+    color: var(--blue);
+}
