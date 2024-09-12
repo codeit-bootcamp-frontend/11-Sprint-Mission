@@ -1,0 +1,393 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #DFDFDF;
+    width: 100%;
+    height: 70px;
+    padding: 0 200px;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+.logo{
+    width: 153px;
+    height: 51px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+.button.header-button{
+    flex-shrink: 0;
+    width: 128px;
+    height: 48px;
+    padding: 11px 43px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 26px;
+    cursor: pointer;
+}
+
+.button{
+    background-color: #3692FF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Pretendard';
+}
+
+.main-ad{
+    width: 100%;
+    height: 540px;
+    background-color: #CFE5FF;
+    position: relative
+    
+}
+.main-ad-box{
+    gap: 7px;
+    display: flex;
+    position: absolute;
+    top: 200px;
+    left: 405px;
+    right: 405px;
+    align-items: center;
+    justify-content: center;
+}
+.main-ad-content{
+    padding: 0px 0px 60px 0px;
+    gap: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+.main-ad-content > a{
+    text-decoration: none;
+}
+.main-ad h2{
+    font-family: 'Pretendard';
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 56px;
+}
+.button.main-ad-button{
+    border-radius: 40px;
+    text-align: center;
+    font-family: 'Pretendard';
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 32px;
+    height: 56px;
+    padding: 16px 124px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.main-ad-image{
+    width: 746px;
+    height: 340px;
+}
+
+.main-first-box,
+.main-second-box,
+.main-third-box{
+    width: 100%;
+    height: 720px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-first-content,
+.main-second-content,
+.main-third-content{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 12px;
+    width: 988px;
+    background-color: #FCFCFC;
+    white-space: nowrap;
+    margin: 0 auto;
+}
+
+.main-first-image,
+.main-second-image,
+.main-third-image{
+    width: 579px;
+    height: 444px;
+}
+.main-first-texts{
+    padding-right: 24px;
+    margin-top: 103px;
+    margin-bottom: 103px;
+}
+.main-second-texts{
+    padding-left: 24px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 103px;
+    margin-bottom: 103px;
+    margin-right: 64px;
+    text-align: right;
+}
+.main-third-texts{
+    padding-right: 24px;
+    margin-top: 103px;
+    margin-bottom: 103px;
+    margin-left: 22px;
+}
+.main-first-texts h5,
+.main-second-texts h5,
+.main-third-texts h5{
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26px;
+    font-family: "Pretendard";
+    color: #3692FF;
+    margin-bottom: 12px;
+}
+
+.main-first-bigtext,
+.main-second-bigtext,
+.main-third-bigtext{
+    font-family: "Pretendard";
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 56px;
+    letter-spacing: 2%;
+    color: #374151;
+    margin-bottom: 24px;
+}
+.main-first-smalltext,
+.main-second-smalltext,
+.main-third-smalltext{
+    font-family: "Pretendard";
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 32px;
+    color: #374151;
+}
+
+.sub-ad{
+    width: 100%;
+    height: 540px;
+    background-color: #CFE5FF;
+    position: relative
+    
+}
+.sub-ad-box{
+    gap: 7px;
+    display: flex;
+    position: absolute;
+    top: 143px;
+    left: 405px;
+    right: 405px;
+    align-items: center;
+    justify-content: center;
+}
+.sub-ad-content{
+    padding: 0px 0px 60px 0px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    white-space: nowrap;
+    margin-right: 69px;
+    margin-top: 112.5px;
+}
+.sub-ad h2{
+    font-family: 'Pretendard';
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 56px;
+    color: #374151;
+}
+.sub-ad-image{
+    width: 746px;
+    height: 397px;
+}
+.footer{
+    background-color: #111827;
+    width: 100%;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+}
+.footer-box{
+    max-width: 1120px;
+    width: 100%;
+    margin-left: 400px;
+    margin-right: 400px;
+    margin-top: 32px;
+    display: flex;
+    justify-content: space-between;
+}
+.company{
+    color: #9CA3AF;
+    font-family: 'Pretendard';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    white-space: nowrap;
+}
+.info{
+    
+    font-family: 'Pretendard';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    display: flex;
+    gap: 30px;
+    
+}
+.info > a{
+    white-space: nowrap;
+    cursor: pointer;
+    text-decoration: none;
+    color: #E5E7EB;
+}
+.footer-image-box{
+    white-space: nowrap;
+}
+.footer-image-box > a{
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+
+    .header {
+        padding: 0 40px; 
+    }
+
+    .button.header-button {
+        width: 128px;
+        height: 48px;
+        padding: 11px 43px;
+        font-weight: 600;
+        line-height: 26px;
+        cursor: pointer;
+        font-size: 16px; 
+    }
+
+    /* main-ad  - 이미지 크기 변화, 위치 */
+    .main-ad {
+        height: 400px; 
+    }
+
+    .main-ad-box {
+        top: 100px; 
+        left: 20px;
+        right: 20px;
+        white-space: nowrap;
+    }
+
+    .main-ad h2 {
+        font-size: 24px; 
+        line-height: 32px;
+    }
+
+    .button.main-ad-button {
+        font-size: 16px;
+        padding: 12px 80px; 
+    }
+
+    .main-ad-image {
+        width: 10%;
+        height: auto;
+    }
+
+    .main-first-box,
+    .main-second-box,
+    .main-third-box {
+        height: auto; 
+        padding: 20px; 
+    }
+
+    .main-first-content,
+    .main-second-content,
+    .main-third-content {
+        flex-direction: column; 
+        width: 80%; 
+    }
+
+    .main-first-texts,
+    .main-second-texts,
+    .main-third-texts {
+        margin: 20px 0;
+        padding: 10px;
+    }
+
+    .main-first-image,
+    .main-second-image,
+    .main-third-image {
+        width: 100%; 
+        height: auto;
+    }
+
+    .main-first-bigtext,
+    .main-second-bigtext,
+    .main-third-bigtext {
+        font-size: 28px; 
+        line-height: 36px;
+    }
+
+    .main-first-smalltext,
+    .main-second-smalltext,
+    .main-third-smalltext {
+        font-size: 18px; 
+        line-height: 24px;
+    }
+
+    /* sub-ad 작업중 - 이미지 크기 변화, 위치*/
+    .sub-ad {
+        height: 400px; 
+    }
+
+    .sub-ad-box {
+        top: 100px; 
+        left: 20px;
+        right: 20px;
+        white-space: nowrap;
+    }
+
+    .sub-ad h2 {
+        font-size: 24px; 
+        line-height: 32px;
+    }
+
+    .sub-ad-image {
+        display: block;
+        max-width: 100%;
+        height: auto
+    }
+
+    /* footer 반응형 작업중 - 이미지 크기 변화, 위치 */
+    .footer {
+        height: 120px; 
+    }
+
+    .footer-box {
+        flex-direction: column; 
+        margin: 0 20px;
+        text-align: center;
+    }
+
+    .company {
+        font-size: 14px;
+    }
+
+    .info {
+        gap: 15px;
+        font-size: 14px; 
+    }
+
+    .footer-image-box > a {
+        margin-right: 10px; 
+    }
+}
