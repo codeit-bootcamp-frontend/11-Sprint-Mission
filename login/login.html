@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/color.css" />
+  <link rel="stylesheet" href="./css/style.css"/>
+  <title>판다마켓 로그인</title>
+</head>
+<body>
+  <div class="loginContainer">
+    <header class="logoCcontainer">
+      <img src="../img/판다얼굴.png" alt="판다마켓 로고" class="logo" />
+      <h1>판다마켓</h1>
+    </header>
+
+    <main>
+      <form class="loginForm">
+        <div class="inputContainer">
+          <label for="email">이메일</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="이메일을 입력해주세요"
+            required
+          />
+        </div>
+
+        <div class="inputContainer">
+          <label for="password">비밀번호</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="비밀번호를 입력해주세요"
+            required
+          />
+          <button type="button" class="seePassword">
+            <img src="img/eye-icon.png" alt="비밀번호 보기" />
+          </button>
+        </div>
+
+        <button type="submit" class="login-btn">로그인</button>
+
+        <div class="socialLogin">
+          <p>간편 로그인하기</p>
+          <div class="socialLink">
+            <a href="https://www.kakaocorp.com/page/"><img src="img/google-icon.png" alt="Google" /></a>
+            <a href="https://www.google.com/"><img src="img/kakao-icon.png" alt="Kakao" /></a>
+          </div>
+        </div>
+
+        <div class="helpLinks">
+          <a href="#">판다마켓이 처음이신가요? 회원가입</a>
+        </div>
+      </form>
+    </main>
+  </div>
+</body>
+</html>
