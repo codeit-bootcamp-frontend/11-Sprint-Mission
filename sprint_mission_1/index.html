@@ -11,12 +11,43 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abel&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // 함수: 화면 크기에 따라 <br> 태그를 제거하거나 복원
+      function handleBrTags() {
+        const paragraphs = document.querySelectorAll(
+          '.landing-page-main .info p:nth-child(2)'
+        );
+
+        // 현재 화면의 너비 확인
+        if (window.innerWidth <= 1199) {
+          // 화면 너비가 1199px 이하일 때 <br> 태그 제거
+          paragraphs.forEach((p) => {
+            p.innerHTML = p.innerHTML.replace(/<br\s*[\/]?>/gi, ' ');
+          });
+        } else {
+          // 화면 너비가 1199px 이상일 때 <br> 태그 복원
+          paragraphs[0].innerHTML = '인기 상품을<br />확인해 보세요';
+          paragraphs[1].innerHTML = '구매를 원하는<br />상품을 검색하세요';
+          paragraphs[2].innerHTML = '판매를 원하는<br />상품을 등록하세요';
+        }
+      }
+
+      // 페이지 로드 시 및 화면 크기 변경 시 함수 실행
+      window.addEventListener('load', handleBrTags);
+      window.addEventListener('resize', handleBrTags);
+    </script>
   </head>
   <body>
     <header>
       <div class="header-content">
         <div class="logo">
-          <img src="./img/판다 얼굴.png" />
+          <a href="/" class="logo-img"></a>
           <a href="/">판다마켓</a>
         </div>
         <a class="login" href="/login.html">로그인</a>
@@ -26,10 +57,7 @@
       <section class="landing-page-top">
         <div class="content">
           <div>
-            <p>
-              일상의 모든 물건을<br />
-              거래해 보세요
-            </p>
+            <p>일상의 모든 물건을 거래해 보세요</p>
             <a class="items" href="/items.html">구경하러 가기</a>
           </div>
           <img src="./img/Img_home_top.png" />
@@ -88,7 +116,10 @@
       <section class="landing-page-bottom">
         <div class="content">
           <div>
-            <p>믿을 수 있는 <br />판다마켓 중고 거래</p>
+            <p>
+              믿을 수 있는<br />
+              판다마켓 중고 거래
+            </p>
           </div>
           <img src="./img/Img_home_bottom.png" />
         </div>
@@ -96,7 +127,7 @@
     </main>
     <footer>
       <div class="footer-content">
-        <p>@codeit - 2024</p>
+        <p>©codeit - 2024</p>
         <div>
           <a href="/privacy.html">Privacy Policy</a>
           <a href="/faq.html">FAQ</a>
