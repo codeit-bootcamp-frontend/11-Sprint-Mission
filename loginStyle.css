@@ -21,9 +21,22 @@ html {
     margin: 0 auto;
 }
 
+label{
+    font-size: 18px;
+    font-weight: 700;
+}
+
 input{
-    width: 640px;
-    height: 56px;
+    width: 592px;
+    height: 26px;
+    padding: 16px 24px;
+    background-color: #F3F4F6;
+    border: none;
+}
+
+::placeholder{
+    color: #9CA3AF;
+    width: 592px;
 }
 
 button{
