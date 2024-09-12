@@ -32,6 +32,7 @@ input{
     padding: 16px 24px;
     background-color: #F3F4F6;
     border: none;
+    border-radius: 12px;
 }
 
 ::placeholder{
@@ -85,5 +86,4 @@ button{
 
 .firstuser a{
     color: #3692FF;
-    ;
 }
