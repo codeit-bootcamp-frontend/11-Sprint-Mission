@@ -53,7 +53,7 @@ header {
   gap: 10px;
 }
 
-h1 a {
+.title {
   font-family: "ROKAF Sans", sans-serif;
   color: var(--primary);
   font-weight: 700;
