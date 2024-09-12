@@ -10,12 +10,14 @@ html {
   border-bottom: 1px solid #dfdfdf;
   padding: 9px 400px;
   gap:10px;
-  background-color: ffffff;
-
+  background-color: var(--white);
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
+
+  position: sticky;
 }
 
 .logos {
@@ -41,7 +43,7 @@ html {
   font-size: 25.63px;
   font-weight: 700;
   line-height: 34.6px;
-  color: #3692ff;
+  color: # var(--blue);
 
 }
 #login {
@@ -50,10 +52,10 @@ html {
   border-radius: 8px;
   padding: 12px 23px;
   gap: 10px;
-  background-color: #3692FF;
+  background-color: var(--blue);
   
   text-align: center;
-  color: #f3f4f6;
+  color: var(--white-2);
   font-size: 16px;
   font-weight: 600;
   line-height: 26px;
@@ -62,7 +64,7 @@ html {
 
 main {
   margin: 0 auto;
-  background-color: #fcfcfc;
+  background-color: var(--white-3);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -72,7 +74,7 @@ main {
 .sectionAll {
   width: 100%;
   height: 540px;
-  background-color: #CFE5FF;
+  background-color: var(--white-4);
 
   display: flex;
   align-items: end;
@@ -99,15 +101,15 @@ main {
   font-size: 40px;
   font-weight: 700;
   line-height: 56px;
-  color: #374151;
+  color: var(--gray-700);
 }
 #see {
   border-radius: 40px;
   padding: 16px 124px;
   gap: 10px;
-  background-color: #3692ff;
+  background-color: var(--blue);
 
-  color: #f9fafb;
+  color: var(--gray-50);
   font-size: 20px;
   font-weight: 600;
   line-height: 32px;
@@ -116,7 +118,7 @@ main {
 }
 
 .articles {
-  background-color: #ffffff;
+  background-color: var(--white);
   width: 1920px;
   padding: 138px 466px;
   gap: 10px;
@@ -129,7 +131,7 @@ main {
   width: 988px;
   border-radius: 12px;
   gap: 64px;
-  background-color: #fcfcfc;
+  background-color: var(--white-3);
   display: flex;
   justify-content:center;
   align-items: center;
@@ -148,14 +150,14 @@ main {
   font-size: 18px;
   font-weight: 700;
   line-height: 26px;
-  color: #3692FF;
+  color: var(--blue);
 }
 
 .articleContent {
   font-size: 40px;
   font-weight: 700;
   line-height: 56px;
-  color: #374151;
+  color: var(--gray-700);
   /*letter2%를 letter가 뭔지 잘모르겠습니다.*/
 }
 
@@ -163,7 +165,7 @@ main {
   font-size: 24px;
   font-weight: 500;
   line-height: 32px;
-  color: #374151;
+  color: var(--gray-700);
 }
 
 #word2 {
@@ -176,7 +178,7 @@ main {
 
 footer {
   margin: 0 auto;
-  background-color: #111827;
+  background-color:var(--gray-900);
   width: 1920px;
   height: 160px;
   padding: 32px 400px;
@@ -188,7 +190,7 @@ footer {
 }
 
 .codeit {
-  color: #9ca3af;
+  color: var(--gray-400);
   font-size: 16px;
   font-weight: 400;
   line-height: 19.09px;
@@ -199,7 +201,7 @@ footer {
   display: flex;
   gap:30px;
   
-  color: #e5e7eb; /*색 적용이안되는 이유 color: inherit 추가함.*/
+  color: var(--gray-200);; /*색 적용이안되는 이유 color: inherit 추가함.*/
   font-size: 16px;
   font-weight: 400;
   line-height: 19.09px;
