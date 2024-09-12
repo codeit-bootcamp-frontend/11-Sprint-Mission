@@ -229,7 +229,7 @@ footer {
   justify-content: space-between;
 }
 
-.co,
+.copyright,
 .info {
   font-family: "Pretendard Variable", "Noto Sans Korean";
   font-size: 16px;
@@ -238,7 +238,7 @@ footer {
   text-align: center;
 }
 
-.co {
+.copyright {
   color: var(--gray-400);
 }
 
@@ -248,7 +248,7 @@ footer {
 }
 
 .privacy,
-.FAQ {
+.faq {
   text-decoration: none;
   color: var(--gray-200);
 }
