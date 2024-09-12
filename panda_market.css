@@ -3,6 +3,20 @@
   margin: 0;
 }
 
+* {
+  --primary: #3692ff;
+  --primary-home: #cfe5ff;
+  --white: #ffffff;
+  --gray-400: #9ca3af;
+  --gray-border: #dfdfdf;
+  --gray-200: #e5e7eb;
+  --gray-100: #f3f4f6;
+  --gray-50: #f9fafb;
+  --gray-10: #fcfcfc;
+  --black-900: #111827;
+  --black-700: #374151;
+}
+
 @font-face {
   font-family: "ROKAF Sans";
   src: url("fonts/ROKAF_Sans_Bold.ttf") format("truetype");
@@ -12,11 +26,11 @@
 
 body {
   width: 1920px;
-  background-color: #fcfcfc;
+  background-color: var(--gray-10);
 }
 
 button {
-  background-color: #3692ff;
+  background-color: var(--primary);
   border: none;
   cursor: pointer;
 }
@@ -24,10 +38,10 @@ button {
 header {
   margin: 0 auto;
   width: 100%;
-  background-color: #ffffff;
+  background-color: white;
   background-size: cover;
   height: 70px;
-  border-bottom: 1px solid #dfdfdf;
+  border-bottom: 1px solid var(--gray-border);
   padding: 9px 400px;
 }
 
@@ -47,7 +61,7 @@ header {
 }
 h1 a {
   font-family: "ROKAF Sans", sans-serif;
-  color: #3692ff;
+  color: var(--primary);
   font-weight: 700;
   font-size: 25.63px;
   line-height: 34.6px;
@@ -71,11 +85,11 @@ button:hover {
   font-size: 16px;
   font-weight: 600;
   line-height: 26px;
-  color: #f3f4f6;
+  color: var(--gray-100);
 }
 
 .home {
-  background-color: #cfe5ff;
+  background-color: var(--primary-home);
   height: 540px;
   width: 100%;
   background-size: cover;
@@ -105,7 +119,7 @@ h2 {
   font-weight: 700;
   font-size: 40px;
   line-height: 56px;
-  color: #374151;
+  color: var(--black-700);
   margin-bottom: 32px;
 }
 .l-button {
@@ -118,7 +132,7 @@ h2 {
   font-weight: 600;
   font-size: 20px;
   line-height: 32px;
-  color: #f9fafb;
+  color: var(--gray-50);
   text-align: center;
   cursor: pointer;
 }
@@ -127,7 +141,7 @@ section {
   padding: 138px 0;
   gap: 10px;
   width: 100%;
-  background-color: #ffffff;
+  background-color: white;
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -140,7 +154,7 @@ section {
   width: 988px;
   border-radius: 12px;
   gap: 64px;
-  background-color: #fcfcfc;
+  background-color: var(--gray-10);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -168,7 +182,7 @@ span {
   font-size: 18px;
   font-weight: 700;
   line-height: 26px;
-  color: #3692ff;
+  color: var(--primary);
 }
 
 .detail,
@@ -190,7 +204,7 @@ h3,
   font-size: 40px;
   font-weight: 700;
   line-height: 56px;
-  color: #374151;
+  color: var(--black-700);
   white-space: nowrap;
 }
 
@@ -200,7 +214,7 @@ h3,
   font-size: 24px;
   font-weight: 500;
   line-height: 32px;
-  color: #374151;
+  color: var(--black-700);
   white-space: nowrap;
 }
 .bottom {
@@ -215,7 +229,7 @@ footer {
   display: flex;
   gap: 10px;
   padding: 32px 400px;
-  background-color: #112827;
+  background-color: var(--black-900);
 }
 
 .footer {
@@ -234,7 +248,7 @@ footer {
 }
 
 .co {
-  color: #9ca3af;
+  color: var(--gray-400);
 }
 
 .info {
@@ -245,7 +259,7 @@ footer {
 .privacy,
 .FAQ {
   text-decoration: none;
-  color: #e5e7eb;
+  color: var(--gray-200);
 }
 
 .sns {
