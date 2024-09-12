@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box;
+  }
+
+header {
+   width: 1920px;
+   height: 70px;
+   margin: 0 auto;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   position: relative;
+}
+
+.pandamarket {
+    margin-left:200px;
+    cursor: pointer;
+}
+.pandamarket img {
+    width: 153px;
+    height: 51px;
+}
+
+.login {
+    background-color: #3692FF;
+    color: #fffffF;
+    font-size: 16px;
+    font-weight: 600;
+    width: 128px;
+    height: 48px;
+    border-radius: 8px;
+    margin-right: 200px;
+    padding: 12px 20px 12px 20px;
+    gap: 10px;
+    text-align: center;
+    line-height: 25px;
+}
+
+.body0 {
+    background-color: #CFE5FF;
+    position: relative;
+}
+
+.body0 img {
+    width: 1920px;
+    margin: 0 auto;
+}
+
+.item {
+    background-color: #3692FF;
+    color: #F9FAFB;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 40px;
+    padding: 16px 124px 16px 124px;
+    position:absolute;
+    bottom: 105px;
+    left: 405px;
+}
+
+.body1 {
+    width: 1920px;
+    height: 2160px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.body1 img {
+    width: 988px;
+    height: 444px;
+    border-radius: 12px;
+    gap: 64px;
+}
+
+.gap{
+    background-color: #FCFCFC;
+    width: 1920px;
+    height: 138px;
+    margin: 0 auto;
+}
+
+.body2{
+    background-color: #CFE5FF;
+}
+
+.body2 img{
+    width: 1920px;
+    height: 540px;
+    margin: 0 auto;
+}
+
+footer {
+    background-color: #111827;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.09px;
+    color: inherit;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    width: 1920px;
+    height: 160px;
+    margin: 0 auto;
+    padding: 32px 400px 32px 400px;
+    gap: 10px;
+}
+
+.codeit2024 {
+    color: #9CA3AF;
+}
+
+.policyAndLink{
+    display: flex;
+    gap: 30px;
+}
+
+a {
+    text-decoration: none;
+    color: #E5E7EB;
+}
+
+footer img {
+    width: 20px;
+    height: 20px;
+}
+.snsLogo {
+    gap: 12px;
+}
