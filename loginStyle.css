@@ -39,6 +39,24 @@ button{
 
 .simple-login{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E6F2FF;
+    height: 74px;
+}
+
+.simple-login-in{
+    width: 594px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    justify-content: space-between;
+}
+
+.login-icon{
+    display: flex;
+    gap: 16px;
 }
 
 .login-icon img{
