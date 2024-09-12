@@ -37,8 +37,13 @@ input{
     padding: 16px 24px;
     background-color: #F3F4F6;
     border: none;
+    outline: none;
     border-radius: 12px;
     margin-top: 16px;
+}
+
+input:focus{
+    border: solid #3692FF;
 }
 
 ::placeholder{
