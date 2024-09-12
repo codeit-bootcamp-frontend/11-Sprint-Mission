@@ -63,9 +63,13 @@ html {
 main {
   margin: 0 auto;
   background-color: #fcfcfc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-section {
+.sectionAll {
   width: 100%;
   height: 540px;
   background-color: #CFE5FF;
@@ -111,27 +115,28 @@ section {
 
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.article {
+.articles {
   background-color: #ffffff;
   width: 1920px;
   padding: 138px 466px;
   gap: 10px;
+
+  display: flex;
+  flex-direction: column;
+
 }
-article {
+.article {
   width: 988px;
   border-radius: 12px;
   gap: 64px;
   background-color: #fcfcfc;
   display: flex;
-  justify-content: space-around;
+  justify-content:center;
   align-items: center;
+
+  margin: 100px 0; /* reset css라는 것을 실행후 figma에서 보여지는 것과 다르게 article이 붙어 있어 수정하였습니다. */
 }
+
 .wordBox2 { /*reset css라는 것을 실행후 figma에서 보여지는 것보다 문단 간격이 좁아보여요*/
   display: flex;
   flex-direction: column;
@@ -146,7 +151,7 @@ article {
   color: #3692FF;
 }
 
-h3 {
+.articleContent {
   font-size: 40px;
   font-weight: 700;
   line-height: 56px;
@@ -201,7 +206,7 @@ footer {
   text-align: center;
 }
 
-.socialNetwork {
+.socialLink {
   width: 116px;
   gap: 12px;
 
