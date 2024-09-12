@@ -19,6 +19,11 @@ html {
     display: flex;
     align-items: center;
     margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.inputarea{
+    margin-bottom: 24px;
 }
 
 label{
@@ -33,6 +38,7 @@ input{
     background-color: #F3F4F6;
     border: none;
     border-radius: 12px;
+    margin-top: 16px;
 }
 
 ::placeholder{
@@ -49,6 +55,7 @@ button{
     font-size: 20px;
     font-weight: 600;
     border: none;
+    margin-bottom: 24px;
 }
 
 .simple-login{
@@ -58,6 +65,7 @@ button{
     background-color: #E6F2FF;
     height: 74px;
     border-radius: 8px;
+    margin-bottom: 24px;
 }
 
 .simple-login-in{
