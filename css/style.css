@@ -1,17 +1,7 @@
-* {
-  box-sizing: border-box;
-}
 
 html {
   font-family: Pretendard,'Noto Sans KR', sans-serif;
 }
-
-/*
-header <logos (logo title)> <nav>
-main main section <articles (article [img wordBox2 { point h3 detail }])>
-section <mainBox (wordBox { mainWord button }) img >
-footer < p div(p p)SNS (img)>
-*/
 
 .headers {
   max-width: 1920px;
@@ -41,7 +31,7 @@ footer < p div(p p)SNS (img)>
 .logo {
   width: 40px;
   height: 40.14px;
-  /*top:5.02px*/
+  top:5.02px;
   border-radius: 11.18px;
 
 }
@@ -85,18 +75,22 @@ section {
   justify-content: center;
   position: relative;
 }
+
 .mainBox {
   display: flex;
   /* width height top left */
   gap: 7px;
   width: 1110px;
   height: 340px;
-
 }
+
 .wordBox {
   padding: 0 0 60px;
+  display: flex;
+  flex-direction: column;
   gap: 32px;
 }
+
 .mainWord {
   font-size: 40px;
   font-weight: 700;
@@ -114,6 +108,7 @@ section {
   font-weight: 600;
   line-height: 32px;
   text-align: center;
+
 }
 
 main {
@@ -122,7 +117,7 @@ main {
   justify-content: center;
   align-items: center;
 }
-.articles {
+.article {
   background-color: #ffffff;
   width: 1920px;
   padding: 138px 466px;
@@ -137,9 +132,11 @@ article {
   justify-content: space-around;
   align-items: center;
 }
-.wordBox2 {
- padding-bottom: 24px;
- gap:12px;
+.wordBox2 { /*reset css라는 것을 실행후 figma에서 보여지는 것보다 문단 간격이 좁아보여요*/
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 24px;
+  gap:12px;
 }
 
 .point {
@@ -154,7 +151,7 @@ h3 {
   font-weight: 700;
   line-height: 56px;
   color: #374151;
-  /*letter?....*/
+  /*letter2%를 letter가 뭔지 잘모르겠습니다.*/
 }
 
 .detail {
@@ -182,7 +179,7 @@ footer {
 
   display: flex;
   justify-content: space-between;
-  
+  align-items:start;
 }
 
 .codeit {
@@ -207,6 +204,8 @@ footer {
 .socialNetwork {
   width: 116px;
   gap: 12px;
+
+  display: flex;
 }
 
 .button {
