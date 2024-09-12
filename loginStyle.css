@@ -57,6 +57,7 @@ button{
     align-items: center;
     background-color: #E6F2FF;
     height: 74px;
+    border-radius: 8px;
 }
 
 .simple-login-in{
