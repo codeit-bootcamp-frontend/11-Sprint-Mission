@@ -154,8 +154,8 @@ section {
   align-items: center;
 }
 
-.figure1-text,
-.figure3-text {
+.image-left,
+.image-right {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -163,12 +163,9 @@ section {
   gap: 12px;
 }
 
-.figure2-text {
-  display: flex;
-  flex-direction: column;
+.image-right {
   align-items: flex-end;
   padding-left: 24px;
-  gap: 12px;
 }
 
 span {
