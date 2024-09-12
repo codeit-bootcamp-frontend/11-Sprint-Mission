@@ -176,21 +176,20 @@ span {
   color: var(--primary);
 }
 
-.detail,
-.detail2 {
+.text-right,
+.text-left {
   gap: 24px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.detail2 > h3,
-.detail2 > div {
+.text-left > h3,
+.text-left > div {
   text-align: right;
 }
 
-h3,
-.detail2 > h3 {
+h3 {
   font-family: "Pretendard Variable", "Noto Sans Korean";
   font-size: 40px;
   font-weight: 700;
@@ -199,8 +198,8 @@ h3,
   white-space: nowrap;
 }
 
-.detail > div,
-.detail2 > div {
+.text-right > div,
+.text-left > div {
   font-family: "Pretendard Variable", "Noto Sans Korean";
   font-size: 24px;
   font-weight: 500;
@@ -208,6 +207,7 @@ h3,
   color: var(--black-700);
   white-space: nowrap;
 }
+
 .bottom {
   gap: 69px;
 }
