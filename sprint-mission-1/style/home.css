@@ -307,6 +307,10 @@ a.move {
     text-align: center;
     margin: 200px auto;
   }
+
+  .footer {
+    padding: 40px 100px 100px;
+  }
 }
 
 @media (767px >= width >= 375px) {
