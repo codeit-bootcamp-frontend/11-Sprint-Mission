@@ -67,7 +67,7 @@ input{
     gap: 10px;
     border-radius: 12px 0px 0px 0px;
     border: solid 1px #F3F4F6;
-
+    background-color: #F3F4F6;
 }
 
 input:focus{
@@ -222,4 +222,11 @@ a{
 .sign{
     text-decoration: underline;
 }
- 
+
+::placeholder{
+    font-family: "Pretendard-Regular";
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #9CA3AF;
+}
