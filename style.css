@@ -36,6 +36,7 @@ body {
 .btn:visited {
   background-color: #9CA3AF;
 }
+
 .bg-sky {
   background-color: #CFE5FF;
 }
@@ -124,7 +125,7 @@ body {
 .bottom-visual .container {
   height: 540px;
   padding: 0 46px;
-  background: url('img/bg-hero.png') right 46px bottom no-repeat;
+  background: url('/img/bg-hero.png') right 46px bottom no-repeat;
 }
 .hero .heading,
 .bottom-visual .heading {
@@ -146,7 +147,7 @@ body {
 }
 
 .bottom-visual .container {
-  background-image: url('img/bg-bottom.png');
+  background-image: url('/img/bg-bottom.png');
 }
 .bottom-visual .heading {
   padding-top: 255px;
@@ -170,14 +171,17 @@ body {
   padding: 0;
   list-style: none;
 }
-#footer .links {
-  display: flex;
-  gap: 30px;
-}
 #footer a {
   display: block;
   color: #9CA3AF;
   text-decoration: none;
+}
+#footer .links {
+  display: flex;
+  gap: 30px;
+}
+#footer nav a:hover {
+  text-decoration: underline;
 }
 #footer .sns {
   display: flex;

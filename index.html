@@ -5,108 +5,109 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>판다마켓</title>
 <!-- pretendard web-font: https://github.com/orioncactus/pretendard -->
-<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="stylesheet" href="style.css">
-<link rel="icon" href="favicon.png" type="image/png">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" href="/favicon.png" type="image/png">
 </head>
 
 <body>
 <div class="wrap">
   <header id="header">
     <div class="container header">
-      <h1 class="site-name">
+      <div class="site-name">
         <a href="/" class="root-link">
-          <img src="img/logo.png" alt="로고 이미지" class="logo">
-          <img src="img/site-name.png" alt="판다마켓">
+          <img src="/img/logo.png" alt="로고 이미지" class="logo">
+          <img src="/img/site-name.png" alt="판다마켓">
         </a>
-      </h1>
+      </div>
       <a href="/login.html" class="btn">로그인</a>
     </div>
     <!-- /.container -->
   </header>
 
-  <div class="hero bg-sky">
-    <div class="container">
-      <h2 class="hero heading">일상의 모든 물건을<br>거래해 보세요</h2>
-      <a href="/items.html" class="btn rounded">구경하러 가기</a>
-    </div>
-    <!-- /.container -->
-  </div>
-  <!-- /.hero -->
-
-  <section class="section">
-    <div class="container">
-      <img src="img/hot-item.png" alt="" class="section-img">
-      <div class="section-content">
-        <span class="section-point">Hot item</span>
-        <h2 class="section-title">인기상품을<br>확인해 보세요</h2>
-        <p class="section-desc">가장 HOT한 중고거래 물품을 판다 마켓에서 확인해 보세요</p>
+  <main>
+    <div class="hero bg-sky">
+      <div class="container">
+        <h1 class="hero heading">일상의 모든 물건을<br>거래해 보세요</h1>
+        <a href="/items.html" class="btn rounded">구경하러 가기</a>
       </div>
+      <!-- /.container -->
     </div>
-    <!-- /.container -->
-  </section>
-  <!-- /.section -->
-
-  <section class="section">
-    <div class="container">
-      <div class="section-content right">
-        <span class="section-point">Search</span>
-        <h2 class="section-title">구매를 원하는<br>상품을 검색하세요</h2>
-        <p class="section-desc">구매하고 싶은 물품은 검색해서 쉽게 찾아보세요</p>
+    <!-- /.hero -->
+  
+    <section class="section">
+      <div class="container">
+        <img src="/img/hot-item.png" alt="" class="section-img">
+        <div class="section-content">
+          <span class="section-point">Hot item</span>
+          <h2 class="section-title">인기상품을<br>확인해 보세요</h2>
+          <p class="section-desc">가장 HOT한 중고거래 물품을 판다 마켓에서 확인해 보세요</p>
+        </div>
       </div>
-      <img src="img/search.png" alt="" class="section-img right">
-    </div>
-    <!-- /.container -->
-  </section>
-  <!-- /.section -->
-
-  <section class="section">
-    <div class="container">
-      <img src="img/register.png" alt="" class="section-img">
-      <div class="section-content">
-        <span class="section-point">Register</span>
-        <h2 class="section-title">판매를 원하는<br>상품을 등록하세요</h2>
-        <p class="section-desc">어떤 물건이든 판매하고 싶은 상품을 쉽게 등록하세요</p>
+      <!-- /.container -->
+    </section>
+  
+    <section class="section">
+      <div class="container">
+        <div class="section-content right">
+          <span class="section-point">Search</span>
+          <h2 class="section-title">구매를 원하는<br>상품을 검색하세요</h2>
+          <p class="section-desc">구매하고 싶은 물품은 검색해서 쉽게 찾아보세요</p>
+        </div>
+        <img src="/img/search.png" alt="" class="section-img right">
       </div>
+      <!-- /.container -->
+    </section>
+  
+    <section class="section">
+      <div class="container">
+        <img src="/img/register.png" alt="" class="section-img">
+        <div class="section-content">
+          <span class="section-point">Register</span>
+          <h2 class="section-title">판매를 원하는<br>상품을 등록하세요</h2>
+          <p class="section-desc">어떤 물건이든 판매하고 싶은 상품을 쉽게 등록하세요</p>
+        </div>
+      </div>
+      <!-- /.container -->
+    </section>
+  
+    <div class="bottom-visual bg-sky">
+      <div class="container">
+        <h2 class="heading">믿을 수 있는<br>판다마켓 중고 거래</h2>
+      </div>
+      <!-- /.container -->
     </div>
-    <!-- /.container -->
-  </section>
-  <!-- /.section -->
-
-  <div class="bottom-visual bg-sky">
-    <div class="container">
-      <h2 class="heading">믿을 수 있는<br>판다마켓 중고 거래</h2>
-    </div>
-    <!-- /.container -->
-  </div>
-  <!-- / bottom-visual -->
+    <!-- / bottom-visual -->
+  </main>
 
   <footer id="footer">
     <div class="container">
       <p class="cr">&copy;codeit - 2024</p>
-      <ul class="links">
-        <li><a href="privacy.html">Privacy Policy</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-      </ul>
+      <nav aria-label="footer navigation">
+        <ul class="links">
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+          <li><a href="/faq.html">FAQ</a></li>
+        </ul>
+      </nav>
       <ul class="sns">
         <li>
-          <a href="https://www.facebook.com/" target="_blank">
-            <img src="img/ico-facebook.png" alt="FaceBook">
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+            <img src="/img/ico-facebook.png" alt="FaceBook">
           </a>
         </li>
         <li>
-          <a href="https://x.com/" target="_blank">
-            <img src="img/ico-twitter.png" alt="X">
+          <a href="https://x.com/" target="_blank" rel="noopener noreferrer">
+            <img src="/img/ico-twitter.png" alt="X">
           </a>
         </li>
         <li>
-          <a href="https://youtube.com/" target="_blank">
-            <img src="img/ico-youtube.png" alt="Youtube">
+          <a href="https://youtube.com/" target="_blank" rel="noopener noreferrer">
+            <img src="/img/ico-youtube.png" alt="Youtube">
           </a>
         </li>
         <li>
-          <a href="https://www.instagram.com/" target="_blank">
-            <img src="img/ico-instagram.png" alt="Instagram">
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+            <img src="/img/ico-instagram.png" alt="Instagram">
           </a>
         </li>
       </ul>
