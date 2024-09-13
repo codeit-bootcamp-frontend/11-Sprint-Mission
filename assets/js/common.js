@@ -14,5 +14,8 @@ document.addEventListener('DOMContentLoaded', function (){
     </div>
   </div>
   `;
-  document.getElementById('header').innerHTML = headerTemplate;
+  const headerEl = document.getElementById('header');
+  if(headerEl){
+    headerEl.innerHTML = headerTemplate;
+  }
 });
