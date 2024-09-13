@@ -80,7 +80,8 @@ input:focus {
     top: 50%;
 }
 
-button {
+.login-btn {
+    display: flex; 
     width: 640px;
     height: 56px;
     background-color: var(--gray-400);
@@ -88,8 +89,12 @@ button {
     color: var(--gray-100);
     font-size: 20px;
     font-weight: 600;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
     border: none;
     margin-bottom: 24px;
+    cursor: pointer;
 }
 
 .simple-login {
