@@ -1,0 +1,137 @@
+body,
+html {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  text-align: center;
+  width: 640px;
+  height: 618px;
+  justify-content: center;
+}
+
+.login-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 24px;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-label {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  color: var(--gray-800);
+}
+
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login-input {
+  width: 100%;
+  background-color: var(--gray-100);
+  border: none;
+  outline: white solid 2px;
+  border-radius: 12px;
+  padding: 16px 24px;
+  line-height: 24px;
+  transition: outline 0.3s ease; /* 부드러운 전환 */
+}
+
+.login-input:focus {
+  outline: 2px solid #3692ff;
+}
+
+.login-input::placeholder {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--gray-400);
+}
+
+.show-password-toggle {
+  position: absolute;
+  right: 24px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.login-btn {
+  border: none;
+  border-radius: 40px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  padding: 16px 124px;
+  color: var(--gray-100);
+  background-color: var(--gray-400);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease; /* 색상 전환 추가 */
+}
+
+.login-btn:hover {
+  background-color: var(--blue-500); /* 원하는 색상으로 변경 */
+  color: var(--white); /* 텍스트 색상도 변경 */
+}
+
+.easy-login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 8px;
+  gap: 10px;
+  background-color: var(--blue-300);
+}
+
+.easy-login-title {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  color: var(--gray-800);
+  margin: 8px 0;
+}
+
+.social-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.signup-prompt {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--gray-800);
+}
+
+.signup-link {
+  color: var(--blue-500);
+}
+
+#login-logo {
+  width: 396px;
+  height: 132px;
+  margin: 0 auto;
+}
