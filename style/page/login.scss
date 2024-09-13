@@ -62,6 +62,7 @@ label {
 .login-btn {
   width: 100%;
   padding: 16px 0;
+  margin-bottom: 24px;
 
   border: none;
   border-radius: 40px;
@@ -74,5 +75,52 @@ label {
 
 .login-btn.active {
   background-color: var(--p100);
+}
+
+
+.simple-login-container {
+  width: 100%;
+  padding: 16px 23px;
+  margin-bottom: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 8px;
+
+  background-color: rgba(230, 242, 255, 1);
+}
+
+.simple-login {
+  font-size: 1em;
+  font-weight: 500;
+  color: var(--s900);
+}
+
+.simple-login-imgs > a {
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+
+.simple-login-img {
+  width: 42px;
+  height: 42px;
+}
+
+.go-signup-container{
+  display: flex;
+
+  font-size: 0.875em;
+  font-weight: 500;
+  color: var(--s900);
+}
+
+.go-signup {
+  margin-left: 4px;
+  color: var(--p100);
 }
 
