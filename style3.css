@@ -14,12 +14,14 @@ body {
 .body_1 {
     display: flex;
     justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
 }
 
 .section-container {
     display: flex;
     flex-direction: column;
-    padding: 60px 0 60px 0;
     width: 640px;
     gap: 40px;
     align-items: center;
