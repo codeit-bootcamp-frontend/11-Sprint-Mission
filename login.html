@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 필수 head 값 -->
+  <link rel="stylesheet" href="assets/css/common.css">
+  <script src="assets/js/common.js"></script>
+  <title>판다마켓</title>
+  <!-- 페이지 head -->
+  <link rel="stylesheet" href="assets/css/user.css">
+  <script src="assets/js/user.js"></script>
+</head>
+<body>
+  <!-- header 컴포넌트 -->
+  <!-- <header id="header"></header> -->
+  <main class="page-user">
+    <h1 class="logo">
+      <a href="/">
+        <picture>
+          <source srcset="assets/images/logo.png" media="(max-width: 767px)">
+          <img src="assets/images/logo.png" alt="판다마켓 로고">
+        </picture>
+      </a>
+    </h1>
+    <div class="container user">
+      <form id="userForm" name="join">
+        <div class="input-area">
+          <label for="email">이메일</label>
+          <input type="email" id="email" data-focus="input" placeholder="이메일을 입력해주세요" required>
+        </div>
+
+        <div class="input-area">
+          <label for="password">비밀번호</label>
+          <div class="password-toggle">
+              <input type="password" id="password" data-focus="input" placeholder="비밀번호를 입력해주세요" required>
+              <span class="toggle-icon" title="프라이버시 토글"></span>
+          </div>
+        </div>
+
+        <div class="btn-submit">
+          <button id="submitBtn" type="submit" class="button round gray" disabled>로그인</button>
+        </div>
+      </form>
+      <div class="alternative-login">
+        <p>간편 로그인하기</p>
+        <a href="https://www.google.com/" class="google" title="google로 간편 로그인 하기"></a>
+        <a href="https://www.kakaocorp.com/page/" class="kakao" title="kakao로 간편 로그인 하기""></a>
+      </div>
+      <p class="link">판다마켓이 처음이신가요? <a href="/join.html">회원가입</a></p>
+    </div>
+  </main>
+
+</body>
+</html>
