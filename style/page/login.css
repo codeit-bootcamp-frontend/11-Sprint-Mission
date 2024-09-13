@@ -67,4 +67,8 @@ label {
   font-size: 1.25em;
   font-weight: 600;
   color: var(--s100);
+}
+
+.login-btn.active {
+  background-color: var(--p100);
 }/*# sourceMappingURL=login.css.map */

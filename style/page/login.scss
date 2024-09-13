@@ -72,5 +72,7 @@ label {
   color: var(--s100);
 }
 
-
+.login-btn.active {
+  background-color: var(--p100);
+}
 
