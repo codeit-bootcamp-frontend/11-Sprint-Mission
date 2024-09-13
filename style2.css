@@ -10,58 +10,16 @@ body {
     font-family: "Pretendard-Regular";
     margin: 0;
 }
-  
-.top {
-    display: flex;
-    position: fixed;
-    width: 100%;
-    box-sizing: border-box;
-    background-color: #ffffff;
-    height: 70px;
-    padding: 9px 400px 9px 400px;
-    justify-content: center;
-    align-items: center;
-}
-
-.top-nav {
-    flex : 1;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.top-nav-logo {
-    width: 153px;
-    height: 51px;
-}
-
-.top-btn-login {
-    background-color: #3692FF;
-    border: 1px solid #fff;
-    width: 128px;
-    height: 48px;
-    padding: 12px 23px 12px 23px;
-    border-radius: 8px;
-    font-size: 16px;
-    line-height: 26px;
-    font-weight: 600;
-    color: #fff;
-}
-
-.top-btn-login:hover{
-    cursor: pointer;
-}
 
 .body_1 {
     display: flex;
-    padding-top: 70px;
     justify-content: center;
 }
 
 .section-container {
     display: flex;
     flex-direction: column;
-    padding: 231px 0 231px 0;
+    padding: 60px 0 0 0;
     width: 640px;
     gap: 40px;
     align-items: center;
