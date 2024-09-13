@@ -5,19 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>판다마켓</title>
     <link rel="icon" href="/imges/logos/panda-face.png" type="image/png" />
+    <link rel="stylesheet" href="styles/shared.css" />
     <link rel="stylesheet" href="styles/main.css" />
-    <link
-      rel="stylesheet"
-      as="style"
-      crossorigin
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
-    />
   </head>
 
   <body>
-    <header>
+    <header class="nav-bar">
       <a href="/"><img src="imges/logos/logo.png" alt="FandaMarket logo" /></a>
-
       <a href="/pages/login.html" class="btn main-login">로그인</a>
     </header>
 
@@ -25,7 +19,7 @@
       <section class="hero">
         <div class="hero-container">
           <div class="hero-cta">
-            <h2>
+            <h2 class="description-main">
               일상의 모든 물건을<br />
               거래해 보세요
             </h2>
@@ -41,58 +35,58 @@
         </div>
       </section>
 
-      <section class="contents">
+      <section class="main-content">
         <div class="contents-item">
           <img src="imges/contents/Img_home_01.png" />
           <div class="content-text">
-            <p class="caption">Hot item</p>
+            <div class="caption">Hot item</div>
             <div class="description">
-              <h2>
+              <h2 class="description-main">
                 인기 상품을<br />
                 확인해 보세요
               </h2>
-              <p class="additional-desc">
+              <div class="description-additional">
                 가장 HOT한 중고거래 물품을<br />
                 판다 마켓에서 확인해 보세요
-              </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="contents">
+      <section class="main-content">
         <div class="contents-item">
           <div class="content-text right-align">
-            <p class="caption">search</p>
+            <div class="caption">search</div>
             <div class="description">
-              <h2>
+              <h2 class="description-main">
                 구매를 원하는<br />
                 상품을 검색하세요
               </h2>
-              <p class="additional-desc">
+              <div class="description-additional">
                 구매하고 싶은 물품은 검색해서<br />
                 쉽게 찾아보세요
-              </p>
+              </div>
             </div>
           </div>
           <img src="imges/contents/Img_home_02.png" />
         </div>
       </section>
 
-      <section class="contents">
+      <section class="main-content">
         <div class="contents-item">
           <img src="imges/contents/Img_home_03.png" />
           <div class="content-text">
-            <p class="caption">Register</p>
+            <div class="caption">Register</div>
             <div class="description">
-              <h2>
+              <h2 class="description-main">
                 판매를 원하는<br />
                 상품을 등록하세요
               </h2>
-              <p class="additional-desc">
+              <div class="description-additional">
                 어떤 물건이든 판매하고 싶은 상품을<br />
                 쉽게 등록하세요
-              </p>
+              </div>
             </div>
           </div>
         </div>
@@ -101,7 +95,7 @@
       <section class="hero hero-bottom">
         <div class="hero-container">
           <div class="hero-cta">
-            <h2>
+            <h2 class="description-main">
               믿을 수 있는<br />
               판다마켓 중고 거래
             </h2>
@@ -117,10 +111,10 @@
       </section>
     </main>
 
-    <footer>
-      <div class="footer-container">
-        <p id="since">@codit - 2024</p>
-        <div class="footer-info">
+    <footer class="footer-content">
+      <div class="footer-wrapper">
+        <div id="copyright">@codit - 2024</div>
+        <div class="footer-links">
           <a href="/pages/privacy.html">Privacy Policy</a>
           <a href="/pages/faq.html">FAQ</a>
         </div>

@@ -1,21 +1,4 @@
-:root {
-  --blue-500: #3692ff;
-  --blue-100: #cfe5ff;
-  --gray-900: #111827;
-  --gray-700: #374151;
-  --gray-500: #9ca3af;
-  --gray-100: #f3f4f6;
-  --white: #ffffff;
-  --neutral-100: #fcfcfc;
-  --neutral-400: #e5e7eb;
-}
-
-* {
-  box-sizing: border-box;
-  font-family: "Pretendard Variable";
-}
-
-header {
+.nav-bar {
   padding: 0 200px;
   display: flex;
   align-items: center;
@@ -28,22 +11,6 @@ header {
   font-weight: 600;
   text-align: center;
   text-decoration: none;
-}
-
-h2 {
-  color: var(--gray-700);
-  font-size: 40px; /* 40px */
-  font-weight: 700;
-  line-height: 56px;
-  margin: 0;
-}
-
-footer {
-  display: flex;
-  height: 160px;
-  background-color: var(--gray-900);
-  padding: 32px 400px;
-  gap: 10px;
 }
 
 .main-login {
@@ -84,7 +51,7 @@ footer {
   border-radius: 40px;
 }
 
-.contents {
+.main-content {
   display: flex;
   padding: 138px 466px;
   gap: 10px;
@@ -115,17 +82,21 @@ footer {
   line-height: 26px;
 }
 
-.content-text p {
-  margin: 0;
-}
-
 .description {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.additional-desc {
+.description-main {
+  color: var(--gray-700);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+  margin: 0;
+}
+
+.description-additional {
   font-size: 24px;
   font-stretch: semi-condensed;
   font-weight: 500;
@@ -138,7 +109,15 @@ footer {
   margin-top: 180px;
 }
 
-.footer-container {
+.footer-content {
+  display: flex;
+  height: 160px;
+  background-color: var(--gray-900);
+  padding: 32px 400px;
+  gap: 10px;
+}
+
+.footer-wrapper {
   display: flex;
   width: 100%;
   height: fit-content;
@@ -148,12 +127,12 @@ footer {
   line-height: 19px;
 }
 
-.footer-info {
+.footer-links {
   display: flex;
   gap: 30px;
 }
 
-.footer-info a {
+.footer-links a {
   text-decoration: none;
   color: var(--neutral-400);
 }
@@ -172,7 +151,7 @@ footer {
   width: 746px;
 }
 
-#since {
+#copyright {
   color: var(--gray-500);
   margin: 0;
 }

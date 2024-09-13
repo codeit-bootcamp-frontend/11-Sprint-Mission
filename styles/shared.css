@@ -1,0 +1,18 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
+:root {
+  --blue-500: #3692ff;
+  --blue-100: #cfe5ff;
+  --gray-900: #111827;
+  --gray-700: #374151;
+  --gray-500: #9ca3af;
+  --gray-100: #f3f4f6;
+  --white: #ffffff;
+  --neutral-100: #fcfcfc;
+  --neutral-400: #e5e7eb;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Pretendard Variable";
+}
