@@ -44,7 +44,7 @@ header {
     padding: 12px 23px;
     border-radius: 8px;
     font-size: 1em;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 26px;
     text-align: center;
     text-decoration: none;
@@ -81,7 +81,7 @@ header {
   .bottom-wording-title {
     margin-bottom: 32px;
     font-size: 40px;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 56px;
   }
 
@@ -92,7 +92,7 @@ header {
     padding: 16px 124px;
     border-radius: 40px;
     font-size: 1.25em;
-    font-weight: 500;
+    font-weight: 600;
     text-align: center;
     text-decoration: none;
     background-color: rgba(54, 146, 255, 1);
@@ -122,34 +122,21 @@ header {
   .info-type {
     margin-bottom: 12px;
     font-size: 1.125em;
-    font-weight: 600;
+    font-weight: 700;
     color: rgba(54, 146, 255, 1);
   }
 
   .info-title {
     margin-bottom: 24px;
     font-size: 2.5em;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 56px;
   }
 
   .info-sub {
     font-size: 1.5em;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 32px;
-  }
-
-  /* 기본 스타일 (모바일) */
-  flex-direction: column;
-
-  /* 태블릿 */
-  @media (min-width: 768px) {
-    flex-direction: row;
-  }
-
-  /* 데스크톱 */
-  @media (min-width: 1024px) {
-    padding: 0;
   }
 }
 
@@ -169,13 +156,13 @@ footer {
     .footer-left {
       color: rgba(156, 163, 175, 1);
       font-size: 1em;
-      font-weight: 300;
+      font-weight: 400;
     }
 
     .footer-mid > a {
       color: rgba(229, 231, 235, 1);
       font-size: 1em;
-      font-weight: 300;
+      font-weight: 400;
       text-decoration: none;
       cursor: pointer;
 
