@@ -334,6 +334,10 @@ footer {
     margin: 0;
   }
 
+  .landing-page-main .content .info .visible {
+    display: none;
+  }
+
   .landing-page-main .content .wrap .info {
     margin: 0;
   }
@@ -470,9 +474,8 @@ footer {
     font-family: 'Arial', sans-serif;
     flex-wrap: wrap;
     line-height: 18.4px;
-    width: 311px;
-    margin: 0 auto;
     padding: 32px 0;
+    width: 311px;
   }
 
   .footer-content p {
@@ -483,13 +486,10 @@ footer {
 
   .footer-content div {
     order: 1;
-    flex-basis: 181.11px;
     flex-shrink: 0;
   }
 
   .footer-content .sns-icon {
-    /* sns-icon 열기준 center배치가 안됨 */
-    flex-basis: 116px;
     order: 2;
   }
 }

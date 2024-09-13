@@ -17,31 +17,6 @@
       href="https://fonts.googleapis.com/css2?family=Abel&display=swap"
       rel="stylesheet"
     />
-    <script>
-      // 함수: 화면 크기에 따라 <br> 태그를 제거하거나 복원
-      function handleBrTags() {
-        const paragraphs = document.querySelectorAll(
-          '.landing-page-main .info p:nth-child(2)'
-        );
-
-        // 현재 화면의 너비 확인
-        if (window.innerWidth <= 1199) {
-          // 화면 너비가 1199px 이하일 때 <br> 태그 제거
-          paragraphs.forEach((p) => {
-            p.innerHTML = p.innerHTML.replace(/<br\s*[\/]?>/gi, ' ');
-          });
-        } else {
-          // 화면 너비가 1199px 이상일 때 <br> 태그 복원
-          paragraphs[0].innerHTML = '인기 상품을<br />확인해 보세요';
-          paragraphs[1].innerHTML = '구매를 원하는<br />상품을 검색하세요';
-          paragraphs[2].innerHTML = '판매를 원하는<br />상품을 등록하세요';
-        }
-      }
-
-      // 페이지 로드 시 및 화면 크기 변경 시 함수 실행
-      window.addEventListener('load', handleBrTags);
-      window.addEventListener('resize', handleBrTags);
-    </script>
   </head>
   <body>
     <header>
@@ -70,7 +45,7 @@
             <div class="info">
               <p>Hot item</p>
               <p>
-                인기 상품을<br />
+                인기 상품을<br class="visible" />
                 확인해 보세요
               </p>
               <p>
@@ -85,7 +60,7 @@
             <div class="info">
               <p>Search</p>
               <p>
-                구매를 원하는<br />
+                구매를 원하는<br class="visible" />
                 상품을 검색하세요
               </p>
               <p>
@@ -102,7 +77,7 @@
             <div class="info">
               <p>Register</p>
               <p>
-                판매를 원하는<br />
+                판매를 원하는<br class="visible" />
                 상품을 등록하세요
               </p>
               <p>
