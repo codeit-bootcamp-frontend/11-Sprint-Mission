@@ -1,6 +1,5 @@
-@import url('~@noonnu/rokaf-sans-medium'); /*logo 폰트*/
-
-
+@charset "UTF-8";
+@import url("~@noonnu/rokaf-sans-medium"); /*logo 폰트*/
 * {
   box-sizing: border-box;
   margin: 0; /*html안에 margin과 padding 여백 없애주기*/
@@ -10,8 +9,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Pretendard', sans-serif;
-
+  font-family: "Pretendard", sans-serif;
   font-size: 16px;
 }
 
@@ -24,117 +22,74 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-
-.logo {
+header .logo {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
-
-.logo-img{
+header .logo .logo-img {
   width: 40px;
   margin-right: 8px;
 }
-
-.logo-title {
+header .logo .logo-title {
   display: inline-block;
 }
-
-.login-btn {
+header .login-btn {
   display: inline-block;
   width: 128px;
   height: 48px;
   padding: 12px 23px;
   border-radius: 8px;
-
   font-size: 1em;
   font-weight: 500;
   line-height: 26px;
   text-align: center;
   text-decoration: none;
-
-  background-color: rgba(54, 146, 255, 1);
-  color: rgba(243, 244, 246, 1);
-
+  background-color: rgb(54, 146, 255);
+  color: rgb(243, 244, 246);
   cursor: pointer;
 }
 
 .outside {
   width: 100%;
   height: 540px;
-
-  background-color: rgba(207, 229, 255, 1);
+  background-color: rgb(207, 229, 255);
 }
-
-
-.outside.top,
-.outside.bottom {
+.outside.top, .outside.bottom {
   display: flex;
   justify-content: center;
-  align-items: flex-end
+  align-items: flex-end;
 }
-
-.top-contents,
-.bottom-contents {
+.outside .top-contents,
+.outside .bottom-contents {
   display: flex;
 }
-
-
-.top-img,
-.bottom-img {
+.outside .top-img,
+.outside .bottom-img {
   width: 746px;
   height: 340px;
 }
-
-
-/* 기본 스타일 (모바일) */
-.info-container {
-  flex-direction: column;
-}
-
-/* 태블릿 */
-@media (min-width: 768px) {
-  .info-container {
-    flex-direction: row;
-  }
-}
-
-/* 데스크톱 */
-@media (min-width: 1024px) {
-  .info-container {
-    padding: 0;
-  }
-}
-
-.top-wording-title,
-.bottom-wording-title {
+.outside .top-wording-title,
+.outside .bottom-wording-title {
   margin-bottom: 32px;
-
   font-size: 40px;
   font-weight: 600;
   line-height: 56px;
 }
-
-.top-wording-btn {
+.outside .top-wording-btn {
   display: inline-block;
   width: 357px;
   height: 56px;
   padding: 16px 124px;
   border-radius: 40px;
-
   font-size: 1.25em;
   font-weight: 500;
   text-align: center;
   text-decoration: none;
-
-
-  background-color: rgba(54, 146, 255, 1);
-  color: rgba(249, 250, 251, 1);
-
+  background-color: rgb(54, 146, 255);
+  color: rgb(249, 250, 251);
   cursor: pointer;
 }
-
-
 
 .info-container {
   display: flex;
@@ -142,88 +97,79 @@ header {
   width: 964.5px; /*padding-left 값을 제외한 값*/
   margin: 138px auto;
   padding-left: 23.5px;
-
-  background-color: rgba(252, 252, 252, 1);
+  background-color: rgb(252, 252, 252);
+  /* 기본 스타일 (모바일) */
+  flex-direction: column;
+  /* 태블릿 */
+  /* 데스크톱 */
 }
-
-.info-wording{
+.info-container .info-wording {
   margin-left: 52px;
 }
-
-.info-wording.sec{
+.info-container .info-wording.sec {
   margin-left: 0px;
   margin-right: 52px;
-
   text-align: right;
 }
-
-
-.info-type {
+.info-container .info-type {
   margin-bottom: 12px;
-
   font-size: 1.125em;
   font-weight: 600;
-
-  color: rgba(54, 146, 255, 1);
+  color: rgb(54, 146, 255);
 }
-
-.info-title {
+.info-container .info-title {
   margin-bottom: 24px;
-  
   font-size: 2.5em;
   font-weight: 600;
   line-height: 56px;
 }
-
-.info-sub{
+.info-container .info-sub {
   font-size: 1.5em;
   font-weight: 400;
   line-height: 32px;
 }
-
+@media (min-width: 768px) {
+  .info-container {
+    flex-direction: row;
+  }
+}
+@media (min-width: 1024px) {
+  .info-container {
+    padding: 0;
+  }
+}
 
 footer {
   width: 100%;
   padding-top: 32px;
   padding-bottom: 108px;
-  
-  background-color: rgba(17, 24, 39, 1);
+  background-color: rgb(17, 24, 39);
 }
-
-.footer-container {
+footer .footer-container {
   width: 1120px;
   margin: 0 auto;
-
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-
-.footer-left {
-  color: rgba(156, 163, 175, 1);
+footer .footer-container .footer-left {
+  color: rgb(156, 163, 175);
   font-size: 1em;
   font-weight: 300;
 }
-
-.footer-mid > a {
-  color: rgba(229, 231, 235, 1);
+footer .footer-container .footer-mid > a {
+  color: rgb(229, 231, 235);
   font-size: 1em;
   font-weight: 300;
   text-decoration: none;
   cursor: pointer;
 }
-
-.footer-mid a:not(:last-child) {
+footer .footer-container .footer-mid > a:not(:last-child) {
   margin-right: 30px;
 }
-
-.footer-right > a {
+footer .footer-container .footer-right > a {
   cursor: pointer;
 }
-
-.footer-right a:not(:last-child){
+footer .footer-container .footer-right > a:not(:last-child) {
   margin-right: 12px;
-}
-
-
-
+}/*# sourceMappingURL=index.css.map */

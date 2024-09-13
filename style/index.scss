@@ -1,0 +1,195 @@
+@import url('~@noonnu/rokaf-sans-medium'); /*logo 폰트*/
+
+* {
+  box-sizing: border-box;
+  margin: 0; /*html안에 margin과 padding 여백 없애주기*/
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 16px;
+}
+
+header {
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 1120px;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    .logo-img {
+      width: 40px;
+      margin-right: 8px;
+    }
+
+    .logo-title {
+      display: inline-block;
+    }
+  }
+
+  .login-btn {
+    display: inline-block;
+    width: 128px;
+    height: 48px;
+    padding: 12px 23px;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 500;
+    line-height: 26px;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgba(54, 146, 255, 1);
+    color: rgba(243, 244, 246, 1);
+    cursor: pointer;
+  }
+}
+
+.outside {
+  width: 100%;
+  height: 540px;
+  background-color: rgba(207, 229, 255, 1);
+
+  &.top,
+  &.bottom {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .top-contents,
+  .bottom-contents {
+    display: flex;
+  }
+
+  .top-img,
+  .bottom-img {
+    width: 746px;
+    height: 340px;
+  }
+
+  .top-wording-title,
+  .bottom-wording-title {
+    margin-bottom: 32px;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 56px;
+  }
+
+  .top-wording-btn {
+    display: inline-block;
+    width: 357px;
+    height: 56px;
+    padding: 16px 124px;
+    border-radius: 40px;
+    font-size: 1.25em;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgba(54, 146, 255, 1);
+    color: rgba(249, 250, 251, 1);
+    cursor: pointer;
+  }
+}
+
+.info-container {
+  display: flex;
+  align-items: center;
+  width: 964.5px; /*padding-left 값을 제외한 값*/
+  margin: 138px auto;
+  padding-left: 23.5px;
+  background-color: rgba(252, 252, 252, 1);
+
+  .info-wording {
+    margin-left: 52px;
+
+    &.sec {
+      margin-left: 0px;
+      margin-right: 52px;
+      text-align: right;
+    }
+  }
+
+  .info-type {
+    margin-bottom: 12px;
+    font-size: 1.125em;
+    font-weight: 600;
+    color: rgba(54, 146, 255, 1);
+  }
+
+  .info-title {
+    margin-bottom: 24px;
+    font-size: 2.5em;
+    font-weight: 600;
+    line-height: 56px;
+  }
+
+  .info-sub {
+    font-size: 1.5em;
+    font-weight: 400;
+    line-height: 32px;
+  }
+
+  /* 기본 스타일 (모바일) */
+  flex-direction: column;
+
+  /* 태블릿 */
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+
+  /* 데스크톱 */
+  @media (min-width: 1024px) {
+    padding: 0;
+  }
+}
+
+footer {
+  width: 100%;
+  padding-top: 32px;
+  padding-bottom: 108px;
+  background-color: rgba(17, 24, 39, 1);
+
+  .footer-container {
+    width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .footer-left {
+      color: rgba(156, 163, 175, 1);
+      font-size: 1em;
+      font-weight: 300;
+    }
+
+    .footer-mid > a {
+      color: rgba(229, 231, 235, 1);
+      font-size: 1em;
+      font-weight: 300;
+      text-decoration: none;
+      cursor: pointer;
+
+      &:not(:last-child) {
+        margin-right: 30px;
+      }
+    }
+
+    .footer-right > a {
+      cursor: pointer;
+
+      &:not(:last-child) {
+        margin-right: 12px;
+      }
+    }
+  }
+}
