@@ -6,6 +6,19 @@
   font-style: normal;
 }
 
+:root {
+  --gray900: #111827;
+  --gray800: #1f2937;
+  --gray700: #374151;
+  --gray600: #4b5563;
+  --gray500: #6b7280;
+  --gray400: #9ca3af;
+  --gray200: #e5e7eb;
+  --gray100: #f3f4f6;
+  --gray50: #f9fafb;
+  --blue: #3692ff;
+}
+
 * {
   box-sizing: border-box;
   font-family: "Pretendard-Regular", sans-serif;
@@ -28,7 +41,7 @@ main {
 }
 
 input:focus {
-  outline-color: #3692ff;
+  outline-color: var(--blue);
 }
 
 input::placeholder {
@@ -42,7 +55,7 @@ input::placeholder {
 .myInput {
   width: 530px;
   height: 45px;
-  background-color: #f3f4f6;
+  background-color: var(--gray100);
   border: 0 solid black;
   border-radius: 8px;
   padding-left: 20px;
@@ -54,7 +67,7 @@ input::placeholder {
   align-items: center;
   width: 530px;
   height: 50px;
-  background: #3692ff;
+  background: var(--blue);
   color: #ffffff;
   border-radius: 9999px;
   cursor: pointer;
