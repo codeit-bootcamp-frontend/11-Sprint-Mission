@@ -78,11 +78,58 @@ body > *{
   width: 100%; height: 100%;
   margin: 0 auto;
 }
-.container.main{
-  max-width: 1120px;
+
+/* footer */
+#footer {
+  height: 16rem;
+  padding-top: 3.2rem;
+  background-color: var(--gray-900);
 }
-.container.user{
-  max-width: 640px;
+#footer .container {
+  display: flex;
+  justify-content: space-between;
+}
+#footer .footer-item {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+#footer .footer-item .copyright {
+  color: var(--gray-400);
+}
+
+#footer .footer-item.link-page {
+  display: flex;
+  gap: 3rem;
+}
+#footer .footer-item.link-page .link {
+  color: var(--gray-200);
+}
+
+#footer .footer-item.link-sns {
+  display: flex;
+  gap: 1.2rem; 
+}
+#footer .footer-item.link-sns a[class^="icon-"] {
+  display: inline-block;
+  font-size: 0;
+  line-height: 0;
+  width: 1.8rem; 
+  height: 1.8rem; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#footer .footer-item.link-sns .icon-facebook {
+  background-image: url(../images/ic_facebook.png);
+}
+#footer .footer-item.link-sns .icon-twitter {
+  background-image: url(../images/ic_twitter.png);
+}
+#footer .footer-item.link-sns .icon-youtube {
+  background-image: url(../images/ic_youtube.png);
+}
+#footer .footer-item.link-sns .icon-instagram {
+  background-image: url(../images/ic_instagram.png);
 }
 
 /* btn 공통 스타일 */
@@ -138,6 +185,10 @@ div[class ^= "btn-"]{
   #header .container {
     padding: 0 2.4rem;
   }
+  /* footer */
+  #footer .container {
+    padding: 0 10.4rem; 
+  }
 }
 
 @media screen and (max-width: 767px){
@@ -152,6 +203,29 @@ div[class ^= "btn-"]{
     width: 10.3rem; 
     height: 5.1rem; 
   }
+  /* footer */
+  #footer {
+    padding: 3.2rem; 
+  }
+  #footer .container {
+    flex-wrap: wrap;
+    gap: 6rem 0;
+  }
+  #footer .footer-item.text-copyright {
+    order: 2;
+    flex: 1;
+  }
+  #footer .footer-item.link-page,
+  #footer .footer-item.link-sns {
+    order: 1;
+  }
+  #footer .footer-item .copyright {
+    color: #676767;
+  }
+  #footer .footer-item.link-page .link {
+    color: #cfcfcf;
+  }
+
   .button.round{
     border-radius: 8.2rem;
   }
