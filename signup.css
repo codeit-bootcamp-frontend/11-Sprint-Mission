@@ -61,6 +61,16 @@ input::placeholder {
   padding-left: 20px;
 }
 
+.inputPW {
+  display: flex;
+  align-items: center;
+}
+
+.visiblePW {
+  position: relative;
+  right: 40px;
+}
+
 .login {
   display: flex;
   justify-content: center;
