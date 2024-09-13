@@ -118,8 +118,13 @@ input:focus {
   align-items: center;
 }
 
-@media (1199px >= width >=768px) {
+@media (min-width: 768px) and (max-width: 1199px) {
 }
 
-@media (767px >= width >= 375px) {
+@media (min-width: 375px) and (max-width: 767px) {
+  .login-page {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 16px;
+  }
 }

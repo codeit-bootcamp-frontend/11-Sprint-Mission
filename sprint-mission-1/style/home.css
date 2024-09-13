@@ -239,7 +239,7 @@ a.move {
   /* PC */
 }
 
-@media (1199px >= width >=768px) {
+@media (min-width: 768px) and (max-width: 1199px) {
   /* Tablet */
   .navbar {
     padding: 0 24px;
@@ -313,7 +313,7 @@ a.move {
   }
 }
 
-@media (767px >= width >= 375px) {
+@media (min-width: 375px) and (max-width: 767px) {
   /* Mobile */
   .navbar {
     padding: 0 16px;
