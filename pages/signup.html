@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/style/auth.css" />
-    <title>Login</title>
+    <title>signup</title>
   </head>
   <body>
     <div class="container">
@@ -27,6 +27,15 @@
             required
           />
         </div>
+        <div class="input-area nickname">
+          <label for="input_name">닉네임</label>
+          <input
+            type="text"
+            id="input_name"
+            placeholder="닉네임을 입력해 주세요"
+            required
+          />
+        </div>
         <div class="input-area password">
           <label for="input_password">비밀번호</label>
           <input
@@ -40,8 +49,21 @@
             <span class="sr-only">비밀번호 노출 토글</span>
           </button>
         </div>
+        <div class="input-area password">
+          <label for="input_password_confirm">비밀번호 확인</label>
+          <input
+            type="password"
+            id="input_password_confirm"
+            class="pw"
+            placeholder="비밀번호를 다시 한 번 입력해주세요"
+            required
+          />
+          <button type="button" class="btn-toggle" title="비밀번호 노출 토글">
+            <span class="sr-only">비밀번호 노출 토글</span>
+          </button>
+        </div>
         <!-- Srpint2[240913] : 폼 양식을 모두 입력하지 않은 경우(disabled : default), 양식 모두 입력해 로그인 가능하면 disabled 삭제하는 기능 추가 예정  -->
-        <button type="submit" class="btn login" disabled>로그인</button>
+        <button type="submit" class="btn signup" disabled>회원가입</button>
         <div class="sns-area">
           <span>간편 로그인하기</span>
           <div class="sns-wrap">
@@ -65,8 +87,8 @@
           </div>
         </div>
         <div class="switch-area">
-          판다마켓이 처음이신가요?
-          <a href="/pages/signup.html" title="회원가입 페이지 이동">회원가입</a>
+          이미 회원이신가요?
+          <a href="/pages/login.html" title="로그인 페이지 이동">로그인</a>
         </div>
       </form>
     </div>

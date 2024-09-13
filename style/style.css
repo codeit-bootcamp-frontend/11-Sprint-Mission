@@ -1,65 +1,18 @@
 @charset "UTF-8";
-@font-face {
-  font-family: "Pretendard-Regular";
-  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-:root {
-  /* Color-Primary */
-  --primary100: #3692ff;
-  --primary200: #1967d6;
-  --primary300: #1251aa;
-  /* Color-Secondary */
-  --gray900: #111827;
-  --gray800: #1f2937;
-  --gray700: #374151;
-  --gray600: #4b5563;
-  --gray500: #6b7280;
-  --gray400: #9ca3af;
-  --gray200: #e5e7eb;
-  --gray100: #f3f4f6;
-  --gray50: #f9fafb;
-  /*Color-Error*/
-  --error: #f74747;
-  /* Font-Weight */
-  --normal: 400;
-  --medium: 500;
-  --semiBold: 600;
-  --bold: 700;
-}
-
-* {
-  font-family: "Pretendard-Regular";
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  /* 브라우저 폰트 사이즈 16px * 0.625 = 10px */
-  font-size: 62.5%;
-}
-
-body {
-  /* 1rem = html의 폰트 사이즈 */
-  font-size: 1rem;
-}
-
-a {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
+@import url(normalize.css);
+@import url(reset.css);
+@import url(common.css);
 /* Header */
 header {
+  /* [Srpint2] 헤더 GNB를 위해 position sticky 추가 */
+  position: sticky;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0.8rem auto;
   /* 로고 & 로그인 버튼 여백 200px 유지하기 위해 rem 사용 X */
-  padding: 0 200px;
+  padding: 0.8rem 200px;
+  background-color: #fff;
 }
 header .logo {
   width: 15.3rem;
@@ -239,18 +192,4 @@ footer .footer-wrap .sns a img {
   display: block;
   width: 100%;
   height: 100%;
-}
-
-/* 브라우저 width 1200px 이하 */
-@media (max-width: 1200px) {
-  html {
-    /* 브라우저 폰트 사이즈 16px * 0.4 = 6.4px */
-    font-size: 40%;
-  }
-}
-@media (max-width: 768px) {
-  /* 브라우저 폰트 사이즈 16px * 0.3 = 4.8px */
-  html {
-    font-size: 30%;
-  }
 }
