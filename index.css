@@ -74,7 +74,6 @@ header {
   align-items: flex-end
 }
 
-
 .top-contents,
 .bottom-contents {
   display: flex;
@@ -85,6 +84,26 @@ header {
 .bottom-img {
   width: 746px;
   height: 340px;
+}
+
+
+/* 기본 스타일 (모바일) */
+.info-container {
+  flex-direction: column;
+}
+
+/* 태블릿 */
+@media (min-width: 768px) {
+  .info-container {
+    flex-direction: row;
+  }
+}
+
+/* 데스크톱 */
+@media (min-width: 1024px) {
+  .info-container {
+    padding: 0;
+  }
 }
 
 .top-wording-title,
