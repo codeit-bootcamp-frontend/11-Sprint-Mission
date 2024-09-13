@@ -5,31 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>login</title>
   
-  <link rel="stylesheet" href="css/index.css"/>
+  <link rel="stylesheet" href="style/style.css"/>
 </head>
 <body>
-  <form>
-    <head>
-      <a><img alt="login-logo" src="img/login-logo.svg"></a>
-    </head>
-    <label for="email">이메일</label>
-    <input type="text" name="email" id="email" class="input" placeholder="이메일을 입력해주세요">
-    <label for="password">비밀번호</label>
-    <input type="password" name="password" id="password" class="input" placeholder="비밀번호를 입력해주세요">
-    <button type="submit">
-      로그인
-    </button>
-  </form>
+  <main>
+    <div class="login-top">
+      <a href="./index.html"><img alt="login-logo" src="img/login-logo.svg"></a>
+    </div>
+      
+    <form>
+      <label for="email">이메일</label>
+      <input type="text" name="email" id="email" class="input" placeholder="이메일을 입력해주세요">
+      <label for="password">비밀번호</label>
+      <input type="password" name="password" id="password" class="input" placeholder="비밀번호를 입력해주세요">
+      <button type="submit" class="login-btn">
+        로그인
+      </button>
+    </form>
 
-  <div>
-    <p>간편 로그인하기</p>
-    <a><img></a>
-    <a><img></a>
-  </div>
+    <div>
+      <p>간편 로그인하기</p>
+      <a><img></a>
+      <a><img></a>
+    </div>
 
-  <div>
-    <p>판다마켓이 처음이신가요?</p>
-    <a><p>회원가입</p></a>
-  </div>
+    <div>
+      <p>판다마켓이 처음이신가요?</p>
+      <a><p>회원가입</p></a>
+    </div>
+
+  </main>
 </body>
 </html>

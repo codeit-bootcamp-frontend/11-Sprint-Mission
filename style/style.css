@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
-@import "./page/index.css";
+@import url("~@noonnu/rokaf-sans-medium");
 .pretendard {
   font-family: "Pretendard";
 }
@@ -113,4 +113,235 @@ address {
 
 strong {
   font-weight: normal;
+}
+
+/*logo 폰트*/
+* {
+  box-sizing: border-box;
+  margin: 0; /*html안에 margin과 padding 여백 없애주기*/
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Pretendard", sans-serif;
+  font-size: 16px;
+}
+
+header {
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 1120px;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+header .logo .logo-img {
+  width: 40px;
+  margin-right: 8px;
+}
+header .logo .logo-title {
+  display: inline-block;
+}
+header .login-btn {
+  display: inline-block;
+  width: 128px;
+  height: 48px;
+  padding: 12px 23px;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 26px;
+  text-align: center;
+  text-decoration: none;
+  background-color: rgb(54, 146, 255);
+  color: rgb(243, 244, 246);
+  cursor: pointer;
+}
+
+.outside {
+  width: 100%;
+  height: 540px;
+  background-color: rgb(207, 229, 255);
+}
+.outside.top, .outside.bottom {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.outside .top-contents,
+.outside .bottom-contents {
+  display: flex;
+}
+.outside .top-img,
+.outside .bottom-img {
+  width: 746px;
+  height: 340px;
+}
+.outside .top-wording-title,
+.outside .bottom-wording-title {
+  margin-bottom: 32px;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+}
+.outside .top-wording-btn {
+  display: inline-block;
+  width: 357px;
+  height: 56px;
+  padding: 16px 124px;
+  border-radius: 40px;
+  font-size: 1.25em;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  background-color: rgb(54, 146, 255);
+  color: rgb(249, 250, 251);
+  cursor: pointer;
+}
+
+.info-container {
+  display: flex;
+  align-items: center;
+  width: 964.5px; /*padding-left 값을 제외한 값*/
+  margin: 138px auto;
+  padding-left: 23.5px;
+  background-color: rgb(252, 252, 252);
+}
+.info-container .info-wording {
+  margin-left: 52px;
+}
+.info-container .info-wording.sec {
+  margin-left: 0px;
+  margin-right: 52px;
+  text-align: right;
+}
+.info-container .info-type {
+  margin-bottom: 12px;
+  font-size: 1.125em;
+  font-weight: 700;
+  color: rgb(54, 146, 255);
+}
+.info-container .info-title {
+  margin-bottom: 24px;
+  font-size: 2.5em;
+  font-weight: 700;
+  line-height: 56px;
+}
+.info-container .info-sub {
+  font-size: 1.5em;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+footer {
+  width: 100%;
+  padding-top: 32px;
+  padding-bottom: 108px;
+  background-color: rgb(17, 24, 39);
+}
+footer .footer-container {
+  width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+footer .footer-container .footer-left {
+  color: rgb(156, 163, 175);
+  font-size: 1em;
+  font-weight: 400;
+}
+footer .footer-container .footer-mid > a {
+  color: rgb(229, 231, 235);
+  font-size: 1em;
+  font-weight: 400;
+  text-decoration: none;
+  cursor: pointer;
+}
+footer .footer-container .footer-mid > a:not(:last-child) {
+  margin-right: 30px;
+}
+footer .footer-container .footer-right > a {
+  cursor: pointer;
+}
+footer .footer-container .footer-right > a:not(:last-child) {
+  margin-right: 12px;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-top {
+  margin-bottom: 40px;
+}
+
+form {
+  width: 100%;
+}
+
+label {
+  display: block;
+  width: 100%;
+  margin-bottom: 16px;
+  font-size: 1.125em;
+  font-weight: 700;
+  color: var(--s900);
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 15px 24px;
+  margin-bottom: 24px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--s100);
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.input::-moz-placeholder {
+  color: var(--s400);
+}
+
+.input::placeholder {
+  color: var(--s400);
+}
+
+.input:focus {
+  outline: 1px solid var(--p100); /* 명시적으로 outline 스타일 설정 */
+}
+
+.login-btn {
+  width: 100%;
+  padding: 16px 0;
+  border: none;
+  border-radius: 40px;
+  background-color: var(--s400);
+  font-size: 1.25em;
+  font-weight: 600;
+  color: var(--s100);
 }/*# sourceMappingURL=style.css.map */
