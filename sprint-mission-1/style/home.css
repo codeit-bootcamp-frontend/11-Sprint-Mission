@@ -226,3 +226,52 @@ a.move {
   display: flex;
   gap: 12px;
 }
+
+@media (width >= 1200px) {
+  /* PC */
+}
+
+@media (1199px >= width >=768px) {
+  /* Tablet */
+  .navbar {
+    padding: 0 24px;
+  }
+
+  .landing-page {
+    width: 100%;
+    background-color: #cfe5ff;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: auto;
+    gap: 7px;
+    padding: 0;
+  }
+
+  .land {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: auto 0;
+  }
+
+  .landing {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+    margin: 84px 0;
+  }
+
+  .landing-image {
+    width: 100%;
+  }
+}
+
+@media (767px >= width >= 375px) {
+  /* Mobile */
+}
