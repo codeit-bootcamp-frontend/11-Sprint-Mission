@@ -197,6 +197,14 @@ a.move {
   align-items: center;
 }
 
+.landing-bottom-content {
+  font-family: Pretendard;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+  text-align: left;
+}
+
 .footer {
   background-color: #111827;
   display: flex;
@@ -267,10 +275,6 @@ a.move {
     margin: 84px 0;
   }
 
-  .landing-image {
-    width: 100%;
-  }
-
   .info-reverse {
     position: relative;
     top: 0;
@@ -281,6 +285,27 @@ a.move {
     position: relative;
     top: 0;
     left: 0;
+  }
+
+  .landing-bottom-page {
+    width: 100%;
+    background-color: #cfe5ff;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: auto;
+  }
+
+  .land-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 69px;
+    align-items: center;
+  }
+
+  .landing-bottom-content {
+    text-align: center;
+    margin: 200px auto;
   }
 }
 
