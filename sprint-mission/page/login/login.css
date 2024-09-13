@@ -2,6 +2,17 @@
   box-sizing: border-box;
   font-family: Pretendard;
 }
+:root {
+  --gray50: #f9fafb;
+  --gray100: #f3f4f6;
+  --gray200: #e5e7eb;
+  --gray400: #9ca3af;
+  --gray500: #6b7280;
+  --gray600: #4b5563;
+  --gray700: #374151;
+  --gray800: #1f2937;
+  --gray900: #111827;
+}
 body {
   margin: 0;
   display: flex;
@@ -11,7 +22,6 @@ body {
 .login-form {
   width: 640px;
   height: 618px;
-  /* background-color: aqua; */
 }
 header {
   display: flex;
@@ -65,12 +75,12 @@ header {
   font-weight: 700;
   font-size: 1.2rem;
   line-height: 21px;
-  color: #1f2937;
+  color: var(--gray800);
 }
 .input-box {
   width: 100%;
   height: 56px;
-  background: #f3f4f6;
+  background: var(--gray100);
   border-radius: 12px;
   border: 0;
   outline: none;
@@ -94,7 +104,7 @@ header {
   border: 0;
 }
 .login-btn:hover {
-  background: #9ca3af;
+  background: var(--gray400);
 }
 .login-btn a {
   display: flex;
@@ -107,7 +117,7 @@ header {
   display: flex;
   align-items: center;
   text-align: center;
-  color: #f3f4f6;
+  color: var(--gray100);
   text-decoration: none;
 }
 .content {
@@ -134,7 +144,7 @@ header {
   font-weight: 500;
   font-size: 16px;
   line-height: 26px;
-  color: #1f2937;
+  color: var(--gray800);
 }
 .easy-login a {
   text-decoration: none;
@@ -149,7 +159,7 @@ footer .left {
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
-  color: #1f2937;
+  color: var(--gray800);
   text-decoration: none;
 }
 footer .right {
