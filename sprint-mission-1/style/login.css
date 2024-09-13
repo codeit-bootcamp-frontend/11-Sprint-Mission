@@ -24,20 +24,20 @@ main {
   width: 640px;
 }
 
-.signin {
+.sign {
   display: flex;
   flex-direction: column;
   gap: 24px;
   width: 100%;
 }
 
-.signin-form {
+.sign-form {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.signin-input {
+.sign-input {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -63,7 +63,7 @@ input:focus {
   outline-color: #3692ff;
 }
 
-.signin-label {
+.sign-label {
   font-family: Pretendard;
   font-size: 18px;
   font-weight: 700;
@@ -72,7 +72,7 @@ input:focus {
   color: #1f2937;
 }
 
-.signin-button {
+.sign-button {
   background-color: #9ca3af;
   padding: 16px 124px;
   gap: 10px;
@@ -116,4 +116,10 @@ input:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@media (1199px >= width >=768px) {
+}
+
+@media (767px >= width >= 375px) {
 }
