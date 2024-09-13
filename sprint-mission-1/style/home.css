@@ -270,6 +270,18 @@ a.move {
   .landing-image {
     width: 100%;
   }
+
+  .info-reverse {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+
+  .info-bottom {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
 }
 
 @media (767px >= width >= 375px) {
