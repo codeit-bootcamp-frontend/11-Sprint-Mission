@@ -99,13 +99,17 @@ body {
 }
 
 /* component */
+#header {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 1020;
+}
 .header {
   max-width: 1920px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0;
   padding: 10px 200px;
 }
 .header .root-link {
