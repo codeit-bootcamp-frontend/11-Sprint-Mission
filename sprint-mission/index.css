@@ -6,7 +6,7 @@ body {
   margin: 0 auto;
   position: relative;
 }
-.main-header {
+.header {
   position: fixed;
   top: 0;
   left: 0;
@@ -25,10 +25,10 @@ body {
   height: 70px;
   z-index: 999;
 }
-.main-header a {
+.header a {
   cursor: pointer;
 }
-.banner-top {
+.banner {
   margin-top: 66px;
   display: flex;
   justify-content: center;
@@ -71,7 +71,7 @@ body {
   text-decoration: none;
   font-weight: bold;
 }
-.main-contents {
+.contents {
   display: flex;
   justify-content: center;
   padding: 138px 466px;
@@ -88,10 +88,10 @@ body {
   height: 540px;
   background-color: #cfe5ff;
 }
-.main-contents-img {
+.contents-img {
   position: relative;
 }
-.main-contents-info {
+.contents-txt {
   position: absolute;
   top: 235px;
   left: 405;
@@ -102,18 +102,18 @@ body {
   font-weight: bold;
   letter-spacing: -1.5px;
 }
-.main-footer {
+.footer {
   height: 160px;
   background-color: #111827;
   display: flex;
   justify-content: space-between;
 }
-.main-footer div {
+.footer div {
   flex: 1;
   text-align: center;
   padding-top: 32px;
 }
-.main-footer a {
+.footer a {
   padding-right: 20px;
   cursor: pointer;
 }

@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
     <title>판다마켓</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/index.css" />
     <link
       rel="stylesheet"
       as="style"
@@ -12,42 +12,44 @@
   </head>
   <body>
     <header>
-      <a href="/main.html">
-        <img class="logo" src="img/logo.png" alt="Home" />
-      </a>
-      <a href="page/login/login.html">
-        <img class="login" src="img/login_bt.png" alt="로그인" />
-      </a>
+      <div class="header">
+        <a href="/index.html">
+          <img class="logo" src="img/main/logo.png" alt="Home" />
+        </a>
+        <a href="page/login/login.html">
+          <img class="login" src="img/main/login_bt.png" alt="로그인" />
+        </a>
+      </div>
     </header>
     <main>
-      <div class="banner-top">
+      <div class="banner">
         <div class="banner-img">
-          <img src="img/banner.png" />
+          <img src="img/main/banner_main.png" />
           <div class="banner-info">
-            <div class="banner_txt">
+            <div class="banner-txt">
               일상의 모든 물건을<br />
               거래해 보세요
             </div>
-            <button class="banner-button" type="button">
+            <button class="banner-button">
               <a href="page/items/item.html"> 구경하러 가기 </a>
             </button>
           </div>
         </div>
       </div>
-      <div class="contents">
-        <img src="img/content_1.png" />
-      </div>
-      <div class="contents">
-        <img src="img/content_2.png" />
-      </div>
-      <div class="contents">
-        <img src="img/content_3.png" />
-      </div>
-      <div class="empty"></div>
+      <section class="contents">
+        <img src="img/main/content_hot_item.png" />
+      </section>
+      <section class="contents">
+        <img src="img/main/content_search.png" />
+      </section>
+      <section class="contents">
+        <img src="img/main/content_register.png" />
+      </section>
+      <div class="blank"></div>
       <div class="banner-bottom">
         <div class="contents-img">
-          <img src="img/content_4.png" />
-          <div class="contents-info">
+          <img src="img/main/banner_footer.png" />
+          <div class="contents-txt">
             믿을 수 있는 <br />
             판다마켓 중고 거래
           </div>
@@ -55,20 +57,22 @@
       </div>
     </main>
     <footer>
-      <div class="since">
-        <img src="img/©codeit - 2024.png" />
-      </div>
-      <div class="info">
-        <a href="page/privacy/privacy.html">
-          <img src="img/Privacy Policy.png" />
-        </a>
-        <a href="page/faq/faq.html"><img src="img/FAQ.png" /></a>
-      </div>
-      <div class="platforms">
-        <img src="img/ic_facebook.png" />
-        <img src="img/ic_instagram.png" />
-        <img src="img/ic_twitter.png" />
-        <img src="img/ic_youtube.png" />
+      <div class="footer">
+        <div class="since">
+          <img src="img/public/since.png" />
+        </div>
+        <div class="info">
+          <a href="page/privacy/privacy.html">
+            <img src="img/public/privacy_policy.png" />
+          </a>
+          <a href="page/faq/faq.html"><img src="img/public/FAQ.png" /></a>
+        </div>
+        <div class="platforms">
+          <img src="img/public/ic_facebook.png" />
+          <img src="img/public/ic_instagram.png" />
+          <img src="img/public/ic_twitter.png" />
+          <img src="img/public/ic_youtube.png" />
+        </div>
       </div>
     </footer>
   </body>
