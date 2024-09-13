@@ -1,29 +1,3 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-* {
-  --primary: #3692ff;
-  --primary-home: #cfe5ff;
-  --white: #ffffff;
-  --gray-400: #9ca3af;
-  --gray-border: #dfdfdf;
-  --gray-200: #e5e7eb;
-  --gray-100: #f3f4f6;
-  --gray-50: #f9fafb;
-  --gray-10: #fcfcfc;
-  --black-900: #111827;
-  --black-700: #374151;
-}
-
-@font-face {
-  font-family: "ROKAF Sans";
-  src: url("fonts/ROKAF_Sans_Bold.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-}
-
 body {
   background-color: var(--gray-10);
 }
@@ -39,9 +13,6 @@ header {
 }
 
 .head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: 100%;
   width: auto;
 }
@@ -54,13 +25,8 @@ header {
 }
 
 .title {
-  font-family: "ROKAF Sans", sans-serif;
-  color: var(--primary);
-  font-weight: 700;
-  font-size: 25.63px;
-  line-height: 34.6px;
-  text-align: center;
-  text-decoration: none;
+  font-size: 26px;
+  line-height: 35px;
 }
 
 button:hover {
@@ -69,13 +35,7 @@ button:hover {
 
 button {
   background-color: var(--primary);
-  border: none;
-  cursor: pointer;
-  display: flex;
   justify-content: center;
-  gap: 10px;
-  font-family: "pretendard Variable", "Noto Sans Korean";
-  font-weight: 600;
 }
 
 .small-button {
