@@ -1,5 +1,6 @@
 .main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -9,6 +10,8 @@
   justify-content: center;
   align-items: center;
   gap: 22.4px;
+  padding-top: 0;
+  padding-bottom: 40px;
 }
 .main_logo > a {
   font-size: 66.34px;
@@ -16,4 +19,48 @@
   line-height: 89.56px;
   text-align: left;
   color: #3692FF;
+}
+.login_form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.login_input {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.login_input > label {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  text-align: left;
+  color: #1F2937;
+}
+.login_input > input {
+  width: 640px;
+  padding: 16px 24px;
+  background-color:#F3F4F6;
+  border-radius: 12px;
+  border-style: none;
+}
+.login_input > input ::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: left;
+}
+.login_input > input :focus {
+  border: 1px solid #3692FF
+}
+.login_input > input :not(focus) {
+  border: none
+}
+.login_input .login_input_pw {
+  position: relative;
+}
+.login_input .login_input_pw > img{
+  position: absolute;
+  top: 16px;
+  right: 24px;
 }
