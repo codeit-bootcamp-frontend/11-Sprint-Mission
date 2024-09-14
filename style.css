@@ -255,6 +255,11 @@ footer {
     line-height: 26px;
 }
 
+.login-form input:focus,
+.signup-form input:focus {
+    border-color: #3692FF;
+}
+
 .login-form input::placeholder,
 .signup-form input::placeholder {
     font-weight: 400;
@@ -274,6 +279,13 @@ footer {
     text-align: center;
     border: none;
     border-radius: 40px;
+    cursor: not-allowed;
+}
+
+.login-form button:active,
+.signup-form button:active {
+    background-color: #3692FF;
+    cursor: pointer;
 }
 
 .sosial-login {
