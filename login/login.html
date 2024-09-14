@@ -14,49 +14,56 @@
 </head>
 <body>
   <div class="loginContainer">
-    <header class="logoCcontainer">
-      <img src="../img/판다얼굴.png" alt="판다마켓 로고" class="logo" />
-      <h1>판다마켓</h1>
+    <header class="logoContainer">
+      <img class="logo" src="../img/판다 얼굴103.png" alt="판다마켓 로고"  />
+      <h1 class="logoName">판다마켓</h1>
     </header>
 
     <main>
       <form class="loginForm">
-        <div class="inputContainer">
-          <label for="email">이메일</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="이메일을 입력해주세요"
-            required
-          />
-        </div>
+        <div class="loginSet">
+          <div class="inputContainers">
+            <div class="inputContainer">
+              <label class="labels" for="email">이메일</label>
+              <input
+                type="email"
+                id="email"
+                class="inputs"
+                placeholder="이메일을 입력해주세요"
+                required
+              />
+            </div>
 
-        <div class="inputContainer">
-          <label for="password">비밀번호</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="비밀번호를 입력해주세요"
-            required
-          />
-          <button type="button" class="seePassword">
-            <img src="img/eye-icon.png" alt="비밀번호 보기" />
-          </button>
-        </div>
+            <div class="inputContainer password">
+              <label class="labels " for="password">비밀번호</label>
+              <input
+                type="password"
+                id="password"
+                class="inputs"
+                placeholder="비밀번호를 입력해주세요"
+                required
+              />
+              <button class="seePassword" type="button" >
+                <img src="../img/close-eye.png" alt="비밀번호 보기" />
+              </button>
+            </div>
+          </div>
 
-        <button type="submit" class="login-btn">로그인</button>
+          <button type="submit" class="loginButton">로그인</button>
+        </div>
 
         <div class="socialLogin">
           <p>간편 로그인하기</p>
           <div class="socialLink">
-            <a href="https://www.kakaocorp.com/page/"><img src="img/google-icon.png" alt="Google" /></a>
-            <a href="https://www.google.com/"><img src="img/kakao-icon.png" alt="Kakao" /></a>
+            <a href="https://www.google.com/"><img src="../img/google-logo.png" alt="Google" /></a>
+            <a href="https://www.kakaocorp.com/page/"><img src="../img/kakao-logo.png" alt="Kakao" /></a>
           </div>
         </div>
 
-        <div class="helpLinks">
-          <a href="#">판다마켓이 처음이신가요? 회원가입</a>
-        </div>
+        <footer class="helpLinks">
+          <p>판다마켓이 처음이신가요?</p>
+          <a href="/signup">회원가입</a>
+        </footer>
       </form>
     </main>
   </div>

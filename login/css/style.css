@@ -1,0 +1,147 @@
+
+@font-face {
+  font-family: 'ROKAF sans';
+  src: url(../../font/ROKAF\ Sans\ Bold.ttf);
+}
+html {
+  font-family:'Pretendard','ROKAF sans','Noto Sans KR', sans-serif;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:40px;
+}
+
+.loginContainer { 
+  width: 640px;
+  /* 아래의 값이 제공되었으나 입력하면 왼쪽으로 쏠려서 나오기에 가려뒀습니다.
+  position: absolute;
+  top: 231px;
+  left: 40px; */
+  gap: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+
+.logoContainer {
+  width: auto;
+  display: flex; 
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px; /*입력사항은 없었으나 로고와 로고이름 사이의 간격을 강제로 주었습니다.*/
+}
+
+.logoName {
+  font: 'ROKAF sans';
+  color: var(--blue-100);
+  font-weight: 700;
+  font-size: 66.34px;
+  line-height: 89.56px;
+
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap:24px;
+}
+
+.loginSet {
+  display: flex;
+  flex-direction: column;
+  gap:24px;
+}
+
+.inputContainers {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap:24px;
+}
+
+.labels {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  color: var(--black-2);
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputs {
+  width: 640px;
+  height: 56px;
+  border: 2px ;
+  border-radius: 12px solid #3782f6;
+  gap: 10px;
+  background-color: var(--gray-100);
+}
+
+.password {
+  position: relative;
+}
+
+.seePassword {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0 ;
+  position: absolute;
+  top: 60px;
+  left: 600px;
+  background-color: var(--gray-100);
+  z-index: 99; /*버튼을 활성화시키고 싶어서 만들었는데 소용이 없었습니다.*/
+}
+
+.loginButton { 
+  width: 640px;
+  height: 56px;
+  border: 0;
+  border-radius: 40px;
+  padding: 16px 124px;
+  gap:10px;
+  background-color: var(--blue-100);
+
+  font-weight: 600; /*로그인이라는 글씨가 살짝 아래로 쳐져 있습니다.*/
+  font-size: 20px;
+  line-height: 32px;
+  text-align: center;
+  color: var(--white-2);
+}
+
+.socialLogin {
+  width: 640px;
+  height: 74px;
+  border-radius: 8px;
+  padding: 16px 23px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap:10px;
+  background-color: var(--whiteblue);
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--gray-800);
+}
+
+.socialLink {
+  display: flex;
+  font-weight: 500;
+  gap: 16px;
+}
+
+.helpLinks {
+  display: flex;
+  justify-content: center;
+  gap:4px; 
+}
