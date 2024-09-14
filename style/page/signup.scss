@@ -1,0 +1,83 @@
+.signup-main {
+  width: 640px;
+  margin: 60px auto 0px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signup-logo{
+  margin-bottom: 40px;
+}
+
+.signup-password-container,
+.signup-checkpassword-container {
+  position: relative;
+
+  display: flex;
+}
+
+
+.signup-password-visibility, 
+.signup-checkpassword-visibility {
+  position: absolute;
+  top: 13px;
+  right: 24px;
+}
+
+.signup-btn {
+  width: 100%;
+  padding: 16px 0;
+  margin-bottom: 24px;
+
+  border: none;
+  background-color: var(--s400);
+  border-radius: 40px;
+
+  font-size: 1.25em;
+  font-weight: 600;
+  color: var(--s100);
+}
+
+.signup-btn.active {
+  background-color: var(--p100);
+}
+
+.signup-simple-login-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px 23px;
+  margin-bottom: 24px;
+
+  background-color: rgba(230, 242, 255, 1);
+  border-radius: 8px;
+}
+
+
+.signup-simple-login-img {
+  width: 42px;
+  height: 42px;
+}
+
+.go-login-container {
+  display: flex;
+
+  font-size: 0.875em;
+  font-weight: 500;
+  color: var(--s900);
+}
+
+.go-login {
+  margin-left: 4px;
+  color: var(--p100);
+  text-decoration: underline solid var(--p100) 1.3px;
+  text-underline-offset: 3px;
+}
+
+
+
+
