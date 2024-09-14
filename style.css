@@ -5,6 +5,20 @@
     src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
 }
 
+:root {
+    --gray-900: #111827;
+    --gray-800: #1F2937;
+    --gray-700: #374151;
+    --gray-600: #4B5563;
+    --gray-500: #6B7280;
+    --gray-400: #9CA3AF;
+    --gray-200: #E5E7EB;
+    --gray-100: #F3F4F6;
+    --gray-50:  #F9FAFB;
+    
+    --blue: #3692FF;
+}
+
 body {
     font-family: 'Pretendard-Regular', sans-serif;
 }
@@ -17,8 +31,8 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 0 12.5rem;
-    background-color: #ffffff;
-    border-bottom: 0.0625rem solid #dfdfdf;
+    background-color: var(--gray-50);
+    border-bottom: 0.0625rem solid var(--gray-200);
 }
 
 #logo {
@@ -27,12 +41,12 @@ header {
 }
 
 .login {
-    display: flex;      
+    display: flex;
     text-decoration: none;
     align-items: center;
     justify-content: center;
-    background-color: #3692FF;
-    color: #FFFFFF;
+    background-color: var(--blue);
+    color: var(--gray-50);
     width: 8rem;
     height: 3rem;
     text-align: center;
@@ -63,7 +77,7 @@ header {
 }
 
 .home-top h1 {
-    color: #374151;
+    color: var(--gray-700);
 }
 
 .home-top-img {
@@ -72,7 +86,7 @@ header {
 }
 
 .sub {
-    color: #374151;
+    color: var(--gray-700);
 }
 
 .subtitle {
@@ -91,8 +105,8 @@ header {
 .home-top-button {
     display: block;
     text-decoration: none;
-    color: #F9FAFB;
-    background-color: #3692FF;
+    color: var(--gray-50);
+    background-color: var(--blue);
     height: 3.5rem;
     text-align: center;
     border-radius: 2.5rem;
@@ -103,7 +117,7 @@ header {
 }
 
 .badge {
-    color: #3692FF;
+    color: var(--blue);
     font-size: 1.125rem;
     font-weight: 700;
     margin-bottom: 0.75rem;
@@ -119,7 +133,7 @@ header {
 .home-first-all, .home-second-all, .home-third-all {
     display: flex;
     width: 60.25rem;
-    background-color: #FCFCFC;
+    background-color: var(--gray-50);
     align-items: center;
     margin: 0 auto;
     border-radius: 0.75rem;
@@ -132,7 +146,7 @@ header {
 .bottom-grayBox {
     width: 100%;
     height: 8.125rem;
-    background-color: #FCFCFC;
+    background-color: var(--gray-50);
 }
 
 .home-bottom {
@@ -154,7 +168,7 @@ header {
 }
 
 .home-bottom h1 {
-    color: #374151;
+    color: var(--gray-700);
     margin: 0;
 }
 
@@ -164,7 +178,7 @@ header {
 
 footer {
     height: 10rem;
-    background-color: #111827;
+    background-color: var(--gray-900);
     display: flex;
 }
 
@@ -177,14 +191,14 @@ footer {
 }
 
 .footer-first {
-    color: #9CA3AF;
+    color: var(--gray-400);
     font-size: 1rem;
     font-weight: 400;
 }
 
 .footer-second a {
     text-decoration: none;
-    color: #E5E7EB;
+    color: var(--gray-200);
     font-size: 1rem;
     font-weight: 400; 
 }
@@ -198,3 +212,4 @@ footer {
 .footer-third img {
     height: 1.25rem;
 }
+
