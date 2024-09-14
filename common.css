@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Pretendard, sans-serif;
+    word-break: keep-all;
+}
+
+main {
+    margin-top: 70px;
+}
+
+body {
+    background-color: #ffffff;
+}
