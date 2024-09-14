@@ -71,10 +71,11 @@
 .login_input .login_input_pw {
   position: relative;
 }
-.login_input .login_input_pw > img{
+.password_toggle{
   position: absolute;
   top: 16px;
   right: 24px;
+  border: none;
 }
 #login_button {
   display: block;
