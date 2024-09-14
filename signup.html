@@ -6,36 +6,42 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
 </head>
-<body>
+<body class="signup-body">
     <div class="container signup">
         <a href="/" class="logo signup">
             <img src="images/logo.png" alt="사이트 로고">
         </a>
         <form class="signup-form">
-            <label for="email">이메일</label>
-            <input type="email" class="email" name="email" placeholder="이메일을 입력해주세요" required>
-            <label for="nickname">닉네임</label>
-            <input type="text" class="nickname" name="nickname" placeholder="닉네임을 입력해주세요" required>
-            <label for="password">비밀번호</label>
-            <input type="password" class="password" name="password" placeholder="비밀번호를 입력해주세요" required>
-            <label for="confirm_password">비밀번호 확인</label>
-            <input type="password" class="confirm_password" name="confirm_password" placeholder="비밀번호를 다시 한 번 입력해주세요" required>
+            <div>
+                <label for="email">이메일</label>
+                <input type="email" class="email" name="email" placeholder="이메일을 입력해주세요" required>
+            </div>
+            <div>
+                <label for="nickname">닉네임</label>
+                <input type="text" class="nickname" name="nickname" placeholder="닉네임을 입력해주세요" required>
+            </div>
+            <div>
+                <label for="password">비밀번호</label>
+                <input type="password" class="password" name="password" placeholder="비밀번호를 입력해주세요" required>
+            </div>
+            <div>
+                <label for="confirm_password">비밀번호 확인</label>
+                <input type="password" class="confirm_password" name="confirm_password" placeholder="비밀번호를 다시 한 번 입력해주세요" required>
+            </div>
             <button type="button">회원가입</button>
         </form>
-        <div>
+        <div class="sosial-login">
             <p>간편 로그인하기</p>
             <div class="ic-login">
                 <a href="https://www.google.com/" target="_blank" rel="noopener noreferrer">
                     <img src="images/ic_google.svg" alt="구글 로고 - 구글 간편 로그인">
                 </a>
-            </div>
-            <div class="ic-login">
                 <a href="https://www.kakaocorp.com/page/" target="_blank" rel="noopener noreferrer">
                     <img src="images/ic_kakaotalk.svg" alt="카카오톡 로고 - 카카오 간편 로그인">
                 </a>
             </div>
         </div>
-        <div>
+        <div class="auth-toggle">
             <p>이미 회원이신가요?</p>
             <a href="/login.html">로그인</a>
         </div>
