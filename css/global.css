@@ -1,0 +1,10 @@
+body {
+  box-sizing: border-box;
+  font-family: Pretendard;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
