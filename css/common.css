@@ -1,3 +1,20 @@
+:root {
+  --gray900: #111827;
+  --gray800: #1f2937;
+  --gray700: #374151;
+  --gray600: #4b5563;
+  --gray500: #6b7280;
+  --gray400: #9ca3af;
+  /* --gray300: #e5e7eb; */
+  --gray200: #e5e7eb;
+  --gray100: #f3f4f6;
+  --gray50: #f9fafb;
+  --blue: #3692ff;
+}
+
+* {
+  box-sizing: border-box;
+}
 html {
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   font-size: 16px;
@@ -7,17 +24,40 @@ body {
   padding: 0;
   /* background-color: #FCFCFC; */
 }
-* {
-  box-sizing: border-box;
+a {
+  color: var(--blue);
+}
+
+/* layout */
+.container {
+  max-width: 1193px;
+  margin: 0 auto;
 }
 
 /* util */
+.bg-sky {
+  background-color: #CFE5FF;
+}
+.align-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text-center {
+  text-align: center;
+}
+.mr-auto {
+  margin-right: auto;
+}
+
+/* component */
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  color: #f3f4f6;
+  color: var(--gray100);
+  border: 0;
   border-radius: 8px;
-  background: #3692FF;
+  background: var(--blue);
   font-weight: 600;
   text-decoration: none;
   text-align: center;
@@ -27,6 +67,10 @@ body {
 .btn.rounded {
   border-radius: 9999px;
 }
+.btn.lg {
+  padding: 12px 24px;
+  font-size: 1.25rem;
+}
 .btn:hover {
   background-color: #1967D6;
 }
@@ -34,20 +78,27 @@ body {
   background-color: #1251AA;
 }
 .btn:visited {
-  background-color: #9CA3AF;
+  background-color: var(--gray400);
+}
+.btn:disabled {
+  background-color: var(--gray400);
+  pointer-events: none;
+}
+.btn-img {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+.btn-img img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  /* line-height: 1; */
 }
 
-.bg-sky {
-  background-color: #CFE5FF;
-}
-
-/* common */
-.container {
-  max-width: 1193px;
-  margin: 0 auto;
-}
-
-/* component */
+/* common component */
 #header {
   position: sticky;
   top: 0;
@@ -74,13 +125,13 @@ body {
 }
 
 #footer {
-  background-color: #111827;
+  background-color: var(--gray900);
 }
 #footer .container {
   display: flex;
   justify-content: space-between;
   padding: 32px 0 108px;
-  color: #9CA3AF;
+  color: var(--gray400);
 }
 #footer p {
   margin: 0;
@@ -93,7 +144,7 @@ body {
 }
 #footer a {
   display: block;
-  color: #9CA3AF;
+  color: var(--gray400);
   text-decoration: none;
 }
 #footer .links {
