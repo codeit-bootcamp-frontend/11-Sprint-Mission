@@ -10,3 +10,11 @@ a {
   color: inherit;
   cursor: pointer;
 }
+
+input {
+  border: none;
+}
+
+button {
+  border: none;
+}
