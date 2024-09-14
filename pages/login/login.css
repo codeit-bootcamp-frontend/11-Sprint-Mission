@@ -25,6 +25,9 @@
   color: #3692FF;
 }
 .main > section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   width: 100%;
 }
 .login_form {
@@ -69,4 +72,17 @@
   position: absolute;
   top: 16px;
   right: 24px;
+}
+#login_button {
+  display: block;
+  padding: 16px, 124px;
+  border-radius: 40px;
+  border-style: none;
+  background-color: #9CA3AF;
+ 
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  text-align: center;
+  color: #F3F4F6;
 }
