@@ -1,0 +1,19 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.main_logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22.4px;
+}
+.main_logo > a {
+  font-size: 66.34px;
+  font-weight: 700;
+  line-height: 89.56px;
+  text-align: left;
+  color: #3692FF;
+}
