@@ -3,78 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login | 판다마켓</title>
+<title>로그인 | 판다마켓</title>
 <!-- pretendard web-font: https://github.com/orioncactus/pretendard -->
-<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="stylesheet" href="style.css">
-<link rel="icon" href="favicon.png" type="image/png">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/login.css">
+<link rel="icon" href="/favicon.png" type="image/png">
 </head>
 
 <body>
-<div class="wrap">
-  <header id="header">
-    <div class="container header">
-      <h1 class="site-name">
-        <a href="/" class="root-link">
-          <img src="img/logo.png" alt="로고 이미지" class="logo">
-          <img src="img/site-name.png" alt="판다마켓">
-        </a>
-      </h1>
-      <a href="/login.html" class="btn">로그인</a>
-    </div>
-    <!-- /.container -->
-  </header>
+<div class="wrap align-center">
+  <div class="login">
+    <h1 class="logo"><a href="/"><img src="/img/login/logo.png" alt="판다마켓" width="396" height="132"></a></h1>
 
-  <section class="section">
-    <div class="container">
-      <h2>Login</h2>
-    </div>
-    <!-- /.container -->
-  </section>
-  <!-- /.section -->
+    <form id="form-login">
+      <label class="label" for="email">이메일</label>
+      <input id="email" class="input" type="email" placeholder="이메일을 입력해주세요" required>
+      <label class="label" for="pw">비밀번호</label>
+      <div class="input-wrap">
+        <input id="pw" class="input" type="password" placeholder="비밀번호를 입력해주세요" required>
+        <button class="btn-img btn-input" type="button">
+          <img src="/img/login/ico-ban-eye.png" alt="비밀번호 보기">
+        </button>
+      </div>
+      <button id="btn-login" class="btn lg rounded" disabled>로그인</button>
+    </form>
 
-  <div class="bottom-visual bg-sky">
-    <div class="container">
-      <h2 class="heading">믿을 수 있는<br>판다마켓 중고 거래</h2>
-    </div>
-    <!-- /.container -->
-  </div>
-  <!-- / bottom-visual -->
-
-  <footer id="footer">
-    <div class="container">
-      <p class="cr">&copy;codeit - 2024</p>
+    <div class="simple-login">
+      <span class="mr-auto">간편 로그인하기</span>
       <ul class="links">
-        <li><a href="privacy.html">Privacy Policy</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-      </ul>
-      <ul class="sns">
         <li>
-          <a href="https://www.facebook.com/" target="_blank">
-            <img src="img/ico-facebook.png" alt="FaceBook">
+          <a href="https://www.google.com/" target="_blank" rel="noopener noreferrer">
+            <img src="/img/login/btn-google.png" alt="구글" width="42" height="42">
           </a>
         </li>
         <li>
-          <a href="https://x.com/" target="_blank">
-            <img src="img/ico-twitter.png" alt="X">
-          </a>
-        </li>
-        <li>
-          <a href="https://youtube.com/" target="_blank">
-            <img src="img/ico-youtube.png" alt="Youtube">
-          </a>
-        </li>
-        <li>
-          <a href="https://www.instagram.com/" target="_blank">
-            <img src="img/ico-instagram.png" alt="Instagram">
+          <a href="https://www.kakaocorp.com/page/" target="_blank" rel="noopener noreferrer">
+            <img src="/img/login/btn-kakao.png" alt="카카오" width="42" height="42">
           </a>
         </li>
       </ul>
     </div>
-    <!-- /.container -->
-  </footer>
-  <!-- / footer -->
+    <!-- / simple-login -->
+
+    <p class="guide-signup">
+      판다마켓이 처음이신가요?
+      <a href="/signup.html">회원가입</a>
+    </p>
+  </div>
+  <!-- / login -->
 </div>
 <!-- / wrap -->
+
+<script src="/js/login.js"></script>
 </body>
 </html>
