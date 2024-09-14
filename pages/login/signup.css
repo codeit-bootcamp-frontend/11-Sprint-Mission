@@ -1,0 +1,27 @@
+.root_layout {
+  display: flex;
+  justify-content: center;
+}
+/* 메인 - 로고 */
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: 640px;
+}
+.main_logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22.4px;
+  padding-top: 0;
+  padding-bottom: 40px;
+}
+.main_logo > a {
+  font-size: 66.34px;
+  font-weight: 700;
+  line-height: 89.56px;
+  text-align: left;
+  color: #3692FF;
+}
