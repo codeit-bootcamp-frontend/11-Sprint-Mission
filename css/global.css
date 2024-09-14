@@ -17,4 +17,5 @@ input {
 
 button {
   border: none;
+  cursor: pointer;
 }
