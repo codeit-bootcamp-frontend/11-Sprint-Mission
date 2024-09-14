@@ -109,3 +109,21 @@
   display: flex;
   gap: 16px;
 }
+/* 로그인 연결 */
+.login_link{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  gap: 4px;
+}
+.login_link > p{
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  color: #1F2937;
+}
+.login_link > a{
+  text-decoration: underline;
+  color: #3692FF;
+}
