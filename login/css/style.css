@@ -81,8 +81,8 @@ body{
 .inputs {
   width: 640px;
   height: 56px;
-  border: 2px ;
-  border-radius: 12px solid #3782f6;
+  border: 2px solid var(--gray-100);
+  border-radius: 12px ;
   gap: 10px;
   background-color: var(--gray-100);
 }
@@ -110,8 +110,8 @@ body{
   border-radius: 40px;
   padding: 16px 124px;
   gap:10px;
-  background-color: var(--blue-100);
-
+  background-color: var(--gray-400);
+  /*background-color: var(--blue-100); 로그인 버튼이 회색이었다가 내용을 다 입력하면 파란색으로 바뀝니다. 이부분을 해결하지 못하였습니다.*/
   font-weight: 600; /*로그인이라는 글씨가 살짝 아래로 쳐져 있습니다.*/
   font-size: 20px;
   line-height: 32px;
@@ -129,6 +129,7 @@ body{
   align-items: center;
   gap:10px;
   background-color: var(--whiteblue);
+  font-weight: 500;
   font-size: 16px;
   line-height: 26px;
   color: var(--gray-800);
@@ -144,4 +145,8 @@ body{
   display: flex;
   justify-content: center;
   gap:4px; 
+}
+
+.buttonLog{
+  color:  var(--blue);
 }
