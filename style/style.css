@@ -410,7 +410,8 @@ label {
 
 .signup-main {
   width: 640px;
-  margin: 60px auto 0px;
+  padding-bottom: 60px;
+  margin: 60px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -445,6 +446,10 @@ label {
   color: var(--s100);
 }
 
+.signup-btn.active {
+  background-color: var(--p100);
+}
+
 .signup-simple-login-container {
   width: 100%;
   display: flex;
@@ -459,4 +464,19 @@ label {
 .signup-simple-login-img {
   width: 42px;
   height: 42px;
+}
+
+.go-login-container {
+  display: flex;
+  font-size: 0.875em;
+  font-weight: 500;
+  color: var(--s900);
+}
+
+.go-login {
+  margin-left: 4px;
+  color: var(--p100);
+  -webkit-text-decoration: underline solid var(--p100) 1.3px;
+          text-decoration: underline solid var(--p100) 1.3px;
+  text-underline-offset: 3px;
 }/*# sourceMappingURL=style.css.map */

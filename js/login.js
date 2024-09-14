@@ -2,23 +2,16 @@ let email = document.querySelector('#email');
 let password = document.querySelector('#password');
 let btn = document.querySelector('.login-btn');
 
-let emailcount = 0;
-let passwordcount = 0;
-
-function emailInput(e){
-  emailcount = e.target.value.length;
-  console.log(emailcount);
+function emailInput(){
   activeLoginBtn();
 }
 
-function passwordInput(e){
-  passwordcount = e.target.value.length;
-  console.log(passwordcount);
+function passwordInput(){
   activeLoginBtn();
 }
 
 function activeLoginBtn() {
-  if(emailcount > 0 && passwordcount > 0) {
+  if(email.value.length > 0 && password.value.length > 0) {
     // btn.setAttribute('class', 'active');
     btn.classList.add('active')
   }
@@ -27,7 +20,7 @@ function activeLoginBtn() {
 function loginSubmit(e) {
   e.preventDefault();
 
-  if(emailcount > 0 && passwordcount > 0) {
+  if(email.value.length > 0 && password.value.length > 0) {
     console.log('로그인 제출:', {
       email: email.value,
       password: password.value
@@ -42,8 +35,6 @@ function loginSubmit(e) {
 email.addEventListener('input', emailInput);
 password.addEventListener('input', passwordInput);
 btn.addEventListener('click', loginSubmit);
-
-
 
 // 비밀번호 visibility 설정 
 
