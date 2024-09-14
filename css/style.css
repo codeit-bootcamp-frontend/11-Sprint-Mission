@@ -5,6 +5,12 @@
   padding: 8px 400px;
   background-color: #FFFFFF;
   border-bottom: 1px solid #DFDFDF;
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  z-index: 1000;
+  box-sizing: border-box; 
 }
 
 .header > div {
