@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
 }
+/* 메인 - 로고 */
 .main {
   display: flex;
   flex-direction: column;
@@ -24,12 +25,14 @@
   text-align: left;
   color: #3692FF;
 }
+/* 메인 - 섹션 */
 .main > section {
   display: flex;
   flex-direction: column;
   gap: 24px;
   width: 100%;
 }
+/* 로그인폼 */
 .login_form {
   display: flex;
   flex-direction: column;
