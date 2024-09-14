@@ -6,23 +6,24 @@
     <title>판다마켓 로그인</title>
     <link rel="icon" href="/imges/logos/panda-face.png" type="image/png" />
     <link rel="stylesheet" href="/styles/shared.css" />
-    <link rel="stylesheet" href="/styles/login.css" />
+    <link rel="stylesheet" href="/styles/auth.css" />
   </head>
 
   <body>
-    <main class="login-container">
-      <img
-        id="login-logo"
-        src="/imges/logos/logo-big.png"
-        alt="판다마켓 로고"
-      />
-
-      <div class="login-content">
-        <form class="login-form" action="">
+    <main class="login-container auth-container">
+      <a href="/"
+        ><img
+          id="auth-logo"
+          src="/imges/logos/logo-big.png"
+          alt="판다마켓 로고"
+        />
+      </a>
+      <div class="auth-content">
+        <form class="auth-form" action="">
           <div class="input-wrapper">
-            <label class="login-label" for="email">이메일</label>
+            <label class="auth-label" for="email">이메일</label>
             <input
-              class="login-input"
+              class="auth-input"
               type="email"
               id="email"
               name="email"
@@ -31,10 +32,10 @@
           </div>
 
           <div class="input-wrapper">
-            <label class="login-label" for="password">비밀번호</label>
+            <label class="auth-label" for="password">비밀번호</label>
             <div class="password-input-wrapper">
               <input
-                class="login-input"
+                class="auth-input"
                 type="password"
                 id="password"
                 name="password"
@@ -48,7 +49,7 @@
             </div>
           </div>
 
-          <button class="login-btn">로그인</button>
+          <button class="auth-btn login-btn">로그인</button>
         </form>
 
         <div class="easy-login">
@@ -63,9 +64,9 @@
           </div>
         </div>
 
-        <p class="signup-prompt">
+        <p class="auth-prompt">
           판다마켓이 처음이신가요?
-          <a class="signup-link" href="/pages/signup.html">회원가입</a>
+          <a class="auth-link" href="/pages/signup.html">회원가입</a>
         </p>
       </div>
     </main>

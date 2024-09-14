@@ -3,26 +3,24 @@ html {
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  padding-top: 60px;
 }
 
-.login-container {
+.auth-container {
   display: flex;
   flex-direction: column;
   gap: 40px;
   text-align: center;
   width: 640px;
-  height: 618px;
-  justify-content: center;
 }
 
-.login-content {
+.auth-content {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.login-form {
+.auth-form {
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -35,38 +33,52 @@ html {
   gap: 16px;
 }
 
-.login-label {
+.auth-label {
   font-size: 18px;
   font-weight: 700;
   line-height: 26px;
   color: var(--gray-800);
 }
 
-.password-input-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.login-input {
+.auth-input {
   width: 100%;
+  font-family: "Pretendard Variable";
+  font-size: 16px;
   background-color: var(--gray-100);
   border: none;
   outline: white solid 2px;
   border-radius: 12px;
   padding: 16px 24px;
   line-height: 24px;
-  transition: outline 0.3s ease; /* 부드러운 전환 */
+  transition: outline 0.3s ease;
 }
 
-.login-input:focus {
+.auth-input:focus {
   outline: 2px solid #3692ff;
 }
 
-.login-input::placeholder {
+.auth-input::placeholder {
   font-size: 14px;
   font-weight: 400;
   color: var(--gray-400);
+}
+
+.auth-btn {
+  border: none;
+  border-radius: 40px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  padding: 16px 124px;
+  color: var(--gray-100);
+  background-color: var(--gray-400);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.auth-btn:hover {
+  background-color: var(--blue-500);
+  color: var(--white);
 }
 
 .show-password-toggle {
@@ -77,22 +89,10 @@ html {
   height: 24px;
 }
 
-.login-btn {
-  border: none;
-  border-radius: 40px;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 24px;
-  padding: 16px 124px;
-  color: var(--gray-100);
-  background-color: var(--gray-400);
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease; /* 색상 전환 추가 */
-}
-
-.login-btn:hover {
-  background-color: var(--blue-500); /* 원하는 색상으로 변경 */
-  color: var(--white); /* 텍스트 색상도 변경 */
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .easy-login {
@@ -119,18 +119,22 @@ html {
   gap: 16px;
 }
 
-.signup-prompt {
+.auth-prompt {
+  display: flex;
+  justify-content: center;
   font-size: 14px;
   font-weight: 500;
   line-height: 24px;
   color: var(--gray-800);
+  margin: 0;
+  gap: 4px;
 }
 
-.signup-link {
+.auth-link {
   color: var(--blue-500);
 }
 
-#login-logo {
+#auth-logo {
   width: 396px;
   height: 132px;
   margin: 0 auto;
