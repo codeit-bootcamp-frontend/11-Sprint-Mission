@@ -111,3 +111,21 @@
   display: flex;
   gap: 16px;
 }
+/* 회원가입 연결 */
+.signup_link{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  gap: 4px;
+}
+.signup_link > p{
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  color: #1F2937;
+}
+.signup_link > a{
+  text-decoration: underline;
+  color: #3692FF;
+}
