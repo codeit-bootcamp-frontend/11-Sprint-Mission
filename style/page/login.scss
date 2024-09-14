@@ -137,5 +137,7 @@ label {
 .go-signup {
   margin-left: 4px;
   color: var(--p100);
+  text-decoration: underline solid var(--p100) 1.3px;
+  text-underline-offset: 3px;
 }
 

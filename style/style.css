@@ -342,7 +342,7 @@ label {
 
 .btn-visibility {
   position: absolute;
-  top: 15px;
+  top: 13px;
   right: 24px;
   border: none;
   background-color: transparent;
@@ -403,4 +403,7 @@ label {
 .go-signup {
   margin-left: 4px;
   color: var(--p100);
+  -webkit-text-decoration: underline solid var(--p100) 1px;
+          text-decoration: underline solid var(--p100) 1px;
+  text-underline-offset: 1px;
 }/*# sourceMappingURL=style.css.map */

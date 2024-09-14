@@ -42,3 +42,24 @@ function loginSubmit(e) {
 email.addEventListener('input', emailInput);
 password.addEventListener('input', passwordInput);
 btn.addEventListener('click', loginSubmit);
+
+
+
+// 비밀번호 visibility 설정 
+
+let passwordBtn = document.querySelector('.btn-visibility');
+
+console.log(passwordBtn);
+
+function setPasswordVisibility(e) {
+  let img = passwordBtn.children[0].getAttribute('src'); 
+  if(img == 'img/btn_visibility_off.svg'){
+    passwordBtn.previousElementSibling.setAttribute('type', 'text');
+    passwordBtn.children[0].setAttribute('src', 'img/btn_visibility_on.svg')
+  } else {
+    passwordBtn.previousElementSibling.setAttribute('type', 'password');
+    passwordBtn.children[0].setAttribute('src', 'img/btn_visibility_off.svg')
+  }
+}
+
+passwordBtn.addEventListener('click', setPasswordVisibility);
