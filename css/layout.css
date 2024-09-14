@@ -1,9 +1,3 @@
-header,
-section,
-footer {
-  min-width: 1120px;
-}
-
 .inner {
   width: 1120px;
   height: 100%;
@@ -105,6 +99,51 @@ footer .inner .sns .instagram {
   background: url(../images/instagram_icon.svg) no-repeat center;
   background-size: 100%;
 }
+
+input {
+  border: 0;
+  border-radius: 12px;
+  background: var(--gray100);
+  height: 56px;
+  color: var(--gray800);
+  padding: 0 24px;
+}
+
+input::placeholder {
+  color: var(--gray400);
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid var(--blue);
+}
+
+.password {
+  position: relative;
+}
+
+.password input {
+  width: 100%;
+  padding-right: 56px;
+}
+
+.password .eye {
+  background: url(../images/login/eye_icon.svg) no-repeat;
+  background-size: 100%;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+}
+
+.password .eye.show {
+  background: url(../images/login/eye_show_icon.svg) no-repeat;
+  background-size: 100%;
+}
+
+
 
 
 
