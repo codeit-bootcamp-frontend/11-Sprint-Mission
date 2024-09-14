@@ -11,6 +11,41 @@
     --blue: #3692ff;
 }
 
+/* pc에 대한 스타일 */
+@media (min-width: 1200px){
+    header {
+        padding: 0 12.5em;
+    }
+}
+
+/* tablet에 대한 스타일 */
+@media (min-width: 768px) and (max-width: 1199px) {
+    header {
+        padding: 0 1.5em;
+    }
+    #first_section .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* mobile에 대한 스타일 */
+@media (min-width: 375px) and (max-width: 767px) {
+    header {
+        padding: 0 1em;
+    }
+    #first_section .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
 body {
     overflow-x: hidden;
 }
@@ -23,7 +58,6 @@ header {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0 12.5em;
     position: fixed;
 }   
 

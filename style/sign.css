@@ -21,6 +21,25 @@ body {
     --blue: #3692ff;
 }
 
+/* pc에 대한 스타일 */
+@media (min-width: 1200px){
+
+}
+
+/* tablet에 대한 스타일 */
+@media (min-width: 768px) and (max-width: 1199px) {
+
+}
+
+/* mobile에 대한 스타일 */
+@media (min-width: 375px) and (max-width: 767px) {
+    #login_home {
+        padding: 0 1em;
+        max-width: 400px;
+        box-sizing: border-box;
+    }
+}
+
 #login_home {
     margin-top: 1.25em;
     width: 40em;
