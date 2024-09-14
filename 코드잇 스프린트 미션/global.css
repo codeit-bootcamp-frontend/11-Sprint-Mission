@@ -1,0 +1,12 @@
+* { 
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Pretendard Variable", sans-serif;
+  color: #374151;
+}
+
+a {
+  text-decoration: none; 
+  color: inherit; /* 링크 색깔 없애기 */
+}
