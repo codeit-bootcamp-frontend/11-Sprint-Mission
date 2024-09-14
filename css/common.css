@@ -27,6 +27,9 @@ body {
 a {
   color: var(--blue);
 }
+a > img {
+  display: block;
+}
 
 /* layout */
 .container {
