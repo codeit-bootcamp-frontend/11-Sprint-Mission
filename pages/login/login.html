@@ -5,53 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
     <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"
     />
     <link href="./login.css" rel="stylesheet" />
     <link href="../../css/global.css" rel="stylesheet" />
   </head>
   <body>
-    <main class="main">
-      <div class="main_logo">
-        <img 
-        src="../../assets/images/panda_logo.png" 
-        alt="panda logo"
-        width="103.53"
-        height="103.53"
-        />
-        <a href="../../index.html">판다마켓</a>
-      </div>
-      <section>
-        <form class="login_form">
-          <div class="login_input">
-            <label>이메일</label>
-            <input 
-            type="email" 
-            id="email" 
-            name="email" 
-            placeholder="이메일을 입력해주세요" 
-            required />
-          </div>
-          <div class="login_input">
-            <label>비밀번호</label>
-            <div class="login_input login_input_pw">
-              <input 
-              type="password" 
-              id="pass" 
-              name="password" 
-              placeholder="비밀번호를 입력해주세요" 
-              required />
-              <img 
-              src="../../assets/icon/password_show.png" 
-              alt="password show icon"
-              width="20.47"
-              height="18.07"
+    <div class="root_layout">
+      <main class="main">
+        <div class="main_logo">
+          <img
+            src="../../assets/images/panda_logo.png"
+            alt="panda logo"
+            width="103.53"
+            height="103.53"
+          />
+          <a href="../../index.html">판다마켓</a>
+        </div>
+        <section>
+          <form class="login_form">
+            <div class="login_input">
+              <label>이메일</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="이메일을 입력해주세요"
+                required
               />
             </div>
-          </div>
-      </form>
-      </section>
-    </main>
+            <div class="login_input">
+              <label>비밀번호</label>
+              <div class="login_input login_input_pw">
+                <input
+                  type="password"
+                  id="pass"
+                  name="password"
+                  placeholder="비밀번호를 입력해주세요"
+                  required
+                />
+                <img
+                  src="../../assets/icon/password_show.png"
+                  alt="password show icon"
+                  width="20.47"
+                  height="18.07"
+                />
+              </div>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
   </body>
 </html>

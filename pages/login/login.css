@@ -1,9 +1,13 @@
+.root_layout {
+  display: flex;
+  justify-content: center;
+}
 .main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   height: 100vh;
+  width: 640px;
 }
 .main_logo {
   display: flex;
@@ -19,6 +23,9 @@
   line-height: 89.56px;
   text-align: left;
   color: #3692FF;
+}
+.main > section {
+  width: 100%;
 }
 .login_form {
   display: flex;
@@ -38,7 +45,6 @@
   color: #1F2937;
 }
 .login_input > input {
-  width: 640px;
   padding: 16px 24px;
   background-color:#F3F4F6;
   border-radius: 12px;
