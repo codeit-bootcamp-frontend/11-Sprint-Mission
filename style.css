@@ -213,7 +213,7 @@ footer {
 
 .container.login,
 .container.signup {
-    margin-top: 120px;
+    margin: 120px 0;
     width: 640px;
     display: flex;
     flex-direction: column;
@@ -279,12 +279,13 @@ footer {
     text-align: center;
     border: none;
     border-radius: 40px;
-    cursor: not-allowed;
+    pointer-events: none;
 }
 
-.login-form button:active,
-.signup-form button:active {
+.login-form button.active,
+.signup-form button.active {
     background-color: #3692FF;
+    pointer-events: auto;
     cursor: pointer;
 }
 
