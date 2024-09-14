@@ -8,7 +8,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
-    <link rel="stylesheet" href="./css/login.css" />
+    <link rel="stylesheet" href="./css/signup.css" />
   </head>
 
   <body>
@@ -23,8 +23,8 @@
       </header>
 
       <main class="main-container">
-        <section class="email-login-section">
-          <form class="email-login-section-form">
+        <section class="email-signup-section">
+          <form class="email-signup-section-form">
             <div class="form-group">
               <label class="font-label" for="email-input">이메일</label>
               <input
@@ -34,7 +34,15 @@
                 placeholder="이메일을 입력해주세요"
               />
             </div>
-
+            <div class="form-group">
+              <label class="font-label" for="nickname-input">닉네임</label>
+              <input
+                id="nickname-input"
+                type="email"
+                class="form-group-input"
+                placeholder="닉네임을 입력해주세요"
+              />
+            </div>
             <div class="form-group">
               <label for="password-input">비밀번호</label>
               <input
@@ -42,6 +50,15 @@
                 type="password"
                 class="form-group-input"
                 placeholder="비밀번호를 입력해주세요"
+              />
+            </div>
+            <div class="form-group">
+              <label for="password-confirm-input">비밀번호 확인</label>
+              <input
+                id="password-confirm-input"
+                type="password"
+                class="form-group-input"
+                placeholder="비밀번호를 다시 한 번 입력해주세요"
               />
             </div>
 
@@ -63,9 +80,9 @@
         </seciton>
       </main>
       <footer class="footer-container">
-        <div class="footer-signup-prompt">
-          판다마켓이 처음이신가요?
-          <a class="footer-signup-link" href="/signup.html">회원가입</a>
+        <div class="footer-login-prompt">
+          이미 회원이신가요?
+          <a class="footer-login-link" href="/login.html">로그인</a>
         </div>
       </footer>
     </div>

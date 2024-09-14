@@ -1,0 +1,116 @@
+:root {
+  --gray-900: #111827;
+  --gray-800: #1f2937;
+  --gray-700: #374151;
+  --gray-600: #4b5563;
+  --gray-500: #6b7280;
+  --gray-400: #9ca3af;
+  --gray-200: #c9cdd2;
+  --gray-100: #e5e7eb;
+  --gray-50: #f9fafb;
+
+  --blue: #3692ff;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  font-family: "Pretendard", sans-serif;
+}
+.container {
+  width: 640px;
+  height: 618px;
+  margin: auto;
+
+  gap: 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 132px;
+  width: 396px;
+}
+.main-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.email-login-section {
+  height: 300px;
+  width: 640px;
+}
+.email-login-section-form {
+  display: flex;
+  height: 300px;
+  flex-direction: column;
+  gap: 24px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  height: 98px;
+  gap: 16px;
+}
+.form-group-input {
+  height: 56px;
+  padding: 16px 24px 16px 24px;
+  border: none;
+  background: #f3f4f6;
+  border-radius: 12px;
+}
+.font-label {
+  font-size: 18px;
+  font-weight: bold;
+}
+.form-group-input:focus {
+  border: 1px solid var(--blue);
+  outline: none; /* 기본 포커스 outline 제거 */
+}
+.btn-login {
+  width: 640px;
+  height: 56px;
+  padding: 16px 124px 16px 124px;
+  background-color: var(--gray-400);
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+}
+
+.social-login-section {
+  height: 74px;
+  width: 640px;
+  padding: 16px 23px 16px 23px;
+  background-color: #e6f2ff;
+}
+.social-login-container {
+  display: flex;
+  justify-content: space-between;
+  height: 42px;
+  align-items: center;
+}
+
+.social-login-options {
+  width: 100px;
+  height: 42px;
+  display: flex;
+  gap: 16px;
+}
+.footer-signup-link {
+  color: var(--blue);
+}
