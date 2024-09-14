@@ -335,6 +335,19 @@ label {
   outline: 2px solid var(--p100); /* 명시적으로 outline 스타일 설정 */
 }
 
+.password-container {
+  display: flex;
+  position: relative;
+}
+
+.btn-visibility {
+  position: absolute;
+  top: 15px;
+  right: 24px;
+  border: none;
+  background-color: transparent;
+}
+
 .login-btn {
   width: 100%;
   padding: 16px 0;
