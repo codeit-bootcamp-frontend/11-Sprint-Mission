@@ -9,7 +9,6 @@ body {
 
 form {
   width: 640px;
-  gap: 24px;
 }
 
 input {
@@ -25,7 +24,7 @@ label {
   line-height: 26px;
 }
 
-#email, #password {
+#email, #nickname, #password, #passwordCheck {
   border-radius: 12px;
   padding: 16px 24px;
   margin: 0 0 24px;
@@ -34,11 +33,7 @@ label {
   font-weight: 400;
 }
 
-input::placeholder {
-color: #9CA3AF;
-}
-
-#email, #password, button {
+#email, #nickname, #password, #passwordCheck, button {
   width: 640px;
   height: 56px;
   outline: none;
@@ -53,12 +48,19 @@ input:focus {
   outline: none;
 }
 
+input::placeholder {
+  color: #9CA3AF;
+}
+
 button {
-  border-radius: 40px;
+  display: block;
+  margin-bottom: 16px;
   background-color: #9CA3AF;
+  border-radius: 40px;
   color: #F3F4F6;
   font-size: 20px;
   font-weight: 600;
+  line-height: 24px;
 }
 
 button:hover {
@@ -66,7 +68,7 @@ button:hover {
   cursor: pointer;
 }
 
-#simple-login {
+.simple-login {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -83,14 +85,14 @@ button:hover {
   gap: 16px;
 }
 
-.signup-box {
+.login-box {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 4px;
 }
 
-.signup-box a {
+.login-box a {
   text-decoration: underline;
   color: #3692FF;
 }
