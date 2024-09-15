@@ -1,8 +1,14 @@
 /* header */
+header {
+  position: sticky; 
+  top: 0;
+  z-index: 1;
+}
 
 .nav-wrapper {
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: #FFFFFF;
   border-bottom: 1px solid #DFDFDF;
 }

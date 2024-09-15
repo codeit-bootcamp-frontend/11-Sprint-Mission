@@ -8,5 +8,5 @@
 
 a {
   text-decoration: none; 
-  color: inherit; /* 링크 색깔 없애기 */
+  color: inherit; /* 누른 링크 색깔 없애기 */
 }
