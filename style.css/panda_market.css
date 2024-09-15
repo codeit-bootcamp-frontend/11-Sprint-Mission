@@ -11,7 +11,7 @@ header {
   background-color: white;
   background-size: cover;
   height: 70px;
-  border-bottom: 1px solid var(--gray-border);
+  border-bottom: 1px solid var(--light-gray);
   padding: 9px 400px;
 }
 
@@ -32,11 +32,11 @@ header {
   line-height: 35px;
 }
 
-button:hover {
+.button:hover {
   background-color: #2877d4;
 }
 
-button {
+.button {
   background-color: var(--primary);
 }
 
@@ -57,7 +57,7 @@ button {
 }
 
 .home {
-  background-color: var(--primary-home);
+  background-color: var(--cyan-blue);
   height: 540px;
   width: 100%;
   background-size: cover;

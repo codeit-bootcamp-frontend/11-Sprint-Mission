@@ -5,10 +5,10 @@
 
 * {
   --primary: #3692ff;
-  --primary-home: #cfe5ff;
+  --cyan-blue: #cfe5ff;
   --white: #ffffff;
   --gray-400: #9ca3af;
-  --gray-border: #dfdfdf;
+  --light-gray: #dfdfdf;
   --gray-200: #e5e7eb;
   --gray-100: #f3f4f6;
   --gray-50: #f9fafb;
@@ -38,7 +38,7 @@
   align-items: center;
 }
 
-button {
+.button {
   border: none;
   cursor: pointer;
   display: flex;
