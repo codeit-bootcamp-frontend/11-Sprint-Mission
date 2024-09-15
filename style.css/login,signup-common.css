@@ -1,6 +1,6 @@
 * {
   --gray-800: #1f2937;
-  --sky: #e6f2ff;
+  --Alice-Blue: #e6f2ff;
 }
 
 body {
@@ -97,7 +97,7 @@ input:focus {
   height: 74px;
   border-radius: 8px;
   padding: 16px 23px;
-  background-color: var(--sky);
+  background-color: var(--Alice-Blue);
   align-items: center;
 }
 
