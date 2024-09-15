@@ -34,6 +34,20 @@ label {
   font-weight: 400;
 }
 
+.password-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.eye-close {
+  position: absolute;
+  top:16px;
+  right: 16px;
+  cursor: pointer;
+}
+
 input::placeholder {
 color: #9CA3AF;
 }
