@@ -77,7 +77,7 @@ header {
   gap: 7px;
 }
 
-.top-text {
+.top-content {
   padding-bottom: 60px;
   gap: 32px;
   display: flex;
@@ -173,7 +173,7 @@ h3 {
   gap: 69px;
 }
 
-.bottom-text {
+.bottom-content {
   gap: 10px;
 }
 
