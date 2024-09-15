@@ -1,0 +1,92 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 231px 640px;
+  gap: 40px;
+}
+
+form {
+  width: 640px;
+  gap: 24px;
+}
+
+label {
+  display: block;
+  margin-bottom: 16px;
+  color: #1F2937; 
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+}
+
+#email, #password {
+  border-radius: 12px;
+  padding: 16px 24px;
+  margin: 0 0 24px;
+  background-color: #F3F4F6;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+input::placeholder {
+color: #9CA3AF;
+}
+
+#email, #password, button {
+  width: 640px;
+  height: 56px;
+  outline: none;
+}
+
+input, button {
+  border: none;
+}
+
+input:focus {
+  border: 2px solid #3692FF;
+  outline: none;
+}
+
+button {
+  border-radius: 40px;
+  background-color: #9CA3AF;
+  color: #F3F4F6;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+button:hover {
+  background-color: #3692FF;
+  cursor: pointer;
+}
+
+#simple-login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 24px 0 24px;
+  padding: 16px 23px;
+  background-color: #E6F2FF;
+  border-radius: 8px;
+  color: #1F2937;
+}
+
+.social-icon {
+  display: flex;
+  gap: 16px;
+}
+
+.signup-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.signup-box a {
+  text-decoration: underline;
+  color: #3692FF;
+}
