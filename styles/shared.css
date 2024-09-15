@@ -2,7 +2,7 @@
 
 :root {
   --blue-500: #3692ff;
-  --blue-300: #E6F2FF;
+  --blue-300: #e6f2ff;
   --blue-100: #cfe5ff;
   --gray-900: #111827;
   --gray-800: #1f2937;
@@ -24,5 +24,4 @@
 
 body {
   font-family: "Pretendard Variable";
-  margin: 0;
 }
