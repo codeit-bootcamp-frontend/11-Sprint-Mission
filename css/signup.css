@@ -82,7 +82,7 @@ body {
   border: 1px solid var(--blue);
   outline: none; /* 기본 포커스 outline 제거 */
 }
-.btn-login {
+.button-login {
   width: 640px;
   height: 56px;
   padding: 16px 124px 16px 124px;
