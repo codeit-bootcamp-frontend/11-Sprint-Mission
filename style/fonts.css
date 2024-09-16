@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "ROKAF Sans";
+  src: url("/font/ROKAF_Sans_Medium.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ROKAF Sans";
+  src: url("/font/ROKAF_Sans_Bold.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/font/Pretendard-SemiBold.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/font/Pretendard-Bold.otf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/font/Pretendard-Medium.otf");
+  font-weight: Medium;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/font/Pretendard-Regular.otf");
+  font-weight: right;
+  font-style: normal;
+}

@@ -1,0 +1,198 @@
+/* 상단 바 */
+.nav_wrapper {
+  position: fixed;
+  height: 70px;
+  width: 100%;
+  z-index: 100;
+  background-color: #fff;
+}
+
+.nav_bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1120px;
+  height: 70px;
+}
+
+@media (max-width: 1919px) {
+  .nav_bar {
+    margin: 0 200px;
+  }
+}
+
+.nav_logobox {
+  display: flex;
+  align-items: center;
+}
+
+.nav_title {
+  font-size: 50px;
+  font-family: "ROKAF Sans";
+  font-weight: bold;
+  font-size: 1.625rem;
+  color: #3691ff;
+  margin-left: 10px;
+}
+
+.nav_loginbtn {
+  padding: 16px 40px;
+  font-size: 1rem;
+  font-family: "Pretendard";
+  border-radius: 8px;
+  border: none;
+  color: white;
+  background-color: #3691ff;
+  cursor: pointer;
+}
+
+/* 배너부분 */
+.main_wrapper {
+  padding-top: 70px;
+}
+
+.main_banner {
+  height: 540px;
+  background-color: #cfe5ff;
+  position: relative;
+}
+
+.banner_box {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 0;
+}
+
+.banner_title_box {
+  font-family: "Pretendard";
+}
+
+.banner_title {
+  color: #374151;
+  font-weight: bold;
+  font-size: 2.5rem;
+  margin: 50px 0 40px 0;
+  line-height: 1.2;
+}
+
+.banner_btn {
+  padding: 18px 125px;
+  border: none;
+  font-size: 1.25rem;
+  color: white;
+  background-color: #3691ff;
+  white-space: nowrap;
+  border-radius: 2.5rem;
+  cursor: pointer;
+}
+
+/* 홈페이지 섹션 부분 */
+.main_section {
+  display: flex;
+  flex-direction: column;
+  font-family: "Pretendard";
+  margin-bottom: 130px;
+}
+
+.main_section > div {
+  height: 720px;
+}
+
+.main_section span,
+.main_section h2 {
+  font-weight: bold;
+}
+.main_section span {
+  font-size: 1.125rem;
+  color: #3692ff;
+}
+.main_section h2 {
+  font-size: 2.5rem;
+  line-height: 1.4;
+  margin: 30px 0 40px 0;
+}
+
+.main_section p {
+  font-weight: Medium;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.hotitem_section,
+.search_section,
+.register_section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 130px 0;
+}
+
+.hotitem_box,
+.search_box,
+.register_box {
+  display: flex;
+  background-color: #fcfcfc;
+}
+
+.hotitem_textbox,
+.search_textbox,
+.register_textbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 60px 0 50px;
+}
+
+.search_textbox h2,
+.search_textbox span,
+.search_textbox p {
+  text-align: right;
+}
+
+.bottom_section {
+  height: 540px;
+  background-color: #cfe5ff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.bottom_box {
+  font-family: "Pretendard";
+  font-weight: bold;
+  font-size: 2.5rem;
+  display: flex;
+  height: 397px;
+}
+
+.bottom_textbox {
+  display: flex;
+  align-items: center;
+  line-height: 1.4;
+}
+
+/* 푸터부분 */
+
+.main_footer {
+  height: 160px;
+  background-color: #111827;
+  display: flex;
+  padding: 30px 400px 0px;
+  justify-content: space-between;
+  font-family: "Pretendard";
+  font-weight: right;
+  font-size: 1rem;
+}
+.footer_copy {
+  color: #9ca3af;
+}
+.footer_links {
+  color: #e5e7eb;
+}
+.footer_social {
+  display: flex;
+  gap: 10px;
+}
