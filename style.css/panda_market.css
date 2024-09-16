@@ -77,11 +77,6 @@ footer {
   cursor: pointer;
 }
 
-.home,
-.image-right {
-  align-items: flex-end;
-}
-
 .home {
   background-color: var(--cyan-blue);
   height: 540px;
@@ -164,6 +159,11 @@ section {
 .image-right {
   padding-right: 24px;
   gap: 12px;
+}
+
+.home,
+.image-right {
+  align-items: flex-end;
 }
 
 .image-right {
