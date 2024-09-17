@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="사용자 등록을 위한 페이지입니다." />
+    <meta name="keywords" content="회원가입, 로그인, 마켓, 이메일" />
+    <meta property="og:title" content="회원가입 페이지" />
+    <meta
+      property="og:description"
+      content="이메일과 비밀번호로 회원가입을 하세요."
+    />
+    <meta property="og:image" content="./image/social-share-image.png" />
+    <meta property="og:url" content="https://example.com/signup" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+
+    <title>회원가입</title>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/signup.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="header-container">
+        <div class="market-logo" alt="marketLogo">
+          <a href="../index.html"
+            ><img src="../image/market-logo.png" alt="마켓로고"
+          /></a>
+        </div>
+        <div clss="market-font">
+          <a href="../index.html"
+            ><img src="../image/market-font.png" alt="판다마켓"
+          /></a>
+        </div>
+      </header>
+
+      <main class="main-container">
+        <section class="email-signup-section">
+          <form class="email-signup-section-form">
+            <div class="form-group">
+              <label class="font-label" for="email-input">이메일</label>
+              <input
+                id="email-input"
+                type="email"
+                class="form-group-input"
+                placeholder="이메일을 입력해주세요"
+              />
+            </div>
+            <div class="form-group">
+              <label class="font-label" for="nickname-input">닉네임</label>
+              <input
+                id="nickname-input"
+                type="text"
+                class="form-group-input"
+                placeholder="닉네임을 입력해주세요"
+              />
+            </div>
+            <div class="form-group">
+              <label for="password-input">비밀번호</label>
+              <input
+                id="password-input"
+                type="password"
+                class="form-group-input"
+                placeholder="비밀번호를 입력해주세요"
+              />
+            </div>
+            <div class="form-group">
+              <label for="password-confirm-input">비밀번호 확인</label>
+              <input
+                id="password-confirm-input"
+                type="password"
+                class="form-group-input"
+                placeholder="비밀번호를 다시 한 번 입력해주세요"
+              />
+            </div>
+
+            <button class="button-login" type="submit">로그인</button>
+          </form>
+        </section>
+
+        <seciton class="social-login-section">
+          <div class="social-login-container">
+            <div class="social-login-title">간편 로그인하기</div>
+            <div class="social-login-options">
+              <a href="https://www.google.com/"
+                ><img src="../image/google-logo.png" alt="구글 로고" /></a
+              ><a href="https://www.kakaocorp.com/page/"
+                ><img src="../image/kakao-logo.png" alt="카카오톡 로고"
+              /></a>
+            </div>
+          </div>
+        </seciton>
+      </main>
+      <footer class="footer-container">
+        <div class="footer-login-prompt">
+          이미 회원이신가요?
+          <a class="footer-login-link" href="./login.html">로그인</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+:root {
+  /* Gray Scale */
+  --gray-900: #111827;
+  --gray-800: #1f2937;
+  --gray-700: #374151;
+  --gray-600: #4b5563;
+  --gray-500: #6b7280;
+  --gray-400: #9ca3af;
+  --gray-200: #c9cdd2;
+  --gray-100: #f3f4f6;
+  --gray-50: #f9fafb;
+
+  /* Additional Colors */
+  --gray-border: #e5e7eb;
+
+  /* Blue Scale */
+  --blue-primary: #3692ff;
+}
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+body {
+  word-break: keep-all;
+  font-family: "Pretendard", sans-serif;
+  overflow-x: hidden;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+svg {
+  cursor: pointer;
+}
+
+h2 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+  letter-spacing: 0.02em;
+}
