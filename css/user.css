@@ -1,0 +1,115 @@
+.user-wrapper {
+  max-width: 640px;
+  max-height: 618px;
+  margin: 231px auto;
+}
+
+.user-signup-wrapper {
+  max-width: 640px;
+  max-height: 842px;
+  margin: 60px auto 178px;
+}
+
+.user-header {
+  display: flex;
+  justify-content: center;
+  padding: 0 112px 40px;
+}
+
+.user-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-field {
+  padding-bottom: 24px;
+}
+
+.user-label {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  padding-bottom: 16px;
+}
+
+.user-input-group {
+  position: relative;
+  display: inline-block;
+}
+
+.user-input {
+  padding: 16px 0;
+  font-size: 16px;
+  border-radius: 12px;
+  background-color: var(--gray-100);
+  text-indent: 24px;
+  border: none;
+}
+
+.user-input:focus {
+  outline-color: var(--Primary-100);
+}
+
+.user-input::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--gray-400);
+}
+
+.input-icon {
+  background-image: url("../images/icon/icon_eyes_close.png");
+}
+
+.user-btn {
+  padding: 16px 0px;
+  border-radius: 40px;
+  font-size: 20px;
+  line-height: 32px;
+  gap: 10px;
+  background-color: var(--gray-400);
+}
+
+.user-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 74px;
+  border-radius: 8px;
+  padding: 16px 23px 16px 23px;
+  margin: 24px 0 24px;
+  background-color: #e6f2ff;
+}
+
+.user-box a:visited {
+  color: var(--gray-800);
+}
+
+.user-gopage {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  color: var(--gray-800);
+}
+
+.user-snsbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.user-snsbox img {
+  width: 42px;
+  height: 42px;
+}
+
+.user-register {
+  margin: 0 auto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--gray-800);
+}
