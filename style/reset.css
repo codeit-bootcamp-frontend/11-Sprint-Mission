@@ -127,3 +127,6 @@ a {
   color: inherit;
   font-size: inherit;
 }
+* {
+  box-sizing: border-box;
+}
