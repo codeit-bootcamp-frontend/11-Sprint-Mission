@@ -2,7 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  padding-top: 50px;
+  margin-bottom: 50px;
 }
 
 .auth_container {
@@ -11,7 +13,16 @@
   flex-direction: column;
   align-items: center;
 }
+@media (max-width: 767px) {
+  .auth_wrapper {
+    padding: 0 15px;
+  }
+  .auth_container {
+    max-width: 365px;
+  }
+}
 
+/* 타이틀 부분 */
 .auth_titlegroup {
   display: flex;
   align-items: center;
@@ -25,13 +36,26 @@
   font-size: 4.125rem;
 }
 
+@media (max-width: 767px) {
+  .auth_titlegroup img {
+    width: 50px;
+    height: 50px;
+  }
+  .auth_title {
+    margin-left: 12px;
+    font-size: 2rem;
+  }
+}
+
+/* 작성 폼 부분 */
 .auth_form {
+  width: 100%;
   font-family: "Pretendard";
   margin-top: 25px;
 }
 
 .form_group {
-  width: 640px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   color: var(--gray800);
@@ -59,6 +83,11 @@
 }
 .form_group input:focus {
   outline: 2px solid var(--blue);
+}
+
+.form_group img {
+  width: 24px;
+  height: 24px;
 }
 
 .password_wrapper {
@@ -125,4 +154,16 @@
 .auth_options a {
   color: var(--blue);
   text-decoration: underline;
+}
+@media (max-width: 767px) {
+  .form_group {
+    margin-top: 15px;
+  }
+  .form_group label {
+    font-size: 0.875rem;
+    margin-bottom: 13px;
+  }
+  .form_btn {
+    margin: 15px 0 25px 0;
+  }
 }
