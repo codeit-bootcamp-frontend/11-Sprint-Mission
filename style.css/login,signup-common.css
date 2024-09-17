@@ -41,7 +41,7 @@ body,
 .join-main,
 .join,
 form,
-.simple-login,
+.login-content,
 .to-us {
   display: flex;
   font-family: "pretendard Variable", "Noto Sans Korean";
@@ -105,7 +105,7 @@ input:focus {
 .sns,
 .sns-icon,
 .sky-login,
-.simple-login {
+.login-content {
   display: flex;
   align-items: center;
 }
@@ -117,12 +117,12 @@ input:focus {
   background-color: var(--Alice-Blue);
 }
 
-.simple-login,
+.login-content,
 .to-us {
   font-weight: 500;
 }
 
-.simple-login {
+.login-content {
   width: 594px;
   justify-content: space-between;
   font-size: 16px;
