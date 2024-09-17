@@ -80,6 +80,7 @@ footer {
 .home {
   background-color: var(--cyan-blue);
   height: 540px;
+  align-items: flex-end;
 }
 
 .top,
@@ -94,19 +95,15 @@ footer {
 }
 
 .top-content,
-.image-left,
-.image-right,
-.text-right,
-.text-left {
+.section-image,
+.section-text {
   display: flex;
   align-items: flex-start;
 }
 
 .top-content,
-.image-left,
-.image-right,
-.text-right,
-.text-left {
+.section-image,
+.section-text {
   flex-direction: column;
 }
 
@@ -118,9 +115,8 @@ footer {
 h2,
 span,
 h3,
-.text-right > div,
-.text-left > div,
-.copyright,
+.section-text > div,
+.auth__copyright,
 .auth__info {
   font-family: "Pretendard Variable", "Noto Sans Korean";
 }
@@ -155,19 +151,9 @@ section {
   background-color: var(--gray-10);
 }
 
-.image-left,
-.image-right {
+.section-image {
   padding-right: 24px;
   gap: 12px;
-}
-
-.home,
-.image-right {
-  align-items: flex-end;
-}
-
-.image-right {
-  padding-left: 24px;
 }
 
 span {
@@ -175,25 +161,27 @@ span {
   color: var(--primary);
 }
 
-.text-right,
-.text-left {
+.section-text {
   gap: 24px;
 }
 
-.text-left > h3,
-.text-left > div {
+.section.reverse {
+  justify-content: flex-end;
+}
+
+.section-image.reverse,
+.section-text.reverse {
   text-align: right;
+  align-items: flex-end;
 }
 
 h3,
-.text-right > div,
-.text-left > div {
+.section-text > div {
   color: var(--black-700);
   white-space: nowrap;
 }
 
-.text-right > div,
-.text-left > div {
+.section-text > div {
   font-size: 24px;
   font-weight: 500;
   line-height: 32px;
