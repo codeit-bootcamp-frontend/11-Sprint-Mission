@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>판다마켓 로그인</title>
+    <title>판다마켓 회원가입</title>
     <link rel="icon" href="/images/logos/panda-face.png" type="image/png" />
     <link rel="stylesheet" href="styles/reset.css" />
     <link rel="stylesheet" href="/styles/shared.css" />
@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <main class="login-container auth-container">
+    <main class="auth-container">
       <a href="/"
         ><img
           id="auth-logo"
@@ -33,6 +33,17 @@
           </div>
 
           <div class="input-wrapper">
+            <label class="auth-label" for="nickname">닉네임</label>
+            <input
+              class="auth-input"
+              type="text"
+              id="nickname"
+              name="nickname"
+              placeholder="닉네임을 입력해주세요"
+            />
+          </div>
+
+          <div class="input-wrapper">
             <label class="auth-label" for="password">비밀번호</label>
             <div class="password-input-wrapper">
               <input
@@ -50,7 +61,27 @@
             </div>
           </div>
 
-          <button class="auth-btn login-btn">로그인</button>
+          <div class="input-wrapper">
+            <label class="auth-label" for="password-confirm"
+              >비밀번호 확인</label
+            >
+            <div class="password-input-wrapper">
+              <input
+                class="auth-input"
+                type="password"
+                id="password-confirm"
+                name="password-confirm"
+                placeholder="비밀번호를 다시 한 번 입력해주세요"
+              />
+              <img
+                src="/images/icons/password-toggle.png"
+                alt="비밀번호 보기"
+                class="show-password-toggle"
+              />
+            </div>
+          </div>
+
+          <button class="auth-btn signup-btn">회원가입</button>
         </form>
 
         <div class="easy-login">
@@ -66,8 +97,8 @@
         </div>
 
         <p class="auth-prompt">
-          판다마켓이 처음이신가요?
-          <a class="auth-link" href="/pages/signup.html">회원가입</a>
+          이미 회원이신가요?
+          <a class="auth-link" href="/pages/login.html">로그인</a>
         </p>
       </div>
     </main>
