@@ -1,0 +1,105 @@
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --gray900: #111827;
+  --gray800: #1f2937;
+  --gray700: #374151;
+  --gray600: #4b5563;
+  --gray500: #6b7280;
+  --gray400: #9ca3af;
+  --gray200: #e5e7eb;
+  --gray100: #f3f4f6;
+  --gray50: #f9fafb;
+  --blue: #3692ff;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Pretendard-Regular", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 160px;
+  gap: 10px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  gap: 18px;
+}
+
+input:focus {
+  outline-color: var(--blue);
+}
+
+input::placeholder {
+  opacity: 0.7;
+}
+
+.thickText {
+  font-weight: 600;
+}
+
+.myInput {
+  width: 530px;
+  height: 45px;
+  background-color: var(--gray100);
+  border: 0 solid black;
+  border-radius: 8px;
+  padding-left: 20px;
+  padding-right: 40px;
+}
+
+.inputPW {
+  display: flex;
+  align-items: center;
+}
+
+.visiblePW {
+  position: relative;
+  right: 40px;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 530px;
+  height: 50px;
+  background: var(--blue);
+  color: #ffffff;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+
+.easyLogin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 530px;
+  height: 60px;
+  background: #e6f2ff;
+  padding: 0 20px;
+  border-radius: 8px;
+}
+
+.loginIcon {
+  height: 36px;
+}
+
+.signup {
+  text-align: center;
+  font-size: 14px;
+}
