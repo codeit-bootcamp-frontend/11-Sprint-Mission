@@ -301,6 +301,13 @@
   .main_section p {
     font-size: 1rem;
   }
+  .bottom_section {
+    height: 540px;
+  }
+  .bottom_textbox h2 {
+    font-size: 2rem;
+    margin-top: 100px;
+  }
 }
 
 /* 푸터부분 */
