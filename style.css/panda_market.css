@@ -16,7 +16,7 @@ header {
 header,
 .home,
 section,
-.footer {
+.footer-auth {
   width: 100%;
   background-size: auto;
 }
@@ -58,8 +58,8 @@ footer {
 }
 
 .small-button,
-.copyright,
-.info {
+.auth__copyright,
+.auth__info {
   font-size: 16px;
 }
 
@@ -84,7 +84,7 @@ footer {
 
 .top,
 .bottom,
-.footer {
+.footer-auth {
   display: flex;
   justify-content: space-between;
 }
@@ -121,7 +121,7 @@ h3,
 .text-right > div,
 .text-left > div,
 .copyright,
-.info {
+.auth__info {
   font-family: "Pretendard Variable", "Noto Sans Korean";
 }
 
@@ -209,29 +209,29 @@ footer {
   background-color: var(--black-900);
 }
 
-.copyright,
-.info {
+.auth__copyright,
+.auth__info {
   font-weight: 400;
   line-height: 19.09px;
   text-align: center;
 }
 
-.copyright {
+.auth__copyright {
   color: var(--gray-400);
 }
 
-.info {
+.auth__info {
   display: flex;
   gap: 30px;
 }
 
-.privacy,
-.faq {
+.auth__privacy,
+.auth__faq {
   text-decoration: none;
   color: var(--gray-200);
 }
 
-.sns {
+.auth__sns {
   width: 116px;
   gap: 12px;
 }
