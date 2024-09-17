@@ -115,7 +115,7 @@ footer {
 h2,
 span,
 h3,
-.section-text > div,
+.section-image > div,
 .auth__copyright,
 .auth__info {
   font-family: "Pretendard Variable", "Noto Sans Korean";
@@ -176,12 +176,12 @@ span {
 }
 
 h3,
-.section-text > div {
+.section-image > div {
   color: var(--black-700);
   white-space: nowrap;
 }
 
-.section-text > div {
+.section-image > div {
   font-size: 24px;
   font-weight: 500;
   line-height: 32px;
