@@ -4,11 +4,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>판다마켓 : 회원가입</title>
+  <link rel="stylesheet" href="/style/style.css">
 </head>
 
 <body>
-
+  <div class="auth_wrapper">
+    <div class="auth_container">
+      <div class="auth_titlegroup">
+        <a href="/"><img src="/img/auth_logo.png" alt=""></a>
+        <a href="/" class="auth_title">
+          <h1>판다마켓</h1>
+        </a>
+      </div>
+      <form action="" class="auth_form">
+        <div class="form_group">
+          <label for="email">이메일</label>
+          <input type="text" id="email" placeholder="이메일을 입력해주세요">
+        </div>
+        <div class="form_group">
+          <label for="nickname">닉네임</label>
+          <input type="text" id="nickname" placeholder="닉네임을 입력해주세요">
+        </div>
+        <div class="form_group">
+          <label for="password">비밀번호</label>
+          <div class="password_wrapper">
+            <input type="password" id="password" placeholder="비밀번호를 입력해주세요">
+            <img src="/img/ic_password0.svg" class="password_toggle" alt="">
+          </div>
+        </div>
+        <div class="form_group">
+          <label for="passwordConfirm">비밀번호 확인</label>
+          <div class="password_wrapper">
+            <input type="password" id="passwordConfirm" placeholder="비밀번호를 다시 한 번 입력해주세요">
+            <img src="/img/ic_password0.svg" class="password_toggle" alt="">
+          </div>
+        </div>
+        <button class="form_btn" disabled>회원가입</button>
+        <div class="social_group">
+          <p>간편 로그인하기</p>
+          <div class="social_icon">
+            <a href=""><img src="/img/ic_google.png" alt=""></a>
+            <a href=""><img src="/img/ic_kakao.png" alt=""></a>
+          </div>
+        </div>
+        <div class="auth_options">
+          <p>이미 회원아신가요?</p>
+          <a href="/pages/login.html">로그인</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="/index.js"></script>
 </body>
 
 </html>
