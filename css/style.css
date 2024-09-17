@@ -1,27 +1,18 @@
-* {
-  box-sizing: border-box;
-}
-
 html {
-  font-family: Pretendard,'Noto Sans KR', sans-serif;
+  font-family: "Pretendard", "Noto Sans KR", sans-serif;
+  word-break: keep-all;
 }
 
-/*
-header <logos (logo title)> <nav>
-main main section <articles (article [img wordBox2 { point h3 detail }])>
-section <mainBox (wordBox { mainWord button }) img >
-footer < p div(p p)SNS (img)>
-*/
-
-.headers {
-  max-width: 1920px;
+header {
+  position: fixed;
+  top: 0;
+  z-index: 99; /*내가 보이게 하도록 넣음*/
   width: 100%;
   height: 70px;
-  border-bottom: 1px solid #dfdfdf;
-  padding: 9px 400px;
-  gap:10px;
-  background-color: ffffff;
-
+  border-bottom: 1px solid var(--white-5);
+  padding: 0 200px; /*figma에는 9 400 주라고 되어있는데?*/
+  gap: 10px; /* 이것도 없음 */
+  background-color: var(--white);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,25 +25,21 @@ footer < p div(p p)SNS (img)>
   align-items: center;
   width: 153px;
   height: 51px;
-
   position: relative;
 }
 
 .logo {
   width: 40px;
   height: 40.14px;
-  /*top:5.02px*/
+  top: 5.02px;
   border-radius: 11.18px;
-
 }
 
 #title {
-  /* width height top left */
   font-size: 25.63px;
   font-weight: 700;
   line-height: 34.6px;
-  color: #3692ff;
-
+  color: var(--blue-100);
 }
 #login {
   width: 128px;
@@ -60,108 +47,113 @@ footer < p div(p p)SNS (img)>
   border-radius: 8px;
   padding: 12px 23px;
   gap: 10px;
-  background-color: #3692FF;
-  
+  background-color: var(--blue-100);
   text-align: center;
-  color: #f3f4f6;
+  color: var(--white-2);
   font-size: 16px;
   font-weight: 600;
   line-height: 26px;
-
 }
 
 main {
   margin: 0 auto;
-  background-color: #fcfcfc;
+  background-color: var(--white-3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-section {
+.sectionAll {
   width: 100%;
   height: 540px;
-  background-color: #CFE5FF;
-
+  background-color: var(--white-4);
   display: flex;
   align-items: end;
   justify-content: center;
   position: relative;
 }
+
 .mainBox {
   display: flex;
   /* width height top left */
   gap: 7px;
   width: 1110px;
   height: 340px;
-
 }
+
 .wordBox {
   padding: 0 0 60px;
+  display: flex;
+  flex-direction: column;
   gap: 32px;
 }
+
 .mainWord {
   font-size: 40px;
   font-weight: 700;
   line-height: 56px;
-  color: #374151;
+  color: var(--gray-700);
 }
 #see {
   border-radius: 40px;
   padding: 16px 124px;
   gap: 10px;
-  background-color: #3692ff;
-
-  color: #f9fafb;
+  background-color: var(--blue-100);
+  color: var(--gray-50);
   font-size: 20px;
   font-weight: 600;
   line-height: 32px;
   text-align: center;
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 .articles {
-  background-color: #ffffff;
+  background-color: var(--white);
   width: 1920px;
   padding: 138px 466px;
   gap: 10px;
+  display: flex;
+  flex-direction: column;
 }
-article {
+.article {
   width: 988px;
   border-radius: 12px;
   gap: 64px;
-  background-color: #fcfcfc;
+  background-color: var(--white-3);
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  margin: 100px 0; /* reset css라는 것을 실행후 figma에서 보여지는 것과 다르게 article이 붙어 있어 수정하였습니다. */
 }
+
 .wordBox2 {
- padding-bottom: 24px;
- gap:12px;
+  /*reset css라는 것을 실행후 figma에서 보여지는 것보다 문단 간격이 좁아보여요*/
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 24px;
+  gap: 12px;
 }
 
 .point {
   font-size: 18px;
   font-weight: 700;
   line-height: 26px;
-  color: #3692FF;
+  color: var(--blue-100);
 }
 
-h3 {
+.articleContent {
   font-size: 40px;
   font-weight: 700;
   line-height: 56px;
-  color: #374151;
-  /*letter?....*/
+  color: var(--gray-700);
+  /*letter2%를 letter가 뭔지 잘모르겠습니다.*/
 }
 
 .detail {
   font-size: 24px;
   font-weight: 500;
   line-height: 32px;
-  color: #374151;
+  color: var(--gray-700);
 }
 
 #word2 {
@@ -174,19 +166,17 @@ h3 {
 
 footer {
   margin: 0 auto;
-  background-color: #111827;
-  width: 1920px;
+  background-color: var(--gray-900);
   height: 160px;
   padding: 32px 400px;
   gap: 10px;
-
   display: flex;
   justify-content: space-between;
-  
+  align-items: start;
 }
 
 .codeit {
-  color: #9ca3af;
+  color: var(--gray-400);
   font-size: 16px;
   font-weight: 400;
   line-height: 19.09px;
@@ -195,18 +185,18 @@ footer {
 
 #center {
   display: flex;
-  gap:30px;
-  
-  color: #e5e7eb; /*색 적용이안되는 이유 color: inherit 추가함.*/
+  gap: 30px;
+  color: var(--gray-200); /*색 적용이안되는 이유 color: inherit 추가함.*/
   font-size: 16px;
   font-weight: 400;
   line-height: 19.09px;
   text-align: center;
 }
 
-.SNS {
+.socialLink {
   width: 116px;
   gap: 12px;
+  display: flex;
 }
 
 .button {
