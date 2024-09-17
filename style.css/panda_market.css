@@ -1,40 +1,21 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-@font-face {
-  font-family: "ROKAF Sans";
-  src: url("fonts/ROKAF_Sans_Bold.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-}
-
 body {
-  width: 1920px;
-  background-color: #fcfcfc;
-}
-
-button {
-  background-color: #3692ff;
-  border: none;
-  cursor: pointer;
+  background-color: var(--gray-10);
 }
 
 header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
   margin: 0 auto;
   width: 100%;
-  background-color: #ffffff;
+  background-color: white;
   background-size: cover;
   height: 70px;
-  border-bottom: 1px solid #dfdfdf;
+  border-bottom: 1px solid var(--gray-border);
   padding: 9px 400px;
 }
 
 .head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: 100%;
   width: auto;
 }
@@ -45,37 +26,38 @@ header {
   align-items: center;
   gap: 10px;
 }
-h1 a {
-  font-family: "ROKAF Sans", sans-serif;
-  color: #3692ff;
-  font-weight: 700;
-  font-size: 25.63px;
-  line-height: 34.6px;
-  text-align: center;
-  text-decoration: none;
+
+.title {
+  font-size: 26px;
+  line-height: 35px;
 }
 
 button:hover {
   background-color: #2877d4;
 }
 
-.s-button {
-  display: flex;
-  justify-content: center;
+button {
+  background-color: var(--primary);
+}
+
+.small-button {
   border-radius: 8px;
   width: 128px;
   height: 48px;
-  gap: 10px;
   padding: 12px 23px;
-  font-family: pretendard, "Noto Sans Korean";
   font-size: 16px;
-  font-weight: 600;
   line-height: 26px;
-  color: #f3f4f6;
+  color: var(--gray-100);
+}
+
+.large-button {
+  height: 56px;
+  color: var(--gray-50);
+  cursor: pointer;
 }
 
 .home {
-  background-color: #cfe5ff;
+  background-color: var(--primary-home);
   height: 540px;
   width: 100%;
   background-size: cover;
@@ -98,6 +80,9 @@ button:hover {
 .top-text {
   padding-bottom: 60px;
   gap: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 h2 {
@@ -105,49 +90,33 @@ h2 {
   font-weight: 700;
   font-size: 40px;
   line-height: 56px;
-  color: #374151;
+  color: var(--black-700);
   margin-bottom: 32px;
-}
-.l-button {
-  display: flex;
-  border-radius: 40px;
-  padding: 16px 124px;
-  height: 56px;
-  gap: 10px;
-  font-family: "Pretendard Variable", "Noto Sans Korean";
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 32px;
-  color: #f9fafb;
-  text-align: center;
-  cursor: pointer;
 }
 
 section {
   padding: 138px 0;
   gap: 10px;
   width: 100%;
-  background-color: #ffffff;
+  background-color: white;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.figure1,
-.figure2,
-.figure3 {
+.section {
   width: 988px;
   border-radius: 12px;
   gap: 64px;
-  background-color: #fcfcfc;
+  background-color: var(--gray-10);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.figure1-text,
-.figure3-text {
+.image-left,
+.image-right {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -155,12 +124,9 @@ section {
   gap: 12px;
 }
 
-.figure2-text {
-  display: flex;
-  flex-direction: column;
+.image-right {
   align-items: flex-end;
   padding-left: 24px;
-  gap: 12px;
 }
 
 span {
@@ -168,41 +134,41 @@ span {
   font-size: 18px;
   font-weight: 700;
   line-height: 26px;
-  color: #3692ff;
+  color: var(--primary);
 }
 
-.detail,
-.detail2 {
+.text-right,
+.text-left {
   gap: 24px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.detail2 > h3,
-.detail2 > div {
+.text-left > h3,
+.text-left > div {
   text-align: right;
 }
 
-h3,
-.detail2 > h3 {
+h3 {
   font-family: "Pretendard Variable", "Noto Sans Korean";
   font-size: 40px;
   font-weight: 700;
   line-height: 56px;
-  color: #374151;
+  color: var(--black-700);
   white-space: nowrap;
 }
 
-.detail > div,
-.detail2 > div {
+.text-right > div,
+.text-left > div {
   font-family: "Pretendard Variable", "Noto Sans Korean";
   font-size: 24px;
   font-weight: 500;
   line-height: 32px;
-  color: #374151;
+  color: var(--black-700);
   white-space: nowrap;
 }
+
 .bottom {
   gap: 69px;
 }
@@ -215,7 +181,7 @@ footer {
   display: flex;
   gap: 10px;
   padding: 32px 400px;
-  background-color: #112827;
+  background-color: var(--black-900);
 }
 
 .footer {
@@ -224,7 +190,7 @@ footer {
   justify-content: space-between;
 }
 
-.co,
+.copyright,
 .info {
   font-family: "Pretendard Variable", "Noto Sans Korean";
   font-size: 16px;
@@ -233,8 +199,8 @@ footer {
   text-align: center;
 }
 
-.co {
-  color: #9ca3af;
+.copyright {
+  color: var(--gray-400);
 }
 
 .info {
@@ -243,9 +209,9 @@ footer {
 }
 
 .privacy,
-.FAQ {
+.faq {
   text-decoration: none;
-  color: #e5e7eb;
+  color: var(--gray-200);
 }
 
 .sns {

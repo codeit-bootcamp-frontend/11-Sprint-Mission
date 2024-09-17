@@ -1,0 +1,9 @@
+.nickname {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--gray-800);
+  line-height: 21px;
+}
