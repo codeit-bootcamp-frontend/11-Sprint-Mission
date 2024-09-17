@@ -1,4 +1,4 @@
-.nickname {
+.nickname-form__input {
   display: flex;
   gap: 16px;
   flex-direction: column;

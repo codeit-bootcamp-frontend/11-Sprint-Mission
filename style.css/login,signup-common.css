@@ -8,8 +8,8 @@ body,
 .join-content,
 .join-main,
 .join,
-.email,
-.password {
+.email-form__input,
+.password-form__input {
   display: flex;
   flex-direction: column;
 }
@@ -41,7 +41,7 @@ body,
 .join-main,
 .join,
 form,
-.login-content,
+.auth-content,
 .to-us {
   display: flex;
   font-family: "pretendard Variable", "Noto Sans Korean";
@@ -56,14 +56,14 @@ form {
 }
 
 form,
-.email,
-.password,
-.sns {
+.email-form__input,
+.password-form__input,
+.auth-sns {
   gap: 16px;
 }
 
-.email,
-.password {
+.email-form__input,
+.password-form__input {
   font-weight: 700;
   font-size: 18px;
   color: var(--gray-800);
@@ -72,7 +72,7 @@ form,
 
 input,
 button,
-.simple-login {
+.simple-auth {
   width: 640px;
   gap: 10px;
   display: flex;
@@ -102,27 +102,27 @@ input:focus {
   text-align: center;
 }
 
-.sns,
-.sns-icon,
-.simple-login,
-.login-content {
+.auth-sns,
+.auth-sns__icon,
+.simple-auth,
+.auth-content {
   display: flex;
   align-items: center;
 }
 
-.simple-login {
+.simple-auth {
   height: 74px;
   border-radius: 8px;
   padding: 16px 23px;
   background-color: var(--Alice-Blue);
 }
 
-.login-content,
+.auth-content,
 .to-us {
   font-weight: 500;
 }
 
-.login-content {
+.auth-content {
   width: 594px;
   justify-content: space-between;
   font-size: 16px;
