@@ -72,7 +72,7 @@ form,
 
 input,
 button,
-.sky-login {
+.simple-login {
   width: 640px;
   gap: 10px;
   display: flex;
@@ -104,13 +104,13 @@ input:focus {
 
 .sns,
 .sns-icon,
-.sky-login,
+.simple-login,
 .login-content {
   display: flex;
   align-items: center;
 }
 
-.sky-login {
+.simple-login {
   height: 74px;
   border-radius: 8px;
   padding: 16px 23px;
