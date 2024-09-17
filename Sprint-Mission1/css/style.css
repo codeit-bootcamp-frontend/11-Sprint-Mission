@@ -871,15 +871,55 @@ footer .inner-wrap .footer-info-container .ft-sns a img {
     line-height: 45px;
     color: var(--gray700);
   }
+  /* 로그인 */
+  .login-container .login-wrapper{
+    padding: 0px 16px 0px 16px;
+  }
+  .login-container .login-wrapper .login-logo-box a .logo-face{
+    max-width: 51px;
+  }
+  .login-container .login-wrapper .login-logo-box a .logo-txt{
+    max-width: 133px;
+  }
+  .login-container label{
+    font-size: 14px;
+  }
+  .login-signup-txt span, a{
+    font-size: 14px;
+  }
+  .login-container .login-wrapper .login-logo-box{
+    margin-bottom: 30px;
+  }
+  .login-container .login-wrapper .form-wrap{
+    gap: 16px;
+  }
+  /* 회원가입 */
+  .signup-container .signup-wrapper{
+    padding: 0px 16px 0px 16px;
+  }
+  .signup-container .signup-wrapper .signup-logo-box a .logo-face{
+    max-width: 51px;
+  }
+  .signup-container .signup-wrapper .signup-logo-box a .logo-txt{
+    max-width: 133px;
+  }
+  .signup-container label{
+    font-size: 14px;
+
+  }
+  .signup-container .signup-wrapper .signup-logo-box{
+    margin-bottom: 30px;
+  }
+  .signup-container .signup-wrapper .signup-wrap{
+    gap: 16px;
+  }
+
   footer .inner-wrap .footer-info-container{
     max-width: 536px;
     margin: 0 auto;
   }
   footer .inner-wrap .footer-info-container{
     max-width: 331px;
-  }
-  .login-signup-txt span, a {
-    font-size: 1rem;
   }
   footer .inner-wrap .footer-info-container p{
     position: absolute;
