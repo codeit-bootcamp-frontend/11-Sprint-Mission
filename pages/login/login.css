@@ -22,7 +22,6 @@
   font-size: 66px;
   font-weight: 700;
   line-height: 90px;
-  text-align: left;
   color: var(--blue);
 }
 /* 메인 - 섹션 */
@@ -47,7 +46,6 @@
   font-size: 18px;
   font-weight: 700;
   line-height: 26px;
-  text-align: left;
   color: var(--gray800);
 }
 .login_input > input {
@@ -59,7 +57,6 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
-  text-align: left;
 }
 .login_input > input :focus {
   border: 1px solid var(--blue)
@@ -101,7 +98,6 @@
   font-size: 16px;
   font-weight: 500;
   line-height: 26px;
-  text-align: left;
   color: var(--gray800);
 }
 .social_media_icon{
@@ -119,7 +115,6 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 24px;
-  text-align: left;
   color: var(--gray800);
 }
 .signup_link > a{
