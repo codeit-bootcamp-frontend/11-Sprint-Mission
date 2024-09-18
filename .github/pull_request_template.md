@@ -1,34 +1,39 @@
 ## 요구사항
+- Github에 PR(Pull Request)을 만들어서 미션을 제출합니다.
+- Netlify에 파일 배포가 아닌 포크한 Github 레포지토리로 연결합니다.
+- 피그마 디자인에 맞게 페이지를 만들어 주세요.
+- React와 같은 UI 라이브러리를 사용하지 않고 진행합니다.
 
 ### 기본
-
-- 랜딩 페이지의 url path는 루트('/')로 설정합니다. [x]
-- title은 "판다마켓"로 설정합니다. [x]
-- 화면의 너비가 1920px 이상이면 하늘색 배경색은 너비를 꽉 채우도록 채워지고, 내부 요소들의 위치는 고정되고, 여백만 커지도록 합니다. [x]
-- 화면의 너비가 1920px 보다 작아질 때, "판다마켓" 로고의 왼쪽 여백 200px"로그인" 버튼의 오른쪽 여백 200px이 유지되고, 화면의 너비가 작아질수록 두 요소간 거리가 가까워지도록 설정합니다. [x]
-- 클릭으로 기능이 동작해야 하는 경우, 사용자가 클릭할 수 있는 요소임을 알 수 있도록 CSS 속성 cursor: pointer 로 설정합니다. [x]
-- "판다마켓" 클릭 시 루트 페이지('/')로 이동합니다. [x]
-- '로그인'버튼 클릭 시 로그인 페이지('/login')로 이동합니다 (빈 페이지) [x]
-- 페이스북, 트위터, 유튜브, 인스타그램 아이콘을 클릭 시 각각의 홈페이지로 새로운 창이 열리면서 이동합니다. [x]
-- "Privacy Policy", "FAQ"는 클릭 시 각각 Privacy 페이지('/privacy'), FAQ 페이지('/faq')로 이동합니다.(모두 빈 페이지) [x]
-- 페이스북, 트위터, 유튜브, 인스타그램 아이콘을 클릭 시 각각의 홈페이지로 새로운 창이 열리면서 이동합니다. [x]
+- [x] 아래로 스크롤 해도 상단 네비게이션 바(Global Navigation Bar)가 최상단에 고정됩니다.
+로그인 페이지, 회원가입 페이지 공통
+- [x] “판다마켓" 로고 클릭 시 루트 페이지(“/”)로 이동합니다.
+- [x] 로그인 페이지, 회원가입 페이지 모두 로고 위 상단 여백이 동일합니다.
+- [x] input 요소에 focus in 일 때, 테두리 색상은 #3692FF입니다.
+- [x] input 요소에 focus out 일 때, 테두리는 없습니다.
+- [x] SNS 아이콘들은 클릭시 각각 실제 서비스 홈페이지로 이동합니다.
+로그인 페이지
+- [x] “회원가입”버튼 클릭 시 “/signup” 페이지로 이동합니다.
+- [x] “로그인”버튼 클릭 시 “/login” 페이지로 이동합니다.
 
 ### 심화
+- [x] palette에 있는 color값들을 css 변수로 등록하고 사용해 주세요.
+- [x] 비밀번호 input 요소 위에 비밀번호를 확인할 수 있는 아이콘을 추가해 주세요.
 
-- 사용자의 브라우저가 크고 작아짐에 따라 페이지의 요소간 간격, 요소의 크기, font-size 등 모든 크기와 관련된 값이 크고 작아지도록 설정해 보세요.(설정값은 자유입니다) [x]
 
 ## 주요 변경사항
-
-- viewport의 width : :root의 font-size = 1520 : 16px을 기준으로 디자인했습니다.
-- viewport의 width가 1520px 이상이면 :root font-size는 16px로 고정했습니다.
-- viewport의 width가 1520px 미만이면 :root font-size는 1.05vw로 설정했습니다.
-- 각 요소의 크기는 **rem**을 활용해 디자인했습니다.
+- 로그인/회원가입 페이지의 모든 input을 채웠는지 확인하고 만족하면 로그인 버튼색 변경
+- 로그인/회원가입 페이지 submit 버튼 활성화/비활성화 시 커서 스타일 pointer/no-drop
+- 비밀번호와 비밀번호 확인의 값이 일치/불일치 할 때 경고문구 출력
+- 모든 조건을 충족시키지 않으면 폼 전송 불가
 
 ## 스크린샷
 
-![image](/public/images/sprint_mission_1_screencapture.png)
+![Login Page](https://millennium00forum1.s3.ap-northeast-2.amazonaws.com/screencapture-127-0-0-1-5500-views-login-html-2024-09-10-02_17_03.png-1725907258686)
+![Signup Page](https://millennium00forum1.s3.ap-northeast-2.amazonaws.com/screencapture-127-0-0-1-5500-views-signup-html-2024-09-10-02_18_00.png-1725907263851)
+![Compare PW](https://millennium00forum1.s3.ap-northeast-2.amazonaws.com/screencapture-127-0-0-1-5500-views-signup-html-2024-09-10-03_44_55.png-1725907594823)
+![Submit Success](https://millennium00forum1.s3.ap-northeast-2.amazonaws.com/scshot-panda.png-1725907859720)
 
 ## 멘토에게
-- 모든 요소의 크기를 :root font-size와 비례하게 디자인하는 것은 좋은 관습인지 알고 싶습니다.
-- 페이지의 요소를 나눌 때 적절하게 나누었는지 알고 싶습니다.
+- js에서 전역 변수를 어느 정도까지 선언하는 것이 좋을지 판단 방법을 알고 싶습니다.
 - 셀프 코드 리뷰를 통해 질문 이어가겠습니다.
