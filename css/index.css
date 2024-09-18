@@ -1,8 +1,8 @@
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡheaderㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 header {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
+
   width: 100%;
   height: 70px;
   display: flex;
@@ -11,7 +11,7 @@ header {
   padding: 0 200px;
   background-color: #ffffff;
   border-bottom: 1px solid #dfdfdf;
-  div {
+  .header-divbox {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -45,7 +45,7 @@ header {
 
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡmainㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 main {
-  margin-top: 70px;
+  width: 100%;
 }
 
 /* first-section */
@@ -216,5 +216,202 @@ footer {
   #socialMedia {
     display: flex;
     gap: 12px;
+  }
+}
+
+/*  ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ tablet ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+@media (max-width: 1199px) {
+  header {
+    position: sticky;
+    top: 0;
+    padding: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #ffffff;
+    border-bottom: 1px solid #dfdfdf;
+    .header-divbox {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      padding: 0;
+      margin: 24px;
+    }
+    .logo-button {
+      width: 153px;
+      height: 51px;
+    }
+    .login-button {
+      width: 128px;
+      height: 48px;
+      border-radius: 8px;
+      padding: 23px 12px;
+      gap: 10px;
+      background-color: #3692ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    span {
+      font: Pretendard;
+      font-weight: 600;
+      size: 16px;
+      line-height: 26px;
+      color: #f3f4f6;
+    }
+  }
+
+  main {
+    width: 100%;
+  }
+
+  /* first-section */
+  .banner {
+    background-color: #cfe5ff;
+
+    height: 771px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    background-repeat: no-repeat;
+    background-position: 10% bottom;
+    background-size: 55%;
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 84px 116px;
+      width: 100%;
+      height: 771px;
+      gap: 7px;
+    }
+    .sightseeing-box {
+      width: 512px;
+      height: 431px;
+      padding: 0 0 60px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .pandaImg-box {
+      width: 746px;
+      height: 340px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .pill-button {
+      background: #3692ff;
+      width: 357px;
+      height: 56px;
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 16px 124px;
+    }
+  }
+  .sightseeing-box-text {
+    display: flex;
+    justify-content: center;
+  }
+  .sightseeing-box-text-br {
+    display: none;
+  }
+  /* second-section */
+  .second-section {
+    height: 2160px;
+    margin: 0 auto;
+    padding-bottom: 138px;
+    .feature {
+      height: 720px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 10px;
+    }
+
+    .feature-divBox {
+      width: 988px;
+      height: 444px;
+      display: flex;
+      align-items: center;
+      gap: 64px;
+      border-radius: 12px 0px 0px 0px;
+    }
+    .feature-imgBox {
+      width: 579px;
+      height: 444px;
+
+      img {
+        width: 579px;
+        height: 444px;
+      }
+    }
+    #right-contentBox {
+      display: flex;
+      width: 317px;
+      height: 238px;
+      flex-direction: column;
+      text-align: right;
+      padding: 0 0 0 24px;
+    }
+    .feature-contentBox {
+      width: 317px;
+      height: 238px;
+      padding: 0px 24px 0px 0px;
+      gap: 12px;
+      display: flex;
+      flex-direction: column;
+
+      .feature-tag {
+        /* Hot item */
+
+        height: 26px;
+
+        /* pretendard/2lg-18px-bold */
+        font-family: "Pretendard";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 26px;
+        /* identical to box height, or 144% */
+
+        align-items: center;
+
+        /* Primary/100 */
+        color: #3692ff;
+
+        /* Inside auto layout */
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+      }
+      .feature-description {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 32px;
+
+        margin-top: 24px;
+      }
+    }
   }
 }
