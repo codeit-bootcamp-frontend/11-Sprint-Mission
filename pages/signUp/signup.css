@@ -14,14 +14,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 22.4px;
+  gap: 22px;
   padding-top: 0;
   padding-bottom: 40px;
 }
 .main_logo > a {
-  font-size: 66.34px;
+  font-size: 66px;
   font-weight: 700;
-  line-height: 89.56px;
+  line-height: 90px;
   text-align: left;
   color: var(--blue);
 }
