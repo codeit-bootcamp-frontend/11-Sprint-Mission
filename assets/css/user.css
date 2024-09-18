@@ -1,0 +1,149 @@
+.page-user{
+  /* margin: 30.1rem 0 23.1rem;  */
+  gap: 2.4rem;
+  margin: 23.1rem 0; 
+}
+.page-user .logo{
+  margin-bottom: 4rem;
+  text-align: center;
+}
+.page-user .logo > a{
+  width: 39.6rem;
+  height: 13.2rem;
+}
+
+.container.user{
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  max-width: 66rem;
+  padding: 0 2rem;
+}
+
+.page-user .alternative-login{
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  width: 100%;
+  padding: 1.6rem 2.3rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 2.6rem;
+  color: #1f2937;
+  border-radius: .8rem;
+  background-color: #e6f2ff;
+}
+
+.page-user .alternative-login > p{
+  flex: 1;
+}
+
+.page-user .alternative-login > a{
+  width: 4.2rem;
+  height: 4.2rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.page-user .alternative-login .google{
+  background-image: url('/assets/images/icon-google.png');
+}
+.page-user .alternative-login .kakao{
+  background-image: url('/assets/images/icon-kakao.png');
+}
+
+.page-user .link{
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 2.4rem;
+}
+
+.page-user .link > a{
+  font-size: 1.5rem;
+  line-height: 1.8rem;
+  line-height: 1.8rem;
+  color: #3182f6;
+  text-decoration: underline;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+form label{
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 2.6rem;
+}
+
+form input{
+  padding: 1.5rem 2.4rem;
+  width: 100%;
+  font-size: 1.6rem;
+  background-color: var(--gray-100);
+  color: var(--gray-800);
+  border-radius: 1.2rem;
+}
+
+form input::placeholder{
+  color: var(--gray-400);
+}
+form input[data-focus="input"]:focus{
+  border: 1px solid var(--blue-100);
+}
+form input[data-focus="input"]:not(:focus){
+  border: none;
+}
+
+
+form .input-area{
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+
+form .btn-submit > button{
+  width: 100%;
+  padding: 1.6rem 0;
+  font-size: 2rem;
+  line-height: 2.4rem;
+  font-weight: 600;
+}
+
+.password-toggle{
+  position: relative;
+}
+.password-toggle .toggle-icon{
+  cursor: pointer;
+  position: absolute;
+  right: 2.4rem; top: 50%; transform: translateY(-50%);
+  display: inline-block;
+  width: 2.4rem;
+  height: 2.4rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(/assets/images/icon-eye-close.png);
+}
+.password-toggle .toggle-icon.active{
+  background-image: url(/assets/images/icon-eye-open.png);
+}
+@media screen and (min-width:768px) and (max-width:1199px){
+  .page-user{
+    margin: 10rem 0;
+  }
+}
+@media screen and (max-width: 767px){
+  .page-user{
+    margin: 5rem 0;
+  }
+  .page-user .logo > a{
+    width: 20rem;
+    height: 6.7rem;
+  }
+}
