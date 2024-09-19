@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>signup</title>
+
+  <link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+  <main class="signup-main">
+    <div>
+      <a href="./index.html"><img alt="signup-logo" src="./img/login-logo.svg" class="signup-logo"></a>
+    </div>
+
+    <form>
+      <label for="signup-email">이메일</label>
+      <input type="text" name="signup-email" id="signup-email" class="input" placeholder="이메일을 입력해주세요">
+      <label for="signup-nickname">닉네임</label>
+      <input type="text" name="signup-nickname" id="signup-nickname" class="input" placeholder="닉네임을 입력해주세요">
+      <label for="signup-password">비밀번호</label>
+      <div class="signup-password-container">
+        <input type="password" name="signup-password" id="signup-password" class="input" placeholder="비밀번호를 입력해주세요">
+        <img alt="btn_visibility" src="./img/btn_visibility_off.svg" class="signup-password-visibility">
+      </div>
+      <label for="signup-check-password">비밀번호 확인</label>
+      <div class="signup-checkpassword-container">
+        <input type="password" name="signup-check-password" id="signup-check-password" class="input" placeholder="비밀번호를 다시 한 번 입력해주세요">
+        <img alt="btn_visibility" src="./img/btn_visibility_off.svg" class="signup-checkpassword-visibility">
+      </div>
+      <button class="signup-btn">
+        회원가입
+      </button>
+    </form>
+
+    <div class="signup-simple-login-container">
+      <p class="simple-login">간편 로그인하기</p>
+      <div class="simple-login-imgs">
+        <a type="_blank" href="https://www.google.com/"><img class="signup-simple-login-img" alt="google-login" src="./img/google-login.png" rel="noopener noreferrer"></a>
+        <a type="_blank" href="https://www.kakaocorp.com/page/"><img class="signup-simple-login-img" alt="kakao-login" src="./img/kakao-login.png" rel="noopener noreferrer"></a>
+      </div>
+    </div>
+
+    <div class="go-login-container">
+      <p>이미 회원이신가요?</p>
+      <a href="./login.html" class="go-login">로그인</a>
+    </div>
+
+  </main>
+  <script src="./js/signup.js"></script>
+</body>
+</html>

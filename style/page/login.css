@@ -1,0 +1,132 @@
+@charset "UTF-8";
+body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.login-main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-top {
+  margin-bottom: 40px;
+}
+
+form {
+  width: 100%;
+}
+
+label {
+  display: block;
+  width: 100%;
+  margin-bottom: 16px;
+  font-size: 1.125em;
+  font-weight: 700;
+  color: var(--s900);
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 15px 24px;
+  margin-bottom: 24px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--s100);
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.input::-moz-placeholder {
+  color: var(--s400);
+}
+
+.input::placeholder {
+  color: var(--s400);
+}
+
+.input:focus {
+  outline: 2px solid var(--p100); /* 명시적으로 outline 스타일 설정 */
+}
+
+.password-container {
+  display: flex;
+  position: relative;
+}
+
+.btn-visibility {
+  position: absolute;
+  top: 13px;
+  right: 24px;
+  border: none;
+  background-color: transparent;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 16px 0;
+  margin-bottom: 24px;
+  border: none;
+  border-radius: 40px;
+  background-color: var(--s400);
+  font-size: 1.25em;
+  font-weight: 600;
+  color: var(--s100);
+}
+
+.login-btn.active {
+  background-color: var(--p100);
+}
+
+.simple-login-container {
+  width: 100%;
+  padding: 16px 23px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  background-color: rgb(230, 242, 255);
+}
+
+.simple-login {
+  font-size: 1em;
+  font-weight: 500;
+  color: var(--s900);
+}
+
+.simple-login-imgs > a {
+  cursor: pointer;
+}
+.simple-login-imgs > a:not(:last-child) {
+  margin-right: 16px;
+}
+
+.simple-login-img {
+  width: 42px;
+  height: 42px;
+}
+
+.go-signup-container {
+  display: flex;
+  font-size: 0.875em;
+  font-weight: 500;
+  color: var(--s900);
+}
+
+.go-signup {
+  margin-left: 4px;
+  color: var(--p100);
+  -webkit-text-decoration: underline solid var(--p100) 1.3px;
+          text-decoration: underline solid var(--p100) 1.3px;
+  text-underline-offset: 3px;
+}/*# sourceMappingURL=login.css.map */

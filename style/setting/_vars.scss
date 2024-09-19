@@ -1,0 +1,40 @@
+:root {
+  --mainKor-font: "Pretendard";
+
+  --p100: #3692FF;
+  --p200: #1967D6;
+  --p300: #1251AA;
+
+  --s900: #111827;
+  --s800: #1F2937;
+  --s700: #374151;
+  --s600: #4B5563;
+  --s500: #6B7280;
+  --s400: #9CA3AF;
+  --s200: #E5E7EB;
+  --s100: #F3F4F6;
+  --s50: #F9FAFB;
+
+  --error: #F74747;
+
+  font-family: var(--mainKor-font);
+  font-size: 16px;
+  // line-height: 1.5;
+  // font-weight: 400;
+
+  font-synthesis: none; //굵은 글씨체(bold)나 기울인 글씨체(italic)를 자동 생성 안함 
+  text-rendering: optimizeLegibility; //텍스트의 가독성을 최적화하도록 렌더링을 지정
+  -webkit-font-smoothing: antialiased; //크롬 및 사파리에서 폰트를 더 부드럽게 렌더링
+  -moz-osx-font-smoothing: grayscale; //macOS에서 폰트를 더 부드럽게 렌더링
+  -webkit-text-size-adjust: 100%; //모바일 장치에서 텍스트 크기가 자동으로 조정되는 것을 방지
+
+  /* 태블릿 */
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+
+  /* 데스크톱 */
+  @media (min-width: 1024px) {
+    padding: 0;
+  }
+}

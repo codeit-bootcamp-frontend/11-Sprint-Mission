@@ -1,11 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>login</title>
+  
+  <link rel="stylesheet" href="style/style.css"/>
 </head>
 <body>
-  로그인 페이지 입니다. 
+  <main class="login-main">
+    <div class="login-top">
+      <a href="./index.html"><img alt="login-logo" src="img/login-logo.svg"></a>
+    </div>
+      
+    <form>
+      <label for="email">이메일</label>
+      <input type="text" name="email" id="email" class="input" placeholder="이메일을 입력해주세요">
+      <label for="password">비밀번호</label>
+      <div class="password-container">
+        <input type="password" name="password" id="password" class="input" placeholder="비밀번호를 입력해주세요">
+        <div class="btn-visibility">
+          <img src="img/btn_visibility_off.svg">
+        </div>
+      </div>
+      <button type="button" class="login-btn">
+        로그인
+      </button>
+    </form>
+
+    <div class="simple-login-container">
+      <p class="simple-login">간편 로그인하기</p>
+      <div class="simple-login-imgs">
+        <a href="https://www.google.com/" target="_blank" ><img alt="google-login" src="./img/google-login.png" class="simple-login-img" rel="noopener noreferrer"></a>
+        <a href="https://www.kakaocorp.com/page/" target="_blank" ><img alt="kakao-login" src="./img/kakao-login.png" class="simple-login-img" rel="noopener noreferrer"></a>
+      </div>
+    </div>
+
+    <div class="go-signup-container">
+      <p>판다마켓이 처음이신가요?</p>
+      <a href="./signup.html" class="go-signup">회원가입</a>
+    </div>
+
+  </main>
+  <script src="./js/login.js"></script>
 </body>
 </html>
