@@ -1,0 +1,74 @@
+/* form */
+.wrap {
+  min-height: 100vh;
+}
+
+.label {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+.input {
+  display: block;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  color: var(--gray800);
+  border: 0;
+  border-radius: 0.75rem;
+  background-color: var(--gray100);
+  line-height: 1.6;
+}
+.input::placeholder {
+  color: var(--gray400);
+}
+.input:focus {
+  outline-color: var(--blue);
+}
+
+.login {
+  width: 640px;
+}
+.login .logo {
+  display: block;
+  margin: 0 auto 40px;
+  width: 396px;
+}
+.login .btn {
+  width: 100%;
+}
+.input-wrap {
+  position: relative;
+}
+.input-wrap .btn-input {
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  line-height: 1;
+}
+
+.simple-login {
+  display: flex;
+  align-items: center;
+  margin: 24px 0;
+  padding: 16px 24px;
+  border-radius: 8px;
+  background-color: #E6F2FF;
+}
+.simple-login .links {
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.simple-login .links img {
+  display: block;
+}
+
+.guide {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: center;
+}
