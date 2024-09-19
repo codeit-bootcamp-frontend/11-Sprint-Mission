@@ -4,7 +4,7 @@ const btnsTogglePw = document.querySelectorAll(".btn-toggle");
  * 비밀번호와 비밀번호 확인의 type을 변경하는 함수
  */
 function changeTypePw(e) {
-  const inputPw = e.target.previousElementSibling; // 버튼 이전 요소, 즉 비밀번호 | 비밀번호 확인 input 요소
+  const inputPw = e.target.closest(".password").querySelector(".pw"); // 버튼 이전 요소, 즉 비밀번호 | 비밀번호 확인 input 요소
   const type = inputPw.getAttribute("type"); // 비밀번호 | 비밀번호 확인 input의 type 속성
 
   if (type === "password") {
@@ -14,6 +14,6 @@ function changeTypePw(e) {
   }
 }
 
-for (let btn of btnsTogglePw) {
+btnsTogglePw.forEach((btn) => {
   btn.addEventListener("click", changeTypePw);
-}
+});
