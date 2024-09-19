@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"
+    />
+    <link href="./login.css" rel="stylesheet" />
+    <link href="../../common/css/global.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="root_layout">
+      <main class="main">
+        <div class="main_logo">
+          <img
+            src="../../assets/images/panda_logo.png"
+            alt="panda logo"
+            width="104"
+            height="104"
+          />
+          <a href="../../index.html">판다마켓</a>
+        </div>
+        <section>
+          <form class="login_form">
+            <div class="login_input">
+              <label for="email">이메일</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="이메일을 입력해주세요"
+                required
+              />
+            </div>
+            <div class="login_input">
+              <label for="password">비밀번호</label>
+              <div class="login_input login_input_pw">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="비밀번호를 입력해주세요"
+                  required
+                />
+                <button type="button" class="password_toggle">
+                  <img
+                    src="../../assets/icon/password_show.png"
+                    alt="password show icon"
+                    width="20"
+                    height="18"
+                  />
+                </button>
+              </div>
+            </div>
+            <button id="login_button" name="login button" type="submit">
+              로그인
+            </button>
+          </form>
+          <div class="social_login">
+            <p>간편 로그인하기</p>
+            <div class="social_media_icon">
+              <a href="https://www.google.com/" target="_blank"
+                ><img
+                  src="../../assets/icon/google_logo.png"
+                  alt="google icon"
+                  width="42px"
+                  height="42px"
+              /></a>
+              <a href="https://www.kakaocorp.com/page/" target="_blank"
+                ><img
+                  src="../../assets/icon/kakao_logo.png"
+                  alt="kakao icon"
+                  width="42px"
+                  height="42px"
+              /></a>
+            </div>
+          </div>
+          <p class="signup_link">
+            판다마켓이 처음이신가요?
+            <a href="../signUp/signup.html">회원가입</a>
+          </p>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
