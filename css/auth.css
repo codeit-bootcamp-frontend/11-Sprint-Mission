@@ -1,31 +1,31 @@
-.user-wrapper {
+.auth-wrapper {
   max-width: 640px;
   max-height: 618px;
   margin: 231px auto;
 }
 
-.user-signup-wrapper {
+.auth-signup-wrapper {
   max-width: 640px;
   max-height: 842px;
   margin: 60px auto 178px;
 }
 
-.user-header {
+.auth-header {
   display: flex;
   justify-content: center;
   padding: 0 112px 40px;
 }
 
-.user-main {
+.auth-main {
   display: flex;
   flex-direction: column;
 }
 
-.user-field {
+.auth-field {
   padding-bottom: 24px;
 }
 
-.user-label {
+.auth-label {
   display: block;
   font-size: 18px;
   font-weight: 700;
@@ -33,12 +33,12 @@
   padding-bottom: 16px;
 }
 
-.user-input-group {
+.auth-input-group {
   position: relative;
   display: inline-block;
 }
 
-.user-input {
+.auth-input {
   padding: 16px 0;
   font-size: 16px;
   border-radius: 12px;
@@ -47,11 +47,11 @@
   border: none;
 }
 
-.user-input:focus {
+.auth-input:focus {
   outline-color: var(--Primary-100);
 }
 
-.user-input::placeholder {
+.auth-input::placeholder {
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
@@ -62,7 +62,7 @@
   background-image: url("../images/icon/icon_eyes_close.png");
 }
 
-.user-btn {
+.auth-btn {
   padding: 16px 0px;
   border-radius: 40px;
   font-size: 20px;
@@ -71,7 +71,7 @@
   background-color: var(--gray-400);
 }
 
-.user-box {
+.auth-box {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -82,11 +82,11 @@
   background-color: #e6f2ff;
 }
 
-.user-box a:visited {
+.auth-box a:visited {
   color: var(--gray-800);
 }
 
-.user-gopage {
+.auth-gopage {
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
@@ -94,19 +94,19 @@
   color: var(--gray-800);
 }
 
-.user-snsbox {
+.auth-snsbox {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 16px;
 }
 
-.user-snsbox img {
+.auth-snsbox img {
   width: 42px;
   height: 42px;
 }
 
-.user-register {
+.auth-register {
   margin: 0 auto;
   font-size: 14px;
   font-weight: 500;
