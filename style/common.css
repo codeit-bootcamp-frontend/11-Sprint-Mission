@@ -53,7 +53,7 @@ button {
 }
 
 button:disabled {
-  cursor: no-allow;
+  cursor: not-allow;
 }
 
 .sr-only {
