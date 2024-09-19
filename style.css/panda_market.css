@@ -17,7 +17,7 @@ header,
 .home,
 section,
 .footer-auth {
-  width: 100%;
+  min-width: auto;
   background-size: auto;
 }
 
@@ -200,7 +200,7 @@ footer {
 .auth__copyright,
 .auth__info {
   font-weight: 400;
-  line-height: 19.09px;
+  line-height: 19px;
   text-align: center;
 }
 
