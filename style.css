@@ -250,3 +250,49 @@ a {
     min-width: 720px;
   }
 }
+
+@media (max-width: 767px) and (min-width: 375px) {
+  .header {
+    margin: 0 16px;
+  }
+
+  #home {
+    height: 500px;
+    min-width: 360px;
+  }
+
+  #home-top {
+    width: 360px;
+  }
+
+  #home-info {
+    margin-bottom: 80px;
+  }
+
+  .home-img {
+    height: 210px;
+  }
+
+  .homeText {
+    text-align: center;
+    padding: 0 50px;
+  }
+
+  #show-items {
+    height: 40px;
+  }
+
+  #bottom-img {
+    height: 500px;
+    min-width: 360px;
+  }
+
+  #bottom-info {
+    width: 360px;
+    gap: 100px;
+  }
+
+  footer {
+    min-width: 360px;
+  }
+}
