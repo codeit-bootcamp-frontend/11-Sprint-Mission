@@ -10,29 +10,34 @@
 	<link rel="stylesheet"  href="css/sign.css"/>
 </head>
 <body>
-	<div>
+	<div class="sign-container">
 		<div>
-			<div>
+			<div class="logo">
 				<a href="/"><img src="img/logo/panda-market-logo.png" alt="판다마켓 로고" width="396"></a>
 			</div>
 		</div>
 
 		<form>
-			<div>
-				<label>이메일</label>
+			<div class="input-val"> 
+				<!--input의 id를 for로 지정-->
+				<label for="email">이메일</label>
+				<!--name 지정해서 폼 제출후 js에서 참조해도 될듯?-->
 				<input id="email" type="email" placeholder="이메일 입력">
 			</div>
-			<div>
-				<label>비밀번호</label>
-				<input id="password" type="password" placeholder="비밀번호 입력">
-				<img src="img/icon/eye-invisible.svg" alt="숨김">
+			<div class="input-val">
+				<label for="pwd">비밀번호</label>
+				<div class="input-wrapper">
+					<!--name 지정해서 폼 제출후 js에서 참조해도 될듯?-->
+					<input id="pwd" type="pwd" placeholder="비밀번호 입력">
+					<img src="img/icon/eye-invisible.svg" alt="숨김" class="toggle-pwd">
+				</div>
 			</div>
-			<button type="submit" class="btn watch-btn">로그인</button>
+			<button type="submit" class="btn watch-btn full-btn-width">로그인</button>
 		</form>
 
-		<div>
+		<div class="social-container">
 			<h3>간편 로그인</h3>
-			<div>
+			<div class="social-btn-container">
 				<a href="https://www.google.com/" target="_blank">
 					<img src="img/social/google.png" alt="구글" width="42">
 				</a>
@@ -40,9 +45,9 @@
 					<img src="img/social/kakao.png" alt="카카오" width="42">
 				</a>
 			</div>
-			<div>
-				판다마켓이 처음이신가요? <a href="signup.html">회원가입</a>
-			</div>
+		</div>
+		<div class="signup-page">
+			판다마켓이 처음이신가요? <a href="signup.html">회원가입</a>
 		</div>
 	</div>	
 </body>
