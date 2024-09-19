@@ -1,0 +1,138 @@
+*{
+    font-family: "Pretendard";
+    box-sizing: border-box;
+}
+
+.logo > a {
+    font-weight: 700;
+    font-size: 66.34px;
+    color: #3692FF;
+    text-decoration: none;
+    font-family: ROKAF Sans;
+}
+
+.logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 396px;
+    height: 132px;
+    position: absolute;
+    top: 0px; 
+    padding: 0px 0px 58px 0px;
+}
+
+.login-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center; 
+    width: 100%;
+    position: absolute;
+    top: 0px; 
+}
+
+
+.main {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 231px;
+}
+
+.easy-login {
+    width: 640px;
+    height: 74px;
+    display: flex;
+    justify-content: center; /* 전체 블록에서 중앙에 배치 */
+    align-items: center;
+    background-color: #E6F2FF;
+    border-radius: 8px;
+}
+
+.easy-login-text {
+    font-size: 16px;
+    font-weight: 500;
+    
+}
+
+.center-easy-login {
+    width: 90%;  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100px;
+    height: 42px;
+}
+
+.sign-up {
+    margin: 24px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.logo {
+    position: relative;
+    top: 0px;
+}
+
+.sign-up > a {
+    color: #3692FF;
+
+}
+
+.email > a, .password > a {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.input-email, .input-password {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.input-email > label, .input-password > label {
+    color: #1F2937;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 0px 0px 16px 0px;
+}
+
+input {
+    width: 640px;
+    height: 56px;
+    border-radius: 12px;
+    padding: 16 24 16 24;
+    border: none;
+    outline: none; 
+}
+
+.input-password > input, .input-email > input {
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.input-email, .input-password, .login-btn {
+    padding: 0px 0px 24px 0px;
+}
+
+.login-btn > button {
+    background-color: #9CA3AF;
+    border-radius: 40px;
+    border: none;
+    width: 100%;
+    height: 56px;
+    margin: 24px 0px 24px 0px;
+}
