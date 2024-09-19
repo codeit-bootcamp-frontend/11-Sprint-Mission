@@ -13,24 +13,32 @@
     </div>
   </header>
   <main>
-    <div class="thickText">이메일</div>
-    <div>
-      <input type="email" class="myInput" placeholder="이메일을 입력해주세요" />
-    </div>
-    <div class="thickText">비밀번호</div>
-    <div class="inputPW">
-      <input
-        type="password"
-        class="myInput"
-        placeholder="비밀번호를 입력해주세요"
-      />
-      <img
-        class="visiblePW"
-        src="img/icon/ic_visibility_off.png"
-        alt="비밀번호 아이콘"
-      />
-    </div>
-    <div class="login">로그인</div>
+    <form>
+      <label for="email" class="thickText">이메일</label>
+      <div>
+        <input
+          id="email"
+          type="email"
+          class="myInput"
+          placeholder="이메일을 입력해주세요"
+        />
+      </div>
+      <label for="password" class="thickText">비밀번호</label>
+      <div class="inputPW">
+        <input
+          id="password"
+          type="password"
+          class="myInput"
+          placeholder="비밀번호를 입력해주세요"
+        />
+        <img
+          class="visiblePW"
+          src="img/icon/ic_visibility_off.png"
+          alt="비밀번호 아이콘"
+        />
+      </div>
+      <div class="login">로그인</div>
+    </form>
     <div class="easyLogin">
       간편 로그인하기
       <div class="social">

@@ -40,6 +40,12 @@ main {
   gap: 18px;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 input:focus {
   outline-color: var(--blue);
 }
