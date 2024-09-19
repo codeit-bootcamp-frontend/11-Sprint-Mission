@@ -70,13 +70,13 @@ input {
 	gap: 16px;
 }
 
-.signup-page {
+.switch-page {
 	font-weight: 500;
 	font-size: 15px;
 	text-align: center;
 }
 
-.signup-page a {
+.switch-page a {
 	color: #3182f6;
 	text-decoration: underline;
 	text-underline-offset: 2px;
