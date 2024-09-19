@@ -85,7 +85,9 @@ input::placeholder {
   width: 530px;
   height: 50px;
   background: var(--blue);
+  font-size: 1em;
   color: #ffffff;
+  border: 0 solid;
   border-radius: 9999px;
   cursor: pointer;
 }
