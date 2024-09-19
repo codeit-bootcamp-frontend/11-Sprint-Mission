@@ -57,13 +57,14 @@ input::placeholder {
 }
 
 .inputPW {
+  position: relative;
   display: flex;
   align-items: center;
 }
 
 .visiblePW {
-  position: relative;
-  right: 40px;
+  position: absolute;
+  right: 20px;
 }
 
 .login {
@@ -98,4 +99,45 @@ input::placeholder {
 .signup {
   text-align: center;
   font-size: 14px;
+}
+
+@media (max-width: 767px) and (min-width: 375px) {
+  body {
+    margin: 60px 16px;
+  }
+
+  main {
+    width: 100%;
+    align-items: center;
+  }
+
+  .logo {
+    height: 100px;
+  }
+
+  form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 16px;
+  }
+
+  .myInput {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .inputPW {
+    width: 100%;
+    max-width: 440px;
+  }
+
+  .login {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .easyLogin {
+    width: 100%;
+    max-width: 400px;
+  }
 }
