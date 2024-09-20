@@ -570,10 +570,33 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* Mobile */
+}
+@media (max-width: 767px) {
+  main {
+    padding: 0 16px;
+    max-width: 400px;
+    width: 100%;
+  }
 }
 
 .login-top {
   margin-bottom: 40px;
+}
+@media (max-width: 767px) {
+  .login-top {
+    margin-bottom: 24px;
+  }
+}
+
+.login-logo-img {
+  /* Mobile */
+}
+@media (max-width: 767px) {
+  .login-logo-img {
+    width: 198px;
+    height: 66px;
+  }
 }
 
 form {
@@ -588,6 +611,12 @@ label {
   font-weight: 700;
   color: var(--s900);
 }
+@media (max-width: 767px) {
+  label {
+    margin-bottom: 8px;
+    font-size: 0.875em;
+  }
+}
 
 .input {
   display: block;
@@ -599,6 +628,11 @@ label {
   background-color: var(--s100);
   font-size: 1em;
   font-weight: 400;
+}
+@media (max-width: 767px) {
+  .input {
+    margin-bottom: 16px;
+  }
 }
 
 .input::-moz-placeholder {

@@ -17,10 +17,29 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  /* Mobile */
+  @media (max-width: 767px) {
+    padding: 0 16px;
+    max-width: 400px;
+    width: 100%;
+  }
 }
 
 .login-top {
   margin-bottom: 40px;
+
+  @media (max-width: 767px) {
+    margin-bottom: 24px;
+  }
+}
+
+.login-logo-img {
+  /* Mobile */
+  @media (max-width: 767px) {
+    width: 198px;
+    height: 66px;
+  }
 }
 
 form {
@@ -35,6 +54,11 @@ label {
   font-size: 1.125em;
   font-weight: 700;
   color: var(--s900);
+
+  @media (max-width: 767px) {
+    margin-bottom: 8px;
+    font-size: 0.875em;
+  }
 }
 
 .input {
@@ -49,6 +73,10 @@ label {
 
   font-size: 1em;
   font-weight: 400;
+
+  @media (max-width: 767px) {
+    margin-bottom: 16px;
+  }
 }
 
 .input::placeholder {
