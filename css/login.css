@@ -50,17 +50,24 @@ input:focus {
     outline-color: var(--blue);
 }
 
-.password {
-    background-image: url("signup_images/btn_visibility_on.png");
-/*  background-image: url("signup_images/btn_visibility_off.png"); */
-/*  자바스크립트 학습 후 작업 예정 */
-    background-size: 1.5rem;
-    background-repeat: no-repeat;
-    background-position: right;
-    background-origin: content-box;
+input::-ms-reveal, input::-ms-clear {
+    display: none;
 }
 
-input::-ms-reveal, input::-ms-clear {
+.password {
+    position: relative;
+}
+
+.password__visibility {
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    right: 1.5rem;
+    bottom: 0.95rem;
+    cursor: pointer;
+}
+
+.password__visibility--off {
     display: none;
 }
 
@@ -77,13 +84,13 @@ button {
     font-size: 1.25rem;
     font-weight: 600;
     color: #fff;
+    cursor: pointer;
 }
 
 .button--disabled {
     display: none;
     background-color: var(--gray-400);
 }
-/* 자바스크립트 학습 후 작업 예정 */
 
 .button--enabled {
     background-color: var(--blue);
@@ -127,14 +134,10 @@ button {
     color: var(--blue);
 }
 
-@media all and (max-width: 1024px) {
-    body {
-        width: 80%;
-    } 
-  }
-
 @media all and (max-width: 767px) {
     html{
+        min-width: 400px;
         font-size: 14px;
+        margin: 0 16px;
     }
   }

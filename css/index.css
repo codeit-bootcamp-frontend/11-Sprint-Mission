@@ -22,14 +22,14 @@ button {
 }
 
 .header__content, .visual__content, .features, .banner__content, .footer__content {
-    width: 1120px;
+    max-width: 1120px;
     margin: 0 auto;
 }
+
 
 header {
     position: sticky;
     top: 0;
-    max-width: 100%;
     background-color: #fff;
     border-bottom: 1px solid #dfdfdf;
     z-index: 2;
@@ -145,7 +145,6 @@ header button {
 }
 
 footer {
-    width: 100%;
     height: 160px;
     background-color: var(--gray-900);
     font-size: 1rem;
@@ -191,20 +190,172 @@ footer {
 }
 
 
-/* 스프린트 미션 3에서 반응형 작업 예정 */
-
-@media (max-width: 1199px) {
-    html {
-        font-size: 14px;
+@media (max-width: 1200px) {
+    .header__content, .visual__content, .features, .banner__content, .footer__content {
+        max-width: 100%;
+        margin: 0 24px;
     }
 
-    .header__content, .visual__content, .features, .banner__content, .footer__content {
-        width: 90%;
+    .visual img, .banner img {
+        max-width: 1000px;
+        width: 100vw;
+        height: auto;
+    }
+
+    .visual h1 br, .features h1 br {
+        display: none;    
+    }
+
+    .visual h1, .features__content *{
+        margin: 0;
+    }
+
+    .visual {
+        height: 770px;
+    }
+
+    .visual__content, .banner__content {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .visual__information {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+        top: 80px;
+        bottom: 0;
+    }
+
+    .features {
+        margin-top: 1.5rem;
+    }
+
+    .features__content {
+        flex-direction: column;
+        margin: 0 0 3.25rem;
+        align-items: flex-start;
+        gap: 0;
+    }
+
+    .features__content:not(:nth-child(odd)) {
+        flex-direction: column-reverse;
+        text-align: right;
+        align-items: flex-end;
+    }    
+
+    .features h1 {
+        font-size: 2rem;
+        margin: 1rem 0 1.5rem;
+    }
+
+    .features__subtitle {
+        margin-top: 1.5rem;
+    }
+
+    .features__subtitle, .features__description {
+        font-size: 1.125rem;
+        line-height: 1.625rem;
+    }
+
+    .features img {
+        width: 100%;
+        height: auto;
+    }
+
+    .banner {
+        height: 920px;
+        margin-top: 0;
+    }
+
+    .banner h1 {
+        top: 200px;
+        bottom: 0;
+        text-align: center;
+    }
+
+    .footer__content {
+        margin: 0 100px;
     }
 }
 
-@media (max-width: 767px) {
-    html {
-        font-size: 12px;
+@media (max-width: 768px) {
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .header__content, .visual__content, .features, .banner__content, .footer__content {
+        margin: 0 16px;
+    }
+
+    header img {
+        width: 105px;
+        object-fit: cover;
+        object-position: right;
+    }
+
+    .visual img, .banner img {
+        max-width: 560px;
+    }
+
+    .visual, .banner {
+        height: 540px;
+    }
+
+    .visual h1 br {
+        display: block;    
+    }
+
+    .visual button {
+        width: 15rem;
+        font-size: 1.125rem;
+    }
+
+    .features {
+        margin-top: 3.25rem;
+        margin-bottom: 5.1rem;
+    }
+
+    .features__content {
+        margin: 0 0 2.5rem;
+    }
+
+    .features h1 {
+        font-size: 1.5rem;
+        margin: 0.5rem 0 1rem;
+    }
+
+    .features__subtitle, .features__description {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    .banner h1 {
+        top: 120px;
+    }
+
+    .footer__content {
+        margin: 0 32px;
+        display: grid;
+        grid-template-areas: 
+        "menu sns"
+        "company .";
+    }
+
+    .footer__company {
+        grid-area: company;
+        position: relative;
+        top: 60px;
+    }
+
+    .footer__menu {
+        grid-area: menu;
+    }
+
+    .footer__sns {
+        grid-area: sns;
     }
 }
