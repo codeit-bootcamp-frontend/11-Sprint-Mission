@@ -16,8 +16,8 @@
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
-  max-width: 66rem;
-  padding: 0 2rem;
+  max-width: 64.4rem;
+  padding: 0 1.6rem;
 }
 
 .page-user .alternative-login{
@@ -135,15 +135,25 @@ form .btn-submit > button{
 }
 @media screen and (min-width:768px) and (max-width:1199px){
   .page-user{
-    margin: 10rem 0;
+    margin: 19rem 0;
   }
 }
 @media screen and (max-width: 767px){
   .page-user{
-    margin: 5rem 0;
+    margin: 8rem 0;
   }
   .page-user .logo > a{
-    width: 20rem;
-    height: 6.7rem;
+    width: 19.8rem;
+    height: 6.6rem;
+  }
+
+  form{
+    gap: 1.6rem;
+  }
+  form label{
+    font-size: 1.4rem;
+  }
+  form .input-area{
+    gap: .8rem;
   }
 }

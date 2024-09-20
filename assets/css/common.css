@@ -179,7 +179,7 @@ div[class ^= "btn-"]{
 
 @media screen and (min-width:768px) and (max-width:1199px){
   html {
-    font-size: 1.388888888888889vw;
+    font-size: 1.302083333vw;
   }
     /* header */
   #header .container {
@@ -201,7 +201,7 @@ div[class ^= "btn-"]{
   }
   #header .logo {
     width: 10.3rem; 
-    height: 5.1rem; 
+    height: 3.5rem; 
   }
   /* footer */
   #footer {
