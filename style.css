@@ -31,8 +31,8 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 0 12.5rem;
-    background-color: var(--gray-50);
     border-bottom: 0.0625rem solid var(--gray-200);
+    background-color: #FFFFFF;
 }
 
 #logo {
@@ -217,6 +217,10 @@ footer {
 
 /* Tablet */
 @media (min-width: 768px) and (max-width: 1199px) {
+    main{
+        background-color: #FCFCFC;
+    }
+
     header {
         padding: 0 24px;
     }
@@ -264,12 +268,17 @@ footer {
         margin-top: 217px;
     }
 
+    .popular-items-section, .search-items-section, .register-items-section {
+        height: auto;
+        margin-bottom: 56px;
+    }
 
     .popular-items-content, .search-items-content, .register-items-content {
         display: grid;
         flex-direction: column;
         align-items: flex-start;
-        padding: 20px;
+        padding: 24px;
+        background-color: #FCFCFC;
     }
 
     .popular-items-content img, .search-items-content img, .register-items-content img{
@@ -278,9 +287,18 @@ footer {
         margin-bottom: 20px;
     }
 
+    .search-items-content img{
+        order: -1;
+    }
+
     .item-details {
         text-align: left;
         width: 100%;
+        margin-top: 24px;
+    }
+
+    .search-items-content .item-details{
+        text-align: right;
     }
 
     .footer-section {
