@@ -134,3 +134,49 @@ input:focus {
 .firstuser a {
     color: var(--blue);
 }
+
+
+/* PC */
+@media (min-width: 1200px) {
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1199px) {
+}
+
+/* Mobile */
+@media (min-width: 375px) and (max-width: 767px) {
+    .login{
+        padding: 0 16px;
+    }
+
+    .loginlogo{
+        width: 65%;
+    }
+
+    label{
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    input{
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 16px 0;
+        margin-top: 10px;
+    }
+
+    ::placeholder{
+        padding: 24px;
+    }
+
+    .login-btn{
+        width: 100%;
+    }
+
+    .simple-login-in{
+        width: 100%;
+        padding: 0 23px;
+    }
+}
