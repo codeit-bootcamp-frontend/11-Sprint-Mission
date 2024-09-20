@@ -3,8 +3,8 @@ const password = document.querySelector('#password');
 const btn = document.querySelector('.login-btn');
 
 function activeLoginBtn() {
-  const isValid = email.value.length > 0 && password.value.length > 0;
-  btn.classList.toggle('active', isValid);
+  const isValid = email.value.length > 0 && password.value.length > 0; //boolean값으로 받아서 함수를 재사용 가능
+  btn.classList.toggle('active', isValid); //toggle에도 사용하고 
   return isValid;
 }
 
@@ -16,7 +16,7 @@ function activeLoginBtn() {
 function loginSubmit(e) {
   e.preventDefault();
 
-  if(activeLoginBtn()) {
+  if(activeLoginBtn()) { //activeLoginBtn 함수를 재사용
     console.log('로그인 제출:', {
       email: email.value,
       password: password.value
