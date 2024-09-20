@@ -24,7 +24,6 @@ body {
 
 .logo {
   width: 396px;
-  height: 132px;
   display: flex;
   align-items: center;
   margin: 0 auto;
@@ -148,4 +147,43 @@ footer {
 footer a {
   line-height: 16.71px;
   color: var(--blue);
+}
+
+@media (max-width: 767px) {
+  .login-form {
+    width: 100%;
+    padding: 0 16px;
+    height: 501px;
+    margin: 80px 0 231px 0;
+  }
+
+  .logo {
+    width: 198px;
+    gap: 11.12px;
+    margin-bottom: 24px;
+  }
+
+  .logo img {
+    width: 51.76px;
+    height: 51.94px;
+  }
+
+  .logo a {
+    font-size: 33.17px;
+    line-height: 44.78px;
+  }
+
+  .main-form label {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 8px;
+  }
+
+  .main-form input {
+    margin-bottom: 16px;
+  }
+
+  .main-form button {
+    padding: 12px 145.5px;
+  }
 }
