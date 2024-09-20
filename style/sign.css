@@ -2,25 +2,6 @@
 login.html과 signup.html을 스타일링
 */
 
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-:root {
-    --gray900: #111827;
-    --gray800: #1f2937;
-    --gray700: #374151;
-    --gray600: #4b5563;
-    --gray500: #6b7280;
-    --gray400: #9ca3af;
-    --gray200: #e5e7eb;
-    --gray100: #f3f4f6;
-    --gray50: #f9fafb;
-    --blue: #3692ff;
-}
-
 /* pc에 대한 스타일 */
 @media (min-width: 1200px){
 
@@ -31,13 +12,11 @@ body {
 
 }
 
-/* mobile에 대한 스타일 */
-@media (min-width: 375px) and (max-width: 767px) {
-    #login_home {
-        padding: 0 1em;
-        max-width: 400px;
-        box-sizing: border-box;
-    }
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #login_home {
