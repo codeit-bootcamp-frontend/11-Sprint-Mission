@@ -143,6 +143,7 @@
     gap: 1.6rem;
     max-width: 40rem;
     width: 100%;
+    padding: 0 1.6rem;
   }
   .container form .input-area label {
     margin-bottom: 0.8rem;
