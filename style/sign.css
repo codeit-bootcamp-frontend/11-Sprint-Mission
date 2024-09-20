@@ -2,16 +2,26 @@
 login.html과 signup.html을 스타일링
 */
 
-/* pc에 대한 스타일 */
 @media (min-width: 1200px){
 
 }
 
-/* tablet에 대한 스타일 */
-@media (min-width: 768px) and (max-width: 1199px) {
+@media (min-width: 375px) and (max-width: 768px) {
+    #login_home {
+        max-width: 400px;
+        margin-left: 16px;
+        margin-right: 16px;
+    }
 
+    #login_logo a {
+        display: flex;
+        justify-content: center;
+    }
+
+    #login_logo img {
+        max-width: 80%;
+    }
 }
-
 
 body {
     display: flex;
