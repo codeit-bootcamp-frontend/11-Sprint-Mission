@@ -3,12 +3,9 @@ const password = document.querySelector('#password');
 const btn = document.querySelector('.login-btn');
 
 function activeLoginBtn() {
-  if(email.value.length > 0 && password.value.length > 0) {
-    // btn.setAttribute('class', 'active');
-    btn.classList.add('active');
-  } else {
-    btn.classList.remove('active');
-  }
+  const isValid = email.value.length > 0 && password.value.length > 0;
+  btn.classList.toggle('active', isValid);
+  return isValid;
 }
 
 [email, password].forEach((input) => {
@@ -16,12 +13,10 @@ function activeLoginBtn() {
 })
 
 
-
-
 function loginSubmit(e) {
   e.preventDefault();
 
-  if(email.value.length > 0 && password.value.length > 0) {
+  if(activeLoginBtn()) {
     console.log('로그인 제출:', {
       email: email.value,
       password: password.value
@@ -33,7 +28,6 @@ function loginSubmit(e) {
   }
 }
 btn.addEventListener('click', loginSubmit);
-
 
 
 
