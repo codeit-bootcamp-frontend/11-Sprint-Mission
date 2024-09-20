@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>판다마켓</title>
+  
+  <!-- css -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="wrapper login">
+    <div class="inner">
+      <h1>
+        <a class="logo" href="/"></a>
+      </h1>
+
+      <div class="loginWrap">
+        <form action="">
+          <div class="input">
+            <label for="email-input">이메일</label>
+            <input id="email-input" type="text" placeholder="이메일을 입력해주세요.">
+          </div>
+
+          <div class="input">
+            <label for="password-input">비밀번호</label>
+
+            <div class="password">
+              <input id="password-input" type="password" placeholder="비밀번호를 입력해주세요">
+              <button class="eye" type="button"></button>
+            </div>
+          </div>
+
+          <button class="loginBtn" type="button" onclick="window.open('https://naver.com')">로그인</button>
+        </form>
+      </div>
+      <!-- loginWrap -->
+
+      <div class="easyLogin">
+        <p>간편 로그인하기</p>
+
+        <ul>
+          <li>
+            <a class="google" href="https://google.com" target="_blank"></a>
+          </li>
+
+          <li>
+            <a class="kakao" href="https://kakao.com" target="_blank"></a>
+          </li>
+        </ul>
+      </div>
+      <!-- easyLogin -->
+
+      <p class="signup">판다마켓이 처음이신가요? <a href="./signup.html">회원가입</a></p>
+    </div>
+    <!-- inner -->
+  </div>
+  <!-- wrapper -->
+</body>
+
+<!-- js -->
+<script src="js/login.js"></script>
+
+</html>
