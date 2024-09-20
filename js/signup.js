@@ -1,8 +1,8 @@
-let signupEmail = document.querySelector('#signup-email');
-let signupNickname = document.querySelector('#signup-nickname');
-let signupPassword = document.querySelector('#signup-password');
-let signupCheckPassword = document.querySelector('#signup-check-password');
-let signupBtn = document.querySelector('.signup-btn');
+const signupEmail = document.querySelector('#signup-email');
+const signupNickname = document.querySelector('#signup-nickname');
+const signupPassword = document.querySelector('#signup-password');
+const signupCheckPassword = document.querySelector('#signup-check-password');
+const signupBtn = document.querySelector('.signup-btn');
 
 
 function inputSignupEmail(){

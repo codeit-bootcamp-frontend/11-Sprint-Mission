@@ -1,6 +1,6 @@
-let email = document.querySelector('#email');
-let password = document.querySelector('#password');
-let btn = document.querySelector('.login-btn');
+const email = document.querySelector('#email');
+const password = document.querySelector('#password');
+const btn = document.querySelector('.login-btn');
 
 function emailInput(){
   activeLoginBtn();
