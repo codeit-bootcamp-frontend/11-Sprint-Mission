@@ -1,6 +1,6 @@
 // 로그인에 필요한 필수 입력 요소를 모두 채웠는지 확인하는 함수
 function checkAllInputFill() {
-  const inputTags = document.querySelectorAll('#login-form input')
+  const inputTags = document.querySelectorAll('#login-form input:required')
   const submitBtn = document.querySelector('#login-submit-btn');
 
   let isAllFilled = Array.from(inputTags).every(tag => 
