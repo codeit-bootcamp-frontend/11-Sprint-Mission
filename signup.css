@@ -78,7 +78,7 @@ a {
 }
 
 .form-psw {
-  background-image: url('btn_visibility_off_24px.png');
+  background-image: url('./image/visibility_password.png');
   background-repeat: no-repeat;
   background-position: center;
   background-position-x: 600px;
