@@ -161,3 +161,8 @@ footer .right {
   text-decoration-line: underline;
   color: var(--skyblue);
 }
+@media (max-width: 767px) {
+  .login-form {
+    margin: 0 16px;
+  }
+}

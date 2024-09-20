@@ -81,7 +81,6 @@ header {
   border-style: solid;
   border-color: var(--skyblue);
   border-width: 1px;
-  /* background-color: var(--gray900); */
 }
 .eye {
   position: absolute;
@@ -161,4 +160,10 @@ footer .right {
   line-height: 17px;
   text-decoration-line: underline;
   color: var(--skyblue);
+}
+@media (max-width: 767px) {
+  .login-form {
+    width: 400px;
+    margin: 0 16px;
+  }
 }
