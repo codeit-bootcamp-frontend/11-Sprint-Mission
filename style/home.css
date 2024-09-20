@@ -16,6 +16,15 @@
     header {
         padding: 0 12.5em;
     }
+    .bg_img {
+        display: flex;
+        align-items: center;
+        background-position: 72% bottom;
+        background-size: 42%;
+    }
+    .bg_img > .container {
+        padding: 8.75em 0 0 5em;
+    }
 }
 
 /* tablet에 대한 스타일 */
@@ -95,16 +104,9 @@ header {
 .bg_img {
     background-color: #cfe5ff;
     background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    background-position: 72% bottom;
-    background-size: 42%;
     height: 33.75em;
 }
 
-.bg_img > .container {
-    padding: 8.75em 0 0 5em;
-}
 
 h1 {
     font-weight: 700;
