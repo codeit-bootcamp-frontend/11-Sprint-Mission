@@ -45,6 +45,12 @@
   font-weight: 600;
   color: #fff;
   margin-top: 24px;
+  transition: 0.3s;
+}
+
+/* .login .loginWrap .loginBtn:hover, */
+.login .loginWrap .loginBtn.active {
+  background: var(--blue);
 }
 
 .login .easyLogin {
@@ -96,4 +102,51 @@
   font-weight: 500;
   color: var(--blue);
   text-decoration: underline;
+}
+
+
+
+@media (max-width: 1119px) {
+  .wrapper.login {
+    padding: 190px 0;
+  }
+
+  .login .inner {
+    width: 86%;
+  }
+}
+
+
+
+@media (max-width: 744px) {
+  .wrapper.login {
+    padding: 80px 0;
+  }
+
+  .login .inner {
+    width: 91.5%;
+    max-width: 400px;
+  }
+
+  .login .logo {
+    width: 198px;
+    height: 66px;
+  }
+
+  .login .loginWrap {
+    margin-top: 24px;
+  }
+
+  .login .loginWrap .input label {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .login .loginWrap .input + .input {
+    margin-top: 16px;
+  }
+
+  .login .loginWrap .loginBtn {
+    margin-top: 16px;
+  }
 }

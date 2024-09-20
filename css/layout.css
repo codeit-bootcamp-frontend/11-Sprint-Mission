@@ -143,7 +143,9 @@ input:focus {
   background-size: 100%;
 }
 
-
+.mobile {
+  display: none;
+}
 
 
 
@@ -152,5 +154,91 @@ input:focus {
   header .inner {
     width: 100%;
     padding: 0 200px;
+  }
+}
+
+
+
+/* 1120이하 해상도부터 양쪽 여백 추가 */
+@media (max-width: 1119px) {
+  header,
+  section,
+  footer {
+    min-width: auto;
+  }
+
+  header .inner {
+    padding: 0 24px;
+  }
+  
+  footer .inner {
+    width: 100%;
+    padding: 32px 104px 0;
+  }
+  
+  footer .inner .copyright,
+  footer .inner .sns {
+    flex-basis: 120px;
+  }
+
+
+
+  .pc {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+  }
+}
+
+
+
+@media (max-width: 744px) {
+  header .logo {
+    width: 103px;
+    height: 51px;
+    background: url(../images/logo-m.svg) no-repeat;
+  }
+
+  header .inner {
+    padding: 0 16px;
+  }
+
+  header .login {
+    border-radius: 8px;
+    width: 128px;
+    height: 48px;
+  }
+
+  footer {
+    height: 160px;
+  }
+  
+  footer .inner {
+    height: 100%;
+    align-items: flex-start;
+    padding: 32px;
+    position: relative;
+  }
+  
+  footer .inner .copyright,
+  footer .inner .sns {
+    flex-basis: auto;
+  }
+
+  footer .inner .copyright {
+    position: absolute;
+    bottom: 32px;
+    left: 32px;
+  }
+
+  footer .inner .privacy {
+    gap: 30px;
+  }
+
+  footer .inner .sns li a {
+    width: 20px;
+    height: 20px;
   }
 }
