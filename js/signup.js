@@ -21,10 +21,10 @@ function activeSignupBtn(){
   input.addEventListener('input', activeSignupBtn);
 })
 
-const SignupPasswordVisibility = document.querySelector('.signup-password-visibility');
-const SignupCheckpasswordVisibility = document.querySelector('.signup-checkpassword-visibility');
+const signupPasswordVisibility = document.querySelector('.signup-password-visibility');
+const signupCheckpasswordVisibility = document.querySelector('.signup-checkpassword-visibility');
 
-console.log(SignupPasswordVisibility);
+console.log(signupPasswordVisibility);
 
 
 function togglePasswordVisibility(visibilityToggle) {
@@ -36,5 +36,5 @@ function togglePasswordVisibility(visibilityToggle) {
   visibilityToggle.previousElementSibling.setAttribute('type', inputType);
 }
 
-SignupPasswordVisibility.addEventListener('click', () => togglePasswordVisibility(SignupPasswordVisibility));
-SignupCheckpasswordVisibility.addEventListener('click', () => togglePasswordVisibility(SignupCheckpasswordVisibility));
+signupPasswordVisibility.addEventListener('click', () => togglePasswordVisibility(signupPasswordVisibility));
+signupCheckpasswordVisibility.addEventListener('click', () => togglePasswordVisibility(signupCheckpasswordVisibility));
