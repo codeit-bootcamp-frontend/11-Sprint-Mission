@@ -145,6 +145,10 @@ body {
   display: flex;
   justify-content: center;
   gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--gray-800);
 }
 
 .buttonLog {
@@ -154,4 +158,78 @@ body {
 .button {
   cursor: pointer;
   text-decoration: none;
+}
+
+@media (max-width:1199px){
+  .logoContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 767px){
+  .logo {
+    width: 51.76px;
+    height: 51.94px;
+  }
+
+  .logoName {
+    font-size: 33.17px;
+    line-height: 44.78px;
+  }
+  
+  .loginSet {
+    gap: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .inputContainers {
+    gap: 8px;
+  }
+  
+  .labels {
+    font-size: 14px;
+    line-height: 24px;
+  }
+  
+  .inputs {
+    width: 343px;
+    height: 56px;
+    border-radius: 12px;
+    gap: 10px;
+    padding: 16px 24px;
+  }
+
+  .inputs:focus {
+    outline: 2px solid var(--blue-100);
+  }
+
+  .password {
+    position: relative;
+  }
+  
+  .seePassword {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 0;
+    position: absolute;
+    top: 60px;
+    left: 600px;
+    background-color: var(--gray-100);
+    z-index: 99; /*버튼을 활성화시키고 싶어서 만들었는데 소용이 없었습니다.*/
+  }
+
+  .loginButton {
+    width: 343px;
+  }
+  
+  .socialLogin {
+    width: auto;
+  }
+  
 }
