@@ -6,12 +6,12 @@ html {
 header {
   position: fixed;
   top: 0;
-  z-index: index; /* 정의된 z-index 값 사용 */
+  z-index: 99; /* 가려지는 상황이 있어 임의로 추가함.*/
   width: 100%;
   height: 70px;
   border-bottom: 1px solid var(--white-5);
-  padding: 0 200px; /*figma에는 9 400 주라고 되어있는데?*/
-  gap: 10px; /* 이것도 없음 */
+  padding: 0 200px; /*figma에는 9 400 주라고 되어있는데, 답지(?)에는 이렇게 있어요.*/
+  gap: 10px; 
   background-color: var(--white);
   display: flex;
   justify-content: space-between;
@@ -65,6 +65,7 @@ main {
 }
 
 .sectionAll {
+  margin: 70px auto;
   width: 100%;
   height: 540px;
   background-color: var(--white-4);
@@ -123,7 +124,8 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 100px 0; /* reset css라는 것을 실행후 figma에서 보여지는 것과 다르게 article이 붙어 있어 수정하였습니다. */
+  margin: 100px 0; 
+  /* reset css라는 것을 실행후 figma에서 보여지는 것과 다르게 article이 붙어 있어 임의로 수정하였습니다. */
 }
 
 .wordBox2 {
@@ -205,11 +207,138 @@ footer {
   color: inherit;
 }
 /* Tablet 스타일 (768px ~ 1199px) */
-@media (max-width:1199px)and (min-width:768px){
-  
+@media (max-width:1199px){
+header {
+  padding: 0 24px
+}
+
+.sectionAll {
+  height: 100%;
+}
+
+.mainBox {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.wordBox {
+  height: 100%;
+  width: 512px;
+  margin: 84px 116px;
+  gap:24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+}
+
+.mainWord {
+  text-align: center;
+  gap:24px;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+}
+
+.break {
+  display: inline-block;
+  content: " ";
+  padding: 0 2px;
+}
+
+.mainImage {
+  height: 100%;
+  width: 100%;
+  margin-top: 431px;
+}
+
+#see {
+  height: 56px;
+  width:fit-content;
+}
+
+.articleImage {
+  width: 100%;
+}
+.articles {
+  width: 696px;
+  gap: 52px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.article {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+.reverseArticle {
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: end;
+}
+
+.wordBox2 {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-bottom: 24px;
+  gap: 12px;
+}
+
+.point {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  color: var(--blue-100);
+}
+
+.articleContent {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+  color: var(--gray-700);
+  /*letter2%를 letter가 뭔지 잘모르겠습니다.*/
+}
+
+.detail {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  color: var(--gray-700);
+}
+
+#word2 {
+  text-align: right;
+}
+
+#bottom {
+  margin-top: 150px;
+}
+
+#bottomBox {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  margin: 201px 224px 0;
+}
+footer {
+  height: 160px;
+  padding: 32px 104px 64px;
+}
+
 }
 
 /* Mobile 스타일 (375px ~ 767px) */
-@media (max-width: 767px) and (min-width: 375px) {
-
+@media (max-width: 767px){
+header {
+  padding: 0 24px;
+}
 }
