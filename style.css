@@ -81,11 +81,6 @@ header {
     color: var(--gray-700);
 }
 
-.hero-image {
-    height: 21.25rem;
-    object-fit: cover;
-}
-
 .sub {
     color: var(--gray-700);
 }
@@ -108,8 +103,7 @@ header {
     text-decoration: none;
     color: var(--gray-50);
     background-color: var(--blue);
-    width: 357px;
-    height: 3.5rem;
+    padding: 16px, 124px, 16px, 124px;
     text-align: center;
     border-radius: 2.5rem;
     font-size: 1.25rem;
@@ -167,6 +161,7 @@ header {
     display: flex;
     align-items: center;
     margin: 0 auto;
+    color: var(--gray-700);
 }
 
 .trust-section h1 {
@@ -228,7 +223,6 @@ footer {
 
     .hero-section {
         height: 771px;
-        margin-bottom: 7rem;
     }
 
     .hero-content {
@@ -272,6 +266,7 @@ footer {
 
 
     .popular-items-content, .search-items-content, .register-items-content {
+        display: grid;
         flex-direction: column;
         align-items: flex-start;
         padding: 20px;
@@ -300,5 +295,126 @@ footer {
 
 /* Mobile */
 @media (min-width: 375px) and (max-width: 767px) {
+
+    header {
+        padding: 0 24px;
+    }
+
+    .hero-section {
+        height: 771px;
+        height: 540px ;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .hero-text{
+        font-size: 2rem;
+        text-align: center;
+        line-height: 45px;
+    }
+
+    .cta-button{
+        margin: auto;
+        margin-top: 24px;
+        font-size: 18px;
+        padding: 9px, 71px, 12px, 9px;
+        margin-top: 17px;
+    }
+
+    .hero-image {
+        width: 120%;
+        margin-top: 130px;
+    }
+
+    .popular-items-section, .search-items-section, .register-items-section {
+        height: auto;
+    }
+
+    .popular-items-content, .search-items-content, .register-items-content {
+        display: grid;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        background-color: #FCFCFC;
+    }
+
+    .popular-items-content img, .search-items-content img, .register-items-content img{
+        width: 100%;
+        height: auto;
+    }
+
+    .search-items-content img{
+        order: -1;
+    }
+
+    .item-details {
+        text-align: left;
+        width: 100%;
+        margin-top: 24px;
+    }
+
+    .badge{
+        font-size: 16px;
+        margin-bottom: 8px
+    }
+
+    .subtitle{
+        font-size: 24px;
+        line-height: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .subtitle .onlyPC{
+        display: none;
+    }
+
+    .sub-content{
+        font-size: 16px;
+        line-height: 25px;
+    }
+
+    .bottom-grayBox{
+        display: none;
+    }
+
+    .trust-section {
+        height: 540px;
+        background-color: #CFE5FF;
+    }
+
+    .trust-content{
+        flex-direction: column;
+        text-align: center;
+        font-size: 2rem;
+        line-height: 43px;
+    }
+
+    .trust-image{
+        max-width: 100%;
+        margin-top: 130px;
+    }
+
+    .footer-section {
+        height: 10rem;
+        padding: 0 32px;
+    }
+
     
+
+    .footer-policy-faq a {
+        text-decoration: none;
+        color: var(--gray-200);
+        font-size: 1rem;
+        font-weight: 400;
+        gap: 30px;
+    }
+
+    .footer-content{
+        position: absolute;
+        margin-top: 60px;
+    }
+
 }
