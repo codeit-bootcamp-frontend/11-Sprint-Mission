@@ -1,8 +1,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>로그인</title>
-    <link rel="stylesheet" href="./login.css" />
+    <title>회원가입</title>
+    <link rel="stylesheet" href="./signup.css" />
   </head>
   <body>
     <div class="login-form">
@@ -23,6 +23,14 @@
           />
         </div>
         <div class="content-big">
+          <span>닉네임</span>
+          <input
+            class="input-box"
+            type="email"
+            placeholder="닉네임을 입력해주세요"
+          />
+        </div>
+        <div class="content-big">
           <span>비밀번호</span>
           <input
             class="input-box"
@@ -31,9 +39,18 @@
           />
           <img class="eye" src="/img/public/ic_inputEye.png" />
         </div>
+        <div class="content-big">
+          <span>비밀번호</span>
+          <input
+            class="input-box"
+            type="password"
+            placeholder="비밀번호를 다시 한 번 입력해주세요"
+          />
+          <img class="eye" src="/img/public/ic_inputEye.png" />
+        </div>
         <div class="content">
           <button class="login-btn">
-            <a href="/index.html"> 로그인 </a>
+            <a href="/index.html"> 회원가입 </a>
           </button>
         </div>
         <div class="content">
@@ -51,8 +68,8 @@
         </div>
         <footer>
           <div>
-            <a class="left">판다마켓이 처음이신가요?</a>
-            <a class="right" href="/page/signup/signup.html">회원가입</a>
+            <a class="left">이미 회원이신가요?</a>
+            <a class="right" href="/page/login/login.html">로그인</a>
           </div>
         </footer>
       </main>

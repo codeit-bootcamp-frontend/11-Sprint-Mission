@@ -1,0 +1,164 @@
+@import url(/common.css);
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-form {
+  width: 640px;
+  height: 618px;
+}
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-title {
+  width: 396px;
+  height: 132px;
+  position: relative;
+}
+.login-title img {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: calc(50% - 103.88px / 2 - 1.08px);
+  height: 103.88px;
+}
+.login-title a {
+  font-family: "ROKAF Sans";
+  color: var(--skyblue);
+  font-weight: 700;
+  height: 90px;
+  font-size: 66.3444px;
+  line-height: 90px;
+  position: absolute;
+  top: calc(50% - 90px / 2 + 2.98px);
+  left: 125.77px;
+  text-decoration: none;
+}
+.blank {
+  height: 40px;
+  width: 100%;
+}
+
+.content-big {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+  height: 93px;
+  margin-bottom: 24px;
+  position: relative;
+}
+.content-big span {
+  height: 21px;
+  left: 0px;
+  top: 0px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 21px;
+  color: var(--gray800);
+}
+.input-box {
+  width: 100%;
+  height: 56px;
+  background: var(--gray100);
+  border-radius: 12px;
+  border: 0;
+  outline: none;
+  padding: 15px 24px;
+  padding-top: 15px;
+  padding-left: 24px;
+  padding-bottom: 15px;
+  padding-right: 40px;
+  position: relative;
+}
+.input-box:focus {
+  border-style: solid;
+  border-color: var(--skyblue);
+  border-width: 1px;
+  /* background-color: var(--gray900); */
+}
+.eye {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+}
+.login-btn {
+  border-radius: 40px;
+  background: var(--skyblue);
+  width: 100%;
+  height: 56px;
+  border: 0;
+}
+.login-btn:hover {
+  background: var(--gray400);
+}
+.login-btn a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 32px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--gray100);
+  text-decoration: none;
+}
+.content {
+  display: flex;
+  padding: 0px;
+  position: relative;
+  margin-bottom: 24px;
+}
+.easy-login {
+  width: 100%;
+  height: 74px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 23px;
+  padding-right: 23px;
+  margin-bottom: 24px;
+  background: #e6f2ff;
+  border-radius: 8px;
+}
+.easy-login span {
+  height: 26px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--gray800);
+}
+.easy-login a {
+  text-decoration: none;
+}
+footer {
+  height: 24px;
+  display: flex;
+  justify-content: center;
+}
+footer .left {
+  height: 24px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--gray800);
+  text-decoration: none;
+}
+footer .right {
+  height: 17px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-decoration-line: underline;
+  color: var(--skyblue);
+}
