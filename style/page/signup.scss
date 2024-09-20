@@ -10,6 +10,12 @@
 
 .signup-logo{
   margin-bottom: 40px;
+
+  @media (max-width: 767px) {
+    width: 198px;
+    height: 66px;
+    margin-bottom: 24px;
+  }
 }
 
 .signup-password-container,
