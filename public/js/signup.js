@@ -1,18 +1,12 @@
-const inputTags = document.querySelectorAll('#signup-form input')
-const submitBtn = document.querySelector('#signup-submit-btn');
-
-// 입력란을 모두 채웠는지 확인
+// 로그인에 필요한 필수 입력 요소를 모두 채웠는지 확인하는 함수
 function checkAllInputFill() {
-  let isAllFill = true; 
-  inputTags.forEach(tag => {
-    if(tag.value === '') isAllFill = false;
-  })
-  
-  if(isAllFill){
-    submitBtn.classList.add('active');
-  } else {
-    submitBtn.classList.remove('active');
-  }
+  const inputTags = document.querySelectorAll('#signup-form input')
+  const submitBtn = document.querySelector('#signup-submit-btn');
+
+  let isAllFilled = Array.from(inputTags).every(tag => 
+    tag.value.trim() !== '');
+
+  submitBtn.classList.toggle('active', isAllFilled);
 }
 
 function comparePassword() {
