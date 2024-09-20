@@ -17,7 +17,7 @@ header,
 .home,
 section,
 .footer-auth {
-  min-width: auto;
+  width: auto;
   background-size: auto;
 }
 
@@ -195,6 +195,10 @@ footer {
   display: flex;
   padding: 32px 400px;
   background-color: var(--black-900);
+}
+
+.footer-auth {
+  width: 100%;
 }
 
 .auth__copyright,
