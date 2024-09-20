@@ -1,5 +1,4 @@
 .page-user{
-  /* margin: 30.1rem 0 23.1rem;  */
   gap: 2.4rem;
   margin: 23.1rem 0; 
 }
@@ -138,7 +137,87 @@ form .btn-submit > button{
     margin: 19rem 0;
   }
 }
-@media screen and (max-width: 767px){
+@media screen and (min-width:400px) and (max-width: 767px){
+  /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+  .page-user {
+    gap: 24px; 
+    margin: 80px 0; 
+  }
+  
+  .page-user .logo {
+    margin-bottom: 40px; 
+  }
+  
+  .page-user .logo > a {
+    width: 198px; 
+    height: 66px; 
+  }
+  
+  .container.user {
+    gap: 24px; 
+    max-width: 416px; 
+    padding: 0 16px; 
+  }
+  
+  .page-user .alternative-login {
+    gap: 16px; 
+    padding: 16px 23px; 
+    font-size: 16px; 
+    line-height: 26px; 
+    border-radius: 8px; 
+  }
+  
+  .page-user .alternative-login > a {
+    width: 42px; 
+    height: 42px; 
+  }
+  
+  .page-user .link {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px; 
+  }
+  
+  .page-user .link > a {
+    font-size: 15px; 
+    line-height: 18px;
+  }
+  
+  form {
+    gap: 24px;
+  }
+  
+  form label {
+    font-size: 14px; 
+    line-height: 26px;
+  }
+  
+  form input {
+    padding: 15px 24px;
+    font-size: 16px; 
+    border-radius: 12px; 
+  }
+  
+  form .input-area {
+    gap: 8px;
+  }
+  
+  form .btn-submit > button {
+    padding: 16px 0;
+    font-size: 20px;
+    line-height: 24px; 
+  }
+  
+  .password-toggle .toggle-icon {
+    right: 24px; 
+    width: 24px; 
+    height: 24px; 
+  }
+  /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+
+}
+@media screen and (max-width: 399px){
   .page-user{
     margin: 8rem 0;
   }
