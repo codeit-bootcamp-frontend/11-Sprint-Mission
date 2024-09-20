@@ -1,9 +1,9 @@
 @font-face {
-  font-family: "ROKAF sans";
-  src: url(../../font/ROKAF\ Sans\ Bold.ttf);
+  font-family: "ROKAF-sans";
+  src: url(../../font/ROKAF-Sans-Bold.ttf);
 }
 html {
-  font-family: "Pretendard", "ROKAF sans", "Noto Sans KR", sans-serif;
+  font-family: "Pretendard", "ROKAF-sans", "Noto Sans KR", sans-serif;
 }
 
 body {
@@ -83,7 +83,10 @@ body {
   gap: 10px;
   background-color: var(--gray-100);
 }
+.inputs:focus {
+  outline: 2px solid var(--blue-100);
 
+}
 .password {
   position: relative;
 }
