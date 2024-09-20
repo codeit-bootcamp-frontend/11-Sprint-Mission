@@ -1,14 +1,4 @@
-:root {
-  --blue: #3692ff;
-  --CoolGray100: #f3f4f6;
-  --Secondary50: #f9fafb;
-  --Secondary200: #e5e7eb;
-  --Secondary400: #9ca3af;
-  --Secondary700: #374151;
-  --Secondary900: #111827;
-  --landingBackground: #cfe5ff;
-  --footerBackground: #111827;
-}
+@import url(./common.css);
 
 * {
   box-sizing: border-box;
@@ -70,7 +60,7 @@ header {
 .header-content .login {
   padding: 11px 43px;
   background-color: var(--blue);
-  color: var(--CoolGray100);
+  color: var(--gray100);
   font-size: 16px;
   font-weight: 600;
   line-height: 26px;
@@ -104,7 +94,7 @@ header {
 .landing-page-top .content p,
 .landing-page-bottom .content p {
   width: 295px;
-  color: var(--Secondary700);
+  color: var(--gray700);
   font-size: 40px;
   font-weight: 700;
   line-height: 56px;
@@ -124,7 +114,7 @@ header {
 }
 
 .landing-page-top .content .items {
-  color: var(--Secondary50);
+  color: var(--gray50);
   font-size: 20px;
   font-weight: 600;
   line-height: 32px;
@@ -195,7 +185,7 @@ header {
 }
 
 .landing-page-main .content .info p:nth-child(2) {
-  color: var(--Secondary700);
+  color: var(--gray700);
   font-size: 40px;
   font-weight: 700;
   line-height: 56px;
@@ -203,7 +193,7 @@ header {
 }
 
 .landing-page-main .content .info p:nth-child(3) {
-  color: var(--Secondary700);
+  color: var(--gray700);
   font-size: 24px;
   font-weight: 500;
   line-height: 32px;
@@ -211,7 +201,7 @@ header {
 
 footer {
   width: 100%;
-  background-color: var(--footerBackground);
+  background-color: var(--gray900);
   padding-top: 32px;
   padding-bottom: 108px;
 }
@@ -221,7 +211,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: var(--Secondary400);
+  color: var(--gray400);
   font-size: 16px;
   font-weight: 400;
   line-height: 19.09px;
@@ -241,7 +231,7 @@ footer {
 }
 
 .footer-content a {
-  color: var(--Secondary200);
+  color: var(--gray200);
   align-items: center;
   cursor: pointer;
 }
