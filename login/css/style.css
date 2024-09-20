@@ -85,7 +85,6 @@ body {
 }
 .inputs:focus {
   outline: 2px solid var(--blue-100);
-
 }
 .password {
   position: relative;
@@ -160,7 +159,7 @@ body {
   text-decoration: none;
 }
 
-@media (max-width:1199px){
+@media (max-width: 1199px) {
   .logoContainer {
     width: 100%;
     display: flex;
@@ -169,7 +168,7 @@ body {
   }
 }
 
-@media (max-width: 767px){
+@media (max-width: 767px) {
   .logo {
     width: 51.76px;
     height: 51.94px;
@@ -179,23 +178,23 @@ body {
     font-size: 33.17px;
     line-height: 44.78px;
   }
-  
+
   .loginSet {
     gap: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  
+
   .inputContainers {
     gap: 8px;
   }
-  
+
   .labels {
     font-size: 14px;
     line-height: 24px;
   }
-  
+
   .inputs {
     width: 343px;
     height: 56px;
@@ -211,7 +210,7 @@ body {
   .password {
     position: relative;
   }
-  
+
   .seePassword {
     width: 24px;
     height: 24px;
@@ -227,9 +226,8 @@ body {
   .loginButton {
     width: 343px;
   }
-  
+
   .socialLogin {
-    width: auto;
+    width: 100%;
   }
-  
 }
