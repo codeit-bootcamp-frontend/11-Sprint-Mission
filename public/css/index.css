@@ -253,8 +253,21 @@ footer{
 }
 /*  footer end */
 
-@media screen and (max-width : 1520px) {
+/* mobile viewport */
+@media screen and (min-width : 375px) {
+}
+
+/* tablet viewport */
+@media screen and (min-width : 768px) {
+}
+
+/* pc viewport */
+@media screen and (min-width : 1200px) {
+}
+
+/* max viewport */
+@media screen and (min-width : 1520px) {
   :root {
-    font-size: 1.05vw;
+    font-size: 16px;
   }
 }
