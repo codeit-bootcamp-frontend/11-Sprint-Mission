@@ -4,8 +4,9 @@ html {
 }
 
 header {
-  position: fixed;
+  position:fixed;
   top: 0;
+  left: 0;
   z-index: 99; /* 가려지는 상황이 있어 임의로 추가함.*/
   width: 100%;
   height: 70px;
@@ -96,6 +97,7 @@ main {
   line-height: 56px;
   color: var(--gray-700);
 }
+
 #see {
   border-radius: 40px;
   padding: 16px 124px;
@@ -206,7 +208,8 @@ footer {
   text-decoration: none;
   color: inherit;
 }
-/* Tablet 스타일 (768px ~ 1199px) */
+
+/* Tablet 스타일 (768px ~ 1199px) 1505%이상의 화면*/
 @media (max-width:1199px){
 header {
   padding: 0 24px
@@ -233,7 +236,6 @@ header {
   justify-content: center;
   align-items: center;
 }
-}
 
 .mainWord {
   text-align: center;
@@ -244,9 +246,8 @@ header {
 }
 
 .break {
-  display: inline-block;
-  content: " ";
-  padding: 0 2px;
+  display: none;
+  white-space: nowrap;
 }
 
 .mainImage {
@@ -263,6 +264,7 @@ header {
 .articleImage {
   width: 100%;
 }
+
 .articles {
   width: 696px;
   gap: 52px;
@@ -293,34 +295,8 @@ header {
   gap: 12px;
 }
 
-.point {
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 26px;
-  color: var(--blue-100);
-}
-
-.articleContent {
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 56px;
-  color: var(--gray-700);
-  /*letter2%를 letter가 뭔지 잘모르겠습니다.*/
-}
-
-.detail {
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 32px;
-  color: var(--gray-700);
-}
-
 #word2 {
   text-align: right;
-}
-
-#bottom {
-  margin-top: 150px;
 }
 
 #bottomBox {
@@ -329,16 +305,105 @@ header {
   align-items: center;
   margin: 201px 224px 0;
 }
+
 footer {
   height: 160px;
   padding: 32px 104px 64px;
 }
-
 }
 
-/* Mobile 스타일 (375px ~ 767px) */
+/* Mobile 스타일 (375px ~ 767px) 250%이상의 화면*/
 @media (max-width: 767px){
 header {
-  padding: 0 24px;
+  padding: 0 16px;
+}
+
+header {
+  width: 100%;
+  gap: 126px; 
+}
+
+.break {
+  white-space: normal;
+  display: inline;
+}
+
+.wordBox {
+  width: 240px;
+  margin: 48px 68px;
+  padding: 0 0 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.mainImage{
+  margin: 0;
+}
+
+.mainWord {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 44.8px;
+  text-align: center;
+}
+
+#see {
+  padding: 16px 71px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+.articles {
+  width: 334px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.point {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
+}
+
+.articleContent {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.detail {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+#bottomBox {
+  margin: 121px 70px;
+}
+
+footer {
+  display: grid;
+  grid-template-columns: 180px 120px;
+  grid-template-rows: 30px 30px;
+  gap: 30px 20px;
+  padding: 32px;
+}
+
+.codeit {
+  grid-row: 2/3;
+  grid-column: 1/2;
+  text-align: left;
+}
+
+#center {
+  grid-row: 1/2;
+  grid-column: 1/2;
+}
+
+.socialLink {
+  grid-row: 1/2;
+  grid-column: 2/3;
 }
 }
