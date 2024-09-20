@@ -29,6 +29,8 @@ function activeSignupBtn(){
       signupPassword.value === signupCheckPassword.value
   ) {
     signupBtn.classList.add('active');
+  } else {
+    signupBtn.classList.remove('active');
   }
 }
 

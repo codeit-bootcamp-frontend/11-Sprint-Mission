@@ -13,7 +13,9 @@ function passwordInput(){
 function activeLoginBtn() {
   if(email.value.length > 0 && password.value.length > 0) {
     // btn.setAttribute('class', 'active');
-    btn.classList.add('active')
+    btn.classList.add('active');
+  } else {
+    btn.classList.remove('active');
   }
 }
 
