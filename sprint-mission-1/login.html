@@ -21,17 +21,25 @@
               <label class="sign-lable">이메일</label>
               <input
                 class="input-area"
+                id="email"
                 type="email"
                 placeholder="이메일을 입력해주세요"
               />
             </div>
+            <div class="failure-message hide">이메일을 입력해주세요.</div>
+            <div class="failure-message2 hide">잘못된 이메일 형식입니다.</div>
             <div class="sign-input">
               <label class="sign-lable">비밀번호</label>
               <input
                 class="input-area password"
+                id="password"
                 type="password"
                 placeholder="비밀번호를 입력해주세요"
               />
+            </div>
+            <div class="pw-failure-message hide">비밀번호를 입력해주세요.</div>
+            <div class="pw-failure-message2 hide">
+              비밀번호를 8자 이상 입력해주세요.
             </div>
             <div class="submit">
               <button class="sign-button" type="submit">로그인</button>
