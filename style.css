@@ -162,9 +162,31 @@ a {
   margin: 0 auto;
 }
 
+.corpName {
+  grid-area: name;
+  justify-self: center;
+  align-self: center;
+  color: #bdbdbd;
+}
+
+.pmLink {
+  grid-area: info;
+  justify-self: center;
+  align-self: center;
+}
+
+.pmSns {
+  grid-area: sns;
+  justify-self: center;
+  align-self: center;
+}
+
 #footer-info {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template: 30px 30px / 150px 1fr 170px 1fr 150px;
+  grid-template-areas:
+    "name . info . sns"
+    ". . . . .";
   padding-top: 15px;
 }
 
@@ -294,5 +316,27 @@ a {
 
   footer {
     min-width: 360px;
+  }
+
+  #footer-info {
+    grid-template: 30px 30px / 200px 1fr 120px;
+    grid-template-areas:
+      "info . sns"
+      "name . .";
+  }
+
+  .corpName {
+    grid-area: name;
+    justify-self: left;
+    align-self: center;
+    color: #bdbdbd;
+    padding-left: 20px;
+  }
+
+  .pmLink {
+    grid-area: info;
+    justify-self: left;
+    align-self: center;
+    padding-left: 20px;
   }
 }
