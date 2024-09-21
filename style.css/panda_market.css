@@ -227,3 +227,330 @@ footer {
   width: 116px;
   gap: 12px;
 }
+
+@media (min-width: 375px) {
+  /*mobile*/
+}
+
+@media (min-width: 768px) {
+  /*tablet*/
+  header {
+    padding: 0;
+    display: flex;
+    position: sticky;
+    z-index: 5;
+  }
+
+  .head {
+    width: 696px;
+    margin: 10px 24px;
+    align-items: center;
+  }
+
+  .home {
+    align-items: center;
+    height: auto;
+  }
+
+  .top,
+  .bottom {
+    margin: auto;
+    flex-direction: column;
+  }
+
+  .top {
+    padding-top: 84px;
+  }
+
+  .top-content {
+    align-items: center;
+    gap: 24px;
+    width: 512px;
+    text-align: center;
+  }
+
+  h2 {
+    display: flex;
+    white-space: pre;
+  }
+
+  section {
+    gap: 52px;
+  }
+
+  .section {
+    width: 696px;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .section.reverse {
+    flex-direction: column-reverse;
+    gap: 24px;
+  }
+
+  .section-image {
+    align-items: flex-start;
+  }
+
+  .section-image.reverse {
+    padding-right: 0;
+  }
+
+  .section-image > div {
+    gap: 16px;
+  }
+
+  h3 {
+    display: flex;
+    white-space: pre;
+  }
+
+  .bottom {
+    padding-top: 201px;
+  }
+
+  .bottom-content {
+    display: flex;
+    text-align: center;
+  }
+
+  footer {
+    height: 160px;
+    padding: 32px 104px 64px 104px;
+  }
+}
+
+@media (min-width: 1200px) {
+  /*pc*/
+  body {
+    background-color: var(--gray-10);
+  }
+
+  header {
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    margin: 0 auto;
+    background-color: white;
+    height: 70px;
+    border-bottom: 1px solid var(--light-gray);
+    padding: 9px 400px;
+  }
+
+  header,
+  .home,
+  section,
+  .footer-auth {
+    width: auto;
+    background-size: auto;
+  }
+
+  .logo,
+  .home,
+  section,
+  .section {
+    display: flex;
+    justify-content: center;
+  }
+
+  .logo,
+  .top,
+  .bottom,
+  section,
+  .section {
+    align-items: center;
+  }
+
+  .logo,
+  section,
+  .bottom-content,
+  footer {
+    gap: 10px;
+  }
+
+  .title {
+    font-size: 26px;
+    line-height: 35px;
+  }
+
+  .button:hover {
+    background-color: #2877d4;
+  }
+
+  .button {
+    background-color: var(--primary);
+  }
+
+  .small-button,
+  .auth__copyright,
+  .auth__info {
+    font-size: 16px;
+  }
+
+  .small-button {
+    border-radius: 8px;
+    width: 128px;
+    height: 48px;
+    padding: 12px 23px;
+    color: var(--gray-100);
+  }
+
+  .large-button {
+    height: 56px;
+    color: var(--gray-50);
+    cursor: pointer;
+  }
+
+  .home {
+    background-color: var(--cyan-blue);
+    height: 540px;
+    align-items: flex-end;
+  }
+
+  .top,
+  .bottom,
+  .footer-auth {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .top {
+    gap: 7px;
+  }
+
+  .top-content,
+  .section-image,
+  .section-text {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .top-content,
+  .section-image,
+  .section-text {
+    flex-direction: column;
+  }
+
+  .top-content {
+    padding-bottom: 60px;
+    gap: 32px;
+  }
+
+  h2,
+  span,
+  h3,
+  .section-image > div,
+  .auth__copyright,
+  .auth__info {
+    font-family: "Pretendard Variable", "Noto Sans Korean";
+  }
+
+  h2,
+  span,
+  h3 {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 56px;
+  }
+
+  .small-button,
+  span {
+    line-height: 26px;
+  }
+
+  h2 {
+    color: var(--black-700);
+    margin-bottom: 32px;
+  }
+
+  section {
+    padding: 138px 0;
+    background-color: white;
+  }
+
+  .section {
+    width: 988px;
+    border-radius: 12px;
+    gap: 64px;
+    background-color: var(--gray-10);
+  }
+
+  .section-image {
+    padding-right: 24px;
+    gap: 12px;
+  }
+
+  span {
+    font-size: 18px;
+    color: var(--primary);
+  }
+
+  .section-text {
+    gap: 24px;
+  }
+
+  .section.reverse {
+    justify-content: flex-end;
+  }
+
+  .section-image.reverse,
+  .section-text.reverse {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  h3,
+  .section-image > div {
+    color: var(--black-700);
+    white-space: nowrap;
+  }
+
+  .section-image > div {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 32px;
+  }
+
+  .bottom {
+    gap: 69px;
+  }
+
+  footer {
+    display: flex;
+    padding: 32px 400px;
+    background-color: var(--black-900);
+  }
+
+  .footer-auth {
+    width: 100%;
+  }
+
+  .auth__copyright,
+  .auth__info {
+    font-weight: 400;
+    line-height: 19px;
+    text-align: center;
+  }
+
+  .auth__copyright {
+    color: var(--gray-400);
+  }
+
+  .auth__info {
+    display: flex;
+    gap: 30px;
+  }
+
+  .auth__privacy,
+  .auth__faq {
+    text-decoration: none;
+    color: var(--gray-200);
+  }
+
+  .auth__sns {
+    width: 116px;
+    gap: 12px;
+  }
+}
