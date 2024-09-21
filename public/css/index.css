@@ -360,14 +360,15 @@ footer {
     font-size: 18px;
     line-height: 26px;
   }
-  /* banner end */
 
+  /* banner end */
 
 
   /* footer start */
   footer {
     padding: 32px 104px 64px;
   }
+
   /* footer end */
 }
 
@@ -431,17 +432,17 @@ footer {
     align-items: flex-start;
     flex-wrap: wrap-reverse;
   }
-  
+
   .footer-info {
     flex: 0 0 100%;
     margin-top: 60px;
   }
-  
+
   .footer-support {
     flex: 0 0 60%;
     gap: 30px;
   }
-  
+
   .footer-social {
     flex: 0 0 40%;
   }
