@@ -15,12 +15,21 @@ function checkEmailFormat() {
   // input과 관련된 문구를 삽입할 p태그
   const alert = fieldset.querySelector('.input-alert');
   const email = this.value.trim();
+  const regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')
 
   // 이메일 미입력
   if (email === '') {
     this.classList.add('warning');
     alert.classList.add('warning');
     alert.textContent = '이메일을 입력해주세요.';
+    return;
+  }
+
+  // 잘못된 형식의 이메일
+  if(!regex.test(email)){
+    this.classList.add('warning');
+    alert.classList.add('warning');
+    alert.textContent = '잘못된 이메일 형식입니다.';
     return;
   }
 
