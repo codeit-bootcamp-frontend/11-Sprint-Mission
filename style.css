@@ -374,6 +374,10 @@ footer {
         margin-top: 24px;
     }
 
+    .search-items-content .item-details{
+        text-align: right;
+    }
+
     .badge{
         font-size: 16px;
         margin-bottom: 8px
