@@ -73,7 +73,6 @@
 }
 
 .content-text {
-  padding-right: 24px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -92,7 +91,8 @@
   gap: 24px;
 }
 
-.description-main {
+.description-main,
+.hero-cta-text {
   color: var(--gray-700);
   font-size: 40px;
   font-weight: 700;
@@ -124,11 +124,16 @@
 .footer-wrapper {
   display: flex;
   width: 100%;
-  height: fit-content;
   justify-content: space-between;
+  align-items: start;
   font-size: 16px;
   font-weight: 400;
   line-height: 19px;
+  flex-wrap: wrap;
+}
+
+.mobile-footer-wrapper {
+  display: none;
 }
 
 .footer-links {
@@ -141,12 +146,22 @@
   color: var(--neutral-400);
 }
 
-.right-align {
+.social-links {
+  display: flex;
+  gap: 10px;
+}
+
+.reversed-content {
+  flex-direction: row-reverse;
   text-align: right;
 }
 
 #logo {
   display: block;
+}
+
+#mobile-logo {
+  display: none;
 }
 
 #img-home-top {
@@ -162,4 +177,118 @@
 #copyright {
   color: var(--gray-500);
   margin: 0;
+}
+
+/* tablet */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .nav-bar {
+    padding: 10px 24px;
+    height: 70px;
+  }
+
+  .hero {
+    align-items: normal;
+    height: 80vh;
+  }
+
+  .hero-container {
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-cta {
+    padding-top: 84px;
+    gap: 18px;
+    align-items: center;
+  }
+
+  .hero-cta-text {
+    font-size: 40px;
+    line-height: 56px;
+  }
+
+  .hero-br {
+    display: none;
+  }
+  
+  .see-more {
+    width: 360px;
+    font-size: 20px;
+    padding: 16px 124px;
+    line-height: 32px;
+  }
+
+  .main-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 52px;
+    margin: 50px 24px;
+  }
+
+  .main-content {
+    width: inherit;
+    padding: 0;
+  }
+
+  .contents-item {
+    width: 100%;
+    flex-direction: column;
+    align-items: start;
+    gap: 24px;
+  }
+
+  .content-image {
+    width: 100%;
+  }
+
+  .content-text {
+    gap: 16px;
+  }
+
+  .caption {
+    font-size: 18px;
+  }
+
+  .description {
+    gap: 24px;
+  }
+
+  .description-main {
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  .content-br {
+    display: none;
+  }
+
+  .description-additional {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .reversed-content {
+    align-items: flex-end;
+  }
+
+  .hero-bottom {
+    margin-top: 84px;
+  }
+
+  .hero-cta-bottom {
+    margin: auto auto;
+    padding: 0;
+  }
+
+  .description-main-bottom {
+    font-size: 32px;
+    line-height: 46px;
+  }
+
+  .footer-content {
+    padding: 32px 104px 64px 104px;
+  }
 }

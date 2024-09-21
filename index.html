@@ -13,17 +13,18 @@
   <body>
     <header class="nav-bar">
       <a href="/"
-        ><img id="logo" src="images/logos/logo.png" alt="판다마켓 로고"
-      /></a>
+        ><img id="logo" src="images/logos/logo.png" alt="판다마켓 로고" />
+        <img id="mobile-logo" src="/images/logos/Frame 2609444.svg" />
+      </a>
       <a href="/pages/login.html" class="btn main-login">로그인</a>
     </header>
 
     <main>
       <section class="hero">
         <div class="hero-container">
-          <div class="hero-cta">
-            <h2 class="description-main">
-              일상의 모든 물건을<br />
+          <div class="hero-cta hero-cta-top">
+            <h2 class="hero-cta-text">
+              일상의 모든 물건을<br class="hero-br" />
               거래해 보세요
             </h2>
             <a href="/pages/items.html" class="btn see-more">구경하러 가기</a>
@@ -31,74 +32,88 @@
           <img
             id="img-home-top"
             src="images/contents/Img_home_top.png"
-            alt="상품을 히어로 이미지"
+            alt="상단 히어로 이미지"
             width="746px"
             height="340px"
           />
         </div>
       </section>
 
-      <section class="main-content">
-        <div class="contents-item">
-          <img src="images/contents/Img_home_01.png" alt="" />
-          <div class="content-text">
-            <div class="caption">Hot item</div>
-            <div class="description">
-              <h2 class="description-main">
-                인기 상품을<br />
-                확인해 보세요
-              </h2>
-              <p class="description-additional">
-                가장 HOT한 중고거래 물품을<br />
-                판다 마켓에서 확인해 보세요
-              </p>
+      <div class="main-content-wrapper">
+        <section class="main-content">
+          <div class="contents-item">
+            <img
+              class="content-image"
+              src="images/contents/Img_home_01.png"
+              alt=""
+            />
+            <div class="content-text">
+              <div class="caption">Hot item</div>
+              <div class="description">
+                <h2 class="description-main">
+                  인기 상품을<br class="content-br" />
+                  확인해 보세요
+                </h2>
+                <p class="description-additional">
+                  가장 HOT한 중고거래 물품을<br />
+                  판다 마켓에서 확인해 보세요
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="main-content">
-        <div class="contents-item">
-          <div class="content-text right-align">
-            <div class="caption">search</div>
-            <div class="description">
-              <h2 class="description-main">
-                구매를 원하는<br />
-                상품을 검색하세요
-              </h2>
-              <p class="description-additional">
-                구매하고 싶은 물품은 검색해서<br />
-                쉽게 찾아보세요
-              </p>
+        <section class="main-content">
+          <div class="contents-item reversed-content">
+            <img
+              class="content-image"
+              src="images/contents/Img_home_02.png"
+              alt=""
+            />
+            <div class="content-text align-right">
+              <div class="caption">search</div>
+              <div class="description">
+                <h2 class="description-main">
+                  구매를 원하는<br class="content-br" />
+                  상품을 검색하세요
+                </h2>
+                <p class="description-additional">
+                  구매하고 싶은 물품은 검색해서<br />
+                  쉽게 찾아보세요
+                </p>
+              </div>
             </div>
           </div>
-          <img src="images/contents/Img_home_02.png" alt="" />
-        </div>
-      </section>
+        </section>
 
-      <section class="main-content">
-        <div class="contents-item">
-          <img src="images/contents/Img_home_03.png" />
-          <div class="content-text">
-            <div class="caption">Register</div>
-            <div class="description">
-              <h2 class="description-main">
-                판매를 원하는<br />
-                상품을 등록하세요
-              </h2>
-              <p class="description-additional">
-                어떤 물건이든 판매하고 싶은 상품을<br />
-                쉽게 등록하세요
-              </p>
+        <section class="main-content">
+          <div class="contents-item">
+            <img
+              class="content-image"
+              src="images/contents/Img_home_03.png"
+              alt=""
+            />
+            <div class="content-text">
+              <div class="caption">Register</div>
+              <div class="description">
+                <h2 class="description-main">
+                  판매를 원하는<br class="content-br" />
+                  상품을 등록하세요
+                </h2>
+                <p class="description-additional">
+                  어떤 물건이든 판매하고 싶은 상품을<br />
+                  쉽게 등록하세요
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       <section class="hero hero-bottom">
         <div class="hero-container">
-          <div class="hero-cta">
-            <h2 class="description-main">
+          <div class="hero-cta hero-cta-bottom">
+            <h2 class="description-main description-main-bottom">
               믿을 수 있는<br />
               판다마켓 중고 거래
             </h2>
@@ -121,18 +136,18 @@
           <a href="/pages/privacy.html">Privacy Policy</a>
           <a href="/pages/faq.html">FAQ</a>
         </div>
-        <div>
+        <div class="social-links">
           <a href="https://www.facebook.com/" target="_blank"
-            ><img src="images/icons/ic_facebook.png"
+            ><img src="images/icons/ic_facebook.png" alt="Facebook"
           /></a>
           <a href="https://www.twitter.com" target="_blank"
-            ><img src="images/icons/ic_twitter.png"
+            ><img src="images/icons/ic_twitter.png" alt="Twitter"
           /></a>
           <a href="https://www.youtube.com" target="_blank"
-            ><img src="images/icons/ic_youtube.png"
+            ><img src="images/icons/ic_youtube.png" alt="YouTube"
           /></a>
           <a href="https://www.instagram.com" target="_blank"
-            ><img src="images/icons/ic_instagram.png"
+            ><img src="images/icons/ic_instagram.png" alt="Instagram"
           /></a>
         </div>
       </div>
