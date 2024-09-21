@@ -42,7 +42,7 @@ function togglePasswordVisibility() {
   Array.from(this.children).forEach(e => e.classList.toggle('hide'))
 }
 
-
+// 입력 이메일 포맷 확인 이벤트
 document.querySelector('#input-email').addEventListener('focusout', checkEmailFormat)
 
 // 비밀번호 표기 버튼 토글 이벤트
