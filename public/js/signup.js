@@ -38,9 +38,11 @@ function togglePasswordVisibility() {
   Array.from(this.children).forEach(e => e.classList.toggle('hide'))
 }
 
+// 비밀번호 표기 버튼 토글 이벤트
 document.querySelectorAll('.visibility-btn').forEach(btn => {
   btn.addEventListener('click', togglePasswordVisibility)
 })
+
 document.addEventListener('input', checkAllInputFill)
 // document.querySelector('#input-password-repeat')
 //   .addEventListener('change', comparePassword)

@@ -23,6 +23,8 @@ function togglePasswordVisibility() {
 }
 
 
+// 비밀번호 표기 버튼 토글 이벤트
 document.querySelector('.visibility-btn')
   .addEventListener('click', togglePasswordVisibility)
+
 document.addEventListener('input', checkAllInputFill)
