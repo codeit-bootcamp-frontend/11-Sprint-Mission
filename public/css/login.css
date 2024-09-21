@@ -1,7 +1,7 @@
 @import url(style.css);
 
-body{
-  background-color : #FCFCFC;
+body {
+  background-color: #FCFCFC;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +10,7 @@ body{
 }
 
 .login-container,
-.signup-container{
+.signup-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,30 +23,31 @@ body{
 
 
 /* Logo start */
-.logo-wrap{
+.logo-wrap {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  width: 396px;
+  gap: 22px;
 }
 
-.logo-icon{
+.logo-icon {
   width: 103.53px;
 }
 
-.logo-text{
-  font-family : 'ROKAF Sans';
+.logo-text {
+  font-family: 'ROKAF Sans';
   font-size: 66.34px;
   font-weight: 700;
   color: var(--blue);
 }
+
 /* Logo end */
 
 
 
 /* form start */
 #login-form,
-#signup-form{
+#signup-form {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -56,7 +57,7 @@ body{
 #input-email,
 #input-password,
 #input-nickname,
-#input-password-repeat{
+#input-password-repeat {
   background-color: var(--gray-200);
   width: 100%;
   padding: 16px 24px;
@@ -73,21 +74,21 @@ body{
 #input-email::placeholder,
 #input-password::placeholder,
 #input-nickname::placeholder,
-#input-password-repeat::placeholder{
+#input-password-repeat::placeholder {
   color: var(--gray-400);
 }
 
 #input-email:focus-visible,
 #input-password:focus-visible,
 #input-nickname:focus-visible,
-#input-password-repeat:focus-visible{
+#input-password-repeat:focus-visible {
   outline-color: var(--blue);
 }
 
 label[for="input-email"],
 label[for="input-password"],
 label[for="input-nickname"],
-label[for="input-password-repeat"]{
+label[for="input-password-repeat"] {
   display: block;
   font-size: 18px;
   line-height: 26px;
@@ -96,13 +97,13 @@ label[for="input-password-repeat"]{
   margin-bottom: 16px;
 }
 
-.input-fieldset{
+.input-fieldset {
   width: 100%;
   border: none;
   position: relative;
 }
 
-.visibility-btn{
+.visibility-btn {
   position: absolute;
   top: 58px;
   right: 24px;
@@ -112,25 +113,25 @@ label[for="input-password-repeat"]{
   cursor: pointer;
 }
 
-.visibility-btn img.hide{
+.visibility-btn img.hide {
   display: none;
 }
 
-.repeat-alert{
+.repeat-alert {
   font-size: 12px;
   font-weight: bold;
 }
 
-.repeat-alert.correct{
+.repeat-alert.correct {
   color: #759545;
 }
 
-.repeat-alert.warning{
+.repeat-alert.warning {
   color: #EA866E;
 }
 
 #login-submit-btn,
-#signup-submit-btn{
+#signup-submit-btn {
   background-color: var(--gray-400);
   width: 100%;
   padding: 16px 124px;
@@ -145,18 +146,19 @@ label[for="input-password-repeat"]{
 }
 
 #login-submit-btn.active,
-#signup-submit-btn.active{
+#signup-submit-btn.active {
   background-color: var(--blue);
   color: var(--gray-100);
 
   cursor: pointer;
 }
+
 /* form end */
 
 
 
 /* social start */
-.social-login{
+.social-login {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -167,29 +169,74 @@ label[for="input-password-repeat"]{
   border-radius: 8px;
 }
 
-.social-login p{
+.social-login p {
   flex-grow: 1;
   font-size: 16px;
   font-weight: 500;
   line-height: 26px;
 }
 
-.social-login-btn{
+.social-login-btn {
   height: 42px;
 }
+
 /* social end */
 
 
 
 /* signup start */
-.goto-wrap{
+.goto-wrap {
   color: var(--gray-800);
   font-size: 14px;
   font-weight: 500;
 }
 
-.goto-wrap a{
+.goto-wrap a {
   color: var(--blue);
   text-decoration: underline;
 }
+
 /* signup end */
+
+
+
+/* mobile viewport */
+@media screen and (max-width : 767px) {
+  .logo-wrap {
+    gap: 12px;
+  }
+
+  .logo-icon {
+    width: 52px;
+  }
+
+  .logo-text {
+    font-size: 33px;
+  }
+
+  .login-container,
+  .signup-container {
+    padding: 0 16px;
+    max-width: 432px;
+  }
+
+  #input-email,
+  #input-password,
+  #input-nickname,
+  #input-password-repeat {
+    margin-bottom: 16px;
+  }
+
+  label[for="input-email"],
+  label[for="input-password"],
+  label[for="input-nickname"],
+  label[for="input-password-repeat"] {
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .visibility-btn {
+    top: 42px;
+  }
+}
