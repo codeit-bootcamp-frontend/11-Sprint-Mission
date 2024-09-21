@@ -132,3 +132,18 @@ a {
   line-height: 16.71px;
   color: #3692FF;
 }
+
+/* Mobile: 375px 이상 ~ 767px 이하 */
+@media (min-width: 375px) and (max-width: 767px) {
+  /* Mobile 전용 스타일 */
+  .content {
+    position: fixed;
+    width: 343px;
+    height: 501px;
+    top: 80px;
+    left: 16px;
+    gap: 24px;
+
+  }
+
+}
