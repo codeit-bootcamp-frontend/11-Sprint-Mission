@@ -118,6 +118,46 @@ input:focus {
   align-items: center;
 }
 
+.hide {
+  display: none;
+}
+
+.failure-message {
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: left;
+  color: #f74747;
+}
+
+.failure-message2 {
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: left;
+  color: #f74747;
+}
+
+.pw-failure-message {
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: left;
+  color: #f74747;
+}
+
+.pw-failure-message2 {
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: left;
+  color: #f74747;
+}
+
 @media (min-width: 768px) and (max-width: 1199px) {
 }
 
