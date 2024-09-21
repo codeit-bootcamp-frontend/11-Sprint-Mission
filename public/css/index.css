@@ -387,6 +387,10 @@ footer {
     padding: 9px 16px;
   }
 
+  .logo-icon {
+    display: none;
+  }
+
   .container:first-child {
     padding: 48px 0 0;
     height: 540px;
@@ -434,11 +438,11 @@ footer {
   }
   
   .footer-support {
-    flex: 0 0 50%;
+    flex: 0 0 60%;
     gap: 30px;
   }
   
   .footer-social {
-    flex: 0 0 50%;
+    flex: 0 0 40%;
   }
 }
