@@ -7,6 +7,7 @@
     <title>판다마켓-회원가입</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/font.css">
+    <script src="./js/signup.js"></script>
 </head>
 
 <body>
@@ -19,11 +20,12 @@
                     <div class="logo-txt"><img src="./images/logo/logo_txt.png" alt="로고텍스트"></div>
                 </a>
             </div>
-            <form action="" name="signup">
+            <form id="signForm" action="" name="signup">
                 <div class="signup-wrap">
                     <div class="signup-email">
                         <label for="signupEmail">이메일</label>
                         <input type="email" name="signupEmail" id="signupEmail" placeholder="이메일을 입력해주세요" required>
+                        <div id="e-error" class="error-message"></div>
                     </div>
                     <div class="signup-name">
                         <label for="signupName">닉네임</label>
@@ -34,24 +36,32 @@
                         <div class="password-wrap">
                             <input type="password" placeholder="비밀번호를 입력해주세요" name="singupPassword" id="singupPassword" required>
                             <div class="eyes-img-wrap">
-                                <div class="close-eyes">
+                                <div class="close-eyes visible">
                                     <img src="./images/icons/visibility.png" alt="클릭시비밀번호보기">
+                                </div>
+                                <div class="open-eyes">
+                                    <img src="./images/icons/visible.png" alt="클릭시비밀번호숨기기">
                                 </div>
                             </div>
                         </div>
+                        <div id="p-error" class="error-message"></div>
                     </div>
                     <div class="check-password-wrap">
                         <label for="checkPassword">비밀번호 확인</label>
                         <div class="check-p-wrap">
                             <input type="password" placeholder="비밀번호를 다시 한 번 입력해주세요" name="checkPassword" id="checkPassword" required>
                             <div class="eyes-img-wrap">
-                                <div class="close-eyes">
+                                <div class="close-eyes visible">
                                     <img src="./images/icons/visibility.png" alt="클릭시비밀번호보기">
+                                </div>
+                                <div class="open-eyes">
+                                    <img src="./images/icons/visible.png" alt="클릭시비밀번호숨기기">
                                 </div>
                             </div>
                         </div>
+                        <div id="cp-error" class="error-message"></div>
                     </div>
-                    <button type="submit" class="singup-btn">회원가입</button>
+                    <button type="submit" id="singupButton" class="singup-btn" disabled>회원가입</button>
                     <div class="quick-login-box">
                         <p>간편 로그인하기</p>
                         <div class="quick-sns-box">
