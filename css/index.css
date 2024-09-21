@@ -558,7 +558,6 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 0 5px;
   }
 
   /* first-section */
@@ -630,7 +629,7 @@ footer {
   /* second-section */
   .second-section {
     height: 1310px;
-    margin: 0;
+    margin: 0 10px;
     padding: 0px;
     .feature {
       height: 417px;
