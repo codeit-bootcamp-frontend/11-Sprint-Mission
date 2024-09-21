@@ -2,7 +2,7 @@ body {
   background-color: var(--gray-10);
 }
 
-/*header {
+header {
   position: sticky;
   z-index: 1;
   top: 0;
@@ -11,7 +11,7 @@ body {
   height: 70px;
   border-bottom: 1px solid var(--light-gray);
   padding: 9px 400px;
-}*/
+}
 
 header,
 .home,
@@ -252,8 +252,15 @@ footer {
     display: none;
   }
 
-  h1 {
+  h1,
+  h2,
+  h3 {
     white-space: pre;
+  }
+
+  h2,
+  h3 {
+    display: flex;
   }
 
   .home {
@@ -262,9 +269,15 @@ footer {
   }
 
   .top,
+  .bottom,
+  h2,
+  .section {
+    flex-direction: column;
+  }
+
+  .top,
   .bottom {
     margin: auto;
-    flex-direction: column;
   }
 
   .top {
@@ -280,7 +293,6 @@ footer {
 
   h2 {
     display: flex;
-    flex-direction: column;
     font-size: 32px;
     line-height: 44px;
   }
@@ -290,11 +302,6 @@ footer {
     padding: 12px 71px;
     font-size: 18px;
     line-height: 26px;
-  }
-
-  h2 {
-    display: flex;
-    white-space: pre;
   }
 
   section {
@@ -309,7 +316,6 @@ footer {
 
   .section {
     align-items: stretch;
-    flex-direction: column;
     gap: 24px;
   }
 
@@ -336,11 +342,6 @@ footer {
   .section-image > div {
     font-size: 16px;
     gap: 8px;
-  }
-
-  h3 {
-    display: flex;
-    white-space: pre;
   }
 
   .bottom {
@@ -397,9 +398,14 @@ footer {
   }
 
   .top,
+  .bottom,
+  .section {
+    flex-direction: column;
+  }
+
+  .top,
   .bottom {
     margin: auto;
-    flex-direction: column;
   }
 
   .top {
@@ -413,7 +419,8 @@ footer {
     text-align: center;
   }
 
-  h2 {
+  h2,
+  h3 {
     display: flex;
     white-space: pre;
   }
@@ -426,12 +433,15 @@ footer {
   .section {
     width: 696px;
     align-items: stretch;
-    flex-direction: column;
     gap: 24px;
   }
 
-  .section.reverse {
+  .section.reverse,
+  .footer-info {
     flex-direction: column-reverse;
+  }
+
+  .section.reverse {
     gap: 24px;
   }
 
@@ -445,11 +455,6 @@ footer {
 
   .section-image > div {
     gap: 16px;
-  }
-
-  h3 {
-    display: flex;
-    white-space: pre;
   }
 
   .bottom {
@@ -468,7 +473,6 @@ footer {
 
   .footer-info {
     display: flex;
-    flex-direction: column-reverse;
   }
 }
 
