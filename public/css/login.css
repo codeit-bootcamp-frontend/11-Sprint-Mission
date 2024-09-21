@@ -51,6 +51,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 24px;
   width: 100%;
 }
 
@@ -63,7 +64,6 @@ body {
   padding: 16px 24px;
   border: none;
   border-radius: 12px;
-  margin-bottom: 24px;
 
   color: var(--gray-800);
   font-size: 16px;
@@ -97,6 +97,23 @@ label[for="input-password-repeat"] {
   margin-bottom: 16px;
 }
 
+input.warning{
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: #F74747;
+}
+
+.input-alert{
+  margin-left: 16px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.input-alert.warning{
+  margin-top: 8px;
+  color: #F74747;
+}
+
 .input-fieldset {
   width: 100%;
   border: none;
@@ -115,19 +132,6 @@ label[for="input-password-repeat"] {
 
 .visibility-btn img.hide {
   display: none;
-}
-
-.repeat-alert {
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.repeat-alert.correct {
-  color: #759545;
-}
-
-.repeat-alert.warning {
-  color: #EA866E;
 }
 
 #login-submit-btn,

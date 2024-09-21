@@ -3,10 +3,30 @@ function checkAllInputFill() {
   const inputTags = document.querySelectorAll('#login-form input:required')
   const submitBtn = document.querySelector('#login-submit-btn');
 
-  let isAllFilled = Array.from(inputTags).every(tag => 
+  let isAllFilled = Array.from(inputTags).every(tag =>
     tag.value.trim() !== '');
 
   submitBtn.classList.toggle('active', isAllFilled);
+}
+
+function checkEmailFormat() {
+  // input tag를 포함하는 fieldset
+  const fieldset = this.parentNode;
+  // input과 관련된 문구를 삽입할 p태그
+  const alert = fieldset.querySelector('.input-alert');
+  const email = this.value.trim();
+
+  // 이메일 미입력
+  if (email === '') {
+    this.classList.add('warning');
+    alert.classList.add('warning');
+    alert.textContent = '이메일을 입력해주세요.';
+    return;
+  }
+
+  this.classList.remove('warning');
+  alert.classList.remove('warning');
+  alert.textContent = '';
 }
 
 // 비밀번호 표기 토글 이벤트 핸들러
@@ -22,6 +42,8 @@ function togglePasswordVisibility() {
   Array.from(this.children).forEach(e => e.classList.toggle('hide'))
 }
 
+
+document.querySelector('#input-email').addEventListener('focusout', checkEmailFormat)
 
 // 비밀번호 표기 버튼 토글 이벤트
 document.querySelector('.visibility-btn')
