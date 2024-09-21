@@ -1,0 +1,149 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.main{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-box{
+    width: 640px;
+}
+
+.main-box-logo{
+    text-align: center;
+}
+
+.login-logo{
+    width: 396px;
+    height: 132px;
+    margin-bottom: 40px;
+}
+
+.sub-box{
+    width: 100%;
+}
+
+.input-name{
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 700;
+    font-family: 'Pretendard';
+    margin-bottom: 16px;
+}
+
+.input-pass{
+    margin-top: 24px;
+}
+
+.input-pass-box{
+    position: relative;
+}
+
+.input-tag{
+    width: 100%;
+    height: 56px;
+    padding: 16px 24px;
+    background-color: var(--gray100);
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+    font-family: 'Pretendard';
+}
+
+.input-tag:focus{
+    border: 1px solid var(--blue);
+}
+
+.email{
+    margin-bottom: 24px;
+}
+
+.password-icon{
+    position: absolute;
+    right: 16px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    cursor: pointer; 
+}
+
+.sign-button{
+    width: 100%;
+    height: 56px;
+    background-color: var(--gray400);
+    border-radius: 40px;
+    padding: 16px 24px;
+    text-align: center;
+    color: #F3F4F6;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Pretendard';
+    margin-bottom: 24px;
+    margin-top: 24px;
+}
+
+.sign-button.active{
+    background-color: var(--blue);
+    cursor: pointer;
+}
+
+.comport-login{
+    width: 100%;
+    height: 74px;
+    border-radius: 8px;
+    padding: 16px 24px;
+    background-color: #E6F2FF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.comport-login-link{
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 26px;
+    font-family: 'Pretendard';
+    color: var(--gray800);
+}
+
+.login-image{
+    width: 42px;
+    height: 42px;
+}
+
+.google{
+    margin-right: 16px;
+}
+
+.to-signup{
+    text-align: center;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: bold;
+    font-family: 'Pretendard';
+}
+
+.to-signup-link{
+    color: var(--blue);
+}
+
+/* 반응형 - Mobile*/
+@media screen and (max-width: 767px) and (min-width: 375px) {
+    .main {
+        padding: 0 16px; 
+    }
+
+    .main-box {
+        width: 100%;
+        max-width: 400px; 
+    }
+}
