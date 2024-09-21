@@ -9,6 +9,7 @@ header {
   position: sticky;
   top: 0;
   width: 100%;
+  z-index: 5;
 }
 
 .header {
@@ -20,7 +21,13 @@ header {
   height: 70px;
 }
 
-.banner {
+.image-logo {
+  width: 153px;
+  height: 51px;
+}
+
+.banner,
+.banner-bottom {
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -28,16 +35,19 @@ header {
   background-color: #cfe5ff;
 }
 
-.banner-container {
+.banner-container,
+.banner-bottom-container {
   display: flex;
   white-space: nowrap;
 }
 
-.banner-content {
+.banner-content,
+.banner-bottom-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 32px;
+  text-align: center;
 }
 
 .section {
@@ -53,7 +63,6 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fcfcfc;
   width: 988px;
   gap: 64px;
   border-radius: 12px;
@@ -128,4 +137,167 @@ footer {
 .sns {
   display: flex;
   gap: 7px;
+}
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .header {
+    padding: 0 24px;
+  }
+
+  .banner {
+    align-items: baseline;
+    height: 771px;
+  }
+
+  .banner-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 211px;
+  }
+
+  .banner-content {
+    margin-top: 84px;
+    gap: 24px;
+  }
+
+  /* 마진 */
+  .margin-lr-77 {
+    margin-left: 77px;
+    margin-right: 77px;
+  }
+
+  .br-class {
+    display: none;
+  }
+
+  .section {
+    padding: 24px 24px 32px;
+    height: auto;
+  }
+
+  .section-container {
+    display: block;
+    padding: 0;
+  }
+
+  .section-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .section-img-area {
+    width: 100%;
+  }
+
+  .section-desc {
+    padding-top: 24px;
+  }
+
+  .banner-bottom {
+    height: 927px;
+    align-items: baseline;
+  }
+
+  .banner-bottom-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 217px;
+  }
+
+  .banner-bottom-content {
+    text-align: center;
+    margin-top: 201px;
+  }
+}
+
+/* Mobile */
+@media (min-width: 365px) and (max-width: 767px) {
+  .header {
+    padding: 0 16px;
+  }
+
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 44.8px;
+    color: var(--gray-700);
+  }
+
+  .banner {
+    align-items: baseline;
+    height: 540px;
+    margin-bottom: 32px;
+  }
+
+  .banner-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 132px;
+  }
+
+  .banner-content {
+    padding-top: 48px;
+    gap: 18px;
+  }
+
+  .btn-primary-round {
+    height: 48px;
+    border-radius: 40px;
+    padding: 12px 71px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 26px;
+  }
+
+  .banner-img-area {
+    width: 448px;
+    height: 204px;
+  }
+
+  .section {
+    padding: 20px 16px;
+    height: auto;
+  }
+
+  .section-label .br-class {
+    display: none;
+    /* 안먹힌다. */
+  }
+
+  .section-container {
+    display: block;
+    padding: 0;
+  }
+
+  .section-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .section-img-area {
+    width: 100%;
+  }
+
+  .section-desc {
+    padding-top: 24px;
+  }
+
+  .banner-bottom {
+    height: 540px;
+    align-items: baseline;
+  }
+
+  .banner-bottom-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 131px;
+  }
+
+  .banner-bottom-content {
+    text-align: center;
+    margin-top: 121px;
+  }
 }

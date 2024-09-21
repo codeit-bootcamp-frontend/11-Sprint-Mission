@@ -84,3 +84,36 @@
   line-height: 24px;
   color: var(--gray-800);
 }
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .auth-wrapper {
+    max-width: 640px;
+    max-height: 618px;
+    margin: 190px auto;
+  }
+
+  .auth-signup-wrapper {
+    max-width: 640px;
+    max-height: 842px;
+    margin: 48px auto 243px;
+    padding-left: 53px;
+    padding-right: 53px;
+  }
+}
+
+/* Mobile */
+@media (min-width: 365px) and (max-width: 767px) {
+  .auth-wrapper {
+    max-width: 400px;
+    max-height: 618px;
+    margin: 80px auto;
+  }
+
+  .auth-signup-wrapper {
+    max-width: 640px;
+    max-height: 842px;
+    margin: 48px auto 243px;
+    padding: 0 53px;
+  }
+}
