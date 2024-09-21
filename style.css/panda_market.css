@@ -223,6 +223,7 @@ footer {
 }
 
 .auth__sns {
+  display: flex;
   width: 116px;
   gap: 12px;
 }
@@ -362,6 +363,15 @@ footer {
 
   .auth__info {
     margin-bottom: 60px;
+  }
+
+  .footer-auth {
+    position: relative;
+  }
+
+  .auth__copyright {
+    position: absolute;
+    top: 60px;
   }
 }
 
