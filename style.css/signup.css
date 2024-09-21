@@ -7,3 +7,27 @@
   color: var(--gray-800);
   line-height: 21px;
 }
+
+@media (max-width: 1199px) {
+  .nickname-form__input {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--gray-800);
+    line-height: 21px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .nickname-form__input {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--gray-800);
+    line-height: 21px;
+  }
+}
