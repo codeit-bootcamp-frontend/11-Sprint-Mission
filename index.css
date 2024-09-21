@@ -197,9 +197,32 @@
   display: flex;
   gap: 12px;
 }
-
-@media (0px < width < 1920px) {
+/* 반응형 디자인 */
+@media (1200px < width < 1920px) {
   .header {
     padding: 8px 200px;
+  } 
+}
+
+@media (768px < width < 1199px) {
+  .header {
+    padding: 8px 24px;
+  } 
+  .information_section > div {
+    flex-direction: column;
+  }
+  .information_section > div:has(.reverse) {
+    flex-direction: column-reverse;
+  }
+}
+@media (375px < width < 767px) {
+  .header {
+    padding: 8px 16px;
+  }
+  .information_section > div {
+    flex-direction: column;
+  }
+  .information_section > div:has(.reverse) {
+    flex-direction: column-reverse;
   } 
 }
