@@ -106,7 +106,8 @@ body {
     justify-content: center;
     align-items: center;
   }
-
+  .main {
+  }
   .container {
     width: 100%;
     min-width: 400px;
@@ -127,6 +128,15 @@ body {
     gap: 10px;
     height: 66px;
     width: 198px;
+  }
+  .auth-hedaer {
+    width: 100%;
+    a {
+      width: 100%;
+    }
+    img {
+      width: 100%;
+    }
   }
   .market-logo {
     width: 52px;
