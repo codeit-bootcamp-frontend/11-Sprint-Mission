@@ -1,0 +1,321 @@
+/* PC: 1200px 이상 */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family:Pretendard;
+  text-align: left;
+}
+
+a {
+  text-decoration: none;
+}
+
+.top-logo-loginbox {
+  width: 100%;
+  height: 70px;
+  padding: 9px 400px;
+  gap: 10px;
+  background-color: #FFFFFF;
+} 
+
+.top-logo {
+  position: fixed;
+  left: 200px;
+  top: 17px;
+}
+
+nav img {
+  width: 40px;
+  height: 40.14px;
+  top: 5.02px;
+  border-radius: 11.18px;
+}
+
+.nav-logo-name {
+  display: inline-block;
+  font-family: ROKAF Sans;
+  font-size: 25.63px;
+  font-weight: 700;
+  line-height: 34.6px;
+  text-align: left;
+  width: 103px;
+  height: 35px;
+  vertical-align: top;
+  margin: 4px;
+  color: #3692FF;
+}
+
+.btn {
+  background-color: #3692FF;
+  border: none;
+  color: white;
+}
+
+.nav-logo-loginbtn {
+  width: 128px;
+  height: 48px;
+  padding: 12px 23px 12px 35px;
+  gap: 10px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  position: fixed;
+  top: 12px;
+  right: 200px;
+  z-index: 3;
+}
+
+.background-color-sky {
+  height: 540px;
+  background-color: #CFE5FF;
+}
+
+.textbox {
+  width: 357px;
+  height: 260px;
+  padding: 0px 0px 60px 0px;
+  position: relative;
+  top: 242px;
+  left: 27%;
+}
+
+.header-img {
+  position: relative;
+  bottom: 60px;
+  left: 47%;
+  width: 746px; 
+}
+
+ h3 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+  margin-bottom: 25px;
+  color: #374151;
+
+}
+
+.background-color-sky button {
+  width: 357px;
+  height: 56px;
+  gap: 10px;
+  border-radius: 40px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  text-align: center;
+}
+
+.background-color-white {
+  height: 720px;
+  padding: 138px 466px 138px 466px;
+  gap: 10px;
+}
+
+
+.footer-img {
+  position: relative;
+  bottom: 117px;
+  left: 44%;
+  width: 746px; 
+}
+
+.background-color-white img {
+  width: 579px;
+  height: 444px;
+  float: left;
+  position: relative;
+  left: 9px;
+}
+
+.background-color-white .main-img-right {
+  float: right;  
+  position: relative;
+  left: -9px;
+
+}
+
+.background-color-white .badge {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  color: #3692FF;
+}
+
+.background-color-white h4 {
+  width: 365px;
+  height: 112px;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 50px;
+  letter-spacing: 0.02em;
+  color: #374151;
+  margin: 15px -3px;
+
+}
+
+.background-color-white p {
+  width: 351px;
+  height: 64px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 29px;
+  color: #374151;
+}
+
+.main-centerbox {
+  width: 988px;
+  height: 444px;
+  gap: 64px;
+  border-radius: 12px;
+  background-color: #FCFCFC;
+}
+
+.except-badge {
+  width: 274px;
+  height: 200px;
+  gap: 24px;
+}
+
+.main-text {
+  float: left;
+  height: 50px;
+  margin: 98px -9px 19px 53px;
+}
+
+.main-text-right {
+  float: left;
+  height: 50px;
+  margin: 98px -9px 19px 53px;
+  text-align: right;
+}
+
+.main-text-right h4,
+.main-text-right p {
+  text-align: right;
+  position: relative;
+  right: 79px;
+}
+
+.aboutcodeit {
+  height: 160px;
+  top: 3448px;
+  padding: 32px 400px 32px 400px;
+  gap: 10px;
+  background-color: #111827;
+  display: flex;
+  justify-content: space-between;
+}
+
+.aboutcodeit-text {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.09px;
+  text-align: center;
+  color: #9CA3AF;
+}
+
+.text-margin {
+  margin-left: 10px;;
+}
+
+.sns-margin {
+  margin-right: 7px;
+}
+
+.verticla {
+  vertical-align: text-top;
+}
+
+/* Tablet: 768px 이상 ~ 1199px 이하 */
+@media (min-width: 768px) and (max-width: 1199px) {
+/* tablet 전용 스타일 */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    width: 744px;
+    }
+
+  .top-logo{
+    left: -371px;
+    top: 8px;
+    position: absolute;
+  }
+  nav {
+    position: relative;
+  }
+  .nav-logo-loginbtn {
+    position: absolute;
+    right: 421px;
+    top: 3px;
+  }
+
+  .background-color-sky {
+    height: 771px;
+  }
+
+  .background-color-sky img {
+    top: 114px;
+    left: 0;
+    height: 340px;
+    top: 171px;
+  }
+
+  h3 {
+    position: relative;
+    bottom: 148px;
+  }
+
+  .textbox-top-title {
+    width: 512px;
+    height: 56px;
+  }
+  
+  .background-color-sky .btn {
+    position: relative;
+    bottom: 94px;
+  }
+
+  .background-color-sky-bottom {
+    width: 744px;
+    height: 927px;
+  }
+
+  .background-color-sky-bottom img {
+    position: relative;
+    top: 328px;
+  }
+
+  .background-color-sky-bottom h3 {
+    bottom: 50px; 
+  }
+  
+  .background-color-white img{
+    width: 696px;
+    height: 524px;
+    margin: -117px -449px;
+
+  }
+}
+
+
+
+/* Mobile: 375px 이상 ~ 767px 이하 */
+@media (min-width: 375px) and (max-width: 767px) {
+/* Mobile 전용 스타일 */
+  
+  .container {
+    width: 100%;
+  }
+
+  .top-logo{
+    left: 16px;
+  }
+
+  .nav-logo-loginbtn {
+    right: 16px;
+    position: static;
+  }
+}
