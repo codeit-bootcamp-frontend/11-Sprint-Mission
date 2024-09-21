@@ -154,10 +154,6 @@ input:focus {
     margin: 80px 16px;
   }
 
-  .head {
-    gap: 24px;
-  }
-
   .head > img {
     width: 51px;
     height: 51px;
