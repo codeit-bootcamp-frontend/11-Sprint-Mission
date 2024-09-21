@@ -25,11 +25,6 @@ body,
   align-items: center;
 }
 
-.head {
-  width: 396px;
-  height: 132px;
-}
-
 .title {
   font-size: 66px;
   line-height: 89px;
@@ -150,6 +145,49 @@ input:focus {
   color: var(--primary);
 }
 
+@media (max-width: 767px) {
+  body {
+    max-width: 400px;
+  }
+
+  .join-page {
+    margin: 80px 16px;
+  }
+
+  .head {
+    gap: 24px;
+  }
+
+  .head > img {
+    width: 51px;
+    height: 51px;
+  }
+
+  .title {
+    font-size: 33px;
+    line-height: 44px;
+  }
+
+  form {
+    gap: 8px;
+  }
+
+  .email-form__input,
+  .password-form__input {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  input,
+  .large-button {
+    width: 343px;
+  }
+
+  .auth-content {
+    width: 296px;
+  }
+}
+
 @media (max-width: 1199px) {
   * {
     --gray-800: #1f2937;
@@ -176,11 +214,6 @@ input:focus {
   .join-page {
     justify-content: center;
     align-items: center;
-  }
-
-  .head {
-    width: 396px;
-    height: 132px;
   }
 
   .title {
@@ -332,11 +365,6 @@ input:focus {
     align-items: center;
   }
 
-  .head {
-    width: 396px;
-    height: 132px;
-  }
-
   .title {
     font-size: 66px;
     line-height: 89px;
@@ -455,28 +483,5 @@ input:focus {
   .us-link {
     line-height: 17px;
     color: var(--primary);
-  }
-}
-
-@media (max-width: 767px) {
-  /*body {
-    max-width: 400px;
-  }*/
-
-  .join-page {
-    margin: 80px 16px;
-  }
-
-  .head {
-    gap: 24px;
-    width: 168px;
-    height: 66px;
-  }
-
-  .title {
-    width: 133px;
-    height: 45px;
-    font-size: 33px;
-    line-height: 44px;
   }
 }
