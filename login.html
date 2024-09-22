@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>로그인</title>
         <link rel="stylesheet" href="loginStyle.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <form class="login">
@@ -12,19 +13,19 @@
             </a>
             <section class="loginmain">
                 <div class="inputarea">
-                    <label>이메일</label>
+                    <label for="email">이메일</label>
                     <br>
-                    <input name="useremail" type="email" placeholder="이메일을 입력해주세요">
+                    <input id="email" name="useremail" type="email" placeholder="이메일을 입력해주세요">
                 </div>
                 <div class="inputarea">
-                    <label>비밀번호</label>
+                    <label for="password">비밀번호</label>
                     <br>
                     <div class="input-container">
-                        <input name="userpassword" type="password" placeholder="비밀번호를 입력해주세요">
+                        <input id="password" name="userpassword" type="password" placeholder="비밀번호를 입력해주세요">
                         <img class="password-icon" src="img/input-icon/eye-off.png" alt="passwordicon">
                     </div>
                 </div>
-                <a href="./login.html" class="login-btn">로그인</a>
+                <button type='submit' class="login-btn">로그인</button>
                 <div class="simple-login">
                     <div class="simple-login-in">
                         <p>간편 로그인하기</p>
