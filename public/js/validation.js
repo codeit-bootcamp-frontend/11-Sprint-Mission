@@ -89,8 +89,8 @@ function checkPasswordFormat() {
 }
 
 function comparePassword() {
-  const passwordInput = document.querySelector('#password-input');
-  const repeatInput = document.querySelector('#password-input-repeat');
+  const passwordInput = document.querySelector('#input-password');
+  const repeatInput = document.querySelector('#input-password-repeat');
   const fieldset = repeatInput.parentNode;
   const alert = fieldset.querySelector('.input-alert');
   const password = passwordInput.value.trim();
