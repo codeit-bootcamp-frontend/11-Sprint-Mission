@@ -123,7 +123,8 @@ function comparePassword() {
 // 비밀번호 표기 토글 이벤트 핸들러
 function togglePasswordVisibility() {
   // password input tag
-  const inputTag = this.previousElementSibling;
+  const fieldset = this.parentNode;
+  const inputTag = fieldset.querySelector('input');
   const type = inputTag.getAttribute('type') === 'password' ? 'text' : 'password';
 
   // 비밀번호 입력란을 가리킴
