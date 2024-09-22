@@ -249,3 +249,11 @@ footer p {
     margin: 201px 0 217px;
   }
 }
+
+@media (max-width: 767px) {
+  .nav {
+    padding: 0 16px;
+  }
+} 
+
+/* 모바일 사이즈는 아직 구현하지 못했습니다 */
