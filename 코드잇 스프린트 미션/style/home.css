@@ -1,6 +1,6 @@
 /* header */
 header {
-  position: sticky; 
+  position: sticky;
   top: 0;
   z-index: 1;
 }
@@ -9,17 +9,17 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #FFFFFF;
-  border-bottom: 1px solid #DFDFDF;
+  background-color: #ffffff;
+  border-bottom: 1px solid #dfdfdf;
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%; 
-  max-width: 1200px; 
-  padding: 10px 200px; 
+  width: 100%;
+  max-width: 1200px;
+  padding: 10px 200px;
 }
 
 .login-button {
@@ -28,14 +28,15 @@ header {
   align-items: center;
   min-width: 128px;
   height: 48px;
-  background-color: #3692FF;
+  background-color: #3692ff;
   border-radius: 8px;
   font-weight: 600;
-  color: #F3F4F6;
+  color: #f3f4f6;
 }
 
-#headerBanner, #footerBanner {
-  background-color: #CFE5FF;
+#headerBanner,
+#footerBanner {
+  background-color: #cfe5ff;
   background-size: cover;
   background-position: center;
 }
@@ -45,7 +46,6 @@ header {
   justify-content: center;
   width: 100%;
   max-width: 1120px;
-  height: 540px;
   margin: 0 auto;
 }
 
@@ -53,8 +53,8 @@ header {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  height: 540px;
 }
-
 
 .banner .text {
   display: flex;
@@ -67,82 +67,79 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 357px; 
+  width: 357px;
   height: 56px;
-  background-color: #3692FF;
+  background-color: #3692ff;
   border-radius: 40px;
-  color: #F9FAFB;
+  color: #f9fafb;
+  font-weight: 600;
 }
-
 
 /* main */
 
 p {
-  font-size: 24px;
-  line-height: 32 px;
+  font-size: 21px;
+  line-height: 32px;
 }
 
-.first-content, .second-content, .third-content {
+.first-content,
+.second-content,
+.third-content {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 720px;
-  padding: 138px 466px;
 }
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 988px;
-  height: 444px;
-  background-color: #FCFCFC;
-  gap: 64px;
+  height: auto;
+  background-color: #fcfcfc;
+  width: 988px;
+  gap: 30px;
 }
 
-
 .first-content h1 {
-margin: 12px 76px 24px 0;
+  margin: 12px 76px 24px 0;
 }
 
 .second-content h1 {
   margin: 12px 0 24px 24px;
-  }
+}
 
 .third-content h1 {
   margin: 12px 42px 24px 0;
-  }
+}
 
 .second-content .text {
   text-align: right;
 }
 
-
 .keyword {
-  color: #3692FF;
+  color: #3692ff;
   font-size: 18px;
   font-weight: 700;
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 39px;
   font-weight: 700;
   line-height: 56px;
 }
 
-
 /* footer */
 
 #footerBanner {
-  height: 540px;
-  background-color: #CFE5FF;
+  background-color: #cfe5ff;
 }
 
 #footerBanner .wrapper {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  height: 540px;
 }
 
 .wrapper > .text {
@@ -164,16 +161,91 @@ footer {
 }
 
 footer p {
-color: #9CA3AF; 
+  color: #9ca3af;
 }
 
 .footermenu {
   display: flex;
   gap: 30px;
-  color: #E5E7EB;
+  color: #e5e7eb;
 }
 
 #social {
   display: flex;
   gap: 12px;
+}
+
+/* 반응형 */
+
+@media (min-width: 1200px) {
+  .first-content,
+  .second-content,
+  .third-content {
+    padding: 138px 0;
+  }
+}
+
+@media (768px < width < 1199px) {
+  .nav {
+    padding: 0 24px;
+  }
+
+  #headerBanner .wrapper {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  #headerBanner .text {
+    flex-direction: column;
+    margin: 84px 116px 211px;
+    align-items: center;
+  }
+
+  .wrapper h1 {
+    letter-spacing: -3px;
+  }
+
+  #headerBanner h1 br,
+  .text h1 br {
+    display: none;
+  }
+
+  .content-area {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 24px 56px 24px;
+    background-color: #FCFCFC;
+    gap: 40px;
+  }
+
+  .first-content .container,
+  .third-content .container {
+    flex-direction: column;
+    align-items: flex-start;
+    background: none;
+    gap: 24px;
+  }
+
+  .second-content .container {
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    background: none;
+    gap: 24px;
+  }
+
+  .container img {
+    width: 100%
+  }
+
+  #footerBanner .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  #footerBanner .text {
+    margin: 201px 0 217px;
+  }
 }
