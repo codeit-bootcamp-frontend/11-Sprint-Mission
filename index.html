@@ -2,24 +2,34 @@
 <head>
   <title>판다마켓</title>
   <meta charset="utf-8" />
+  <meta property="og:image" content="/img/logo/TagLogo.png" />
+  <meta property="og:title" content="판다마켓" />
+  <meta property="og:description" content="일상의 모든 물건을 거래해보세요" />
+  <meta property="og:url" content="https://solprime.netlify.app/" />
+  <link rel="globalStylesheet" href="global.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <nav>
-    <div id="header">
-      <a href="/">
-        <img id="logo" src="img/logo/logo.png" alt="판다마켓 로고" />
-      </a>
-      <a href="/login.html">
-        <img id="login" src="img/button/login/login.png" alt="로그인 이미지" />
-      </a>
-    </div>
-  </nav>
+  <header>
+    <nav>
+      <div class="header">
+        <a href="/">
+          <img id="logo" src="img/logo/logo.png" alt="판다마켓 로고" />
+        </a>
+        <a href="/login.html">
+          <img
+            id="login"
+            src="img/button/login/login.png"
+            alt="로그인 이미지"
+          />
+        </a>
+      </div>
+    </nav>
+  </header>
   <div id="home">
     <div id="home-top">
       <h2 id="home-info">
-        일상의 모든 물건을<br />
-        거래해 보세요
+        <div class="homeText">일상의 모든 물건을 거래해 보세요</div>
         <a href="/items.html">
           <img
             id="show-items"
@@ -45,10 +55,7 @@
         />
         <div class="card-info">
           <div class="card-title">Hot item</div>
-          <h2 class="card-info-big">
-            인기 상품을<br />
-            확인해보세요
-          </h2>
+          <h2 class="card-info-big">인기 상품을 확인해보세요</h2>
           <p>
             가장 HOT한 중고거래 물품을<br />
             판다마켓에서 확인해보세요
@@ -58,10 +65,7 @@
       <div class="card-right">
         <div class="card-info-right">
           <div class="card-title">Search</div>
-          <h2 class="card-info-big">
-            구매를 원하는<br />
-            상품을 검색하세요
-          </h2>
+          <h2 class="card-info-big-right">구매를 원하는 상품을 검색하세요</h2>
           <p>
             구매하고 싶은 물품은 검색해서<br />
             쉽게 찾아보세요
@@ -81,10 +85,7 @@
         />
         <div class="card-info">
           <div class="card-title">Register</div>
-          <h2 class="card-info-big">
-            판매를 원하는<br />
-            상품을 등록하세요
-          </h2>
+          <h2 class="card-info-big">판매를 원하는 상품을 등록하세요</h2>
           <p>
             어떤 물건이고 판매하고 싶은 상품을<br />
             쉽게 등록하세요
@@ -106,12 +107,12 @@
   </main>
   <footer>
     <div id="footer-info">
-      <div style="color: #bdbdbd">@codeit-2024</div>
-      <div>
+      <div class="corpName">@codeit-2024</div>
+      <div class="pmLink">
         <a href="/privacy.html" style="padding-right: 30px"> Privacy Policy </a>
         <a href="/faq.html"> FAQ </a>
       </div>
-      <div>
+      <div class="pmSns">
         <a href="/" target="_blank">
           <img
             class="social-media-img"
@@ -143,3 +144,4 @@
       </div>
     </div>
   </footer>
+</body>
