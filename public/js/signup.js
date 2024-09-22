@@ -1,92 +1,46 @@
-const validInputs = {
-  email: false,
-  nickname: false,
-  password: false,
-  passwordRepeat: false
-}
+import {
+  checkAllInputValid,
+  checkNicknameFormat,
+  checkEmailFormat,
+  checkPasswordFormat,
+  comparePassword,
+  togglePasswordVisibility
+} from './validation.js';
+
 /**
- * 입력한 이메일이 다음 형식에 맞는지 확인한다.   
- * - 이메일을 입력했는가
- * - 이메일이 정규표현식에 부합한가
+ * 폼 제출을 제어하는 함수
+ * @param {Event} e 로그인 폼의 제출 이벤트
+ * @description 폼의 모든 입력이 유효할 때 폼을 제출하고 아니면 제출을 막는다. 현재는 폼을 제출하는 대신 /signin로 이동고 그렇지 않으면 경고팝업을 띄운다.
  */
-function checkEmailFormat() {
-  const fieldset = this.parentNode;
-  const alert = fieldset.querySelector('.input-alert');
-  const email = this.value.trim();
-  const regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')
+function submitForm(e) {
+  e.preventDefault();
+  const result = checkAllInputValid();
 
-  // 이메일 미입력
-  if (email === '') {
-    this.classList.add('warning');
-    alert.classList.add('warning');
-    alert.textContent = '이메일을 입력해주세요.';
-    validInputs.email = false;
-    return;
-  }
-
-  // 잘못된 형식의 이메일
-  if (!regex.test(email)) {
-    this.classList.add('warning');
-    alert.classList.add('warning');
-    alert.textContent = '잘못된 이메일 형식입니다.';
-    validInputs.email = false;
-    return;
-  }
-
-  // 문제 없음
-  this.classList.remove('warning');
-  alert.classList.remove('warning');
-  alert.textContent = '';
-  validInputs.email = true;
+  if (result) location.href = '/views/signin.html';
+  else alert('잘못된 접근입니다.');
 }
 
-// 입력 비밀번호 형식 확인 함수
-function checkPasswordFormat() {
-  // input tag를 포함하는 fieldset
-  const fieldset = this.parentNode;
-  // input과 관련된 문구를 삽입할 p태그
-  const alert = fieldset.querySelector('.input-alert');
-  const password = this.value.trim();
+document.querySelector('#input-email')
+  .addEventListener('focusout', checkEmailFormat);
 
-  // 비밀번호 미입력
-  if (password === '') {
-    this.classList.add('warning');
-    alert.classList.add('warning');
-    alert.textContent = '비밀번호를 입력해주세요.';
-    validInputs.password = false;
-    return;
-  }
+document.querySelector('#input-nickname')
+  .addEventListener('focusout', checkNicknameFormat);
 
-  // 짧은 비밀번호
-  if (password.length < 8) {
-    this.classList.add('warning');
-    alert.classList.add('warning');
-    alert.textContent = '비밀번호를 8자 이상 입력해주세요.';
-    validInputs.password = false;
-    return;
-  }
+document.querySelector('#input-password')
+  .addEventListener('focusout', checkPasswordFormat);
 
-  // 문제 없음
-  this.classList.remove('warning');
-  alert.classList.remove('warning');
-  alert.textContent = '';
-  validInputs.password = true;
-}
+document.querySelector('#input-password')
+  .addEventListener('focusout', comparePassword);
 
-// 비밀번호 표기 토글 이벤트 핸들러
-function togglePasswordVisibility() {
-  // password input tag
-  const inputTag = this.previousElementSibling;
-  const type = inputTag.getAttribute('type') === 'password' ? 'text' : 'password';
+document.querySelector('#input-password-repeat')
+  .addEventListener('focusout', comparePassword);
 
-  // 비밀번호 입력란을 가리킴
-  inputTag.setAttribute('type', type);
+document.querySelector('#signup-form')
+  .addEventListener('focusout', checkAllInputValid);
 
-  // 비밀번호 표기 버튼 토글
-  Array.from(this.children).forEach(e => e.classList.toggle('hide'))
-}
+document.querySelector('#signup-form')
+  .addEventListener('submit', submitForm);
 
 document.querySelectorAll('.visibility-btn').forEach(btn => {
-  console.log(btn)
   btn.addEventListener('click', togglePasswordVisibility)
 })
