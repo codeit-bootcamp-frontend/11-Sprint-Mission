@@ -122,3 +122,21 @@
   text-decoration: underline;
   color: var( --blue);
 }
+/* 반응형 디자인 */
+@media (375px < width < 767px) {
+  .root_layout {
+    padding: 0px 16px;
+  }
+  .main {
+    max-width: 400px;
+  }
+  .main_logo > img {
+    width: 52px;
+    height: 52px;
+  }
+  .main_logo > a {
+  font-size: 33.17px;
+  font-weight: 700;
+  line-height: 44.78px;
+  }
+}
