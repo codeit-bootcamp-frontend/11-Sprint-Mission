@@ -60,7 +60,7 @@ a {
     cursor: pointer;
 }
 
-.items {
+.items_btn {
     margin-top: 32px;
     width: 357px;
     height: 56px;
@@ -185,7 +185,7 @@ footer {
 
 .home_section:nth-child(3) {
     text-align: right;
-  }
+}
 
 .home_div {
     background-color: #FCFCFC;
@@ -197,15 +197,234 @@ footer {
 }
 
 /* 글 정렬 */
-.text01 {
+.text {
     margin: 0 auto;
 }
 
-.text02 {
-    margin: 0 auto;
-    
+/* 반응형 */
+/* PC */
+@media (min-width: 1200px) {
+
 }
 
-.text03 {
-    margin: 0 auto;
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .nav {
+        padding: 0 24px;
+    }
+
+    .banner {
+        height: 771px;
+        background-size: 120%;
+    }
+
+    .banner .subtitle {
+        font-size: 40px;
+        line-height: 56px;
+        padding-top: 84px;
+        padding-bottom: 24px;
+    }
+
+    .banner .subtitle .brPc {
+        display: none;
+    }
+
+    .home_top_div {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .items_btn{
+        margin: auto;
+        margin-top: 24px;
+    }
+
+    .div_top {
+        justify-content: center;
+    }
+
+    .home_img_top {
+        margin-top: 211px;
+        width: 744px;
+        height: 340px;
+    }
+
+    .brPc{
+        display: none;
+    }
+
+    .home_bottom_section {
+        height: 927px;
+        background-color: #CFE5FF;
+    }
+
+    .home_bottom_div {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .home_img_bottom {
+        margin-top: 217px;
+    }
+
+    .container {
+        height: auto;
+        margin-bottom: 52px;
+    }
+
+    .home_div {
+        display: grid;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px;
+        background-color: #ffffff;
+    }
+
+    .home_img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .text {
+        text-align: left;
+        width: 100%;
+        margin-top: 24px;
+    }
+
+    .home_section:nth-child(3) {
+        text-align: right;
+    }
+
+    .codeit {
+        flex-basis: auto;
+        order: 0;
+    }
+}
+
+
+/* Mobile */
+@media (min-width: 375px) and (max-width: 767px) {
+    header {
+        padding: 0 24px;
+    }
+
+    .nav {
+        padding: 0 16px;
+    }
+
+    .banner {
+        height: 771px;
+        background-size: 120%;
+    }
+
+    .banner .subtitle {
+        font-size: 40px;
+        line-height: 56px;
+        padding-top: 0;
+        padding-bottom: 32px;
+    }
+
+    .banner .subtitle .brPc {
+        display: inline;
+    }
+
+    .home_top_div {
+        flex-direction: column;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .div_top {
+        font-size: 32px;
+        line-height: 44.8px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .items_btn {
+        margin: auto;
+        margin-top: 18px;
+        font-size: 18px;
+        padding: 9px 71px;
+        margin-top: 17px;
+    }
+
+    .home_img_top {
+        width: 120%;
+        height: 120%;
+        margin-top: 130px;
+    }
+
+    .container {
+        height: auto;
+    }
+
+    .home_div {
+        display: grid;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        background-color: #ffffff;
+    }
+
+    .home_img {
+        width: 100%;
+        height: auto;
+    }
+
+    .text {
+        text-align: left;
+        width: 100%;
+        margin-top: 24px;
+    }
+
+    .home_section:nth-child(3) {
+        text-align: right;
+    }
+
+    .ptitle {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    .subtitle {
+        font-size: 24px;
+        line-height: 32px;
+        margin-bottom: 20px;
+    }
+
+    .pcontent {
+        font-size: 16px;
+        line-height: 25px;
+    }
+
+    .banner {
+        height: 540px;
+        background-color: #CFE5FF;
+    }
+
+    .home_bottom_div {
+        flex-direction: column;
+        text-align: center;
+        font-size: 2rem;
+        line-height: 43px;
+    }
+
+    .home_img_bottom {
+        max-width: 100%;
+        margin-top: 130px;
+    }
+
+    .footer_menu a {
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 400;
+        gap: 30px;
+    }
+
+    .codeit {
+        position: absolute;
+        margin-top: 60px;
+    }
 }

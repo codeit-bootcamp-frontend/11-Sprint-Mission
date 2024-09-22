@@ -2,6 +2,15 @@
 <html>
     <head>
         <meta charset="utf-8">
+
+        <!-- 반응형 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="판다마켓" />
+        <meta property="og:url" content="https://panda_market.netlify.app" />
+        <meta property="og:type" content="website" />
+        <meta property="og:description" content="일상의 모든 물건을 거래해보세요. 판다 마켓에서 쉽고 빠르게 거래를 시작하세요.">
+        <meta property="og:image" content="">
+
         <title>판다마켓</title>
         <link
             rel="stylesheet"
@@ -14,15 +23,15 @@
     <body>
         <header class="nav">
             <a href="index.html"><img class="logo" src="logo.svg" alt="판다마켓"></a>
-            <button href="signin.html" class="login">로그인</button>
+            <button onclick="location.href='signin.html'" class="login">로그인</button>
         </header>
         
         <main>
             <section class="home_top_section banner">
                 <div class="home_top_div">
                     <div class="div_top">
-                        <p class="subtitle">일상의 모든 물건을<br>거래해 보세요</p><br>
-                        <a href="items.html" class="itemsbtn"><button class="items">구경하러 가기</button></a>
+                        <p class="subtitle top_sub">일상의 모든 물건을 <br class="brPc">거래해 보세요</p><br>
+                        <button onclick="location.href='items.html'" class="items_btn">구경하러 가기</button>
                     </div>
                     <img class="home_img_top" src="Img_home_top.png" alt="판다">
                 </div>
@@ -31,20 +40,20 @@
             <section class="home_section container">
                 <div class="home_div">
                     <img class="home_img" src="Img_home_01.png" alt="인기 상품">
-                    <div class="text01">
+                    <div class="text">
                         <p class="ptitle">Hot item</p><br>
-                        <p class="subtitle">인기 상품을<br>확인해 보세요</p><br>
-                        <p class="pcontent">가장 HOT한 중고거래 물품을<br>판다 마켓에서 확인해 보세요</p>
+                        <p class="subtitle">인기 상품을 <br class="brPc">확인해 보세요</p><br>
+                        <p class="pcontent">가장 HOT한 중고거래 물품을 <br>판다 마켓에서 확인해 보세요</p>
                     </div>
                 </div>
             </section>
             
             <section class="home_section container">
                 <div class="home_div">
-                    <div class="text02">
+                    <div class="text">
                         <p class="ptitle">Search</p><br>
-                        <p class="subtitle">구매를 원하는<br>상품을 검색하세요</p><br>
-                        <p class="pcontent">구매하고 싶은 물품은 검색해서<br>쉽게 찾아보세요</p>
+                        <p class="subtitle">구매를 원하는 <br class="brPc">상품을 검색하세요</p><br>
+                        <p class="pcontent">구매하고 싶은 물품은 검색해서 <br>쉽게 찾아보세요</p>
                     </div>
                     <img class="home_img" src="Img_home_02.png" alt="상품 검색">
                 </div>
@@ -53,7 +62,7 @@
             <section class="home_section container">
                 <div class="home_div">
                     <img class="home_img" src="Img_home_03.png" alt="상품 등록">
-                    <div class="text03">
+                    <div class="text">
                         <p class="ptitle">Register</p><br>
                         <p class="subtitle">판매를 원하는<br>상품을 등록하세요</p><br>
                         <p class="pcontent">어떤 물건이든 판매하고 싶은 상품을<br>쉽게 등록하세요</p>
@@ -66,7 +75,7 @@
             <section class="home_bottom_section banner">
                 <div class="home_bottom_div">
                     <div class="bottom_div">
-                        <p class="subtitle">믿을 수 있는<br>판다마켓 중고 거래</p>
+                        <p class="subtitle">믿을 수 있는 <br class="brPc">판다마켓 중고 거래</p>
                     </div>
                     <img class="home_img_bottom" src="Img_home_bottom.png" alt="판다">
                 </div>
@@ -76,7 +85,7 @@
 
 
         <footer>
-            <div id="codeit">@codeit - 2024</div>
+            <div class="codeit">@codeit - 2024</div>
             <div class="footer_menu">
                 <a href="privacy.html">Pricacy Policy</a>
                 <a href="faq.html">FAQ</a>
