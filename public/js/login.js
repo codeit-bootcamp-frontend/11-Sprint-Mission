@@ -1,10 +1,15 @@
-const validInputs = {email : false, password : false}
+const validInputs = {
+  email: false,
+  password: false
+}
 
-// 입력 이메일 형식 확인 함수
+/**
+ * 입력한 이메일이 다음 형식에 맞는지 확인한다.   
+ * - 이메일을 입력했는가
+ * - 이메일이 정규표현식에 부합한가
+ */
 function checkEmailFormat() {
-  // input tag를 포함하는 fieldset
   const fieldset = this.parentNode;
-  // input과 관련된 문구를 삽입할 p태그
   const alert = fieldset.querySelector('.input-alert');
   const email = this.value.trim();
   const regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')
@@ -98,11 +103,11 @@ function checkAllInputValid() {
  * @param {Event} e 로그인 폼의 제출 이벤트
  * @description 폼의 모든 입력이 유효할 때 폼을 제출하고 아니면 제출을 막는다. 현재는 폼을 제출하는 대신 /items로 이동고 그렇지 않으면 경고팝업을 띄운다.
  */
-function submitForm(e){
+function submitForm(e) {
   e.preventDefault();
   const result = checkAllInputValid();
 
-  if(result) location.href = '/views/items.html';
+  if (result) location.href = '/views/items.html';
   else alert('잘못된 접근입니다.');
 }
 
