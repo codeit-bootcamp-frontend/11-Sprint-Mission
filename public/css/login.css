@@ -45,7 +45,8 @@ body {
 
 
 /* form start */
-#form {
+#login-form,
+#signup-form {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
