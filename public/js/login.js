@@ -28,10 +28,11 @@ document.querySelector('#input-password')
   .addEventListener('focusout', checkPasswordFormat);
 
 // 모든 입력값이 형식에 맞는지 확인
-document.querySelector('#form')
+document.querySelector('#login-form')
   .addEventListener('focusout', checkAllInputValid);
 
-document.querySelector('#form')
+// 폼 제출
+document.querySelector('#login-form')
   .addEventListener('submit', submitForm);
 
 // 비밀번호 표기 버튼 토글
