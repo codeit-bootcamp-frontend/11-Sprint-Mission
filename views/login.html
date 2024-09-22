@@ -22,14 +22,15 @@
       <!-- 이메일 입력 -->
       <fieldset class="input-fieldset">
         <label for="input-email">이메일</label>
-        <input id="input-email" name="email" type="text" placeholder="이메일을 입력해주세요" required>
+        <input id="input-email" name="email" type="text" placeholder="이메일을 입력해주세요" required data-valid="false">
         <p class="input-alert"></p>
       </fieldset>
 
       <!-- 비밀번호 입력 -->
       <fieldset class="input-fieldset">
         <label for="input-password">비밀번호</label>
-        <input id="input-password" name="password" type="password" placeholder="비밀번호를 입력해주세요" required>
+        <input id="input-password" name="password" type="password" placeholder="비밀번호를 입력해주세요" required
+          data-valid="false">
         <div class="visibility-btn">
           <img src="/public/images/icon/btn_visibility_on.png" alt="비밀번호 보임" class="hide">
           <img src="/public/images/icon/btn_visibility_off.png" alt="비밀번호 가림">

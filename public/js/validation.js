@@ -1,9 +1,3 @@
-const validInputs = {
-  email: false,
-  nickname: false,
-  password: false,
-  passwordRepeat: false
-}
 /**
  * 입력한 이메일이 다음 형식에 맞는지 확인한다.   
  * - 이메일을 입력했는가
@@ -20,7 +14,7 @@ function checkEmailFormat() {
     this.classList.add('warning');
     alert.classList.add('warning');
     alert.textContent = '이메일을 입력해주세요.';
-    validInputs.email = false;
+    this.dataset.valid = false;
     return;
   }
 
@@ -29,7 +23,7 @@ function checkEmailFormat() {
     this.classList.add('warning');
     alert.classList.add('warning');
     alert.textContent = '잘못된 이메일 형식입니다.';
-    validInputs.email = false;
+    this.dataset.valid = false;
     return;
   }
 
@@ -37,7 +31,7 @@ function checkEmailFormat() {
   this.classList.remove('warning');
   alert.classList.remove('warning');
   alert.textContent = '';
-  validInputs.email = true;
+  this.dataset.valid = true;
 }
 
 // 입력 비밀번호 형식 확인 함수
@@ -53,7 +47,7 @@ function checkPasswordFormat() {
     this.classList.add('warning');
     alert.classList.add('warning');
     alert.textContent = '비밀번호를 입력해주세요.';
-    validInputs.password = false;
+    this.dataset.valid = false;
     return;
   }
 
@@ -62,7 +56,7 @@ function checkPasswordFormat() {
     this.classList.add('warning');
     alert.classList.add('warning');
     alert.textContent = '비밀번호를 8자 이상 입력해주세요.';
-    validInputs.password = false;
+    this.dataset.valid = false;
     return;
   }
 
@@ -70,7 +64,7 @@ function checkPasswordFormat() {
   this.classList.remove('warning');
   alert.classList.remove('warning');
   alert.textContent = '';
-  validInputs.password = true;
+  this.dataset.valid = true;
 }
 
 // 비밀번호 표기 토글 이벤트 핸들러
@@ -86,7 +80,23 @@ function togglePasswordVisibility() {
   Array.from(this.children).forEach(e => e.classList.toggle('hide'))
 }
 
-document.querySelectorAll('.visibility-btn').forEach(btn => {
-  console.log(btn)
-  btn.addEventListener('click', togglePasswordVisibility)
-})
+/**
+ * 로그인 폼의 모든 입력이 유효한지 확인하는 함수
+ * @return {Boolean} 유효 여부 반환
+ * @desctiption 모든 입력의 유효 여부를 확인한다. 유효할 때 로그인 버튼을 활성화 스타일로 변경하고 아니면 비활성화 스타일로 변경한다.
+ */
+function checkAllInputValid() {
+  const submitBtn = document.querySelector('#submit-btn');
+  const validInputs = document.querySelectorAll('[data-valid]');
+  const result = Array.from(validInputs).every(e => e.dataset.valid === 'true');
+
+  submitBtn.classList.toggle('active', result);
+  return result;
+}
+
+export {
+  checkAllInputValid,
+  togglePasswordVisibility,
+  checkEmailFormat,
+  checkPasswordFormat
+}
