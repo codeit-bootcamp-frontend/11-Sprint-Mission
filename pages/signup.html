@@ -12,16 +12,14 @@
     <title>판다마켓</title>
   </head>
   <body>
-    <div class="auth-signup-wrapper">
-      <header>
-        <h1 class="auth-header">
-          <a href="../index.html">
-            <img src="../images/logo_image.png" width="396px" height="132px" />
-          </a>
-        </h1>
+    <div class="auth-signup-container">
+      <header class="auth-header">
+        <a href="../index.html">
+          <img src="../images/logo_image.png" width="396px" height="132px" />
+        </a>
       </header>
-      <form action="" method="get">
-        <div class="auth-main">
+      <main class="auth-main">
+        <form class="auth-form" action="" method="get">
           <div class="auth-field">
             <label class="auth-label" for="email-input">이메일</label>
             <input
@@ -64,23 +62,23 @@
             />
           </div>
           <button type="submit" class="btn btn-gray-round-xl">회원가입</button>
-          <div class="auth-box">
-            <a class="auth-gopage" href="">간편 로그인하기</a>
-            <div class="auth-snsbox">
-              <a target="_self" href="https://www.google.com/"
-                ><img src="../images/icon/ic_google.png"
-              /></a>
-              <a target="_self" href="https://www.kakaocorp.com/page/"
-                ><img src="../images/icon/ic_kakao.png"
-              /></a>
-            </div>
-          </div>
-          <div class="auth-register">
-            이미 회원이신가요?
-            <a href="login.html">로그인</a>
+        </form>
+        <div class="auth-box">
+          <a class="auth-gopage" href="">간편 로그인하기</a>
+          <div class="auth-snsbox">
+            <a target="_self" href="https://www.google.com/"
+              ><img src="../images/icon/ic_google.png"
+            /></a>
+            <a target="_self" href="https://www.kakaocorp.com/page/"
+              ><img src="../images/icon/ic_kakao.png"
+            /></a>
           </div>
         </div>
-      </form>
+      </main>
+      <footer class="auth-register">
+        이미 회원이신가요?
+        <a href="login.html">로그인</a>
+      </footer>
     </div>
   </body>
 </html>
