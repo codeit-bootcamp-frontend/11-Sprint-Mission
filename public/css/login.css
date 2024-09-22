@@ -9,8 +9,7 @@ body {
   height: 100vh;
 }
 
-.login-container,
-.signup-container {
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,8 +45,7 @@ body {
 
 
 /* form start */
-#login-form,
-#signup-form {
+#form {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -134,8 +132,7 @@ input.warning{
   display: none;
 }
 
-#login-submit-btn,
-#signup-submit-btn {
+#submit-btn {
   background-color: var(--gray-400);
   width: 100%;
   padding: 16px 124px;
@@ -149,8 +146,7 @@ input.warning{
   cursor: no-drop;
 }
 
-#login-submit-btn.active,
-#signup-submit-btn.active {
+#submit-btn.active {
   background-color: var(--blue);
   color: var(--gray-100);
 
@@ -218,8 +214,7 @@ input.warning{
     font-size: 33px;
   }
 
-  .login-container,
-  .signup-container {
+  .container {
     padding: 0 16px;
     max-width: 432px;
   }
