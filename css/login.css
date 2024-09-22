@@ -84,4 +84,20 @@
 }
 /* ~ mobile */
 @media (max-width: 767px) {
+  .wrap {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .login {
+    width: 100%;
+    max-width: 400px;
+
+    .logo {
+      width: 198px;
+    }
+  }
+  .label {
+    font-size: 0.875rem;
+  }
 }
