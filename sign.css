@@ -9,7 +9,6 @@
 }
 
 .logo_home {
-    display: block;
     text-align: center;
     margin-top: 60px;
     margin-bottom: 40px;
@@ -29,7 +28,7 @@ label {
     line-height: 26px;
 }
 
-input {
+.input {
     padding: 16px 24px;
     background-color: #F3F4F6;
     border: none;
@@ -40,14 +39,14 @@ input {
     width: 100%;
 }
 
-input::placeholder {
+.input::placeholder {
     color: #9CA3AF;
     font-size: 16px;
     line-height: 26px;
     font-weight: 400;
 }
 
-input:focus {
+.input:focus {
     outline-color: var(#3692FF);
 }
 
