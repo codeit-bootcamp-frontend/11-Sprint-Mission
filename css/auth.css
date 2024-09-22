@@ -1,7 +1,10 @@
-.auth-wrapper {
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   max-width: 640px;
   max-height: 618px;
-  margin: 231px auto;
+  margin: 190px auto;
 }
 
 .auth-signup-wrapper {
@@ -87,9 +90,7 @@
 
 /* TABLET */
 @media (min-width: 768px) and (max-width: 1199px) {
-  .auth-wrapper {
-    max-width: 640px;
-    max-height: 618px;
+  .auth-container {
     margin: 190px auto;
   }
 
@@ -104,10 +105,16 @@
 
 /* Mobile */
 @media (min-width: 365px) and (max-width: 767px) {
-  .auth-wrapper {
+  .auth-container {
     max-width: 400px;
-    max-height: 618px;
     margin: 80px auto;
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .auth-header img {
+    width: 198px;
+    height: 66px;
   }
 
   .auth-signup-wrapper {

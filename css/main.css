@@ -161,12 +161,6 @@ footer {
     gap: 24px;
   }
 
-  /* 마진 */
-  .margin-lr-77 {
-    margin-left: 77px;
-    margin-right: 77px;
-  }
-
   .br-class {
     display: none;
   }

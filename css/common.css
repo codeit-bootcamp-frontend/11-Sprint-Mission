@@ -19,6 +19,7 @@ body {
 .btn {
   background-color: var(--Primary-100);
   color: var(--gray-100);
+  width: 100%;
   font-weight: 600;
   text-align: center;
   text-decoration: none;
