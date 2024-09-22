@@ -11,27 +11,48 @@ function checkEmailFormat() {
 
   // 이메일 미입력
   if (email === '') {
+    this.dataset.valid = false;
     this.classList.add('warning');
     alert.classList.add('warning');
     alert.textContent = '이메일을 입력해주세요.';
-    this.dataset.valid = false;
     return;
   }
 
   // 잘못된 형식의 이메일
   if (!regex.test(email)) {
+    this.dataset.valid = false;
     this.classList.add('warning');
     alert.classList.add('warning');
     alert.textContent = '잘못된 이메일 형식입니다.';
-    this.dataset.valid = false;
     return;
   }
 
   // 문제 없음
+  this.dataset.valid = true;
   this.classList.remove('warning');
   alert.classList.remove('warning');
   alert.textContent = '';
+}
+
+function checkNicknameFormat() {
+  const fieldset = this.parentNode;
+  const alert = fieldset.querySelector('.input-alert');
+  const nickname = this.value.trim();
+
+  // 닉네임 미입력
+  if (nickname === '') {
+    this.dataset.valid = false;
+    this.classList.add('warning');
+    alert.classList.add('warning');
+    alert.textContent = '닉네임을 입력해주세요.';
+    return;
+  }
+
+  // 문제 없음
   this.dataset.valid = true;
+  this.classList.remove('warning');
+  alert.classList.remove('warning');
+  alert.textContent = '';
 }
 
 // 입력 비밀번호 형식 확인 함수
@@ -44,28 +65,60 @@ function checkPasswordFormat() {
 
   // 비밀번호 미입력
   if (password === '') {
+    this.dataset.valid = false;
     this.classList.add('warning');
     alert.classList.add('warning');
     alert.textContent = '비밀번호를 입력해주세요.';
-    this.dataset.valid = false;
     return;
   }
 
   // 짧은 비밀번호
   if (password.length < 8) {
+    this.dataset.valid = false;
     this.classList.add('warning');
     alert.classList.add('warning');
     alert.textContent = '비밀번호를 8자 이상 입력해주세요.';
-    this.dataset.valid = false;
     return;
   }
 
   // 문제 없음
+  this.dataset.valid = true;
   this.classList.remove('warning');
   alert.classList.remove('warning');
   alert.textContent = '';
-  this.dataset.valid = true;
 }
+
+function comparePassword() {
+  const passwordInput = document.querySelector('#password-input');
+  const repeatInput = document.querySelector('#password-input-repeat');
+  const fieldset = repeatInput.parentNode;
+  const alert = fieldset.querySelector('.input-alert');
+  const password = passwordInput.value.trim();
+  const repeat = repeatInput.value.trim();
+
+  if (repeat === '') {
+    repeatInput.dataset.valid = false;
+    repeatInput.classList.remove('warning');
+    alert.classList.remove('warning');
+    alert.textContent = '';
+    return;
+  }
+
+  if (password !== repeat) {
+    repeatInput.dataset.valid = false;
+    repeatInput.classList.add('warning');
+    alert.classList.add('warning');
+    alert.textContent = '비밀번호가 일치하지 않습니다.';
+    return;
+  }
+
+  // 문제 없음
+  repeatInput.dataset.valid = true;
+  repeatInput.classList.remove('warning');
+  alert.classList.remove('warning');
+  alert.textContent = '';
+}
+
 
 // 비밀번호 표기 토글 이벤트 핸들러
 function togglePasswordVisibility() {
@@ -96,7 +149,9 @@ function checkAllInputValid() {
 
 export {
   checkAllInputValid,
-  togglePasswordVisibility,
+  checkNicknameFormat,
   checkEmailFormat,
-  checkPasswordFormat
+  checkPasswordFormat,
+  comparePassword,
+  togglePasswordVisibility
 }
