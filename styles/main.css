@@ -1,5 +1,6 @@
 .nav-bar {
   position: sticky;
+  height: 70px;
   top: 0;
   background-color: var(--white);
   padding: 0 200px;
@@ -180,15 +181,14 @@
 }
 
 /* tablet */
-@media (min-width: 768px) and (max-width: 1199px) {
+@media (max-width: 1199px) {
   .nav-bar {
     padding: 10px 24px;
-    height: 70px;
   }
 
   .hero {
-    align-items: normal;
-    height: 80vh;
+    align-items: stretch;
+    height: 100vw;
   }
 
   .hero-container {
@@ -200,7 +200,7 @@
   }
 
   .hero-cta {
-    padding-top: 84px;
+    padding: 10vw 0;
     gap: 18px;
     align-items: center;
   }
@@ -215,7 +215,6 @@
   }
 
   .see-more {
-    width: 360px;
     font-size: 20px;
     padding: 16px 124px;
     line-height: 32px;
@@ -229,7 +228,6 @@
   }
 
   .main-content {
-    width: inherit;
     padding: 0;
   }
 
@@ -284,8 +282,9 @@
   }
 
   .description-main-bottom {
-    font-size: 32px;
-    line-height: 46px;
+    padding: 15vw 0;
+    font-size: 40px;
+    line-height: 56px;
   }
 
   .footer-content {
@@ -297,24 +296,18 @@
 @media (min-width: 375px) and (max-width: 767px) {
   .nav-bar {
     padding: 10px 16px;
-    height: 70px;
   }
 
   .hero {
-    align-items: normal;
+    height: fit-content;
   }
 
   .hero-container {
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-    align-items: center;
+    gap: 15vw;
   }
 
-  .hero-cta {
-    width: 240px;
-    padding: 48px 0 0 0;
-    gap: 18px;
+  .hero-br {
+    display: block;
   }
 
   .hero-cta-text {
@@ -329,25 +322,18 @@
   }
 
   .main-content-wrapper {
-    display: flex;
-    flex-direction: column;
     gap: 40px;
     margin: 50px 16px;
   }
 
-  .main-content {
-    padding: 0;
-  }
-
   .contents-item {
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     gap: 24px;
   }
 
   .content-image {
     width: 344px;
-    height: auto;
   }
 
   .content-text {
@@ -367,26 +353,9 @@
     line-height: 32px;
   }
 
-  .content-br {
-    display: none;
-  }
-
   .description-additional {
     font-size: 16px;
     line-height: 26px;
-  }
-
-  .reversed-content {
-    align-items: flex-end;
-  }
-
-  .hero-bottom {
-    margin-top: 84px;
-  }
-
-  .hero-cta-bottom {
-    margin: auto auto;
-    padding: 0;
   }
 
   .description-main-bottom {
