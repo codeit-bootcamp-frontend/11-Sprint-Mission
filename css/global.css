@@ -24,8 +24,6 @@
 body {
   word-break: keep-all;
   font-family: "Pretendard", sans-serif;
-  overflow-x: hidden;
-  height: 100vh;
 }
 
 a {
@@ -42,4 +40,7 @@ h2 {
   font-weight: 700;
   line-height: 56px;
   letter-spacing: 0.02em;
+}
+
+@media (max-width: 1199px) {
 }
