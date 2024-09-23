@@ -1,20 +1,19 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta property="og:title" content="판다마켓">
+    <meta property="og:description " content="일상의 모든 물건을 거래해보세요">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./img/public/openGraph.png">
+    <meta property="og:url" content="https://sprint2oms.netlify.app/">
     <title>판다마켓</title>
     <link rel="stylesheet" href="/index.css" />
-    <link
-      rel="stylesheet"
-      as="style"
-      crossorigin
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
-    />
   </head>
   <body>
     <header>
       <div class="header">
         <a href="/index.html">
-          <img class="logo" src="img/main/logo.png" alt="Home" />
+          <img class="logo" src="img/main/logo_pc.png" alt="Home" />
         </a>
         <a href="page/login/login.html">
           <img class="login" src="img/main/login_bt.png" alt="로그인" />
@@ -22,39 +21,101 @@
       </div>
     </header>
     <main>
-      <div class="banner">
-        <div class="banner-img">
-          <img src="img/main/banner_main.png" />
-          <div class="banner-info">
-            <div class="banner-txt">
-              일상의 모든 물건을<br />
-              거래해 보세요
+      <div class="banner-header">
+        <div class="banner-header-info">
+          <h1 class="banner-header-txt">
+            일상의 모든 물건을<br />
+            거래해 보세요
+          </h1>
+          <button class="banner-button">
+            <a href="page/items/item.html"> 구경하러 가기 </a>
+          </button>
+        </div>
+      </div>
+      <section>
+        <div class="contents">
+          <div class="contents-form">
+            <img
+              class="contents-home-img"
+              src="img/main/pc_content_hot_item.png" />
+            <div class="contents-detail">
+              <h2 class="contents-detail-top">Hot item</h2>
+              <h1 class="contents-detail-mid">
+                인기 상품을
+                <br class="detail-break-top" />
+                확인해 보세요
+              </h1>
+              <p class="contents-detail-bottom">
+                가장 HOT한 중고거래 물품을
+                <span class="detail-break-bottom">
+                  <br />
+                </span>
+                판다 마켓에서 확인해 보세요
+              </p>
             </div>
-            <button class="banner-button">
-              <a href="page/items/item.html"> 구경하러 가기 </a>
-            </button>
           </div>
         </div>
-      </div>
-      <section class="contents">
-        <img src="img/main/content_hot_item.png" />
-      </section>
-      <section class="contents">
-        <img src="img/main/content_search.png" />
-      </section>
-      <section class="contents">
-        <img src="img/main/content_register.png" />
-      </section>
-      <div class="blank"></div>
-      <div class="banner-bottom">
-        <div class="contents-img">
-          <img src="img/main/banner_footer.png" />
-          <div class="contents-txt">
-            믿을 수 있는 <br />
-            판다마켓 중고 거래
+        <div class="contents">
+          <div class="contents-form">
+            <div class="contents-detail">
+              <h2 class="contents-detail-top">Search</h2>
+              <h1 class="contents-detail-mid">
+                구매를 원하는
+                <span class="break-on-desktop">
+                  <br />
+                </span>
+                상품을 검색하세요
+              </h1>
+              <p class="contents-detail-bottom">
+                구매하고 싶은 물건은 검색해서
+                <span class="break">
+                  <br />
+                </span>
+                쉽게 찾아보세요
+              </p>
+            </div>
+            <img
+              class="contents-search-img"
+              src="img/main/pc_content_search.png" />
           </div>
         </div>
-      </div>
+        <div class="contents">
+          <div class="contents-form">
+            <img
+              class="contents-register-img"
+              src="img/main/pc_content_register.png" />
+            <div class="contents-detail">
+              <h2 class="contents-detail-top">Register</h2>
+              <h1 class="contents-detail-mid">
+                판매를 원하는
+                <span class="break-on-desktop">
+                  <br />
+                </span>
+                상품을 등록하세요
+              </h1>
+              <p class="contents-detail-bottom">
+                어떤 물건이든 판매하고 싶은 상품을
+                <span class="break">
+                  <br />
+                </span>
+                쉽게 등록하세요
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="blank"></div>
+        <div class="banner-footer">
+          <div class="banner-footer-info">
+            <div class="banner-bottom-txt">
+              믿을 수 있는
+              <span class="break">
+                <br />
+              </span>
+              판다마켓 중고 거래
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
     <footer>
       <div class="footer">
