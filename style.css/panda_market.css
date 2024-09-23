@@ -228,12 +228,8 @@ footer {
   gap: 12px;
 }
 
-@media (max-width: 767px) {
+@media (min-width: 365px) and (max-width: 767px) {
   /*mobile*/
-  img {
-    width: 100%;
-  }
-
   header {
     padding: 0;
     display: flex;
@@ -259,7 +255,8 @@ footer {
   }
 
   h2,
-  h3 {
+  h3,
+  .auth__sns {
     display: flex;
   }
 
@@ -355,7 +352,7 @@ footer {
 
   footer {
     width: 375px;
-    padding: 32px, 32px, 64px, 32px;
+    padding: 32px 32px 64px 32px;
   }
 
   .footer {
@@ -376,7 +373,7 @@ footer {
   }
 }
 
-@media (max-width: 1199px) {
+@media (min-width: 768px) and (max-width: 1199px) {
   /*tablet*/
   header {
     padding: 0;
