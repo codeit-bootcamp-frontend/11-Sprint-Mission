@@ -142,3 +142,21 @@ input:focus {
     font-size: 14px;
     font-weight: 500;
 }
+
+@media (max-width: 767px) { 
+    .section-container {
+        padding: 0 16px;
+        max-width: 400px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .login-total-container {
+        width: 100%;
+    }
+
+    .big-logo {
+        width: 198px;
+        height: 66px;
+    }
+}
