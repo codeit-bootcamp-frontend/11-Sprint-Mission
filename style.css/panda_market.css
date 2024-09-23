@@ -49,6 +49,10 @@ footer {
   line-height: 35px;
 }
 
+img {
+  width: auto;
+}
+
 .button:hover {
   background-color: #2877d4;
 }
@@ -236,6 +240,10 @@ footer {
     position: sticky;
     z-index: 10;
     justify-content: space-around;
+  }
+
+  img {
+    width: 100%;
   }
 
   .head {
