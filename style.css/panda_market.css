@@ -309,7 +309,6 @@ footer {
   }
 
   section {
-    width: 344px;
     gap: 40px;
     padding: 26px 8px;
   }
@@ -430,14 +429,14 @@ footer {
   }
 
   section {
-    padding: 26px 0;
-    gap: 52px;
+    padding: 24px;
   }
 
   .section {
     width: 696px;
     align-items: stretch;
     gap: 24px;
+    margin-bottom: 2px;
   }
 
   .section.reverse,
@@ -447,6 +446,7 @@ footer {
 
   .section.reverse {
     gap: 24px;
+    margin-bottom: 4px;
   }
 
   .section-image {
