@@ -232,9 +232,9 @@ body {
     }
 }
 
-.section-1,
-.section-2,
-.section-3 {
+.section-hotitem,
+.section-search,
+.section-register {
     display: flex;
     width: 100%;
     box-sizing: border-box;
@@ -245,18 +245,18 @@ body {
 }
 
 @media (max-width : 767px) {
-    .section-1,
-    .section-2,
-    .section-3 {
+    .section-hotitem,
+    .section-search,
+    .section-register {
         flex-direction: column;
         padding: 0;
     }
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
-    .section-1,
-    .section-2,
-    .section-3 {
+    .section-hotitem,
+    .section-search,
+    .section-register {
         flex-direction: column;
         padding: 0;
     }
@@ -281,33 +281,33 @@ body {
     }
 }
 
-.section-1-image,
-.section-2-image,
-.section-3-image {
+.section-hotitem-image,
+.section-search-image,
+.section-register-image {
     width: 579px;
     height: 444px;
 }
 
 @media (max-width : 767px) {
-    .section-1-image,
-    .section-2-image,
-    .section-3-image {
+    .section-hotitem-image,
+    .section-search-image,
+    .section-register-image {
         width: 344px;
         height: 259px;
     }
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
-    .section-1-image,
-    .section-2-image,
-    .section-3-image {
+    .section-hotitem-image,
+    .section-search-image,
+    .section-register-image {
         width: 696px;
         height: 524px;
     }
 }
 
-.section-1-container,
-.section-3-container {
+.section-hotitem-container,
+.section-register-container {
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -315,40 +315,40 @@ body {
 }
 
 @media (max-width : 767px) {
-    .section-1-container,
-    .section-3-container {
+    .section-hotitem-container,
+    .section-register-container {
         gap: 8px;
     }
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
-    .section-1-container,
-    .section-3-container {
+    .section-hotitem-container,
+    .section-register-container {
         gap: 16px;
     }
 }
 
-.section-1-description,
-.section-2-description,
-.section-3-description {
+.section-hotitem-description,
+.section-search-description,
+.section-register-description {
     display: flex;
     flex-direction: column;
     gap: 24px;
 }
 
 @media (max-width : 767px) {
-    .section-1-description {
+    .section-hotitem-description {
         gap: 16px;
     }
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
-    .section-1-description {
+    .section-hotitem-description {
         gap: 24px;
     }
 }
 
-.section-2-container {
+.section-search-container {
     text-align: right;
     display: flex;
     flex-direction: column;
@@ -380,18 +380,18 @@ p {
     }
 }
 
-.section-1-description-Bold,
-.section-2-description-Bold,
-.section-3-description-Bold {
+.section-hotitem-description-Bold,
+.section-search-description-Bold,
+.section-register-description-Bold {
     font-size: 40px;
     font-weight: 700;
     line-height: 56px;
 }
 
 @media (max-width : 767px) {
-    .section-1-description-Bold, 
-    .section-2-description-Bold,
-    .section-3-description-Bold {
+    .section-hotitem-description-Bold, 
+    .section-search-description-Bold,
+    .section-register-description-Bold {
         font-size: 24px;
         line-height: 32px;
         white-space: nowrap;
@@ -399,35 +399,35 @@ p {
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
-    .section-1-description-Bold, 
-    .section-2-description-Bold,
-    .section-3-description-Bold {
+    .section-hotitem-description-Bold, 
+    .section-search-description-Bold,
+    .section-register-description-Bold {
         font-size: 32px;
         line-height: 42px;
         white-space: nowrap;
     }
 }
 
-.section-1-description-regular,
-.section-2-description-regular,
-.section-3-description-regular {
+.section-hotitem-description-regular,
+.section-search-description-regular,
+.section-register-description-regular {
     font-size: 24px;
     line-height: 32px;
 }
 
 @media (max-width : 767px) {
-    .section-1-description-regular,
-    .section-2-description-regular,
-    .section-3-description-regular {
+    .section-hotitem-description-regular,
+    .section-search-description-regular,
+    .section-register-description-regular {
         font-size: 16px;
         line-height: 26px;
     }
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
-    .section-1-description-regular,
-    .section-2-description-regular,
-    .section-3-description-regular {
+    .section-hotitem-description-regular,
+    .section-search-description-regular,
+    .section-register-description-regular {
         font-size: 18px;
     }
 }
