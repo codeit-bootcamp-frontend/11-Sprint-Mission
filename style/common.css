@@ -23,7 +23,7 @@
   --gray100: #f3f4f6;
   --gray50: #f9fafb;
 
-  /*Color-Error*/
+  /* Color-Error */
   --error: #f74747;
 
   /* Font-Weight */
@@ -53,7 +53,7 @@ button {
 }
 
 button:disabled {
-  cursor: no-allow;
+  cursor: not-allow;
 }
 
 .sr-only {
@@ -66,19 +66,4 @@ button:disabled {
   clip-path: inset(50%);
   border: 0;
   clip: rect(0 0 0 0);
-}
-
-/* 브라우저 width 1200px 이하 */
-@media (max-width: 1200px) {
-  html {
-    /* 브라우저 폰트 사이즈 16px * 0.4 = 6.4px */
-    font-size: 40%;
-  }
-}
-
-@media (max-width: 768px) {
-  /* 브라우저 폰트 사이즈 16px * 0.3 = 4.8px */
-  html {
-    font-size: 30%;
-  }
 }
