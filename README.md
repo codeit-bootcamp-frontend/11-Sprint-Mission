@@ -1,1 +1,1 @@
-https://codeit-ldh-panda-market.netlify.app/pages/login
+https://codeit-ldh-panda-market.netlify.app/

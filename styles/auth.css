@@ -139,3 +139,35 @@ html {
   height: 132px;
   margin: 0 auto;
 }
+
+@media (max-width: 767px) {
+  .auth-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 0 16px;
+  }
+
+  .auth-input,
+  .auth-btn,
+  .easy-login,
+  #auth-logo {
+    width: 100%;
+  }
+
+  .auth-btn {
+    padding: 16px 0;
+  }
+
+  .easy-login {
+    padding: 16px;
+  }
+
+  .social-icons {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  #auth-logo {
+    height: auto;
+  }
+}

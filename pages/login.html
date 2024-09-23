@@ -20,7 +20,7 @@
         />
       </a>
       <div class="auth-content">
-        <form class="auth-form" action="">
+        <form class="auth-form" action="/login" method="POST">
           <div class="input-wrapper">
             <label class="auth-label" for="email">이메일</label>
             <input
@@ -29,6 +29,7 @@
               id="email"
               name="email"
               placeholder="이메일을 입력해주세요"
+              required
             />
           </div>
 
@@ -50,7 +51,7 @@
             </div>
           </div>
 
-          <button class="auth-btn login-btn">로그인</button>
+          <button class="auth-btn" type="submit">로그인</button>
         </form>
 
         <div class="easy-login">
