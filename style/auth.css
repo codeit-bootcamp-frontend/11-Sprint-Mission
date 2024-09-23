@@ -132,3 +132,25 @@
   color: var(--primary100);
   text-decoration: underline;
 }
+
+/* BreakPoint Mobile */
+@media (max-width: 767px) {
+  .container .logo {
+    width: 19.8rem;
+    height: 6.6rem;
+  }
+  .container form {
+    gap: 1.6rem;
+    max-width: 40rem;
+    width: 100%;
+    padding: 0 1.6rem;
+  }
+  .container form .input-area label {
+    margin-bottom: 0.8rem;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+  }
+  .container form .sns-area {
+    margin-top: 0.8rem;
+  }
+}
