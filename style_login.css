@@ -34,6 +34,13 @@ p {
     margin: 0;
 }
 
+label {
+    color: #1F2937;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+}
+
 .login-total-container {
     display: flex;
     flex-direction: column;
@@ -134,4 +141,22 @@ input:focus {
     color: #3692FF;
     font-size: 14px;
     font-weight: 500;
+}
+
+@media (max-width: 767px) { 
+    .section-container {
+        padding: 0 16px;
+        max-width: 400px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .login-total-container {
+        width: 100%;
+    }
+
+    .big-logo {
+        width: 198px;
+        height: 66px;
+    }
 }
