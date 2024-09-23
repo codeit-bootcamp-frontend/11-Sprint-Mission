@@ -1,15 +1,4 @@
-:root {
-  --blue: #3692ff;
-  --gray50: #f9fafb;
-  --gray100: #f3f4f6;
-  --gray200: #e5e7eb;
-  --gray400: #9ca3af;
-  --gray500: #6b7280;
-  --gray600: #4b5563;
-  --gray700: #374151;
-  --gray800: #1f2937;
-  --gray900: #111827;
-}
+@import url(./common.css);
 
 * {
   box-sizing: border-box;
@@ -34,7 +23,6 @@ body {
 
 .logo {
   width: 396px;
-  height: 132px;
   display: flex;
   margin: 0 auto;
   align-items: center;
@@ -157,4 +145,43 @@ footer {
 footer a {
   line-height: 16.71px;
   color: var(--blue);
+}
+
+@media (max-width: 767px) {
+  .login-form {
+    width: 100%;
+    height: 681px;
+    padding: 0 16px;
+    margin: 24px 0 179px;
+  }
+
+  .logo {
+    width: 198px;
+    gap: 11.12px;
+    margin-bottom: 24px;
+  }
+
+  .logo img {
+    width: 51.76px;
+    height: 51.94px;
+  }
+
+  .logo a {
+    font-size: 33.17px;
+    line-height: 44.78px;
+  }
+
+  .main-form label {
+    font-size: 14px;
+    line-height: 16.71px;
+    margin-bottom: 8px;
+  }
+
+  .main-form input {
+    margin-bottom: 16px;
+  }
+
+  .main-form button {
+    padding: 12px 136.5px;
+  }
 }

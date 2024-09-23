@@ -4,6 +4,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="판다마켓" />
+    <meta property="og:description" content="일상의 모든 물건을 거래해보세요" />
+    <meta property="og:url" content="https://sprint-mission3.netlify.app/" />
+    <meta
+      property="og:image"
+      content="https://sprint-mission3.netlify.app/img/메타태그 이미지.png"
+    />
+    <meta property="product:brand" content="KAKAO" />
+    <meta property="product:availability" content="in stock" />
+    <meta property="product:condition" content="new" />
+    <meta property="product:price:amount" content="10000" />
+    <meta property="product:price:currency" content="KRW" />
     <title>판다마켓</title>
     <link rel="stylesheet" href="index.css" />
     <link
@@ -11,12 +23,18 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abel&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>
       <div class="header-content">
         <div class="logo">
-          <img src="./img/판다 얼굴.png" />
+          <a href="/" class="logo-img"></a>
           <a href="/">판다마켓</a>
         </div>
         <a class="login" href="/login.html">로그인</a>
@@ -26,10 +44,7 @@
       <section class="landing-page-top">
         <div class="content">
           <div>
-            <p>
-              일상의 모든 물건을<br />
-              거래해 보세요
-            </p>
+            <p>일상의 모든 물건을 거래해 보세요</p>
             <a class="items" href="/items.html">구경하러 가기</a>
           </div>
           <img src="./img/Img_home_top.png" />
@@ -42,7 +57,7 @@
             <div class="info">
               <p>Hot item</p>
               <p>
-                인기 상품을<br />
+                인기 상품을<br class="visible" />
                 확인해 보세요
               </p>
               <p>
@@ -57,7 +72,7 @@
             <div class="info">
               <p>Search</p>
               <p>
-                구매를 원하는<br />
+                구매를 원하는<br class="visible" />
                 상품을 검색하세요
               </p>
               <p>
@@ -74,7 +89,7 @@
             <div class="info">
               <p>Register</p>
               <p>
-                판매를 원하는<br />
+                판매를 원하는<br class="visible" />
                 상품을 등록하세요
               </p>
               <p>
@@ -88,7 +103,10 @@
       <section class="landing-page-bottom">
         <div class="content">
           <div>
-            <p>믿을 수 있는 <br />판다마켓 중고 거래</p>
+            <p>
+              믿을 수 있는<br />
+              판다마켓 중고 거래
+            </p>
           </div>
           <img src="./img/Img_home_bottom.png" />
         </div>
@@ -96,7 +114,7 @@
     </main>
     <footer>
       <div class="footer-content">
-        <p>@codeit - 2024</p>
+        <p>©codeit - 2024</p>
         <div>
           <a href="/privacy.html">Privacy Policy</a>
           <a href="/faq.html">FAQ</a>
