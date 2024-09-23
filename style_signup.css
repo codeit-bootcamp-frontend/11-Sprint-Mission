@@ -14,7 +14,6 @@ body {
 .body_1 {
     display: flex;
     justify-content: center;
-    width: 100vw;
     height: 100vh;
     align-items: center;
 }
@@ -143,4 +142,22 @@ input:focus {
     color: #3692FF;
     font-size: 14px;
     font-weight: 500;
+}
+
+@media (max-width: 767px) { 
+    .section-container {
+        padding: 0 16px;
+        max-width: 400px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .signup-total-container {
+        width: 100%;
+    }
+
+    .big-logo {
+        width: 198px;
+        height: 66px;
+    }
 }
