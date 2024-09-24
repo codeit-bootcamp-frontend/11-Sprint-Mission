@@ -1,0 +1,124 @@
+* {
+  box-sizing: border-box;
+  font-family: Pretendard;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vw;
+  margin: 0;
+  font-size: 16px;
+}
+
+@font-face {
+  font-family: Pretendard;
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+.label_email,
+.label_nickname,
+.label_pw,
+.label_pw2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 16px 0;
+  display: flex;
+}
+
+.signup_email_bundle,
+.signup_pw_bundle,
+.signup_nickname_bundle,
+.signup_pw2_bundle {
+  margin: 24px 0;
+}
+
+#email,
+#nickname,
+#password,
+#password2 {
+  display: flex;
+  padding: 16px 24px;
+  width: 640px;
+  height: 56px;
+  background-color: rgba(243, 244, 246, 1);
+  border-radius: 12px;
+  border: none;
+  /* font */
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+input {
+  color: rgba(156, 163, 175, 1);
+}
+
+input:focus {
+  border: #3692FF;
+}
+
+input:valid {
+  color: rgba(31, 41, 55, 1);
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.signup_button {
+  padding: 16px 124px;
+  width: 640px;
+  height: 56px;
+  background-color: rgba(156, 163, 175, 1);
+  color: rgba(243, 244, 246, 1);
+  border-radius: 40px;
+  /* font */
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  /* margin: 16px 0; */
+}
+
+.login_sns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(230, 242, 255, 1);
+  padding: 16px 23px;
+  width: 640px;
+  height: 74px;
+  border-radius: 8px;
+  margin: 24px 0;
+}
+
+.login_google,
+.login_kakaotalk {
+  width: 42px;
+  height: 42px;
+  border-radius: 15px;
+}
+
+.login {
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.link_login {
+  color: rgba(54, 146, 255, 1);
+  padding: 6px;
+}
+
+button.active {
+  background-color: rgba(54, 146, 255, 1);
+}
