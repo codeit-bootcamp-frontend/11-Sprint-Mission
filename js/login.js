@@ -1,3 +1,5 @@
+import { checkInputValidity } from "./validation.js";
+
 const pwVisibilityToggleBtn = document.querySelector(".btn-toggle"); // [sprint3 리뷰 반영] 변수명 직관적으로 변경
 const inputs = document.querySelectorAll(".input-area > input");
 
@@ -18,8 +20,8 @@ function togglePwVisibility(e) {
  * 폼 태그의 모든 입력이 입력 되었는지 확인하는 함수
  * @param {*} e
  */
-function isFormValid(e) {
-  const form = e.target.closest("form");
+function isFormValid({ target }) {
+  const form = target.closest("form");
   const inputs = form.querySelectorAll("input");
   const btnSubmit = form.querySelector("button[type=submit]"); // 로그인 버튼
   const isFormValid = Array.from(inputs).every(
@@ -37,4 +39,5 @@ pwVisibilityToggleBtn.addEventListener("click", togglePwVisibility);
 
 inputs.forEach((input) => {
   input.addEventListener("input", validateForm);
+  input.addEventListener("focusout", checkInputValidity);
 });

@@ -1,3 +1,5 @@
+import { checkInputValidity } from "./validation.js";
+
 const pwVisibilityToggleBtn = document.querySelectorAll(".btn-toggle"); // [sprint3 리뷰 반영] 변수명 직관적으로 변경
 const inputs = document.querySelectorAll(".input-area > input");
 const btnSubmit = document.querySelector("button[type=submit]"); // 회원가입 버튼
@@ -53,4 +55,5 @@ pwVisibilityToggleBtn.forEach((btn) => {
 
 inputs.forEach((input) => {
   input.addEventListener("input", validateForm);
+  input.addEventListener("focusout", checkInputValidity);
 });

@@ -26,6 +26,7 @@
             placeholder="이메일을 입력해 주세요"
             required
           />
+          <span class="msg-error">에러 메시지</span>
         </div>
         <div class="input-area nickname">
           <label for="input_name">닉네임</label>
@@ -35,6 +36,7 @@
             placeholder="닉네임을 입력해 주세요"
             required
           />
+          <span class="msg-error">에러 메시지</span>
         </div>
         <div class="input-area password">
           <label for="input_password">비밀번호</label>
@@ -45,11 +47,12 @@
             placeholder="비밀번호를 입력해주세요"
             required
           />
+          <span class="msg-error">에러 메시지</span>
           <button type="button" class="btn-toggle" title="비밀번호 노출 토글">
             <span class="sr-only">비밀번호 노출 토글</span>
           </button>
         </div>
-        <div class="input-area password">
+        <div class="input-area password-confirm">
           <label for="input_password_confirm">비밀번호 확인</label>
           <input
             type="password"
@@ -58,6 +61,7 @@
             placeholder="비밀번호를 다시 한 번 입력해주세요"
             required
           />
+          <span class="msg-error">에러 메시지</span>
           <button type="button" class="btn-toggle" title="비밀번호 노출 토글">
             <span class="sr-only">비밀번호 노출 토글</span>
           </button>
@@ -92,6 +96,6 @@
         </div>
       </form>
     </div>
-    <script src="../js/signup.js"></script>
+    <script type="module" src="../js/signup.js"></script>
   </body>
 </html>
