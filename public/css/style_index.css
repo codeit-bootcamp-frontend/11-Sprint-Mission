@@ -13,12 +13,6 @@
 }
 
 
-@media (min-width: 768px) and (max-width: 1199px) {
-    .top {
-        padding: 0 24px 0 24px;
-    }
-}
-
 .top-nav {
     flex : 1;
     display: flex;
@@ -64,12 +58,6 @@
     height: 540px;  
 }
 
-@media (min-width: 768px) and (max-width: 1199px) {
-    .header {
-        height: 771px;
-        padding-top: 84px;
-    }
-}
 
 .header-container {
     display: flex;
@@ -79,13 +67,6 @@
 }
 
 
-@media (min-width: 768px) and (max-width: 1199px) {
-    .header-container {
-        flex-direction: column;
-        gap: 211px;
-    }
-}
-
 .header-banner {
     display: flex;
     flex-direction: column;
@@ -94,12 +75,6 @@
 }
 
 
-@media (min-width: 768px) and (max-width: 1199px) {
-    .header-banner {
-        padding-bottom: 0;
-    }
-}
-
 .header-description {
     font-size: 40px;
     font-weight: 700;
@@ -107,16 +82,6 @@
     color: #374151;
 }
 
-
-
-@media (min-width: 768px) and (max-width: 1199px) {
-    .header-description {
-        text-align: center;
-        font-size: 40px;
-        line-height: 56px;
-        white-space: nowrap;
-    }
-}
 
 .btn-catalog {
     font-family: "Pretendard-Regular";
@@ -133,43 +98,17 @@
     align-items: center;
 }
 
-
-@media (min-width: 768px) and (max-width: 1199px) {
-    .btn-catalog {
-        width: 357px;
-        height: 56px;
-        padding: 16px 124px 16px 124px;
-        font-size: 20px;
-        white-space: nowrap;
-    }
-}
-
 .header-image {
     width: 746px;
     height: 340px;
 }
 
 
-@media (min-width: 768px) and (max-width: 1199px) {
-    .header-image {
-        width: 744px;
-        height: 340px;
-    }
-}
-
 .section-container {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: auto;
-}
-
-
-@media (min-width: 768px) and (max-width: 1199px) {
-    .section-container {
-        padding: 24px 0 56px 0;
-        gap: 52px;
-    }
 }
 
 .section-hotitem,
@@ -185,26 +124,9 @@
 }
 
 
-@media (min-width: 768px) and (max-width: 1199px) {
-    .section-hotitem,
-    .section-search,
-    .section-register {
-        flex-direction: column;
-        padding: 0;
-    }
-}
-
 .section-banner {
     display: flex;
     gap: 64px;
-}
-
-
-@media (min-width: 768px) and (max-width: 1199px) {
-    .section-banner {
-        flex-direction: column;
-        gap: 24px;
-    }
 }
 
 .section-hotitem-image,
@@ -214,23 +136,6 @@
     height: 444px;
 }
 
-@media (max-width : 767px) {
-    .section-hotitem-image,
-    .section-search-image,
-    .section-register-image {
-        width: 344px;
-        height: 259px;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-    .section-hotitem-image,
-    .section-search-image,
-    .section-register-image {
-        width: 696px;
-        height: 524px;
-    }
-}
 
 .section-hotitem-container,
 .section-register-container {
@@ -240,19 +145,6 @@
     justify-content: center;
 }
 
-@media (max-width : 767px) {
-    .section-hotitem-container,
-    .section-register-container {
-        gap: 8px;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-    .section-hotitem-container,
-    .section-register-container {
-        gap: 16px;
-    }
-}
 
 .section-hotitem-description,
 .section-search-description,
@@ -260,18 +152,6 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
-}
-
-@media (max-width : 767px) {
-    .section-hotitem-description {
-        gap: 16px;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-    .section-hotitem-description {
-        gap: 24px;
-    }
 }
 
 .section-search-container {
@@ -293,18 +173,6 @@ p {
     color: #3692FF;
 }
 
-@media (max-width : 767px) {
-    .section-title {
-        font-size: 16px;
-        line-height: 26px;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-    .section-title {
-        font-size: 18px;
-    }
-}
 
 .section-hotitem-description-Bold,
 .section-search-description-Bold,
@@ -314,48 +182,12 @@ p {
     line-height: 56px;
 }
 
-@media (max-width : 767px) {
-    .section-hotitem-description-Bold, 
-    .section-search-description-Bold,
-    .section-register-description-Bold {
-        font-size: 24px;
-        line-height: 32px;
-        white-space: nowrap;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-    .section-hotitem-description-Bold, 
-    .section-search-description-Bold,
-    .section-register-description-Bold {
-        font-size: 32px;
-        line-height: 42px;
-        white-space: nowrap;
-    }
-}
 
 .section-hotitem-description-regular,
 .section-search-description-regular,
 .section-register-description-regular {
     font-size: 24px;
     line-height: 32px;
-}
-
-@media (max-width : 767px) {
-    .section-hotitem-description-regular,
-    .section-search-description-regular,
-    .section-register-description-regular {
-        font-size: 16px;
-        line-height: 26px;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-    .section-hotitem-description-regular,
-    .section-search-description-regular,
-    .section-register-description-regular {
-        font-size: 18px;
-    }
 }
 
 .bottom {
@@ -368,44 +200,11 @@ p {
     height: 540px; 
 }
 
-@media (min-width: 768px) and (max-width: 1199px) {
-    .bottom {
-        height: 927px;
-    }
-}
-
-@media (max-width: 767px) {
-    .bottom-image {
-        width: 375px;
-        height: 198px;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-    .bottom-image {
-        width: 744px;
-        height: 397px;
-    }
-}
-
 .bottom-container {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 69px;
-}
-
-@media (max-width: 767px) {
-    .bottom-container {
-        flex-direction: column;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-    .bottom-container {
-        flex-direction: column;
-        gap: 150px;
-    }
 }
 
 .bottom-banner {
@@ -422,21 +221,7 @@ p {
     color: #374151;
 }
 
-@media (max-width: 767px) {
-    .bottom-description {
-        font-size: 32px;
-        line-height: 44.8px;
-        text-align: center;
-    }
-}
 
-@media (min-width: 768px) and (max-width: 1199px) {
-    .bottom-description {
-        font-size: 40px;
-        line-height: 56px;
-        text-align: center;
-    }
-}
 
 .footer {
     display: flex;
@@ -446,18 +231,6 @@ p {
     padding: 32px 400px 32px 400px;
     justify-content: center;
     align-items: center;
-}
-
-@media (max-width: 767px) {
-    .footer {
-        padding: 40px 0 0 0;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-    .footer {
-        padding: 32px 104px 108px 104px
-    }
 }
 
 .footer-container {
@@ -483,6 +256,9 @@ a {
     font-size: 16px;
     text-decoration-line: none;
 }
+
+
+/*모바일 미디어쿼리*/
 
 @media (max-width: 767px) {
     .top {
@@ -536,5 +312,194 @@ a {
     .section-banner {
         flex-direction: column;
         gap: 24px;
+    }
+
+    .section-hotitem-image,
+    .section-search-image,
+    .section-register-image {
+        width: 344px;
+        height: 259px;
+    }
+
+    .section-hotitem-container,
+    .section-register-container {
+        gap: 8px;
+    }
+
+    .section-search-container {
+        order: 2;
+    }
+
+    .section-search-image {
+        order: 1;
+    }
+
+    .section-hotitem-description {
+        gap: 16px;
+    }
+
+    .section-title {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .section-hotitem-description-Bold, 
+    .section-search-description-Bold,
+    .section-register-description-Bold {
+        font-size: 24px;
+        line-height: 32px;
+    }
+    
+
+    .section-hotitem-description-regular,
+    .section-search-description-regular,
+    .section-register-description-regular {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .bottom-image {
+        width: 375px;
+        height: 198px;
+    }
+
+    .bottom-container {
+        flex-direction: column;
+    }
+
+    .bottom-description {
+        font-size: 32px;
+        line-height: 44.8px;
+        text-align: center;
+    }
+
+    .footer {
+        padding: 40px 0 0 0;
+    }
+}
+
+
+/*태블릿 미디어쿼리*/
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .top {
+        padding: 0 24px 0 24px;
+    }
+
+    .header {
+        height: 771px;
+        padding-top: 84px;
+    }
+
+    .header-container {
+        flex-direction: column;
+        gap: 211px;
+    }
+
+    .header-banner {
+        padding-bottom: 0;
+    }
+
+    .header-description {
+        text-align: center;
+        font-size: 40px;
+        line-height: 56px;
+        white-space: nowrap;
+    }
+
+    .btn-catalog {
+        width: 357px;
+        height: 56px;
+        padding: 16px 124px 16px 124px;
+        font-size: 20px;
+        white-space: nowrap;
+    }
+
+    .header-image {
+        width: 744px;
+        height: 340px;
+    }
+
+    .section-container {
+        padding: 24px 0 56px 0;
+        gap: 52px;
+    }
+
+    .section-hotitem,
+    .section-search,
+    .section-register {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .section-banner {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .section-hotitem-image,
+    .section-search-image,
+    .section-register-image {
+        width: 696px;
+        height: 524px;
+    }
+
+    .section-hotitem-container,
+    .section-register-container {
+        gap: 16px;
+    }
+
+    .section-hotitem-description {
+        gap: 24px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    .section-hotitem-description-Bold, 
+    .section-search-description-Bold,
+    .section-register-description-Bold {
+        font-size: 32px;
+        line-height: 42px;
+        white-space: nowrap;
+    }
+
+    .section-hotitem-description-regular,
+    .section-search-description-regular,
+    .section-register-description-regular {
+        font-size: 18px;
+    }
+
+    .section-search-container {
+        order: 2;
+    }
+
+    .section-search-image {
+        order: 1;
+    }
+
+    .bottom {
+        height: 927px;
+    }
+
+    .bottom-image {
+        width: 744px;
+        height: 397px;
+    }
+
+    .bottom-container {
+        flex-direction: column;
+        gap: 150px;
+    }
+
+    .bottom-description {
+        font-size: 40px;
+        line-height: 56px;
+        text-align: center;
+    }
+
+    .footer {
+        padding: 32px 104px 108px 104px
     }
 }
