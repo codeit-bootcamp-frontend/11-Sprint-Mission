@@ -28,13 +28,4 @@
   -moz-osx-font-smoothing: grayscale; //macOS에서 폰트를 더 부드럽게 렌더링
   -webkit-text-size-adjust: 100%; //모바일 장치에서 텍스트 크기가 자동으로 조정되는 것을 방지
 
-  /* 태블릿 */
-  @media (min-width: 768px) {
-    flex-direction: row;
-  }
-
-  /* 데스크톱 */
-  @media (min-width: 1024px) {
-    padding: 0;
-  }
 }

@@ -1,26 +1,22 @@
-let email = document.querySelector('#email');
-let password = document.querySelector('#password');
-let btn = document.querySelector('.login-btn');
-
-function emailInput(){
-  activeLoginBtn();
-}
-
-function passwordInput(){
-  activeLoginBtn();
-}
+const email = document.querySelector('#email');
+const password = document.querySelector('#password');
+const btn = document.querySelector('.login-btn');
 
 function activeLoginBtn() {
-  if(email.value.length > 0 && password.value.length > 0) {
-    // btn.setAttribute('class', 'active');
-    btn.classList.add('active')
-  }
+  const isValid = email.value.length > 0 && password.value.length > 0; //boolean값으로 받아서 함수를 재사용 가능
+  btn.classList.toggle('active', isValid); //toggle에도 사용하고 
+  return isValid;
 }
+
+[email, password].forEach((input) => {
+  input.addEventListener('input', activeLoginBtn);
+})
+
 
 function loginSubmit(e) {
   e.preventDefault();
 
-  if(email.value.length > 0 && password.value.length > 0) {
+  if(activeLoginBtn()) { //activeLoginBtn 함수를 재사용
     console.log('로그인 제출:', {
       email: email.value,
       password: password.value
@@ -31,26 +27,22 @@ function loginSubmit(e) {
     console.log('입력이 부족합니다.')
   }
 }
-
-email.addEventListener('input', emailInput);
-password.addEventListener('input', passwordInput);
 btn.addEventListener('click', loginSubmit);
+
+
 
 // 비밀번호 visibility 설정 
 
 let passwordBtn = document.querySelector('.btn-visibility');
-
 console.log(passwordBtn);
 
-function setPasswordVisibility(e) {
-  let img = passwordBtn.children[0].getAttribute('src'); 
-  if(img == 'img/btn_visibility_off.svg'){
-    passwordBtn.previousElementSibling.setAttribute('type', 'text');
-    passwordBtn.children[0].setAttribute('src', 'img/btn_visibility_on.svg')
-  } else {
-    passwordBtn.previousElementSibling.setAttribute('type', 'password');
-    passwordBtn.children[0].setAttribute('src', 'img/btn_visibility_off.svg')
-  }
-}
+function passwordVisibility(btn) {
+  const img = btn.children[0].getAttribute('src');
+  const newImg = img === 'img/btn_visibility_off.svg' ? 'img/btn_visibility_on.svg' : 'img/btn_visibility_off.svg';
+  const newInput = newImg.includes('on') ? 'text' : 'password';
 
-passwordBtn.addEventListener('click', setPasswordVisibility);
+  btn.previousElementSibling.setAttribute('type', newInput);
+  btn.children[0].setAttribute('src', newImg);
+
+}
+passwordBtn.addEventListener('click', () => passwordVisibility(passwordBtn));
