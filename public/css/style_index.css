@@ -12,11 +12,6 @@
     align-items: center;
 }
 
-@media (max-width: 767px) {
-    .top {
-        padding: 0 16px 0 16px;
-    }
-}
 
 @media (min-width: 768px) and (max-width: 1199px) {
     .top {
@@ -69,12 +64,6 @@
     height: 540px;  
 }
 
-@media (max-width : 767px) {
-    .header {
-        padding-top: 48px;
-    }
-}
-
 @media (min-width: 768px) and (max-width: 1199px) {
     .header {
         height: 771px;
@@ -89,12 +78,6 @@
     gap: 7px;
 }
 
-@media (max-width : 767px) {
-    .header-container {
-        flex-direction: column;
-        gap: 132px;
-    }
-}
 
 @media (min-width: 768px) and (max-width: 1199px) {
     .header-container {
@@ -110,11 +93,6 @@
     padding : 0px 0px 60px 0px;
 }
 
-@media (max-width : 767px) {
-    .header-banner {
-        padding-bottom: 0;
-    }
-}
 
 @media (min-width: 768px) and (max-width: 1199px) {
     .header-banner {
@@ -129,13 +107,7 @@
     color: #374151;
 }
 
-@media (max-width : 767px) {
-    .header-description {
-        text-align: center;
-        font-size: 32px;
-        line-height: 44.8px;
-    }
-}
+
 
 @media (min-width: 768px) and (max-width: 1199px) {
     .header-description {
@@ -161,15 +133,6 @@
     align-items: center;
 }
 
-@media (max-width : 767px) {
-    .btn-catalog {
-        width: 240px;
-        height: 48px;
-        padding: 12px 71px 12px 71px;
-        font-size: 18px;
-        white-space: nowrap;
-    }
-}
 
 @media (min-width: 768px) and (max-width: 1199px) {
     .btn-catalog {
@@ -186,12 +149,6 @@
     height: 340px;
 }
 
-@media (max-width : 767px) {
-    .header-image {
-        width: 448px;
-        height: 204px;
-    }
-}
 
 @media (min-width: 768px) and (max-width: 1199px) {
     .header-image {
@@ -207,12 +164,6 @@
     height: auto;
 }
 
-@media (max-width : 767px) {
-    .section-container {
-        padding: 52px 0 83px 0;
-        gap: 40px;
-    }
-}
 
 @media (min-width: 768px) and (max-width: 1199px) {
     .section-container {
@@ -233,14 +184,6 @@
     align-items: center;
 }
 
-@media (max-width : 767px) {
-    .section-hotitem,
-    .section-search,
-    .section-register {
-        flex-direction: column;
-        padding: 0;
-    }
-}
 
 @media (min-width: 768px) and (max-width: 1199px) {
     .section-hotitem,
@@ -256,12 +199,6 @@
     gap: 64px;
 }
 
-@media (max-width : 767px) {
-    .section-banner {
-        flex-direction: column;
-        gap: 24px;
-    }
-}
 
 @media (min-width: 768px) and (max-width: 1199px) {
     .section-banner {
@@ -545,4 +482,59 @@ a {
     font-weight: 400;
     font-size: 16px;
     text-decoration-line: none;
+}
+
+@media (max-width: 767px) {
+    .top {
+        padding: 0 16px 0 16px;
+    }
+
+    .header {
+        padding-top: 48px;
+    }
+
+    .header-container {
+        flex-direction: column;
+        gap: 132px;
+    }
+
+    .header-banner {
+        padding-bottom: 0;
+    }
+
+    .header-description {
+        text-align: center;
+        font-size: 32px;
+        line-height: 44.8px;
+    }
+
+    .btn-catalog {
+        width: 240px;
+        height: 48px;
+        padding: 12px 71px 12px 71px;
+        font-size: 18px;
+        white-space: nowrap;
+    }
+
+    .header-image {
+        width: 448px;
+        height: 204px;
+    }
+
+    .section-container {
+        padding: 52px 0 83px 0;
+        gap: 40px;
+    }
+
+    .section-hotitem,
+    .section-search,
+    .section-register {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .section-banner {
+        flex-direction: column;
+        gap: 24px;
+    }
 }
