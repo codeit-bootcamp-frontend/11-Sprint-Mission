@@ -75,7 +75,7 @@ input:focus {
     border: 2px solid red;
 }
 
-.email-null, .password-null, .email-check{
+.email-null, .password-null, .email-check, .password-check{
     display: none;
     margin-top: 10px;
     padding-left: 10px;
