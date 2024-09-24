@@ -19,6 +19,9 @@ const usernameNull = document.querySelector('.username-null');
 // 로그인 버튼
 const loginBtn = document.querySelector('#login-btn');
 
+//회원가입 버튼
+const signupBtn = document.querySelector('#signup-btn')
+
 // 이메일 형식
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -45,7 +48,8 @@ email.addEventListener('input', function() {
         emailNull.style.display = 'none';
         emailCheck.style.display = 'none';
     }
-    toggleLoginButton(); 
+    toggleLoginButton()
+    toggleSinupButton()
 });
 
 // 비밀번호
@@ -69,7 +73,8 @@ password.addEventListener('input', function() {
         passwordNull.style.display = 'none';
         passwordCheck.style.display = 'none';
     }
-    toggleLoginButton();
+    toggleLoginButton()
+    toggleSinupButton()
 });
 
 // 로그인 버튼
@@ -84,10 +89,10 @@ function toggleLoginButton() {
         loginBtn.classList.remove('active');
         loginBtn.setAttribute('disabled', 'true');
     }
-}
+};
 
 // 비밀번호 확인
-passwordVerify.addEventListener('blur',function(){
+passwordVerify.addEventListener('input',function(){
     if(password.value != passwordVerify.value){
         passwordVerify.classList.add('error');
         passwordDifferent.style.display = 'block';
@@ -95,10 +100,11 @@ passwordVerify.addEventListener('blur',function(){
         passwordVerify.classList.remove('error');
         passwordDifferent.style.display = 'none';
     }
+    toggleSinupButton()
 });
 
 // 닉네임
-username.addEventListener('blur',function(){
+username.addEventListener('input',function(){
     if(!username.value){
         username.classList.add('error');
         usernameNull.style.display = 'block';
@@ -106,4 +112,21 @@ username.addEventListener('blur',function(){
         username.classList.remove('error');
         usernameNull.style.display = 'none';
     }
+    toggleSinupButton()
 });
+
+//회원가입 버튼
+function toggleSinupButton() {
+    const isEmailValid = emailPattern.test(email.value); 
+    const isPasswordValid = password.value.length >= 8; 
+    const isPasswordVerifyValid = passwordVerify.value === password.value;
+    const isUsernameValid = username.value.trim() !== "";
+
+    if (isEmailValid && isPasswordValid && isPasswordVerifyValid && isUsernameValid) {
+        signupBtn.classList.add('active');
+        loginBtn.removeAttribute('disabled');
+    } else {
+        signupBtn.classList.remove('active');
+        signupBtn.setAttribute('disabled', 'true');
+    }
+};

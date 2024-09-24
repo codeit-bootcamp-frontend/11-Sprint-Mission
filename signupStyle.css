@@ -90,7 +90,7 @@ input:focus {
     font-weight: 550; 
 }
 
-.login-btn {
+#signup-btn {
     display: flex;
     width: 40rem;
     height: 4rem;
@@ -104,6 +104,11 @@ input:focus {
     text-decoration: none;
     border: none;
     margin-bottom: 2rem;
+    cursor: not-allowed;
+}
+
+#signup-btn.active {
+    background-color: var(--blue); 
     cursor: pointer;
 }
 
