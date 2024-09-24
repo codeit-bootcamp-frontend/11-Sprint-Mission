@@ -98,11 +98,6 @@
     align-items: center;
 }
 
-.header-image {
-    width: 746px;
-    height: 340px;
-}
-
 
 .section-container {
     display: flex;
@@ -182,6 +177,16 @@ p {
     line-height: 56px;
 }
 
+.section-hotitem-description-Bold {
+    width: 222px;
+    word-break: keep-all;
+}
+
+.section-search-description-Bold,
+.section-register-description-Bold {
+    width: 293px;
+    word-break: keep-all; /*단어단위로 끊기*/
+}
 
 .section-hotitem-description-regular,
 .section-search-description-regular,
@@ -220,8 +225,6 @@ p {
     line-height: 56px;
     color: #374151;
 }
-
-
 
 .footer {
     display: flex;
@@ -262,7 +265,7 @@ a {
 
 @media (max-width: 767px) {
     .top {
-        padding: 0 16px 0 16px;
+        padding: 0 16px;
     }
 
     .header {
@@ -272,6 +275,8 @@ a {
     .header-container {
         flex-direction: column;
         gap: 132px;
+        box-sizing: border-box;
+        width: 100%;
     }
 
     .header-banner {
@@ -293,13 +298,15 @@ a {
     }
 
     .header-image {
-        width: 448px;
-        height: 204px;
+        height: auto;
+        width: 100%;
+        overflow: hidden;
     }
 
     .section-container {
-        padding: 52px 0 83px 0;
+        padding: 52px 15px 83px 15px;
         gap: 40px;
+        box-sizing: border-box;
     }
 
     .section-hotitem,
@@ -317,8 +324,8 @@ a {
     .section-hotitem-image,
     .section-search-image,
     .section-register-image {
-        width: 344px;
-        height: 259px;
+        height: auto;
+        width: 100%;
     }
 
     .section-hotitem-container,
@@ -334,7 +341,9 @@ a {
         order: 1;
     }
 
-    .section-hotitem-description {
+    .section-hotitem-description,
+    .section-search-description,
+    .section-register-description {
         gap: 16px;
     }
 
@@ -348,6 +357,7 @@ a {
     .section-register-description-Bold {
         font-size: 24px;
         line-height: 32px;
+        width: auto;
     }
     
 
@@ -359,8 +369,9 @@ a {
     }
 
     .bottom-image {
-        width: 375px;
-        height: 198px;
+        height: auto;
+        width: 100%;
+        overflow: hidden;
     }
 
     .bottom-container {
@@ -374,7 +385,18 @@ a {
     }
 
     .footer {
-        padding: 40px 0 0 0;
+        padding: 32px 0 32px 0;
+    }
+
+    .footer-container {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        width: 311px;
+        gap: 32px;
+    }
+
+    .footer-codeit {
+        order: 2;
     }
 }
 
