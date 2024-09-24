@@ -1,130 +1,145 @@
-*{
-    box-sizing: border-box;
-  }
+* {
+  box-sizing: border-box;
+}
 
-body,html {
+body, html {
   height: 100%;
   margin: 0;
+  padding: 0;
+  font-family: 'Pretendard', sans-serif;
 }
 
 main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-  
-.logoimage {
-    display: flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .loginpage {
-    display: flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    width: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  width: 640px;
 }
 
-
-.sign{
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    width:100%
+.sign {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
 }
 
-.signform  {
-    display: flex;
-    flex-direction: column;
-    gap: 24px
+.signform {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .signsection {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .signlabel {
-  font-family: Pretendard;
-  text-align: left;
   font-weight: 700;
-  line-height: 26px;
   font-size: 17px;
   color: #1f2937;
 }
 
-.signinput {
-    background-color: #f3f4f6;
-    gap: 10px;
-    padding: 16px 24px;
-    border-radius: 10px;
-    border: 0;
+.signinput, .input_password {
+  background-color: #f3f4f6;
+  padding: 16px 24px;
+  border-radius: 10px;
+  border: 0;
 }
 
 .input_password {
-    background: url(button/closeEye.png);
-    background-repeat: no-repeat;
-    background-size: 24px;
-    background-position: 95% center;
-    background-color: #f3f4f6;
-    gap: 10px;
-    padding: 16px 24px;
-    border-radius: 10px;
-    border: 0;
-  }
+  background: url(button/closeEye.png) no-repeat 95% center;
+  background-size: 24px;
+}
 
 input:focus {
-    outline-color: #3692ff;
+  outline-color: #3692ff;
 }
+
 .signbutton {
-    background-color: #9ca3af;
-    padding: 16px 124px;
-    gap: 10px;
-    border-radius: 40px;
-    border: 0;
-    width: 100%;
-    font-family: Pretendard;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 32px;
-    text-align: center;
-    color: #f3f4f6;
-    cursor: pointer;
-  }
+  background-color: #9ca3af;
+  padding: 16px;
+  border-radius: 40px;
+  border: 0;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 600;
+  color: #f3f4f6;
+  cursor: pointer;
+}
 
 .tologin {
-    display: flex;
-    gap: 4px;
-    font-family: Pretendard;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 24px;
-    text-align: left;
-    justify-content: center;
+  display: flex;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  justify-content: center;
 }
-  
+
 .tologin > a {
-    color: #3692ff;
-  }
-  
+  color: #3692ff;
+}
+
 .linkbox {
-    background-color: #e6f2ff;
-    padding: 16px 23px;
-    gap: 10px;
-    border-radius: 8px;
-    font-family: Pretendard;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 26px;
-    text-align: left;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+  background-color: #e6f2ff;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* 반응형 */
+
+/* tablet */
+@media screen and (max-width: 1199px) {
+  .loginpage {
+      width: 100%;
+      padding: 0 40px;
+  }
+
+  .signbutton {
+      padding: 16px 80px;
+  }
+
+  .linkbox {
+      padding: 16px 16px;
+  }
+}
+
+/* mobile */
+@media screen and (max-width: 767px) {
+  .loginpage {
+      width: 100%;
+      padding: 0 20px;
+  }
+
+  .signinput, .input_password {
+      padding: 12px 16px;
+  }
+
+  .signbutton {
+      padding: 16px 60px;
+  }
+
+  .linkbox {
+      padding: 16px 10px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .loginpage {
+      max-width: 400px;
+  }
 }
