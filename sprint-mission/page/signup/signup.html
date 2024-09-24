@@ -1,9 +1,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>로그인</title>
-    <link rel="stylesheet" href="./login.css" />
-    <link rel="icon" href="/img/public/ic_panda.png" />
+    <title>회원가입</title>
+    <link rel="stylesheet" href="./signup.css" />
   </head>
   <body>
     <div class="login-form">
@@ -24,9 +23,18 @@
           <span id="message" class="notice-email"></span>
         </div>
         <div class="content-big">
+          <form class="content-title">닉네임</form>
+          <input
+            class="input-box"
+            type="text"
+            placeholder="닉네임을 입력해주세요" />
+          <span id="message" class="notice-nickname"></span>
+        </div>
+        <div class="content-big">
           <form class="content-title">비밀번호</form>
           <div class="input-box-eye">
             <input
+              id="password"
               class="input-box"
               type="password"
               placeholder="비밀번호를 입력해주세요" />
@@ -34,13 +42,25 @@
           </div>
           <span id="message" class="notice-password"></span>
         </div>
+        <div class="content-big">
+          <form class="content-title">비밀번호 확인</form>
+          <div class="input-box-eye">
+            <input
+              id="password-confirm"
+              class="input-box"
+              type="password"
+              placeholder="비밀번호를 다시 한 번 입력해주세요" />
+            <input type="button" class="eye" />
+          </div>
+          <span id="message" class="notice-password-confirm"></span>
+        </div>
         <div class="content">
           <input
-            class="login-btn"
+            class="signup-btn"
             type="button"
             disabled
-            value="로그인"
-            onclick="location.href='/page/items/item.html'" />
+            value="회원가입"
+            onclick="location.href='/page/signin/signin.html'" />
         </div>
         <div class="content">
           <div class="easy-login">
@@ -57,13 +77,13 @@
         </div>
         <footer>
           <div>
-            <a class="left">판다마켓이 처음이신가요?</a>
-            <a class="right" href="/page/signup/signup.html">회원가입</a>
+            <a class="left">이미 회원이신가요?</a>
+            <a class="right" href="/page/login/login.html">로그인</a>
           </div>
         </footer>
       </main>
+      <script src="./signup.js"></script>
+      <script src="/common.js"></script>
     </div>
-    <script src="./login.js"></script>
-    <script src="/common.js"></script>
   </body>
 </html>
