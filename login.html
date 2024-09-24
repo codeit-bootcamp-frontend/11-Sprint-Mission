@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        
         <form class="login">
             <a href="/">
                 <img class="loginlogo" src="img/logo/lg.png" alt="loginlogo">
@@ -16,6 +17,7 @@
                     <label for="email">이메일</label>
                     <br>
                     <input id="email" name="useremail" type="email" placeholder="이메일을 입력해주세요">
+                    <p class="email-null">이메일을 입력해주세요.</p>
                 </div>
                 <div class="inputarea">
                     <label for="password">비밀번호</label>
@@ -24,6 +26,7 @@
                         <input id="password" name="userpassword" type="password" placeholder="비밀번호를 입력해주세요">
                         <img class="password-icon" src="img/input-icon/eye-off.png" alt="passwordicon">
                     </div>
+                    <p class="password-null">비밀번호를 입력해주세요.</p>
                 </div>
                 <button type='submit' class="login-btn">로그인</button>
                 <div class="simple-login">
@@ -38,5 +41,6 @@
                 <p class="firstuser">판다마켓이 처음이신가요? <a href="signup.html">회원가입</a ></p>
             </section>
         </form>
+        <script src="login.js"></script>
     </body>
 </html> 

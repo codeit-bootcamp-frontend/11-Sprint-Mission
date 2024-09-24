@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>회원가입</title>
-        <link rel="stylesheet" href="loginStyle.css">
+        <link rel="stylesheet" href="signupStyle.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     </head>
@@ -17,19 +17,22 @@
                     <label for="email">이메일</label>
                     <br>
                     <input id="email" name="useremail" type="email" placeholder="이메일을 입력해주세요">
+                    <p class="email-null">이메일을 입력해주세요.</p>
                 </div>
                 <div class="inputarea">
                     <label for="username">닉네임</label>
                     <br>
                     <input id="username" name="username" type="email" placeholder="닉네임을 입력해주세요">
+                    <p class="username-null">닉네임을 입력해주세요.</p>
                 </div>
                 <div class="inputarea">
-                    <label id="password">비밀번호</label>
+                    <label for="password">비밀번호</label>
                     <br>
                     <div class="input-container">
                         <input id="password" name="userpassword" type="password" placeholder="비밀번호를 입력해주세요">
                         <img class="password-icon" src="img/input-icon/eye-off.png" alt="passwordicon">
                     </div>
+                    <p class="password-null">비밀번호를 입력해주세요.</p>
                 </div>
                 <div class="inputarea">
                     <label for="password-verify">비밀번호 확인</label>
@@ -52,5 +55,6 @@
                 <p class="firstuser">판다마켓이 처음이신가요? <a href="signup.html">회원가입</a ></p>
             </section>
         </form>
+        <script src="login.js"></script>
     </body>
 </html> 

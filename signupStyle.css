@@ -77,6 +77,19 @@ input:focus {
     top: 50%;
 }
 
+.error{
+    border: 2px solid red;
+}
+
+.email-null, .password-null, .username-null{
+    display: none;
+    margin-top: 10px;
+    padding-left: 10px;
+    color: #F74747;
+    font-size: 14px;
+    font-weight: 550; 
+}
+
 .login-btn {
     display: flex;
     width: 40rem;

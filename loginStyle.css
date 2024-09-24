@@ -71,6 +71,19 @@ input:focus {
     width: 37rem;
 }
 
+.error{
+    border: 2px solid red;
+}
+
+.email-null, .password-null{
+    display: none;
+    margin-top: 10px;
+    padding-left: 10px;
+    color: #F74747;
+    font-size: 14px;
+    font-weight: 550; 
+}
+
 .password-icon {
     position: absolute;
     width: 1.5rem;
