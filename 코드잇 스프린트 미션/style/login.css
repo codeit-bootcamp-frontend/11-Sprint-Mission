@@ -1,15 +1,33 @@
 body {
+  padding: 48px 0;
+}
+
+.login-area {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 231px 640px;
   gap: 40px;
+  width: 100%
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header img {
+  width: auto;
+  height: auto;
 }
 
 form {
-  width: 640px;
-  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 input {
@@ -101,10 +119,28 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   gap: 4px;
 }
 
 .signup-box a {
   text-decoration: underline;
   color: #3692FF;
+}
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+
+  body {
+    padding: 24px 0;
+  }
+
+  form label, form input, form .password-container, form button, #simple-login, .signup-box {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  header img {
+    width: 198px;
+    height: 66px;
+  }
 }

@@ -1,14 +1,32 @@
 body {
+  padding: 40px 0;
+}
+
+.signup-area {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 231px 640px;
   gap: 40px;
+  width: 100%
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header img {
+  width: auto;
+  height: auto;
 }
 
 form {
-  width: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 input {
@@ -54,7 +72,6 @@ input::placeholder {
 
 button {
   display: block;
-  margin-bottom: 16px;
   background-color: #9CA3AF;
   border-radius: 40px;
   color: #F3F4F6;
@@ -89,10 +106,29 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   gap: 4px;
 }
 
 .login-box a {
   text-decoration: underline;
   color: #3692FF;
+}
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+
+  body {
+    padding: 24px 0;
+  }
+
+  header, form label, form input, form .password-container, form button, .simple-login,
+  .login-box {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  header img {
+    width: 198px;
+    height: 66px;
+  }
 }
