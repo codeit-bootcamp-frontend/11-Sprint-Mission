@@ -3,64 +3,90 @@ const email = document.querySelector('#email');
 const emailNull = document.querySelector('.email-null');
 const emailCheck = document.querySelector('.email-check');
 
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-email.addEventListener('blur', function() {
-  const emailValue = email.value;
-
-//   값이 없을 경우
-  if (!emailValue) {
-    email.classList.add('error');
-    emailNull.style.display = 'block';
-    emailCheck.style.display = 'none';
-  } 
-
-//   이메일 형식에 맞지 않는 경우
-  else if (!emailPattern.test(emailValue)) {
-    email.classList.add('error');
-    emailNull.style.display = 'none';
-    emailCheck.style.display = 'block';
-  } 
-
-  else {
-    email.classList.remove('error');
-    emailNull.style.display = 'none';
-    emailCheck.style.display = 'none';
-  }
-});
-
-
 // 비밀번호
 const password = document.querySelector('#password');
-
 const passwordNull = document.querySelector('.password-null');
 const passwordCheck = document.querySelector('.password-check');
 
-password.addEventListener('blur',function(){
+//비밀번호 확인
+const passwordVerify = document.querySelector('#password-verify');
+const passwordDifferent = document.querySelector('.password-different')
 
-    //   값이 없을 경우
-    if(!password.value){
+//닉네임
+const username = document.querySelector('#username');
+const usernameNull = document.querySelector('.username-null');
+
+// 로그인 버튼
+const loginBtn = document.querySelector('#login-btn');
+
+// 이메일 형식
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+// 이메일
+email.addEventListener('input', function() {
+    const emailValue = email.value;
+
+    // 값 없는 경우
+    if (!emailValue) {
+        email.classList.add('error');
+        emailNull.style.display = 'block';
+        emailCheck.style.display = 'none';
+    }
+    // 형식에 맞지 않는 경우
+    else if (!emailPattern.test(emailValue)) {
+        email.classList.add('error');
+        emailNull.style.display = 'none';
+        emailCheck.style.display = 'block';
+    }
+ 
+    else {
+        email.classList.remove('error');
+        emailNull.style.display = 'none';
+        emailCheck.style.display = 'none';
+    }
+    toggleLoginButton(); 
+});
+
+// 비밀번호
+password.addEventListener('input', function() {
+
+    // 값 없는 경우
+    if (!password.value) {
         password.classList.add('error');
         passwordNull.style.display = 'block';
+        passwordCheck.style.display = 'none';
+    }
+    // 8자 미만인 경우
+    else if (password.value.length < 8) {
+        password.classList.add('error');
+        passwordNull.style.display = 'none';
+        passwordCheck.style.display = 'block';
     }
 
-    // 비밀번호가 8자 미만
-    else if(password.value.length < 8){
-            password.classList.add('error');
-            passwordCheck.style.display = 'block';
-        }
-    
-    else{
+    else {
         password.classList.remove('error');
         passwordNull.style.display = 'none';
         passwordCheck.style.display = 'none';
     }
-}); 
+    toggleLoginButton();
+});
 
-// 비밀번호 확인 일치하지 않는 경우
-const passwordVerify = document.querySelector('#password-verify');
-const passwordDifferent = document.querySelector('.password-different')
+// 로그인 버튼
+function toggleLoginButton() {
+    const isEmailValid = emailPattern.test(email.value); 
+    const isPasswordValid = password.value.length >= 8; 
 
+    if (isEmailValid && isPasswordValid) {
+        loginBtn.classList.add('active');
+        loginBtn.removeAttribute('disabled');
+    } else {
+        loginBtn.classList.remove('active');
+        loginBtn.setAttribute('disabled', 'true');
+    }
+}
+
+// 비밀번호 확인
 passwordVerify.addEventListener('blur',function(){
     if(password.value != passwordVerify.value){
         passwordVerify.classList.add('error');
@@ -71,10 +97,7 @@ passwordVerify.addEventListener('blur',function(){
     }
 });
 
-
 // 닉네임
-const username = document.querySelector('#username');
-const usernameNull = document.querySelector('.username-null');
 username.addEventListener('blur',function(){
     if(!username.value){
         username.classList.add('error');
@@ -84,4 +107,3 @@ username.addEventListener('blur',function(){
         usernameNull.style.display = 'none';
     }
 });
-
