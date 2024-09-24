@@ -12,25 +12,32 @@
 <body>
     <section id="login_home">
         <div id="login_logo">
-        <a href="index.html">
-            <img src="images/logos/panda.png" alt="판다 로고">
-        </a>
+            <a href="index.html">
+                <img src="images/logos/panda.png" alt="판다 로고">
+            </a>
         </div>
         <div class="info">  
             <form>
                 <div>
                     <label for="email">이메일</label>
                     <br>
-                    <input id="email" name="email" placeholder="이메일을 입력해주세요">
+                    <input id="email" name="email" placeholder="이메일을 입력해주세요" required>
+                    <!--
+                    <p class="form_error>이메일을 입력해 주세요</p> 
+                    <p class="form_error>잘못된 이메일 형식입니다</p>
+                    -->
                 </div>
+
                 <div class="password">
                     <label for="password">비밀번호</label>
                     <br>
-                    <input id="password" name="password" type="password" placeholder="비밀번호를 입력해주세요">
+                    <input id="password" name="password" type="password" placeholder="비밀번호를 입력해주세요" required>
                     <img class="see_blind" src="images/logos/see.png" alt="보이게">
                     <!-- 
                     <img class="see_blind" src="images/logos/blind.png" alt="안보이게">
                     차후에 적용
+                    <p class="form_error>비밀번호를 입력해주세요</p>
+                    <p class="form_error>비밀번호를 8자 이상 입력해주세요</p>
                     -->
                 </div>
             </form>
