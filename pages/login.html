@@ -21,7 +21,7 @@
         </h1>
       </header>
       <main class="auth-main">
-        <form action="" method="get">
+        <form class="auth-form" action="" method="get">
           <div class="auth-field">
             <label class="auth-label" for="email-input">이메일</label>
             <input
@@ -34,13 +34,16 @@
           </div>
           <div class="auth-field">
             <label class="auth-label" for="password-input">비밀번호</label>
-            <input
+            <div class="auth-div"> 
+              <input
               id="password-input"
               class="input input-gray"
               type="password"
               placeholder="비밀번호를 입력해주세요"
               required
-            />
+              />
+              <img src="../images/icon/icon_eyes_close.png" class="eyes-close"></img>
+            </div>
           </div>
           <button type="submit" class="btn btn-gray-round-xl">로그인</button>
         </form>

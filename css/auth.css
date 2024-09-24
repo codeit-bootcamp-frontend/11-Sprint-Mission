@@ -40,6 +40,17 @@
   margin-bottom: 16px;
 }
 
+.auth-div {
+  position: relative;
+}
+
+.eyes-close {
+  position: absolute;
+  cursor: pointer;
+  right: 24px;
+  top: 16px;
+}
+
 .auth-input-group {
   position: relative;
   display: inline-block;
