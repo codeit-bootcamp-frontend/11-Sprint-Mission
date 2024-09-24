@@ -21,7 +21,6 @@ section,
   background-size: auto;
 }
 
-.logo,
 .home,
 section,
 .section {
@@ -37,7 +36,6 @@ section,
   align-items: center;
 }
 
-.logo,
 section,
 .bottom-content,
 footer {
@@ -87,6 +85,7 @@ img {
   align-items: flex-end;
 }
 
+.logo,
 .top,
 .bottom,
 .footer-auth {
@@ -506,7 +505,6 @@ footer {
     background-size: auto;
   }
 
-  .logo,
   .home,
   section,
   .section {
@@ -568,6 +566,7 @@ footer {
     align-items: flex-end;
   }
 
+  .logo,
   .top,
   .bottom,
   .footer-auth {
