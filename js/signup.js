@@ -1,5 +1,6 @@
 import { togglePwVisibility } from "./togglePwVisible.js";
 import { checkInputValidity, validateForm } from "./validation.js";
+const signupButton = document.querySelector(".btn.signup");
 
 const pwVisibilityToggleBtn = document.querySelectorAll(".btn-toggle"); // [sprint3 리뷰 반영] 변수명 직관적으로 변경
 const inputs = document.querySelectorAll(".input-area > input");
@@ -13,4 +14,9 @@ inputs.forEach((input) => {
     checkInputValidity(e);
     validateForm(e);
   });
+});
+
+signupButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  location.href = "/pages/signin.html";
 });
