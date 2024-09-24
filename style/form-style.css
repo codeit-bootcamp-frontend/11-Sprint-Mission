@@ -12,6 +12,7 @@ body,
 .join-content,
 .join-main,
 .join,
+form,
 .email-form__input,
 .password-form__input {
   display: flex;
@@ -199,6 +200,7 @@ input:focus {
   .join-content,
   .join-main,
   .join,
+  form,
   .email-form__input,
   .password-form__input {
     display: flex;
@@ -348,6 +350,7 @@ input:focus {
   .join-content,
   .join-main,
   .join,
+  form,
   .email-form__input,
   .password-form__input {
     display: flex;
