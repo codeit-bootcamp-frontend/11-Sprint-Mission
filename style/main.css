@@ -1,0 +1,361 @@
+/* 상단 바 */
+.nav_wrapper {
+  position: fixed;
+  height: 70px;
+  width: 100%;
+  z-index: 100;
+  background-color: #fff;
+}
+
+.nav_bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1120px;
+  height: 70px;
+}
+@media (max-width: 1919px) {
+  .nav_bar {
+    margin: 0 200px;
+  }
+}
+@media (max-width: 1199px) {
+  .nav_bar {
+    margin: 0 24px;
+  }
+}
+@media (max-width: 767px) {
+  .nav_bar {
+    margin: 0 16px;
+  }
+}
+
+.nav_logobox {
+  display: flex;
+  align-items: center;
+}
+
+.nav_title {
+  font-size: 50px;
+  font-family: "ROKAF Sans";
+  font-weight: bold;
+  font-size: 1.625rem;
+  color: #3691ff;
+  margin-left: 10px;
+}
+
+.nav_loginbtn {
+  padding: 16px 40px;
+  font-size: 1rem;
+  font-family: "Pretendard";
+  border-radius: 8px;
+  border: none;
+  color: white;
+  background-color: #3691ff;
+  cursor: pointer;
+}
+
+/* 배너부분 */
+.main_wrapper {
+  padding-top: 70px;
+}
+
+.main_banner {
+  width: 100%;
+  height: 540px;
+  background-color: #cfe5ff;
+  position: relative;
+}
+
+.banner_box {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 0;
+}
+
+.banner_title_box {
+  font-family: "Pretendard";
+}
+
+.banner_title {
+  color: #374151;
+  font-weight: bold;
+  font-size: 2.5rem;
+  margin: 50px 0 40px 0;
+  line-height: 1.2;
+}
+
+.banner_btn {
+  padding: 18px 125px;
+  border: none;
+  font-size: 1.25rem;
+  color: white;
+  background-color: #3691ff;
+  white-space: nowrap;
+  border-radius: 2.5rem;
+  cursor: pointer;
+}
+@media (max-width: 1199px) {
+  .main_banner {
+    height: 771px;
+  }
+  .banner_title {
+    margin: 50px 0 30px 0;
+  }
+  .banner_box {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  .banner_btn {
+    padding: 14px 125px;
+  }
+  img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .main_banner {
+    height: 540px;
+  }
+  .banner_title {
+    margin: 40px 0 20px 0;
+    font-size: 2rem;
+  }
+  .banner_btn {
+    font-size: 1.125rem;
+    padding: 11px 65px;
+  }
+  img {
+    width: 100%;
+  }
+}
+
+/* 홈페이지 섹션 부분 */
+.main_section {
+  display: flex;
+  flex-direction: column;
+  font-family: "Pretendard";
+  margin-bottom: 130px;
+}
+
+.main_section > div {
+  height: 720px;
+}
+
+.main_section span,
+.main_section h2 {
+  font-weight: bold;
+}
+.main_section span {
+  font-size: 1.125rem;
+  color: #3692ff;
+}
+.main_section h2 {
+  font-size: 2.5rem;
+  line-height: 1.4;
+  margin: 30px 0 40px 0;
+}
+
+.main_section p {
+  font-weight: Medium;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.hotitem_section,
+.search_section,
+.register_section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 130px 0;
+}
+
+.hotitem_box,
+.search_box,
+.register_box {
+  display: flex;
+  background-color: #fcfcfc;
+}
+
+.hotitem_textbox,
+.search_textbox,
+.register_textbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 60px 0 50px;
+}
+
+.search_textbox h2,
+.search_textbox span,
+.search_textbox p {
+  text-align: right;
+}
+
+.bottom_section {
+  height: 540px;
+  background-color: #cfe5ff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.bottom_box {
+  font-family: "Pretendard";
+  font-weight: bold;
+  font-size: 2.5rem;
+  display: flex;
+  height: 397px;
+}
+
+.bottom_textbox {
+  display: flex;
+  align-items: center;
+  line-height: 1.4;
+}
+
+@media (max-width: 1199px) {
+  .main_section {
+    gap: 50px;
+    padding: clamp(25px, 6vw, 250px);
+  }
+  .main_section > div {
+    width: 100%;
+    height: auto;
+    padding: 0;
+  }
+  .hotitem_box,
+  .register_box {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+  }
+  .hotitem_box > div {
+    height: 100%;
+  }
+  .hotitem_box img,
+  .search_box img,
+  .register_box img {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+  }
+  .search_box {
+    width: 100%;
+    height: 100%;
+    flex-direction: column-reverse;
+  }
+  .hotitem_textbox,
+  .search_textbox,
+  .register_textbox {
+    margin: 30px 0 0 0;
+  }
+  .main_section h2 {
+    font-size: 2rem;
+  }
+  .main_section p {
+    font-size: 1.125rem;
+  }
+  .bottom_section {
+    height: 927px;
+    justify-content: center;
+  }
+  .bottom_box {
+    height: 100%;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  .bottom_textbox {
+    justify-content: center;
+  }
+  .bottom_textbox h2 {
+    text-align: center;
+    margin-top: 200px;
+  }
+
+  .bottom_box img {
+    display: block;
+  }
+}
+
+@media (max-width: 767px) {
+  .main_section {
+    gap: 30px;
+    padding: clamp(20px, 3vw, 250px);
+  }
+  .main_section span {
+    font-size: 1rem;
+  }
+  .main_section h2 {
+    font-size: 1.5rem;
+  }
+  .main_section p {
+    font-size: 1rem;
+  }
+  .bottom_section {
+    height: 540px;
+  }
+  .bottom_textbox h2 {
+    font-size: 2rem;
+    margin-top: 100px;
+  }
+}
+
+/* 푸터부분 */
+
+.main_footer {
+  height: 160px;
+  background-color: #111827;
+  display: flex;
+  padding: 30px 400px 0px;
+  justify-content: space-between;
+  font-family: "Pretendard";
+  font-weight: right;
+  font-size: 1rem;
+}
+.footer_copy {
+  color: #9ca3af;
+}
+.footer_links {
+  color: #e5e7eb;
+}
+.footer_social {
+  display: flex;
+  gap: 10px;
+}
+@media (max-width: 1199px) {
+  .main_footer {
+    padding: 30px 100px 0px;
+  }
+}
+
+@media (max-width: 767px) {
+  .main_footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    padding: 20px;
+  }
+  .footer_copy {
+    order: 2;
+  }
+
+  .footer_links {
+    order: 1;
+    display: flex;
+    gap: 20px;
+  }
+  .footer_social {
+    justify-content: flex-end;
+    order: 1;
+  }
+}

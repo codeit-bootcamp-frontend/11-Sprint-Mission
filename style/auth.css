@@ -1,0 +1,167 @@
+.auth_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 50px;
+  margin-bottom: 50px;
+}
+
+.auth_container {
+  width: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (max-width: 767px) {
+  .auth_container {
+    width: 100%;
+    margin: 0 16px;
+  }
+}
+
+/* 타이틀 부분 */
+.auth_titlegroup {
+  display: flex;
+  align-items: center;
+}
+
+.auth_title {
+  margin-left: 25px;
+  font-family: "ROKAF Sans";
+  font-weight: bold;
+  color: var(--blue);
+  font-size: 4.125rem;
+}
+
+@media (max-width: 767px) {
+  .auth_titlegroup img {
+    width: 50px;
+    height: 50px;
+  }
+  .auth_title {
+    margin-left: 12px;
+    font-size: 2rem;
+  }
+}
+
+/* 작성 폼 부분 */
+.auth_form {
+  width: 100%;
+  font-family: "Pretendard";
+  margin-top: 25px;
+}
+
+.form_group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: var(--gray800);
+  margin-top: 25px;
+}
+
+.form_group label {
+  font-weight: bold;
+  font-size: 1.125rem;
+  margin-bottom: 20px;
+}
+
+.form_group input {
+  font-weight: light;
+  font-size: 1rem;
+  background-color: var(--gray100);
+  height: 56px;
+  border: none;
+  border-radius: 12px;
+  padding: 20px 25px;
+  width: 100%;
+}
+.form_group input::placeholder {
+  color: var(--gray400);
+}
+.form_group input:focus {
+  outline: 2px solid var(--blue);
+}
+
+.form_group img {
+  width: 24px;
+  height: 24px;
+}
+
+.password_wrapper {
+  position: relative;
+}
+.password_toggle {
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.form_btn {
+  margin: 27px 0 25px 0;
+  width: 100%;
+  height: 56px;
+  font-weight: Medium;
+  font-size: 1.25rem;
+  color: var(--gray100);
+  background-color: var(--gray400);
+  border: none;
+  border-radius: 40px;
+  cursor: not-allowed;
+  transition: all 0.3s ease;
+}
+.form_btn.active {
+  background-color: var(--blue);
+  cursor: pointer;
+}
+
+.social_group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: Medium;
+  color: var(--gray800);
+  font-size: 1rem;
+  padding: 0 25px;
+  height: 74px;
+  border-radius: 8px;
+  background-color: #e6f2ff;
+}
+
+.social_icon {
+  display: flex;
+  gap: 16px;
+}
+
+.auth_options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 23px;
+  gap: 8px;
+  font-weight: Medium;
+  font-size: 0.875rem;
+}
+
+.auth_options p {
+  color: var(--gray800);
+}
+
+.auth_options a {
+  color: var(--blue);
+  text-decoration: underline;
+}
+@media (max-width: 767px) {
+  .form_group {
+    margin-top: 15px;
+  }
+  .form_group label {
+    font-size: 0.875rem;
+    margin-bottom: 13px;
+  }
+  .form_btn {
+    margin: 15px 0 25px 0;
+  }
+}

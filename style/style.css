@@ -1,0 +1,10 @@
+/* 리셋 */
+@import url(reset.css);
+/* 폰트 */
+@import url(fonts.css);
+/* 컬러 */
+@import url(color.css);
+/* 메인페이지 */
+@import url(main.css);
+/* 로그인, 회원가입 */
+@import url(auth.css);
