@@ -59,7 +59,7 @@ emailInput.addEventListener('blur', function () {
         emailInput.classList.add('input-error');
         showErrorMessage(emailForm, '잘못된 이메일 형식입니다.');
     } else {
-        emailInput.classListremove('input-error');
+        emailInput.classList.remove('input-error');
         hideErrorMessage(emailForm);
     }
     toggleSignupButton();
@@ -72,7 +72,7 @@ nicknameInput.addEventListener('blur', function () {
         nicknameInput.classList.add('input-error');
         showErrorMessage(nicknameForm, '닉네임을 입력해주세요.');
     } else {
-        nicknameInput.classListremove('input-error');
+        nicknameInput.classList.remove('input-error');
         hideErrorMessage(nicknameForm);
     }
     toggleSignupButton();
@@ -92,4 +92,48 @@ passwordInput.addEventListener('blur', function () {
         hideErrorMessage(passwordForm);
     }
     toggleSignupButton();
+});
+
+passwordAgainInput.addEventListener('blur', function () {
+    const passwordValue = passwordInput.value.trim();
+    const passwordAgainValue = passwordAgainInput.value.trim();
+
+    if (passwordValue !== passwordAgainValue) {
+        passwordAgainInput.classList.add('input-error');
+        showErrorMessage(passwordAgainForm, '비밀번호가 일치하지 않습니다.');
+    } else {
+        passwordAgainInput.classList.remove('input-error');
+        hideErrorMessage(passwordAgainForm);
+    }
+    toggleSignupButton();
+});
+
+emailInput.addEventListener('input', function () {
+    emailInput.classList.remove('input-error');
+    hideErrorMessage(emailForm);
+    toggleSignupButton();
+});
+
+nicknameInput.addEventListener('input', function () {
+    nicknameInput.classList.remove('input-error');
+    hideErrorMessage(nicknameForm);
+    toggleSignupButton();
+});
+
+passwordInput.addEventListener('input', function () {
+    passwordInput.classList.remove('input-error');
+    hideErrorMessage(passwordForm);
+    toggleSignupButton();
+});
+
+passwordAgainInput.addEventListener('input', function () {
+    passwordAgainInput.classList.remove('input-error');
+    hideErrorMessage(passwordAgainForm);
+    toggleSignupButton();
+});
+
+signupButton.addEventListener('click', function () {
+    if (!signupButton.disabled) {
+        window.location.href= "/signin.html";
+    }
 });
