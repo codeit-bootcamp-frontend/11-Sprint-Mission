@@ -134,7 +134,8 @@ input::placeholder {
     margin: 0 16px;
   }
 
-  .myInput {
+  .myEmail,
+  .myPw {
     width: 100%;
     max-width: 400px;
   }

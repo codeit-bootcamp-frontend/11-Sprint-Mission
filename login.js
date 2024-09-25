@@ -67,3 +67,8 @@ function login() {
 
 email.addEventListener("input", login);
 password.addEventListener("input", login);
+
+loginBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  window.location.href = "./items.html";
+});
