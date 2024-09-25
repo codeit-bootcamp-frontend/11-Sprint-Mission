@@ -2,6 +2,7 @@ const email = document.querySelector(".myEmail");
 const password = document.querySelector(".myPw");
 const emailEr = document.querySelector(".emailError");
 const passwordEr = document.querySelector(".pwError");
+const loginBtn = document.querySelector(".login");
 
 email.addEventListener("focusout", function (e) {
   const emailValue = email.value;
@@ -31,3 +32,21 @@ password.addEventListener("focusout", function (e) {
     password.style.outline = "2px solid red";
   }
 });
+
+function login() {
+  const emailValue = email.value;
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const isEmailValid = emailValue !== "" && emailPattern.test(emailValue);
+
+  const passwordValue = password.value;
+  const isPasswordValid = passwordValue.length >= 8;
+
+  if (isEmailValid && isPasswordValid) {
+    loginBtn.disabled = false;
+  } else {
+    loginBtn.disabled = true;
+  }
+}
+
+email.addEventListener("input", login);
+password.addEventListener("input", login);
