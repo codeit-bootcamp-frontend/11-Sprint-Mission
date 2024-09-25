@@ -76,6 +76,16 @@ input:focus {
     outline: none;
 }
 
+.input-error {
+    border-color: #F74747;
+}
+
+.error-message {
+    color: #F74747;
+    font-size: 14px;
+    padding-left: 16px;
+}
+
 .signup-main-button {
     background-color: #9CA3AF;
     color: #F3F4F6;
@@ -89,6 +99,11 @@ input:focus {
 .signup-main-button:hover {
     background-color: #3692FF;
     cursor: pointer;
+}
+
+.signup-main-button:disabled:hover {
+    background-color: #9CA3AF;
+    cursor: not-allowed;
 }
 
 .signup-simple-login {

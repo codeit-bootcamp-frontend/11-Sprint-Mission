@@ -25,7 +25,7 @@ function hideErrorMessage(form) {
 }
 
 // 이메일 형식 검증 함수
-function validateEmailFormat(email) {
+function validateEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
@@ -34,15 +34,15 @@ function validateEmailFormat(email) {
 function toggleLoginButton() {
     const emailValue = emailInput.value.trim();
     const passwordValue = passwordInput.value.trim();
-    const emailValid = validateEmailFormat(emailValue);
+    const emailValid = validateEmail(emailValue);
     const passwordValid = passwordValue.length >= 8;
 
     // 이메일과 비밀번호 모두 유효하면 버튼 활성화
     if (emailValid && passwordValid) {
-        loginButton.classList.add('active'); // 'active' 클래스 추가
+        loginButton.classList.add('active');
         loginButton.disabled = false;
     } else {
-        loginButton.classList.remove('active'); // 'active' 클래스 제거
+        loginButton.classList.remove('active');
         loginButton.disabled = true;
     }
 }
@@ -52,14 +52,14 @@ emailInput.addEventListener('blur', function () {
     const emailValue = emailInput.value.trim();
 
     if (!emailValue) {
-        emailInput.classList.add('input-error'); // 에러 클래스 추가
+        emailInput.classList.add('input-error');
         showErrorMessage(emailForm, '이메일을 입력해주세요.');
-    } else if (!validateEmailFormat(emailValue)) {
-        emailInput.classList.add('input-error'); // 에러 클래스 추가
+    } else if (!validateEmail(emailValue)) {
+        emailInput.classList.add('input-error');
         showErrorMessage(emailForm, '잘못된 이메일 형식입니다.');
     } else {
-        emailInput.classList.remove('input-error'); // 에러 클래스 제거
-        hideErrorMessage(emailForm); // 에러 메시지 제거
+        emailInput.classList.remove('input-error');
+        hideErrorMessage(emailForm);
     }
     toggleLoginButton();  // 로그인 버튼 활성화 상태 갱신
 });
@@ -69,34 +69,34 @@ passwordInput.addEventListener('blur', function () {
     const passwordValue = passwordInput.value.trim();
 
     if (!passwordValue) {
-        passwordInput.classList.add('input-error'); // 에러 클래스 추가
+        passwordInput.classList.add('input-error');
         showErrorMessage(passwordForm, '비밀번호를 입력해주세요.');
     } else if (passwordValue.length < 8) {
-        passwordInput.classList.add('input-error'); // 에러 클래스 추가
+        passwordInput.classList.add('input-error');
         showErrorMessage(passwordForm, '비밀번호를 8자 이상 입력해주세요.');
     } else {
-        passwordInput.classList.remove('input-error'); // 에러 클래스 제거
-        hideErrorMessage(passwordForm); // 에러 메시지 제거
+        passwordInput.classList.remove('input-error');
+        hideErrorMessage(passwordForm);
     }
-    toggleLoginButton();  // 로그인 버튼 활성화 상태 갱신
+    toggleLoginButton();
 });
 
 // input 이벤트로 입력 중 테두리 초기화 및 에러 메시지 숨기기
 emailInput.addEventListener('input', function () {
-    emailInput.classList.remove('input-error'); // 에러 클래스 제거
-    hideErrorMessage(emailForm); // 에러 메시지 제거
-    toggleLoginButton();  // 로그인 버튼 활성화 상태 갱신
+    emailInput.classList.remove('input-error');
+    hideErrorMessage(emailForm);
+    toggleLoginButton();
 });
 
 passwordInput.addEventListener('input', function () {
-    passwordInput.classList.remove('input-error'); // 에러 클래스 제거
-    hideErrorMessage(passwordForm); // 에러 메시지 제거
-    toggleLoginButton();  // 로그인 버튼 활성화 상태 갱신
+    passwordInput.classList.remove('input-error');
+    hideErrorMessage(passwordForm);
+    toggleLoginButton();
 });
 
 // 로그인 버튼 클릭 이벤트
 loginButton.addEventListener('click', function () {
     if (!loginButton.disabled) {
-        window.location.href = "/items.html";  // '/items'로 이동
+        window.location.href = "/items.html";
     }
 });
