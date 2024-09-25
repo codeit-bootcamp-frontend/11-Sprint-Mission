@@ -57,6 +57,12 @@ input::placeholder {
   padding-right: 40px;
 }
 
+.emailError,
+.pwError {
+  color: red;
+  font-size: 0.75rem;
+}
+
 .inputPW {
   position: relative;
   display: flex;
