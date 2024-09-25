@@ -51,6 +51,10 @@ main {
   border: 0;
 }
 
+.input-area.error {
+  border: 1px solid #f74747;
+}
+
 .input-area.password {
   background: url(../images/icon/btn_visibility_on_24px.png);
   background-repeat: no-repeat;
@@ -122,33 +126,9 @@ input:focus {
   display: none;
 }
 
-.failure-message {
-  font-family: Pretendard;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 24px;
-  text-align: left;
-  color: #f74747;
-}
-
-.failure-message2 {
-  font-family: Pretendard;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 24px;
-  text-align: left;
-  color: #f74747;
-}
-
-.pw-failure-message {
-  font-family: Pretendard;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 24px;
-  text-align: left;
-  color: #f74747;
-}
-
+.failure-message,
+.failure-message2,
+.pw-failure-message,
 .pw-failure-message2 {
   font-family: Pretendard;
   font-size: 14px;
