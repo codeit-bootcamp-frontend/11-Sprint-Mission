@@ -84,11 +84,16 @@ input:focus {
     font-weight: 550; 
 }
 
-.password-icon {
+.eye-off, .eye-on {
     position: absolute;
     width: 1.5rem;
     right: 1.5rem;
     top: 50%;
+    cursor: pointer;
+}
+
+.eye-on{
+    display: none;
 }
 
 #login-btn {

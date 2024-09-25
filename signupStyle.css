@@ -70,11 +70,16 @@ input:focus {
     width: 37rem;
 }
 
-.password-icon {
+.eye-off, .eye-on, .verify-eye-off, .verify-eye-on {
     position: absolute;
     width: 1.5rem;
     right: 1.5rem;
     top: 50%;
+    cursor: pointer;
+}
+
+.eye-on, .verify-eye-on{
+    display: none;
 }
 
 .error{
