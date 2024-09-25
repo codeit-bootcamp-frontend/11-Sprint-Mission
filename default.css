@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
 }
-header{
+.homehead{
     max-width: 1,920px;
     height: 70px;
     padding: 9px 200px;
@@ -33,10 +33,8 @@ header{
 .loginBtn:hover{
     background: #1967D6;
 }
-.sect1, .sect2{
+.sect1{
     background: #CFE5FF;
-}
-section{
     max-width: 1920px;
     height: 540px;
     position: relative;
@@ -98,7 +96,7 @@ section{
     color: #374151;
 }
 
-article{
+.centerContent{
     display: flex;
     flex-direction: column;
 }
@@ -126,12 +124,17 @@ article{
     left: 100px;
 }
 
-footer{
-    width: 1,920px;
-    height: 160px;
-    top: 3448px;
-    padding: 32px 400px;
-    gap: 10px;
-    opacity: 0px;
+footer {
+    background-color: #111827;
+    color: #9ca3af;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 200px 108px 200px;
+    font-size: 16px;
+  }
 
-}
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
