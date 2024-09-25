@@ -61,7 +61,7 @@ input {
     height: 22px;
     background-color: #F3F4F6;
     border-radius: 12px;
-    padding: 16px 24px 16px 24px;
+    padding: 16px 24px;
 }
 
 input::placeholder{
@@ -73,6 +73,16 @@ input::placeholder{
 input:focus {
     border-color: #3692FF;
     outline: none;
+}
+
+.input-error {
+    border-color: #F74747;
+}
+
+.error-message {
+    color: #F74747;
+    font-size: 14px;
+    padding-left: 16px;
 }
 
 .login-main-button {
@@ -88,6 +98,11 @@ input:focus {
 .login-main-button:hover {
     background-color: #3692FF;
     cursor: pointer;
+}
+
+.login-main-button:disabled:hover {
+    background-color: #9CA3AF;
+    cursor: not-allowed;
 }
 
 .login-simple-login {
