@@ -19,6 +19,15 @@ email.addEventListener("focusout", function (e) {
   }
 });
 
+email.addEventListener("focusin", function () {
+  const emailValue = email.value;
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  if (emailPattern.test(emailValue)) {
+    email.style.outline = "2px solid #3692ff";
+  }
+});
+
 password.addEventListener("focusout", function (e) {
   const passwordValue = password.value;
   if (passwordValue == "") {
@@ -30,6 +39,14 @@ password.addEventListener("focusout", function (e) {
   } else {
     passwordEr.textContent = "비밀번호를 8자 이상 입력해주세요";
     password.style.outline = "2px solid red";
+  }
+});
+
+password.addEventListener("focusin", function () {
+  const passwordValue = password.value;
+
+  if (passwordValue.length >= 8) {
+    password.style.outline = "2px solid #3692ff";
   }
 });
 
