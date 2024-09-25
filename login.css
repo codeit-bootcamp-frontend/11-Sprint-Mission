@@ -47,7 +47,8 @@ input::placeholder {
   font-weight: 600;
 }
 
-.myInput {
+.myEmail,
+.myPw {
   width: 530px;
   height: 45px;
   background-color: var(--gray100);
