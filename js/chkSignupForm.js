@@ -30,6 +30,7 @@ const procValid = (el, flag, msg) => {
 fmSignup.addEventListener('focusout', e => {
   const el = e.target;
   const value = el.value.trim();
+  const inPw = document.getElementById('pw');
 
   // email 확인
   if (el.id === 'email') {
@@ -52,10 +53,8 @@ fmSignup.addEventListener('focusout', e => {
   }
   // password 확인 확인
   if (el.id === 'pw-re') {
-    const pw = document.getElementById('pw');
-
     if (!value) return procValid(el, 'pwre', '확인을 위해 비밀번호를 입력해 주세요.');
-    if (value !== pw.value) return procValid(el, 'pwre', '비밀번호가 일치하지 않습니다.');
+    if (value !== inPw.value) return procValid(el, 'pwre', '비밀번호가 일치하지 않습니다.');
     procValid(el, 'pwre');
   }
 });
