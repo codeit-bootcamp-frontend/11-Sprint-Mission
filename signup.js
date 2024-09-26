@@ -1,9 +1,11 @@
 const email = document.querySelector(".myEmail");
 const nickname = document.querySelector(".myNickname");
 const password = document.querySelector(".myPw");
+const passwordCheck = document.querySelector(".checkMyPw");
 const emailEr = document.querySelector(".emailError");
 const nicknameEr = document.querySelector(".nicknameError");
 const passwordEr = document.querySelector(".passwordError");
+const passwordCheckEr = document.querySelector(".checkPwError");
 
 email.addEventListener("focusout", function () {
   const emailValue = email.value;
@@ -45,5 +47,18 @@ password.addEventListener("focusout", function () {
   } else {
     passwordEr.textContent = "비밀번호를 8자 이상 입력해주세요";
     password.style.outline = "2px solid red";
+  }
+});
+
+passwordCheck.addEventListener("focusout", function () {
+  const passwordCheckValue = passwordCheck.value;
+  const passwordValue = password.value;
+
+  if (passwordValue !== passwordCheckValue) {
+    passwordCheckEr.textContent = "비밀번호가 일치하지 않습니다";
+    passwordCheck.style.outline = "2px solid red";
+  } else {
+    passwordCheckEr.textContent = "";
+    passwordCheck.style.outline = "0";
   }
 });
