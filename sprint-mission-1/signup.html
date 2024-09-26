@@ -26,6 +26,8 @@
                 placeholder="이메일을 입력해주세요"
               />
             </div>
+            <div class="failure-message hide">이메일을 입력해주세요.</div>
+            <div class="failure-message2 hide">잘못된 이메일 형식입니다.</div>
             <div class="sign-input">
               <label class="sign-lable">닉네임</label>
               <input
@@ -44,14 +46,21 @@
                 placeholder="비밀번호를 입력해주세요"
               />
             </div>
+            <div class="pw-failure-message hide">비밀번호를 입력해주세요.</div>
+            <div class="pw-failure-message2 hide">
+              비밀번호를 8자 이상 입력해주세요.
+            </div>
             <div class="sign-input">
               <label class="sign-lable">비밀번호 확인</label>
               <input
                 class="input-area password"
-                id="password"
+                id="confirm-password"
                 type="password"
                 placeholder="비밀번호를 다시 한 번 입력해주세요"
               />
+            </div>
+            <div class="pw-failure-message3 hide">
+              비밀번호가 일치하지 않습니다.
             </div>
             <div class="submit">
               <button class="sign-button" type="submit">회원가입</button>
@@ -77,5 +86,6 @@
         </div>
       </div>
     </main>
+    <script src="./signup.js"></script>
   </body>
 </html>

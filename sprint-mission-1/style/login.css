@@ -129,7 +129,8 @@ input:focus {
 .failure-message,
 .failure-message2,
 .pw-failure-message,
-.pw-failure-message2 {
+.pw-failure-message2,
+.pw-failure-message3 {
   font-family: Pretendard;
   font-size: 14px;
   font-weight: 600;
