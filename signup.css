@@ -70,10 +70,10 @@ input::placeholder {
   right: 20px;
 }
 
-.emailEr,
-.nicknameEr,
-.passwordEr,
-.checkPwEr {
+.emailError,
+.nicknameError,
+.passwordError,
+.checkPwError {
   color: red;
   font-size: 0.75rem;
 }
