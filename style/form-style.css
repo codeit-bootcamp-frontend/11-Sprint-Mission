@@ -177,7 +177,7 @@ input:focus {
 
   input,
   .large-button {
-    width: 343px;
+    width: 100%;
   }
 
   .auth-content {
