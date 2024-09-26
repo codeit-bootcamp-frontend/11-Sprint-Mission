@@ -50,15 +50,20 @@ password.addEventListener("focusout", function () {
   }
 });
 
-passwordCheck.addEventListener("focusout", function () {
+function checkPassword() {
   const passwordCheckValue = passwordCheck.value;
   const passwordValue = password.value;
 
-  if (passwordValue !== passwordCheckValue) {
-    passwordCheckEr.textContent = "비밀번호가 일치하지 않습니다";
-    passwordCheck.style.outline = "2px solid red";
-  } else {
-    passwordCheckEr.textContent = "";
-    passwordCheck.style.outline = "0";
+  if (passwordCheckValue !== "") {
+    if (passwordValue !== passwordCheckValue) {
+      passwordCheckEr.textContent = "비밀번호가 일치하지 않습니다";
+      passwordCheck.style.outline = "2px solid red";
+    } else {
+      passwordCheckEr.textContent = "";
+      passwordCheck.style.outline = "0";
+    }
   }
-});
+}
+
+password.addEventListener("focusout", checkPassword);
+passwordCheck.addEventListener("focusout", checkPassword);
