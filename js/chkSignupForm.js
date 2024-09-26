@@ -61,7 +61,6 @@ fmSignup.addEventListener('focusout', e => {
 });
 
 // 패스워드 토글 버튼
-console.log('btn', btnEyes);
 Array.from(btnEyes).forEach(el => {
   el.addEventListener('click', btnTogglePassword);
 });
