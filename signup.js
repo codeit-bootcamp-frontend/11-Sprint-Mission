@@ -1,5 +1,7 @@
 const email = document.querySelector(".myEmail");
+const nickname = document.querySelector(".myNickname");
 const emailEr = document.querySelector(".emailError");
+const nicknameEr = document.querySelector(".nicknameError");
 
 email.addEventListener("focusout", function () {
   const emailValue = email.value;
@@ -14,5 +16,17 @@ email.addEventListener("focusout", function () {
   } else {
     emailEr.textContent = "잘못된 이메일 형식입니다";
     email.style.outline = "2px solid red";
+  }
+});
+
+nickname.addEventListener("focusout", function () {
+  const nicknameValue = nickname.value;
+
+  if (nicknameValue == "") {
+    nicknameEr.textContent = "닉네임을 입력해주세요";
+    nickname.style.outline = "2px solid red";
+  } else {
+    nicknameEr.textContent = "";
+    nickname.style.outline = "0";
   }
 });
