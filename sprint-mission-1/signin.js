@@ -23,8 +23,10 @@ document.addEventListener('DOMContentLoaded', function () {
       !isPasswordValid
     ) {
       loginButton.disabled = true;
+      return false;
     } else {
       loginButton.disabled = false;
+      return true;
     }
   }
 
@@ -64,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   loginButton.addEventListener('click', (event) => {
     event.preventDefault();
-    if (!loginButton.disabled) {
+    if (validateForm()) {
       window.location.href = './items.html';
     }
   });
