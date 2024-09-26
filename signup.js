@@ -99,3 +99,8 @@ email.addEventListener("input", signup);
 nickname.addEventListener("input", signup);
 password.addEventListener("input", signup);
 passwordCheck.addEventListener("input", signup);
+
+signupBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  window.location.href = "./signin.html";
+});
