@@ -33,22 +33,26 @@
       <form action="/" mothod="POST">
         <label for="email">이메일</label>
         <input type="email" placeholder="이메일을 입력해주세요." id="email" name="email" required>
-        <label for="text">닉네임</label>
-        <input type="text" placeholder="닉네임을 입력해주세요." id="text" name="text" required>
+        <span class="warning warning__email"></span>
+        <label for="username">닉네임</label>
+        <input type="text" placeholder="닉네임을 입력해주세요." id="username" name="username" required>
+        <span class="warning warning__username"></span>
         <div class="password">
           <label for="password">비밀번호</label>
           <input type="password" placeholder="비밀번호를 입력해주세요." id="password" name="password" required minlength="7">
           <img class="password__visibility password__visibility--on" src="images/login/btn_visibility_on.png" alt="비밀번호 보기">
           <img class="password__visibility password__visibility--off" src="images/login/btn_visibility_off.png" alt="비밀번호 안 보기">
         </div>
+        <span class="warning warning__password"></span>
           <div class="password">
-          <label for="check_password">비밀번호 확인</label>
-          <input class="password" type="password" placeholder="비밀번호를 다시 한 번 입력해주세요." id="check_password" name="check_password" required minlength="7">
-          <img class="password__visibility password__visibility--on" src="images/login/btn_visibility_on.png" alt="비밀번호 보기">
-          <img class="password__visibility password__visibility--off" src="images/login/btn_visibility_off.png" alt="비밀번호 안 보기">
+          <label for="password__check">비밀번호 확인</label>
+          <input class="password" type="password" placeholder="비밀번호를 다시 한 번 입력해주세요." id="password__check" name="password__check" required minlength="7">
+          <img class="password__visibility password__check__visibility--on" src="images/login/btn_visibility_on.png" alt="비밀번호 보기">
+          <img class="password__visibility password__check__visibility--off" src="images/login/btn_visibility_off.png" alt="비밀번호 안 보기">
         </div>
+        <span class="warning warning__password__check"></span>
         <button class="button--disabled" type="submit" disabled="true">회원가입</button>
-        <button class="button--enabled" type="submit">회원가입</button>
+        <button onclick="location.href='/login.html'" class="button--enabled" type="button">회원가입</button>
       </form>
         <div class="snslogin">
           간편 로그인하기
@@ -62,5 +66,6 @@
           <a href="/login.html">로그인</a>
         </div>
     </main>
+    <script type="module" src="js/signup.js"></script>
 </body>
 </html>
