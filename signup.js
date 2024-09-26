@@ -24,6 +24,15 @@ email.addEventListener("focusout", function () {
   }
 });
 
+email.addEventListener("focusin", function () {
+  const emailValue = email.value;
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  if (emailPattern.test(emailValue)) {
+    email.style.outline = "2px solid #3692ff";
+  }
+});
+
 nickname.addEventListener("focusout", function () {
   const nicknameValue = nickname.value;
 
@@ -33,6 +42,14 @@ nickname.addEventListener("focusout", function () {
   } else {
     nicknameEr.textContent = "";
     nickname.style.outline = "0";
+  }
+});
+
+nickname.addEventListener("focusin", function () {
+  const nicknameValue = nickname.value;
+
+  if (nicknameValue !== "") {
+    nickname.style.outline = "2px solid #3692ff";
   }
 });
 
@@ -51,6 +68,14 @@ password.addEventListener("focusout", function () {
   }
 });
 
+password.addEventListener("focusin", function () {
+  const passwordValue = password.value;
+
+  if (passwordValue.length >= 8) {
+    password.style.outline = "2px solid #3692ff";
+  }
+});
+
 function checkPassword() {
   const passwordCheckValue = passwordCheck.value;
   const passwordValue = password.value;
@@ -65,6 +90,15 @@ function checkPassword() {
     }
   }
 }
+
+passwordCheck.addEventListener("focusin", function () {
+  const passwordCheckValue = passwordCheck.value;
+  const passwordValue = password.value;
+
+  if (passwordValue == passwordCheckValue) {
+    passwordCheck.style.outline = "2px solid #3692ff";
+  }
+});
 
 password.addEventListener("focusout", checkPassword);
 passwordCheck.addEventListener("focusout", checkPassword);
