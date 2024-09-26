@@ -1,4 +1,3 @@
-// passwordToggle.js
 export default function togglePasswordVisibility(toggleIcons) {
   toggleIcons.forEach(toggleIcon => {
     toggleIcon.addEventListener('click', () => {

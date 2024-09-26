@@ -1,18 +1,10 @@
-import checkFormValidity from '../utils/formValidation.js';
+import { initFormValidation } from '../utils/formValidation.js';
 import togglePasswordVisibility from '../utils/passwordToggle.js';
-import onDOMReady from '../utils/domReady.js';
 
+const privateToggleIcons = document.querySelectorAll('.toggle-icon'); 
 
-onDOMReady(() => {
-  const form = document.getElementById('userForm'); 
-  const submitBtn = document.getElementById('submitBtn');
-  const inputs = form.querySelectorAll('input');
-  const toggleIcons = document.querySelectorAll('.password-toggle .toggle-icon'); 
-  
-  inputs.forEach(input => input.addEventListener('input', () => {
-    checkFormValidity(inputs, submitBtn);
-  }));
-  
-  togglePasswordVisibility(toggleIcons);
-  checkFormValidity(inputs, submitBtn);
-});
+// userForm 유효성 검사
+initFormValidation('userForm');
+// 프라이빗 토글 아이콘 이벤트 함수
+togglePasswordVisibility(privateToggleIcons);
+

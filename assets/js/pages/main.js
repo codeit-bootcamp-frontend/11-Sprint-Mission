@@ -1,3 +1,4 @@
 import getHeaderRender from '../components/headerTemplate.js';
-import onDOMReady from '../utils/domReady.js';
-onDOMReady(() => {getHeaderRender();});
+
+/* header 렌더링 함수 */
+getHeaderRender();

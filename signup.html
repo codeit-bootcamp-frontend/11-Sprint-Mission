@@ -9,7 +9,6 @@
   <!-- 페이지 head -->
   <link rel="stylesheet" href="assets/css/user.css">
   <link rel="stylesheet" href="assets/css/signup.css">
-  <script type="module" src="assets/js/pages/user.js"></script>
 </head>
 <body>
   <main class="page-user">
@@ -26,11 +25,13 @@
         <div class="input-area">
           <label for="email">이메일</label>
           <input type="email" id="email" data-focus="input" autocomplete="username" placeholder="이메일을 입력해주세요" required>
+          <p class="error"></p>
         </div>
 
         <div class="input-area">
           <label for="nickname">닉네임</label>
           <input type="text" id="nickname" data-focus="input" autocomplete="username" placeholder="닉네임을 입력해주세요" required>
+          <p class="error"></p>
         </div>
 
         <div class="input-area">
@@ -39,6 +40,7 @@
               <input type="password" id="password" autocomplete="current-password" data-focus="input" placeholder="비밀번호를 입력해주세요" required>
               <span class="toggle-icon" title="프라이버시 토글"></span>
           </div>
+          <p class="error"></p>
         </div>
 
         <div class="input-area">
@@ -47,6 +49,7 @@
               <input type="password" id="password-check" autocomplete="current-password" data-focus="input" placeholder="비밀번호를 다시 한 번 입력해주세요" required>
               <span class="toggle-icon" title="프라이버시 토글"></span>
           </div>
+          <p class="error"></p>
         </div>
 
         <div class="btn-submit">
@@ -62,5 +65,6 @@
     </div>
   </main>
 
+  <script type="module" src="assets/js/pages/user.js"></script>
 </body>
 </html>
