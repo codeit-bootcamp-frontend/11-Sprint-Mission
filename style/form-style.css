@@ -146,7 +146,7 @@ input:focus {
   color: var(--primary);
 }
 
-@media (max-width: 767px) {
+@media (min-width: 365px) and (max-width: 767px) {
   body {
     max-width: 400px;
   }
@@ -185,7 +185,7 @@ input:focus {
   }
 }
 
-@media (max-width: 1199px) {
+@media (min-width: 768px) and (max-width: 1199px) {
   * {
     --gray-800: #1f2937;
     --Alice-Blue: #e6f2ff;
