@@ -14,11 +14,6 @@
     gap: 24px;
   }
 
-  .title {
-    font-size: 12px;
-    line-height: 62px;
-  }
-
   .email-form__input,
   .password-form__input,
   .nickname-form__input,
