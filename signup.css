@@ -78,7 +78,7 @@ input::placeholder {
   font-size: 0.75rem;
 }
 
-.login {
+.signup {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,7 +107,7 @@ input::placeholder {
   height: 36px;
 }
 
-.signup {
+.login {
   text-align: center;
   font-size: 14px;
 }
