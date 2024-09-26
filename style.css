@@ -1,3 +1,16 @@
+:root {
+    --gray900: #111827;
+    --gray800: #1F2937;
+    --gray700: #374151;
+    --gray600: #4B5563;
+    --gray500: #6B7280;
+    --gray400: #9CA3AF;
+    --gray200: #E5E7EB;
+    --gray100: #F3F4F6;
+    --gray50: #F9FAFB;
+    --blue: #3692FF;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -36,16 +49,16 @@ body {
 .nav .login {
     padding: 11px 43px;
     min-width: 128px;
-    background-color: #3692FF;
+    background-color: var(--blue);
     border-radius: 8px;
-    color: #F3F4F6;
+    color: var(--gray100);
     text-decoration: none;
 }
 
 /* 메인 */
 
 h2 {
-    color: #374151;
+    color: var(--gray700);
     font-size: 40px;
 }
 
@@ -80,9 +93,9 @@ h2 {
     padding: 12px 124px;
     height: 56px;
     margin: 32px 0 60px;
-    background-color: #3692FF;
+    background-color: var(--blue);
     border-radius: 40px;
-    color: #F9FAFB;
+    color: var(--gray50);
     font-size: 20px;
     text-decoration: none;
     cursor: pointer;
@@ -134,7 +147,7 @@ h2 {
 
 .card-subtitle {
     font-size: 18px;
-    color: #3692FF;
+    color: var(--blue);
 }
 
 .card-title {
@@ -144,7 +157,7 @@ h2 {
 .card-text {
     font-weight: 500;
     font-size: 24px;
-    color: #374151;
+    color: var(--gray700);
 }
 
 /* last */
@@ -162,7 +175,7 @@ footer {
     display: grid;
     grid-template-rows: 1fr 1fr;
     height: 160px;
-    background-color: #111827;
+    background-color: var(--gray900);
     font-size: 16px;
     font-weight: 400;
 }
@@ -175,7 +188,7 @@ footer {
 }
 
 .container.footer p {
-    color: #9CA3AF;
+    color: var(--gray400);
 }
 
 .support {
@@ -184,7 +197,7 @@ footer {
 }
 
 .support a {
-    color: #E5E7EB;
+    color: var(--gray200);
     text-decoration: none;
     cursor: pointer;
 }
@@ -245,32 +258,32 @@ footer {
 .signup-form input {
     width: 640px;
     height: 56px;
-    background-color: #F3F4F6;
+    background-color: var(--gray100);
     padding: 16px 24px;
     border-radius: 12px;
     border: none;
     font-weight: 400;
     font-size: 16px;
-    color: #1F2937;
+    color: var(--gray800);
     line-height: 26px;
 }
 
 .login-form input:focus,
 .signup-form input:focus {
-    border-color: #3692FF;
+    border-color: var(--blue);
 }
 
 .login-form input::placeholder,
 .signup-form input::placeholder {
     font-weight: 400;
     font-size: 16px;
-    color: #9CA3AF;
+    color: var(--gray400);
     line-height: 26px;
 }
 
 .login-form button,
 .signup-form button {
-    background-color: #9CA3AF;
+    background-color: var(--gray400);
     padding: 16px 124px;
     color: #ffffff;
     font-size: 20px;
@@ -284,7 +297,7 @@ footer {
 
 .login-form button.active,
 .signup-form button.active {
-    background-color: #3692FF;
+    background-color: var(--blue);
     pointer-events: auto;
     cursor: pointer;
 }
@@ -306,7 +319,7 @@ footer {
     font-size: 16px;
     font-weight: 500;
     line-height: 26px;
-    color: #1F2937;
+    color: var(--gray800);
 }
 
 .ic-login,
@@ -332,7 +345,7 @@ footer {
     font-size: 14px;
     font-weight: 500;
     line-height: 24px;
-    color: #1F2937;
+    color: var(--gray800);
 }
 
 .auth-toggle a {
