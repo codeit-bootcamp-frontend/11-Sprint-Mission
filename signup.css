@@ -47,7 +47,10 @@ input::placeholder {
   font-weight: 600;
 }
 
-.myInput {
+.myEmail,
+.myNickname,
+.myPw,
+.checkMyPw {
   width: 530px;
   height: 45px;
   background-color: var(--gray100);
@@ -121,7 +124,10 @@ input::placeholder {
     margin: 0 16px;
   }
 
-  .myInput {
+  .myEmail,
+  .myNickname,
+  .myPw,
+  .checkMyPw {
     width: 100%;
     max-width: 400px;
   }
