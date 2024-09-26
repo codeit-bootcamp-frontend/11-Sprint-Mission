@@ -92,6 +92,11 @@ input::placeholder {
   cursor: pointer;
 }
 
+.signup:disabled {
+  background: var(--gray400);
+  cursor: default;
+}
+
 .easyLogin {
   display: flex;
   justify-content: space-between;

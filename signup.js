@@ -2,6 +2,7 @@ const email = document.querySelector(".myEmail");
 const nickname = document.querySelector(".myNickname");
 const password = document.querySelector(".myPw");
 const passwordCheck = document.querySelector(".checkMyPw");
+const signupBtn = document.querySelector(".signup");
 const emailEr = document.querySelector(".emailError");
 const nicknameEr = document.querySelector(".nicknameError");
 const passwordEr = document.querySelector(".passwordError");
@@ -67,3 +68,34 @@ function checkPassword() {
 
 password.addEventListener("focusout", checkPassword);
 passwordCheck.addEventListener("focusout", checkPassword);
+
+function signup() {
+  const emailValue = email.value;
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const isEmailValid = emailValue !== "" && emailPattern.test(emailValue);
+
+  const nicknameValue = nickname.value;
+  const isNicknameValid = nicknameValue !== "";
+
+  const passwordValue = password.value;
+  const isPasswordValid = passwordValue.length >= 8;
+
+  const passwordCheckValue = passwordCheck.value;
+  const isPasswordCheckValid = passwordCheckValue == passwordValue;
+
+  if (
+    isEmailValid &&
+    isNicknameValid &&
+    isPasswordValid &&
+    isPasswordCheckValid
+  ) {
+    signupBtn.disabled = false;
+  } else {
+    signupBtn.disabled = true;
+  }
+}
+
+email.addEventListener("input", signup);
+nickname.addEventListener("input", signup);
+password.addEventListener("input", signup);
+passwordCheck.addEventListener("input", signup);
