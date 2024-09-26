@@ -65,7 +65,8 @@ input::placeholder {
   align-items: center;
 }
 
-.visiblePW {
+.visiblePW,
+.visiblePWCheck {
   position: absolute;
   right: 20px;
 }
