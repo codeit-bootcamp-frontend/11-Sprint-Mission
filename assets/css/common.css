@@ -173,6 +173,10 @@ div[class ^= "btn-"]{
   font-weight: 600;
 }
 
+#submitBtn.active{
+  background-color: var(--blue-100);
+}
+
 /* 태블릿 & 모바일 공통 스타일 */
 @media screen and (max-width:1199px) {
   /* header */
