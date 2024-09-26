@@ -21,15 +21,17 @@
 
 <body>
 <div class="wrap align-center">
-  <div class="login">
+  <div class="container">
     <h1 class="logo"><a href="/"><img src="/img/login/logo.png" alt="판다마켓" width="396" height="132"></a></h1>
 
-    <form id="form-login">
+    <form id="form-login" class="form" action="/items.html">
       <label class="label" for="email">이메일</label>
       <input id="email" class="input" type="email" placeholder="이메일을 입력해주세요" autofocus required>
+      <span class="err-msg"></span>
       <label class="label" for="pw">비밀번호</label>
       <div class="input-wrap">
         <input id="pw" class="input" type="password" placeholder="비밀번호를 입력해주세요" required>
+        <span class="err-msg"></span>
         <button class="btn-img btn-input" type="button">
           <img src="/img/login/ico-ban-eye.png" alt="비밀번호 보기">
         </button>
@@ -59,10 +61,10 @@
       <a href="/signup.html">회원가입</a>
     </p>
   </div>
-  <!-- / login -->
+  <!-- / container -->
 </div>
 <!-- / wrap -->
 
-<script src="/js/chkRequired.js" defer></script>
+<script src="/js/chkLoginForm.js" type="module" defer></script>
 </body>
 </html>
