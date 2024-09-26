@@ -70,6 +70,14 @@ input::placeholder {
   right: 20px;
 }
 
+.emailEr,
+.nicknameEr,
+.passwordEr,
+.checkPwEr {
+  color: red;
+  font-size: 0.75rem;
+}
+
 .login {
   display: flex;
   justify-content: center;
