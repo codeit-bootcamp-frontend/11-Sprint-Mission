@@ -8,12 +8,27 @@ export function isEmailValid(email) {
   return emailFormat.test(email.trim());
 }
 
+// 닉네임 유효성 검사 함수
+export function isNicknameEmpty() {
+  return nicknameInput.value.trim() === '';
+}
+
+// 비밀번호 유효성 검사 함수
 export function isPasswordEmpty(password) {
   return password.trim() === '';
 }
 
 export function isShortPassword(password) {
   return password.trim().length < 8;
+}
+
+// 비밀번호 확인 유효성 검사 함수
+export function isPwdCheckEmpty() {
+  return pwdCheck.value.trim() === '';
+}
+
+export function isPwdMismatch() {
+  return pwdInput.value.trim() !== pwdCheckInput.value.trim();
 }
 
 // 에러 생성 함수
