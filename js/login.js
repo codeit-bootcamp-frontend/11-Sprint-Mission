@@ -1,26 +1,19 @@
-import { activePasswordVisibility } from './components/label.js'
+import { activePasswordVisibility, checkInputFormat } from './components/label.js'
 
 const email = document.querySelector('#email');
 const password = document.querySelector('#password');
 const btn = document.querySelector('.login-btn');
 
-// focusout 해서 값이 없을 때 빨간 아웃라인을 그리는 함수
-
-function hasValue(event) {
-  const input = event.target;
-  const isValid = event.target.value.length > 0;
-  input.classList.toggle('error', !isValid);
-}
-
+//input 값 올바른지 확인 후, 빨간색 아웃라인을 추가하는 함수 
 [email, password].forEach((input) => {
-  input.addEventListener('focusout', hasValue);
+  input.addEventListener('focusout', checkInputFormat);
 })
 
 
 //로그인 버튼 활성화 하는 함수
-
 function activeLoginBtn() {
-  const isValid = email.value.length > 0 && password.value.length > 0; //boolean값으로 받아서 함수를 재사용 가능
+  //const isValid = email.value.length > 0 && password.value.length > 0; //boolean값으로 받아서 함수를 재사용 가능
+  console.log(isValid);
   btn.classList.toggle('active', isValid); //toggle에도 사용하고 
   return isValid;
 }
@@ -31,7 +24,6 @@ function activeLoginBtn() {
 
 
 //로그인 버튼 제출했을 때의 함수 = 로그인 버튼 클릭했을 때의 함수
-
 function submitLogin(e) {
   e.preventDefault();
 
