@@ -1,3 +1,5 @@
+import { activePasswordVisibility } from './components/label.js'
+
 const signupEmail = document.querySelector('#signup-email');
 const signupNickname = document.querySelector('#signup-nickname');
 const signupPassword = document.querySelector('#signup-password');
@@ -26,17 +28,7 @@ function activeSignupBtn(){
 const signupPasswordVisibility = document.querySelector('.signup-password-visibility');
 const signupCheckpasswordVisibility = document.querySelector('.signup-checkpassword-visibility');
 
-console.log(signupPasswordVisibility);
+console.log(signupCheckpasswordVisibility);
 
-
-function togglePasswordVisibility(visibilityToggle) {
-  const img = visibilityToggle.getAttribute('src');
-  const newImg = img === './img/btn_visibility_off.svg' ? './img/btn_visibility_on.svg' : './img/btn_visibility_off.svg';
-  const inputType = newImg.includes('on') ? 'text' : 'password'; //includes: 특정 문자열이 포함이 되어있는지 확인
-
-  visibilityToggle.setAttribute('src', newImg);
-  visibilityToggle.previousElementSibling.setAttribute('type', inputType);
-}
-
-signupPasswordVisibility.addEventListener('click', () => togglePasswordVisibility(signupPasswordVisibility));
-signupCheckpasswordVisibility.addEventListener('click', () => togglePasswordVisibility(signupCheckpasswordVisibility));
+signupPasswordVisibility.addEventListener('click', () => activePasswordVisibility(signupPasswordVisibility));
+signupCheckpasswordVisibility.addEventListener('click', () => activePasswordVisibility(signupCheckpasswordVisibility));

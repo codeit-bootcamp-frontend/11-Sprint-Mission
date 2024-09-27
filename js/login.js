@@ -1,3 +1,5 @@
+import { activePasswordVisibility } from './components/label.js'
+
 const email = document.querySelector('#email');
 const password = document.querySelector('#password');
 const btn = document.querySelector('.login-btn');
@@ -32,17 +34,7 @@ btn.addEventListener('click', loginSubmit);
 
 
 // 비밀번호 visibility 설정 
-let passwordVisibility = document.querySelector('.btn-visibility');
-
+const passwordVisibility = document.querySelector('.btn-visibility');
 console.log(passwordVisibility);
-
-function activePasswordVisibility(visibilityToggle) {
-  const img = visibilityToggle.getAttribute('src');
-  const newImg = img === 'img/btn_visibility_off.svg' ? 'img/btn_visibility_on.svg' : 'img/btn_visibility_off.svg';
-  const newInput = newImg.includes('on') ? 'text' : 'password';
-
-  visibilityToggle.setAttribute('src', newImg);
-  visibilityToggle.previousElementSibling.setAttribute('type', newInput);
-}
 
 passwordVisibility.addEventListener('click', () => activePasswordVisibility(passwordVisibility));
