@@ -26,7 +26,7 @@ html {
     align-items: center;
 }
 
-.loginlogo {
+.signuplogo {
     width: 25rem;
     display: flex;
     align-items: center;
@@ -136,12 +136,12 @@ input:focus {
     justify-content: space-between;
 }
 
-.login-icon {
+.signup-icon {
     display: flex;
     gap: 1rem;
 }
 
-.login-icon img {
+.signup-icon img {
     width: 3rem;
 }
 
@@ -150,6 +150,7 @@ input:focus {
     font-size: 1rem;
     font-weight: 500;
     color: var(--gray-800);
+    margin-bottom: 2rem;
 }
 
 .firstuser a {
@@ -157,12 +158,14 @@ input:focus {
 }
 
 @media (min-width: 375px) and (max-width: 767px) {
-    .login {
+    .signup {
         padding: 0 1rem;
+        margin-top: 2rem;
     }
 
-    .loginlogo {
+    .signuplogo {
         width: 65%;
+        margin-top: 100px;
     }
 
     label {
@@ -182,7 +185,7 @@ input:focus {
         padding: 1rem;
     }
 
-    .login-btn {
+    #signup-btn {
         width: 100%;
         font-size: 1.3rem;
     }

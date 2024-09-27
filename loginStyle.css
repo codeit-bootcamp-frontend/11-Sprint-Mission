@@ -151,6 +151,7 @@ input:focus {
     font-size: 1rem;
     font-weight: 500;
     color: var(--gray-800);
+    margin-bottom: 2rem;
 }
 
 .firstuser a {
@@ -167,7 +168,6 @@ input:focus {
 @media (min-width: 375px) and (max-width: 767px) {
     .login {
         padding: 0 1rem;
-        margin-top: 10rem;
     }
 
     .loginlogo {
@@ -191,7 +191,7 @@ input:focus {
         padding: 1rem;
     }
 
-    .login-btn {
+    #login-btn {
         width: 100%;
     }
 
