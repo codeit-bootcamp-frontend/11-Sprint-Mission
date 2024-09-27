@@ -21,6 +21,8 @@ function activeSignupBtn(){
   input.addEventListener('input', activeSignupBtn);
 })
 
+
+
 const signupPasswordVisibility = document.querySelector('.signup-password-visibility');
 const signupCheckpasswordVisibility = document.querySelector('.signup-checkpassword-visibility');
 

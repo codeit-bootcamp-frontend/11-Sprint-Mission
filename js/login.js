@@ -32,17 +32,17 @@ btn.addEventListener('click', loginSubmit);
 
 
 // 비밀번호 visibility 설정 
+let passwordVisibility = document.querySelector('.btn-visibility');
 
-let passwordBtn = document.querySelector('.btn-visibility');
-console.log(passwordBtn);
+console.log(passwordVisibility);
 
-function passwordVisibility(btn) {
-  const img = btn.children[0].getAttribute('src');
+function activePasswordVisibility(visibilityToggle) {
+  const img = visibilityToggle.getAttribute('src');
   const newImg = img === 'img/btn_visibility_off.svg' ? 'img/btn_visibility_on.svg' : 'img/btn_visibility_off.svg';
   const newInput = newImg.includes('on') ? 'text' : 'password';
 
-  btn.previousElementSibling.setAttribute('type', newInput);
-  btn.children[0].setAttribute('src', newImg);
-
+  visibilityToggle.setAttribute('src', newImg);
+  visibilityToggle.previousElementSibling.setAttribute('type', newInput);
 }
-passwordBtn.addEventListener('click', () => passwordVisibility(passwordBtn));
+
+passwordVisibility.addEventListener('click', () => activePasswordVisibility(passwordVisibility));
