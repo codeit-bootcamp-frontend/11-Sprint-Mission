@@ -17,19 +17,29 @@
                         <form class="signup-main-input">
                             <div class="signup-main-input-email">
                                 <label for="email-input">이메일</label>
-                                <input id="email-input" type="text" placeholder="이메일을 입력해주세요.">
+                                <input class="email-input" type="text" placeholder="이메일을 입력해주세요.">
                             </div>
                             <div class="signup-main-input-nickname">
                                 <label for="nickname-input">닉네임</label>
-                                <input id="nickname-input" type="text" placeholder="닉네임을 입력해주세요.">
+                                <input class="nickname-input" type="text" placeholder="닉네임을 입력해주세요.">
                             </div>
                             <div class="signup-main-input-password">
                                 <label for="password-input">비밀번호</label>
-                                <input id="password-input" type="password" placeholder="비밀번호를 입력해주세요.">
+                                <div class="signup-main-input-password-container">
+                                    <input class="password-input" type="password" placeholder="비밀번호를 입력해주세요.">
+                                    <div id="toggle-password" class="eye-icon">
+                                        <img id="eye-icon" src="/public/images/btn_visibility_on_24px.png" alt="비밀번호 보기">
+                                    </div>
+                                </div>
                             </div>
                             <div class="signup-main-input-password-again">
                                 <label for="password-again-input">비밀번호 확인</label>
-                                <input id="password-again-input" type="password" placeholder="비밀번호를 다시 한 번 입력해주세요.">
+                                <div class="signup-main-input-password-again-container">
+                                    <input class="password-again-input" type="password" placeholder="비밀번호를 다시 한 번 입력해주세요.">
+                                    <div id="toggle-password" class="eye-icon"></div>
+                                        <img id="eye-icon" src="/public/images/btn_visibility_on_24px.png" alt="비밀번호 보기">
+                                    </div>
+                                </div>
                             </div>
                         </form>
                         <button class="signup-main-button" disabled>회원가입</button>

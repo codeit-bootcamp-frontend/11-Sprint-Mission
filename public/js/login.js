@@ -1,6 +1,6 @@
 // 이메일과 비밀번호 input 요소 가져오기
-const emailInput = document.getElementById("email-input");
-const passwordInput = document.getElementById("password-input");
+const emailInput = document.getElementsByClassName("email-input")[0];
+const passwordInput = document.getElementsByClassName("password-input")[0];
 const loginButton = document.querySelector(".login-main-button");
 const emailForm = document.querySelector(".login-main-input-email");
 const passwordForm = document.querySelector(".login-main-input-password");
