@@ -121,14 +121,19 @@ label {
     padding: 16px 124px;
 }
 
-.login-main-button:hover {
+.login-main-button:active {
     background-color: #3692FF;
-    cursor: pointer;
+    color: #F3F4F6;
 }
 
 .login-main-button:disabled:hover {
     background-color: #9CA3AF;
     cursor: not-allowed;
+}
+
+.login-main-button:active:hover {
+    background-color: #3692FF;
+    cursor: pointer;
 }
 
 .login-simple-login {
@@ -143,6 +148,7 @@ label {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 42px;
 }
 
 .login-simple-login-description {
@@ -153,6 +159,7 @@ label {
 
 .login-simple-login-link {
     display: flex;
+    align-items: center;
     gap: 16px;
 }
 
