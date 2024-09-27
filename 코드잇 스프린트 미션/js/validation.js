@@ -26,7 +26,6 @@ export function showError(inputElement, message) {
     inputElement.after(errorDiv);
   }
   errorDiv.textContent = message;
-  errorDiv.style.display = 'block';
   inputElement.style.border = '2px solid red';
 }
 

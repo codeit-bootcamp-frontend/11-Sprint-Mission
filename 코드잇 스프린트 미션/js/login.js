@@ -5,7 +5,7 @@ import {
   isShortPassword,
   showError,
   removeError,
-} from './validation2.js';
+} from './validation.js';
 
 // 변수 선언
 const emailInput = document.querySelector('#email');
@@ -26,7 +26,6 @@ emailInput.addEventListener('focusout', () => {
 // 비밀번호 유효성 검사 이벤트 핸들러
 passwordInput.addEventListener('focusout', () => {
   const password = passwordInput.value;
-
   if (isPasswordEmpty(password)) {
     showError(passwordInput, '비밀번호를 입력해주세요.');
   } else if (isShortPassword(password)) {
