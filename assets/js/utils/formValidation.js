@@ -68,6 +68,7 @@ function showError(input, message) {
     errorTag.style.display = 'block';
   }
   input.style.border = '1px solid red';
+  input.setAttribute('data-valid', 'false');
 }
 
 // 에러 메시지 숨김
@@ -79,6 +80,7 @@ function hideError(input) {
     errorTag.style.display = 'none';
   }
   input.style.border = 'none';
+  input.setAttribute('data-valid', 'true');
 }
 
 // 유효성 검사 결과를 DOM에 반영
@@ -95,30 +97,25 @@ function applyValidationResult(input) {
 
 // 모든 input의 유효성 검사
 function validateForm(formElement) {
-  let isValid = true;
   const inputs = formElement.querySelectorAll('input');
 
   inputs.forEach((input) => {
-    const valid = applyValidationResult(input);
-    if (!valid) {
-      isValid = false;
+    const valid = input.getAttribute('data-valid');
+    if(valid === "true"){
+      return true;
     }
   });
-
-  return isValid;
+  return false;
 }
 
 // submit 버튼 상태 업데이트
-function updateSubmitButtonState(formElement) {
-  const submitButton = formElement.querySelector('button[type="submit"]');
-  const isValid = validateForm(formElement);
-
+function updateSubmitButtonState(isValid, submitButton) {
   if (isValid) {
-    submitButton.disabled = false;
     submitButton.classList.add('active');
+    submitButton.disabled = false;
   } else {
-    submitButton.disabled = true;
     submitButton.classList.remove('active');
+    submitButton.disabled = true;
   }
 }
 
@@ -159,4 +156,10 @@ function initFormValidation(formId) {
   });
 }
 
-export { initFormValidation };
+export { 
+  getErrorMessage, 
+  showError, 
+  hideError,
+  validateForm,
+  updateSubmitButtonState,
+  applyValidationResult };
