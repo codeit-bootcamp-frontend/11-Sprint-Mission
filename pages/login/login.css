@@ -139,3 +139,6 @@
   line-height: 44.78px;
   }
 }
+#error {
+  color: red;
+}
