@@ -26,8 +26,9 @@ inputs.forEach((input) => {
 // 제출 버튼 클릭 이벤트 추가
 submitButton.addEventListener('click', (e) => {
   e.preventDefault();
-  alert('제출이 완료되었습니다.');
+  alert('제출이 완료되었습니다. items 페이지로 이동 합니다.');
   formElement.submit();
+  window.location.href = 'items.html';
 });
 
 // 프라이빗 토글 아이콘 이벤트 함수
