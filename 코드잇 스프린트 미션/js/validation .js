@@ -29,3 +29,12 @@ export function showError(inputElement, message) {
   errorDiv.style.display = 'block';
   inputElement.style.border = '2px solid red';
 }
+
+// 에러 삭제 함수
+export function removeError(inputElement) {
+  let errorDiv = inputElement.nextElementSibling;
+  if (errorDiv && errorDiv.classList.contains('error-message')) {
+    errorDiv.remove();
+  }
+  inputElement.style.border = '';
+}
