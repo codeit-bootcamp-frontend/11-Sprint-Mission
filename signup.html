@@ -24,20 +24,20 @@
       <form id="userForm" name="join">
         <div class="input-area">
           <label for="email">이메일</label>
-          <input type="email" id="email" data-focus="input" autocomplete="username" placeholder="이메일을 입력해주세요" required>
+          <input type="email" id="email" data-focus="input" data-valid="false" autocomplete="username" placeholder="이메일을 입력해주세요" required>
           <p class="error"></p>
         </div>
 
         <div class="input-area">
           <label for="nickname">닉네임</label>
-          <input type="text" id="nickname" data-focus="input" autocomplete="username" placeholder="닉네임을 입력해주세요" required>
+          <input type="text" id="nickname" data-focus="input" data-valid="false" autocomplete="username" placeholder="닉네임을 입력해주세요" required>
           <p class="error"></p>
         </div>
 
         <div class="input-area">
           <label for="password">비밀번호</label>
           <div class="password-toggle">
-              <input type="password" id="password" autocomplete="current-password" data-focus="input" placeholder="비밀번호를 입력해주세요" required>
+              <input type="password" id="password" data-valid="false" autocomplete="current-password" data-focus="input" placeholder="비밀번호를 입력해주세요" required>
               <span class="toggle-icon" title="프라이버시 토글"></span>
           </div>
           <p class="error"></p>
@@ -46,14 +46,14 @@
         <div class="input-area">
           <label for="password-check">비밀번호 확인</label>
           <div class="password-toggle">
-              <input type="password" id="password-check" autocomplete="current-password" data-focus="input" placeholder="비밀번호를 다시 한 번 입력해주세요" required>
+              <input type="password" id="password-check" data-valid="false" autocomplete="current-password" data-focus="input" placeholder="비밀번호를 다시 한 번 입력해주세요" required>
               <span class="toggle-icon" title="프라이버시 토글"></span>
           </div>
           <p class="error"></p>
         </div>
 
         <div class="btn-submit">
-          <button id="submitBtn" type="submit" class="button round gray" disabled>회원가입</button>
+          <button id="submitBtn" type="submit" class="button round gray">회원가입</button>
         </div>
       </form>
       <div class="alternative-login">
