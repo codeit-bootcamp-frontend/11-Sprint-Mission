@@ -82,14 +82,13 @@ passwordInput.addEventListener("focusout", function () {
 
 // 비밀번호 표시/숨김 토글 기능
 togglePassword.addEventListener("click", function () {
-  // 현재 입력 필드의 type이 'password'인지 확인
   const type =
     passwordInput.getAttribute("type") === "password" ? "text" : "password";
   passwordInput.setAttribute("type", type); // type 변경
 
-  // 아이콘 변경 (눈 모양 이미지의 src 속성을 변경)
+  // 눈 모양 아이콘 변경
   this.src =
     type === "text"
       ? "/images/icons/password-invisible.svg"
-      : "/images/icons/password-visible.png"; // 예시로 src 변경
+      : "/images/icons/password-visible.svg"; // 예시로 src 변경
 });
