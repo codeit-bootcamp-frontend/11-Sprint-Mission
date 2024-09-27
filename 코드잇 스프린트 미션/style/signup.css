@@ -35,6 +35,7 @@ input {
 
 label {
   display: block;
+  margin-top: 16px;
   margin-bottom: 16px;
   color: #1f2937;
   font-size: 18px;
@@ -48,7 +49,6 @@ label {
 #passwordCheck {
   border-radius: 12px;
   padding: 16px 24px;
-  margin: 0 0 24px;
   background-color: #f3f4f6;
   font-size: 16px;
   font-weight: 400;
@@ -80,6 +80,7 @@ input::placeholder {
 
 button {
   display: block;
+  margin-top: 18px;
   background-color: #9ca3af;
   border-radius: 40px;
   color: #f3f4f6;
