@@ -4,6 +4,22 @@ const passwordInput = document.getElementsByClassName("password-input")[0];
 const loginButton = document.querySelector(".login-main-button");
 const emailForm = document.querySelector(".login-main-input-email");
 const passwordForm = document.querySelector(".login-main-input-password");
+const passwordFormCon = document.querySelector(".login-main-input-password-container")
+const togglePassword = document.getElementById("toggle-password");
+const eyeIcon = document.getElementById("eye-icon");
+
+
+
+// 눈 모양 아이콘 함수
+togglePassword.addEventListener('click', function () {
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';  // 비밀번호 보이기
+        eyeIcon.src = '/public/images/btn_visibility_on_24px.png';
+    } else {
+        passwordInput.type = 'password';  // 비밀번호 가리기
+        eyeIcon.src = '/public/images/btn_visibility_off_24px.png';
+    }
+});
 
 // 에러 메시지 표시 함수
 function showErrorMessage(form, message) {
@@ -69,13 +85,13 @@ passwordInput.addEventListener('blur', function () {
     const passwordValue = passwordInput.value.trim();
 
     if (!passwordValue) {
-        passwordInput.classList.add('input-error');
+        passwordFormCon.classList.add('input-error');
         showErrorMessage(passwordForm, '비밀번호를 입력해주세요.');
     } else if (passwordValue.length < 8) {
-        passwordInput.classList.add('input-error');
+        passwordFormCon.classList.add('input-error');
         showErrorMessage(passwordForm, '비밀번호를 8자 이상 입력해주세요.');
     } else {
-        passwordInput.classList.remove('input-error');
+        passwordFormCon.classList.remove('input-error');
         hideErrorMessage(passwordForm);
     }
     toggleLoginButton();
@@ -88,8 +104,9 @@ emailInput.addEventListener('input', function () {
     toggleLoginButton();
 });
 
+// 비밀번호 input에서 입력 중일 때 테두리 초기화 및 에러 메시지 숨기기
 passwordInput.addEventListener('input', function () {
-    passwordInput.classList.remove('input-error');
+    passwordFormCon.classList.remove('input-error');
     hideErrorMessage(passwordForm);
     toggleLoginButton();
 });
