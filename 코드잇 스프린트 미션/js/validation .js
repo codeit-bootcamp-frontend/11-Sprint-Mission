@@ -15,3 +15,17 @@ export function isPasswordEmpty(password) {
 export function isShortPassword(password) {
   return password.trim().length < 8;
 }
+
+// 에러 생성 함수
+export function showError(inputElement, message) {
+  let errorDiv = inputElement.nextElementSibling;
+  // errorDiv가 없거나, 존재 해도 error-message 클래스를 가지고 있지 않은 경우
+  if (!errorDiv || !errorDiv.classList.contains('error-message')) {
+    errorDiv = document.createElement('div');
+    errorDiv.classList.add('error-message');
+    inputElement.after(errorDiv);
+  }
+  errorDiv.textContent = message;
+  errorDiv.style.display = 'block';
+  inputElement.style.border = '2px solid red';
+}
