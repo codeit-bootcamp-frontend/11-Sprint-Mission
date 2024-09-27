@@ -63,6 +63,16 @@ html {
   color: var(--gray-400);
 }
 
+.auth-input.error {
+  outline: 2px solid red;
+  animation: shake 0.3s ease-in-out;
+}
+
+.error-message {
+  color: red;
+  margin-left: 16px;
+}
+
 .auth-btn {
   border: none;
   border-radius: 40px;
@@ -77,11 +87,20 @@ html {
 }
 
 .auth-btn:hover {
-  background-color: var(--blue-500);
-  color: var(--white);
+  cursor: default;
 }
 
-.show-password-toggle {
+.auth-btn-active {
+  background-color: var(--blue-500);
+  color: var(--white);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.auth-btn-active:hover {
+  cursor: pointer;
+}
+
+.toggle-password {
   position: absolute;
   right: 24px;
   cursor: pointer;
@@ -169,5 +188,23 @@ html {
 
   #auth-logo {
     height: auto;
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
