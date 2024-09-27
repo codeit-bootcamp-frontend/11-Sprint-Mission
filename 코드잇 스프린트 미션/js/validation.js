@@ -9,8 +9,8 @@ export function isEmailValid(email) {
 }
 
 // 닉네임 유효성 검사 함수
-export function isNicknameEmpty() {
-  return nicknameInput.value.trim() === '';
+export function isNicknameEmpty(nickname) {
+  return nickname.trim() === '';
 }
 
 // 비밀번호 유효성 검사 함수
@@ -23,12 +23,12 @@ export function isShortPassword(password) {
 }
 
 // 비밀번호 확인 유효성 검사 함수
-export function isPwdCheckEmpty() {
-  return pwdCheck.value.trim() === '';
+export function isPwdCheckEmpty(confirmPassword) {
+  return confirmPassword.trim() === '';
 }
 
-export function isPwdMismatch() {
-  return pwdInput.value.trim() !== pwdCheckInput.value.trim();
+export function isPwdMismatch(password, confirmPassword) {
+  return password.trim() !== confirmPassword.trim();
 }
 
 // 에러 생성 함수
