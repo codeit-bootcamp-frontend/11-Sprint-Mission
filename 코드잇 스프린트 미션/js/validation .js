@@ -7,3 +7,11 @@ export function isEmailValid(email) {
   const emailFormat = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
   return emailFormat.test(email.trim());
 }
+
+export function isPasswordEmpty(password) {
+  return password.trim() === '';
+}
+
+export function isShortPassword(password) {
+  return password.trim().length < 8;
+}
