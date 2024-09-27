@@ -117,3 +117,7 @@ input:focus {
     margin-bottom: 40px;
   }
 }
+span{
+  display:none;
+  color: #F74747;
+}

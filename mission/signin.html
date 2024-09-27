@@ -30,7 +30,9 @@
             type="email"
             placeholder="이메일을 입력해 주세요"
           />
+          <span id="email-error" class="error-message"></span>
         </div>
+        
         <div class="input-item">
           <label for="password">비밀번호</label>
           <div class="input-wrapper">
@@ -46,9 +48,10 @@
               class="toggle-password"
             />
           </div>
+          <span id="password-error" class="error-message"></span>
         </div>
-
-        <button type="submit" class="button pill-button full-width">
+       
+        <button type="submit" class="button pill-button full-width" disabled>
           로그인
         </button>
       </form>
@@ -75,5 +78,7 @@
         판다마켓이 처음이신가요? <a href="signup.html">회원가입</a>
       </div>
     </div>
+
+    <script src="/mission/signin.js"></script>
   </body>
 </html>
