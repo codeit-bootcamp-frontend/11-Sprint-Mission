@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup</title>
+    <link rel="stylesheet" href="./CSS/register.css">
+    <link rel="stylesheet" href="./CSS/palette.css">
+</head>
+<body>
+    <main class="main">
+        <section class="main-box">
+            <section class="main-box-logo">
+                <a href="./index.html">
+                    <img class="login-logo" src="./image/Property 1=lg.png" alt="판다마켓">
+                </a>
+            </section>
+            <section class="sub-box">
+                <p class="input-name">이메일</p>
+                <input class="input-tag email" type="email" placeholder="이메일을 입력해주세요">
+                <div class="error email-error"></div>
+                <p class="input-name">닉네임</p>
+                <input class="input-tag" type="username" placeholder="닉네임을 입력해주세요">
+                <div class="error username-error"></div>
+                <p class="input-name input-pass">비밀번호</p>
+                <div class="input-pass-box">
+                    <input class="input-tag" type="password" placeholder="비밀호를 입력해주세요">
+                    <img class="password-icon" src="./image/gnb/btn_visibility_on_24px.png" alt="비밀번호 안보이게">
+                </div>
+                <div class="error password-error"></div>
+                <p class="input-name input-pass">비밀번호 확인</p>
+                <div class="input-pass-box">
+                    <input class="input-tag" type="passwordConfirm" placeholder="비밀호를 다시 한 번 입력해주세요">
+                    <img class="password-icon" src="./image/gnb/btn_visibility_on_24px.png" alt="비밀번호 안보이게">
+                </div>
+                <div class="error passwordConfirm-error"></div>
+                <div class="sign-button">
+                    <a class="Btn" href="./signup.html">회원가입</a>
+                </div>
+                <div class="comport-login">
+                    <p class="comport-login-link">간편 로그인하기</p>
+                    <div>
+                        <a href="https://www.google.com"><img class="login-image google" src="./image/gnb/Component 2.png" alt="구글 로그인"></a>
+                        <a href="https://www.kakaocorp.com/page"><img class="login-image" src="./image/gnb/Component 3.png" alt="카카오톡 로그인"></a>
+                    </div>
+                </div>
+                <p class="to-signup">이미 회원이신가요?
+                    <a class="to-signup-link" href="./login.html">로그인</a>
+                </p>
+            </section>
+        </section>
+    </main>
+    <script src="./module/toggleSignupButton.js"></script>
+</body>
+</html>

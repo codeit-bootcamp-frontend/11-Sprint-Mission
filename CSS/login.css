@@ -57,10 +57,24 @@
     line-height: 26px;
     font-weight: 400;
     font-family: 'Pretendard';
+    margin-bottom: 8px;
 }
 
 .input-tag:focus{
     border: 1px solid var(--blue);
+}
+
+.input-tag.input-error{
+    border: 2px solid var(--red);
+}
+
+.error{
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Pretendard';
+    line-height: 24px;
+    color: var(--red);
+    margin-left: 16px;
 }
 
 .password-icon{
@@ -89,6 +103,11 @@
 .login-button.active{
     background-color: var(--blue);
     cursor: pointer;
+}
+
+.Btn{
+    text-decoration: none;
+    color: #F3F4F6;
 }
 
 .comport-login{
