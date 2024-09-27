@@ -14,6 +14,7 @@ export function activePasswordVisibility(visibilityToggle) {
 
 export function checkInputFormat(event, passwordInput) {
   const input = event.target;
+  console.log(input);
   const hasValue = event.target.value.length > 0; //기본적으로 label에 값이 있는지 확인하기
 
   const checkInputRules = {
@@ -26,10 +27,10 @@ export function checkInputFormat(event, passwordInput) {
       hasValueError: '비밀번호를 입력해주세요',
       formatError: '비밀번호를 8자 이상 입력해주세요.',
       validate: (value) => value.length >= 8,
-      value: input.value,
     },
     nickname : {
       hasValueError: '닉네임을 입력해주세요',
+      validate: (value) => value.length >= 1,
     },
     checkpassword : {
       formatError: '비밀번호가 일치하지 않습니다.',
@@ -56,18 +57,36 @@ export function checkInputFormat(event, passwordInput) {
     if(!hasValue) {
       input.classList.toggle('error', true);
       console.log(hasValueError);
-      return false;
+      return [inputType, false];
     } else if(!validate(input.value)) {
       input.classList.toggle('error', true);
       console.log(formatError);
-      return false;
+      return [inputType, false];
     } else {
       input.classList.toggle('error', false);
-      return true;
+      return [inputType, true];
     }
 
   }
-  return false;
+  return [inputType, false];
+}
+
+
+function updateSignUpValidity(inputType, isValid) {
+  switch (inputType) {
+    case 'email':
+      let isEmailValid = isValid;
+      break;
+    case 'password':
+      let isPasswordValid = isValid;
+      break;
+    case 'nickname':
+      let isNicknameValid = isValid;
+      break;
+    case 'checkpassword':
+      let isCheckPasswordValid = isValid;
+      break;
+  }
 }
 
 //input에 이메일 형식을 test하는 함수 

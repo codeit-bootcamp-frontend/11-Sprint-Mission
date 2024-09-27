@@ -4,18 +4,39 @@ const email = document.querySelector('#email');
 const password = document.querySelector('#password');
 const btn = document.querySelector('.login-btn');
 
+let isEmailValid = false;
+let isPasswordValid = false;
+
+
 //input 값 올바른지 확인 후, 빨간색 아웃라인을 추가하는 함수 
 [email, password].forEach((input) => {
-  input.addEventListener('focusout', checkInputFormat);
+  input.addEventListener('focusout', (e) => {
+    let isValid = checkInputFormat(event);
+    console.log(isValid);
+    setInputValid(isValid);
+  });
 })
+
+
+//각 input값에 따라 validation 확인 
+function setInputValid(input){
+  input[0] === 'email' ? isEmailValid = input[1] :
+  input[1] === 'password' ? isPasswordValid = input[1] : null;
+
+  activeLoginBtn()
+}
+
+
+
+
 
 
 //로그인 버튼 활성화 하는 함수
 function activeLoginBtn() {
-  //const isValid = email.value.length > 0 && password.value.length > 0; //boolean값으로 받아서 함수를 재사용 가능
-  console.log(isValid);
-  btn.classList.toggle('active', isValid); //toggle에도 사용하고 
-  return isValid;
+  const workBtn = (isEmailValid && isPasswordValid); //boolean값으로 받아서 함수를 재사용 가능
+  console.log(workBtn);
+  btn.classList.toggle('active', workBtn); //toggle에도 사용하고 
+  return workBtn;
 }
 
 [email, password].forEach((input) => {
