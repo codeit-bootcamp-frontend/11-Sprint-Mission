@@ -57,21 +57,45 @@ label {
     gap: 16px
 }
 
-input {
+.signup-main-input-password-container,
+.signup-main-input-password-again-container {
+    display: flex;
     border: 1px solid #F3F4F6;
     height: 22px;
     background-color: #F3F4F6;
     border-radius: 12px;
-    padding: 16px 24px 16px 24px;
+    padding: 16px 24px;
 }
 
-input::placeholder{
+.email-input,
+.nickname-input {
+    border: 1px solid #F3F4F6;
+    height: 22px;
+    background-color: #F3F4F6;
+    border-radius: 12px;
+    padding: 16px 24px;
+}
+
+.password-input,
+.password-again-input {
+    border-style: none;
+    background-color: #F3F4F6;
+    width: 100%;
+}
+
+.email-input::placeholder, 
+.nickname-input::placeholder,
+.password-input::placeholder,
+.password-again-input::placeholder {
     display: flex;
     color: #9CA3AF;
     font-size: 16px;
 }
 
-input:focus {
+.email-input:focus,
+.nickname-input:focus,
+.password-input:focus,
+.password-again-input:focus {
     border-color: #3692FF;
     outline: none;
 }
@@ -109,7 +133,9 @@ input:focus {
 .signup-simple-login {
     background-color: #E6F2FF;
     border-radius: 8px;
-    padding: 16px 23px 16px 23px;
+    padding: 16px 23px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .signup-simple-login-container {
