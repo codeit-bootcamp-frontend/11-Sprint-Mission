@@ -80,6 +80,10 @@ label {
   }
 }
 
+.input.error {
+  outline: 2px solid var(--error);
+}
+
 .input::-moz-placeholder {
   color: var(--s400);
 }

@@ -635,6 +635,10 @@ label {
   }
 }
 
+.input.error {
+  outline: 2px solid var(--error) !important;
+}
+
 .input::-moz-placeholder {
   color: var(--s400);
 }

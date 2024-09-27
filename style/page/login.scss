@@ -79,6 +79,11 @@ label {
   }
 }
 
+.input.error {
+  outline: 2px solid var(--error);
+}
+
+
 .input::placeholder {
   color: var(--s400);
 }
@@ -86,6 +91,7 @@ label {
 .input:focus {
   outline: 2px solid var(--p100); /* 명시적으로 outline 스타일 설정 */
 }
+
 
 .password-container {
   display: flex;
