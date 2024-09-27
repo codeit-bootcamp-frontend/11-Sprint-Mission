@@ -58,6 +58,7 @@ label {
 
 .login-main-input-password-container {
     display: flex;
+    height: 22px;
     border: 1px solid #F3F4F6;
     background-color: #F3F4F6;
     border-radius: 12px;
@@ -79,7 +80,12 @@ label {
 .password-input {
     border-style: none;
     background-color: #F3F4F6;
+    padding: 0;
     width: 100%;
+}
+
+#eye-icon:hover {
+    cursor: pointer;
 }
 
 .email-input::placeholder,
