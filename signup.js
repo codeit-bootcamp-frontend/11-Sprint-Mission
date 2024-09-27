@@ -121,7 +121,6 @@ function toggleSinupButton() {
 };
 
 // 비밀번호 눈 아이콘
-
 eyeOff.addEventListener('click', function() {
     password.type = "text"; 
     eyeOff.style.display = 'none';
