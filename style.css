@@ -281,6 +281,20 @@ footer {
     line-height: 26px;
 }
 
+.input-password {
+    position: relative;
+}
+
+.input-password img {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 16px;
+    cursor: pointer;
+    top: 50%;
+    transform: translate(0, -50%)
+}
+
 .login-form button,
 .signup-form button {
     background-color: var(--gray400);
