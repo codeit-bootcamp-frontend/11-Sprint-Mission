@@ -12,7 +12,7 @@ function getHeaderRender(){
         </a>
       </h1>
       <div class="btn-login">
-        <a href="/login.html" class="button square blue">로그인</a>
+        <a href="/pages/login.html" class="button square blue">로그인</a>
       </div>
     </div>
     `;
