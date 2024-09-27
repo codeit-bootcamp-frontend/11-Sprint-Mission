@@ -1,9 +1,9 @@
 import togglePasswordVisibility from '../utils/passwordToggle.js';
 import { 
-  updateSubmitButtonState,
-  getErrorMessage,
-  showError, 
-  hideError,
+  getValidationErrorMessage, 
+  showErrorMessage, 
+  clearErrorMessage,
+  updateSubmitButtonStatus,
 } from '../utils/formValidation.js';
 
 const formElement = document.getElementById('userForm');
@@ -15,27 +15,27 @@ inputs.forEach((input) => {
   // 포커스 아웃 시 유효성 검사 수행
   input.addEventListener('focusout', (e) => {
     const target = e.target;
-    const errorMessage = getErrorMessage(target);
+    const errorMessage = getValidationErrorMessage(target);
     if (errorMessage) {
-      showError(target, errorMessage);
+      showErrorMessage(target, errorMessage);
     } else {
-      hideError(target);
+      clearErrorMessage(target);
     }
   });
 
   // 입력 중 유효성 검사 수행
   input.addEventListener('input', (e) => {
     const target = e.target;
-    const errorMessage = getErrorMessage(target);
+    const errorMessage = getValidationErrorMessage(target);
     if (errorMessage) {
-      showError(target, errorMessage);
+      showErrorMessage(target, errorMessage);
       target.setAttribute('data-valid', 'false');
     } else {
-      hideError(target);
+      clearErrorMessage(target);
       target.setAttribute('data-valid', 'true');
     }
     // 모든 입력의 유효성에 따라 제출 버튼 상태 업데이트
-    updateSubmitButtonState(inputs, submitButton);
+    updateSubmitButtonStatus(inputs, submitButton);
   });
 });
 
