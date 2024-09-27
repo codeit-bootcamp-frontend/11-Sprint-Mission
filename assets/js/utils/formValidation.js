@@ -6,7 +6,7 @@
 function validateEmailFormat(value) {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if(!value){
-    return '이메일을 입력해 주세요.';
+    return '이메일을 입력해주세요.';
   }
   if (!emailPattern.test(value)) {
     return '잘못된 이메일 형식입니다.';
@@ -22,11 +22,11 @@ function validateEmailFormat(value) {
  */
 function validatePasswordFormat(value) {
   if (!value) {
-    return '비밀번호를 입력해 주세요.';
+    return '비밀번호를 입력해주세요.';
   }
   
   if (value.length < 8) {
-    return '비밀번호는 8자 이상이어야 합니다.';
+    return '비밀번호는 8자 이상 입력해주세요.';
   }
   
   return '';
@@ -40,7 +40,7 @@ function validatePasswordFormat(value) {
  */
 function validatePasswordMatch(value, passwordValue) {
   if (!value) {
-    return '비밀번호 확인을 입력해 주세요.';
+    return '비밀번호를 입력해주세요.';
   }
 
   if (value !== passwordValue) {
@@ -57,7 +57,7 @@ function validatePasswordMatch(value, passwordValue) {
  */
 function validateNickNameFormat(value) {
   if (!value) {
-    return '닉네임을 입력해 주세요.';
+    return '닉네임을 입력해주세요.';
   }
   
   return '';
