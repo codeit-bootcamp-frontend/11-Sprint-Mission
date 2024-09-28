@@ -1,6 +1,5 @@
 .nickname-form__input {
   display: flex;
-  gap: 16px;
   flex-direction: column;
   font-weight: 700;
   font-size: 18px;
@@ -10,7 +9,6 @@
 
 @media (min-width: 365px) and (max-width: 767px) {
   .join-page {
-    margin-top: 24px;
     gap: 24px;
   }
 
@@ -26,7 +24,6 @@
 @media (min-width: 768px) and (max-width: 1199px) {
   .nickname-form__input {
     display: flex;
-    gap: 16px;
     flex-direction: column;
     font-weight: 700;
     font-size: 18px;
@@ -38,7 +35,6 @@
 @media (min-width: 1200px) {
   .nickname-form__input {
     display: flex;
-    gap: 16px;
     flex-direction: column;
     font-weight: 700;
     font-size: 18px;
