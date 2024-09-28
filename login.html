@@ -14,14 +14,16 @@
     <form>
       <label for="email">이메일</label>
       <input id="email" name="email" placeholder="이메일을 입력해주세요" >
+      <div class="error-message" id="emailError"></div>
       <label for="password" >비밀번호</label>
       <div class="password-field">
       <input id="password" name="password" type="password" placeholder="비밀번호를 입력해주세요" >
+      <div class="error-message" id="passwordError"></div>
       <span class="password-toggle">
-        <img src="img/ic_visibility_on.png" alt="비밀번호 보기 아이콘">
+        <img id="toggleIcon" src="img/ic_visibility_off.png" alt="비밀번호 보기 아이콘">
       </span>
     </div>
-      <button>로그인</button>
+      <button type="submit" id="loginBtn" disabled>로그인</button>
       <div class="simple-login">
         <div>간편 로그인하기</div>
        <div class="icons">
@@ -34,5 +36,6 @@
         <a href="signup.html" class="signup-button">회원가입</a>
       </div>
     </form>
+    <script src="login.js"></script>
   </body>
 </html>

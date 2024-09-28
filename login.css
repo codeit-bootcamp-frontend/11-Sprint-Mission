@@ -22,7 +22,7 @@ form {
 label {
   color: #1F2937;
   display: block;
-  margin: 0 0 16px;
+  margin: 0 0 8px;
   font-size: 18px;
   font-weight: 700;
   line-height: 26px;
@@ -55,12 +55,31 @@ input {
   border-radius: 12px;
   width: 100%;
   height: 56px;
-  margin-bottom: 24px ;
+  margin: 8px 0px;
+}
+
+.error-message {
+  color: #F74747;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+  visibility: hidden; 
+  padding-left: 8px;
+  padding-bottom: 16px;
+}
+
+input.error {
+  border: 1px solid #F74747;
+}
+
+button:disabled {
+  background-color: #9CA3AF;
+  cursor: not-allowed;
 }
 
 .password-toggle {
   position: absolute;
-  top: 16px;
+  top: 24px;
   right: 14px;
   cursor: pointer;
 }
@@ -70,7 +89,7 @@ input {
   height: 24px;
 }
 
-button {
+#loginBtn {
   height: 56px;
   background: #9CA3AF;
   border-radius: 40px;
@@ -82,6 +101,11 @@ button {
   line-height: 32px;
   text-align: center;
   width: 100%;
+}
+
+#loginBtn.active{
+  background-color: #3692FF;
+  cursor: pointer;
 }
 
 .simple-login {

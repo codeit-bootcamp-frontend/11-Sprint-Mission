@@ -104,6 +104,7 @@ padding-top: 200px;
 .img-home img {
   width: 746px;
   height: 340px;
+  vertical-align:bottom;
 }
 
 .product-section,.product-section-middle {
@@ -140,7 +141,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 32px 200px 108px 200px;
+  padding: 32px 200px 108px;
   font-size: 16px;
   gap: 30px;
 }
@@ -232,7 +233,7 @@ footer {
     width: auto;
     display: flex;
     flex-direction: column-reverse;
-    margin: 24px 24px;
+    margin: 24px;
     gap: 24px;
     background-color: #ffffff ;
   }
