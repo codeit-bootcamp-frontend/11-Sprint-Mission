@@ -1,29 +1,39 @@
-import {
-  renderOutline,
-  renderErOutline,
-  deleteOutline,
-  validateEmail,
-  email,
-  password,
-  emailPattern,
-} from "./login.js";
-
+const email = document.querySelector(".myEmail");
 const nickname = document.querySelector(".myNickname");
+const password = document.querySelector(".myPw");
 const passwordCheck = document.querySelector(".checkMyPw");
 const signupBtn = document.querySelector(".signup");
+const emailEr = document.querySelector(".emailError");
 const nicknameEr = document.querySelector(".nicknameError");
 const passwordEr = document.querySelector(".passwordError");
 const passwordCheckEr = document.querySelector(".checkPwError");
 
-function validateNickname(nickname) {
-  const nicknameValue = nickname.value;
+function renderOutline(value) {
+  value.style.outline = "2px solid #3692ff";
+}
 
-  if (nicknameValue == "") {
-    nicknameEr.textContent = "닉네임을 입력해주세요";
-    renderErOutline(nickname);
+function renderErOutline(value) {
+  value.style.outline = "2px solid red";
+}
+
+function deleteOutline(value) {
+  value.style.outline = "0";
+}
+
+const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+function validateEmail(email) {
+  const emailValue = email.value;
+
+  if (emailValue == "") {
+    emailEr.textContent = "이메일을 입력해주세요";
+    renderErOutline(email);
+  } else if (emailPattern.test(emailValue)) {
+    emailEr.textContent = "";
+    deleteOutline(email);
   } else {
-    nicknameEr.textContent = "";
-    deleteOutline(nickname);
+    emailEr.textContent = "잘못된 이메일 형식입니다";
+    renderErOutline(email);
   }
 }
 
@@ -39,6 +49,18 @@ function validatePassword(password) {
   } else {
     passwordEr.textContent = "비밀번호를 8자 이상 입력해주세요";
     renderErOutline(password);
+  }
+}
+
+function validateNickname(nickname) {
+  const nicknameValue = nickname.value;
+
+  if (nicknameValue == "") {
+    nicknameEr.textContent = "닉네임을 입력해주세요";
+    renderErOutline(nickname);
+  } else {
+    nicknameEr.textContent = "";
+    deleteOutline(nickname);
   }
 }
 

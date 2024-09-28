@@ -93,13 +93,3 @@ loginBtn.addEventListener("click", function (e) {
   e.preventDefault();
   window.location.href = "./items.html";
 });
-
-export {
-  renderOutline,
-  renderErOutline,
-  deleteOutline,
-  validateEmail,
-  email,
-  password,
-  emailPattern,
-};
