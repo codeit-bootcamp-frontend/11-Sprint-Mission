@@ -120,3 +120,10 @@ emailInput.addEventListener('input', updateButtonState);
 nicknameInput.addEventListener('input', updateButtonState);
 passwordInput.addEventListener('input', updateButtonState);
 pwdCheckInput.addEventListener('input', updateButtonState);
+
+signupBtn.addEventListener('click', (event) => {
+  if (!signupBtn.disabled) {
+    event.preventDefault();
+    location.href = 'signin.html';
+  }
+});
