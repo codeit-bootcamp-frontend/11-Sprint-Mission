@@ -75,6 +75,16 @@
     transform: translate(0, -50%)
 }
 
+.error-msg {
+    display: none;
+    margin-top: -8px;
+    margin-left: 16px;
+    color: #F74747;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
 .login-form button,
 .signup-form button {
     background-color: var(--gray400);
