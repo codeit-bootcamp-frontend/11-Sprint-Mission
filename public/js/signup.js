@@ -1,12 +1,43 @@
-const emailInput = document.getElementById("email-input");
-const nicknameInput = document.getElementById("nickname-input");
-const passwordInput = document.getElementById("password-input");
-const passwordAgainInput = document.getElementById("password-again-input");
+const emailInput = document.getElementsByClassName("email-input")[0];
+const nicknameInput = document.getElementsByClassName("nickname-input")[0];
+const passwordInput = document.getElementsByClassName("password-input")[0];
+const passwordAgainInput = document.getElementsByClassName("password-again-input")[0];
+
 const signupButton = document.querySelector(".signup-main-button");
+
 const emailForm = document.querySelector(".signup-main-input-email");
 const nicknameForm = document.querySelector(".signup-main-input-nickname");
 const passwordForm = document.querySelector(".signup-main-input-password");
 const passwordAgainForm = document.querySelector(".signup-main-input-password-again");
+
+const passwordFormCon = document.querySelector(".signup-main-input-password-container");
+const passwordAgainFormCon = document.querySelector(".signup-main-input-password-again-container")
+
+const togglePassword = document.getElementById("toggle-password");
+const eyeIconPassword = document.getElementById("eye-icon-password");
+
+const togglePasswordAgain = document.getElementById("toggle-password-again");
+const eyeIconPasswordAgain = document.getElementById("eye-icon-password-again");
+
+togglePassword.addEventListener('click', function () {
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';  // 비밀번호 보이기
+        eyeIconPassword.src = '/public/images/btn_visibility_on_24px.png';
+    } else {
+        passwordInput.type = 'password';  // 비밀번호 가리기
+        eyeIconPassword.src = '/public/images/btn_visibility_off_24px.png';
+    }
+});
+
+togglePasswordAgain.addEventListener('click', function () {
+    if (passwordAgainInput.type === 'password') {
+        passwordAgainInput.type = 'text';  // 비밀번호 보이기
+        eyeIconPasswordAgain.src = '/public/images/btn_visibility_on_24px.png';
+    } else {
+        passwordAgainInput.type = 'password';  // 비밀번호 가리기
+        eyeIconPasswordAgain.src = '/public/images/btn_visibility_off_24px.png';
+    }
+});
 
 function showErrorMessage(form, message) {
     let errorMessage = form.querySelector('.error-message');
@@ -82,13 +113,13 @@ passwordInput.addEventListener('blur', function () {
     const passwordValue = passwordInput.value.trim();
 
     if (!passwordValue) {
-        passwordInput.classList.add('input-error');
+        passwordFormCon.classList.add('input-error');
         showErrorMessage(passwordForm, '비밀번호를 입력해주세요.');
     } else if (passwordValue.length < 8) {
-        passwordInput.classList.add('input-error');
+        passwordFormCon.classList.add('input-error');
         showErrorMessage(passwordForm, '비밀번호를 8자 이상 입력해주세요.');
     } else {
-        passwordInput.classList.remove('input-error');
+        passwordFormCon.classList.remove('input-error');
         hideErrorMessage(passwordForm);
     }
     toggleSignupButton();
@@ -99,10 +130,10 @@ passwordAgainInput.addEventListener('blur', function () {
     const passwordAgainValue = passwordAgainInput.value.trim();
 
     if (passwordValue !== passwordAgainValue) {
-        passwordAgainInput.classList.add('input-error');
+        passwordAgainFormCon.classList.add('input-error');
         showErrorMessage(passwordAgainForm, '비밀번호가 일치하지 않습니다.');
     } else {
-        passwordAgainInput.classList.remove('input-error');
+        passwordAgainFormCon.classList.remove('input-error');
         hideErrorMessage(passwordAgainForm);
     }
     toggleSignupButton();
@@ -121,13 +152,13 @@ nicknameInput.addEventListener('input', function () {
 });
 
 passwordInput.addEventListener('input', function () {
-    passwordInput.classList.remove('input-error');
+    passwordFormCon.classList.remove('input-error');
     hideErrorMessage(passwordForm);
     toggleSignupButton();
 });
 
 passwordAgainInput.addEventListener('input', function () {
-    passwordAgainInput.classList.remove('input-error');
+    passwordAgainFormCon.classList.remove('input-error');
     hideErrorMessage(passwordAgainForm);
     toggleSignupButton();
 });

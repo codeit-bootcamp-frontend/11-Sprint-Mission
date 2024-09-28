@@ -67,6 +67,11 @@ label {
     padding: 16px 24px;
 }
 
+.signup-main-input-password-container:focus-within,
+.signup-main-input-password-again-container:focus-within {
+    border-color: #3692FF;
+}
+
 .email-input,
 .nickname-input {
     border: 1px solid #F3F4F6;
@@ -81,6 +86,11 @@ label {
     border-style: none;
     background-color: #F3F4F6;
     width: 100%;
+}
+
+#eye-icon-password:hover,
+#eye-icon-password-again:hover {
+    cursor: pointer;
 }
 
 .email-input::placeholder, 
@@ -120,14 +130,19 @@ label {
     padding: 16px 124px 16px 124px;
 }
 
-.signup-main-button:hover {
+.signup-main-button.active {
     background-color: #3692FF;
-    cursor: pointer;
+    color: white;
 }
 
 .signup-main-button:disabled:hover {
     background-color: #9CA3AF;
     cursor: not-allowed;
+}
+
+.signup-main-button.active:hover {
+    background-color: #1967D6;
+    cursor: pointer;
 }
 
 .signup-simple-login {

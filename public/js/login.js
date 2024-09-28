@@ -63,6 +63,7 @@ function toggleLoginButton() {
     }
 }
 
+
 // 이메일 input에서 focus out 이벤트
 emailInput.addEventListener('blur', function () {
     const emailValue = emailInput.value.trim();
