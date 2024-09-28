@@ -100,6 +100,6 @@ document
     event.preventDefault(); // 기본 제출 동작 방지
 
     if (!loginButton.disabled) {
-      window.location.href = "/items"; // 유효한 경우 /items로 이동
+      window.location.href = "/items"; // 유효한 경우 items로 이동
     }
   });
