@@ -1,0 +1,171 @@
+.whole .login {
+  padding: 231px 0;
+}
+
+.login .inner {
+  width: 640px;
+}
+
+.inner {
+  width: 1120px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.login .logo {
+  display: block;
+  width: 396px;
+  height: 132px;
+  background: url(.\images\logo1.svg) no-repeat;
+  background-size: 100%;
+  margin: 0 auto;
+}
+
+.login .loginCenter {
+  margin-top: 40px;
+}
+
+.login .loginCenter .input {
+  display: flex;
+  flex-direction: column;
+}
+
+.login .loginCenter .input label {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gray800);
+  margin-bottom: 16px;
+}
+
+
+
+.password {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.password input {
+  width: 100%;
+  padding-right: 56px;
+}
+
+
+
+.easylogin {
+  font-weight: 500;
+  color: var(--gray800);
+  background-color: #e6f2ff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 23px;
+  margin: 24px 0;
+}
+
+li {
+  list-style: none;
+}
+
+.login .easylogin ul li a {
+  display: block;
+  width: 42px;
+  height: 42px;
+}
+
+.login .easylogin ul li a.google {
+  background-image: url(google-logo.png);
+  background-size: 100%;
+}
+
+.login .easylogin ul li a.kakao {
+  background-image: url(kakao-logo.png);
+  background-size: 100%;
+}
+
+ul {
+  display: flex;
+  gap: 16px;
+}
+
+h1 {
+  display: block;
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 40px;
+}
+
+
+
+.loginButton {
+  background-color: #3692ff;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 16px 124px;
+  width: 100%;
+  border: none;
+}
+
+.input input {
+  padding: 16px 24px;
+  background-color: #f3f4f6;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  line-height: 24px;
+  width: 100%;
+}
+
+.input {
+  margin-bottom: 24px;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid #3692FF; 
+}
+
+input:not(:focus) {
+  border: none;
+}
+
+.input label {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.easylogin h3 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+
+.signup a {
+  color: #3182f6;
+  text-decoration: underline;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.login .signup {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray800);
+  text-align: center;
+  margin-top: 24px;
+}

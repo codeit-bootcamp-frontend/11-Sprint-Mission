@@ -1,0 +1,107 @@
+.logo {
+  width: 396px;
+  height: 132px;
+  margin-top: 60px;
+  margin-bottom: 40px;
+  display: block;
+  text-align: center;
+  background-size: 100%;
+  margin: 0 auto;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 640px;
+}
+
+.input {
+  margin-bottom: 24px;
+}
+
+label {
+  font-size: 18px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.input input {
+  font-size: 16px;
+  line-height: 24px;
+  width: 100%;
+  padding: 16px 24px;
+  background-color: #f3f4f6;
+  border: none;
+  border-radius: 12px;
+}
+
+.input-password {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.signupButton {
+  width: 100%;
+  background-color: #3692ff;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 16px 124px;
+  border: none;
+}
+
+.easylogin {
+  background-color: #e6f2ff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 23px;
+  margin: 24px 0;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px
+}
+
+ul {
+  display: flex;
+  gap: 16px;
+}
+
+.easylogin ul li .google {
+  background-image: url(google-logo.png);
+  background-size: 100%;
+}
+
+.easylogin ul li .kakao {
+  background-image: url(kakao-logo.png);
+  background-size: 100%;
+}
+
+.switchlogin {
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.switchlogin a {
+  color: #3182f6;
+  text-decoration: underline;
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid #3692FF; 
+}
+
+input:not(:focus) {
+  border: none;
+}
