@@ -16,9 +16,7 @@ function deleteOutline(value) {
   value.style.outline = "0";
 }
 
-const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-email.addEventListener("focusout", function (e) {
+function validateEmail(email) {
   const emailValue = email.value;
 
   if (emailValue == "") {
@@ -31,18 +29,11 @@ email.addEventListener("focusout", function (e) {
     emailEr.textContent = "잘못된 이메일 형식입니다";
     renderErOutline(email);
   }
-});
+}
 
-email.addEventListener("focusin", function () {
-  const emailValue = email.value;
-
-  if (emailPattern.test(emailValue)) {
-    renderOutline(email);
-  }
-});
-
-password.addEventListener("focusout", function (e) {
+function validatePassword(password) {
   const passwordValue = password.value;
+
   if (passwordValue == "") {
     passwordEr.textContent = "비밀번호를 입력해주세요";
     renderErOutline(password);
@@ -53,6 +44,24 @@ password.addEventListener("focusout", function (e) {
     passwordEr.textContent = "비밀번호를 8자 이상 입력해주세요";
     renderErOutline(password);
   }
+}
+
+const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+email.addEventListener("focusout", function () {
+  validateEmail(email);
+});
+
+email.addEventListener("focusin", function () {
+  const emailValue = email.value;
+
+  if (emailPattern.test(emailValue)) {
+    renderOutline(email);
+  }
+});
+
+password.addEventListener("focusout", function () {
+  validatePassword(password);
 });
 
 password.addEventListener("focusin", function () {
@@ -84,3 +93,13 @@ loginBtn.addEventListener("click", function (e) {
   e.preventDefault();
   window.location.href = "./items.html";
 });
+
+export {
+  renderOutline,
+  renderErOutline,
+  deleteOutline,
+  validateEmail,
+  email,
+  password,
+  emailPattern,
+};

@@ -1,51 +1,21 @@
-const email = document.querySelector(".myEmail");
+import {
+  renderOutline,
+  renderErOutline,
+  deleteOutline,
+  validateEmail,
+  email,
+  password,
+  emailPattern,
+} from "./login.js";
+
 const nickname = document.querySelector(".myNickname");
-const password = document.querySelector(".myPw");
 const passwordCheck = document.querySelector(".checkMyPw");
 const signupBtn = document.querySelector(".signup");
-const emailEr = document.querySelector(".emailError");
 const nicknameEr = document.querySelector(".nicknameError");
 const passwordEr = document.querySelector(".passwordError");
 const passwordCheckEr = document.querySelector(".checkPwError");
 
-function renderOutline(value) {
-  value.style.outline = "2px solid #3692ff";
-}
-
-function renderErOutline(value) {
-  value.style.outline = "2px solid red";
-}
-
-function deleteOutline(value) {
-  value.style.outline = "0";
-}
-
-const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-email.addEventListener("focusout", function () {
-  const emailValue = email.value;
-
-  if (emailValue == "") {
-    emailEr.textContent = "이메일을 입력해주세요";
-    renderErOutline(email);
-  } else if (emailPattern.test(emailValue)) {
-    emailEr.textContent = "";
-    deleteOutline(email);
-  } else {
-    emailEr.textContent = "잘못된 이메일 형식입니다";
-    renderErOutline(email);
-  }
-});
-
-email.addEventListener("focusin", function () {
-  const emailValue = email.value;
-
-  if (emailPattern.test(emailValue)) {
-    renderOutline(email);
-  }
-});
-
-nickname.addEventListener("focusout", function () {
+function validateNickname(nickname) {
   const nicknameValue = nickname.value;
 
   if (nicknameValue == "") {
@@ -55,17 +25,9 @@ nickname.addEventListener("focusout", function () {
     nicknameEr.textContent = "";
     deleteOutline(nickname);
   }
-});
+}
 
-nickname.addEventListener("focusin", function () {
-  const nicknameValue = nickname.value;
-
-  if (nicknameValue !== "") {
-    renderOutline(nickname);
-  }
-});
-
-password.addEventListener("focusout", function () {
+function validatePassword(password) {
   const passwordValue = password.value;
 
   if (passwordValue == "") {
@@ -78,6 +40,34 @@ password.addEventListener("focusout", function () {
     passwordEr.textContent = "비밀번호를 8자 이상 입력해주세요";
     renderErOutline(password);
   }
+}
+
+email.addEventListener("focusout", function () {
+  validateEmail(email);
+});
+
+email.addEventListener("focusin", function () {
+  const emailValue = email.value;
+
+  if (emailPattern.test(emailValue)) {
+    renderOutline(email);
+  }
+});
+
+nickname.addEventListener("focusout", function () {
+  validateNickname(nickname);
+});
+
+nickname.addEventListener("focusin", function () {
+  const nicknameValue = nickname.value;
+
+  if (nicknameValue !== "") {
+    renderOutline(nickname);
+  }
+});
+
+password.addEventListener("focusout", function () {
+  validatePassword(password);
 });
 
 password.addEventListener("focusin", function () {
