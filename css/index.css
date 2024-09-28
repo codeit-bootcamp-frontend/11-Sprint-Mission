@@ -364,6 +364,7 @@ footer {
   .second-section {
     height: 2228px;
     margin: 0 auto;
+    gap: 10px 0;
     padding: 0px;
     .feature {
       height: 708px;
@@ -631,6 +632,9 @@ footer {
     height: 1310px;
     margin: 0 10px;
     padding: 0px;
+    gap: 10px 0px;
+    display: flex;
+    flex-direction: column;
     .feature {
       height: 417px;
 
