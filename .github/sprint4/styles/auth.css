@@ -61,6 +61,19 @@ input:focus {
   cursor: pointer;
 }
 
+/* 에러 시 실행할 테두리 변경*/
+.error-border {
+  border: 2px solid red !important;
+}
+
+/* 에러 메시지 스타일 */
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 8px;
+  display: none;
+}
+
 .social-login-container {
   background-color: #e6f2ff;
   border-radius: 8px;

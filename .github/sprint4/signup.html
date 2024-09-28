@@ -30,7 +30,10 @@
             type="email"
             placeholder="이메일을 입력해 주세요"
           />
+          <div id="email-empty-error" class="error-message">이메일을 입력해주세요.</div>
+          <div id="email-type-error" class="error-message">잘못된 이메일 형식입니다.</div>
         </div>
+
         <div class="input-item">
           <label for="nickname">닉네임</label>
           <input
@@ -39,7 +42,9 @@
             type="text"
             placeholder="닉네임을 입력해 주세요"
           />
+          <div id="nickname-empty-error" class="error-message">닉네임을 입력해주세요.</div>
         </div>
+
         <div class="input-item">
           <label for="password">비밀번호</label>
           <div class="input-wrapper">
@@ -49,6 +54,8 @@
               type="password"
               placeholder="비밀번호를 입력해 주세요"
             />
+            <div id="password-empty-error" class="error-message">비밀번호를 입력해주세요.</div>
+            <div id="password-count-error" class="error-message">비밀번호를 8자 이상 입력해주세요.</div>
             <img
               src="images/icons/eye-invisible.svg"
               alt="비밀번호 숨김"
@@ -56,6 +63,7 @@
             />
           </div>
         </div>
+
         <div class="input-item">
           <label for="passwordConfirmation">비밀번호 확인</label>
           <div class="input-wrapper">
@@ -65,6 +73,7 @@
               type="password"
               placeholder="비밀번호를 다시 한 번 입력해 주세요"
             />
+            <div id="double-check-error" class="error-message">비밀번호가 일치하지 않습니다.</div>
             <img
               src="images/icons/eye-invisible.svg"
               alt="비밀번호 숨김"
@@ -100,5 +109,6 @@
         이미 회원이신가요? <a href="signin.html">로그인</a>
       </div>
     </div>
+    <script src="./signup.js" type="module"></script>
   </body>
 </html>
