@@ -94,6 +94,11 @@ button:hover {
   cursor: pointer;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  background-color: #9ca3af;
+}
+
 .simple-login {
   display: flex;
   justify-content: space-between;
