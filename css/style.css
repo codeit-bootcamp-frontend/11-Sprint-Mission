@@ -1,23 +1,33 @@
+* {
+  --z-index-low: 10;
+  --z-index-medium: 50;
+  --z-index-high: 100;
+}
+
 html {
   font-family: "Pretendard", "Noto Sans KR", sans-serif;
   word-break: keep-all;
 }
 
-header {
+header { /* header가 한없이 길어지는 것을 막기 위해 넣어봤는데 실패하였습니다. */
+  margin: 0 auto;
+  padding: 0 200px; /*figma에는 9 400 주라고 되어있는데, 답지(?)에는 이렇게 있어요.*/
+}
+
+.header {
+  width: 100%;
   position: sticky;
   top: 0;
   left: 0;
-  z-index: 99; /* 가려지는 상황이 있어 임의로 추가함.*/
-  width: 100%;
+  z-index: var(--z-index-high); 
+  width: auto;
   height: 70px;
   border-bottom: 1px solid var(--white-5);
-  padding: 0 200px; /*figma에는 9 400 주라고 되어있는데, 답지(?)에는 이렇게 있어요.*/
   gap: 10px;
   background-color: var(--white);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
 }
 
 .logos {
@@ -211,7 +221,7 @@ footer {
 
 /* Tablet 스타일 (768px ~ 1199px) 1505%이상의 화면*/
 @media (max-width: 1199px) {
-  header {
+  .header {
     padding: 0 24px;
   }
 
@@ -253,7 +263,6 @@ footer {
   .mainImage {
     height: 100%;
     width: 100%;
-    margin-top: 431px;
   }
 
   #see {
@@ -314,7 +323,7 @@ footer {
 
 /* Mobile 스타일 (375px ~ 767px) 250%이상의 화면*/
 @media (max-width: 767px) {
-  header {
+  .header {
     padding: 0 16px;
     width: 100%;
     gap: 126px;

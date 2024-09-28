@@ -40,6 +40,7 @@
                   placeholder="이메일을 입력해주세요"
                   required
                 />
+                <span class="errorMasage" id="emailError"></span>
               </div>
 
               <div class="inputContainer password">
@@ -54,9 +55,9 @@
                 <button class="seePassword" type="button">
                   <img src="../img/close-eye.png" alt="비밀번호 보기" />
                 </button>
+                <span class="errorMasage" id="passwordError"></span>
               </div>
             </div>
-
             <button type="submit" class="loginButton">로그인</button>
           </div>
 
@@ -79,5 +80,6 @@
         </form>
       </main>
     </div>
+    <script type="module" src="/login/js/index.js"></script>
   </body>
 </html>

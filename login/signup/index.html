@@ -32,6 +32,7 @@
                 placeholder="이메일을 입력해주세요"
                 required
               />
+              <span class="errorMasage" id="emailError"></span>
             </div>
 
             <div class="inputContainers">
@@ -44,27 +45,30 @@
                   placeholder="닉네임을 입력해주세요"
                   required
                 />
+                <span class="errorMasage" id="nicknameError"></span>
               </div>
 
-            <div class="inputContainer password">
-              <label class="labels " for="password">비밀번호</label>
-              <input
-                type="password"
-                id="password"
-                class="inputs"
-                placeholder="비밀번호를 입력해주세요"
-                required
-              />
-              <button class="seePassword" type="button" >
-                <img src="../../img/close-eye.png" alt="비밀번호 보기" />
-              </button>
+              <div class="inputContainer password">
+                <label class="labels" for="password">비밀번호</label>
+                <input
+                  type="password"
+                  id="password"
+                  class="inputs"
+                  placeholder="비밀번호를 입력해주세요"
+                  required
+                />
+                <button class="seePassword" type="button">
+                  <img src="/img/close-eye.png" alt="비밀번호 보기" />
+                </button>
+                <span class="errorMasage" id="passwordError"></span>
+              </div>
             </div>
 
             <div class="inputContainer password">
               <label class="labels " for="password">비밀번호 확인</label>
               <input
                 type="password"
-                id="password"
+                id="comparePassword"
                 class="inputs"
                 placeholder="비밀번호를 다시 한 번입력해주세요"
                 required
@@ -72,6 +76,7 @@
               <button class="seePassword" type="button" >
                 <img src="../../img/close-eye.png" alt="비밀번호 보기" />
               </button>
+              <span class="errorMasage" id="comparePasswordError"></span>
             </div>
           </div>
 
@@ -93,5 +98,6 @@
       </form>
     </main>
   </div>
+  <script type="module" src="/login/js/index.js"></script>
 </body>
 </html>
