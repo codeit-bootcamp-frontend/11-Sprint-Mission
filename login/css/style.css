@@ -134,6 +134,7 @@ body {
 
 .loginButton.active {
   background-color: var(--blue-100);
+  cursor: pointer;
 }
 
 .socialLogin {

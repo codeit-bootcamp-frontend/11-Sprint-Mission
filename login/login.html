@@ -15,19 +15,15 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Poppins:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../../css/reset.css" />
-    <link rel="stylesheet" href="../../css/color.css" />
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/color.css" />
+    <link rel="stylesheet" href="./css/style.css" />
     <title>판다마켓 로그인</title>
   </head>
   <body>
     <div class="loginContainer">
       <header class="logoContainer">
-        <img
-          class="logo"
-          src="../../img/판다 얼굴103.png"
-          alt="판다마켓 로고"
-        />
+        <img class="logo" src="../img/판다 얼굴103.png" alt="판다마켓 로고" />
         <a href="/" id="title" class="button logoName">판다마켓</a>
       </header>
 
@@ -47,52 +43,24 @@
                 <span class="errorMasage" id="emailError"></span>
               </div>
 
-              <div class="inputContainers">
-                <div class="inputContainer">
-                  <label class="labels" for="nickname">닉네임</label>
-                  <input
-                    type="text"
-                    id="nickname"
-                    class="inputs"
-                    placeholder="닉네임을 입력해주세요"
-                    required
-                  />
-                  <span class="errorMasage" id="nicknameError"></span>
-                </div>
-
-                <div class="inputContainer password">
-                  <label class="labels" for="password">비밀번호</label>
-                  <input
-                    type="password"
-                    id="password"
-                    class="inputs"
-                    placeholder="비밀번호를 입력해주세요"
-                    required
-                  />
-                  <button class="seePassword" type="button">
-                    <img src="/img/close-eye.png" alt="비밀번호 보기" />
-                  </button>
-                  <span class="errorMasage" id="passwordError"></span>
-                </div>
-              </div>
-
               <div class="inputContainer password">
-                <label class="labels" for="password">비밀번호 확인</label>
+                <label class="labels" for="password">비밀번호</label>
                 <input
                   type="password"
-                  id="comparePassword"
+                  id="password"
                   class="inputs"
-                  placeholder="비밀번호를 다시 한 번입력해주세요"
+                  placeholder="비밀번호를 입력해주세요"
                   required
                 />
                 <button class="seePassword" type="button">
-                  <img src="../../img/close-eye.png" alt="비밀번호 보기" />
+                  <img id='eyeButton' class='eyeBtn' src="/img/close-eye.png" alt="비밀번호 보기" />
                 </button>
-                <span class="errorMasage" id="comparePasswordError"></span>
+                <span class="errorMasage" id="passwordError"></span>
               </div>
             </div>
-
-            <button type="submit" class="loginButton">회원가입</button>
+            <button type="submit" class="loginButton" id="loginButton" disabled>
+              로그인
+            </button>
           </div>
 
           <div class="socialLogin">
@@ -101,21 +69,21 @@
             >
             <div class="socialLink">
               <a href="https://www.google.com/"
-                ><img src="../../img/google-logo.png" alt="Google"
+                ><img src="../img/google-logo.png" alt="Google"
               /></a>
               <a href="https://www.kakaocorp.com/page/"
-                ><img src="../../img/kakao-logo.png" alt="Kakao"
+                ><img src="../img/kakao-logo.png" alt="Kakao"
               /></a>
             </div>
           </div>
 
           <footer class="helpLinks">
-            <p>이미 회원이신가요?</p>
-            <a class="buttonLog" href="../index.html">로그인</a>
+            <p>판다마켓이 처음이신가요?</p>
+            <a class="buttonLog" href="/login/signup.html">회원가입</a>
           </footer>
         </form>
       </main>
     </div>
-    <script type="module" src="/login/js/signup.js"></script>
+    <script type="module" src="/login/js/login.js"></script>
   </body>
 </html>

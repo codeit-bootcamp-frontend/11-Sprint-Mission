@@ -4,8 +4,6 @@ const regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
 const emailInput = document.getElementById('email');
 const emailError = document.getElementById('emailError');
 
-
-
 function checkEmail() {
 const email = emailInput.value.trim(); 
   if (emailInput.value.length < 1) { 
@@ -62,26 +60,75 @@ function comparePasswords() {
   } 
 }
 
-const loginButton = document.getElementById('loginButton')
+const loginButton = document.getElementById('loginButton');
+//값을 밖으로 빼면 로그인 사이트가 함수 실행이 안되고 안으로 넣으면 comparePassword값을 무시
 
-function activationLogin() {
-  const email = emailInput.value.trim(); 
-  if (!regex.test(email) &&
-    password.value.length >= 8
-  ) {
+function activationLogin2() {
+
+  const emailValue = emailInput.value.trim(); 
+  const passwordValue = password.value.trim(); 
+  const nicknameValue = nickname.value.trim();
+  const comparePasswordValue = comparePassword.value.trim();
+
+  if (regex.test(emailValue) &&
+    passwordValue.length >= 8 &&
+    nicknameValue.length > 1 &&
+    passwordValue === comparePasswordValue //왜? comparePassword값을 입력도 전에 활성화가 되죠? value값이 중복해서 붙으면 안됨.
+  ) { // 이제는 활성화가 안됨. 다른 값은 입력하자 마자 값이 나오는데 왜 nickname 과 comparePassword만 값이 바로 나오지 않지? nickname.addEventListener('input', activationLogin); 이걸 입력하면 됨.
+    loginButton.disabled = false
     loginButton.classList.add('active');
   } else {
+    loginButton.disabled = true
     loginButton.classList.remove('active');
-  } 
-  console.log(!regex.test(email))
+  }  
 }
 
+function activationLogin() {
+  const emailValue = emailInput.value.trim(); 
+  const passwordValue = password.value.trim(); 
+  if (regex.test(emailValue) &&
+    passwordValue.length >= 8
+  ) { 
+    loginButton.disabled = false
+    loginButton.classList.add('active');
+  } else {
+    loginButton.disabled = true
+    loginButton.classList.remove('active');
+  }  
+}
 
+const eyeButton = document.getElementById('eyeButton')
+const eyeButton2 = document.getElementById('eyeButton2')
+ 
+function checkingPassword(){
+  const currentType = password.getAttribute("type");
+  if (currentType === "password") {
+    password.setAttribute("type", "text");
+    eyeButton.src = "../img/open-eye.png"; 
+  } else {
+    password.setAttribute("type", "password");
+    eyeButton.src = "../img/close-eye.png"; 
+  }
+}
+
+function checkingPassword2(){
+  const currentType = comparePassword.getAttribute("type");
+  if (currentType === "password") {
+    comparePassword.setAttribute("type", "text");
+    eyeButton2.src = "../img/open-eye.png"; 
+  } else {
+    comparePassword.setAttribute("type", "password");
+    eyeButton2.src = "../img/close-eye.png"; 
+  }
+}
 
 export {
   comparePasswords,
   checkEmail,
   checkPassword,
   activationLogin,
+  activationLogin2,
   inputNickname,
+  checkingPassword,
+  checkingPassword2,
 }
