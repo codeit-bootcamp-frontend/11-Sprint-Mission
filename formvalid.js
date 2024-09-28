@@ -1,5 +1,5 @@
 const inputs = document.querySelectorAll('input');
-const btn = document.querySelector('button');
+const btn = document.getElementById('button');
 const errorMessage = document.querySelectorAll('.error-msg')
 
 const emailInput = document.getElementById('email');
@@ -64,15 +64,27 @@ function validateConfirmPassword(passwordEl, confirmEl, messageEl) {
 // 이벤트 리스너
 emailInput.addEventListener('focusout', () => {
     if(validateEmpty(emailInput, emailError)) validateEmail(emailInput, emailError);
+    updateButton();
 })
 
-if (nicknameInput) nicknameInput.addEventListener('focusout', () => validateEmpty(nicknameInput, nicknameError));
+if (nicknameInput) {
+    nicknameInput.addEventListener('focusout', () => {
+        validateEmpty(nicknameInput, nicknameError);
+        updateButton();
+    });
+}
 
 passwordInput.addEventListener('focusout', () => {
     if(validateEmpty(passwordInput, passwordError)) validatePassword(passwordInput, passwordError);
+    updateButton();
 })
 
-if (confirmPasswordInput) confirmPasswordInput.addEventListener('focusout', () => validateConfirmPassword(passwordInput, confirmPasswordInput, confirmPasswordError));
+if (confirmPasswordInput) {
+    confirmPasswordInput.addEventListener('focusout', () => {
+        validateConfirmPassword(passwordInput, confirmPasswordInput, confirmPasswordError);
+        updateButton();
+    });
+}
 
 
 // ================ 입력 필드 체크, 버튼 업데이트 ================
@@ -88,6 +100,3 @@ function checkErrorMessage(errorMessages) {
 function updateButton(){
     checkErrorMessage(errorMessage) ? btn.classList.add('active') : btn.classList.remove('active');
 }
-
-// 이벤트 리스너 (focusout이 발생할때)
-inputs.forEach (input => input.addEventListener('focusout', updateButton));

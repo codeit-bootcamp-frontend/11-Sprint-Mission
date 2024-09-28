@@ -85,8 +85,8 @@
     line-height: 24px;
 }
 
-.login-form button,
-.signup-form button {
+.login-form a,
+.signup-form a {
     background-color: var(--gray400);
     padding: 16px 124px;
     color: #ffffff;
@@ -97,13 +97,13 @@
     border: none;
     border-radius: 40px;
     pointer-events: none;
+    text-decoration: none;
 }
 
-.login-form button.active,
-.signup-form button.active {
+.login-form a.active,
+.signup-form a.active {
     background-color: var(--blue);
     pointer-events: auto;
-    cursor: pointer;
 }
 
 .sosial-login {
