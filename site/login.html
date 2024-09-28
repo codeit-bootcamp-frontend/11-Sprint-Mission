@@ -19,9 +19,10 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../style/common.css" />
-    <link rel="stylesheet" href="../style/form-style.css" />
-    <link rel="stylesheet" href="../style/login.css" />
+    <link rel="stylesheet" href="/style/common.css" />
+    <link rel="stylesheet" href="/style/form-style.css" />
+    <link rel="stylesheet" href="/style/login.css" />
+    <link rel="stylesheet" href="/style/mark.css" />
   </head>
 
   <body>
@@ -36,16 +37,19 @@
         <main>
           <div class="join-main">
             <div class="join">
-              <form>
+              <form id="login-form" action="/site/items.html" method="GET">
                 <div class="email-form">
                   <label for="input-email" class="email-form__input"
                     >이메일<br />
                     <input
                       id="input-email"
+                      class="input"
                       name="email"
                       type="email"
                       placeholder="이메일을 입력해주세요"
+                      data-valid="false"
                     />
+                    <span class="invalid-text"></span>
                   </label>
                 </div>
                 <div class="password-form">
@@ -53,17 +57,25 @@
                     >비밀번호<br />
                     <input
                       id="input-password"
+                      class="input"
                       name="password"
                       type="password"
                       placeholder="비밀번호를 입력해주세요"
+                      data-valid="false"
                     />
+                    <span class="invalid-text"></span>
                   </label>
                 </div>
+                <button
+                  type="submit"
+                  id="login-button"
+                  class="button large-button"
+                  disabled
+                >
+                  로그인
+                </button>
               </form>
             </div>
-            <button type="button" id="login-button" class="button large-button">
-              로그인
-            </button>
           </div>
         </main>
         <aside>
@@ -89,6 +101,6 @@
         </footer>
       </div>
     </div>
-    <script type="module" src="../function/index.js"></script>
+    <script type="module" src="/function/login.js"></script>
   </body>
 </html>
