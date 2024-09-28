@@ -58,7 +58,7 @@ function submitSignup(e) {
     });
 
     ///signin.html로 이동 
-    window.location.href = '/index.html';
+    window.location.href = '/signin.html';
   } else {
     console.log('입력이 부족합니다.')
   }

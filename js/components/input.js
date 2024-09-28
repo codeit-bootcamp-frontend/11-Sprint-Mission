@@ -33,7 +33,7 @@ export function checkInputFormat(event, passwordInput) {
       validate: (value) => value.length >= 1,
     },
     checkpassword : {
-      hasValueError: '비밀번호을 다시 확인해주세요',
+      hasValueError: '비밀번호을 다시 입력해주세요',
       formatError: '비밀번호가 일치하지 않습니다.',
       validate: (value) => passwordInput === value,
     }
@@ -57,11 +57,11 @@ export function checkInputFormat(event, passwordInput) {
 
     if(!hasValue) {
       input.classList.toggle('error', true);
-      console.log(hasValueError);
+      //console.log(hasValueError);
       return [inputType, false, hasValueError];
     } else if(!validate(input.value)) {
       input.classList.toggle('error', true);
-      console.log(formatError);
+      //console.log(formatError);
       return [inputType, false, formatError];
     } else {
       input.classList.toggle('error', false);
@@ -69,7 +69,6 @@ export function checkInputFormat(event, passwordInput) {
     }
 
   }
-  //return [inputType, false];
 }
 
 //input에 이메일 형식을 test하는 함수 
@@ -88,7 +87,7 @@ export function addError(inputError) {
   const errorMessage = inputError[2]; // 에러 메시지
 
   // inputName에 따라 관련 p 요소 선택
-  const warning = document.querySelector(`div[id="${inputName}-input-container"]`).lastElementChild;
+  const warning = document.querySelector(`#${inputName}-input-container`).lastElementChild;
 
   if (warning) {
     warning.innerHTML = errorMessage;
