@@ -2,32 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
   <link rel="stylesheet" href="style.css">
   <title>판다마켓</title>
 </head>
 <body>
   <!-- 머리 -->
   <nav class="navbar">
-    <div class="navbar_logo">
-      <img src="/img_file/판다 얼굴.png" alt="판다 얼굴 " class="navbar_panda">
-      <a href="/" class="navbar_link">판다마켓</a>
-    </div>
+      <a href="/" class="navbar_link">
+        <img src="/img_file/Property 1=lg.png" alt="판다 로고" class="navbar_logo">
+      </a>
     <a href="/login.html" class="navbar_login">로그인</a>
   </nav>
   <!-- 몸통 -->
   <div class="content">
     <section class="content_top_title">
-      <div class="content_top_title_bundle">
+      <div class="content_top_title_components">
         <div class="content_top_title_text">
-          <p class="content_top_title_intro">일상의 모든 물건을<br>거래해 보세요</p>
-          <a href="/items" class="content_top_title_button">구경하러 가기</a>
+          <h1 class="content_top_title_intro">일상의 모든 물건을 <br>거래해 보세요</h1>
+          <button class="content_top_title_button" onclick="location.href='/items'">구경하러 가기</button>
         </div>
         <img src="/img_file/Img_home_top.png">
       </div>
     </section>
     <section class="content_item_page">
-      <div class="content_item_page_bundle">
+      <div class="content_item_page_components">
         <img src="/img_file/Img_home_01.png" class="content_item_page_img">
         <div class="content_item_page_text">
           <p class="content_item_page_intro">Hot item</p>
@@ -38,7 +37,7 @@
       </div>
     </section>
     <section class="content_search_page">
-      <div class="content_search_page_bundle">
+      <div class="content_search_page_components">
         <div class="content_search_page_text">
           <p class="content_search_page_intro">Search</p>
           <p class="content_search_page_title">구매를 원하는<br>상품을 검색하세요</p>
@@ -49,7 +48,7 @@
       </div>
     </section>
     <section class="content_register_page">
-      <div class="content_register_page_bundle">
+      <div class="content_register_page_components">
         <img src="/img_file/Img_home_03.png" class="content_register_page_img">
         <div class="content_register_page_text">
           <p class="content_register_page_intro">Register</p>
@@ -59,11 +58,10 @@
         </div>
       </div>
     </section>
-    <div class="blank"></div>
     <section class="content_bottom_title">
-      <div class="content_bottom_title_bundle">
+      <div class="content_bottom_title_components">
         <div class="content_bottom_title_text">
-          <p class="content_bottom_title_intro">믿을 수 있는<br>판다마켓 중고 거래</p>
+          <h1 class="content_bottom_title_intro">믿을 수 있는 <br>판다마켓 중고 거래</h1>
         </div>
         <img src="/img_file/Img_home_bottom.png">
       </div>

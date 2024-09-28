@@ -122,3 +122,18 @@ button {
 button.active {
   background-color: rgba(54, 146, 255, 1);
 }
+
+/* PC */
+@media (min-width: 1200px) {
+
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1199px) {
+
+}
+
+/* Mobile */
+@media (min-width: 375px) and (max-width: 767px) {
+
+}
