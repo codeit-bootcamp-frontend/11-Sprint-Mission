@@ -11,19 +11,27 @@ const passwordToggle = get("#password_toggle");
 const inputsError = get("#error")
 
 
-function checkEmailMessage(email) {
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function vaildEmail (email) {
+     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+     return email && emailPattern.test(email);
+   }
+
+function ValidPassword(password) {
+  return password && password.length >= 8;
+}
+
+
+function vaildateEmail(email) {
   if (!email) {
     inputsError[0].textContent = "이메일을 입력해주세요."
-  } else if (!emailPattern.test(email)) {
+  } else if (!vaildEmail(email)) {
     inputsError[0].textContent = "잘못된 이메일 형식입니다."
   } else {
     inputsError[0].textContent = ""
   }
 }
 
-function checkPasswordMessage(password) {
-  
+function vaildatePassword(password) {
   if (!password) {
     inputsError[1].textContent = "비밀번호를 입력해주세요."
   } else if (password.length < 8) {
@@ -34,25 +42,21 @@ function checkPasswordMessage(password) {
 }
 
 function changeBorderErrorStatus(condition, element) {
-  if(condition) {
-    element.style.border = "2px solid red";
-  } else {
-    element.style.border = "none";
-  }
+    element.style.border = condition ? "2px solid red" : "none";
 }
 
 emailInput.addEventListener("focusout", (event) => {
   const { value } = event.target;
-  const errorEmail = !value && !checkEmail(value)
+  const errorEmail = !vaildEmail(value);
 
-  checkEmailMessage(value)
+  vaildateEmail(value)
   changeBorderErrorStatus(errorEmail, emailInput)
 })
 
 paswordInput.addEventListener("focusout", (event) => {
   const { value } = event.target;
-  const errorPassword = !value && value.length < 8
+  const errorPassword = !ValidPassword(value);
 
-  checkPasswordMessage(value)
+  vaildatePassword(value)
   changeBorderErrorStatus(errorPassword, paswordInput)
 })
