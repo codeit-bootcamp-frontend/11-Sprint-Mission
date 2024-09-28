@@ -18,7 +18,6 @@ function deleteOutline(value) {
 
 function validateEmail(email) {
   const emailValue = email.value;
-
   if (emailValue == "") {
     emailEr.textContent = "이메일을 입력해주세요";
     renderErOutline(email);
@@ -33,7 +32,6 @@ function validateEmail(email) {
 
 function validatePassword(password) {
   const passwordValue = password.value;
-
   if (passwordValue == "") {
     passwordEr.textContent = "비밀번호를 입력해주세요";
     renderErOutline(password);
