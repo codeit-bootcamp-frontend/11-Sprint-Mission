@@ -8,19 +8,31 @@ const nicknameEr = document.querySelector(".nicknameError");
 const passwordEr = document.querySelector(".passwordError");
 const passwordCheckEr = document.querySelector(".checkPwError");
 
+function renderOutline(value) {
+  value.style.outline = "2px solid #3692ff";
+}
+
+function renderErOutline(value) {
+  value.style.outline = "2px solid red";
+}
+
+function deleteOutline(value) {
+  value.style.outline = "0";
+}
+
 email.addEventListener("focusout", function () {
   const emailValue = email.value;
   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   if (emailValue == "") {
     emailEr.textContent = "이메일을 입력해주세요";
-    email.style.outline = "2px solid red";
+    renderErOutline(email);
   } else if (emailPattern.test(emailValue)) {
     emailEr.textContent = "";
-    email.style.outline = "0";
+    deleteOutline(email);
   } else {
     emailEr.textContent = "잘못된 이메일 형식입니다";
-    email.style.outline = "2px solid red";
+    renderErOutline(email);
   }
 });
 
@@ -29,7 +41,7 @@ email.addEventListener("focusin", function () {
   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   if (emailPattern.test(emailValue)) {
-    email.style.outline = "2px solid #3692ff";
+    renderOutline(email);
   }
 });
 
@@ -38,10 +50,10 @@ nickname.addEventListener("focusout", function () {
 
   if (nicknameValue == "") {
     nicknameEr.textContent = "닉네임을 입력해주세요";
-    nickname.style.outline = "2px solid red";
+    renderErOutline(nickname);
   } else {
     nicknameEr.textContent = "";
-    nickname.style.outline = "0";
+    deleteOutline(nickname);
   }
 });
 
@@ -49,7 +61,7 @@ nickname.addEventListener("focusin", function () {
   const nicknameValue = nickname.value;
 
   if (nicknameValue !== "") {
-    nickname.style.outline = "2px solid #3692ff";
+    renderOutline(nickname);
   }
 });
 
@@ -58,13 +70,13 @@ password.addEventListener("focusout", function () {
 
   if (passwordValue == "") {
     passwordEr.textContent = "비밀번호를 입력해주세요";
-    password.style.outline = "2px solid red";
+    renderErOutline(password);
   } else if (passwordValue.length >= 8) {
     passwordEr.textContent = "";
-    password.style.outline = "0";
+    deleteOutline(password);
   } else {
     passwordEr.textContent = "비밀번호를 8자 이상 입력해주세요";
-    password.style.outline = "2px solid red";
+    renderErOutline(password);
   }
 });
 
@@ -72,7 +84,7 @@ password.addEventListener("focusin", function () {
   const passwordValue = password.value;
 
   if (passwordValue.length >= 8) {
-    password.style.outline = "2px solid #3692ff";
+    renderOutline(password);
   }
 });
 
@@ -83,10 +95,10 @@ function checkPassword() {
   if (passwordCheckValue !== "") {
     if (passwordValue !== passwordCheckValue) {
       passwordCheckEr.textContent = "비밀번호가 일치하지 않습니다";
-      passwordCheck.style.outline = "2px solid red";
+      renderErOutline(passwordCheck);
     } else {
       passwordCheckEr.textContent = "";
-      passwordCheck.style.outline = "0";
+      deleteOutline(passwordCheck);
     }
   }
 }
@@ -96,7 +108,7 @@ passwordCheck.addEventListener("focusin", function () {
   const passwordValue = password.value;
 
   if (passwordValue == passwordCheckValue) {
-    passwordCheck.style.outline = "2px solid #3692ff";
+    renderOutline(passwordCheck);
   }
 });
 
