@@ -149,13 +149,13 @@ input:focus {
 
 @media (min-width: 365px) and (max-width: 767px) {
   body {
-    max-width: 400px;
     margin: 16px;
   }
 
   .join-page {
     margin: 80px 16px;
     width: 100%;
+    max-width: 400px;
   }
 
   .head > img {
