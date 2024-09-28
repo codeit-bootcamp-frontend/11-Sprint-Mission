@@ -90,6 +90,8 @@ function updateButtonState() {
   const hasPwdCheckError = isPwdCheckEmpty(pwdCheckInput.value) || isPwdMismatch(passwordInput.value, pwdCheckInput.value);
   // prettier-ignore
   const isFormValid = !hasEmailError && !hasNicknameError && !hasPasswordError && !hasPwdCheckError;
+  // 버튼 활성화 상태 설정
+  signupBtn.disabled = !isFormValid;
 }
 
 // 해당하는 input만 유효성 검사를 시행하고 버튼 상태를 업데이트
