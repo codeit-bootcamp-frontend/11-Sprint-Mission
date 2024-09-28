@@ -64,3 +64,10 @@ passwordInput.addEventListener('focusout', () => {
 // input 변경시 버튼 실시간으로 업데이트
 emailInput.addEventListener('input', updateButtonState);
 passwordInput.addEventListener('input', updateButtonState);
+
+loginBtn.addEventListener('click', (event) => {
+  if (!loginBtn.disabled) {
+    event.preventDefault();
+    location.href = 'items.html';
+  }
+});
