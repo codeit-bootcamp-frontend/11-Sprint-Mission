@@ -45,6 +45,14 @@ function changeBorderErrorStatus(condition, element) {
     element.style.border = condition ? "2px solid red" : "none";
 }
 
+function updateLoginButtonStatus (){
+  const emailValue = emailInput.value;
+  const passwordValue = paswordInput.value;
+  const errorEmail = !vaildEmail(emailValue);
+  const errorPassword = !ValidPassword(passwordValue);
+  return errorEmail || errorPassword;
+}
+
 emailInput.addEventListener("focusout", (event) => {
   const { value } = event.target;
   const errorEmail = !vaildEmail(value);
@@ -62,9 +70,12 @@ paswordInput.addEventListener("focusout", (event) => {
 })
 
 loginButton.addEventListener("mouseover", (event) => {
-  const emailValue = emailInput.value;
-  const passwordValue = paswordInput.value;
-  const errorEmail = !vaildEmail(emailValue);
-  const errorPassword = !ValidPassword(passwordValue);
-  loginButton.disabled = errorEmail || errorPassword;
+  loginButton.disabled = updateLoginButtonStatus ()
+})
+
+loginButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  if (updateLoginButtonStatus () === false) {
+    location.href = "../items/items.html"
+  } 
 })
