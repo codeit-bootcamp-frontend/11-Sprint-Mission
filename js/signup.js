@@ -1,4 +1,4 @@
-import { activePasswordVisibility, checkInputFormat} from './components/label.js'
+import { activePasswordVisibility, checkInputFormat, addError} from './components/input.js'
 
 const signupEmail = document.querySelector('#signup-email');
 const signupNickname = document.querySelector('#signup-nickname');
@@ -16,8 +16,9 @@ let isCheckPasswordValid = false;
   input.addEventListener('focusout', (e) => {
     checkInputFormat(event, signupPassword.value);
     let isValid = checkInputFormat(event, signupPassword.value);
-    console.log(isValid);
+    //console.log(isValid);
     setSignUpInputValid(isValid); 
+    addError(isValid); //에러 메세지 추가하기
   });
 })
 
@@ -44,7 +45,26 @@ function activeSignupBtn(){
   input.addEventListener('input', activeSignupBtn);
 })
 
+//로그인 버튼 제출했을 때의 함수 = 로그인 버튼 클릭했을 때의 함수
+function submitSignup(e) {
+  e.preventDefault(); 
 
+  if(activeSignupBtn()){
+    console.log('로그인 제출:', {
+      signupEmail: signupEmail.value,
+      signupNickname: signupNickname.value,
+      signupPassword: signupPassword.value,
+      signupCheckPassword: signupCheckPassword.value
+    });
+
+    ///signin.html로 이동 
+    window.location.href = '/index.html';
+  } else {
+    console.log('입력이 부족합니다.')
+  }
+
+}
+signupBtn.addEventListener('click', submitSignup);
 
 
 

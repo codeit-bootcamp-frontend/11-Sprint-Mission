@@ -10,11 +10,11 @@ export function activePasswordVisibility(visibilityToggle) {
   visibilityToggle.previousElementSibling.setAttribute('type', newInput);
 }
 
-//input 값 올바른지 확인 후, 빨간색 아웃라인을 추가하는 함수 
 
+//input 값 올바른지 확인 후, 빨간색 아웃라인을 추가하는 함수 
 export function checkInputFormat(event, passwordInput) {
   const input = event.target;
-  console.log(input);
+  //console.log(input);
   const hasValue = event.target.value.length > 0; //기본적으로 label에 값이 있는지 확인하기
 
   const checkInputRules = {
@@ -33,6 +33,7 @@ export function checkInputFormat(event, passwordInput) {
       validate: (value) => value.length >= 1,
     },
     checkpassword : {
+      hasValueError: '비밀번호을 다시 확인해주세요',
       formatError: '비밀번호가 일치하지 않습니다.',
       validate: (value) => passwordInput === value,
     }
@@ -52,41 +53,23 @@ export function checkInputFormat(event, passwordInput) {
   if(inputType) {
     const { hasValueError, formatError, validate} = checkInputRules[inputType];
 
-    console.log('password: ' + passwordInput);
+    //console.log('password: ' + passwordInput);
 
     if(!hasValue) {
       input.classList.toggle('error', true);
       console.log(hasValueError);
-      return [inputType, false];
+      return [inputType, false, hasValueError];
     } else if(!validate(input.value)) {
       input.classList.toggle('error', true);
       console.log(formatError);
-      return [inputType, false];
+      return [inputType, false, formatError];
     } else {
       input.classList.toggle('error', false);
-      return [inputType, true];
+      return [inputType, true, ''];
     }
 
   }
-  return [inputType, false];
-}
-
-
-function updateSignUpValidity(inputType, isValid) {
-  switch (inputType) {
-    case 'email':
-      let isEmailValid = isValid;
-      break;
-    case 'password':
-      let isPasswordValid = isValid;
-      break;
-    case 'nickname':
-      let isNicknameValid = isValid;
-      break;
-    case 'checkpassword':
-      let isCheckPasswordValid = isValid;
-      break;
-  }
+  //return [inputType, false];
 }
 
 //input에 이메일 형식을 test하는 함수 
@@ -97,3 +80,23 @@ function checkEmailFormat(input){
 
   return email_format.test(input);
 }
+
+
+// 에러 메세지 추가하기
+export function addError(inputError) {
+  const inputName = inputError[0]; // inputError의 첫 번째 요소 (이메일, 비밀번호 등)
+  const errorMessage = inputError[2]; // 에러 메시지
+
+  // inputName에 따라 관련 p 요소 선택
+  const warning = document.querySelector(`div[id="${inputName}-input-container"]`).lastElementChild;
+
+  if (warning) {
+    warning.innerHTML = errorMessage;
+  }
+
+  console.log('inputError[2]: ' + errorMessage);
+}
+
+
+
+
