@@ -60,3 +60,11 @@ paswordInput.addEventListener("focusout", (event) => {
   vaildatePassword(value)
   changeBorderErrorStatus(errorPassword, paswordInput)
 })
+
+loginButton.addEventListener("mouseover", (event) => {
+  const emailValue = emailInput.value;
+  const passwordValue = paswordInput.value;
+  const errorEmail = !vaildEmail(emailValue);
+  const errorPassword = !ValidPassword(passwordValue);
+  loginButton.disabled = errorEmail || errorPassword;
+})
