@@ -16,9 +16,11 @@ function deleteOutline(value) {
   value.style.outline = "0";
 }
 
+const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
 email.addEventListener("focusout", function (e) {
   const emailValue = email.value;
-  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
   if (emailValue == "") {
     emailEr.textContent = "이메일을 입력해주세요";
     renderErOutline(email);
@@ -33,7 +35,6 @@ email.addEventListener("focusout", function (e) {
 
 email.addEventListener("focusin", function () {
   const emailValue = email.value;
-  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   if (emailPattern.test(emailValue)) {
     renderOutline(email);
@@ -64,7 +65,6 @@ password.addEventListener("focusin", function () {
 
 function login() {
   const emailValue = email.value;
-  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const isEmailValid = emailValue !== "" && emailPattern.test(emailValue);
 
   const passwordValue = password.value;
