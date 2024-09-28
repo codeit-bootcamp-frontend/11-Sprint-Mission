@@ -148,3 +148,33 @@
     line-height: 17.9px;
     color: #3182F6;
 }
+
+/* Mobile: 375px 이상 ~ 767px 이하 */
+@media (min-width: 375px) and (max-width: 767px) {
+
+    .login-body,
+    .signup-body {
+        padding: 0 16px;
+    }
+    .container.login,
+    .container.signup {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .logo.login img,
+    .logo.signup img {
+        width: 198px;
+        height: 66px;
+    }
+
+    .login-form,
+    .signup-form {
+        width: 100%;
+    }
+
+    .login-form input,
+    .signup-form input {
+        width: 100%;
+    }
+}
