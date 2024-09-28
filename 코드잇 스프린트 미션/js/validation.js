@@ -4,7 +4,7 @@ export function isEmailEmpty(email) {
 }
 
 export function isEmailValid(email) {
-  const emailFormat = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
+  const emailFormat = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   return emailFormat.test(email.trim());
 }
 
