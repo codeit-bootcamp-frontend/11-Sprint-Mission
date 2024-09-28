@@ -16,13 +16,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //오류 메세지 보여주기
     function show(input, errorId) {
+        if(!errorId) return; //errorId가 null일 경우 아무 작업도 하지 않음 (userId에는 valid에러가 없기 때문에 추가한 코드)
         const errorElement = document.getElementById(errorId);
         errorElement.style.display = "block";
+        //멘토님이 display 속성을 block, none으로 하는 것 보다 opacity를 바꾸는게 좋다고 언급.
         input.style.border = "1px solid #f74747";
     }
 
     //오류 메세지 가리기
     function hide(input, errorId) {
+        if(!errorId) return;
         const errorElement = document.getElementById(errorId);
         //멘토님이 display 속성을 none으로 하는 것 보다 opacity를 바꾸는게 좋다고 언급.
         errorElement.style.display = "none";
@@ -101,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     inputEvents.forEach(({ element, handler }) => {
         element.addEventListener("input", handler);
+        element.addEventListener("focusout", handler);
     });
 
     // 제출되면 이동될 주소
