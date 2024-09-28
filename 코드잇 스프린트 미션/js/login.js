@@ -10,8 +10,9 @@ import {
 // 변수 선언
 const emailInput = document.querySelector('#email');
 const passwordInput = document.querySelector('#password');
+const loginBtn = document.querySelector('button');
 
-// 이메일 유효성 검사 이벤트 핸들러
+// 이메일 유효성 검사
 emailInput.addEventListener('focusout', () => {
   const email = emailInput.value;
   if (isEmailEmpty(email)) {
@@ -23,7 +24,7 @@ emailInput.addEventListener('focusout', () => {
   }
 });
 
-// 비밀번호 유효성 검사 이벤트 핸들러
+// 비밀번호 유효성 검사
 passwordInput.addEventListener('focusout', () => {
   const password = passwordInput.value;
   if (isPasswordEmpty(password)) {
@@ -34,3 +35,30 @@ passwordInput.addEventListener('focusout', () => {
     removeError(passwordInput);
   }
 });
+
+// 버튼 초기 비활성화
+loginBtn.disabled = true;
+
+// 버튼 상태 업데이트 함수
+function updateButtonState() {
+  // prettier-ignore
+  const hasEmailError = isEmailEmpty(emailInput.value) || !isEmailValid(emailInput.value);
+  // prettier-ignore
+  const hasPasswordError = isPasswordEmpty(passwordInput.value) || isShortPassword(passwordInput.value);
+  const isFormValid = !hasEmailError && !hasPasswordError;
+}
+
+// 해당하는 input만 유효성 검사를 시행하고 버튼 상태를 업데이트
+emailInput.addEventListener('focusout', () => {
+  validateEmail();
+  updateButtonState();
+});
+
+passwordInput.addEventListener('focusout', () => {
+  validatePassword();
+  updateButtonState();
+});
+
+// input 변경시 버튼 실시간으로 업데이트
+emailInput.addEventListener('input', updateButtonState);
+passwordInput.addEventListener('input', updateButtonState);
