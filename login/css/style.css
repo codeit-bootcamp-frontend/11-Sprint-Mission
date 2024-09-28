@@ -89,7 +89,7 @@ body {
 }
 
 .errorMasage {
-  font:'Pretendard';
+  font: "Pretendard";
   color: var(--error-red);
   font-size: 14px;
   font-weight: 600;
@@ -134,7 +134,6 @@ body {
 
 .loginButton.active {
   background-color: var(--blue-100);
-  cursor: pointer; /* 활성화 상태에서는 클릭 가능 */
 }
 
 .socialLogin {

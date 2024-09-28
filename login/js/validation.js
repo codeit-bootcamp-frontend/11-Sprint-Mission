@@ -7,13 +7,12 @@
 *
 */ 
 
-
+//함수 안에 있는 변수 선언을 밖으로 빼면 왜 실행이 안될까요?
 function checkEmail() {
+  const regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
   const emailInput = document.getElementById('email');
   const emailError = document.getElementById('emailError');
-  const regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}'); // 인터넷 검색하여 유효성 검사하는 방법 찾음
-  const email = emailInput.value.trim(); // error 클래스가 사라지지 않아서 gpt검색후 추가함
-
+  const email = emailInput.value.trim(); 
   if (!regex.test(email)) { // 제출된 다른 분의 방법을 참조
     emailError.textContent = "잘못된 이메일 형식입니다.";
     emailInput.classList.add('error');
@@ -51,10 +50,27 @@ function comparePassword() {
   } 
 }
 
+function activationLogin() {
+  const regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
+  const emailInput = document.getElementById('email');
+  const email = emailInput.value.trim(); 
+  const password = document.getElementById('password');
+  const loginButton = document.getElementById('loginButton')
+
+  if (regex.test(email) &&
+    password.value.length >= 8
+  ) {
+    loginButton.classList.add('active');
+  } else {
+    loginButton.classList.remove('active');
+  } 
+}
+
 
 
 export {
   comparePassword,
   checkEmail,
   checkPassword,
+  activationLogin,
 }

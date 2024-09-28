@@ -1,103 +1,121 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../../css/reset.css" />
-  <link rel="stylesheet" href="../../css/color.css" />
-  <link rel="stylesheet" href="../css/style.css"/>
-  <title>판다마켓 로그인</title>
-</head>
-<body>
-  <div class="loginContainer">
-    <header class="logoContainer">
-      <img class="logo" src="../../img/판다 얼굴103.png" alt="판다마켓 로고"  />
-      <a href="/" id="title" class="button logoName">판다마켓</a>
-    </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/color.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>판다마켓 로그인</title>
+  </head>
+  <body>
+    <div class="loginContainer">
+      <header class="logoContainer">
+        <img
+          class="logo"
+          src="../../img/판다 얼굴103.png"
+          alt="판다마켓 로고"
+        />
+        <a href="/" id="title" class="button logoName">판다마켓</a>
+      </header>
 
-    <main>
-      <form class="loginForm">
-        <div class="loginSet">
-          <div class="inputContainers">
-            <div class="inputContainer">
-              <label class="labels" for="email">이메일</label>
-              <input
-                type="email"
-                id="email"
-                class="inputs"
-                placeholder="이메일을 입력해주세요"
-                required
-              />
-              <span class="errorMasage" id="emailError"></span>
-            </div>
-
+      <main>
+        <form class="loginForm">
+          <div class="loginSet">
             <div class="inputContainers">
               <div class="inputContainer">
-                <label class="labels" for="nickname">닉네임</label>
+                <label class="labels" for="email">이메일</label>
                 <input
-                  type="text"
-                  id="nickname"
+                  type="email"
+                  id="email"
                   class="inputs"
-                  placeholder="닉네임을 입력해주세요"
+                  placeholder="이메일을 입력해주세요"
                   required
                 />
-                <span class="errorMasage" id="nicknameError"></span>
+                <span class="errorMasage" id="emailError"></span>
+              </div>
+
+              <div class="inputContainers">
+                <div class="inputContainer">
+                  <label class="labels" for="nickname">닉네임</label>
+                  <input
+                    type="text"
+                    id="nickname"
+                    class="inputs"
+                    placeholder="닉네임을 입력해주세요"
+                    required
+                  />
+                  <span class="errorMasage" id="nicknameError"></span>
+                </div>
+
+                <div class="inputContainer password">
+                  <label class="labels" for="password">비밀번호</label>
+                  <input
+                    type="password"
+                    id="password"
+                    class="inputs"
+                    placeholder="비밀번호를 입력해주세요"
+                    required
+                  />
+                  <button class="seePassword" type="button">
+                    <img src="/img/close-eye.png" alt="비밀번호 보기" />
+                  </button>
+                  <span class="errorMasage" id="passwordError"></span>
+                </div>
               </div>
 
               <div class="inputContainer password">
-                <label class="labels" for="password">비밀번호</label>
+                <label class="labels" for="password">비밀번호 확인</label>
                 <input
                   type="password"
-                  id="password"
+                  id="comparePassword"
                   class="inputs"
-                  placeholder="비밀번호를 입력해주세요"
+                  placeholder="비밀번호를 다시 한 번입력해주세요"
                   required
                 />
                 <button class="seePassword" type="button">
-                  <img src="/img/close-eye.png" alt="비밀번호 보기" />
+                  <img src="../../img/close-eye.png" alt="비밀번호 보기" />
                 </button>
-                <span class="errorMasage" id="passwordError"></span>
+                <span class="errorMasage" id="comparePasswordError"></span>
               </div>
             </div>
 
-            <div class="inputContainer password">
-              <label class="labels " for="password">비밀번호 확인</label>
-              <input
-                type="password"
-                id="comparePassword"
-                class="inputs"
-                placeholder="비밀번호를 다시 한 번입력해주세요"
-                required
-              />
-              <button class="seePassword" type="button" >
-                <img src="../../img/close-eye.png" alt="비밀번호 보기" />
-              </button>
-              <span class="errorMasage" id="comparePasswordError"></span>
+            <button type="submit" class="loginButton">회원가입</button>
+          </div>
+
+          <div class="socialLogin">
+            <a href="https://youtu.be/oIyXqK34xSs?si=fvunpJcz7Bi98npA"
+              >간편 로그인하기</a
+            >
+            <div class="socialLink">
+              <a href="https://www.google.com/"
+                ><img src="../../img/google-logo.png" alt="Google"
+              /></a>
+              <a href="https://www.kakaocorp.com/page/"
+                ><img src="../../img/kakao-logo.png" alt="Kakao"
+              /></a>
             </div>
           </div>
 
-          <button type="submit" class="loginButton">로그인</button>
-        </div>
-
-        <div class="socialLogin">
-          <p>간편 로그인하기</p>
-          <div class="socialLink">
-            <a href="https://www.google.com/"><img src="../../img/google-logo.png" alt="Google" /></a>
-            <a href="https://www.kakaocorp.com/page/"><img src="../../img/kakao-logo.png" alt="Kakao" /></a>
-          </div>
-        </div>
-
-        <footer class="helpLinks">
-          <p>이미 회원이신가요?</p>
-          <a class='buttonLog' href="../index.html">로그인</a>
-        </footer>
-      </form>
-    </main>
-  </div>
-  <script type="module" src="/login/js/index.js"></script>
-</body>
+          <footer class="helpLinks">
+            <p>이미 회원이신가요?</p>
+            <a class="buttonLog" href="../index.html">로그인</a>
+          </footer>
+        </form>
+      </main>
+    </div>
+    <script type="module" src="/login/js/index.js"></script>
+  </body>
 </html>
