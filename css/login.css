@@ -73,6 +73,7 @@ input::placeholder {
 .visiblePW {
   position: absolute;
   right: 20px;
+  cursor: pointer;
 }
 
 .login {

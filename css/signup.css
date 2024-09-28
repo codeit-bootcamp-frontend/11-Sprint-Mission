@@ -69,6 +69,7 @@ input::placeholder {
 .visiblePWCheck {
   position: absolute;
   right: 20px;
+  cursor: pointer;
 }
 
 .emailError,
