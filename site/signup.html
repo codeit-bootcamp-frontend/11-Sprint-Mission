@@ -18,9 +18,10 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../style/common.css" />
-    <link rel="stylesheet" href="../style/form-style.css" />
-    <link rel="stylesheet" href="../style/signup.css" />
+    <link rel="stylesheet" href="/style/common.css" />
+    <link rel="stylesheet" href="/style/form-style.css" />
+    <link rel="stylesheet" href="/style/signup.css" />
+    <link rel="stylesheet" href="/style/mark.css" />
   </head>
 
   <body>
@@ -35,38 +36,44 @@
         <main>
           <div class="join-main">
             <div class="join">
-              <form>
+              <form id="signup-form" action="/site/signup.html" method="GET">
                 <div class="email-form">
                   <label for="input-email" class="email-form__input"
                     >이메일<br />
                     <input
-                      id="input-email"
+                      id="signup-email"
                       name="email"
                       type="email"
                       placeholder="이메일을 입력해주세요"
+                      data-valid="false"
                     />
+                    <span class="invalid-text"></span>
                   </label>
                 </div>
                 <div class="nickname-form">
                   <label for="input-nickname" class="nickname-form__input"
                     >닉네임<br />
                     <input
-                      id="input-nickname"
+                      id="signup-nickname"
                       name="nickname"
                       type="text"
                       placeholder="닉네임을 입력해주세요"
+                      data-valid="false"
                     />
+                    <span class="invalid-text"></span>
                   </label>
                 </div>
                 <div class="password-form">
                   <label for="input-password" class="password-form__input"
                     >비밀번호<br />
                     <input
-                      id="input-password"
+                      id="signup-password"
                       name="password"
                       type="password"
                       placeholder="비밀번호를 입력해주세요"
+                      data-valid="false"
                     />
+                    <span class="invalid-text"></span>
                   </label>
                 </div>
                 <div class="password-form">
@@ -77,15 +84,18 @@
                       name="password"
                       type="password"
                       placeholder="비밀번호를 다시 한 번 입력해주세요"
+                      data-valid="false"
                     />
+                    <span class="invalid-text"></span>
                   </label>
                 </div>
               </form>
             </div>
             <button
-              type="button"
+              type="submit"
               id="signup-button"
               class="button large-button"
+              disabled
             >
               회원가입
             </button>
@@ -114,6 +124,6 @@
         </footer>
       </div>
     </div>
-    <script type="module" src="../function/index.js"></script>
+    <script type="module" src="/function/signup.js"></script>
   </body>
 </html>
