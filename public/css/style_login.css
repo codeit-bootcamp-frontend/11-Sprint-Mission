@@ -121,9 +121,9 @@ label {
     padding: 16px 124px;
 }
 
-.login-main-button:active {
+.login-main-button.active {
     background-color: #3692FF;
-    color: #F3F4F6;
+    color: white;
 }
 
 .login-main-button:disabled:hover {
@@ -131,10 +131,11 @@ label {
     cursor: not-allowed;
 }
 
-.login-main-button:active:hover {
-    background-color: #3692FF;
+.login-main-button.active:hover {
+    background-color: #1967D6;
     cursor: pointer;
 }
+
 
 .login-simple-login {
     background-color: #E6F2FF;
