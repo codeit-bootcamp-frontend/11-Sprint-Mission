@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const pwFailureMessageTwo = document.querySelector('.pw-failure-message2');
   const loginButton = document.querySelector('.sign-button');
   const pwFailureMessageThree = document.querySelector('.pw-failure-message3');
+  const togglePassword = document.getElementById('togglePassword');
+  const togglePasswordtwo = document.getElementById('togglePasswordtwo');
 
   function validateEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -85,6 +87,26 @@ document.addEventListener('DOMContentLoaded', function () {
     event.preventDefault();
     if (validateForm()) {
       window.location.href = './login.html';
+    }
+  });
+
+  togglePassword.addEventListener('click', function () {
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      togglePassword.src = './images/icon/btn_visibility_off_24px.png';
+    } else {
+      passwordInput.type = 'password';
+      togglePassword.src = './images/icon/btn_visibility_on_24px.png';
+    }
+  });
+
+  togglePasswordtwo.addEventListener('click', function () {
+    if (confirmPasswordInput.type === 'password') {
+      confirmPasswordInput.type = 'text';
+      togglePasswordtwo.src = './images/icon/btn_visibility_off_24px.png';
+    } else {
+      confirmPasswordInput.type = 'password';
+      togglePasswordtwo.src = './images/icon/btn_visibility_on_24px.png';
     }
   });
 });

@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const pwFailureMessage = document.querySelector('.pw-failure-message');
   const pwFailureMessageTwo = document.querySelector('.pw-failure-message2');
   const loginButton = document.querySelector('.sign-button');
+  const togglePassword = document.getElementById('togglePassword');
 
   function validateEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -68,6 +69,16 @@ document.addEventListener('DOMContentLoaded', function () {
     event.preventDefault();
     if (validateForm()) {
       window.location.href = './items.html';
+    }
+  });
+
+  togglePassword.addEventListener('click', function () {
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      togglePassword.src = './images/icon/btn_visibility_off_24px.png';
+    } else {
+      passwordInput.type = 'password';
+      togglePassword.src = './images/icon/btn_visibility_on_24px.png';
     }
   });
 });
