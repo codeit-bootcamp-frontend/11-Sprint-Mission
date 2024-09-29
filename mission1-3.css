@@ -5,6 +5,7 @@
   margin: 0;
   font-family:Pretendard;
   text-align: left;
+  transform:rotate(0.03deg);
 }
 
 a {
@@ -62,7 +63,7 @@ nav img {
   font-weight: 600;
   line-height: 26px;
   position: fixed;
-  top: 12px;
+  top: 8px;
   right: 200px;
   z-index: 3;
 }
