@@ -17,21 +17,53 @@ function validateInputFields(inputElements, validationRules) {
       
       if (validationRule) {
         const errorMessage = validationRule(inputValue);
-        if (errorMessage) {//errorMessage가 있으면 ture이므로 실행
-          errorElement.textContent = errorMessage;
-          errorElement.style.display = 'block';
-          this.classList.add('error-border');
-        } else {//errorMessage가 없으면 flase이므로 실행
-          errorElement.textContent = '';
-          errorElement.style.display = 'none';//
-          this.classList.remove('error-border');
+        if (errorElement) {
+          if (errorMessage) { // errorMessage가 있으면 true이므로 실행
+            errorElement.textContent = errorMessage;
+            errorElement.style.display = 'block';
+            this.classList.add('error-border');
+          } else { // errorMessage가 없으면 false이므로 실행
+            errorElement.textContent = '';
+            errorElement.style.display = 'none';
+            this.classList.remove('error-border');
+          }
         }
       }
     });
   });
 }
 
+// 입력 필드와 에러 메시지를 검사하여 조건에 맞으면 기능을 실행하는 함수
+function checkInputsAndExecute(inputElements, submitButton) {
+  let hasErrors = false;
+  let hasEmptyFields = false;
 
-export {isValidEmail, validateInputFields}
+  inputElements.forEach((element) => {
+    if (element.value.trim() === '') {
+      hasEmptyFields = true;
+    }
+    const errorElement = document.getElementById(`${element.id}-error`);
+    if (errorElement && errorElement.style.display === 'block') {
+      hasErrors = true;
+    }
+  });
 
+  if (hasErrors || hasEmptyFields) {
+    submitButton.disabled = true;
+    submitButton.classList.add('error-button');
+  } else {
+    submitButton.disabled = false;
+    submitButton.classList.remove('error-button');
+  }
+}
 
+// 디바운스 함수
+function debounce(func, delay) {
+  let timeout;
+  return function(...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), delay);
+  };
+}
+
+export { isValidEmail, validateInputFields, checkInputsAndExecute, debounce };

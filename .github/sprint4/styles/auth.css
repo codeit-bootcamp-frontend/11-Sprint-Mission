@@ -63,7 +63,7 @@ input:focus {
 
 /* 에러 시 실행할 테두리 변경*/
 .error-border {
-  border: 2px solid red !important;
+  border: 1px solid red !important;
 }
 
 /* 에러 메시지 스타일 */
@@ -72,6 +72,11 @@ input:focus {
   font-size: 12px;
   margin-top: 8px;
   display: block;
+}
+
+.error-button {
+  background-color: #9ca3af;
+  cursor: not-allowed;
 }
 
 .social-login-container {
