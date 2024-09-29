@@ -5,7 +5,7 @@ const get = (id) => {
 };
 
 const emailInput = get("#email");
-const paswordInput = get("#password");
+const passwordInput = get("#password");
 const loginButton = get("#login_button");
 const passwordToggle = get("#password_toggle");
 const inputsError = get("#error");
@@ -49,9 +49,11 @@ function changeBorderErrorStatus(condition, element) {
 
 function updateLoginButtonStatus() {
   const emailValue = emailInput.value;
-  const passwordValue = paswordInput.value;
+  const passwordValue = passwordInput.value;
   const errorEmail = !vaildEmail(emailValue);
   const errorPassword = !validPassword(passwordValue);
+
+  loginButton.disabled = errorEmail || errorPassword;
   return errorEmail || errorPassword;
 }
 
@@ -63,21 +65,23 @@ emailInput.addEventListener("focusout", (event) => {
   changeBorderErrorStatus(errorEmail, emailInput);
 });
 
-paswordInput.addEventListener("focusout", (event) => {
+passwordInput.addEventListener("focusout", (event) => {
   const { value } = event.target;
   const errorPassword = !validPassword(value);
 
   vaildatePassword(value);
-  changeBorderErrorStatus(errorPassword, paswordInput);
+  changeBorderErrorStatus(errorPassword, passwordInput);
 });
 
-loginButton.addEventListener("mouseover", () => {
-  loginButton.disabled = updateLoginButtonStatus();
-});
+emailInput.addEventListener("input", updateLoginButtonStatus);
+passwordInput.addEventListener("input", updateLoginButtonStatus);
 
 loginButton.addEventListener("click", (event) => {
   event.preventDefault();
-  if (updateLoginButtonStatus() === false) {
+
+  if (!loginButton.disabled) {
     location.href = "../items/items.html";
   }
 });
+
+updateLoginButtonStatus();
