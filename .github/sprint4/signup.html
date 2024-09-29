@@ -30,8 +30,7 @@
             type="email"
             placeholder="이메일을 입력해 주세요"
           />
-          <div id="email-empty-error" class="error-message">이메일을 입력해주세요.</div>
-          <div id="email-type-error" class="error-message">잘못된 이메일 형식입니다.</div>
+          <div id="email-error" class="error-message"></div>
         </div>
 
         <div class="input-item">
@@ -42,7 +41,7 @@
             type="text"
             placeholder="닉네임을 입력해 주세요"
           />
-          <div id="nickname-empty-error" class="error-message">닉네임을 입력해주세요.</div>
+          <div id="nickname-error" class="error-message"></div>
         </div>
 
         <div class="input-item">
@@ -54,14 +53,13 @@
               type="password"
               placeholder="비밀번호를 입력해 주세요"
             />
-            <div id="password-empty-error" class="error-message">비밀번호를 입력해주세요.</div>
-            <div id="password-count-error" class="error-message">비밀번호를 8자 이상 입력해주세요.</div>
             <img
               src="images/icons/eye-invisible.svg"
               alt="비밀번호 숨김"
               class="toggle-password"
             />
           </div>
+          <div id="password-error" class="error-message"></div>
         </div>
 
         <div class="input-item">
@@ -73,13 +71,13 @@
               type="password"
               placeholder="비밀번호를 다시 한 번 입력해 주세요"
             />
-            <div id="double-check-error" class="error-message">비밀번호가 일치하지 않습니다.</div>
             <img
               src="images/icons/eye-invisible.svg"
               alt="비밀번호 숨김"
               class="toggle-password"
             />
           </div>
+          <div id="passwordConfirmation-error" class="error-message"></div>
         </div>
 
         <button type="submit" class="button pill-button full-width">

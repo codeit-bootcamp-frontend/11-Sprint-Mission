@@ -71,7 +71,7 @@ input:focus {
   color: red;
   font-size: 12px;
   margin-top: 8px;
-  display: none;
+  display: block;
 }
 
 .social-login-container {
