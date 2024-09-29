@@ -36,6 +36,12 @@ section,
   align-items: center;
 }
 
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 section,
 .bottom-content,
 footer {
@@ -45,10 +51,6 @@ footer {
 .title {
   font-size: 26px;
   line-height: 35px;
-}
-
-img {
-  width: auto;
 }
 
 .button:hover {
@@ -388,7 +390,7 @@ footer {
   }
 
   .head {
-    width: 696px;
+    width: 100%;
     margin: 10px 24px;
     align-items: center;
   }
