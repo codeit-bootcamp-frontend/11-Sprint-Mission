@@ -23,7 +23,7 @@
                 <a href="index.html"><img src="logo.svg" alt="판다마켓 홈" class="logo_img"></a>
             </div>
     
-            <form>
+            <form class="signinup signupForm">
                 <div class="input_item">
                     <label for="email">이메일</label>
                     <input
@@ -32,7 +32,11 @@
                         name="email"
                         type="email"
                         placeholder="이메일을 입력해 주세요.">
+                        <!-- 오류 메시지 -->
+                        <span class="emailEmptyError error_message">이메일을 입력해 주세요</span>
+                        <span class="emailFalsetdError error_message">잘못된 이메일 형식입니다</span>
                 </div>
+
                 <div class="input_item">
                     <label for="nickname">닉네임</label>
                     <input
@@ -41,7 +45,10 @@
                         name="name"
                         type="name"
                         placeholder="닉네임을 입력해 주세요.">
+                        <!-- 오류 메시지 -->
+                        <span class="nicknameEmptyError error_message">닉네임을 입력해 주세요</span>
                 </div>
+
                 <div class="input_item">
                     <label for="password">비밀번호</label>
                     <div class="input_div">
@@ -51,9 +58,14 @@
                         name="password"
                         type="password"
                         placeholder="비밀번호를 입력해 주세요.">
-                    <img src="eyex.svg" alt="비밀번호 숨김" class="toggle_pwd">
+                        <img src="eyex.svg" alt="비밀번호 숨김" class="toggle_pwd_x">
+                        <img src="eyeo.svg" alt="비밀번호 숨김" class="toggle_pwd_o">
                     </div>
+                    <!-- 오류 메시지 -->
+                    <span class="passwordEmptyError error_message">비밀번호를 입력해 주세요</span>
+                    <span class="passwordFalseError error_message">비밀번호를 8자 이상 입력해 주세요</span>
                 </div>
+
                 <div class="input_item">
                     <label for="passwordCheck">비밀번호</label>
                     <div class="input_div">
@@ -63,11 +75,14 @@
                         name="passwordCheck"
                         type="password"
                         placeholder="비밀번호를 다시 한 번 입력해 주세요.">
-                        <img src="eyex.svg" alt="비밀번호 숨김" class="toggle_pwd">
+                        <img src="eyex.svg" alt="비밀번호 숨김" class="toggle_pwd_invisible">
+                        <img src="eyeo.svg" alt="비밀번호 표시" class="toggle_pwd_visible">
                     </div>
+                    <span class="passwordConfirmError error_message">먼저 조건에 맞는 비밀번호를 입력해 주세요</span>
+                    <span class="passwordretryError error_message">비밀번호가 일치하지 않습니다</span>
                 </div>
     
-                <button href="login.html" class="button">회원가입</button>
+                <button href="login.html" class="button signupBtn">회원가입</button>
             </form>
     
             <div class="social_login_div">
@@ -81,8 +96,8 @@
             <div class="signup_switch">
                 이미 회원이신가요? <a href="signin.html">로그인</a>
             </div>
-
         </div>
         
+        <script src="signup.js"></script>
     </body>
 </html>
