@@ -4,37 +4,42 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>판다마켓</title>
-        <link rel="stylesheet" href="style_login.css">
+        <link rel="stylesheet" href="/public/css/style_login.css">
     </head>
     <body>
         <div class="body_1">
             <div class="section-container">
                 <a href="index.html">
-                    <img class="big-logo" src="Property 1=lg.png" alt="판다마켓 큰 로고">
+                    <img class="big-logo" src="/public/images/Property 1=lg.png" alt="판다마켓 큰 로고">
                 </a>
                 <div class="login-total-container">
                     <div class="login-main">
                         <form class="login-main-input">
                             <div class="login-main-input-email">
                                 <label for="email-input">이메일</label>
-                                <input type="text" placeholder="이메일을 입력해주세요." class="email">
+                                <input class="email-input" type="text" placeholder="이메일을 입력해주세요.">
                             </div>
                             <div class="login-main-input-password">
                                 <label for="password-input">비밀번호</label>
-                                <input type="password" placeholder="비밀번호를 입력해주세요." class="password">
+                                <div class="login-main-input-password-container">
+                                    <input class="password-input" type="password" placeholder="비밀번호를 입력해주세요.">
+                                    <span id="toggle-password" class="eye-icon">
+                                        <img id="eye-icon" src="/public/images/btn_visibility_off_24px.png" alt="비밀번호 보기">
+                                    </span>
+                                </div>
                             </div>
                         </form>
-                        <button class="login-main-button">로그인</button>
+                        <button class="login-main-button" disabled>로그인</button>
                     </div>
                     <div class="login-simple-login">
                         <div class="login-simple-login-container">
                             <p class="login-simple-login-description">간편 로그인하기</p>
                             <div class="login-simple-login-link">
                                 <a href="https://www.google.com/">
-                                    <img class="google" src="Component 2.png">
+                                    <img class="google" src="/public/images/Component 2.png">
                                 </a>
                                 <a href="https://www.kakaocorp.com/page/">
-                                    <img class="kakao" src="Component 3.png">
+                                    <img class="kakao" src="/public/images/Component 3.png">
                                 </a>
                             </div>
                         </div>
@@ -46,5 +51,6 @@
                 </div>
             </div>
         </div>
+        <script src="/public/js/login.js"></script>
     </body>
 </html>
