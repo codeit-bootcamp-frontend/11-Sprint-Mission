@@ -26,10 +26,13 @@
   gap: 24px;
 }
 
+.auth-field {
+  margin-bottom: 24px;
+}
+
 .auth-form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
 }
 
 .auth-label {
@@ -38,6 +41,38 @@
   font-weight: 700;
   line-height: 26px;
   margin-bottom: 16px;
+}
+
+.input-email.warning {
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: var(--red);
+}
+
+.wrong-txt {
+  display: inline-block;
+  color: var(--red);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  padding-left: 16px;
+  margin-top: 8px;
+}
+
+#submitBtn.active,
+#signupSubmitBtn.active {
+  background-color: var(--Primary-100);
+}
+
+.auth-div {
+  position: relative;
+}
+
+.eyes-close {
+  position: absolute;
+  cursor: pointer;
+  right: 24px;
+  top: 16px;
 }
 
 .auth-input-group {
