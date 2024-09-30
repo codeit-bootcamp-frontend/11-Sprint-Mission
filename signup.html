@@ -3,47 +3,55 @@
     <head>
         <meta charset="utf-8">
         <title>회원가입</title>
-        <link rel="stylesheet" href="loginStyle.css">
+        <link rel="stylesheet" href="signupStyle.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     </head>
     <body>
-        <form class="login">
+        <form class="signup">
             <a href="/">
-                <img class="loginlogo" src="img/logo/lg.png" alt="loginlogo">
+                <img class="signuplogo" src="img/logo/lg.png" alt="signuplogo">
             </a>
-            <section class="loginmain">
+            <section class="signupmain">
                 <div class="inputarea">
                     <label for="email">이메일</label>
                     <br>
                     <input id="email" name="useremail" type="email" placeholder="이메일을 입력해주세요">
+                    <p class="email-null">이메일을 입력해주세요.</p>
+                    <p class="email-check">잘못된 이메일 형식입니다.</p>
                 </div>
                 <div class="inputarea">
                     <label for="username">닉네임</label>
                     <br>
                     <input id="username" name="username" type="email" placeholder="닉네임을 입력해주세요">
+                    <p class="username-null">닉네임을 입력해주세요.</p>
                 </div>
                 <div class="inputarea">
-                    <label id="password">비밀번호</label>
+                    <label for="password">비밀번호</label>
                     <br>
                     <div class="input-container">
                         <input id="password" name="userpassword" type="password" placeholder="비밀번호를 입력해주세요">
-                        <img class="password-icon" src="img/input-icon/eye-off.png" alt="passwordicon">
+                        <img class="eye-off" src="img/input-icon/eye-off.png" alt="passwordEyeOff">
+                        <img class="eye-on" src="img/input-icon/eye-on.png" alt="passwordEyeOn">
                     </div>
+                    <p class="password-null">비밀번호를 입력해주세요.</p>
+                    <p class="password-check">비밀번호를 8자 이상 입력해주세요.</p>
                 </div>
                 <div class="inputarea">
                     <label for="password-verify">비밀번호 확인</label>
                     <br>
                     <div class="input-container">
                         <input id="password-verify" name="userpassword" type="password" placeholder="비밀번호를 다시 한 번 입력해주세요">
-                        <img class="password-icon" src="img/input-icon/eye-off.png" alt="passwordicon">
+                        <img class="verify-eye-off" src="img/input-icon/eye-off.png" alt="passwordicon">
+                        <img class="verify-eye-on" src="img/input-icon/eye-on.png" alt="passwordEyeOn">
                     </div>
+                    <p class="password-different">비밀번호가 일치하지 않습니다.</p>
                 </div>
-                <a href="./login.html" class="login-btn">회원가입</a>
+                <a href="./login.html" id="signup-btn">회원가입</a>
                 <div class="simple-login">
                     <div class="simple-login-in">
                         <p>간편 로그인하기</p>
-                        <div class="login-icon">
+                        <div class="signup-icon">
                             <a href="https://www.google.com/"><img src="img/login-icon/google.png" alt="google"></a>
                             <a href="https://www.kakaocorp.com/page/"><img src="img/login-icon/kakaotalk.png" alt="kakaotalk"></a>
                         </div>
@@ -52,5 +60,6 @@
                 <p class="firstuser">판다마켓이 처음이신가요? <a href="signup.html">회원가입</a ></p>
             </section>
         </form>
+        <script src="signup.js"></script>
     </body>
 </html> 

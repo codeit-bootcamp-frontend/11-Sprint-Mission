@@ -71,14 +71,32 @@ input:focus {
     width: 37rem;
 }
 
-.password-icon {
+.error{
+    border: 2px solid red;
+}
+
+.email-null, .password-null, .email-check, .password-check{
+    display: none;
+    margin-top: 10px;
+    padding-left: 10px;
+    color: #F74747;
+    font-size: 14px;
+    font-weight: 550; 
+}
+
+.eye-off, .eye-on {
     position: absolute;
     width: 1.5rem;
     right: 1.5rem;
     top: 50%;
+    cursor: pointer;
 }
 
-.login-btn {
+.eye-on{
+    display: none;
+}
+
+#login-btn {
     display: flex;
     width: 40rem;
     height: 4rem;
@@ -92,6 +110,11 @@ input:focus {
     text-decoration: none;
     border: none;
     margin-bottom: 2rem;
+    cursor: not-allowed;
+}
+
+#login-btn.active {
+    background-color: var(--blue); 
     cursor: pointer;
 }
 
@@ -128,6 +151,7 @@ input:focus {
     font-size: 1rem;
     font-weight: 500;
     color: var(--gray-800);
+    margin-bottom: 2rem;
 }
 
 .firstuser a {
@@ -144,7 +168,6 @@ input:focus {
 @media (min-width: 375px) and (max-width: 767px) {
     .login {
         padding: 0 1rem;
-        margin-top: 10rem;
     }
 
     .loginlogo {
@@ -168,7 +191,7 @@ input:focus {
         padding: 1rem;
     }
 
-    .login-btn {
+    #login-btn {
         width: 100%;
     }
 
