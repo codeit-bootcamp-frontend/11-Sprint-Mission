@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>판다마켓 - 회원가입</title>
+    <link rel="stylesheet" href="style3.css">
+  </head>
+  <body>
+    <main class="container">
+      <div class="logo">
+        <a href="/">
+          <img src="logo1.svg" alt="홈페이지 로고" class="logo">
+        </a>
+      </div>
+      <div class="form">
+        <div class="input">
+          <label for="email">이메일</label>
+          <input id="email" type="email" placeholder="이메일을 입력해 주세요">
+        </div>
+        <div class="input">
+          <label for="nickname">닉네임</label>
+          <input id="nickname" type="text" placeholder="닉네임을 입력해 주세요">
+        </div>
+        <div class="input">
+          <label for="password">비밀번호</label>
+          <div class="input-password">
+            <input id="password" type="password" placeholder="비밀번호를 입력해 주세요">
+          </div>
+        </div>
+        <div class="input">
+          <label for="passwordConfirm">비밀번호 확인</label>
+          <div class="input-password">
+            <input id="passwordConfirm" type="password" placeholder="비밀번호를 다시 한 번 입력해 주세요">
+          </div>
+        </div>
+        <button type="submit" class="signupButton">회원가입</button>
+      </div>
+      <div class="easylogin">
+        <h3>간편 로그인하기</h3>
+        <ul>
+          <li>
+            <a class="google" href="https://www.google.com" target="_blank"></a>
+          </li>
+          <li>
+            <a class="kakao" href="https://www.kakaocorp.com" target="_blank"></a>
+          </li>
+        </ul>
+      </div>
+      <div class="switchlogin">
+        이미 회원이신가요?
+        <a href="./login">로그인</a>
+      </div>
+
+    </main>
+  </body>
+</html>
