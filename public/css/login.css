@@ -9,8 +9,7 @@ body {
   height: 100vh;
 }
 
-.login-container,
-.signup-container {
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -51,6 +50,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 24px;
   width: 100%;
 }
 
@@ -63,7 +63,6 @@ body {
   padding: 16px 24px;
   border: none;
   border-radius: 12px;
-  margin-bottom: 24px;
 
   color: var(--gray-800);
   font-size: 16px;
@@ -97,6 +96,23 @@ label[for="input-password-repeat"] {
   margin-bottom: 16px;
 }
 
+input.warning{
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: var(--warning);
+}
+
+.input-alert{
+  margin-left: 16px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.input-alert.warning{
+  margin-top: 8px;
+  color: var(--warning);
+}
+
 .input-fieldset {
   width: 100%;
   border: none;
@@ -117,21 +133,7 @@ label[for="input-password-repeat"] {
   display: none;
 }
 
-.repeat-alert {
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.repeat-alert.correct {
-  color: #759545;
-}
-
-.repeat-alert.warning {
-  color: #EA866E;
-}
-
-#login-submit-btn,
-#signup-submit-btn {
+#submit-btn {
   background-color: var(--gray-400);
   width: 100%;
   padding: 16px 124px;
@@ -145,8 +147,7 @@ label[for="input-password-repeat"] {
   cursor: no-drop;
 }
 
-#login-submit-btn.active,
-#signup-submit-btn.active {
+#submit-btn.active {
   background-color: var(--blue);
   color: var(--gray-100);
 
@@ -214,8 +215,7 @@ label[for="input-password-repeat"] {
     font-size: 33px;
   }
 
-  .login-container,
-  .signup-container {
+  .container {
     padding: 0 16px;
     max-width: 432px;
   }

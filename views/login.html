@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <main class="login-container">
+  <main class="container">
 
     <!-- 상단 로고 -->
     <a class="logo-wrap" href="/">
@@ -20,19 +20,25 @@
     <!-- 로그인 폼 -->
     <form id="login-form" action="" method="">
       <!-- 이메일 입력 -->
-      <label for="input-email">이메일</label>
-      <input id="input-email" name="email" type="text" placeholder="이메일을 입력해주세요" required>
+      <fieldset class="input-fieldset">
+        <label for="input-email">이메일</label>
+        <input id="input-email" name="email" type="text" placeholder="이메일을 입력해주세요" required data-valid="false">
+        <p class="input-alert"></p>
+      </fieldset>
+
       <!-- 비밀번호 입력 -->
       <fieldset class="input-fieldset">
         <label for="input-password">비밀번호</label>
-        <input id="input-password" name="password" type="password" placeholder="비밀번호를 입력해주세요" required>
+        <input id="input-password" name="password" type="password" placeholder="비밀번호를 입력해주세요" required
+          data-valid="false">
         <div class="visibility-btn">
           <img src="/public/images/icon/btn_visibility_on.png" alt="비밀번호 보임" class="hide">
           <img src="/public/images/icon/btn_visibility_off.png" alt="비밀번호 가림">
         </div>
+        <p class="input-alert"></p>
       </fieldset>
       <!-- 폼 제출 버튼 -->
-      <button id="login-submit-btn" type="submit">로그인</button>
+      <button id="submit-btn" type="submit">로그인</button>
     </form>
 
     <!-- 소셜 로그인 -->
@@ -54,7 +60,7 @@
     </div>
   </main>
 
-  <script src="/public/js/login.js"></script>
+  <script type="module" src="/public/js/login.js"></script>
 </body>
 
 </html>

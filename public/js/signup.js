@@ -1,46 +1,46 @@
-// 로그인에 필요한 필수 입력 요소를 모두 채웠는지 확인하는 함수
-function checkAllInputFill() {
-  const inputTags = document.querySelectorAll('#signup-form input:required')
-  const submitBtn = document.querySelector('#signup-submit-btn');
+import {
+  checkAllInputValid,
+  checkNicknameFormat,
+  checkEmailFormat,
+  checkPasswordFormat,
+  comparePassword,
+  togglePasswordVisibility
+} from './validation.js';
 
-  let isAllFilled = Array.from(inputTags).every(tag => 
-    tag.value.trim() !== '');
+/**
+ * 폼 제출을 제어하는 함수
+ * @param {Event} e 로그인 폼의 제출 이벤트
+ * @description 폼의 모든 입력이 유효할 때 폼을 제출하고 아니면 제출을 막는다. 현재는 폼을 제출하는 대신 /signin로 이동고 그렇지 않으면 경고팝업을 띄운다.
+ */
+function submitForm(e) {
+  e.preventDefault();
+  const result = checkAllInputValid();
 
-  submitBtn.classList.toggle('active', isAllFilled);
+  if (result) location.href = '/views/signin.html';
+  else alert('잘못된 접근입니다.');
 }
 
-// function comparePassword() {
-//   const alert = document.querySelector('.repeat-alert');
-//   const pw = inputTags[2].value;
-//   const rpw = inputTags[3].value;
+document.querySelector('#input-email')
+  .addEventListener('focusout', checkEmailFormat);
 
-//   if (pw === rpw) {
-//     alert.textContent = '비밀번호와 일치합니다.';
-//     alert.classList.add('correct');
-//     alert.classList.remove('warning');
-//   } else {
-//     alert.textContent = '비밀번호와 일치하지 않습니다.';
-//     alert.classList.remove('correct');
-//     alert.classList.add('warning');
-//   }
-// }
+document.querySelector('#input-nickname')
+  .addEventListener('focusout', checkNicknameFormat);
 
-// 비밀번호 표기 토글 이벤트 핸들러
-function togglePasswordVisibility() {
-  // password input tag
-  const inputTag = this.previousElementSibling;
-  const type = inputTag.getAttribute('type') === 'password' ? 'text' : 'password';
+document.querySelector('#input-password')
+  .addEventListener('focusout', checkPasswordFormat);
 
-  // 비밀번호 입력란을 가리킴
-  inputTag.setAttribute('type', type);
+document.querySelector('#input-password')
+  .addEventListener('focusout', comparePassword);
 
-  // 비밀번호 표기 버튼 토글
-  Array.from(this.children).forEach(e => e.classList.toggle('hide'))
-}
+document.querySelector('#input-password-repeat')
+  .addEventListener('focusout', comparePassword);
+
+document.querySelector('#signup-form')
+  .addEventListener('focusout', checkAllInputValid);
+
+document.querySelector('#signup-form')
+  .addEventListener('submit', submitForm);
 
 document.querySelectorAll('.visibility-btn').forEach(btn => {
   btn.addEventListener('click', togglePasswordVisibility)
 })
-document.addEventListener('input', checkAllInputFill)
-// document.querySelector('#input-password-repeat')
-//   .addEventListener('change', comparePassword)
