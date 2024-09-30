@@ -51,12 +51,36 @@ main {
   border: 0;
 }
 
+.input-area.error {
+  border: 1px solid #f74747;
+}
+
 .input-area.password {
-  background: url(../images/icon/btn_visibility_on_24px.png);
-  background-repeat: no-repeat;
-  background-color: #f3f4f6;
-  background-size: 24px;
-  background-position: 95% center;
+  width: 100%;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.toggle-passwordtwo {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
 }
 
 input:focus {
@@ -116,6 +140,23 @@ input:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.hide {
+  display: none;
+}
+
+.failure-message,
+.failure-message2,
+.pw-failure-message,
+.pw-failure-message2,
+.pw-failure-message3 {
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: left;
+  color: #f74747;
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
