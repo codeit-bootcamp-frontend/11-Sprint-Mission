@@ -5,30 +5,50 @@
 
 .label {
   display: block;
+  margin-top: 1.5rem;
   margin-bottom: 1rem;
   font-size: 1.125rem;
   font-weight: bold;
+
+  &:first-child {
+    margin-top: 0;
+  }
 }
 .input {
   display: block;
-  margin-bottom: 1.5rem;
   padding: 1rem 1.5rem;
   width: 100%;
   color: var(--gray800);
-  border: 0;
+  border: 1px solid var(--gray100);
   border-radius: 0.75rem;
   background-color: var(--gray100);
   line-height: 1.6;
+  outline: 0;
 
   &::placeholder {
     color: var(--gray400);
   }
   &:focus {
-    outline-color: var(--blue);
+    border-width: 1px;
+    border-color: var(--blue);
+  }
+  &.invalid {
+    border-width: 1px;
+    border-color: #F74747;
+    + .err-msg {
+      display: block;
+    }
   }
 }
+.err-msg {
+  display: none;
+  margin: .5rem 1rem;
+  color: #F74747;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
 
-.login {
+.container {
   width: 640px;
 
   .logo {
@@ -37,13 +57,15 @@
     width: 396px;
   }
   .btn {
+    display: block;
     width: 100%;
+    margin: 1.5em 0;
   }
 }
 .input-wrap {
   position: relative;
 
-  .btn-input {
+  .btn-eye {
     position: absolute;
     top: 16px;
     right: 24px;
@@ -89,7 +111,7 @@
     padding-right: 16px;
   }
 
-  .login {
+  .container {
     width: 100%;
     max-width: 400px;
 

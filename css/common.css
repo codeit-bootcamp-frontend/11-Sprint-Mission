@@ -35,8 +35,16 @@ a {
     height: auto;
   }
 }
+main {
+  flex: 1;
+}
 
 /* layout */
+.wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 .container {
   max-width: 1193px;
   margin: 0 auto;
@@ -216,7 +224,7 @@ a {
       flex-wrap: wrap;
       padding: 32px;
     }
-    .cr {
+    .copyright {
       order: 3;
     }
   }

@@ -4,11 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>회원가입 | 판다마켓</title>
+<link rel="canonical" href="https://fe-11-haksoo-sm1.netlify.app/signup.html">
 <meta name="description" content="판다마켓 회원가입 페이지 입니다">
 <meta property="og:title" content="회원가입 | 판다마켓">
 <meta property="og:description" content="판다마켓 회원가입 페이지 입니다">
 <meta property="og:url" content="https://fe-11-haksoo-sm1.netlify.app/signup.html">
 <meta property="og:image" content="https://fe-11-haksoo-sm1.netlify.app/img/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
 <!-- pretendard web-font: https://github.com/orioncactus/pretendard -->
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="/css/common.css">
@@ -18,29 +21,33 @@
 
 <body>
 <div class="wrap align-center">
-  <div class="login">
+  <div class="container">
     <h1 class="logo"><a href="/"><img src="/img/login/logo.png" alt="판다마켓" width="396" height="132"></a></h1>
 
-    <form id="form-login">
+    <form id="form-signup" class="form" action="/login.html">
       <label class="label" for="email">이메일</label>
       <input id="email" class="input" type="email" placeholder="이메일을 입력해주세요" autofocus required>
+      <span class="err-msg"></span>
       <label class="label" for="nick">닉네임</label>
       <input id="nick" class="input" type="text" placeholder="닉네임을 입력해주세요" autofocus required>
+      <span class="err-msg"></span>
       <label class="label" for="pw">비밀번호</label>
       <div class="input-wrap">
         <input id="pw" class="input" type="password" placeholder="비밀번호를 입력해주세요" required>
-        <button class="btn-img btn-input" type="button">
-          <img src="/img/login/ico-ban-eye.png" alt="비밀번호 보기">
+        <span class="err-msg"></span>
+        <button class="btn-img btn-eye" type="button">
+          <img src="/img/login/ico-ban-eye.png" alt="비밀번호 보기" title="비밀번호 보기">
         </button>
       </div>
-      <label class="label" for="pw-chk">비밀번호 확인</label>
+      <label class="label" for="pw-re">비밀번호 확인</label>
       <div class="input-wrap">
-        <input id="pw-chk" class="input" type="password" placeholder="비밀번호를 다시 한 번 입력해주세요" required>
-        <button class="btn-img btn-input" type="button">
-          <img src="/img/login/ico-ban-eye.png" alt="비밀번호 확인 보기">
+        <input id="pw-re" class="input" type="password" placeholder="비밀번호를 다시 한 번 입력해주세요" required>
+        <span class="err-msg"></span>
+        <button class="btn-img btn-eye" type="button">
+          <img src="/img/login/ico-ban-eye.png" alt="비밀번호 보기" title="비밀번호 보기">
         </button>
       </div>
-      <button id="btn-login" class="btn lg rounded" disabled>회원가입</button>
+      <button id="btn-signup" class="btn lg rounded" disabled>회원가입</button>
     </form>
 
     <div class="simple-login">
@@ -65,10 +72,10 @@
       <a href="/login.html">로그인</a>
     </p>
   </div>
-  <!-- / login -->
+  <!-- / container -->
 </div>
 <!-- / wrap -->
 
-<script src="/js/chkRequired.js" defer></script>
+<script src="/js/chkSignupForm.js" type="module" defer></script>
 </body>
 </html>

@@ -3,10 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Item | 판다마켓</title>
+<title>상품 | 판다마켓</title>
+<link rel="canonical" href="https://fe-11-haksoo-sm1.netlify.app/items.html">
+<meta name="description" content="판다마켓 상품 페이지 입니다">
+<meta property="og:title" content="상품 | 판다마켓">
+<meta property="og:description" content="판다마켓 상품 페이지 입니다">
+<meta property="og:url" content="https://fe-11-haksoo-sm1.netlify.app/items.html">
+<meta property="og:image" content="https://fe-11-haksoo-sm1.netlify.app/img/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
 <!-- pretendard web-font: https://github.com/orioncactus/pretendard -->
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/css/common.css">
 <link rel="icon" href="favicon.png" type="image/png">
 </head>
 
@@ -14,66 +22,61 @@
 <div class="wrap">
   <header id="header">
     <div class="container header">
-      <h1 class="site-name">
+      <div class="site-name">
         <a href="/" class="root-link">
-          <img src="img/logo.png" alt="로고 이미지" class="logo">
-          <img src="img/site-name.png" alt="판다마켓">
+          <img src="/img/common/logo.png" alt="로고 이미지" class="logo">
+          <img src="/img/common/site-name.png" alt="판다마켓">
         </a>
-      </h1>
+      </div>
       <a href="/login.html" class="btn">로그인</a>
     </div>
     <!-- /.container -->
   </header>
 
-  <section class="section">
-    <div class="container">
-      <h2>Item</h2>
-    </div>
-    <!-- /.container -->
-  </section>
-  <!-- /.section -->
-
-  <div class="bottom-visual bg-sky">
-    <div class="container">
-      <h2 class="heading">믿을 수 있는<br>판다마켓 중고 거래</h2>
-    </div>
-    <!-- /.container -->
-  </div>
-  <!-- / bottom-visual -->
+  <main>
+    <section class="section">
+      <div class="container">
+        <h2>Items Page</h2>
+      </div>
+      <!-- /.container -->
+    </section>
+    <!-- /.section -->
+  </main>
 
   <footer id="footer">
     <div class="container">
-      <p class="cr">&copy;codeit - 2024</p>
-      <ul class="links">
-        <li><a href="privacy.html">Privacy Policy</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-      </ul>
+      <p class="copyright">&copy;codeit - 2024</p>
+      <nav aria-label="footer navigation">
+        <ul class="links">
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+          <li><a href="/faq.html">FAQ</a></li>
+        </ul>
+      </nav>
       <ul class="sns">
         <li>
-          <a href="https://www.facebook.com/" target="_blank">
-            <img src="img/ico-facebook.png" alt="FaceBook">
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+            <img src="/img/common/ico-facebook.png" alt="FaceBook">
           </a>
         </li>
         <li>
-          <a href="https://x.com/" target="_blank">
-            <img src="img/ico-twitter.png" alt="X">
+          <a href="https://x.com/" target="_blank" rel="noopener noreferrer">
+            <img src="/img/common/ico-twitter.png" alt="X">
           </a>
         </li>
         <li>
-          <a href="https://youtube.com/" target="_blank">
-            <img src="img/ico-youtube.png" alt="Youtube">
+          <a href="https://youtube.com/" target="_blank" rel="noopener noreferrer">
+            <img src="/img/common/ico-youtube.png" alt="Youtube">
           </a>
         </li>
         <li>
-          <a href="https://www.instagram.com/" target="_blank">
-            <img src="img/ico-instagram.png" alt="Instagram">
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+            <img src="/img/common/ico-instagram.png" alt="Instagram">
           </a>
         </li>
       </ul>
     </div>
     <!-- /.container -->
   </footer>
-  <!-- / footer -->
 </div>
 <!-- / wrap -->
 </body>
