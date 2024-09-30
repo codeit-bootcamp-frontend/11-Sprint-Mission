@@ -45,7 +45,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 98px;
-  gap: 16px;
+  gap: 12px;
 }
 .form-group-input {
   height: 56px;
@@ -97,7 +97,19 @@ body {
 .footer-login-link {
   color: var(--blue-primary);
 }
+.error-message {
+  color: red;
+  font-size: 12px;
+}
 
+.invalid-input {
+  border: 2px solid red;
+}
+
+button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
 /*  ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ mobile ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ  375px~767px */
 @media (max-width: 767px) {
   body {
