@@ -33,14 +33,16 @@
       <form action="/" mothod="POST">
         <label for="email">이메일</label>
         <input type="email" placeholder="이메일을 입력해주세요." id="email" name="email" required>
+        <span class="warning warning__email"></span>
         <div class="password">
           <label for="password">비밀번호</label>
-          <input type="password" placeholder="비밀번호를 입력해주세요." id="password" name="password" required minlength="7">
+          <input type="password" placeholder="비밀번호를 입력해주세요." id="password" name="password" required minlength="8">
           <img class="password__visibility password__visibility--on" src="images/login/btn_visibility_on.png" alt="비밀번호 보기">
           <img class="password__visibility password__visibility--off" src="images/login/btn_visibility_off.png" alt="비밀번호 안 보기">
         </div>
-        <button class="button--disabled" type="submit" disabled="true">로그인</button>
-        <button class="button--enabled" type="submit">로그인</button>
+        <span class="warning warning__password"></span>
+        <button class="button--disabled" type="button" disabled>로그인</button>
+        <button onclick="location.href='/items.html'" class="button--enabled" type="button">로그인</button>
       </form>
         <div class="snslogin">
           간편 로그인하기
@@ -54,5 +56,6 @@
           <a href="/signup.html">회원가입</a>
         </div>
     </main>
+    <script type="module" src="js/login.js"></script>
 </body>
 </html>

@@ -67,8 +67,16 @@ input::-ms-reveal, input::-ms-clear {
     cursor: pointer;
 }
 
-.password__visibility--off {
+.password__visibility--off, .password__check__visibility--off {
     display: none;
+}
+
+.warning {
+    display: none;
+    margin: -16px 0 1.125rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #f74747;
 }
 
 button {
@@ -79,7 +87,6 @@ button {
     height: 3.5rem;
     border: 0;
     border-radius: 2.5rem;
-    padding: 1rem 7.75rem;
     margin: 1.5rem 0;
     font-size: 1.25rem;
     font-weight: 600;
@@ -88,11 +95,12 @@ button {
 }
 
 .button--disabled {
-    display: none;
     background-color: var(--gray-400);
+    pointer-events: none;
 }
 
 .button--enabled {
+    display: none;
     background-color: var(--blue);
 }
 
