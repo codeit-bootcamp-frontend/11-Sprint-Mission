@@ -76,12 +76,6 @@ if(emailValid && passwordValid) {
   }
 }
 
-/*
-// 이벤트 함수 추가
-emailInput.addEventListener('focusout', () => {
-  checkEmail();
-  updateLoginButtonState(); 
-});
 passwordInput.addEventListener('focusout', () => {
   checkPassword();
   updateLoginButtonState(); 
