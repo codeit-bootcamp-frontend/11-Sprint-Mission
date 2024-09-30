@@ -2,6 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8">
+
+        <!-- 반응형 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <title>판다마켓 - 로그인</title>
         <link
             rel="stylesheet"
@@ -16,13 +20,14 @@
     <body>
         <div class="sign_div">
             <div class="logo_home">
-                <a href="index.html"><img src="logo.svg" alt="판다마켓 홈"></a>
+                <a href="index.html"><img src="logo.svg" alt="판다마켓 홈" class="logo_img"></a>
             </div>
     
             <form>
                 <div class="input_item">
                     <label for="email">이메일</label>
                     <input
+                        class="input"
                         id="email"
                         name="email"
                         type="email"
@@ -31,15 +36,17 @@
                 <div class="input_item">
                     <label for="nickname">닉네임</label>
                     <input
+                        class="input"
                         id="nickname"
-                        name="nickname"
-                        type="nickname"
+                        name="name"
+                        type="name"
                         placeholder="닉네임을 입력해 주세요.">
                 </div>
                 <div class="input_item">
                     <label for="password">비밀번호</label>
                     <div class="input_div">
                         <input
+                        class="input"
                         id="password"
                         name="password"
                         type="password"
@@ -51,6 +58,7 @@
                     <label for="passwordCheck">비밀번호</label>
                     <div class="input_div">
                         <input
+                        class="input"
                         id="passwordCheck"
                         name="passwordCheck"
                         type="password"
@@ -59,14 +67,14 @@
                     </div>
                 </div>
     
-                <a href="login.html"><button type="submit" class="button">회원가입</button></a>
+                <button href="login.html" class="button">회원가입</button>
             </form>
     
             <div class="social_login_div">
                 <h3>간편 로그인하기</h3>
                 <div class="social_login_buttons_div">
-                    <a href="https://www.google.com/" target="_blank"><img src="google.png" alt="구글 로그인" class="icon_img"></a>
-                    <a href="https://www.kakaocorp.com/page/" target="_blank"><img src="kakao.png" alt="카카오톡 로그인" class="icon_img"></a>
+                    <a href="https://www.google.com/" target="_blank" rel="noreferrer noopener"><img src="google.png" alt="구글 로그인" class="icon_img"></a>
+                    <a href="https://www.kakaocorp.com/page/" target="_blank" rel="noreferrer noopener"><img src="kakao.png" alt="카카오톡 로그인" class="icon_img"></a>
                 </div>
             </div>
     

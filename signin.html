@@ -2,6 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8">
+
+        <!-- 반응형 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <title>판다마켓 - 로그인</title>
         <link
             rel="stylesheet"
@@ -19,10 +23,11 @@
                 <a href="index.html"><img src="logo.svg" alt="판다마켓 홈" class="logo_img"></a>
             </div>
     
-            <form>
+            <form class="signinup">
                 <div class="input_item">
                     <label for="email">이메일</label>
                     <input
+                        class="input"
                         id="email"
                         name="email"
                         type="email"
@@ -32,6 +37,7 @@
                     <label for="password">비밀번호</label>
                     <div class="input_div">
                         <input
+                        class="input"
                         id="password"
                         name="password"
                         type="password"
@@ -40,7 +46,7 @@
                     </div>                
                 </div>
     
-                <a href="login.html"><button type="submit" class="button">로그인</button></a>
+                <button href="login.html" class="button">로그인</button>
             </form>
     
             <div class="social_login_div">
