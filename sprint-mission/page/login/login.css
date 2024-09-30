@@ -7,7 +7,6 @@ body {
 }
 .login-form {
   width: 640px;
-  height: 618px;
 }
 header {
   display: flex;
@@ -27,7 +26,6 @@ header {
   height: 103.88px;
 }
 .login-title a {
-  font-family: "ROKAF Sans";
   color: var(--skyblue);
   font-weight: 700;
   height: 90px;
@@ -42,26 +40,31 @@ header {
   height: 40px;
   width: 100%;
 }
-
 .content-big {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 16px;
-  height: 93px;
+  gap: 10px;
   margin-bottom: 24px;
-  position: relative;
 }
-.content-big span {
+.content-big .content-title {
   height: 21px;
-  left: 0px;
-  top: 0px;
   font-style: normal;
   font-weight: 700;
   font-size: 1.2rem;
   line-height: 21px;
   color: var(--gray800);
+}
+#message {
+  margin-top: -11px;
+  padding-left: 16px;
+  color: var(--orangeRed);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+}
+.input-box-eye {
+  width: 100%;
+  position: relative;
 }
 .input-box {
   width: 100%;
@@ -70,46 +73,41 @@ header {
   border-radius: 12px;
   border: 0;
   outline: none;
-  padding: 15px 24px;
-  padding-top: 15px;
-  padding-left: 24px;
-  padding-bottom: 15px;
-  padding-right: 40px;
-  position: relative;
+  padding: 15px 45px 15px 24px;
 }
 .input-box:focus {
   border-style: solid;
   border-color: var(--skyblue);
   border-width: 1px;
 }
+.input-notice {
+  border-style: solid;
+  border-color: var(--orangeRed);
+  border-width: 1px;
+}
 .eye {
   position: absolute;
   bottom: 14px;
   right: 14px;
+  background-image: url("/img/public/ic_clossEye.png");
+  border: 0;
+  width: 20px;
 }
 .login-btn {
   border-radius: 40px;
-  background: var(--skyblue);
+  background: var(--gray400);
   width: 100%;
   height: 56px;
   border: 0;
-}
-.login-btn:hover {
-  background: var(--gray400);
-}
-.login-btn a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
   line-height: 32px;
-  display: flex;
-  align-items: center;
-  text-align: center;
   color: var(--gray100);
-  text-decoration: none;
+}
+.login-btn-active {
+  background: var(--skyblue);
 }
 .content {
   display: flex;

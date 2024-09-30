@@ -8,60 +8,69 @@
     <div class="login-form">
       <header>
         <div class="login-title">
-          <img src="/img/login/panda.png" />
+          <img src="/img/login/panda.png" alt="panda"/>
           <a href="/index.html">판다마켓</a>
         </div>
       </header>
       <div class="blank"></div>
       <main>
         <div class="content-big">
-          <span>이메일</span>
+          <form class="content-title">이메일</form>
           <input
             class="input-box"
             type="email"
-            placeholder="이메일을 입력해주세요"
-          />
+            placeholder="이메일을 입력해주세요" />
+          <span id="message" class="notice-email"></span>
         </div>
         <div class="content-big">
-          <span>닉네임</span>
+          <form class="content-title">닉네임</form>
           <input
             class="input-box"
-            type="email"
-            placeholder="닉네임을 입력해주세요"
-          />
+            type="text"
+            placeholder="닉네임을 입력해주세요" />
+          <span id="message" class="notice-nickname"></span>
         </div>
         <div class="content-big">
-          <span>비밀번호</span>
-          <input
-            class="input-box"
-            type="password"
-            placeholder="비밀번호를 입력해주세요"
-          />
-          <img class="eye" src="/img/public/ic_inputEye.png" />
+          <form class="content-title">비밀번호</form>
+          <div class="input-box-eye">
+            <input
+              id="password"
+              class="input-box"
+              type="password"
+              placeholder="비밀번호를 입력해주세요" />
+            <input type="button" class="eye" />
+          </div>
+          <span id="message" class="notice-password"></span>
         </div>
         <div class="content-big">
-          <span>비밀번호</span>
-          <input
-            class="input-box"
-            type="password"
-            placeholder="비밀번호를 다시 한 번 입력해주세요"
-          />
-          <img class="eye" src="/img/public/ic_inputEye.png" />
+          <form class="content-title">비밀번호 확인</form>
+          <div class="input-box-eye">
+            <input
+              id="password-confirm"
+              class="input-box"
+              type="password"
+              placeholder="비밀번호를 다시 한 번 입력해주세요" />
+            <input type="button" class="eye" />
+          </div>
+          <span id="message" class="notice-password-confirm"></span>
         </div>
         <div class="content">
-          <button class="login-btn">
-            <a href="/index.html"> 회원가입 </a>
-          </button>
+          <input
+            class="signup-btn"
+            type="button"
+            disabled
+            value="회원가입"
+            onclick="location.href='/page/signin/signin.html'" />
         </div>
         <div class="content">
           <div class="easy-login">
             <span>간편 로그인하기</span>
             <div>
               <a href="https://www.google.com">
-                <img src="/img/public/ic_google.png" />
+                <img src="/img/public/ic_google.png" alt="google"/>
               </a>
               <a href="https://www.kakaocorp.com/page">
-                <img src="/img/public/ic_kakao.png" />
+                <img src="/img/public/ic_kakao.png" alt="kakao"/>
               </a>
             </div>
           </div>
@@ -73,6 +82,8 @@
           </div>
         </footer>
       </main>
+      <script src="./signup.js"></script>
+      <script src="/common.js"></script>
     </div>
   </body>
 </html>
