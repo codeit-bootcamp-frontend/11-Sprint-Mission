@@ -34,6 +34,7 @@
                 placeholder="이메일을 입력해주세요"
                 required
               />
+              <p id="error"></p>
             </div>
             <div class="login_input">
               <label for="password">비밀번호</label>
@@ -45,7 +46,12 @@
                   placeholder="비밀번호를 입력해주세요"
                   required
                 />
-                <button type="button" class="password_toggle">
+                <p id="error"></p>
+                <button
+                  type="button"
+                  id="password_toggle"
+                  class="password_toggle"
+                >
                   <img
                     src="../../assets/icon/password_show.png"
                     alt="password show icon"
@@ -85,5 +91,6 @@
         </section>
       </main>
     </div>
+    <script type="module" src="./login.js"></script>
   </body>
 </html>
