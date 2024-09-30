@@ -3,7 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>판다마켓</title>
+
+  <meta property="og:title" content="판다마켓">
+  <meta property="og:url" content="https://hwiiron.netlify.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://hwiiron.netlify.app/images/ogImage.png?v=20240918">
+  <meta property="og:description" content="일상의 모든 물건을 거래하는 판다마켓">
+  
+  <title>판다마켓 - 회원가입</title>
+
+  <!-- favicon -->
+  <link rel="icon" href="images/favicon.ico">
   
   <!-- css -->
   <link rel="stylesheet" href="css/style.css">
@@ -21,32 +31,42 @@
           <div class="input">
             <label for="email-input">이메일</label>
             <input id="email-input" type="text" placeholder="이메일을 입력해주세요.">
+
+            <span class="emailMessage">이메일을 입력해 주세요.</span>
+            <span class="emailErrorMessage">잘못된 이메일 형식입니다.</span>
           </div>
 
           <div class="input">
             <label for="nickname-input">닉네임</label>
-            <input id="nickname-input" type="text" placeholder="닉네임을 입력해주세요.">
+            <input id="nickname-input" type="text" placeholder="닉네임을 입력해주세요." autocomplete="username">
+
+            <span class="nickNameMessage">닉네임을 입력해 주세요.</span>
           </div>
 
           <div class="input">
             <label for="password-input">비밀번호</label>
 
             <div class="password">
-              <input id="password-input" type="password" placeholder="비밀번호를 입력해주세요">
-              <button class="eye"></button>
+              <input id="password-input" type="password" placeholder="비밀번호를 입력해주세요" autocomplete="new-password">
+              <button class="passwordToggleBtn" type="button"></button>
             </div>
+
+            <span class="passwordMessage">비밀번호를 입력해 주세요.</span>
+            <span class="passwordLengthError">비밀번호를 8자 이상 입력해 주세요.</span>
           </div>
 
           <div class="input">
             <label for="passwordCheck-input">비밀번호 확인</label>
 
             <div class="password">
-              <input id="passwordCheck-input" type="password" placeholder="비밀번호를 다시 한 번 입력해주세요">
-              <button class="eye show"></button>
+              <input id="passwordCheck-input" type="password" placeholder="비밀번호를 다시 한 번 입력해주세요" autocomplete="new-password">
+              <button class="passwordCheckToggleBtn" type="button"></button>
             </div>
+            
+            <span class="passwordMismatchError">비밀번호가 일치하지 않습니다.</span>
           </div>
 
-          <button class="loginBtn">회원가입</button>
+          <button class="signupBtn" type="button" onclick="location.href='signin.html'" disabled>회원가입</button>
         </form>
       </div>
       <!-- loginWrap -->
@@ -72,5 +92,8 @@
   </div>
   <!-- wrapper -->
 </body>
+
+<!-- js -->
+<script type="module" src="js/signup.js"></script>
 
 </html>

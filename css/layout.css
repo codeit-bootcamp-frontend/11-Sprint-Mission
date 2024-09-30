@@ -114,8 +114,33 @@ input::placeholder {
 }
 
 input:focus {
-  outline: none;
-  border: 1px solid var(--blue);
+  outline-color: var(--blue);
+}
+
+input.error {
+  border: 1px solid #F74747;
+}
+
+.emailMessage,
+.emailErrorMessage,
+.passwordMessage,
+.passwordLengthError,
+.nickNameMessage,
+.passwordMismatchError {
+  display: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #F74747;
+  margin: 8px 0 0 16px;
+}
+
+.emailMessage.show,
+.emailErrorMessage.show,
+.passwordMessage.show,
+.passwordLengthError.show,
+.nickNameMessage.show,
+.passwordMismatchError.show {
+  display: block;
 }
 
 .password {
@@ -127,7 +152,8 @@ input:focus {
   padding-right: 56px;
 }
 
-.password .eye {
+.password .passwordToggleBtn,
+.password .passwordCheckToggleBtn {
   background: url(../images/login/eye_icon.svg) no-repeat;
   background-size: 100%;
   width: 24px;
@@ -138,7 +164,8 @@ input:focus {
   transform: translateY(-50%);
 }
 
-.password .eye.show {
+.password .passwordToggleBtn.show,
+.password .passwordCheckToggleBtn.show {
   background: url(../images/login/eye_show_icon.svg) no-repeat;
   background-size: 100%;
 }
