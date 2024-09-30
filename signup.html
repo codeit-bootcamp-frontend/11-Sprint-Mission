@@ -4,45 +4,55 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>판다마켓</title>
-        <link rel="stylesheet" href="style_signup.css">
+        <link rel="stylesheet" href="/public/css/style_signup.css">
     </head>
     <body>
         <div class="body_1">
             <div class="section-container">
                 <a href="index.html">
-                    <img class="big-logo" src="Property 1=lg.png" alt="판다마켓 큰 로고">
+                    <img class="big-logo" src="/public/images/Property 1=lg.png" alt="판다마켓 큰 로고">
                 </a>
                 <div class="signup-total-container">
                     <div class="signup-main">
                         <form class="signup-main-input">
                             <div class="signup-main-input-email">
                                 <label for="email-input">이메일</label>
-                                <input type="text" placeholder="이메일을 입력해주세요." class="email">
+                                <input class="email-input" type="text" placeholder="이메일을 입력해주세요.">
                             </div>
                             <div class="signup-main-input-nickname">
                                 <label for="nickname-input">닉네임</label>
-                                <input type="text" placeholder="닉네임을 입력해주세요." class="nickname">
+                                <input class="nickname-input" type="text" placeholder="닉네임을 입력해주세요.">
                             </div>
                             <div class="signup-main-input-password">
                                 <label for="password-input">비밀번호</label>
-                                <input type="password" placeholder="비밀번호를 입력해주세요." class="password">
+                                <div class="signup-main-input-password-container">
+                                    <input class="password-input" type="password" placeholder="비밀번호를 입력해주세요.">
+                                    <span id="toggle-password" class="eye-icon">
+                                        <img id="eye-icon-password" src="/public/images/btn_visibility_off_24px.png" alt="비밀번호 보기">
+                                    </span>
+                                </div>
                             </div>
                             <div class="signup-main-input-password-again">
                                 <label for="password-again-input">비밀번호 확인</label>
-                                <input type="password" placeholder="비밀번호를 다시 한 번 입력해주세요." class="password-again">
+                                <div class="signup-main-input-password-again-container">
+                                    <input class="password-again-input" type="password" placeholder="비밀번호를 다시 한 번 입력해주세요.">
+                                    <span id="toggle-password-again" class="eye-icon">
+                                        <img id="eye-icon-again" src="/public/images/btn_visibility_off_24px.png" alt="비밀번호 보기">
+                                    </span>
+                                </div>
                             </div>
                         </form>
-                        <button class="signup-main-button">회원가입</button>
+                        <button class="signup-main-button" disabled>회원가입</button>
                     </div>
                     <div class="signup-simple-login">
                         <div class="signup-simple-login-container">
                             <p class="signup-simple-login-description">간편 로그인하기</p>
                             <div class="signup-simple-login-link">
                                 <a href="https://www.google.com/">
-                                    <img class="google" src="Component 2.png">
+                                    <img class="google" src="/public/images/Component 2.png">
                                 </a>
                                 <a href="https://www.kakaocorp.com/page/">
-                                    <img class="kakao" src="Component 3.png">
+                                    <img class="kakao" src="/public/images/Component 3.png">
                                 </a>
                             </div>
                         </div>
@@ -55,3 +65,5 @@
             </div>
         </div>
     </body>
+    <script src="/public/js/signup.js"></script>
+</html>
