@@ -1,3 +1,4 @@
+/*sprint2 코드리뷰 반영(이름을 알수있게 지어주기)*/
 * {
 	margin: 0;
 	padding: 0;
@@ -30,7 +31,7 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0 200px;
+	padding: 0 24px;
 	background-color: #ffffff;
 	border-bottom: 1px solid #dfdfdf;
 }
@@ -87,7 +88,13 @@ footer {
 	padding: 32px 200px 108px 200px;
 	font-size: 16px;
 }
-  
+ 
+#footercodeit {
+	order: 3;
+	flex-basis: 100%;
+	color: #9ca3af;
+}
+
 #footerMenu {
 	display: flex;
 	gap: 30px;
@@ -97,4 +104,43 @@ footer {
 #socialMedia {
 	display: flex;
 	gap: 12px;
+}
+
+@media (min-width: 768px) {
+	header {
+		padding: 0 24px;
+	}
+
+	.wrapper {
+		padding: 0 24px;
+	}
+
+	.watch-btn {
+		font-size: 20px;
+		font-weight: 700;
+		padding: 16px 126px;
+	}
+
+	#footercodeit, #footerMenu, #socialMedia {
+		margin-bottom: 20px;
+	}
+
+	#footercodeit {
+		flex-basis: auto;
+		order: 0;
+	}
+}
+
+@media (min-width: 1280px) {
+	header {
+		padding: 0 24px;
+	}
+
+	head a:first-child {
+		margin-left: 24px;
+	}
+
+	#footercodeit, #footerMenu, #socialMedia {
+		margin-bottom: 20px;
+	}
 }
