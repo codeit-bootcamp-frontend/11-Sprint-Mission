@@ -1,0 +1,178 @@
+/* 기본 페이지 설정 */
+body {
+    margin: 0; /* 기본 마진 제거 */
+    padding: 0; /* 기본 패딩 제거 */
+    font-family: 'Arial', sans-serif; /* 폰트 설정 */
+    background: #FCFCFC; /* 페이지 배경색 */
+    height: 100vh; /* 전체 화면 높이 */
+    display: flex; /* Flexbox 사용 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+}
+
+.title {
+    display: flex; /* Flexbox 사용 */
+    align-items: center; /* 수평 중앙 정렬 */
+    justify-content: center; /* 수직 중앙 정렬 */
+    width: 100%; /* 너비 100% */
+    margin-bottom: 20px; /* 아래쪽 여백 */
+}
+
+.logoname {
+    font-family: ROKAF Sans; /* 폰트 설정 */
+    font-size: 66.34px; /* 폰트 크기 */
+    font-weight: 700; /* 두껍게 설정 */
+    line-height: 89.56px; /* 줄 높이 설정 */
+    color: #3692FF; /* 텍스트 색상 */
+    text-align: center; /* 중앙 정렬 */
+    margin-left: 10px;
+}
+
+.logo {
+    height: auto; /* 비율 유지 */
+    width: 103.53px;
+}
+
+.input-error {
+    border: 1px solid red; /* 빨간색 테두리 */
+  }
+
+.password-input-error {
+    border: 1px solid red; /* 빨간색 테두리 */
+}
+
+.error-message {
+    display: none; /* 기본적으로 숨김 */
+    color: red; /* 빨간색 텍스트 */
+    font-size: 12px; /* 폰트 크기 설정 */
+    margin-top: 5px; /* 위쪽 여백 설정 */
+}
+
+.show-error {
+    display: block; /* 에러 메시지 보이기 */
+}
+
+
+.big-container {
+    display: flex; /* Flexbox 사용 */
+    flex-direction: column; /* 세로 방향 정렬 */
+    align-items: center; /* 중앙 정렬 */
+    width: 640px; /* 고정 너비 */
+    background: white; /* 배경 흰색 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    padding: 40px; /* 내부 여백 */
+    gap:24px;
+}
+
+/* 이메일 및 비밀번호 입력 문구 */
+.email-label, .password-label {
+    color: #1f2937;
+    font-size: 18px; /* 문구 폰트 크기 */
+    font-weight: 800; /* 두껍게 설정 */
+    line-height: 26px; /* 줄 높이 수정 */
+    text-align: left; /* 왼쪽 정렬 */
+    width: 100%; /* 문구 너비 100% */
+    padding-bottom: 8px;
+    display: block;
+    margin: 0;
+}
+
+
+/* 입력 필드 */
+.email-input, .password-input {
+    width: 640px; /* 고정 너비 */
+    height: 26px; /* 고정 높이 */
+    padding: 16px 24px; /* 여백 */
+    margin-bottom: 20px; /* 입력 필드 간 여백 */
+    border: 1px solid #ccc; /* 기본 테두리 색상 */
+    border-radius: 12px; /* 모든 모서리를 둥글게 설정 */
+    gap:10px;
+    display:block;
+    background: #F3F4F6;
+}
+
+/* 로그인 버튼 스타일 */
+.login-button {
+    background-color: #007bff; /* 기본 배경색 */
+    color: white; /* 텍스트 색상 */
+    border: none; /* 테두리 없음 */
+    padding: 16px 124px;
+    font-size: 16px; /* 폰트 크기 */
+    cursor: pointer; /* 커서 포인터 */
+    transition: background-color 0.3s; /* 배경색 전환 효과 */
+    width: 100%;
+    margin-top: 20px; /* 버튼 위쪽 여백 */
+    border-radius: 20px; /* 둥글게 설정 */
+    gap:10px;
+}
+
+
+/* 비활성화된 로그인 버튼 스타일 */
+.login-button:disabled {
+    background-color:#9CA3AF;
+    /* 비활성화 배경색 */
+    color: #ffffff; /* 비활성화 텍스트 색상 */
+    cursor: not-allowed; /* 비활성화 커서 */
+}
+
+/* 간편 로그인 섹션 스타일 */
+.simple-login {
+    display: flex; /* Flexbox 사용 */
+    justify-content: space-between; /* 양쪽 끝에 배치 */
+    width: 640px; /* 고정 너비 */
+    height: 42px; /* 고정 높이 */
+    margin-top: 20px; /* 위쪽 여백 */
+    background-color: #E6F2FF; 
+    border-radius: 12px; /* 모서리 둥글게 */
+    padding: 10px 20px; /* 내부 여백 */
+    opacity: 1; /* 불투명도 설정 */
+}
+
+/* 간편 로그인 텍스트 스타일 */
+.simple-login-text {
+    color: #333; /* 텍스트 색상 */
+    font-size: 16px; /* 폰트 크기 */
+    line-height: 42px; /* 텍스트 세로 정렬 */
+}
+
+/* 간편 로그인 버튼 스타일 */
+.simple-login-button {
+    background-color: transparent; /* 투명 배경 */
+    border: none; /* 테두리 없음 */
+    cursor: pointer; /* 커서 포인터 */
+    width: 40px; /* 버튼 고정 너비 */
+    height: 40px; /* 버튼 고정 높이 */
+    align-items: center; /* 중앙 정렬 */
+    justify-content: center; /* 중앙 정렬 */
+    display: flex; /* Flexbox 사용 */
+
+}
+
+.simple-login-buttons {
+    display: flex; /* Flexbox 사용 */
+    gap: 10px; /* 버튼 간 간격 */
+}
+
+/* Google 버튼 아이콘 */
+.google-icon, .kakao-icon{
+    background-color: white; /* 배경색 흰색 */
+    border-radius: 50%; /* 원형 모양 */
+    width: 40px; /* 아이콘 너비 */
+    height: 40px; /* 아이콘 높이 */
+    display: flex; /* Flexbox 사용 */
+    align-items: center; /* 중앙 정렬 */
+    justify-content: center; /* 중앙 정렬 */
+}
+
+/* 회원가입 텍스트 스타일 */
+.signup-container {
+    display: flex; /* Flexbox 사용 */
+    align-items: center; /* 중앙 정렬 */
+    margin-top: 20px; /* 위쪽 여백 */
+}
+
+.signup-text {
+    margin-right: 5px; /* 회원가입 문구와 링크 간 간격 */
+    font-size: 14px; /* 폰트 크기 */
+    color: #333; /* 텍스트 색상 */
+}
