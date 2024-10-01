@@ -1,62 +1,60 @@
 <!DOCTYPE html>
 <html lang="kr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-    <title>판다마켓-로그인</title>
-    <link rel="icon" href="images/logos/favicon.ico">
-    <link rel='stylesheet' href='style/global.css'>
-    <link rel='stylesheet' href='style/sign.css'>
-</head>
-<body>
-    <section id="login_home">
-        <div id="login_logo">
-            <a href="index.html">
-                <img src="images/logos/panda.png" alt="판다 로고">
-            </a>
-        </div>
-        <div class="info">  
-            <form>
-                <div>
-                    <label for="email">이메일</label>
-                    <br>
-                    <input id="email" name="email" placeholder="이메일을 입력해주세요" required>
-                    <!--
-                    <p class="form_error>이메일을 입력해 주세요</p> 
-                    <p class="form_error>잘못된 이메일 형식입니다</p>
-                    -->
-                </div>
-
-                <div class="password">
-                    <label for="password">비밀번호</label>
-                    <br>
-                    <input id="password" name="password" type="password" placeholder="비밀번호를 입력해주세요" required>
-                    <img class="see_blind" src="images/logos/see.png" alt="보이게">
-                    <!-- 
-                    <img class="see_blind" src="images/logos/blind.png" alt="안보이게">
-                    차후에 적용
-                    <p class="form_error>비밀번호를 입력해주세요</p>
-                    <p class="form_error>비밀번호를 8자 이상 입력해주세요</p>
-                    -->
-                </div>
-            </form>
-        <!-- 로그인 부분은 아직 버튼인지 a태그인지 조건이 안 나와서 임시로 div로 감싼 후 css로 스타일 적용-->            
-            <div id="login_button">로그인</div>
-        </div>
-        <div class="simple_login">
-            간편 로그인하기
-            <div class="social">
-                <a href="https://www.google.com/" target="_blank" rel="noopener noreferrer">
-                    <img src="images/social/google.png" alt="구글"></a>
-                <a href="https://www.kakaocorp.com/page/" target="_blank" rel="noopener noreferrer">
-                    <img src="images/social/kakao.png" alt="카카오"></a>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+        <title>판다마켓-로그인</title>
+        <link rel="icon" href="images/logos/favicon.ico">
+        <link rel='stylesheet' href='style/global.css'>
+        <link rel='stylesheet' href='style/sign.css'>
+    </head>
+    <body>
+        <section id="login_home">
+            <div id="login_logo">
+                <a href="index.html">
+                    <img src="images/logos/panda.png" alt="판다 로고">
+                </a>
             </div>
-        </div>
-        <div class="signup">
-            판다마켓이 처음이신가요?
-            <a href="signup.html" id="signup_button"><span id="textdecoration_underline">회원가입</span></a>
-        </div>
-    </section>
-</body>
+            <div class="info">  
+                <form id="loginGeneral" method="post">
+                    <div>
+                        <label for="email">이메일</label>
+                        <br>
+                        <input id="email" name="email" placeholder="이메일을 입력해주세요" required>
+                        <span id="emailEmptyError" class="form_error">이메일을 입력해 주세요</span> 
+                        <span id="emailInvalidError" class="form_error">잘못된 이메일 형식입니다</span>
+                    </div>
+
+                    <div class="password_label">
+                        <label for="password">비밀번호</label>
+                        <br>
+                        <input id="password" name="password" type="password" placeholder="비밀번호를 입력해주세요" required>
+                        <img class="see_blind" src="images/logos/see.png" alt="보이게">
+                        <!-- 
+                        <img class="see_blind" src="images/logos/blind.png" alt="안보이게">
+                        차후에 적용
+                        -->
+                        <span id="passwordEmptyError" class="form_error">비밀번호를 입력해 주세요</span> 
+                        <span id="passwordInvalidError" class="form_error">비밀번호를 8자 이상 입력해주세요</span>
+                    </div> 
+                    <button type="submit" id="login_button">로그인</button>
+                </form>            
+            </div>
+            <div class="simple_login">
+                간편 로그인하기
+                <div class="social">
+                    <a href="https://www.google.com/" target="_blank" rel="noopener noreferrer">
+                        <img src="images/social/google.png" alt="구글"></a>
+                    <a href="https://www.kakaocorp.com/page/" target="_blank" rel="noopener noreferrer">
+                        <img src="images/social/kakao.png" alt="카카오"></a>
+                </div>
+            </div>
+            <div class="signup">
+                판다마켓이 처음이신가요?
+                <a href="signup.html" id="signup_button"><span id="textdecoration_underline">회원가입</span></a>
+            </div>
+        </section>
+        <script src="sign.js"></script>
+    </body>
 </html>

@@ -68,7 +68,7 @@ form {
     margin: 0.75em 0;
 }
 
-.password,.password_repeat {
+.password_label,.password_repeat {
     position: relative;
 }
 
@@ -82,6 +82,13 @@ form {
 input {
     outline: none;
     border: none;
+}
+
+.form_error {
+    color: #f74747;
+    display: none;
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 input:focus {
