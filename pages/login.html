@@ -24,8 +24,10 @@
             type="email"
             id="input_email"
             placeholder="이메일을 입력해 주세요"
+            data-valid="false"
             required
           />
+          <span class="msg-error">에러 메시지</span>
         </div>
         <div class="input-area password">
           <label for="input_password">비밀번호</label>
@@ -34,8 +36,10 @@
             id="input_password"
             class="pw"
             placeholder="비밀번호를 입력해주세요"
+            data-valid="false"
             required
           />
+          <span class="msg-error">에러 메시지</span>
           <button type="button" class="btn-toggle" title="비밀번호 노출 토글">
             <span class="sr-only">비밀번호 노출 토글</span>
           </button>
@@ -70,6 +74,6 @@
         </div>
       </form>
     </div>
-    <script src="../js/auth.js"></script>
+    <script type="module" src="../js/login.js"></script>
   </body>
 </html>
