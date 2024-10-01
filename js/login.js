@@ -1,11 +1,39 @@
+import { activePasswordVisibility, checkInputFormat, addError} from './components/input.js'
+
 const email = document.querySelector('#email');
 const password = document.querySelector('#password');
 const btn = document.querySelector('.login-btn');
 
+let isEmailValid = false;
+let isPasswordValid = false;
+
+
+//input 값 올바른지 확인 후, 빨간색 아웃라인을 추가하는 함수 
+[email, password].forEach((input) => {
+  input.addEventListener('focusout', (e) => {
+    let isValid = checkInputFormat(event);
+    //console.log(isValid);
+    setInputValid(isValid);
+    addError(isValid); //에러 메세지 추가하기
+  });
+})
+
+
+//각 input값에 따라 validation 확인 
+function setInputValid(input){
+  input[0] === 'email' ? isEmailValid = input[1] :
+  input[0] === 'password' ? isPasswordValid = input[1] : null;
+
+  activeLoginBtn()
+}
+
+
+//로그인 버튼 활성화 하는 함수
 function activeLoginBtn() {
-  const isValid = email.value.length > 0 && password.value.length > 0; //boolean값으로 받아서 함수를 재사용 가능
-  btn.classList.toggle('active', isValid); //toggle에도 사용하고 
-  return isValid;
+  const workBtn = (isEmailValid && isPasswordValid); //boolean값으로 받아서 함수를 재사용 가능
+  console.log(workBtn);
+  btn.classList.toggle('active', workBtn); //toggle에도 사용하고 
+  return workBtn;
 }
 
 [email, password].forEach((input) => {
@@ -13,7 +41,8 @@ function activeLoginBtn() {
 })
 
 
-function loginSubmit(e) {
+//로그인 버튼 제출했을 때의 함수 = 로그인 버튼 클릭했을 때의 함수
+function submitLogin(e) {
   e.preventDefault();
 
   if(activeLoginBtn()) { //activeLoginBtn 함수를 재사용
@@ -22,27 +51,18 @@ function loginSubmit(e) {
       password: password.value
     });
 
-    //추가적인 제출 코드 작성
+    //items.html로 이동
+    window.location.href = '/items.html';
   } else {
     console.log('입력이 부족합니다.')
   }
 }
-btn.addEventListener('click', loginSubmit);
+btn.addEventListener('click', submitLogin);
 
 
 
-// 비밀번호 visibility 설정 
+// 비밀번호 눈 모양 visibility 설정하는 함수
+const passwordVisibility = document.querySelector('.btn-visibility');
+console.log(passwordVisibility);
 
-let passwordBtn = document.querySelector('.btn-visibility');
-console.log(passwordBtn);
-
-function passwordVisibility(btn) {
-  const img = btn.children[0].getAttribute('src');
-  const newImg = img === 'img/btn_visibility_off.svg' ? 'img/btn_visibility_on.svg' : 'img/btn_visibility_off.svg';
-  const newInput = newImg.includes('on') ? 'text' : 'password';
-
-  btn.previousElementSibling.setAttribute('type', newInput);
-  btn.children[0].setAttribute('src', newImg);
-
-}
-passwordBtn.addEventListener('click', () => passwordVisibility(passwordBtn));
+passwordVisibility.addEventListener('click', () => activePasswordVisibility(passwordVisibility));

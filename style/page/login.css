@@ -48,6 +48,10 @@ form {
   width: 100%;
 }
 
+.input-container {
+  margin-bottom: 24px;
+}
+
 label {
   display: block;
   width: 100%;
@@ -67,7 +71,6 @@ label {
   display: block;
   width: 100%;
   padding: 15px 24px;
-  margin-bottom: 24px;
   border: none;
   border-radius: 12px;
   background-color: var(--s100);
@@ -78,6 +81,10 @@ label {
   .input {
     margin-bottom: 16px;
   }
+}
+
+.input.error {
+  outline: 2px solid var(--error);
 }
 
 .input::-moz-placeholder {
@@ -95,6 +102,13 @@ label {
 .password-container {
   display: flex;
   position: relative;
+}
+
+.warning {
+  margin: 8px 16px;
+  font-size: 0.875em;
+  font-weight: 600;
+  color: var(--error);
 }
 
 .btn-visibility {
