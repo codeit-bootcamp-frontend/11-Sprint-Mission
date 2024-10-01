@@ -21,7 +21,6 @@ section,
   background-size: auto;
 }
 
-.logo,
 .home,
 section,
 .section {
@@ -37,7 +36,12 @@ section,
   align-items: center;
 }
 
-.logo,
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 section,
 .bottom-content,
 footer {
@@ -83,6 +87,7 @@ footer {
   align-items: flex-end;
 }
 
+.logo,
 .top,
 .bottom,
 .footer-auth {
@@ -238,8 +243,11 @@ footer {
     justify-content: space-around;
   }
 
+  img {
+    width: 100%;
+  }
+
   .head {
-    margin: 10px 16px;
     gap: 126px;
     align-items: center;
   }
@@ -302,7 +310,6 @@ footer {
   }
 
   section {
-    width: 344px;
     gap: 40px;
     padding: 26px 8px;
   }
@@ -351,7 +358,6 @@ footer {
   }
 
   footer {
-    width: 375px;
     padding: 32px 32px 64px 32px;
   }
 
@@ -384,7 +390,7 @@ footer {
   }
 
   .head {
-    width: 696px;
+    width: 100%;
     margin: 10px 24px;
     align-items: center;
   }
@@ -423,14 +429,14 @@ footer {
   }
 
   section {
-    padding: 26px 0;
-    gap: 52px;
+    padding: 24px;
   }
 
   .section {
     width: 696px;
     align-items: stretch;
     gap: 24px;
+    margin-bottom: 2px;
   }
 
   .section.reverse,
@@ -440,6 +446,7 @@ footer {
 
   .section.reverse {
     gap: 24px;
+    margin-bottom: 4px;
   }
 
   .section-image {
@@ -499,7 +506,6 @@ footer {
     background-size: auto;
   }
 
-  .logo,
   .home,
   section,
   .section {
@@ -561,6 +567,7 @@ footer {
     align-items: flex-end;
   }
 
+  .logo,
   .top,
   .bottom,
   .footer-auth {

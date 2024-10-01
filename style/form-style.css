@@ -1,10 +1,7 @@
 * {
   --gray-800: #1f2937;
   --Alice-Blue: #e6f2ff;
-}
-
-.join-page {
-  margin-top: 190px;
+  margin: 0;
 }
 
 body,
@@ -12,6 +9,7 @@ body,
 .join-content,
 .join-main,
 .join,
+form,
 .email-form__input,
 .password-form__input {
   display: flex;
@@ -31,15 +29,14 @@ body,
 }
 
 .join-page {
-  width: 640px;
-  margin: 231px 640px;
+  width: 100%;
   gap: 40px;
 }
 
 .join-content,
 .join-main,
 .join,
-form,
+.form,
 .auth-content,
 .to-us {
   display: flex;
@@ -54,9 +51,10 @@ form {
   gap: 24px;
 }
 
-form,
-.email-form__input,
-.password-form__input,
+.head {
+  width: 396px;
+}
+
 .auth-sns {
   gap: 16px;
 }
@@ -72,9 +70,13 @@ form,
 input,
 button,
 .simple-auth {
-  width: 640px;
+  width: 396px;
   gap: 10px;
   display: flex;
+}
+
+.input {
+  margin-top: 16px;
 }
 
 input,
@@ -110,6 +112,7 @@ input:focus {
 }
 
 .simple-auth {
+  width: 100%;
   height: 74px;
   border-radius: 8px;
   padding: 16px 23px;
@@ -122,7 +125,7 @@ input:focus {
 }
 
 .auth-content {
-  width: 594px;
+  width: 100%;
   justify-content: space-between;
   font-size: 16px;
   line-height: 26px;
@@ -145,13 +148,18 @@ input:focus {
   color: var(--primary);
 }
 
-@media (max-width: 767px) {
+@media (min-width: 365px) and (max-width: 767px) {
   body {
-    max-width: 400px;
+    margin: 16px;
   }
 
   .join-page {
-    margin: 80px 16px;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .head {
+    width: 198px;
   }
 
   .head > img {
@@ -165,7 +173,7 @@ input:focus {
   }
 
   form {
-    gap: 8px;
+    gap: 16px;
   }
 
   .email-form__input,
@@ -176,22 +184,22 @@ input:focus {
 
   input,
   .large-button {
-    width: 343px;
+    width: 100%;
   }
 
   .auth-content {
-    width: 296px;
+    width: 100%;
   }
 }
 
-@media (max-width: 1199px) {
+@media (min-width: 768px) and (max-width: 1199px) {
   * {
     --gray-800: #1f2937;
     --Alice-Blue: #e6f2ff;
   }
 
   .join-page {
-    margin-top: 190px;
+    padding: 48px 52px;
   }
 
   body,
@@ -199,6 +207,7 @@ input:focus {
   .join-content,
   .join-main,
   .join,
+  form,
   .email-form__input,
   .password-form__input {
     display: flex;
@@ -218,8 +227,7 @@ input:focus {
   }
 
   .join-page {
-    width: 640px;
-    margin: 231px 640px;
+    width: 100%;
     gap: 40px;
   }
 
@@ -238,12 +246,11 @@ input:focus {
   .join,
   form {
     width: 100%;
+    display: flex;
+    justify-content: center;
     gap: 24px;
   }
 
-  form,
-  .email-form__input,
-  .password-form__input,
   .auth-sns {
     gap: 16px;
   }
@@ -256,10 +263,14 @@ input:focus {
     line-height: 26px;
   }
 
+  .input {
+    margin-top: 16px;
+  }
+
   input,
   button,
   .simple-auth {
-    width: 640px;
+    width: 100%;
     gap: 10px;
     display: flex;
   }
@@ -309,7 +320,6 @@ input:focus {
   }
 
   .auth-content {
-    width: 594px;
     justify-content: space-between;
     font-size: 16px;
     line-height: 26px;
@@ -348,6 +358,7 @@ input:focus {
   .join-content,
   .join-main,
   .join,
+  form,
   .email-form__input,
   .password-form__input {
     display: flex;
@@ -390,9 +401,6 @@ input:focus {
     gap: 24px;
   }
 
-  form,
-  .email-form__input,
-  .password-form__input,
   .auth-sns {
     gap: 16px;
   }
@@ -405,10 +413,14 @@ input:focus {
     line-height: 26px;
   }
 
+  .input {
+    margin-top: 16px;
+  }
+
   input,
   button,
   .simple-auth {
-    width: 640px;
+    width: 100%;
     gap: 10px;
     display: flex;
   }
@@ -458,7 +470,6 @@ input:focus {
   }
 
   .auth-content {
-    width: 594px;
     justify-content: space-between;
     font-size: 16px;
     line-height: 26px;

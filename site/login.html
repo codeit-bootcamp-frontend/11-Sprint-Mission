@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+  <head>
+    <title>로그인</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/common.css" />
+    <link rel="stylesheet" href="/style/form-style.css" />
+    <link rel="stylesheet" href="/style/login.css" />
+    <link rel="stylesheet" href="/style/mark.css" />
+  </head>
+
+  <body>
+    <div class="join-page">
+      <header>
+        <div class="head">
+          <img src="../images/medium-logo.svg" alt="로고" />
+          <h1><a href="../index.html" class="title">판다마켓</a></h1>
+        </div>
+      </header>
+      <div class="join-content">
+        <main>
+          <div class="join-main">
+            <div class="join">
+              <form
+                id="login-form"
+                class="form"
+                action="/site/items.html"
+                method="GET"
+              >
+                <div class="email-form">
+                  <label for="input-email" class="email-form__input"
+                    >이메일<br />
+                    <input
+                      id="input-email"
+                      class="input"
+                      name="email"
+                      type="email"
+                      placeholder="이메일을 입력해주세요"
+                      data-valid="false"
+                    />
+                    <span class="invalid-text"></span>
+                  </label>
+                </div>
+                <div class="password-form">
+                  <label for="input-password" class="password-form__input"
+                    >비밀번호<br />
+                    <input
+                      id="input-password"
+                      class="input"
+                      name="password"
+                      type="password"
+                      placeholder="비밀번호를 입력해주세요"
+                      data-valid="false"
+                    />
+                    <span class="invalid-text"></span>
+                  </label>
+                </div>
+                <button
+                  type="submit"
+                  id="login-button"
+                  class="button large-button"
+                  disabled
+                >
+                  로그인
+                </button>
+              </form>
+            </div>
+          </div>
+        </main>
+        <aside>
+          <div class="simple-auth">
+            <div class="auth-content">
+              간편 로그인하기
+              <div class="auth-sns">
+                <a href="https://www.google.com/" class="auth-sns__icon"
+                  ><img src="/images/google.svg" alt="구글"
+                /></a>
+                <a href="https://www.kakaocorp.com/page/" class="auth-sns__icon"
+                  ><img src="/images/kakao.svg" alt="카카오"
+                /></a>
+              </div>
+            </div>
+          </div>
+        </aside>
+        <footer>
+          <div class="to-us">
+            <div class="us-message">판다마켓이 처음이신가요?</div>
+            <a class="us-link" href="/site/signup.html">회원가입</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script type="module" src="/function/common-form.js"></script>
+    <script type="module" src="/function/login.js"></script>
+  </body>
+</html>
