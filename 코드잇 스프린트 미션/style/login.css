@@ -8,7 +8,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 40px;
-  width: 100%
+  width: 100%;
 }
 
 header {
@@ -36,18 +36,19 @@ input {
 
 label {
   display: block;
+  margin-top: 16px;
   margin-bottom: 16px;
-  color: #1F2937; 
+  color: #1f2937;
   font-size: 18px;
   font-weight: 700;
   line-height: 26px;
 }
 
-#email, #password {
+#email,
+#password {
   border-radius: 12px;
   padding: 16px 24px;
-  margin: 0 0 24px;
-  background-color: #F3F4F6;
+  background-color: #f3f4f6;
   font-size: 16px;
   font-weight: 400;
 }
@@ -61,41 +62,50 @@ label {
 
 .eye-close {
   position: absolute;
-  top:16px;
+  top: 16px;
   right: 16px;
   cursor: pointer;
 }
 
 input::placeholder {
-color: #9CA3AF;
+  color: #9ca3af;
 }
 
-#email, #password, button {
+#email,
+#password,
+button {
   width: 640px;
   height: 56px;
   outline: none;
 }
 
-input, button {
+input,
+button {
   border: none;
 }
 
 input:focus {
-  border: 2px solid #3692FF;
+  border: 2px solid #3692ff;
   outline: none;
 }
 
 button {
+  margin-top: 18px;
   border-radius: 40px;
-  background-color: #9CA3AF;
-  color: #F3F4F6;
+  background-color: #9ca3af;
+  color: #f3f4f6;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 button:hover {
-  background-color: #3692FF;
+  background-color: #3692ff;
   cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  background-color: #9ca3af;
 }
 
 #simple-login {
@@ -105,9 +115,9 @@ button:hover {
   width: 100%;
   margin: 24px 0 24px;
   padding: 16px 23px;
-  background-color: #E6F2FF;
+  background-color: #e6f2ff;
   border-radius: 8px;
-  color: #1F2937;
+  color: #1f2937;
 }
 
 .social-icon {
@@ -125,16 +135,20 @@ button:hover {
 
 .signup-box a {
   text-decoration: underline;
-  color: #3692FF;
+  color: #3692ff;
 }
 
 @media screen and (min-width: 375px) and (max-width: 767px) {
-
   body {
     padding: 24px 0;
   }
 
-  form label, form input, form .password-container, form button, #simple-login, .signup-box {
+  form label,
+  form input,
+  form .password-container,
+  form button,
+  #simple-login,
+  .signup-box {
     width: 100%;
     max-width: 400px;
   }

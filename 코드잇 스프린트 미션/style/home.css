@@ -215,7 +215,7 @@ footer p {
     display: flex;
     flex-direction: column;
     padding: 24px 24px 56px 24px;
-    background-color: #FCFCFC;
+    background-color: #fcfcfc;
     gap: 40px;
   }
 
@@ -235,7 +235,7 @@ footer p {
   }
 
   .container img {
-    width: 100%
+    width: 100%;
   }
 
   #footerBanner .wrapper {
@@ -254,6 +254,6 @@ footer p {
   .nav {
     padding: 0 16px;
   }
-} 
+}
 
 /* 모바일 사이즈는 아직 구현하지 못했습니다 */
