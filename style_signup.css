@@ -23,8 +23,8 @@ body {
 
 .label_email,
 .label_nickname,
-.label_pw,
-.label_pw2 {
+.label_password,
+.label_password_check {
   font-size: 1.125rem;
   font-weight: 700;
   margin: 16px 0;
@@ -32,9 +32,9 @@ body {
 }
 
 .signup_email_bundle,
-.signup_pw_bundle,
+.signup_password_bundle,
 .signup_nickname_bundle,
-.signup_pw2_bundle {
+.signup_password_check_bundle {
   margin: 24px 0;
 }
 
@@ -121,4 +121,19 @@ button {
 
 button.active {
   background-color: rgba(54, 146, 255, 1);
+}
+
+/* PC */
+@media (min-width: 1200px) {
+
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1199px) {
+
+}
+
+/* Mobile */
+@media (min-width: 375px) and (max-width: 767px) {
+
 }
