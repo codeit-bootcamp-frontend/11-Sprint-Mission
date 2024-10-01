@@ -23,7 +23,7 @@
                 <a href="index.html"><img src="logo.svg" alt="판다마켓 홈" class="logo_img"></a>
             </div>
     
-            <form class="signinup">
+            <form class="signinup signinForm">
                 <div class="input_item">
                     <label for="email">이메일</label>
                     <input
@@ -32,7 +32,11 @@
                         name="email"
                         type="email"
                         placeholder="이메일을 입력해 주세요.">
+                        <!-- 오류 메시지 -->
+                        <span class="emailEmptyError error_message">이메일을 입력해 주세요</span>
+                        <span class="emailFalsetdError error_message">잘못된 이메일 형식입니다</span>
                 </div>
+                
                 <div class="input_item">
                     <label for="password">비밀번호</label>
                     <div class="input_div">
@@ -42,11 +46,15 @@
                         name="password"
                         type="password"
                         placeholder="비밀번호를 입력해 주세요.">
-                        <img src="eyex.svg" alt="비밀번호 숨김" class="toggle_pwd">
-                    </div>                
+                        <img src="eyex.svg" alt="비밀번호 숨김" class="toggle_pwd_x">
+                        <img src="eyeo.svg" alt="비밀번호 표시" class="toggle_pwd_o">
+                    </div>
+                    <!-- 오류 메시지 -->
+                    <span class="passwordEmptyError error_message">비밀번호를 입력해 주세요</span>
+                    <span class="passwordFalseError error_message">비밀번호를 8자 이상 입력해 주세요</span>                
                 </div>
     
-                <button href="login.html" class="button">로그인</button>
+                <button href="login.html" class="button signinBtn">로그인</button>
             </form>
     
             <div class="social_login_div">
@@ -61,5 +69,7 @@
                 판다마켓이 처음이신가요? <a href="signup.html">회원가입</a>
             </div>
         </div>
+
+        <script src="signin.js"></script>
     </body>
 </html>
