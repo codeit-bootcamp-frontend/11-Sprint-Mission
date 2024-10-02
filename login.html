@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>판다마켓|로그인</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/auth.css">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
 </head>
 <body class="login-body">
@@ -15,12 +16,17 @@
             <div>
                 <label for="email">이메일</label>
                 <input type="email" id="email" name="email" placeholder="이메일을 입력해주세요" required>
+                <p id="email-error" class="error-msg"></p>
             </div>
             <div>
                 <label for="password">비밀번호</label>
-                <input type="password" id="password" name="password" placeholder="비밀번호를 입력해주세요" required>
+                <div class="input-password">
+                    <input type="password" id="password" name="password" placeholder="비밀번호를 입력해주세요" required>
+                    <!-- <img src="images/ic_eyeopen.svg" alt="비밀번호 표시"> -->
+                    <p id="pwd-error" class="error-msg"></p>
+                </div>
             </div>
-            <button type="button">로그인</button>
+            <a href="/items" id="button">로그인</a>
         </form>
         <div class="sosial-login">
             <p>간편 로그인하기</p>
@@ -38,6 +44,6 @@
             <a href="/signup.html">회원가입</a>
         </div>
     </div>
-    <script src="scripts.js"></script>
+    <script src="formvalid.js"></script>
 </body>
 </html>
