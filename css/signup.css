@@ -1,4 +1,5 @@
 @import "global.css";
+@import "global.css";
 
 :root {
   --gray900: #111827;
@@ -35,6 +36,12 @@ form {
   gap: 12px;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 input:focus {
   outline-color: var(--blue);
 }
@@ -60,6 +67,7 @@ input::placeholder {
 }
 
 .inputPW {
+  position: relative;
   position: relative;
   display: flex;
   align-items: center;
