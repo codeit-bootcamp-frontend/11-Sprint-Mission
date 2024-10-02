@@ -1,4 +1,5 @@
 @import "global.css";
+@import "global.css";
 
 :root {
   --gray900: #111827;
@@ -18,7 +19,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 120px;
+  margin: 160px;
   gap: 10px;
 }
 
@@ -27,6 +28,12 @@ main {
   flex-direction: column;
   justify-content: left;
   gap: 18px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 form {
@@ -47,16 +54,25 @@ input::placeholder {
   font-weight: 600;
 }
 
-.myInput {
+.myEmail,
+.myPw {
   width: 530px;
   height: 45px;
   background-color: var(--gray100);
   border: 0 solid black;
   border-radius: 8px;
   padding-left: 20px;
+  padding-right: 40px;
+}
+
+.emailError,
+.pwError {
+  color: red;
+  font-size: 0.75rem;
 }
 
 .inputPW {
+  position: relative;
   position: relative;
   display: flex;
   align-items: center;
@@ -65,6 +81,7 @@ input::placeholder {
 .visiblePW {
   position: absolute;
   right: 20px;
+  cursor: pointer;
 }
 
 .login {
@@ -74,11 +91,17 @@ input::placeholder {
   width: 530px;
   height: 50px;
   background: var(--blue);
+  font-size: 1rem;
   color: #ffffff;
-  font-size: 1em;
+  border: 0 solid;
   border: 0 solid;
   border-radius: 9999px;
   cursor: pointer;
+}
+
+.login:disabled {
+  background: var(--gray400);
+  cursor: default;
 }
 
 .easyLogin {
@@ -121,7 +144,8 @@ input::placeholder {
     margin: 0 16px;
   }
 
-  .myInput {
+  .myEmail,
+  .myPw {
     width: 100%;
     max-width: 400px;
   }

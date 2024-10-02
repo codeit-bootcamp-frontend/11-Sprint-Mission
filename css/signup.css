@@ -1,4 +1,5 @@
 @import "global.css";
+@import "global.css";
 
 :root {
   --gray900: #111827;
@@ -18,7 +19,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 160px;
+  margin: 120px;
   gap: 10px;
 }
 
@@ -27,6 +28,12 @@ main {
   flex-direction: column;
   justify-content: left;
   gap: 18px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 form {
@@ -47,39 +54,57 @@ input::placeholder {
   font-weight: 600;
 }
 
-.myInput {
+.myEmail,
+.myNickname,
+.myPw,
+.checkMyPw {
   width: 530px;
   height: 45px;
   background-color: var(--gray100);
   border: 0 solid black;
   border-radius: 8px;
   padding-left: 20px;
-  padding-right: 40px;
 }
 
 .inputPW {
+  position: relative;
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.visiblePW {
+.visiblePW,
+.visiblePWCheck {
   position: absolute;
   right: 20px;
+  cursor: pointer;
 }
 
-.login {
+.emailError,
+.nicknameError,
+.passwordError,
+.checkPwError {
+  color: red;
+  font-size: 0.75rem;
+}
+
+.signup {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 530px;
   height: 50px;
   background: var(--blue);
-  font-size: 1em;
+  font-size: 1rem;
   color: #ffffff;
   border: 0 solid;
   border-radius: 9999px;
   cursor: pointer;
+}
+
+.signup:disabled {
+  background: var(--gray400);
+  cursor: default;
 }
 
 .easyLogin {
@@ -97,7 +122,7 @@ input::placeholder {
   height: 36px;
 }
 
-.signup {
+.login {
   text-align: center;
   font-size: 14px;
 }
@@ -122,7 +147,10 @@ input::placeholder {
     margin: 0 16px;
   }
 
-  .myInput {
+  .myEmail,
+  .myNickname,
+  .myPw,
+  .checkMyPw {
     width: 100%;
     max-width: 400px;
   }
@@ -132,7 +160,7 @@ input::placeholder {
     max-width: 440px;
   }
 
-  .login {
+  .signup {
     width: 100%;
     max-width: 400px;
   }

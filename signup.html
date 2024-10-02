@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <head>
   <title>판다마켓 회원가입</title>
+  <title>판다마켓 회원가입</title>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="signup.css" />
   <link rel="globalStylesheet" href="global.css" />
+  <link rel="stylesheet" href="css/signup.css" />
 </head>
 <body>
   <header>
     <div>
+    <div>
       <a href="/index.html">
+        <img class="logo" src="img/logo/logo.png" alt="판다마켓 로고" />
         <img class="logo" src="img/logo/logo.png" alt="판다마켓 로고" />
       </a>
     </div>
@@ -16,29 +20,27 @@
   <main>
     <form>
       <label for="email" class="thickText">이메일</label>
-      <div>
-        <input
-          id="email"
-          type="email"
-          class="myInput"
-          placeholder="이메일을 입력해주세요"
-        />
-      </div>
+      <input
+        id="email"
+        type="email"
+        class="myEmail"
+        placeholder="이메일을 입력해주세요"
+      />
+      <div class="emailError"></div>
       <label for="nicknm" class="thickText">닉네임</label>
-      <div>
-        <input
-          id="nicknm"
-          type="nickname"
-          class="myInput"
-          placeholder="닉네임을 입력해주세요"
-        />
-      </div>
+      <input
+        id="nicknm"
+        type="nickname"
+        class="myNickname"
+        placeholder="닉네임을 입력해주세요"
+      />
+      <div class="nicknameError"></div>
       <label for="password" class="thickText">비밀번호</label>
       <div class="inputPW">
         <input
           id="password"
           type="password"
-          class="myInput"
+          class="myPw"
           placeholder="비밀번호를 입력해주세요"
         />
         <img
@@ -47,21 +49,23 @@
           alt="비밀번호 아이콘"
         />
       </div>
+      <div class="passwordError"></div>
       <label for="checkPW" class="thickText">비밀번호 확인</label>
       <div class="inputPW">
         <input
           id="checkPW"
           type="password"
-          class="myInput"
+          class="checkMyPw"
           placeholder="비밀번호를 다시 한 번 입력해주세요"
         />
         <img
-          class="visiblePW"
+          class="visiblePWCheck"
           src="img/icon/ic_visibility_off.png"
           alt="비밀번호 아이콘"
         />
       </div>
-      <button type="submit" class="login">로그인</button>
+      <div class="checkPwError"></div>
+      <button type="submit" class="signup" disabled>회원가입</button>
     </form>
     <div class="easyLogin">
       간편 로그인하기
@@ -74,8 +78,10 @@
         </a>
       </div>
     </div>
-    <div class="signup">
-      이미 회원이신가요? <a href="/login.html">로그인</a>
+    <div class="login">
+      이미 회원이신가요? <a href="./login.html">로그인</a>
     </div>
   </main>
+  <script type="module" src="js/signup.js"></script>
+  <script type="module" src="js/password.js"></script>
 </body>

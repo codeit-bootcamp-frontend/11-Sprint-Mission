@@ -1,0 +1,342 @@
+@import "global.css";
+
+body {
+  font-size: 16px;
+  overflow: scroll;
+  margin: 0 auto;
+}
+
+nav {
+  width: 100%;
+  height: 50px;
+  background: #ffffff;
+  position: fixed;
+  top: 0;
+}
+
+main {
+  margin: 0 auto;
+}
+
+footer {
+  width: 100%;
+  min-width: 1080px;
+  height: 100px;
+  background-color: #0b173b;
+  color: #ffffff;
+}
+
+a {
+  text-decoration-line: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.header {
+  margin: 0 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logo {
+  height: 48px;
+  cursor: pointer;
+}
+
+#login {
+  height: 32px;
+  cursor: pointer;
+}
+
+#home {
+  width: 100%;
+  min-width: 1080px;
+  height: 480px;
+  background-color: #cee3f6;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-top: 50px;
+}
+
+#home-top {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  width: 1080px;
+  margin: 0 auto;
+}
+
+#home-info {
+  text-align: left;
+  font-size: 2rem;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 36px;
+  margin-bottom: 64px;
+}
+
+.homeText {
+  padding-right: 140px;
+}
+
+#show-items {
+  cursor: pointer;
+}
+
+.home-img {
+  height: 280px;
+}
+
+.card,
+.card-right {
+  width: 640px;
+  background-color: #fafafa;
+  display: flex;
+  margin: 160px auto;
+  border-radius: 16px;
+  gap: 30px;
+}
+
+.card-img {
+  width: 360px;
+}
+
+.card-info,
+.card-info-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card-right {
+  justify-content: flex-end;
+}
+
+.card-info-right {
+  text-align: right;
+  margin-right: 0;
+  margin-left: 30px;
+}
+
+.card-title {
+  color: #0174df;
+  font-weight: 600;
+}
+
+.card-info-big,
+.card-info-big-right {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.card-info-big {
+  padding-right: 45px;
+}
+
+#bottom-img {
+  width: 100%;
+  min-width: 1080px;
+  height: 420px;
+  background-color: #cee3f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#bottom-info {
+  width: 1080px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 700;
+  gap: 40px;
+  margin: 0 auto;
+}
+
+.corpName {
+  grid-area: name;
+  justify-self: center;
+  align-self: center;
+  color: #bdbdbd;
+}
+
+.pmLink {
+  grid-area: info;
+  justify-self: center;
+  align-self: center;
+}
+
+.pmSns {
+  grid-area: sns;
+  justify-self: center;
+  align-self: center;
+}
+
+#footer-info {
+  display: grid;
+  grid-template: 30px 30px / 150px 1fr 170px 1fr 150px;
+  grid-template-areas:
+    "name . info . sns"
+    ". . . . .";
+  padding-top: 15px;
+}
+
+.social-media-img {
+  height: 20px;
+}
+
+@media (max-width: 1199px) {
+  .header {
+    margin: 0 24px;
+  }
+
+  #home {
+    height: 800px;
+    min-width: 720px;
+  }
+
+  #home-top {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 720px;
+  }
+
+  #home-info {
+    align-items: center;
+    margin: 0 0 180px;
+  }
+
+  .homeText {
+    padding-right: 0;
+  }
+
+  .home-img {
+    height: 340px;
+  }
+
+  #show-items {
+    height: 46px;
+  }
+
+  .card,
+  .card-right {
+    width: 90%;
+    margin: 20px auto;
+    flex-direction: column;
+  }
+
+  .card-img {
+    width: 100%;
+  }
+
+  .card-info,
+  .card-info-right {
+    gap: 0;
+  }
+
+  .card-info {
+    padding-left: 20px;
+  }
+
+  .card-info-right {
+    padding-right: 20px;
+  }
+
+  .card-right {
+    flex-direction: column-reverse;
+  }
+
+  #bottom-img {
+    height: 800px;
+    min-width: 720px;
+  }
+
+  #bottom-info {
+    width: 720px;
+    flex-direction: column;
+    gap: 200px;
+    text-align: center;
+  }
+
+  footer {
+    min-width: 720px;
+  }
+}
+
+@media (max-width: 767px) and (min-width: 375px) {
+  .header {
+    margin: 0 16px;
+  }
+
+  #home {
+    height: 500px;
+    min-width: 360px;
+  }
+
+  #home-top {
+    width: 360px;
+  }
+
+  #home-info {
+    margin-bottom: 80px;
+  }
+
+  .home-img {
+    height: 210px;
+  }
+
+  .homeText {
+    text-align: center;
+    padding: 0 50px;
+  }
+
+  #show-items {
+    height: 40px;
+  }
+
+  #bottom-img {
+    height: 500px;
+    min-width: 360px;
+  }
+
+  #bottom-info {
+    width: 360px;
+    gap: 100px;
+  }
+
+  footer {
+    min-width: 360px;
+  }
+
+  #footer-info {
+    grid-template: 30px 30px / 200px 1fr 120px;
+    grid-template-areas:
+      "info . sns"
+      "name . .";
+  }
+
+  .corpName {
+    grid-area: name;
+    justify-self: left;
+    align-self: center;
+    color: #bdbdbd;
+    padding-left: 20px;
+  }
+
+  .pmLink {
+    grid-area: info;
+    justify-self: left;
+    align-self: center;
+    padding-left: 20px;
+  }
+}
