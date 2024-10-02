@@ -1,0 +1,62 @@
+header {
+  /* [Srpint2] 헤더 GNB를 위해 position sticky 추가 */
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 7rem;
+  /* 로고 & 로그인 버튼 여백 200px 유지하기 위해 rem 사용 X */
+  padding: 0.8rem 200px;
+  background-color: #fff;
+  .logo {
+    width: 15.3rem;
+    height: 5.1rem;
+    &-img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      &.logo-mobile {
+        display: none;
+      }
+    }
+  }
+  .login-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-left: 3.2rem;
+    .content-link {
+      a {
+        font-size: 1.8rem;
+        font-weight: var(--bold);
+        line-height: 2.6rem;
+        color: var(--gray600);
+      }
+    }
+    .link-profile {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+  .link-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12.8rem;
+    height: 4.8rem;
+    border-radius: 0.8rem;
+    background-color: var(--primary100);
+    font-size: 1.6rem;
+    font-weight: var(--semiBold);
+    line-height: 2.6rem;
+    color: var(--gray100);
+    &:hover {
+      background-color: var(--primary200);
+    }
+    &:active {
+      background-color: var(--primary300);
+    }
+  }
+}

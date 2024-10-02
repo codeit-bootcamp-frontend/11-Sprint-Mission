@@ -1,0 +1,173 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* [Sprint2] 로그인 & 회원가입 컨텐츠 영역을 가운데 위치시키기 
+  위해 min-width 100vh로 최소 높이를 뷰포트 높이로 지정,
+  컨텐츠 영역이 뷰포트 높이보다 커지는 상황을 고려해 상하 패딩 추가 */
+  min-height: 100vh;
+  padding: 6rem 0;
+  .logo {
+    width: 39.6rem;
+    height: 13.2rem;
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 64rem;
+    gap: 2.4rem;
+    margin-top: 4rem;
+    .input-area {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      label {
+        margin-bottom: 1.6rem;
+        font-size: 1.8rem;
+        font-weight: var(--bold);
+        line-height: 2.6rem;
+      }
+      input {
+        height: 5.6rem;
+        padding: 1.5rem 2.4rem;
+        border: 0;
+        border-radius: 1.2rem;
+        background-color: var(--gray100);
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+        &::placeholder {
+          color: var(--gray400);
+        }
+        &:focus {
+          outline-color: var(--primary100);
+        }
+        &.pw {
+          &[type="text"] {
+            & ~ .btn-toggle {
+              background-image: url(/public/images/icons/ic_visibility_on.png);
+            }
+          }
+          &[type="password"] {
+            & ~ .btn-toggle {
+              background-image: url(/public/images/icons/ic_visibility_off.png);
+            }
+          }
+        }
+        &.invalid {
+          border: 0.1rem solid var(--error);
+          & ~ .msg-error {
+            display: block;
+          }
+        }
+      }
+      .btn-toggle {
+        position: absolute;
+        top: 5.8rem;
+        right: 2.4rem;
+        width: 2.4rem;
+        height: 2.4rem;
+        padding: 0;
+        border: 0;
+        background-color: transparent;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .msg-error {
+        display: none;
+        margin: 0.8rem 0 0 1.6rem;
+        font-size: 1.4rem;
+        font-weight: var(--semiBold);
+        line-height: 2.4rem;
+        color: var(--error);
+      }
+    }
+    .btn {
+      height: 5.6rem;
+      padding: 0;
+      border: 0;
+      border-radius: 4rem;
+      background-color: var(--primary100);
+      font-size: 2rem;
+      font-weight: var(--semiBold);
+      color: #fff;
+      /* 폼 양식 input 영역 미완성인 경우 */
+      &:disabled {
+        background-color: var(--gray400);
+        cursor: not-allowed;
+      }
+    }
+    .sns-area {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.6rem 2.3rem;
+      border-radius: 0.8rem;
+      background-color: #e6f2ff;
+      span {
+        font-size: 1.6rem;
+        font-weight: var(--medium);
+        color: var(--gray800);
+      }
+      .sns-wrap {
+        display: flex;
+        gap: 0 1.6rem;
+        .btn-sns {
+          display: block;
+          width: 4.2rem;
+          height: 4.2rem;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+    .switch-area {
+      font-size: 1.4rem;
+      font-weight: var(--medium);
+      line-height: 2.4rem;
+      text-align: center;
+      a {
+        color: var(--primary100);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+/* BreakPoint Mobile */
+@media (max-width: 767px) {
+  .container {
+    .logo {
+      width: 19.8rem;
+      height: 6.6rem;
+    }
+    form {
+      gap: 1.6rem;
+      max-width: 40rem;
+      width: 100%;
+      padding: 0 1.6rem;
+      .input-area {
+        label {
+          margin-bottom: 0.8rem;
+          font-size: 1.4rem;
+          line-height: 2.4rem;
+        }
+      }
+      .sns-area {
+        margin-top: 0.8rem;
+      }
+    }
+  }
+}

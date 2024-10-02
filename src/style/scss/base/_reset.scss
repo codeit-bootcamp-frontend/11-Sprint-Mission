@@ -1,3 +1,8 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v5.0.2 | 20191019
+   License: none (public domain)
+*/
+
 html,
 body,
 div,
@@ -69,6 +74,7 @@ figcaption,
 footer,
 header,
 hgroup,
+main,
 menu,
 nav,
 output,
@@ -83,6 +89,7 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
+  font: inherit;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -94,14 +101,20 @@ figure,
 footer,
 header,
 hgroup,
+main,
 menu,
 nav,
 section {
   display: block;
 }
+/* HTML5 hidden-attribute fix for newer browsers */
+*[hidden] {
+  display: none;
+}
 body {
   line-height: 1;
 }
+menu,
 ol,
 ul {
   list-style: none;

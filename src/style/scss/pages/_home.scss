@@ -1,0 +1,117 @@
+/* Main & Section */
+.section {
+  &-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 72rem;
+    .section-wrap {
+      display: flex;
+      width: 112rem;
+      justify-content: center;
+    }
+    .section-content {
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 1.2rem;
+      background-color: #fcfcfc;
+      .img-home,
+      .img-home {
+        max-width: 74.6rem;
+      }
+    }
+    .section-title {
+      font-size: 4rem;
+      font-weight: var(--bold);
+      line-height: 5.6rem;
+      color: var(--gray700);
+      &.mb-60 {
+        margin-bottom: 6rem;
+      }
+    }
+    &-bg {
+      align-items: end;
+      height: 54rem;
+      background-color: #cfe5ff;
+      .section-content {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        border-radius: 0;
+        background-color: transparent;
+        &-inner {
+          margin-bottom: 6rem;
+          .link-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35.7rem;
+            height: 5.6rem;
+            margin-top: 3.2rem;
+            border-radius: 4rem;
+            background-color: var(--primary100);
+            font-size: 2rem;
+            font-weight: var(--semiBold);
+            line-height: 3.2rem;
+            color: var(--gray50);
+            &:hover {
+              background-color: var(--primary200);
+            }
+            &:active {
+              background-color: var(--primary300);
+            }
+          }
+        }
+      }
+    }
+    &-card {
+      .section-content {
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 98.8rem;
+        border-radius: 1.2rem;
+        background-color: #fcfcfc;
+        img {
+          display: none;
+          &.img-pc {
+            display: block;
+            width: 57.9rem;
+            height: 44.4rem;
+          }
+        }
+        &-inner {
+          display: flex;
+          flex-grow: 1;
+          margin-left: 6.4rem;
+          > * {
+            width: fit-content;
+          }
+        }
+        .badge {
+          margin-bottom: 1.2rem;
+          font-size: 1.8rem;
+          font-weight: var(--bold);
+          line-height: 2.6rem;
+          color: var(--primary100);
+        }
+        .section-desc {
+          margin-top: 2.4rem;
+          font-size: 2.4rem;
+          font-weight: var(--medium);
+          line-height: 3.2rem;
+          color: var(--gray700);
+        }
+      }
+      &:nth-child(2n + 1) {
+        .section-content-inner {
+          margin-left: 1.4rem;
+          text-align: right;
+        }
+      }
+    }
+  }
+}
