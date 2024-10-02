@@ -40,6 +40,7 @@
                   placeholder="이메일을 입력해주세요"
                   required
                 />
+                <span class="errorMasage" id="emailError"></span>
               </div>
 
               <div class="inputContainer password">
@@ -52,16 +53,25 @@
                   required
                 />
                 <button class="seePassword" type="button">
-                  <img src="../img/close-eye.png" alt="비밀번호 보기" />
+                  <img
+                    id="eyeButton"
+                    class="eyeBtn"
+                    src="/img/close-eye.png"
+                    alt="비밀번호 보기"
+                  />
                 </button>
+                <span class="errorMasage" id="passwordError"></span>
               </div>
             </div>
-
-            <button type="submit" class="loginButton">로그인</button>
+            <button type="submit" class="loginButton" id="loginButton" disabled>
+              로그인
+            </button>
           </div>
 
           <div class="socialLogin">
-            <p>간편 로그인하기</p>
+            <a href="https://youtu.be/oIyXqK34xSs?si=fvunpJcz7Bi98npA"
+              >간편 로그인하기</a
+            >
             <div class="socialLink">
               <a href="https://www.google.com/"
                 ><img src="../img/google-logo.png" alt="Google"
@@ -74,10 +84,11 @@
 
           <footer class="helpLinks">
             <p>판다마켓이 처음이신가요?</p>
-            <a class="buttonLog" href="/login/signup/index.html">회원가입</a>
+            <a class="buttonLog" href="/login/signup.html">회원가입</a>
           </footer>
         </form>
       </main>
     </div>
+    <script type="module" src="/login/js/login.js"></script>
   </body>
 </html>

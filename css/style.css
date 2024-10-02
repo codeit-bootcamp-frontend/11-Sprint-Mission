@@ -1,23 +1,33 @@
+* {
+  --z-index-low: 10;
+  --z-index-medium: 50;
+  --z-index-high: 100;
+}
+
 html {
   font-family: "Pretendard", "Noto Sans KR", sans-serif;
   word-break: keep-all;
 }
 
-header {
-  position:fixed;
+header { /* header가 한없이 길어지는 것을 막기 위해 넣어봤는데 실패하였습니다. */
+  margin: 0 auto;
+  padding: 0 200px; /*figma에는 9 400 주라고 되어있는데, 답지(?)에는 이렇게 있어요.*/
+}
+
+.header {
+  width: 100%;
+  position: sticky;
   top: 0;
   left: 0;
-  z-index: 99; /* 가려지는 상황이 있어 임의로 추가함.*/
-  width: 100%;
+  z-index: var(--z-index-high); 
+  width: auto;
   height: 70px;
   border-bottom: 1px solid var(--white-5);
-  padding: 0 200px; /*figma에는 9 400 주라고 되어있는데, 답지(?)에는 이렇게 있어요.*/
-  gap: 10px; 
+  gap: 10px;
   background-color: var(--white);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
 }
 
 .logos {
@@ -42,6 +52,7 @@ header {
   line-height: 34.6px;
   color: var(--blue-100);
 }
+
 #login {
   width: 128px;
   height: 48px;
@@ -56,6 +67,11 @@ header {
   line-height: 26px;
 }
 
+#login:hover {
+  background-color: var(--blue-200);
+  cursor: pointer; 
+}
+
 main {
   margin: 0 auto;
   background-color: var(--white-3);
@@ -66,7 +82,7 @@ main {
 }
 
 .sectionAll {
-  margin: 70px auto;
+  margin: 0 auto;
   width: 100%;
   height: 540px;
   background-color: var(--white-4);
@@ -126,7 +142,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 100px 0; 
+  margin: 100px 0;
   /* reset css라는 것을 실행후 figma에서 보여지는 것과 다르게 article이 붙어 있어 임의로 수정하였습니다. */
 }
 
@@ -190,7 +206,7 @@ footer {
 #center {
   display: flex;
   gap: 30px;
-  color: var(--gray-200); /*색 적용이안되는 이유 color: inherit 추가함.*/
+  color: var(--gray-200);
   font-size: 16px;
   font-weight: 400;
   line-height: 19.09px;
@@ -210,200 +226,196 @@ footer {
 }
 
 /* Tablet 스타일 (768px ~ 1199px) 1505%이상의 화면*/
-@media (max-width:1199px){
-header {
-  padding: 0 24px
-}
+@media (max-width: 1199px) {
+  .header {
+    padding: 0 24px;
+  }
 
-.sectionAll {
-  height: 100%;
-}
+  .sectionAll {
+    height: 100%;
+  }
 
-.mainBox {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+  .mainBox {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-.wordBox {
-  height: 100%;
-  width: 512px;
-  margin: 84px 116px;
-  gap:24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .wordBox {
+    height: 100%;
+    width: 512px;
+    margin: 84px 116px;
+    gap: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.mainWord {
-  text-align: center;
-  gap:24px;
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 56px;
-}
+  .mainWord {
+    text-align: center;
+    gap: 24px;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 56px;
+  }
 
-.break {
-  display: none;
-  white-space: nowrap;
-}
+  .break {
+    display: none;
+    white-space: nowrap;
+  }
 
-.mainImage {
-  height: 100%;
-  width: 100%;
-  margin-top: 431px;
-}
+  .mainImage {
+    height: 100%;
+    width: 100%;
+  }
 
-#see {
-  height: 56px;
-  width:fit-content;
-}
+  #see {
+    height: 56px;
+    width: fit-content;
+  }
 
-.articleImage {
-  width: 100%;
-}
+  .articleImage {
+    width: 100%;
+  }
 
-.articles {
-  width: 696px;
-  gap: 52px;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.article {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-}
+  .articles {
+    width: 696px;
+    gap: 52px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .article {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+  }
 
-.reverseArticle {
-  flex-direction: column-reverse;
-  justify-content: center;
-  align-items: end;
-}
+  .reverseArticle {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: end;
+  }
 
-.wordBox2 {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  padding-bottom: 24px;
-  gap: 12px;
-}
+  .wordBox2 {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-bottom: 24px;
+    gap: 12px;
+  }
 
-#word2 {
-  text-align: right;
-}
+  #word2 {
+    text-align: right;
+  }
 
-#bottomBox {
-  display: flex;
-  justify-content:center;
-  align-items: center;
-  margin: 201px 224px 0;
-}
+  #bottomBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 201px 224px 0;
+  }
 
-footer {
-  height: 160px;
-  padding: 32px 104px 64px;
-}
+  footer {
+    height: 160px;
+    padding: 32px 104px 64px;
+  }
 }
 
 /* Mobile 스타일 (375px ~ 767px) 250%이상의 화면*/
-@media (max-width: 767px){
-header {
-  padding: 0 16px;
-}
+@media (max-width: 767px) {
+  .header {
+    padding: 0 16px;
+    width: 100%;
+    gap: 126px;
+  }
 
-header {
-  width: 100%;
-  gap: 126px; 
-}
+  .break {
+    white-space: normal;
+    display: inline;
+  }
 
-.break {
-  white-space: normal;
-  display: inline;
-}
+  .wordBox {
+    width: 240px;
+    margin: 48px 68px;
+    padding: 0 0 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .mainImage {
+    margin: 0;
+  }
 
-.wordBox {
-  width: 240px;
-  margin: 48px 68px;
-  padding: 0 0 60px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-.mainImage{
-  margin: 0;
-}
+  .mainWord {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 44.8px;
+    text-align: center;
+  }
 
-.mainWord {
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 44.8px;
-  text-align: center;
-}
+  #see {
+    padding: 16px 71px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 26px;
+  }
 
-#see {
-  padding: 16px 71px;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 26px;
-}
+  .articles {
+    width: 334px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+  }
 
-.articles {
-  width: 334px;
-  gap: 10px;
-  display: flex;
-  flex-direction: column;
-}
+  .point {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 26px;
+  }
 
-.point {
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 26px;
-}
+  .articleContent {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+  }
 
-.articleContent {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 32px;
-}
+  .detail {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
+  }
 
-.detail {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 26px;
-}
+  #bottomBox {
+    margin: 121px 70px;
+  }
 
-#bottomBox {
-  margin: 121px 70px;
-}
+  footer {
+    display: grid;
+    grid-template-columns: 180px 120px;
+    grid-template-rows: 30px 30px;
+    gap: 30px 20px;
+    padding: 32px;
+  }
 
-footer {
-  display: grid;
-  grid-template-columns: 180px 120px;
-  grid-template-rows: 30px 30px;
-  gap: 30px 20px;
-  padding: 32px;
-}
+  .codeit {
+    grid-row: 2/3;
+    grid-column: 1/2;
+    text-align: left;
+  }
 
-.codeit {
-  grid-row: 2/3;
-  grid-column: 1/2;
-  text-align: left;
-}
+  #center {
+    grid-row: 1/2;
+    grid-column: 1/2;
+  }
 
-#center {
-  grid-row: 1/2;
-  grid-column: 1/2;
-}
-
-.socialLink {
-  grid-row: 1/2;
-  grid-column: 2/3;
-}
+  .socialLink {
+    grid-row: 1/2;
+    grid-column: 2/3;
+  }
 }
