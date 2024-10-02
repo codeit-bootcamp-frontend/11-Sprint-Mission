@@ -138,8 +138,26 @@ input:focus {
   }
 }
 
+.password-toggle-button {
+  position: absolute;
+  right: 24px;
+}
+
+.error-message {
+  color: #f74747;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 18px;
+  margin-top: 8px;
+  display: none;
+  padding-left: 16px;
+}
+
+
+
 @media screen and (max-width: 400px) {
   .loginpage {
       max-width: 400px;
   }
 }
+
