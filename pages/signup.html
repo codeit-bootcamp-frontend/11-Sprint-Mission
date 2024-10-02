@@ -55,44 +55,44 @@
                 placeholder="비밀번호를 입력해주세요"
               />
               <img
-                src="/images/icons/password-toggle.png"
+                src="/images/icons/password-visible.svg"
                 alt="비밀번호 보기"
-                class="show-password-toggle"
+                class="toggle-password"
               />
             </div>
           </div>
 
           <div class="input-wrapper">
-            <label class="auth-label" for="password-confirm"
+            <label class="auth-label" for="confirm-password"
               >비밀번호 확인</label
             >
             <div class="password-input-wrapper">
               <input
                 class="auth-input"
                 type="password"
-                id="password-confirm"
-                name="password-confirm"
+                id="confirm-password"
+                name="confirm-password"
                 placeholder="비밀번호를 다시 한 번 입력해주세요"
               />
               <img
-                src="/images/icons/password-toggle.png"
+                src="/images/icons/password-visible.svg"
                 alt="비밀번호 보기"
-                class="show-password-toggle"
+                class="toggle-password"
               />
             </div>
           </div>
 
-          <button class="auth-btn signup-btn" type="submit">회원가입</button>
+          <button class="auth-btn" type="button">회원가입</button>
         </form>
 
         <div class="easy-login">
           <p class="easy-login-title">간편 로그인하기</p>
           <div class="social-icons">
             <a href="https://www.google.com/" target="_blank">
-              <img src="/images/icons/ic_google.png" alt="구글 아이콘" />
+              <img src="/images/icons/ic_google.svg" alt="구글 아이콘" />
             </a>
             <a href="https://www.kakaocorp.com/page/" target="_blank">
-              <img src="/images/icons/ic_kakaotalk.png" alt="카카오톡 아이콘" />
+              <img src="/images/icons/ic_kakaotalk.svg" alt="카카오톡 아이콘" />
             </a>
           </div>
         </div>
@@ -104,4 +104,6 @@
       </div>
     </main>
   </body>
+  <script src="/scripts/auth.js"></script>
+  <script src="/scripts/sign-up.js"></script>
 </html>
