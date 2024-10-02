@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { togglePwVisibility } from "utils/togglePwVisible";
 
 function Signup(props) {
   return (
@@ -51,6 +52,7 @@ function Signup(props) {
             type="button"
             className="btn-toggle"
             title="비밀번호 노출 토글"
+            onClick={togglePwVisibility}
           >
             <span className="sr-only">비밀번호 노출 토글</span>
           </button>
@@ -70,6 +72,7 @@ function Signup(props) {
             type="button"
             className="btn-toggle"
             title="비밀번호 노출 토글"
+            onClick={togglePwVisibility}
           >
             <span className="sr-only">비밀번호 노출 토글</span>
           </button>
