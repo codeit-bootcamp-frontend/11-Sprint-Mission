@@ -20,8 +20,7 @@ const warningPasswordCheck = document.querySelector(
   '.warning__password__check'
 );
 
-const buttonDisabled = document.querySelector('.button--disabled');
-const buttonEnabled = document.querySelector('.button--enabled');
+const signupButton = document.querySelector('.button--disabled');
 
 const passwordEye = document.querySelector('.password--visibility');
 const passwordCheckEye = document.querySelector('.password__check--visibility');
@@ -104,8 +103,7 @@ inputs.forEach((input) =>
 inputs.forEach((input) =>
   input.addEventListener('input', () =>
     validSignupInput(
-      buttonEnabled,
-      buttonDisabled,
+      signupButton,
       emailInput,
       usernameInput,
       passwordInput,

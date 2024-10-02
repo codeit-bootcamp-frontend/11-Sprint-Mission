@@ -33,28 +33,21 @@ function deleteWarning(input, warning) {
 }
 
 // 로그인 시, 값 채워졌을 때 버튼 활성화
-function validLoginInput(visibleBtn, invisibleBtn, email, password) {
+function validLoginInput(button, email, password) {
   const validEmailInput = isEmail(email.value);
   const validPasswordInput = password.value.length >= 8;
 
   if (validEmailInput && validPasswordInput) {
-    visibleBtn.style.display = 'block';
-    invisibleBtn.style.display = 'none';
+    button.className = 'button--enabled';
+    button.removeAttribute('disabled');
   } else {
-    visibleBtn.style.display = 'none';
-    invisibleBtn.style.display = 'block';
+    button.className = 'button--disabled';
+    button.setAttribute('disabled');
   }
 }
 
 // 회원가입 시, 값 다 채워졌을 때 버튼 활성화
-function validSignupInput(
-  visibleBtn,
-  invisibleBtn,
-  email,
-  username,
-  password,
-  passwordCheck
-) {
+function validSignupInput(button, email, username, password, passwordCheck) {
   const validEmailInput = isEmail(email.value);
   const validUsernameInput = username.value.trim() !== '';
   const validPasswordInput = password.value.length >= 8;
@@ -66,10 +59,10 @@ function validSignupInput(
     validUsernameInput &&
     validPasswordCheckInput
   ) {
-    visibleBtn.style.display = 'block';
-    invisibleBtn.style.display = 'none';
+    button.className = 'button--enabled';
+    button.removeAttribute('disabled');
   } else {
-    visibleBtn.style.display = 'none';
-    invisibleBtn.style.display = 'block';
+    button.className = 'button--disabled';
+    button.setAttribute('disabled');
   }
 }

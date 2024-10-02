@@ -14,8 +14,7 @@ const passwordInput = document.querySelector('#password');
 const warningEmail = document.querySelector('.warning__email');
 const warningPassword = document.querySelector('.warning__password');
 
-const buttonDisabled = document.querySelector('.button--disabled');
-const buttonEnabled = document.querySelector('.button--enabled');
+const loginButton = document.querySelector('.button--disabled');
 
 const passwordEye = document.querySelector('.password--visibility');
 
@@ -64,7 +63,7 @@ inputs.forEach((input) =>
 );
 inputs.forEach((input) =>
   input.addEventListener('input', () =>
-    validLoginInput(buttonEnabled, buttonDisabled, emailInput, passwordInput)
+    validLoginInput(loginButton, emailInput, passwordInput)
   )
 );
 

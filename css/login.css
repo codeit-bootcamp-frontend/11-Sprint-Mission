@@ -99,7 +99,6 @@ button {
 }
 
 .button--enabled {
-  display: none;
   background-color: var(--blue);
 }
 
