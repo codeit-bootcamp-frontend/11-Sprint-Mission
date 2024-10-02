@@ -11,55 +11,70 @@ document.addEventListener("DOMContentLoaded", function () {
   const chcloseEyesbtn = document.querySelector(".check-p-wrap .close-eyes");
   const chopenEyesbtn = document.querySelector(".check-p-wrap .open-eyes");
 
+  let unEmailValid = false;
+  let unPasswordValid = false;
+  let unchPasswordValid = false;
+
+  // 에러 메시지 출력 함수
+  function showError(inputElement, errorElement, errorMessage) {
+    errorElement.textContent = errorMessage;
+    inputElement.classList.add("error");
+  }
+
+  // 에러 메시지 지우기 함수
+  function clearError(inputElement, errorElement) {
+    errorElement.textContent = "";
+    inputElement.classList.remove("error");
+  }
 
   // 이메일 유효성 검사
   function validateEmail() {
     const emailValue = emailInput.value.trim();
-    emailError.textContent = "";
-    emailInput.classList.remove("error");
+    clearError(emailInput, emailError)
 
     if (!emailValue) {
-      emailError.textContent = "이메일을 입력해주세요.";
-      emailInput.classList.add("error");
-      return false;
+      showError(emailInput, emailError, "이메일을 입력해주세요.")
+      unEmailValid = false;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
-      emailError.textContent = "잘못된 이메일 형식입니다.";
-      emailInput.classList.add("error");
-      return false;
+      showError(emailInput, emailError, "잘못된 이메일 형식입니다.")
+      unEmailValid = false;
+      unEmailValid = false;
+    } else {
+      unEmailValid = true;
     }
-    return true;
+    toggleSignupButton()
   }
 
   // 비밀번호 유효성 검사
   function validatePassword() {
     const passwordValue = passwordInput.value.trim();
-    passwordError.textContent = "";
-    passwordInput.classList.remove("error");
+    clearError(passwordInput, passwordError)
 
     if (!passwordValue) {
-      passwordError.textContent = "비밀번호를 입력해주세요.";
-      passwordInput.classList.add("error");
-      return false;
+      showError(passwordInput, passwordError, "비밀번호를 입력해주세요.")
+      unPasswordValid = false;
     } else if (passwordValue.length < 8) {
-      passwordError.textContent = "비밀번호를 8자 이상 입력해주세요.";
-      passwordInput.classList.add("error");
-      return false;
+      showError(passwordInput, passwordError, "비밀번호를 8자 이상 입력해주세요.")
+      unPasswordValid = false;
+    } else {
+      unPasswordValid = true;
     }
-    return true;
+    toggleSignupButton()
+
   }
   // 비밀번호 확인 유효성 검사
   function confirmPassword() {
     const passwordValue = passwordInput.value.trim();
     const chpasswordValue = chpasswordInput.value.trim();
-    chpasswordError.textContent = "";
-    chpasswordInput.classList.remove("error");
+    clearError(chpasswordInput, chpasswordError)
 
     if (passwordValue !== chpasswordValue) {
-      chpasswordError.textContent = "비밀번호가 일치하지 않습니다";
-      chpasswordInput.classList.add("error");
-      return false;
+      showError(chpasswordInput, chpasswordError, "비밀번호가 일치하지 않습니다.")
+      unchPasswordValid = false;
+    } else {
+      unchPasswordValid = true;
     }
-    return true;
+    toggleSignupButton()
 
   }
   // 비밀번호 숨김 상태 확인 함수
@@ -87,37 +102,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 회원가입 버튼 활성화/비활성화
   function toggleSignupButton() {
-    if (validateEmail() && validatePassword() && confirmPassword()) {
-      signButton.classList.remove("disabled");
+    if (unEmailValid && unPasswordValid && unchPasswordValid) {
       signButton.disabled = false;
     } else {
-      signButton.classList.add("disabled");
       signButton.disabled = true;
     }
   }
 
-  // 이메일 focus out 이벤트
-  emailInput.addEventListener("focusout", function () {
-    validateEmail();
-    toggleSignupButton();
-  });
+  
+  // 이메일 및 비밀번호 focus out 이벤트
+  emailInput.addEventListener("focusout", validateEmail);
+  passwordInput.addEventListener("focusout", validatePassword);
+  chpasswordInput.addEventListener("focusout", confirmPassword);
 
-  // 비밀번호 focus out 이벤트
-  passwordInput.addEventListener("focusout", function () {
-    validatePassword();
-    toggleSignupButton();
-  });
-  // 비밀번호 확인 focus out 이벤트
-  chpasswordInput.addEventListener("focusout", function () {
-    confirmPassword();
-    toggleSignupButton();
-  });
 
   // 회원가입 버튼 클릭 시 폼 제출 및 페이지 이동
   document.getElementById("signForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-    if (validateEmail() && validatePassword() && confirmPassword()) {
-      window.location.href = "/login.html";
+    if (unEmailValid && unPasswordValid && unchPasswordValid) {
+      window.location.href = "/login.html"; 
+    } else {
+      event.preventDefault();
+      validateEmail();
+      validatePassword();
+      confirmPassword();
     }
   });
 });
