@@ -1,13 +1,11 @@
-export { passwordVisible, passwordInvisible };
+export default passwordVisibleToggle;
 
-function passwordVisible(password, visible, invisible) {
+function passwordVisibleToggle(password, passwordEye) {
+  if (password.type === 'password') {
     password.type = 'text';
-    visible.style.display = 'none';
-    invisible.style.display = 'block';
-}
-
-function passwordInvisible(password, visible, invisible) {
+    passwordEye.src = 'images/login/btn_visibility_off.png';
+  } else if (password.type === 'text') {
     password.type = 'password';
-    invisible.style.display = 'none';
-    visible.style.display = 'block';
+    passwordEye.src = 'images/login/btn_visibility_on.png';
+  }
 }

@@ -1,14 +1,11 @@
 import {
   isEmail,
-  isPassword,
+  removeSpaceByPassword,
   showWarning,
   deleteWarning,
   validLoginInput,
 } from './form-utils/validation.js';
-import {
-  passwordVisible,
-  passwordInvisible,
-} from './form-utils/password-toggle.js';
+import passwordVisibleToggle from './form-utils/password-toggle.js';
 
 const inputs = document.querySelectorAll('input');
 const emailInput = document.querySelector('#email');
@@ -20,8 +17,7 @@ const warningPassword = document.querySelector('.warning__password');
 const buttonDisabled = document.querySelector('.button--disabled');
 const buttonEnabled = document.querySelector('.button--enabled');
 
-const visibleEye = document.querySelector('.password__visibility--on');
-const invisibleEye = document.querySelector('.password__visibility--off');
+const passwordEye = document.querySelector('.password--visibility');
 
 function showWarningIfInvalidEmail() {
   emailInput.style.outline = 'none';
@@ -50,7 +46,9 @@ emailInput.addEventListener('focusout', showWarningIfInvalidEmail);
 passwordInput.addEventListener('focusout', showWarningIfInvalidPassword);
 
 // 비밀번호 공백 사용 금지
-passwordInput.addEventListener('input', () => isPassword(passwordInput));
+passwordInput.addEventListener('input', () =>
+  removeSpaceByPassword(passwordInput)
+);
 
 // 오류 메시지 제거
 emailInput.addEventListener('focusin', () =>
@@ -71,9 +69,6 @@ inputs.forEach((input) =>
 );
 
 // 비밀번호 눈 깜빡임
-visibleEye.addEventListener('click', () =>
-  passwordVisible(passwordInput, visibleEye, invisibleEye)
-);
-invisibleEye.addEventListener('click', () =>
-  passwordInvisible(passwordInput, visibleEye, invisibleEye)
+passwordEye.addEventListener('click', () =>
+  passwordVisibleToggle(passwordInput, passwordEye)
 );

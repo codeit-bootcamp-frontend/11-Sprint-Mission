@@ -1,14 +1,11 @@
 import {
   isEmail,
-  isPassword,
+  removeSpaceByPassword,
   showWarning,
   deleteWarning,
   validSignupInput,
 } from './form-utils/validation.js';
-import {
-  passwordVisible,
-  passwordInvisible,
-} from './form-utils/password-toggle.js';
+import passwordVisibleToggle from './form-utils/password-toggle.js';
 
 const inputs = document.querySelectorAll('input');
 const emailInput = document.querySelector('#email');
@@ -26,14 +23,8 @@ const warningPasswordCheck = document.querySelector(
 const buttonDisabled = document.querySelector('.button--disabled');
 const buttonEnabled = document.querySelector('.button--enabled');
 
-const visibleEye = document.querySelector('.password__visibility--on');
-const invisibleEye = document.querySelector('.password__visibility--off');
-const secondVisibleEye = document.querySelector(
-  '.password__check__visibility--on'
-);
-const secondInvisibleEye = document.querySelector(
-  '.password__check__visibility--off'
-);
+const passwordEye = document.querySelector('.password--visibility');
+const passwordCheckEye = document.querySelector('.password__check--visibility');
 
 function showWarningIfInvalidEmail() {
   emailInput.style.outline = 'none';
@@ -85,9 +76,11 @@ passwordCheckInput.addEventListener(
 );
 
 // 비밀번호 공백 사용 금지
-passwordInput.addEventListener('input', () => isPassword(passwordInput));
+passwordInput.addEventListener('input', () =>
+  removeSpaceByPassword(passwordInput)
+);
 passwordCheckInput.addEventListener('input', () =>
-  isPassword(passwordCheckInput)
+  removeSpaceByPassword(passwordCheckInput)
 );
 
 // 오류 메시지 제거
@@ -122,15 +115,9 @@ inputs.forEach((input) =>
 );
 
 // 비밀번호 눈 깜빡임
-visibleEye.addEventListener('click', () =>
-  passwordVisible(passwordInput, visibleEye, invisibleEye)
+passwordEye.addEventListener('click', () =>
+  passwordVisibleToggle(passwordInput, passwordEye)
 );
-invisibleEye.addEventListener('click', () =>
-  passwordInvisible(passwordInput, visibleEye, invisibleEye)
-);
-secondVisibleEye.addEventListener('click', () =>
-  passwordVisible(passwordCheckInput, secondVisibleEye, secondInvisibleEye)
-);
-secondInvisibleEye.addEventListener('click', () =>
-  passwordInvisible(passwordCheckInput, secondVisibleEye, secondInvisibleEye)
+passwordCheckEye.addEventListener('click', () =>
+  passwordVisibleToggle(passwordCheckInput, passwordCheckEye)
 );

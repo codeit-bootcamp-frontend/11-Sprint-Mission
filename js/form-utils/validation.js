@@ -1,6 +1,6 @@
 export {
   isEmail,
-  removeSpaceByPassword as isPassword,
+  removeSpaceByPassword,
   showWarning,
   deleteWarning,
   validLoginInput,
