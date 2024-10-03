@@ -1,0 +1,256 @@
+@import url(reset.css);
+@import url(variable.css);
+/* 공통 css */
+/* 페이지 css */
+
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/ttf/Pretendard-Regular.ttf), url(../fonts/otf/Pretendard-Regular.otf) format("otf"), url(../fonts/woff/Pretendard-Regular.woff) format("woff"),
+    url(../fonts/woff2/Pretendard-Regular.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../fonts/ttf/Pretendard-Medium.ttf), url(../fonts/otf/Pretendard-Medium.otf) format("otf"), url(../fonts/woff/Pretendard-Medium.woff) format("woff"),
+    url(../fonts/woff2/Pretendard-Medium.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 600;
+  src: url(../fonts/ttf/Pretendard-SemiBold.ttf), url(../fonts/otf/Pretendard-SemiBold.otf) format("otf"), url(../fonts/woff/Pretendard-SemiBold.woff) format("woff"),
+    url(../fonts/woff2/Pretendard-SemiBold.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/ttf/Pretendard-Bold.ttf), url(../fonts/otf/Pretendard-Bold.otf) format("otf"), url(../fonts/woff/Pretendard-Bold.woff) format("woff"),
+    url(../fonts/woff2/Pretendard-Bold.woff2) format("woff2");
+}
+
+body > * {
+  font-family: "Pretendard", sans-serif;
+}
+
+/* header */
+#header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 7rem;
+  border-bottom: 1px solid #dfdfdf;
+  background-color: #fff;
+  z-index: 999;
+}
+#header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  max-width: 152rem;
+  padding: 0 20rem;
+}
+#header .logo {
+  width: 15.3rem;
+  height: 5.1rem;
+}
+#header .btn-login > a {
+  padding: 1.1rem 4.3rem;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+}
+
+/* container 공통 스타일 */
+.container {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+/* footer */
+#footer {
+  height: 16rem;
+  padding-top: 3.2rem;
+  background-color: var(--gray-900);
+}
+#footer .container {
+  display: flex;
+  justify-content: space-between;
+}
+#footer .footer-item {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+#footer .footer-item .copyright {
+  color: var(--gray-400);
+}
+
+#footer .footer-item.link-page {
+  display: flex;
+  gap: 3rem;
+}
+#footer .footer-item.link-page .link {
+  color: var(--gray-200);
+}
+
+#footer .footer-item.link-sns {
+  display: flex;
+  gap: 1.2rem;
+}
+#footer .footer-item.link-sns a[class^="icon-"] {
+  display: inline-block;
+  font-size: 0;
+  line-height: 0;
+  width: 1.8rem;
+  height: 1.8rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#footer .footer-item.link-sns .icon-facebook {
+  background-image: url(../images/ic_facebook.png);
+}
+#footer .footer-item.link-sns .icon-twitter {
+  background-image: url(../images/ic_twitter.png);
+}
+#footer .footer-item.link-sns .icon-youtube {
+  background-image: url(../images/ic_youtube.png);
+}
+#footer .footer-item.link-sns .icon-instagram {
+  background-image: url(../images/ic_instagram.png);
+}
+
+/* btn 공통 스타일 */
+div[class^="btn-"] {
+  display: flex;
+  gap: 1.2rem;
+  white-space: nowrap;
+}
+.button {
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.button.round {
+  border-radius: 4rem;
+}
+.button.square {
+  border-radius: 0.8rem;
+}
+.button.blue {
+  background-color: var(--blue-100);
+}
+.button.blue:hover {
+  background-color: var(--blue-300);
+}
+.button.gray {
+  background-color: var(--gray-400);
+}
+.button.white {
+  background-color: var(--gray-50);
+  color: var(--blue-100);
+  border: 1px solid var(--blue-100);
+}
+
+.error {
+  padding-left: 1.6rem;
+  margin-top: -0.8rem;
+  color: var(--red);
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  font-weight: 600;
+}
+
+#submitBtn.active {
+  background-color: var(--blue-100);
+}
+
+/* 태블릿 & 모바일 공통 스타일 */
+@media screen and (max-width: 1199px) {
+  /* header */
+  #header .logo > a {
+    width: 100%;
+    height: 100%;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  html {
+    font-size: 1.302083333vw;
+  }
+  /* header */
+  #header .container {
+    padding: 0 2.4rem;
+  }
+  /* footer */
+  #footer .container {
+    padding: 0 10.4rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  html {
+    font-size: 2.66666667vw;
+  }
+  /* header */
+  #header .container {
+    padding: 0 1.6rem;
+  }
+  #header .logo {
+    width: 10.3rem;
+    height: 3.5rem;
+  }
+  /* footer */
+  #footer {
+    padding: 3.2rem;
+  }
+  #footer .container {
+    flex-wrap: wrap;
+    gap: 6rem 0;
+  }
+  #footer .footer-item.text-copyright {
+    order: 2;
+    flex: 1;
+  }
+  #footer .footer-item.link-page,
+  #footer .footer-item.link-sns {
+    order: 1;
+  }
+  #footer .footer-item .copyright {
+    color: #676767;
+  }
+  #footer .footer-item.link-page .link {
+    color: #cfcfcf;
+  }
+
+  .button.round {
+    border-radius: 8.2rem;
+  }
+  .button.square {
+    border-radius: 1.6rem;
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 767px) {
+  .error {
+    margin-top: 0;
+    padding-left: 16px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (max-width: 399px) {
+  .error {
+    margin-top: 0;
+  }
+}
