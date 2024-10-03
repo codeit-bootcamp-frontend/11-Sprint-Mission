@@ -14,10 +14,10 @@ const eyeIcon = document.getElementById("eye-icon");
 togglePassword.addEventListener("click", function () {
   if (passwordInput.type === "password") {
     passwordInput.type = "text"; // 비밀번호 보이기
-    eyeIcon.src = "/public/images/btn_visibility_on_24px.png";
+    eyeIcon.src = "/public/images/btn_visibility_on_24px.svg";
   } else {
     passwordInput.type = "password"; // 비밀번호 가리기
-    eyeIcon.src = "/public/images/btn_visibility_off_24px.png";
+    eyeIcon.src = "/public/images/btn_visibility_off_24px.svg";
   }
 });
 
