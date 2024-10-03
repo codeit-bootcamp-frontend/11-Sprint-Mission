@@ -7,29 +7,29 @@
   font-family: "Pretendard";
   font-style: normal;
   font-weight: 400;
-  src: url(../fonts/ttf/Pretendard-Regular.ttf), url(../fonts/otf/Pretendard-Regular.otf) format("otf"), url(../fonts/woff/Pretendard-Regular.woff) format("woff"),
-    url(../fonts/woff2/Pretendard-Regular.woff2) format("woff2");
+  src: url(../assets/fonts/Pretendard-Regular.ttf), url(../assets/fonts/Pretendard-Regular.otf) format("otf"), url(../assets/fonts/Pretendard-Regular.woff) format("woff"),
+    url(../assets/fonts/Pretendard-Regular.woff2) format("woff2");
 }
 @font-face {
   font-family: "Pretendard";
   font-style: normal;
   font-weight: 500;
-  src: url(../fonts/ttf/Pretendard-Medium.ttf), url(../fonts/otf/Pretendard-Medium.otf) format("otf"), url(../fonts/woff/Pretendard-Medium.woff) format("woff"),
-    url(../fonts/woff2/Pretendard-Medium.woff2) format("woff2");
+  src: url(../assets/fonts/Pretendard-Medium.ttf), url(../assets/fonts/Pretendard-Medium.otf) format("otf"), url(../assets/fonts/Pretendard-Medium.woff) format("woff"),
+    url(../assets/fonts/Pretendard-Medium.woff2) format("woff2");
 }
 @font-face {
   font-family: "Pretendard";
   font-style: normal;
   font-weight: 600;
-  src: url(../fonts/ttf/Pretendard-SemiBold.ttf), url(../fonts/otf/Pretendard-SemiBold.otf) format("otf"), url(../fonts/woff/Pretendard-SemiBold.woff) format("woff"),
-    url(../fonts/woff2/Pretendard-SemiBold.woff2) format("woff2");
+  src: url(../assets/fonts/Pretendard-SemiBold.ttf), url(../assets/fonts/Pretendard-SemiBold.otf) format("otf"), url(../assets/fonts/Pretendard-SemiBold.woff) format("woff"),
+    url(../assets/fonts/Pretendard-SemiBold.woff2) format("woff2");
 }
 @font-face {
   font-family: "Pretendard";
   font-style: normal;
   font-weight: 700;
-  src: url(../fonts/ttf/Pretendard-Bold.ttf), url(../fonts/otf/Pretendard-Bold.otf) format("otf"), url(../fonts/woff/Pretendard-Bold.woff) format("woff"),
-    url(../fonts/woff2/Pretendard-Bold.woff2) format("woff2");
+  src: url(../assets/fonts/Pretendard-Bold.ttf), url(../assets/fonts/Pretendard-Bold.otf) format("otf"), url(../assets/fonts/Pretendard-Bold.woff) format("woff"),
+    url(../assets/fonts/Pretendard-Bold.woff2) format("woff2");
 }
 
 body > * {
@@ -113,16 +113,16 @@ body > * {
   background-size: cover;
 }
 #footer .footer-item.link-sns .icon-facebook {
-  background-image: url(../images/ic_facebook.png);
+  background-image: url(../assets/ic_facebook.png);
 }
 #footer .footer-item.link-sns .icon-twitter {
-  background-image: url(../images/ic_twitter.png);
+  background-image: url(../assets/ic_twitter.png);
 }
 #footer .footer-item.link-sns .icon-youtube {
-  background-image: url(../images/ic_youtube.png);
+  background-image: url(../assets/ic_youtube.png);
 }
 #footer .footer-item.link-sns .icon-instagram {
-  background-image: url(../images/ic_instagram.png);
+  background-image: url(../assets/ic_instagram.png);
 }
 
 /* btn 공통 스타일 */
