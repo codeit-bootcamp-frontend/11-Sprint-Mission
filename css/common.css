@@ -118,6 +118,7 @@ footer {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+	margin-left: 40;
 }
 
 /* 버튼 클릭시 색상 변경 시각화 */

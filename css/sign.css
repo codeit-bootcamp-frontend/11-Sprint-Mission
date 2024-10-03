@@ -1,5 +1,5 @@
 /* PC */
-/* main */
+/* logo */
 .sign-container {
 	max-width: 640px;
 	margin: 0 auto;
@@ -13,9 +13,10 @@
 }
 
 .gohome-logo img{
-	width: 198px;
+	width: 500px;
 }
 
+/* input */
 .input-val {
 	margin-bottom: 24px;
 	display: flex;
@@ -39,22 +40,30 @@
 	width: 100%;
 }
 
+.err-msg {
+	color: red;
+	font-weight: 600;
+  	font-size: 15px;
+  	line-height: 18px;
+  	margin-top: 8px;
+	padding-left: 16px;
+	display: none;
+}
+
 .input-wrapper {
 	position: relative;
 	display: flex;
 	align-items: center;
 }
 
-.toggle-pwd {
+
+.pwd-toggle-btn {
 	position: absolute;
 	right: 24px;
 	cursor: pointer;
 }
 
-.full-btn-width {
-	width: 100%
-}
-
+/* social */
 .social-container {
 	background-color: #e6f2ff;
 	border-radius: 8px;
@@ -65,8 +74,8 @@
 	margin: 24px 0;
 }
 
-.social-container h3 {
-	font-weight: 500;
+.social-container h1 {
+	font-weight: 200;
 	font-size: 16px;
 	line-height: 24px;
 }
@@ -76,6 +85,11 @@
 	gap: 16px;
 }
 
+.social-btn-container img {
+	width: 42px;
+}
+
+/* page switch */
 .switch-page {
 	font-weight: 500;
 	font-size: 15px;
@@ -88,21 +102,35 @@
 	text-underline-offset: 2px;
 }
 
-@media (min-width: 768px) {
+/* btn */
+.watch-btn.full-width-btn {
+    display: block;
+    width: 100%;
+    margin: 24px auto; 
+}
+
+@media (max-width: 1279px) and (min-width: 768px) {
 	.sign-container {
 		max-width: 640px;
+		padding: 48px 0;
 	}
 
-	.logo {
-		width: 396px;
-		margin-top: 60px;
+	.gohome-logo {
 		margin-bottom: 40px;
+	}
+
+	.gohome-logo img {
+		width: 396px;
+	}
+
+	.input-val label {
+		font-size: 18px;
+		margin-bottom: 16px;
 	}
 }
 
-@media (min-width: 1280px) {
-	.logo {
-		margin-top: 60px;
-		margin-bottom: 40px;
+@media (max-width: 767px) {
+	.gohome-logo img {
+		width: 198px;
 	}
 }
