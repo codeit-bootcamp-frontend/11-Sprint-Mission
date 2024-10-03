@@ -8,6 +8,7 @@ header {
   height: 7rem;
   /* 로고 & 로그인 버튼 여백 200px 유지하기 위해 rem 사용 X */
   padding: 0.8rem 200px;
+  border-bottom: 0.1rem solid #dfdfdf;
   background-color: #fff;
   .logo {
     width: 15.3rem;
@@ -26,13 +27,19 @@ header {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-left: 3.2rem;
+    margin-left: 4.7rem;
     .content-link {
       a {
         font-size: 1.8rem;
         font-weight: var(--bold);
         line-height: 2.6rem;
         color: var(--gray600);
+        & + a {
+          margin-left: 3rem;
+        }
+        &.active {
+          color: var(--primary100);
+        }
       }
     }
     .link-profile {
@@ -57,6 +64,42 @@ header {
     }
     &:active {
       background-color: var(--primary300);
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  header {
+    padding: 0.8rem 2.4rem;
+    .login-area {
+      margin-left: 3.5rem;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  header {
+    padding: 0.8rem 1.6rem;
+    .logo {
+      width: 10.3rem;
+      &-img {
+        &.logo-pc {
+          display: none;
+        }
+        &.logo-mobile {
+          display: block;
+        }
+      }
+    }
+    .login-area {
+      .content-link {
+        a {
+          font-size: 1.6rem;
+          & + a {
+            margin-left: 0.8rem;
+          }
+        }
+      }
     }
   }
 }

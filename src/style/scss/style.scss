@@ -6,9 +6,6 @@
 
 /* BreakPoint Tablet */
 @media (max-width: 1199px) {
-  header {
-    padding: 0.8rem 2.4rem;
-  }
   .section {
     &-layout {
       height: auto;
@@ -82,32 +79,10 @@
       }
     }
   }
-  footer {
-    .footer-wrap {
-      padding: 3.2rem 10.4rem 10.8rem;
-      .sns {
-        gap: 0 1.2rem;
-      }
-    }
-  }
 }
 
 /* BreakPoint Mobile */
 @media (max-width: 767px) {
-  header {
-    padding: 0.8rem 1.6rem;
-    .logo {
-      width: 10.3rem;
-      &-img {
-        &.logo-pc {
-          display: none;
-        }
-        &.logo-mobile {
-          display: block;
-        }
-      }
-    }
-  }
   .section {
     &-layout {
       &-bg {
@@ -177,17 +152,6 @@
         &:nth-child(4) {
           margin-bottom: 8.3rem;
         }
-      }
-    }
-  }
-  footer {
-    .footer-wrap {
-      position: relative;
-      padding: 3.2rem 3.2rem 11rem;
-      .corp {
-        position: absolute;
-        bottom: 3.2rem;
-        left: 3.2rem;
       }
     }
   }

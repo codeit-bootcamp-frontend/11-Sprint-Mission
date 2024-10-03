@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Header from "components/Header";
 import Footer from "components/Footer";
 
@@ -17,13 +17,13 @@ function Home() {
                   <br />
                   거래해 보세요
                 </h2>
-                <Link
+                <NavLink
                   to="/items"
                   className="link-item"
                   title="아이템 페이지 이동"
                 >
                   구경하러 가기
-                </Link>
+                </NavLink>
               </div>
               <img
                 src="/images/home/img_home_top.png"

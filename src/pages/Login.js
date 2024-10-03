@@ -1,19 +1,19 @@
 import Input from "components/Input";
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { togglePwVisibility } from "utils/togglePwVisible";
 
 function Login() {
   return (
     <div className="container">
       <h1 className="logo">
-        <Link to="/" className="link-login" title="판다마켓 홈 이동">
+        <NavLink to="/" className="link-login" title="판다마켓 홈 이동">
           <img
             src="/images/login/logo.png"
             className="logo-img"
             alt="판다마켓 로고"
           />
-        </Link>
+        </NavLink>
       </h1>
       <form>
         <div className="input-area email">
@@ -71,9 +71,9 @@ function Login() {
         </div>
         <div className="switch-area">
           판다마켓이 처음이신가요?
-          <Link to="/signup" title="회원가입 페이지 이동">
+          <NavLink to="/signup" title="회원가입 페이지 이동">
             회원가입
-          </Link>
+          </NavLink>
         </div>
       </form>
     </div>
