@@ -1,9 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { useState } from "react";
 import LOGO_PC from "../assets/logo.png";
 import LOGO_MO from "../assets/mobiles/logo.png";
 import LoginButton from "./LoginButton";
+import ProfileImage from "./ProfileImage";
+
+const getNavLinkStyle = ({ isActive }) => ({
+  color: isActive ? "var(--blue-100)" : "var(--gray-600)",
+});
 
 const Headers = (props) => {
+  const [isLogin, setIsLogin] = useState(true);
+
   return (
     <div id='header'>
       <div className='container'>
@@ -15,11 +23,15 @@ const Headers = (props) => {
             </picture>
           </Link>
         </h1>
-        <div>
-          <Link to={"/boards"}>자유게시판</Link>
-          <Link to={"/items"}>중고마켓</Link>
+        <div className='gnb'>
+          <NavLink to={"/boards"} style={getNavLinkStyle}>
+            자유게시판
+          </NavLink>
+          <NavLink to={"/items"} style={getNavLinkStyle}>
+            중고마켓
+          </NavLink>
         </div>
-        <LoginButton />
+        {isLogin ? <ProfileImage size={{ width: "4rem", height: "4rem" }} /> : <LoginButton />}
       </div>
     </div>
   );
