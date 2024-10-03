@@ -4,28 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>판다마켓</title>
+    <link rel="stylesheet" href="/css/sign.css" />
   </head>
   <body>
-    <div>
+    <main>
       <a href="/index.html"
-        ><img src="img\logo\Property 1=sm.svg" alt="판다마켓"
+        ><img class="logoImage" src="img\logo\Property 1=sm.svg" alt="판다마켓"
       /></a>
-      <form>
+      <form class="signin_form">
         <label>이메일</label>
-        <input type="email" placeholder="이메일을 입력해주세요." />
-        <label>비밀번호</label>
-        <input type="password" placeholder="비밀번호를 입력해주세요." />
-        <button>로그인</button>
-        <div>
-          <p>간편 로그인하기</p>
-          <a href="https://www.google.co.kr/?hl=ko"
-            ><img src="/img/login/Component 2.svg" alt="구글" /></a
-          ><a href="https://www.kakaocorp.com/page/service/service/KakaoTalk"
-            ><img src="/img/login/Component 3.svg" alt="카카오톡"
-          /></a>
+        <div class="email_container">
+          <input type="email" placeholder="이메일을 입력해주세요." />
         </div>
-        <div>판다마켓은 처음이신가요? <a href="">회원가입</a></div>
+        <label>비밀번호</label>
+        <div class="password_container">
+          <input type="password" placeholder="비밀번호를 입력해주세요." />
+          <button class="toggle_see_password">
+            <img
+              src="img\login\btn_visibility_on_24px.svg"
+              alt="비밀번호 토글 버튼"
+            />
+          </button>
+        </div>
+        <button class="signin_button">로그인</button>
+        <div class="sns_signin">
+          <p>간편 로그인하기</p>
+          <div class="sns_link">
+            <a href="https://www.google.co.kr/?hl=ko"
+              ><img src="/img/login/Component 2.svg" alt="구글" /></a
+            ><a href="https://www.kakaocorp.com/page/service/service/KakaoTalk"
+              ><img src="/img/login/Component 3.svg" alt="카카오톡"
+            /></a>
+          </div>
+        </div>
+        <div class="To_signup">
+          판다마켓은 처음이신가요? <a href="">회원가입</a>
+        </div>
       </form>
-    </div>
+    </main>
   </body>
 </html>
