@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 import LOGO_PC from "../assets/logo.png";
 import LOGO_MO from "../assets/mobiles/logo.png";
+import LoginButton from "./LoginButton";
 
-const Header = (props) => {
+const Headers = (props) => {
   return (
     <div id='header'>
       <div className='container'>
@@ -13,14 +15,14 @@ const Header = (props) => {
             </picture>
           </a>
         </h1>
-        <div className='btn-login'>
-          <a href='/pages/login.html' className='button square blue'>
-            로그인
-          </a>
+        <div>
+          <Link to={"/boards"}>자유게시판</Link>
+          <Link to={"/items"}>중고마켓</Link>
         </div>
+        <LoginButton />
       </div>
     </div>
   );
 };
 
-export default Header;
+export default Headers;

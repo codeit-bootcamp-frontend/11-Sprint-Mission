@@ -65,6 +65,10 @@ body > * {
   line-height: 2.6rem;
 }
 
+main[class^="page-"]:not(.page-login, .page-signup, .page-error) {
+  margin-top: 7rem;
+}
+
 /* container 공통 스타일 */
 .container {
   width: 100%;
