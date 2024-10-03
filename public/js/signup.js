@@ -30,20 +30,20 @@ const eyeIconPasswordAgain = document.getElementById("eye-icon-password-again");
 togglePassword.addEventListener("click", function () {
   if (passwordInput.type === "password") {
     passwordInput.type = "text"; // 비밀번호 보이기
-    eyeIconPassword.src = "/public/images/btn_visibility_on_24px.png";
+    eyeIconPassword.src = "/public/images/btn_visibility_on_24px.svg";
   } else {
     passwordInput.type = "password"; // 비밀번호 가리기
-    eyeIconPassword.src = "/public/images/btn_visibility_off_24px.png";
+    eyeIconPassword.src = "/public/images/btn_visibility_off_24px.svg";
   }
 });
 
 togglePasswordAgain.addEventListener("click", function () {
   if (passwordAgainInput.type === "password") {
     passwordAgainInput.type = "text"; // 비밀번호 보이기
-    eyeIconPasswordAgain.src = "/public/images/btn_visibility_on_24px.png";
+    eyeIconPasswordAgain.src = "/public/images/btn_visibility_on_24px.svg";
   } else {
     passwordAgainInput.type = "password"; // 비밀번호 가리기
-    eyeIconPasswordAgain.src = "/public/images/btn_visibility_off_24px.png";
+    eyeIconPasswordAgain.src = "/public/images/btn_visibility_off_24px.svg";
   }
 });
 
