@@ -41,16 +41,16 @@ function hideErrorMessage(form) {
 }
 
 // 이메일 형식 검증 함수
-function validateEmail(email) {
+function isEmail(text) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
+  return emailRegex.test(text);
 }
 
 // 로그인 버튼 활성화/비활성화 함수
 function toggleLoginButton() {
   const emailValue = emailInput.value.trim();
   const passwordValue = passwordInput.value.trim();
-  const emailValid = validateEmail(emailValue);
+  const emailValid = isEmail(emailValue);
   const passwordValid = passwordValue.length >= 8;
 
   // 이메일과 비밀번호 모두 유효하면 버튼 활성화
@@ -70,7 +70,7 @@ emailInput.addEventListener("blur", function () {
   if (!emailValue) {
     emailInput.classList.add("input-error");
     showErrorMessage(emailForm, "이메일을 입력해주세요.");
-  } else if (!validateEmail(emailValue)) {
+  } else if (!isEmail(emailValue)) {
     emailInput.classList.add("input-error");
     showErrorMessage(emailForm, "잘못된 이메일 형식입니다.");
   } else {

@@ -64,9 +64,9 @@ function hideErrorMessage(form) {
   }
 }
 
-function validateEmail(email) {
+function isEmail(text) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
+  return emailRegex.test(text);
 }
 
 function toggleSignupButton() {
@@ -74,7 +74,7 @@ function toggleSignupButton() {
   const nicknameValue = nicknameInput.value.trim();
   const passwordValue = passwordInput.value.trim();
   const passwordAgainValue = passwordAgainInput.value.trim();
-  const emailValid = validateEmail(emailValue);
+  const emailValid = isEmail(emailValue);
   const nicknameValid = nicknameValue.length >= 1;
   const passwordValid = passwordValue.length >= 8;
   const passwordAgainValid = passwordValue === passwordAgainValue;
@@ -94,7 +94,7 @@ emailInput.addEventListener("blur", function () {
   if (!emailValue) {
     emailInput.classList.add("input-error");
     showErrorMessage(emailForm, "이메일을 입력해주세요.");
-  } else if (!validateEmail(emailValue)) {
+  } else if (!isEmail(emailValue)) {
     emailInput.classList.add("input-error");
     showErrorMessage(emailForm, "잘못된 이메일 형식입니다.");
   } else {
