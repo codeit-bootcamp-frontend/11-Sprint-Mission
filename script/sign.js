@@ -24,27 +24,58 @@ document.addEventListener("DOMContentLoaded", () => {
 	console.log(submitBtn);
 	*/
 
+	// 오류메세지
+	function errMsg(input, errId) {
+		
+	}
+
+	// 초기화
+	function resetState(input, errId) {
+		
+	}
+
+	// 유효성 검사 함수
+	function checkEmail() {
+		btnDeactivate();
+	}
+
+	function checkNickname() {
+		btnDeactivate();
+	}
+
+	function checkPwd() {
+		btnDeactivate();
+	}
+
+	function checkPwdconfrim() {
+		btnDeactivate();
+	}
+
+	// 버튼 비활성화
+	function btnDeactivate() {
+		btnDeactivate();
+	}
+
 	// 유효성 검사 이벤트
 	if(emailInput) {
-		emailInput.addEventListener("focusout", 이메일체크함수);
+		emailInput.addEventListener("focusout", checkEmail);
 	}
 
 	if(nicknameInput) {
-		nicknameInput.addEventListener("focusout", 닉네임체크함수);
+		nicknameInput.addEventListener("focusout", checkNickname);
 	}
 
 	// input은 실시간을 확인 가능해서 pwd는 confirm과의 비교가 필요해서 input이 맞다고 판단
 	if(pwdInput) {
-		pwdInput.addEventListener("input", 비밀번호체크함수);
+		pwdInput.addEventListener("input", checkPwd);
 	}
 
 	if(pwdConfirmInput) {
-		pwdConfirmInput.addEventListener("input", 비밀번호체크확인함수);
+		pwdConfirmInput.addEventListener("input", checkPwdconfrim);
 	}
 
-	// 초기 상태에 관심이 없고 사용자가 양식과 상호작용한 후에만 유효성을 검사하려는 경우 
-	// 먼저 이벤트 리스너를 설정한 다음 validateForm()을 호출하는 것이 더 깔끔
-	//제출버튼 비활성화();
+	// 최종 정보가 맞으면 활성화 틀리면 비활성화
+	btnDeactivate();
  
 	if(loginForm) {
 		loginForm.addEventListener("submit", function(e) {
