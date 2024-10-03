@@ -50,11 +50,11 @@ function isEmail(text) {
 function toggleLoginButton() {
   const emailValue = emailInput.value.trim();
   const passwordValue = passwordInput.value.trim();
-  const emailValid = isEmail(emailValue);
-  const passwordValid = passwordValue.length >= 8;
+  const isValidEmail = isEmail(emailValue);
+  const isValidPassword = passwordValue.length >= 8;
 
   // 이메일과 비밀번호 모두 유효하면 버튼 활성화
-  if (emailValid && passwordValid) {
+  if (isValidEmail && isValidPassword) {
     loginButton.classList.add("active");
     loginButton.disabled = false;
   } else {

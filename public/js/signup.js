@@ -74,12 +74,17 @@ function toggleSignupButton() {
   const nicknameValue = nicknameInput.value.trim();
   const passwordValue = passwordInput.value.trim();
   const passwordAgainValue = passwordAgainInput.value.trim();
-  const emailValid = isEmail(emailValue);
-  const nicknameValid = nicknameValue.length >= 1;
-  const passwordValid = passwordValue.length >= 8;
-  const passwordAgainValid = passwordValue === passwordAgainValue;
+  const isValidEmail = isEmail(emailValue);
+  const isValidNickname = nicknameValue.length >= 1;
+  const isValidPassword = passwordValue.length >= 8;
+  const isValidPasswordAgain = passwordValue === passwordAgainValue;
 
-  if (emailValid && nicknameValid && passwordValid && passwordAgainValid) {
+  if (
+    isValidEmail &&
+    isValidNickname &&
+    isValidPassword &&
+    isValidPasswordAgain
+  ) {
     signupButton.classList.add("active");
     signupButton.disabled = false;
   } else {
