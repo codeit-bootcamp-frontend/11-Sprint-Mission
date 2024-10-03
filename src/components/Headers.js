@@ -8,12 +8,12 @@ const Headers = (props) => {
     <div id='header'>
       <div className='container'>
         <h1 className='logo'>
-          <a href='/'>
+          <Link to={"/"}>
             <picture>
               <source srcSet={LOGO_MO} media='(max-width: 767px)' />
               <img src={LOGO_PC} alt='로고' />
             </picture>
-          </a>
+          </Link>
         </h1>
         <div>
           <Link to={"/boards"}>자유게시판</Link>
