@@ -1,0 +1,29 @@
+.pageBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 4px;
+}
+
+.pageButton {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 50%;
+  color: #6b7280;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.pageButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed; 
+}
+
+.pageButton.active {
+  background-color: var(--blue);
+  color: #fff;
+}
