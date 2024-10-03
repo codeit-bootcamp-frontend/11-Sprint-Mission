@@ -1,11 +1,35 @@
-label {
-	display: block;
-	margin-bottom: 16px;
-	font-size: 18px;
-	font-weight: 700;
+/* PC */
+/* main */
+.sign-container {
+	max-width: 640px;
+	margin: 0 auto;
+	width: 42;
 }
 
-input {
+.gohome-logo {
+	display: block;
+  	margin-bottom: 24px;
+  	text-align: center;
+}
+
+.gohome-logo img{
+	width: 198px;
+}
+
+.input-val {
+	margin-bottom: 24px;
+	display: flex;
+	flex-direction: column;
+}
+
+.input-val label {
+	display: block;
+	font-weight: 700;
+  	font-size: 14px;
+	margin-bottom: 8px;
+}
+
+.input-val input {
 	padding: 16px 24px;
 	background-color: #f3f4f6;
 	border: none;
@@ -13,26 +37,6 @@ input {
 	font-size: 16px;
 	line-height: 24px;
 	width: 100%;
-}
-
-.sign-container {
-	max-width: 640px;
-	margin: 0 auto;
-	width: 42;
-}
-
-.logo {
-	margin: 0 auto;
-	display: block;
-	text-align: center;
-	margin-top: 60px;
-	margin-bottom: 40px;
-}
-
-.input-val {
-	margin-bottom: 24px;
-	display: flex;
-	flex-direction: column;
 }
 
 .input-wrapper {
