@@ -15,8 +15,11 @@
 }
 .product-list {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  flex-flow: row wrap;
   gap: 4rem 2.4rem;
+  max-width: 125rem;
 }
 .product-item {
   display: flex;
@@ -105,4 +108,10 @@
 }
 .select-option-list:not(:last-child) {
   border-bottom: 1px solid var(--gray-200);
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1265px) {
+  html {
+    font-size: 0.7905vw;
+  }
 }
