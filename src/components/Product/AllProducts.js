@@ -10,6 +10,7 @@ const AllProducts = () => {
   const [total, setTotal] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [loadingError, setLoadingError] = useState(null);
+  const [searchError, setSearchError] = useState(null);
   const pageSize = 10;
 
   const handleLoad = async () => {
@@ -22,9 +23,11 @@ const AllProducts = () => {
     let result;
     try {
       setLoadingError(null);
+      setSearchError(null);
       result = await getProductsList(queryParams);
     } catch (error) {
       setLoadingError(error);
+      return;
     }
     const { list, totalCount } = result;
     setItems(list);
@@ -33,7 +36,12 @@ const AllProducts = () => {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    setSearch(e.target["search"].value);
+    const searchValue = e.target["search"].value.trim();
+    if (items.length === 0) {
+      setSearchError({ search });
+    }
+    setSearch(searchValue);
+    setCurrentPage(1);
   };
 
   const handleBestClick = () => setOrder("favorite");
@@ -44,7 +52,7 @@ const AllProducts = () => {
   }, [search, order, currentPage]);
 
   return (
-    <div>
+    <>
       {loadingError?.message && <span>{loadingError.message}</span>}
       <ProductsList
         list={items}
@@ -57,8 +65,14 @@ const AllProducts = () => {
       >
         전체 상품
       </ProductsList>
+      {items.length === 0 && !searchError && !loadingError && (
+        <div className='error-search'>
+          <p className='error-search-message'>검색어와 일치하는 상품이 없습니다.</p>
+        </div>
+      )}
+
       <PageNation total={total} pageSize={pageSize} setCurrentPage={setCurrentPage} currentPage={currentPage} />
-    </div>
+    </>
   );
 };
 

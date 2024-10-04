@@ -180,6 +180,18 @@ div[class^="btn-wrap"] {
   line-height: 2.4rem;
   font-weight: 600;
 }
+
+.error-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4rem 0;
+  height: 30rem;
+}
+.error-search-message {
+  font-size: 2rem;
+  font-weight: 700;
+}
 .btn-heart {
   display: flex;
   align-items: center;
