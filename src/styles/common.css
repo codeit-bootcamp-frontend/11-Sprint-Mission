@@ -60,12 +60,8 @@ body > * {
   width: 15.3rem;
   height: 5.1rem;
 }
-#header .btn-login > a {
-  padding: 1.1rem 4.3rem;
-  font-size: 1.6rem;
-  line-height: 2.6rem;
-}
 #header .gnb {
+  display: flex;
   flex: 1;
 }
 #header .gnb a {
@@ -145,32 +141,32 @@ main[class^="page-"]:not(.page-login, .page-signup, .page-error) {
 }
 
 /* btn 공통 스타일 */
-div[class^="btn-"] {
+div[class^="btn-wrap"] {
   display: flex;
   gap: 1.2rem;
   white-space: nowrap;
 }
-.button {
+[class^="btn-"] {
   color: #fff;
   font-weight: 600;
   cursor: pointer;
 }
-.button.round {
+[class*="btn-"].round {
   border-radius: 4rem;
 }
-.button.square {
+[class*="btn-"].square {
   border-radius: 0.8rem;
 }
-.button.blue {
+[class*="btn-"].blue {
   background-color: var(--blue-100);
 }
-.button.blue:hover {
+[class*="btn-"].blue:hover {
   background-color: var(--blue-300);
 }
-.button.gray {
+[class*="btn-"].gray {
   background-color: var(--gray-400);
 }
-.button.white {
+[class*="btn-"].white {
   background-color: var(--gray-50);
   color: var(--blue-100);
   border: 1px solid var(--blue-100);
@@ -251,10 +247,10 @@ div[class^="btn-"] {
     color: #cfcfcf;
   }
 
-  .button.round {
+  [class*="btn-"].round {
     border-radius: 8.2rem;
   }
-  .button.square {
+  [class*="btn-"].square {
     border-radius: 1.6rem;
   }
 }
