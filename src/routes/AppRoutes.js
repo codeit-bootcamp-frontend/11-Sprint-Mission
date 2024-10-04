@@ -8,14 +8,20 @@ import Boards from "../pages/Boards";
 import Login from "../pages/Login";
 
 export default function AppRoutes() {
+  const routes = [
+    { path: "", element: <Main /> },
+    { path: "/boards", element: <Boards /> },
+    { path: "/items", element: <Items /> },
+    { path: "/additem", element: <AddItem /> },
+    { path: "/login", element: <Login /> },
+    { path: "*", element: <Notfound /> },
+  ];
+
   return (
     <Routes>
-      <Route path='/' element={<Main />} />
-      <Route path='/boards' element={<Boards />} />
-      <Route path='/items' element={<Items />} />
-      <Route path='/additem' element={<AddItem />} />
-      <Route path='/login' element={<Login />} />
-      <Route path='*' element={<Notfound />} />
+      {routes.map(({ path, element }) => (
+        <Route key={path} path={path} element={element} />
+      ))}
     </Routes>
   );
 }
