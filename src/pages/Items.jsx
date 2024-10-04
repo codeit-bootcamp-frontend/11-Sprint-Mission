@@ -7,19 +7,18 @@ const Items = (props) => {
   const [AllItems, setAllItems] = useState([]);
   const [RecItems, setRecItems] = useState([]);
 
-  const handleLoadAll = async () => {
-    const { list } = await getProductsList();
-    setAllItems(list);
-  };
-
-  const handleLoadRec = async () => {
-    const { list } = await getProductsList(4);
-    setRecItems(list);
+  const handleLoad = async (options) => {
+    const { list } = await getProductsList(options);
+    if (options.pageSize === 4) {
+      setRecItems(list);
+    } else {
+      setAllItems(list);
+    }
   };
 
   useEffect(() => {
-    handleLoadAll();
-    handleLoadRec();
+    handleLoad({ pageSize: 4, orderBy: "favorite" });
+    handleLoad({ pageSize: 10 });
   }, []);
 
   return (
