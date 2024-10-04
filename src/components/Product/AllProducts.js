@@ -11,6 +11,7 @@ const AllProducts = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [loadingError, setLoadingError] = useState(null);
   const [searchError, setSearchError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const pageSize = 10;
 
   const handleLoad = async () => {
@@ -22,12 +23,15 @@ const AllProducts = () => {
     };
     let result;
     try {
+      setIsLoading(true);
       setLoadingError(null);
       setSearchError(null);
       result = await getProductsList(queryParams);
     } catch (error) {
       setLoadingError(error);
       return;
+    } finally {
+      setIsLoading(false);
     }
     const { list, totalCount } = result;
     setItems(list);
@@ -62,10 +66,11 @@ const AllProducts = () => {
         onSubmit={handleSearchSubmit}
         onBest={handleBestClick}
         onNewest={handleNewestClick}
+        isLoading={isLoading}
       >
         전체 상품
       </ProductsList>
-      {items.length === 0 && !searchError && !loadingError && (
+      {items.length === 0 && !searchError && !loadingError && !isLoading && (
         <div className='error-search'>
           <p className='error-search-message'>검색어와 일치하는 상품이 없습니다.</p>
         </div>

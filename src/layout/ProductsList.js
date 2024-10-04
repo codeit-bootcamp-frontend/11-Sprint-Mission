@@ -44,13 +44,14 @@ const ProductManagement = ({ onSubmit, onBest, onNewest }) => {
   );
 };
 
-const ProductsList = ({ list, imageSize, countSize, children, onSubmit, productManagement, onBest, onNewest }) => {
+const ProductsList = ({ list, imageSize, countSize, children, onSubmit, productManagement, onBest, onNewest, isLoading }) => {
   return (
     <div className='product-area'>
       <div className='product-category'>
         <h2 className='product-category-name'>{children}</h2>
         {productManagement ? <ProductManagement onSubmit={onSubmit} onBest={onBest} onNewest={onNewest} /> : ""}
       </div>
+      {isLoading && <p>로딩 중 입니다...</p>}
       <ul className='product-list'>
         {list.map((item) => (
           <li key={item.id} className='product-item'>
