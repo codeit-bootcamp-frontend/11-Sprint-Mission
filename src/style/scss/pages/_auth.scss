@@ -171,3 +171,15 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .container {
+    form {
+      .input-area {
+        .btn-toggle {
+          top: 5rem;
+        }
+      }
+    }
+  }
+}
