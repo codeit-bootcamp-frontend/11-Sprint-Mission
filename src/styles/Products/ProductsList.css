@@ -41,13 +41,17 @@
   border-radius: 1.6rem;
   overflow: hidden;
 }
-.product-images.large {
+.product-images.big {
   width: 48.6rem;
   height: 48.6rem;
 }
-.product-images.middle {
+.product-images.large {
   width: 28.2rem;
   height: 28.2rem;
+}
+.product-images.middle {
+  width: 22.1rem;
+  height: 22.1rem;
 }
 .product-images.small {
   width: 7.2rem;

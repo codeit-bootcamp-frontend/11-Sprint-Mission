@@ -41,13 +41,17 @@
   &-images {
     border-radius: 1.6rem;
     overflow: hidden;
-    &.large {
+    &.big {
       width: 48.6rem;
       height: 48.6rem;
     }
-    &.middle {
+    &.large {
       width: 28.2rem;
       height: 28.2rem;
+    }
+    &.middle {
+      width: 22.1rem;
+      height: 22.1rem;
     }
     &.small {
       width: 7.2rem;
