@@ -2,9 +2,12 @@
   margin: 2.4rem 0 4rem;
 }
 .product-category {
+  display: flex;
   margin-bottom: 2.4rem;
+  gap: 1.2rem;
 }
 .product-category-name {
+  flex: 1;
   font-size: 2rem;
   font-weight: 700;
   line-height: 3.2rem;
