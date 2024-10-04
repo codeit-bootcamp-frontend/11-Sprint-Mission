@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	// 유효성검사
     let isEmailValid = false;
 	let isNicknameValid = false;
-	let ispwdValid = false;
-	let ispwdConfirmValid = false;
+	let isPwdValid = false;
+	let isPwdConfirmValid = false;
 
 	const loginForm = document.getElementById("login_form");
 	const signupForm = document.getElementById("signup_form");
@@ -26,34 +26,105 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// 오류메세지
 	function errMsg(input, errId) {
-		
+		const errValue = document.getElementById(errId);
+    	errValue.style.display = "block";
+		// 빨간색
+    	input.style.border = "1px solid #f74747";
 	}
 
 	// 초기화
 	function resetState(input, errId) {
-		
+		const errValue = document.getElementById(errId);
+		errValue.style.display = "none";
+		input.style.border = "none";
+	}
+
+	// 폼 비활성화
+	function formDeactivate() {
+
+	}
+
+	function validationString(email) {
+		// 정규표현식으로 확인
+		const emailCheck = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+
+		// test()는 주어진 문자열이 정규 표현식을 만족하는지 판별하여 true false로 반환
+		return emailCheck.test(email);
 	}
 
 	// 유효성 검사 함수
 	function checkEmail() {
-		btnDeactivate();
+		const emailValue = emailInput.value.trim();
+		console.log(emailValue);
+		isEmailValid = false;
+		
+		// 이메일이 입력이 안됐을때
+		if(!emailValue) {
+			errMsg(emailInput, "email_empty_err");
+		}
+		// 이메일형식이 아닐때
+		else if(!validationString(emailValue)) {
+			errMsg(emailInput, "email_invalid_err");
+		}
+		// 이메일일때
+		else {
+			isEmailValid = true;
+			resetState(emailInput, "email_empty_err");
+			resetState(emailInput, "email_invalid_err");
+		}
+		// formDeactivate();
 	}
 
 	function checkNickname() {
-		btnDeactivate();
+		const nicknameValue = nicknameInput.value.trim();
+		isNicknameValid = false;
+
+		if(!nicknameValue) {
+			errMsg(nicknameInput, "nickname_empty_err");
+		} 
+		else {
+			isNicknameValid = true;
+			resetState(emailInput, "nickname_empty_err");
+		}
+		// formDeactivate();
 	}
 
 	function checkPwd() {
-		btnDeactivate();
+		const pwdValue = pwdInput.value.trim();
+		isPwdValid = false;
+
+		if(!pwdValue) {
+			errMsg(pwdInput, "pwd_empty_err");
+		}
+		else if(pwdValue.length < 8) {
+			errMsg(pwdInput, "pwd_invalid_err");
+		}
+		else {
+			isPwdValid = true;
+			resetState(pwdInput, "pwd_empty_err");
+			resetState(pwdInput, "pwd_invalid_err");
+		}
+		// formDeactivate();
 	}
 
 	function checkPwdconfrim() {
-		btnDeactivate();
-	}
+		const pwdConfirmValue = pwdConfirmInput.value.trim();
+		isPwdConfirmValid = false;
 
-	// 버튼 비활성화
-	function btnDeactivate() {
-		btnDeactivate();
+		// 패스워드 짧을때
+		if(!isPwdValid) {
+			errMsg(pwdConfirmInput, "pwd_confirm_init_err");
+		}
+		// 패스워드 확인이 비어있거나 원래 패스워드와 일치하지않으면,
+		else if(!pwdConfirmValue || pwdConfirmValue !== pwdInput.value.trim()) {
+			errMsg(pwdConfirmInput, "pwd_confirm_err");
+		}
+		else {
+			isPwdConfirmValid = true;
+			resetState(pwdConfirmInput, "pwd_confirm_init_err");
+			resetState(pwdConfirmInput, "pwd_confirm_err");
+		}
+		// formDeactivate();
 	}
 
 	// 유효성 검사 이벤트
@@ -65,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		nicknameInput.addEventListener("focusout", checkNickname);
 	}
 
-	// input은 실시간을 확인 가능해서 pwd는 confirm과의 비교가 필요해서 input이 맞다고 판단
+	// input은 실시간으로 확인 -> pwd는 confirm과의 실시간 비교가 필요
 	if(pwdInput) {
 		pwdInput.addEventListener("input", checkPwd);
 	}
@@ -75,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 
 	// 최종 정보가 맞으면 활성화 틀리면 비활성화
-	btnDeactivate();
+	// formDeactivate();
  
 	if(loginForm) {
 		loginForm.addEventListener("submit", function(e) {
