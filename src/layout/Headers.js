@@ -5,7 +5,7 @@ import Navigation from "./Navigation.js.js";
 import Button from "../components/Button";
 
 const Headers = (props) => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
 
   return (
     <div id='header'>
