@@ -1,0 +1,36 @@
+@import url(common.css);
+
+.header {
+  display: flex;
+  padding: 0px 200px;
+  justify-content: space-between;
+}
+
+.container {
+  display: flex;
+  gap: 32px;
+}
+
+.logo-large {
+  width: 153px;
+  height: 51px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.profile-icon {
+  display: flex;
+  align-items: center;
+}
+
+p {
+  font-size: 18px;
+  line-height: 26px;
+  text-align: center;
+  font-weight: 700;
+  color: #4b5563;
+}
