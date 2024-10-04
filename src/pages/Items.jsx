@@ -7,6 +7,7 @@ const Items = (props) => {
   const [AllItems, setAllItems] = useState([]);
   const [RecItems, setRecItems] = useState([]);
   const [search, setSearch] = useState("");
+  const [order, setOrder] = useState("recent");
 
   const handleLoad = async (options) => {
     const { list } = await getProductsList(options);
@@ -22,10 +23,13 @@ const Items = (props) => {
     setSearch(e.target["search"].value);
   };
 
+  const handleBestClick = () => setOrder("favorite");
+  const handleNewestClick = () => setOrder("recent");
+
   useEffect(() => {
     handleLoad({ pageSize: 4, orderBy: "favorite" });
-    handleLoad({ pageSize: 10, keyword: search });
-  }, [search]);
+    handleLoad({ pageSize: 10, keyword: search, orderBy: order });
+  }, [search, order]);
 
   return (
     <main className='page-items'>
@@ -33,7 +37,15 @@ const Items = (props) => {
         <ProductsList list={RecItems} imageSize='large' countSize='small' productManagement={false}>
           베스트 상품
         </ProductsList>
-        <ProductsList list={AllItems} imageSize='middle' countSize='small' productManagement={true} onSubmit={handleSearchSubmit}>
+        <ProductsList
+          list={AllItems}
+          imageSize='middle'
+          countSize='small'
+          productManagement={true}
+          onSubmit={handleSearchSubmit}
+          onBest={handleBestClick}
+          onNewest={handleNewestClick}
+        >
           전체 상품
         </ProductsList>
       </div>
