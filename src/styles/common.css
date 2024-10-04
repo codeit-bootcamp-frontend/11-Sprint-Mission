@@ -180,10 +180,16 @@ div[class^="btn-wrap"] {
   line-height: 2.4rem;
   font-weight: 600;
 }
-.favorite-count {
+.btn-heart {
   display: flex;
   align-items: center;
   gap: 0.3rem;
+}
+.btn-heart .count {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+  color: var(--gray-600);
 }
 .ico-heart.small {
   width: 1.6rem;

@@ -1,13 +1,19 @@
+import { useState } from "react";
 import HEART_ICON_IMAGE from "../assets/ic_heart.svg";
+import Button from "../components/Button";
 
 const HeartCountArea = ({ count, size }) => {
+  const [addCount, setAddCount] = useState(0);
+
+  const handleHeartClick = () => setAddCount(addCount + 1);
+
   return (
-    <div className='favorite-count'>
+    <Button link={false} className='heart' onClick={handleHeartClick}>
       <div className={`ico-heart ${size}`}>
         <img src={HEART_ICON_IMAGE} alt='하트 아이콘' />
       </div>
-      <span>{count}</span>
-    </div>
+      <span className='count'>{count + addCount}</span>
+    </Button>
   );
 };
 

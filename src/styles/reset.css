@@ -135,6 +135,8 @@ table {
 }
 button {
   border: none;
+  background-color: transparent;
+  padding: 0;
 }
 a {
   display: inline-block;
