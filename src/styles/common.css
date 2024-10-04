@@ -207,6 +207,26 @@ div[class^="btn-wrap"] {
 #submitBtn.active {
   background-color: var(--blue-100);
 }
+.input-search-wrap {
+  /* position: relative; */
+  width: 32.5rem;
+}
+.input-search {
+  width: 100%;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  font-weight: 400;
+  padding: 0.9rem 1.6rem 0.9rem 4.4rem;
+  background-color: var(--gray-100);
+  border-radius: 1.2rem;
+  background-image: url(../assets/ic_search.svg);
+  background-size: 2.4rem;
+  background-repeat: no-repeat;
+  background-position: 1.6rem center;
+}
+.input-search::placeholder {
+  color: var(--gray-400);
+}
 
 /* 태블릿 & 모바일 공통 스타일 */
 @media screen and (max-width: 1199px) {
