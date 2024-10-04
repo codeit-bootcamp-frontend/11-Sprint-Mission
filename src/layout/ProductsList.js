@@ -6,6 +6,7 @@ import ProductName from "../components/Product/ProductName";
 import ProductPrice from "../components/Product/ProductPrice";
 import "../styles/Products/ProductsList.css";
 import DropDown from "../components/DropDown";
+import SearchInput from "../components/SearchInput";
 
 const ProductItem = ({ item, imageSize, countSize }) => {
   return (
@@ -17,14 +18,6 @@ const ProductItem = ({ item, imageSize, countSize }) => {
         <HeartCountArea count={item.favoriteCount} size={countSize} />
       </div>
     </>
-  );
-};
-
-const SearchInput = ({ onSubmit }) => {
-  return (
-    <form onSubmit={onSubmit} className='input-search-wrap'>
-      <input className='input-search' name='search' placeholder='검색할 상품을 입력해주세요' />
-    </form>
   );
 };
 
