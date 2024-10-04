@@ -1,39 +1,38 @@
 import { useState } from "react";
 
-const DropDown = ({ onBest, onNewest }) => {
-  const [isOption, setIsOption] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("최신순");
+/**
+ * 드롭다운
+ *
+ * @param {Array} options - 옵션 개체 배열로, 각각 '라벨'과 '값'을 갖습니다
+ * @param {Function} onSelect - 옵션 선택을 처리하는 콜백 기능
+ */
+const DropDown = ({ options, onSelect }) => {
+  const [isOptionVisible, setIsOptionVisible] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(options[0].label);
 
   const handleSelectClick = () => {
-    setIsOption(!isOption);
+    setIsOptionVisible(!isOptionVisible);
   };
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option);
-    setIsOption(false);
-    if (option === "최신순") {
-      onNewest();
-    } else if (option === "좋아요순") {
-      onBest();
-    }
+    setSelectedOption(option.label);
+    setIsOptionVisible(false);
+    onSelect(option.value);
   };
 
   return (
     <div className='select'>
-      <button className='select-title' value='favorite' onClick={handleSelectClick}>
+      <button className='select-title' onClick={handleSelectClick}>
         {selectedOption}
       </button>
-      {isOption ? (
+      {isOptionVisible && (
         <div className='select-option'>
-          <button className='select-option-list' value='favorite' onClick={() => handleOptionClick("최신순")}>
-            최신순
-          </button>
-          <button className='select-option-list' value='recent' onClick={() => handleOptionClick("좋아요순")}>
-            좋아요순
-          </button>
+          {options.map((option) => (
+            <button key={option.value} className='select-option-list' onClick={() => handleOptionClick(option)}>
+              {option.label}
+            </button>
+          ))}
         </div>
-      ) : (
-        ""
       )}
     </div>
   );
