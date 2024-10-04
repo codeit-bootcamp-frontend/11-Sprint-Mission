@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { togglePwVisibility } from "utils/togglePwVisible";
 
-function Signup(props) {
+function Signup() {
   return (
     <div className="container">
       <h1 className="logo">

@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 function Search({ setProducts, perPage }) {
-  const [keyword, setKeyword] = useState("");
-
   const handleChange = ({ target }) => {
     const search = target.value;
-    setKeyword(search);
   };
   return (
     <div className="input-area">
