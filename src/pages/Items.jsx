@@ -4,24 +4,31 @@ import ProductsList from "../layout/ProductsList";
 import "../styles/page-items/items.css";
 
 const Items = (props) => {
-  const [items, setItems] = useState([]);
+  const [AllItems, setAllItems] = useState([]);
+  const [RecItems, setRecItems] = useState([]);
 
-  const handleLoad = async () => {
+  const handleLoadAll = async () => {
     const { list } = await getProductsList();
-    setItems(list);
+    setAllItems(list);
+  };
+
+  const handleLoadRec = async () => {
+    const { list } = await getProductsList(4);
+    setRecItems(list);
   };
 
   useEffect(() => {
-    handleLoad();
+    handleLoadAll();
+    handleLoadRec();
   }, []);
 
   return (
     <main className='page-items'>
       <div className='container'>
-        <ProductsList list={items} imageSize='large' countSize='small'>
+        <ProductsList list={RecItems} imageSize='large' countSize='small'>
           베스트 상품
         </ProductsList>
-        <ProductsList list={items} imageSize='middle' countSize='small'>
+        <ProductsList list={AllItems} imageSize='middle' countSize='small'>
           전체 상품
         </ProductsList>
       </div>
