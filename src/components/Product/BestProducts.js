@@ -4,9 +4,21 @@ import ProductsList from "../../layout/ProductsList";
 
 const BestProducts = () => {
   const [items, setItems] = useState([]);
+  const [loadingError, setLoadingError] = useState(null);
 
   const handleLoad = async () => {
-    const { list } = await getProductsList({ pageSize: 4, orderBy: "favorite" });
+    const queryParams = {
+      pageSize: 4,
+      orderBy: "favorite",
+    };
+    let result;
+    try {
+      setLoadingError(null);
+      result = await getProductsList(queryParams);
+    } catch (error) {
+      setLoadingError(error);
+    }
+    const { list } = result;
     setItems(list);
   };
 
@@ -15,9 +27,12 @@ const BestProducts = () => {
   }, []);
 
   return (
-    <ProductsList list={items} imageSize='large' countSize='small' productManagement={false}>
-      베스트 상품
-    </ProductsList>
+    <>
+      {loadingError?.message && <span>{loadingError.message}</span>}
+      <ProductsList list={items} imageSize='large' countSize='small' productManagement={false}>
+        베스트 상품
+      </ProductsList>
+    </>
   );
 };
 

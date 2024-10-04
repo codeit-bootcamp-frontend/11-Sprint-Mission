@@ -9,6 +9,7 @@ const AllProducts = () => {
   const [order, setOrder] = useState("recent");
   const [total, setTotal] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [loadingError, setLoadingError] = useState(null);
   const pageSize = 10;
 
   const handleLoad = async () => {
@@ -18,7 +19,14 @@ const AllProducts = () => {
       orderBy: order,
       page: currentPage,
     };
-    const { list, totalCount } = await getProductsList(queryParams);
+    let result;
+    try {
+      setLoadingError(null);
+      result = await getProductsList(queryParams);
+    } catch (error) {
+      setLoadingError(error);
+    }
+    const { list, totalCount } = result;
     setItems(list);
     setTotal(totalCount);
   };
@@ -37,6 +45,7 @@ const AllProducts = () => {
 
   return (
     <div>
+      {loadingError?.message && <span>{loadingError.message}</span>}
       <ProductsList
         list={items}
         imageSize='middle'
