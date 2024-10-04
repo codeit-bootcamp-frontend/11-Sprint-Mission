@@ -102,13 +102,6 @@
 	text-underline-offset: 2px;
 }
 
-/* btn */
-.watch-btn.full-width-btn {
-    display: block;
-    width: 100%;
-    margin: 24px auto; 
-}
-
 @media (max-width: 1279px) and (min-width: 768px) {
 	.sign-container {
 		max-width: 640px;

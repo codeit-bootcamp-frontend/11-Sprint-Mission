@@ -41,13 +41,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// 폼 비활성화
 	function formDeactivate() {
-
+		let isFormValid = isEmailValid && isPwdValid;
+	
+		if(signupForm) {
+			isFormValid = isFormValid && isNicknameValid && isPwdConfirmValid;
+		}
+	
+		submitBtn.disabled = !isFormValid; // Set the disabled property
 	}
 
 	function validationString(email) {
 		// 정규표현식으로 확인
 		const emailCheck = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
-
+		
 		// test()는 주어진 문자열이 정규 표현식을 만족하는지 판별하여 true false로 반환
 		return emailCheck.test(email);
 	}
@@ -72,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			resetState(emailInput, "email_empty_err");
 			resetState(emailInput, "email_invalid_err");
 		}
-		// formDeactivate();
+		formDeactivate();
 	}
 
 	function checkNickname() {
@@ -86,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			isNicknameValid = true;
 			resetState(emailInput, "nickname_empty_err");
 		}
-		// formDeactivate();
+		formDeactivate();
 	}
 
 	function checkPwd() {
@@ -104,10 +110,10 @@ document.addEventListener("DOMContentLoaded", () => {
 			resetState(pwdInput, "pwd_empty_err");
 			resetState(pwdInput, "pwd_invalid_err");
 		}
-		// formDeactivate();
+		formDeactivate();
 	}
 
-	function checkPwdconfrim() {
+	function checkPwdconfirm() {
 		const pwdConfirmValue = pwdConfirmInput.value.trim();
 		isPwdConfirmValid = false;
 
@@ -124,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			resetState(pwdConfirmInput, "pwd_confirm_init_err");
 			resetState(pwdConfirmInput, "pwd_confirm_err");
 		}
-		// formDeactivate();
+		formDeactivate();
 	}
 
 	// 유효성 검사 이벤트
@@ -142,12 +148,11 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 
 	if(pwdConfirmInput) {
-		pwdConfirmInput.addEventListener("input", checkPwdconfrim);
+		pwdConfirmInput.addEventListener("input", checkPwdconfirm);
 	}
-
-	// 최종 정보가 맞으면 활성화 틀리면 비활성화
-	// formDeactivate();
  
+	formDeactivate();
+
 	if(loginForm) {
 		loginForm.addEventListener("submit", function(e) {
 			e.preventDefault();
