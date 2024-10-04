@@ -5,6 +5,7 @@ import ProductImage from "../components/Product/ProductImage";
 import ProductName from "../components/Product/ProductName";
 import ProductPrice from "../components/Product/ProductPrice";
 import "../styles/Products/ProductsList.css";
+import DropDown from "../components/DropDown";
 
 const ProductItem = ({ item, imageSize, countSize }) => {
   return (
@@ -24,32 +25,6 @@ const SearchInput = ({ onSubmit }) => {
     <form onSubmit={onSubmit} className='input-search-wrap'>
       <input className='input-search' name='search' placeholder='검색할 상품을 입력해주세요' />
     </form>
-  );
-};
-
-const DropDown = () => {
-  const [isOption, setIsOption] = useState(false);
-  const handleOptionClick = () => {
-    setIsOption(!isOption);
-  };
-  return (
-    <div className='select'>
-      <button className='select-title' value='favorite' onClick={handleOptionClick}>
-        최신순
-      </button>
-      {isOption ? (
-        <div className='select-option'>
-          <button className='select-option-list' value='favorite'>
-            최신순
-          </button>
-          <button className='select-option-list' value='recent'>
-            좋아요순
-          </button>
-        </div>
-      ) : (
-        ""
-      )}
-    </div>
   );
 };
 
