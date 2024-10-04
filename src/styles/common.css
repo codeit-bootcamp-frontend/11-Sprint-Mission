@@ -180,6 +180,23 @@ div[class^="btn-wrap"] {
   line-height: 2.4rem;
   font-weight: 600;
 }
+.favorite-count {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.ico-heart.small {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+.ico-heart.middle {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+.ico-heart.large {
+  width: 3.2rem;
+  height: 3.2rem;
+}
 
 #submitBtn.active {
   background-color: var(--blue-100);
