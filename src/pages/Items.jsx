@@ -18,8 +18,12 @@ const Items = (props) => {
   return (
     <main className='page-items'>
       <div className='container'>
-        <ProductsList list={items} />
-        <ProductsList list={items} />
+        <ProductsList list={items} imageSize='large' countSize='small'>
+          베스트 상품
+        </ProductsList>
+        <ProductsList list={items} imageSize='middle' countSize='small'>
+          전체 상품
+        </ProductsList>
       </div>
     </main>
   );
