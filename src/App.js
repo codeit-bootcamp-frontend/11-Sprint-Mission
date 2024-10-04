@@ -1,6 +1,7 @@
 import ProductList from './components/ProductList';
 import BestProduct from './components/BestProduct';
 import Header from './components/Header';
+import '../src/styles/App.css';
 import { useEffect, useState } from 'react';
 import { getProducts } from './hooks/api';
 
@@ -11,13 +12,12 @@ function App() {
   const [items, setItems] = useState([]);
   const [bestItem, setBestItem] = useState([]);
   const [offset, setOffset] = useState(0);
-  // 더이상불러올데이터가없을때는어떻게구현해야될지..?(강의: 리액트데이터다루기-데이터더불러오기)
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const sortedItems = [...items].sort((a, b) => b[order] - a[order]);
   const BestItemsDesktop = bestItem.slice(0, 4);
 
-  const handleNewestClick = () => setOrder('createAt');
-  const handleBestClick = () => setOrder('favoriteCount');
+  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
   const handleLoad = async (options) => {
     const { list } = await getProducts(options);
@@ -39,15 +39,51 @@ function App() {
   }, [order]);
 
   return (
-    <div>
+    <div className="pandaMarket">
       <Header />
-      <p>베스트상품~~~~~~~~~~~~~</p>
-      <BestProduct items={BestItemsDesktop} />
-      <p>전체상품~~~~~~~~~~~</p>
-      <button onClick={handleNewestClick}>최신순</button>
-      <button onClick={handleBestClick}>베스트순</button>
-      <ProductList items={sortedItems} />
-      <button onClick={handleLoadMore}>더보기</button>
+      <div className="page">
+        <div className="bestProduct">
+          <p className="subTitle">베스트 상품</p>
+          <BestProduct items={BestItemsDesktop} />
+        </div>
+
+        <div className="AllProductList">
+          <div className="subHeader">
+            <p className="subTitle">전체 상품</p>
+            <div className="sub">
+              <input></input>
+              <button className="productUp">상품 등록하기</button>
+              <div className="dropdown">
+                <button className="dropdown-button" onClick={toggleDropdown}>
+                  {order === 'createAt' ? '최신순' : '베스트순'} ▼
+                </button>
+                {dropdownOpen && (
+                  <ul className="dropdown-menu">
+                    <p
+                      onClick={() => {
+                        setOrder('createAt');
+                        setDropdownOpen(false);
+                      }}
+                    >
+                      최신순
+                    </p>
+                    <p
+                      onClick={() => {
+                        setOrder('favoriteCount');
+                        setDropdownOpen(false);
+                      }}
+                    >
+                      베스트순
+                    </p>
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
+          <ProductList items={sortedItems} />
+          <button onClick={handleLoadMore}>더보기</button>
+        </div>
+      </div>
     </div>
   );
 }

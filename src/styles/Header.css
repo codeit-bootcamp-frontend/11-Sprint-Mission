@@ -5,16 +5,18 @@
 }
 
 header {
+  font-family: 'Pretendard-Regular', sans-serif;
   height: 4.5rem;
-  position: sticky;
   padding-left: 10rem;
   padding-right: 10rem;
   display: flex;
   border-bottom: 1px solid #dfdfdf;
   align-items: center;
-  font-family: 'Pretendard-Regular', sans-serif;
   justify-content: space-between;
   align-items: center;
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
 }
 
 .header-left {

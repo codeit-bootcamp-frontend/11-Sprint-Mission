@@ -1,11 +1,17 @@
+import '../styles/BestProduct.css';
+import icHeart from '../assets/ic_heart.svg';
+
 function BestProductsItem({ item }) {
   return (
     <div className="BestProductItem">
       <img className="BestProductItem-img" src={item.images} alt={item.name} />
       <div>
         <p className="BestProductName">{item.name}</p>
-        <p className="BestProductPrice">{item.price}</p>
-        <p className="BestProductFavoriteCount">{item.favoriteCount}</p>
+        <p className="BestProductPrice">{item.price}원</p>
+        <p className="BestProductFavoriteCount">
+          <img src={icHeart} alt="iconHert" />
+          {item.favoriteCount}
+        </p>
       </div>
     </div>
   );
@@ -13,7 +19,7 @@ function BestProductsItem({ item }) {
 
 function BestProduct({ items }) {
   return (
-    <ul>
+    <ul className="BestProduct">
       {items.map((item) => {
         return (
           <li key={item.id}>
