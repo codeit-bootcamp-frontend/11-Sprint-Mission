@@ -1,6 +1,6 @@
 import "./styles/common.css";
 import { useLocation } from "react-router-dom";
-import Headers from "./components/Headers";
+import Headers from "./layout/Headers";
 import AppRoutes from "./routes/AppRoutes";
 
 function App() {

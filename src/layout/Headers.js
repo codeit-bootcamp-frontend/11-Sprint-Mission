@@ -1,8 +1,8 @@
 import { useState } from "react";
-import ProfileImage from "./ProfileImage";
+import ProfileImage from "../components/ProfileImage";
 import Logo from "./Logo";
-import Navigation from "./Navigation.js";
-import Button from "./Button";
+import Navigation from "./Navigation.js.js";
+import Button from "../components/Button";
 
 const Headers = (props) => {
   const [isLogin, setIsLogin] = useState(false);
