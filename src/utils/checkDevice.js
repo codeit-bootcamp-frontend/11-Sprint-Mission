@@ -19,13 +19,12 @@ const getBreakpoint = (width) => {
  * @returns
  */
 const updateProductsPerPage = (device) => {
-  if (device === "pc") {
-    return 10;
-  } else if (device === "tablet") {
-    return 6;
-  } else {
-    return 4;
-  }
+  const productsPerpage = {
+    pc: 10,
+    tablet: 6,
+    mobile: 4,
+  };
+  return productsPerpage[device] || 10;
 };
 
 export { getBreakpoint, updateProductsPerPage };
