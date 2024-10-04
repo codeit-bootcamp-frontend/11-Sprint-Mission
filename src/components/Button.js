@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Button.css";
+import "../styles/Button/Button.css";
 
 const Button = ({ link, href, onClick, children, className, style }) => {
   return link ? (
