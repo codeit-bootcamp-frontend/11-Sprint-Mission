@@ -525,6 +525,7 @@ button:disabled {
 header {
   /* [Srpint2] 헤더 GNB를 위해 position sticky 추가 */
   position: sticky;
+  z-index: 10;
   top: 0;
   display: flex;
   align-items: center;
@@ -537,6 +538,7 @@ header {
 }
 header .logo {
   width: 15.3rem;
+  min-width: 15.3rem;
   height: 5.1rem;
 }
 header .logo-img {
@@ -603,13 +605,18 @@ header .link-login:active {
     padding: 0.8rem 1.6rem;
   }
   header .logo {
-    width: 10.3rem;
+    width: 8.1rem;
+    min-width: 8.1rem;
+    height: 4rem;
   }
   header .logo-img.logo-pc {
     display: none;
   }
   header .logo-img.logo-mobile {
     display: block;
+  }
+  header .login-area {
+    margin-left: 0.8rem;
   }
   header .login-area .content-link a {
     font-size: 1.6rem;
@@ -721,6 +728,123 @@ footer .footer-wrap .sns a img {
   font-weight: var(--medium);
   line-height: 1.8rem;
   color: var(--gray600);
+}
+
+.sort-area {
+  position: relative;
+  width: 13rem;
+  height: 4.2rem;
+}
+.sort-area .btn-sort {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0 2rem;
+  border: 0.1rem solid var(--gray200);
+  border-radius: 1.2rem;
+  background-color: #fff;
+  font-size: 1.6rem;
+  line-height: 4.2rem;
+  color: var(--gray800);
+  text-align: left;
+}
+.sort-area .btn-sort::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 2rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: url(/public/images/icons/ic_arrow_down.svg) no-repeat center/cover;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+.sort-area .options {
+  display: none;
+  overflow: hidden;
+  position: absolute;
+  top: calc(100% + 0.8rem);
+  left: 0;
+  width: 13rem;
+  border: 0.1rem solid var(--gray200);
+  border-radius: 1.2rem;
+}
+.sort-area .options[open] {
+  display: block;
+}
+.sort-area .options button {
+  display: block;
+  width: 100%;
+  border: 0;
+  background-color: #fff;
+  font-size: 1.6rem;
+  line-height: 4.2rem;
+  text-align: center;
+  color: var(--gray800);
+}
+.sort-area .options button + button {
+  border-top: 0.1rem solid var(--gray200);
+}
+
+@media (max-width: 767px) {
+  .sort-area {
+    width: 4.2rem;
+  }
+  .sort-area .btn-sort::before {
+    left: 50%;
+    background-image: url(/public/images/icons/ic_sort.svg);
+    transform: translate(-50%, -50%);
+  }
+  .sort-area .btn-sort .mo-hidden {
+    display: none;
+  }
+  .sort-area .options {
+    left: auto;
+    right: 0;
+  }
+}
+.btn-primary {
+  border: 0;
+  border-radius: 0.8rem;
+  background-color: var(--primary100);
+  font-size: 1.6rem;
+  font-weight: var(--semiBold);
+  line-height: 2.6rem;
+  color: var(--gray100);
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 0.4rem;
+  margin: 4.3rem 0 5.8rem;
+}
+.pagination .btn-pagination {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 0.1rem solid var(--gray200);
+  background-color: #fff;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  color: var(--gray500);
+}
+.pagination .btn-pagination[active] {
+  background-color: #2f80ed;
+  color: #fff;
+}
+.pagination .btn-pagination.btn-prev, .pagination .btn-pagination.btn-next {
+  background: url(/public/images/icons/ic_arrow_right.svg) no-repeat center/1.6rem 1.6rem;
+}
+.pagination .btn-pagination.btn-prev:disabled, .pagination .btn-pagination.btn-next:disabled {
+  cursor: not-allowed;
+  background-image: url(/public/images/icons/ic_arrow_right_disable.svg);
+}
+.pagination .btn-pagination.btn-next {
+  transform: rotate(180deg);
 }
 
 /* Main & Section */
@@ -1070,70 +1194,6 @@ footer .footer-wrap .sns a img {
 }
 .page-items section#section_all .top .filter-area .btn-register {
   padding: 0.8rem 2.3rem;
-  border: 0;
-  border-radius: 0.8rem;
-  background-color: var(--primary100);
-  font-size: 1.6rem;
-  font-weight: var(--semiBold);
-  line-height: 2.6rem;
-  color: var(--gray100);
-}
-.page-items section#section_all .top .filter-area .sort-area {
-  position: relative;
-  width: 13rem;
-  height: 4.2rem;
-}
-.page-items section#section_all .top .filter-area .sort-area .btn-sort {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 0 2rem;
-  border: 0.1rem solid var(--gray200);
-  border-radius: 1.2rem;
-  background-color: #fff;
-  font-size: 1.6rem;
-  line-height: 4.2rem;
-  color: var(--gray800);
-  text-align: left;
-}
-.page-items section#section_all .top .filter-area .sort-area .btn-sort::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 2rem;
-  width: 2.4rem;
-  height: 2.4rem;
-  background: url(/public/images/icons/ic_arrow_down.svg) no-repeat center/cover;
-  transform: translateY(-50%);
-  z-index: 1;
-}
-.page-items section#section_all .top .filter-area .sort-area .options {
-  display: none;
-  overflow: hidden;
-  position: absolute;
-  top: calc(100% + 0.8rem);
-  left: 0;
-  width: 13rem;
-  border: 0.1rem solid var(--gray200);
-  border-radius: 1.2rem;
-}
-.page-items section#section_all .top .filter-area .sort-area .options[open] {
-  display: block;
-}
-.page-items section#section_all .top .filter-area .sort-area .options button {
-  display: block;
-  width: 100%;
-  border: 0;
-  background-color: #fff;
-  font-size: 1.6rem;
-  line-height: 4.2rem;
-  text-align: center;
-  color: var(--gray800);
-}
-.page-items section#section_all .top .filter-area .sort-area .options button + button {
-  border-top: 0.1rem solid var(--gray200);
 }
 .page-items section .products-wrap {
   display: grid;
@@ -1197,21 +1257,6 @@ footer .footer-wrap .sns a img {
   .page-items section#section_all .top .filter-area .btn-register {
     position: absolute;
     top: -0.5rem;
-    right: 0;
-  }
-  .page-items section#section_all .top .filter-area .sort-area {
-    width: 4.2rem;
-  }
-  .page-items section#section_all .top .filter-area .sort-area .btn-sort::before {
-    left: 50%;
-    background-image: url(/public/images/icons/ic_sort.svg);
-    transform: translate(-50%, -50%);
-  }
-  .page-items section#section_all .top .filter-area .sort-area .btn-sort .mo-hidden {
-    display: none;
-  }
-  .page-items section#section_all .top .filter-area .sort-area .options {
-    left: auto;
     right: 0;
   }
   .page-items section .products-wrap {

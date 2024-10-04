@@ -5,7 +5,7 @@
  * @returns input의 입력이 공백이면 true, 공백이 아니면 false 반환
  */
 function handleEmptyInput(target, errorMessage) {
-  if (target.value.trim("") === "") {
+  if (target.value.trim() === "") {
     errorMessage.textContent = target.placeholder;
     target.classList.add("invalid");
     target.dataset.valid = false;
@@ -34,7 +34,7 @@ function validateEmailFormat(email) {
  * @param {*} errorMessage 에러를 표시할 <span> 태그
  */
 function validateEmail(target, errorMessage) {
-  const isEmailValid = validateEmailFormat(target.value.trim(""));
+  const isEmailValid = validateEmailFormat(target.value.trim());
   if (!isEmailValid) {
     errorMessage.textContent = "잘못된 이메일 형식입니다.";
     target.classList.add("invalid");
@@ -51,7 +51,7 @@ function validateEmail(target, errorMessage) {
  * @param {*} errorMessage 에러를 표시할 <span> 태그
  */
 function validatePassword(target, errorMessage) {
-  if (target.value.trim("").length < 8) {
+  if (target.value.trim().length < 8) {
     errorMessage.textContent = "비밀번호를 8자리 이상 입력해주세요.";
     target.classList.add("invalid");
     target.dataset.valid = false;
@@ -70,9 +70,9 @@ function validatePasswordConfirm(target, errorMessage) {
   const password = target
     .closest("form")
     .querySelector("#input_password")
-    .value.trim("");
+    .value.trim();
 
-  if (target.value.trim("") !== password) {
+  if (target.value.trim() !== password) {
     errorMessage.textContent = "비밀번호가 일치하지 않습니다.";
     target.classList.add("invalid");
     target.dataset.valid = false;
@@ -115,7 +115,6 @@ function validateForm({ target }) {
   const inputs = form.querySelectorAll("input");
   const btnSubmit = form.querySelector("button[type=submit]"); // 로그인 | 회원가입 버튼
   const isFormValid = Array.from(inputs).every(
-    // (input) => input.value.trim() !== ""
     (input) => input.dataset.valid === "true"
   ); // form의 모든 input 요소의 data-valid가 'true'인지 체크
 
