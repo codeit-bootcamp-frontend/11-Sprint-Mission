@@ -30,10 +30,10 @@ const Items = (props) => {
   return (
     <main className='page-items'>
       <div className='container'>
-        <ProductsList list={RecItems} imageSize='large' countSize='small' keyWordInput={false}>
+        <ProductsList list={RecItems} imageSize='large' countSize='small' productManagement={false}>
           베스트 상품
         </ProductsList>
-        <ProductsList list={AllItems} imageSize='middle' countSize='small' keyWordInput={true} onSubmit={handleSearchSubmit}>
+        <ProductsList list={AllItems} imageSize='middle' countSize='small' productManagement={true} onSubmit={handleSearchSubmit}>
           전체 상품
         </ProductsList>
       </div>
