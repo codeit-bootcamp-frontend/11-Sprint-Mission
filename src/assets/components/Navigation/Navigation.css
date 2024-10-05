@@ -71,3 +71,26 @@
     padding: 14px 24px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .logo-icon {
+    display: none;
+  }
+
+  .logo-text {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .Navigation-tabs {
+    margin: 0 12px;
+  }
+
+  .Navigation-tabs li {
+    flex: 0 0 70px;
+  }
+
+  .Navigation-tabs .tab {
+    font-size: 16px;
+  }
+}
