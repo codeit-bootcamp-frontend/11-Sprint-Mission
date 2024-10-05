@@ -1,0 +1,135 @@
+h1,
+h2,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gray-900);
+}
+
+h2 {
+  font-size: 1.06rem;
+  font-weight: 500;
+}
+
+h2,
+.price {
+  color: var(--gray-800);
+}
+
+li {
+  list-style-type: none;
+}
+
+.thumbnail {
+  border: 1px solid #cccccc;
+  border-radius: 16px;
+  margin-bottom: 1rem;
+}
+
+.allProducts,
+.bestProducts {
+  max-width: 1200px;
+  margin: 3.5rem auto 5rem;
+}
+
+.productList,
+.bestProductList {
+  padding: 0;
+  display: grid;
+  column-gap: 24px;
+  margin-top: 2rem;
+}
+
+.bestProductList {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.bestProductList .thumbnail {
+  width: 100%;
+  height: auto;
+}
+
+.productList {
+  grid-template: repeat(2, 1fr) / repeat(5, 1fr);
+  row-gap: 2.5rem;
+}
+
+.productList .thumbnail {
+  width: 221px;
+  height: 221px;
+}
+
+.price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0.85rem 0 1.5rem;
+}
+
+.favorite {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  font-size: 0.94rem;
+  font-weight: 500;
+  color: var(--gray-600);
+}
+
+.topInfo,
+.utils button:last-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.utils {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.utils button {
+  width: 8.44rem;
+  height: 2.625rem;
+  background-color: var(--blue);
+  color: var(--gray-100);
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+}
+
+.utils button:last-child {
+  padding: 0 20px;
+  font-weight: 400;
+  background-color: #ffffff;
+  color: var(--gray-900);
+  border: 1px solid var(--gray-200);
+}
+
+.utils input {
+  width: 20.3rem;
+  height: 2.625rem;
+  background-color: var(--gray-100);
+  color: var(--gray-400);
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 400;
+  padding-left: 44px;
+}
+
+.searchIcon {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  left: 20px;
+  top: 12px;
+}
