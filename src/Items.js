@@ -36,10 +36,10 @@ function Items() {
   const [isDropdownView, setDropdownView] = useState(false);
   const [orderBy, setOrderBy] = useState('recent');
   const [selectMenu, setSelectMenu] = useState('최신순');
-  const [searchResult, setSearchResult] = useState('');
+  const [keyword, setKeyword] = useState('');
 
-  const contentLoad = async (orderBy) => {
-    const { list } = await getItems(orderBy);
+  const contentLoad = async (orderBy, keyword) => {
+    const { list } = await getItems(orderBy, keyword);
     setProducts(list);
 
     const { list: bestItems } = await getItems((orderBy = 'favorite'));
@@ -61,9 +61,15 @@ function Items() {
 
   const pagingNumber = [1, 2, 3, 4, 5];
 
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    const value = e.target.value;
+    setKeyword(value);
+  };
+
   useEffect(() => {
-    contentLoad(orderBy);
-  }, [orderBy]);
+    contentLoad(orderBy, keyword);
+  }, [orderBy, keyword]);
 
   return (
     <div>
@@ -87,7 +93,7 @@ function Items() {
           <div className="utils">
             <input
               type="text"
-              onChange={(e) => setSearchResult(e.target.value)}
+              onChange={handleSearchSubmit}
               placeholder="검색할 상품을 입력해주세요."
             />
             <img className="searchIcon" src={searchIcon} alt="검색하기" />
@@ -109,17 +115,11 @@ function Items() {
         </div>
         <ul className="productList">
           {mainItems.length > 0 ? (
-            mainItems.map(
-              (item) =>
-                (searchResult.length === 0 ||
-                  item.name
-                    .toLowerCase()
-                    .includes(searchResult.toLowerCase())) && (
-                  <li key={item.id}>
-                    <ItemList className="itemList" item={item} />
-                  </li>
-                )
-            )
+            mainItems.map((item) => (
+              <li key={item.id}>
+                <ItemList className="itemList" item={item} />
+              </li>
+            ))
           ) : (
             <li>등록된 상품이 없습니다.</li>
           )}
