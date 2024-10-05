@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { getProductsList } from "../services/panda-market-api";
 
 const useProductsAll = () => {
@@ -31,7 +31,7 @@ const useProductsAll = () => {
     };
   }, []);
 
-  const handleLoad = async () => {
+  const handleLoad = useCallback(async () => {
     const queryParams = {
       pageSize,
       keyword: search,
@@ -53,7 +53,7 @@ const useProductsAll = () => {
     const { list, totalCount } = result;
     setItems(list);
     setTotal(totalCount);
-  };
+  }, [pageSize, search, order, currentPage]);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -70,7 +70,7 @@ const useProductsAll = () => {
 
   useEffect(() => {
     handleLoad();
-  }, [search, order, currentPage, pageSize]);
+  }, [handleLoad]);
   return {
     items,
     total,

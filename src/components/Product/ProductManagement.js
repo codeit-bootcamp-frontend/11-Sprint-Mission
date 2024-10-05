@@ -17,7 +17,7 @@ const ProductManagement = ({ onSubmit, onBest, onNewest }) => {
   return (
     <>
       <SearchInput onSubmit={onSubmit} />
-      <Button link={true} href='/additem' className='additem' style='square blue'>
+      <Button link={true} href='/additem' className='additem' styleType='square blue'>
         상품 등록하기
       </Button>
       <DropDown options={options} onSelect={handleSelect} />
