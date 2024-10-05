@@ -32,7 +32,8 @@
 .ItemList-header .btn-add {
   background-color: var(--blue);
   color: var(--gray-100);
-  padding: 12px 23px;
+  height: 42px;
+  padding: 0 23px;
   border: none;
   border-radius: 8px;
 
@@ -40,19 +41,46 @@
   font-weight: 600;
 }
 
-.ItemList-header select {
-  padding: 10.75px 37.5px;
+.select-order {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
+  width: 130px;
+  height: 42px;
+  padding: 0 20px;
   border-radius: 12px;
   border: 1px solid var(--gray-200);
   background-color: #ffffff;
 
   font-size: 16px;
   font-weight: 400;
+  user-select: none;
+}
 
-  appearance: none;
-  background-image: url("../../images/ic_arrow_down.svg");
-  background-repeat: no-repeat;
-  background-position: right;
+.option-wrap {
+  display: none;
+
+  position: absolute;
+  bottom: -98px;
+  right: 0;
+
+  width: 130px;
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  background-color: #ffffff;
+}
+
+.option-wrap.show {
+  display: block;
+}
+
+.option {
+  height: 42px;
+  border-bottom: 1px solid var(--gray-200);
+  padding: 12px 0;
+  text-align: center;
 }
 
 .ItemList-content {

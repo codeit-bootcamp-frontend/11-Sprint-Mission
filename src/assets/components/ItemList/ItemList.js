@@ -3,6 +3,8 @@ import { getProducts } from "../../../api";
 import Item from "../Item/Item";
 import "./ItemList.css";
 import Pagination from "../Pagination/Pagination";
+import arrowDown from "../../images/ic_arrow_down.svg";
+import ic_sort from "../../images/ic_sort.svg";
 
 /**
  * 전체 상품 리스트 컴포넌트다.
@@ -40,7 +42,7 @@ function ItemList({ view }) {
 
   return (
     <div className="ItemList">
-      <Header view={view} setOrder={setOrder} />
+      <Header view={view} order={order} setOrder={setOrder} />
       <Content items={items} />
       <Pagination
         page={page}
@@ -58,14 +60,8 @@ function ItemList({ view }) {
  * @returns 헤더 컴포넌트
  * @description 여러 유틸 기능을 포함한 헤더. 키워드 검색, 상품 등록, 검색 조건 셀렉터를 포함하고 있다.
  */
-function Header({ view, setOrder }) {
-  const handleSelectChange = (e) => {
-    const opt = e.target.options;
-    const selected = opt[opt.selectedIndex].value;
-    setOrder(selected);
-  };
-
-  const handleAddClick = (e) => {
+function Header({ view, order, setOrder }) {
+  const handleAddClick = () => {
     window.location.href = window.location.origin + "/additem";
   };
 
@@ -78,10 +74,7 @@ function Header({ view, setOrder }) {
           <button className="btn-add" onClick={handleAddClick}>
             상품 등록하기
           </button>
-          <select className="select-order" onChange={handleSelectChange}>
-            <option value={"recent"}>최신순</option>
-            <option value={"favorite"}>좋아요순</option>
-          </select>
+          <Select view={view} order={order} setOrder={setOrder} />
         </div>
       </div>
     );
@@ -96,14 +89,39 @@ function Header({ view, setOrder }) {
         </div>
         <div className="mobile-wrap">
           <input className="search" placeholder="검색할 상품을 입력해주세요" />
-          <select className="select-order" onChange={handleSelectChange}>
-            <option value={"recent"}>최신순</option>
-            <option value={"favorite"}>좋아요순</option>
-          </select>
+          <Select view={view} order={order} setOrder={setOrder} />
         </div>
       </div>
     );
   }
+}
+
+function Select({ view, order, setOrder }) {
+  const handleSelectClick = (e) => {
+    e.currentTarget.querySelector(".option-wrap").classList.toggle("show");
+  };
+
+  const handleSelectChange = (e) => {
+    const orderBy = e.target.dataset.order;
+    if (orderBy) {
+      setOrder(orderBy);
+    }
+  };
+
+  return (
+    <div className="select-order" onClick={handleSelectClick}>
+      <p>{order === "recent" ? "최신순" : "좋아요순"}</p>
+      <img src={arrowDown} alt="▼" />
+      <div className="option-wrap" onClick={handleSelectChange}>
+        <div className="option" data-order="recent">
+          최신순
+        </div>
+        <div className="option" data-order="favorite">
+          좋아요순
+        </div>
+      </div>
+    </div>
+  );
 }
 
 /**
