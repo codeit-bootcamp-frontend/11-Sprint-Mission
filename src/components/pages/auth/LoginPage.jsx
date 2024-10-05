@@ -1,8 +1,8 @@
-import InputField from "./InputField";
-import LoginOption from "./LoginOption";
+import InputField from "../../common/auth/InputField";
+import LoginOption from "../../common/auth/LoginOption";
+import InputPassword from "../../common/auth/InputPassword";
+import AuthLogo from "../../common/auth/AuthLogo";
 import "../../../styles/auth.css";
-import InputPassword from "./InputPassword";
-import AuthLogo from "./AuthLogo";
 
 function LoginPage() {
   return (
