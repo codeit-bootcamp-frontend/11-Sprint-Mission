@@ -28,3 +28,19 @@
   flex-wrap: wrap;
   gap: 24px;
 }
+
+@media screen and (max-width: 1199px) {
+  .BestItemList {
+    width: 696px;
+  }
+
+  .BestItemList-content {
+    gap: 16px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .BestItemList {
+    width: 343px;
+  }
+}

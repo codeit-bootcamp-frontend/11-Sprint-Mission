@@ -9,12 +9,25 @@ import Pagination from "../Pagination/Pagination";
  * 키워드 검색, 상품 등록, 조건 검색 기능을 제공한다.
  * @returns 리스트 컴포넌트
  */
-function ItemList() {
+function ItemList({ view }) {
   const [items, setItems] = useState([]);
   const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(12);
+  const [pageSize, setPageSize] = useState();
   const [order, setOrder] = useState("recent");
   const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    switch (view) {
+      case "mobile":
+        setPageSize(4);
+        break;
+      case "tablet":
+        setPageSize(6);
+        break;
+      default:
+        setPageSize(12);
+    }
+  }, [view]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,7 +40,7 @@ function ItemList() {
 
   return (
     <div className="ItemList">
-      <Header setOrder={setOrder} />
+      <Header view={view} setOrder={setOrder} />
       <Content items={items} />
       <Pagination
         page={page}
@@ -45,7 +58,7 @@ function ItemList() {
  * @returns 헤더 컴포넌트
  * @description 여러 유틸 기능을 포함한 헤더. 키워드 검색, 상품 등록, 검색 조건 셀렉터를 포함하고 있다.
  */
-function Header({ setOrder }) {
+function Header({ view, setOrder }) {
   const handleSelectChange = (e) => {
     const opt = e.target.options;
     const selected = opt[opt.selectedIndex].value;
@@ -56,21 +69,41 @@ function Header({ setOrder }) {
     window.location.href = window.location.origin + "/additem";
   };
 
-  return (
-    <div className="ItemList-header">
-      <h2 className="title">전체 상품</h2>
-      <div className="utils">
-        <input className="search" placeholder="검색할 상품을 입력해주세요" />
-        <button className="btn-add" onClick={handleAddClick}>
-          상품 등록하기
-        </button>
-        <select className="select-order" onChange={handleSelectChange}>
-          <option value={"recent"}>최신순</option>
-          <option value={"favorite"}>좋아요순</option>
-        </select>
+  if (view !== "mobile") {
+    return (
+      <div className="ItemList-header">
+        <h2 className="title">전체 상품</h2>
+        <div className="utils">
+          <input className="search" placeholder="검색할 상품을 입력해주세요" />
+          <button className="btn-add" onClick={handleAddClick}>
+            상품 등록하기
+          </button>
+          <select className="select-order" onChange={handleSelectChange}>
+            <option value={"recent"}>최신순</option>
+            <option value={"favorite"}>좋아요순</option>
+          </select>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className="ItemList-header">
+        <div className="mobile-wrap">
+          <h2 className="title">전체 상품</h2>
+          <button className="btn-add" onClick={handleAddClick}>
+            상품 등록하기
+          </button>
+        </div>
+        <div className="mobile-wrap">
+          <input className="search" placeholder="검색할 상품을 입력해주세요" />
+          <select className="select-order" onChange={handleSelectChange}>
+            <option value={"recent"}>최신순</option>
+            <option value={"favorite"}>좋아요순</option>
+          </select>
+        </div>
+      </div>
+    );
+  }
 }
 
 /**

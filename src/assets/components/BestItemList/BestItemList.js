@@ -3,16 +3,30 @@ import { getProducts } from "../../../api";
 import Item from "../Item/Item";
 import "./BestItemList.css";
 
-function ItemList() {
+function ItemList({ view }) {
   const [items, setItems] = useState([]);
+  const [pageSize, setPageSize] = useState(4);
+
+  useEffect(() => {
+    switch (view) {
+      case "mobile":
+        setPageSize(1);
+        break;
+      case "tablet":
+        setPageSize(2);
+        break;
+      default:
+        setPageSize(4);
+    }
+  }, [view]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getProducts(1, 4, "favorite");
+      const result = await getProducts(1, pageSize, "favorite");
       setItems(result.list);
     };
     fetchData();
-  }, []);
+  }, [pageSize]);
 
   return (
     <div className="BestItemList">

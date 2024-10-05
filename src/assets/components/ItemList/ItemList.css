@@ -14,7 +14,6 @@
   align-items: center;
 
   width: 100%;
-  height: 42px;
   margin-bottom: 24px;
 }
 
@@ -63,4 +62,35 @@
   gap: 40px 12px;
   width: 100%;
   margin-bottom: 40px;
+}
+
+@media screen and (max-width: 1199px) {
+  .ItemList {
+    width: 696px;
+  }
+
+  .ItemList-content {
+    gap: 40px 18px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .ItemList {
+    width: 344px;
+  }
+
+  .ItemList-content {
+    gap: 40px 8px;
+  }
+
+  .ItemList-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ItemList-header .mobile-wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
 }
