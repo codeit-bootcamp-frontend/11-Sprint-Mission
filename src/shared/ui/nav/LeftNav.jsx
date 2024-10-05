@@ -8,8 +8,11 @@ const LeftNav = () => {
     <div className="flex flex-row gap-x-2 p-2 md:gap-6">
       <div className="flex flex-row items-center gap-x-2">
         <Link to="/">
-          <img className="hidden sm:block" src={logo} alt="로고 이미지" />
-          <img src={logoText} alt="판다마켓"></img>
+          <div className="flex flex-row items-center gap-x-2">
+            <img className="hidden sm:block" src={logo} alt="로고 이미지" />
+
+            <img src={logoText} alt="판다마켓"></img>
+          </div>
         </Link>
       </div>
 

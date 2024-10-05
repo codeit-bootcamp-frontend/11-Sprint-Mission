@@ -1,6 +1,6 @@
 import React from "react";
 
-import LeftNav from "./leftNav";
+import LeftNav from "./LeftNav";
 import RightNav from "./RightNav";
 
 const Nav = () => {
