@@ -52,12 +52,18 @@ function Header({ setOrder }) {
     setOrder(selected);
   };
 
+  const handleAddClick = (e) => {
+    window.location.href = window.location.origin + "/additem";
+  };
+
   return (
     <div className="ItemList-header">
       <h2 className="title">전체 상품</h2>
       <div className="utils">
         <input className="search" placeholder="검색할 상품을 입력해주세요" />
-        <button className="btn-add">상품 등록하기</button>
+        <button className="btn-add" onClick={handleAddClick}>
+          상품 등록하기
+        </button>
         <select className="select-order" onChange={handleSelectChange}>
           <option value={"recent"}>최신순</option>
           <option value={"favorite"}>좋아요순</option>
