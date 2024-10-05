@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from "react";
 
 function Content({ title, description, imageSrc, caption, alignRight, brClassName }) {
   return (
@@ -10,18 +10,18 @@ function Content({ title, description, imageSrc, caption, alignRight, brClassNam
           <div className="description">
             <h2 className="description-main">
               {title.split('<br />').map((line, index) => (
-                <React.Fragment key={index}>
+                <Fragment key={index}>
                   {line}
                   <br className={brClassName ? brClassName : ''} />
-                </React.Fragment>
+                </Fragment>
               ))}
             </h2>
             <p className="description-additional">
             {description.split('<br />').map((line, index) => (
-                <React.Fragment key={index}>
+                <Fragment key={index}>
                   {line}
                   <br />
-                </React.Fragment>
+                </Fragment>
               ))}
                 </p>
           </div>

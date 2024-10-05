@@ -3,7 +3,7 @@ import HomeHeader from './HomeHeader';
 import Content from './Content';
 import HomeFooter from './HomeFooter';
 import Hero from './Hero';
-import './styles/home-page.css';
+import '../../../styles/home-page.css';
 
 function HomePage() {
   return (

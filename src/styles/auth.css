@@ -1,16 +1,9 @@
-body,
-html {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  padding-top: 60px;
-}
-
 .auth-container {
   display: flex;
   flex-direction: column;
   gap: 40px;
   text-align: center;
+  margin: 60px auto 0;
   width: 640px;
 }
 
@@ -30,7 +23,6 @@ html {
 .input-wrapper {
   display: flex;
   flex-direction: column;
-  
   gap: 16px;
 }
 

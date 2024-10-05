@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function HomeHeader() {
   return (
@@ -7,7 +8,7 @@ function HomeHeader() {
         <a href="/" aria-label="Panda Market Home">
           <img id="logo" src="images/logos/logo.png" alt="판다마켓 로고" />
         </a>
-        <a href="/pages/login.html" className="btn main-login">로그인</a>
+        <Link to='/login' className="btn main-login">로그인</Link>
       </nav>
     </header>
   );
