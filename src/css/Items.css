@@ -85,6 +85,13 @@ li {
 .utils button:last-child {
   display: flex;
   justify-content: space-between;
+}
+
+.topInfo {
+  align-items: flex-start;
+}
+
+.utils button:last-child {
   align-items: center;
 }
 
@@ -104,6 +111,7 @@ li {
   font-weight: 500;
   border: none;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .utils button:last-child {
@@ -124,6 +132,42 @@ li {
   font-size: 1rem;
   font-weight: 400;
   padding-left: 44px;
+}
+
+.selectAlignMenu ul {
+  position: absolute;
+  padding: 0;
+  margin: 8px 0 0;
+}
+
+.selectAlignMenu li {
+  width: 8.44rem;
+  height: 2.625rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 400;
+  background-color: #fff;
+  color: var(--gray-900);
+  border: 1px solid var(--gray-200);
+  cursor: pointer;
+}
+
+.selectAlignMenu li:first-child {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.selectAlignMenu li:last-child {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.selectAlignMenu li:hover {
+  background-color: var(--blue);
+  color: #fff;
+  border: none;
 }
 
 .searchIcon {
