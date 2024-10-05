@@ -199,8 +199,8 @@
 @media screen and (max-width: 767px) {
   .all-product-list-container {
     display: flex;
-    flex-wrap: wrap; /* 아이템이 2줄로 배치될 수 있도록 줄 바꿈 허용 */
-    gap: 16px; /* 아이템 간의 간격 설정 */
+    flex-wrap: wrap;
+    gap: 16px;
   }
 
   .all-product-image {

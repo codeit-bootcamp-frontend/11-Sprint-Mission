@@ -91,12 +91,12 @@
   }
 
   .favorite-list {
-    display: none; /* 모든 리스트 아이템 숨기기 */
+    display: none;
   }
 
   .favorite-list:nth-child(1) {
-    display: block; /* 첫 번째 아이템만 보이게 설정 */
-    width: 100%; /* 1개 아이템에 대한 너비 조정 */
+    display: block;
+    width: 100%;
   }
 
   .favorite-box {
