@@ -199,7 +199,8 @@
   }
   .itemContentsFormSmall {
     gap: 40px 2.5%;
-    height: 60vh;
+    height: 80vh;
+    margin-bottom: 50px;
   }
   .bestItemImg {
     border-radius: 16px;
