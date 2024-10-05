@@ -2,6 +2,7 @@ import './css/Items.css';
 import getItems from './service/api.js';
 import ItemList from './library/items/ItemList.js';
 import Dropdown from './library/items/Dropdown.js';
+
 import polygonon from './assets/Polygon.png';
 import polygonoff from './assets/PolygonB.png';
 import searchIcon from './assets/searchIcon.png';

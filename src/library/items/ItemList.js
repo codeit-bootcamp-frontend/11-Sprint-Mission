@@ -1,4 +1,3 @@
-// import '../../css/Items.css';
 import noImage from '../../assets/noImage.jfif';
 import favoriteIcon from '../../assets/favoriteIcon.png';
 
