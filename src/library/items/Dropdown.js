@@ -4,9 +4,9 @@ function Dropdown({ onSelect }) {
   };
 
   return (
-    <ul>
-      <li onClick={handleSelect}>최신순</li>
-      <li onClick={handleSelect}>좋아요순</li>
+    <ul onClick={handleSelect}>
+      <li>최신순</li>
+      <li>좋아요순</li>
     </ul>
   );
 }

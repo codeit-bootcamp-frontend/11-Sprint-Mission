@@ -68,10 +68,7 @@ function Items() {
             <input type="text" placeholder="검색할 상품을 입력해주세요." />
             <img className="searchIcon" src={searchIcon} alt="검색하기" />
             <button>상품 등록하기</button>
-            <div
-              className="selectAlignMenu"
-              onBlur={() => setDropdownView(false)}
-            >
+            <div className="selectAlignMenu">
               <label onClick={handleClickAlign}>
                 <button>
                   <span>{selectMenu}</span>
