@@ -58,5 +58,5 @@
 .ItemList-content {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px 23.75px;
+  gap: 40px 12px;
 }

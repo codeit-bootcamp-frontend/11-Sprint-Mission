@@ -8,7 +8,7 @@ function ItemList() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getProducts(1, 10);
+      const result = await getProducts(1, 12);
       setItems(result.list);
     };
     fetchData();

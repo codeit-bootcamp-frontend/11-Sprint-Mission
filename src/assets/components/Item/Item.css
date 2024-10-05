@@ -4,18 +4,16 @@
   flex-direction: column;
   gap: 16px;
 
-  width: 221px;
-  height: 317px;
+  width: 190px;
 }
 
 .Item.best {
   width: 282px;
-  height: 378px;
 }
 
 .Item .thumbnail {
-  width: 221px;
-  height: 221px;
+  width: 190px;
+  height: 190px;
   border-radius: 16px;
 }
 
