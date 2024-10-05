@@ -1,4 +1,4 @@
-function InputField({type, text, placeholder}) {
+function InputField({ type, text, placeholder }) {
   return (
     <div class="input-wrapper">
       <label class="auth-label" for={type}>
