@@ -12,7 +12,26 @@ const AllProducts = () => {
   const [loadingError, setLoadingError] = useState(null);
   const [searchError, setSearchError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const pageSize = 10;
+  const [pageSize, setPageSize] = useState(10);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.matchMedia("(max-width: 767px)").matches) {
+        setPageSize(4);
+      } else if (window.matchMedia("(max-width: 1199px)").matches) {
+        setPageSize(6);
+      } else {
+        setPageSize(10);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleLoad = async () => {
     const queryParams = {
@@ -53,7 +72,7 @@ const AllProducts = () => {
 
   useEffect(() => {
     handleLoad();
-  }, [search, order, currentPage]);
+  }, [search, order, currentPage, pageSize]);
 
   return (
     <>
