@@ -135,6 +135,10 @@ li {
   padding-left: 44px;
 }
 
+.utils input:focus {
+  outline: none;
+}
+
 .selectAlignMenu ul {
   position: absolute;
   padding: 0;
@@ -177,4 +181,30 @@ li {
   position: absolute;
   left: 20px;
   top: 12px;
+}
+
+.paging {
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+  cursor: pointer;
+  margin: 3rem 0 5rem;
+}
+
+.paging button {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #fff;
+  color: var(--gray-500);
+  border-radius: 10rem;
+  border: 1px solid var(--gray-200);
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.number:focus {
+  background-color: var(--blue);
+  color: #fff;
+  border: none;
 }

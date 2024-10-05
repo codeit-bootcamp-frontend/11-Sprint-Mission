@@ -36,6 +36,7 @@ function Items() {
   const [isDropdownView, setDropdownView] = useState(false);
   const [orderBy, setOrderBy] = useState('recent');
   const [selectMenu, setSelectMenu] = useState('최신순');
+  const [searchResult, setSearchResult] = useState('');
 
   const contentLoad = async (orderBy) => {
     const { list } = await getItems(orderBy);
@@ -48,7 +49,7 @@ function Items() {
   const mainBestItems = bestProducts.slice(0, deviceBestItem());
   const mainItems = products.slice(0, deviceItem());
 
-  const handleClickAlign = () => {
+  const handleDropdownView = () => {
     setDropdownView(!isDropdownView);
   };
 
@@ -57,6 +58,8 @@ function Items() {
     setOrderBy(onSelect === '최신순' ? 'recent' : 'favorite');
     setDropdownView(false);
   };
+
+  const pagingNumber = [1, 2, 3, 4, 5];
 
   useEffect(() => {
     contentLoad(orderBy);
@@ -82,11 +85,15 @@ function Items() {
         <div className="topInfo">
           <h1>전체 상품</h1>
           <div className="utils">
-            <input type="text" placeholder="검색할 상품을 입력해주세요." />
+            <input
+              type="text"
+              onChange={(e) => setSearchResult(e.target.value)}
+              placeholder="검색할 상품을 입력해주세요."
+            />
             <img className="searchIcon" src={searchIcon} alt="검색하기" />
             <button>상품 등록하기</button>
             <div className="selectAlignMenu">
-              <label onClick={handleClickAlign}>
+              <label onClick={handleDropdownView}>
                 <button>
                   <span>{selectMenu}</span>
                   {isDropdownView ? (
@@ -102,15 +109,30 @@ function Items() {
         </div>
         <ul className="productList">
           {mainItems.length > 0 ? (
-            mainItems.map((item) => (
-              <li key={item.id}>
-                <ItemList className="itemList" item={item} />
-              </li>
-            ))
+            mainItems.map(
+              (item) =>
+                (searchResult.length === 0 ||
+                  item.name
+                    .toLowerCase()
+                    .includes(searchResult.toLowerCase())) && (
+                  <li key={item.id}>
+                    <ItemList className="itemList" item={item} />
+                  </li>
+                )
+            )
           ) : (
             <li>등록된 상품이 없습니다.</li>
           )}
         </ul>
+      </div>
+      <div className="paging">
+        <button className="prev">&lt;</button>
+        {pagingNumber.map((num) => (
+          <button key={num} className="number">
+            {num}
+          </button>
+        ))}
+        <button className="next">&gt;</button>
       </div>
     </div>
   );
