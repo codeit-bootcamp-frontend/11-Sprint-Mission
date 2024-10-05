@@ -11,9 +11,9 @@ const BestProducts = () => {
         list={items}
         imageSize='large'
         countSize='small'
+        className='best'
         productManagement={false}
         isLoading={isLoading}
-        className='best'
       >
         베스트 상품
       </ProductsList>
