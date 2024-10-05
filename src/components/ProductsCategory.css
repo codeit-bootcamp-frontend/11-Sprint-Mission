@@ -1,0 +1,7 @@
+h2 {
+  font-family: "pretendard Variable", "Noto Sans Korean";
+  color: var(--black-900);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+}
