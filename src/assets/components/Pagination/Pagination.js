@@ -69,7 +69,7 @@ function Pagination({ page, setPage, pageSize, total }) {
 
   return (
     <ul className="Pagination" onClick={handlePageClick}>
-      <li>
+      <li className="page-btn-first">
         <button value={1}>
           <img src={arrowLeftDouble} alt="첫 페이지" />
         </button>
@@ -89,7 +89,7 @@ function Pagination({ page, setPage, pageSize, total }) {
           <img src={arrowRight} alt="다음 페이지" />
         </button>
       </li>
-      <li>
+      <li className="page-btn-last">
         <button value={lastPage}>
           <img src={arrowRightDouble} alt="끝 페이지" />
         </button>
