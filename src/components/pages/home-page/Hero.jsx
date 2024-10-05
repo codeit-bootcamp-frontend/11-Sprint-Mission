@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from "react";
 
 function Hero({ title, buttonText, imageSrc, altText, isBottom }) {
   return (
@@ -7,10 +7,10 @@ function Hero({ title, buttonText, imageSrc, altText, isBottom }) {
         <div className={`hero-cta ${isBottom ? 'hero-cta-bottom' : 'hero-cta-top'}`}>
           <h2 className={`description-main ${isBottom ? 'description-main-bottom' : ''}`}>
             {title.split('<br />').map((line, index) => (
-              <React.Fragment key={index}>
+              <Fragment key={index}>
                 {line}
                 <br />
-              </React.Fragment>
+              </Fragment>
             ))}
           </h2>
           {buttonText && <a href="/pages/items.html" className="btn see-more">{buttonText}</a>}
