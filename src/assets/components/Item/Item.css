@@ -1,0 +1,43 @@
+@import url("../../../globar.css");
+
+.Item {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 16px;
+
+  width: 221px;
+  height: 317px;
+}
+
+.Item .content {
+  color: var(--gray-800);
+}
+
+.Item .thumbnail {
+  width: 221px;
+  height: 221px;
+  border-radius: 16px;
+}
+
+.Item .name {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.Item .price {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.Item .favorite {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+}
