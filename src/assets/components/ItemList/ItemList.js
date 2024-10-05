@@ -5,10 +5,12 @@ import "./ItemList.css";
 
 function ItemList() {
   const [items, setItems] = useState([]);
+  const [page, setPage] = useState(1);
+  const [order, setOrder] = useState("recent");
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getProducts(1, 12);
+      const result = await getProducts(1, 12, order);
       setItems(result.list);
     };
     fetchData();
@@ -30,8 +32,8 @@ function Header() {
         <input className="search" placeholder="검색할 상품을 입력해주세요" />
         <button className="btn-add">상품 등록하기</button>
         <select>
-          <option>최신순</option>
-          <option>좋아요순</option>
+          <option value={"recent"}>최신순</option>
+          <option value={"favorite"}>좋아요순</option>
         </select>
       </div>
     </div>
