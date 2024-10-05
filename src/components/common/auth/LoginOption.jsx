@@ -12,13 +12,6 @@ function LoginOption() {
           </a>
         </div>
       </div>
-
-      <p className="auth-prompt">
-        판다마켓이 처음이신가요?
-        <a className="auth-link" href="/signup">
-          회원가입
-        </a>
-      </p>
     </>
   );
 }
