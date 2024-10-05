@@ -1,0 +1,14 @@
+.products {
+  @apply my-6;
+}
+.products-title {
+  @apply text-xl font-bold my-4;
+}
+.in-search {
+  @apply py-2 px-6 rounded-lg;
+  background: #f3f4f6;
+}
+.in-order {
+  @apply border px-6 py-2 rounded-lg;
+  height: 40px;
+}

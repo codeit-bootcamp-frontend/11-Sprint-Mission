@@ -1,15 +1,17 @@
 import AllProducts from '../Components/AllProducts';
 import BestProducts from '../Components/BestProducts';
 import Header from '../Components/Header';
+import './Items.css';
 
 export default function Items() {
   return (
     <>
       <Header />
 
-      <div className="container">
+      <main className="container">
         <BestProducts />
-      </div>
+        <AllProducts />
+      </main>
     </>
   );
 }

@@ -1,5 +1,5 @@
 .header {
-  @apply py-2 border-b bg-white;
+  @apply py-2 border-b bg-white sticky top-0;
   border-color: #dfdfdf;
 
   .container {
