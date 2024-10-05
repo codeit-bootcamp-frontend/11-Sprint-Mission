@@ -5,6 +5,9 @@ import Dropdown from './library/items/Dropdown.js';
 import polygonon from './assets/Polygon.png';
 import polygonoff from './assets/PolygonB.png';
 import searchIcon from './assets/searchIcon.png';
+import prev from './assets/prev.png';
+import next from './assets/next.png';
+import Pagination from 'react-js-pagination';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
@@ -37,12 +40,15 @@ function Items() {
   const [orderBy, setOrderBy] = useState('recent');
   const [selectMenu, setSelectMenu] = useState('최신순');
   const [keyword, setKeyword] = useState('');
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(0);
 
-  const contentLoad = async (orderBy, keyword) => {
-    const { list } = await getItems(orderBy, keyword);
+  const contentLoad = async (orderBy, keyword, page) => {
+    const { list, totalCount } = await getItems(orderBy, keyword, page);
+    setTotal(totalCount);
     setProducts(list);
 
-    const { list: bestItems } = await getItems((orderBy = 'favorite'));
+    const { list: bestItems } = await getItems('favorite');
     setBestProducts(bestItems);
   };
 
@@ -59,17 +65,20 @@ function Items() {
     setDropdownView(false);
   };
 
-  const pagingNumber = [1, 2, 3, 4, 5];
-
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     const value = e.target.value;
     setKeyword(value);
   };
 
+  const handlePageChange = (page) => {
+    setPage(page);
+    contentLoad(orderBy, keyword, page);
+  };
+
   useEffect(() => {
-    contentLoad(orderBy, keyword);
-  }, [orderBy, keyword]);
+    contentLoad(orderBy, keyword, page);
+  }, [orderBy, keyword, page]);
 
   return (
     <div>
@@ -126,13 +135,19 @@ function Items() {
         </ul>
       </div>
       <div className="paging">
-        <button className="prev">&lt;</button>
-        {pagingNumber.map((num) => (
-          <button key={num} className="number">
-            {num}
-          </button>
-        ))}
-        <button className="next">&gt;</button>
+        <Pagination
+          activePage={page}
+          itemsCountPerPage={10}
+          totalItemsCount={total}
+          pageRangeDisplayed={5}
+          prevPageText={<img src={prev} alt="prev" />}
+          nextPageText={<img src={next} alt="next" />}
+          onChange={handlePageChange}
+          hideFirstLastPages={true}
+          linkClassPrev={'prevPaging'}
+          linkClassNext={'nextPaging'}
+          activeLinkClass={'activePaging'}
+        ></Pagination>
       </div>
     </div>
   );

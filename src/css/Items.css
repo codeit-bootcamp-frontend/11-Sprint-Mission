@@ -186,24 +186,30 @@ li {
 .paging {
   display: flex;
   justify-content: center;
-  gap: 0.25rem;
-  cursor: pointer;
   margin: 3rem 0 5rem;
 }
 
-.paging button {
+.pagination {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.pagination a {
   width: 2.5rem;
   height: 2.5rem;
   background-color: #fff;
   color: var(--gray-500);
   border-radius: 10rem;
   border: 1px solid var(--gray-200);
+  font-size: 0.9rem;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  font-size: 1rem;
-  font-weight: 500;
+  text-decoration: none;
 }
 
-.number:focus {
+.activePaging:not(.prevPaging, .nextPaging) {
   background-color: var(--blue);
   color: #fff;
   border: none;
