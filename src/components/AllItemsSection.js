@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getProducts } from '../api';
 import ItemCard from './ItemCard';
 import '../style/Items.css';
+import { ReactComponent as SearchIcon } from '../images/ic_search.svg';
 
 const getPageSize = () => {
   const width = window.innerWidth;
@@ -52,6 +53,7 @@ function AllItemsSection() {
         <h1 className="sectionTitle">전체 상품</h1>
         <div className="allItemsSectionHeader">
           <div className="searchBarWrapper">
+            <SearchIcon />
             <input
               className="searchBarInput"
               placeholder="검색할 상품을 입력해 주세요"

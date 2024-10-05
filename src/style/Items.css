@@ -87,6 +87,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
 }
 
 .allItemsSectionHeader:first-child {
@@ -117,6 +118,32 @@
   font-weight: 600;
   line-height: 26px;
   text-align: left;
+}
+
+.searchBarWrapper {
+  display: flex;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  padding: 9px 16px;
+  flex: 1;
+  align-items: center;
+}
+
+.searchBarInput {
+  gap: 10px;
+  border: 0;
+  border-radius: 12px;
+  background-color: #f3f4f6;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: left;
+  color: #9ca3af;
+}
+
+.searchBarInput:focus {
+  outline: none;
 }
 
 @media (min-width: 768px) {

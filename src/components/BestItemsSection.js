@@ -31,11 +31,9 @@ function BestItemSection() {
       setPageSize(getPageSize());
     };
 
-    // 화면 크기 변경할 때마다 pageSize를 다시 계산해 넣음
     window.addEventListener('resize', handleFixsize);
     fetchSortedData({ orderBy: 'favorite', pageSize });
 
-    // Cleanup function
     return () => {
       window.removeEventListener('resize', handleFixsize);
     };
