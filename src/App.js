@@ -1,5 +1,7 @@
+import Items from './Pages/Items';
+
 function App() {
-  return <h1>sprint 5</h1>;
+  return <Items />;
 }
 
 export default App;

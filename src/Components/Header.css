@@ -1,0 +1,21 @@
+.header {
+  @apply py-2 border-b;
+  border-color: #dfdfdf;
+}
+.container {
+  @apply flex items-center;
+  width: 1520px;
+}
+.gnb {
+  @apply flex gap-8 mr-auto;
+
+  .links {
+    @apply flex font-bold;
+    font-size: 18px;
+    color: #4b5563;
+
+    a {
+      @apply px-4 py-3 block;
+    }
+  }
+}
