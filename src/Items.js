@@ -8,6 +8,28 @@ import searchIcon from './assets/searchIcon.png';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
+const deviceBestItem = () => {
+  const width = window.innerWidth;
+  if (width < 768) {
+    return 1;
+  } else if (width < 1280) {
+    return 2;
+  } else {
+    return 4;
+  }
+};
+
+const deviceItem = () => {
+  const width = window.innerWidth;
+  if (width < 768) {
+    return 4;
+  } else if (width < 1280) {
+    return 6;
+  } else {
+    return 10;
+  }
+};
+
 function Items() {
   const [products, setProducts] = useState([]);
   const [bestProducts, setBestProducts] = useState([]);
@@ -23,7 +45,8 @@ function Items() {
     setBestProducts(bestItems);
   };
 
-  const bannerBestItems = bestProducts.slice(0, 4);
+  const mainBestItems = bestProducts.slice(0, deviceBestItem());
+  const mainItems = products.slice(0, deviceItem());
 
   const handleClickAlign = () => {
     setDropdownView(!isDropdownView);
@@ -44,8 +67,8 @@ function Items() {
       <div className="bestProducts">
         <h1>베스트 상품</h1>
         <ul className="bestProductList">
-          {bannerBestItems.length > 0 ? (
-            bannerBestItems.map((item) => (
+          {mainBestItems.length > 0 ? (
+            mainBestItems.map((item) => (
               <li key={item.id}>
                 <ItemList className="itemList" item={item} />
               </li>
@@ -78,8 +101,8 @@ function Items() {
           </div>
         </div>
         <ul className="productList">
-          {products.length > 0 ? (
-            products.map((item) => (
+          {mainItems.length > 0 ? (
+            mainItems.map((item) => (
               <li key={item.id}>
                 <ItemList className="itemList" item={item} />
               </li>
