@@ -39,7 +39,7 @@ function Tab({ path, children }) {
   const classNames = `tab ${currnetPath === path ? "current" : ""}`;
 
   return (
-    <a className={classNames} href="path">
+    <a className={classNames} href={path}>
       <span>{children}</span>
     </a>
   );
