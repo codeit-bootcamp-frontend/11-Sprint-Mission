@@ -26,6 +26,7 @@ li {
 }
 
 .thumbnail {
+  background-color: #fff;
   border: 1px solid #cccccc;
   border-radius: 16px;
   margin-bottom: 1rem;
@@ -50,8 +51,8 @@ li {
 }
 
 .bestProductList .thumbnail {
-  width: 100%;
-  height: auto;
+  width: 282px;
+  height: 282px;
 }
 
 .productList {

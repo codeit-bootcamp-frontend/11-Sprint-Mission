@@ -12,20 +12,18 @@ function Items() {
   const [products, setProducts] = useState([]);
   const [bestProducts, setBestProducts] = useState([]);
   const [isDropdownView, setDropdownView] = useState(false);
-  const [order, setOrder] = useState('createdAt');
+  const [orderBy, setOrderBy] = useState('recent');
   const [selectMenu, setSelectMenu] = useState('최신순');
 
-  const contentLoad = async () => {
-    const { list } = await getItems();
+  const contentLoad = async (orderBy) => {
+    const { list } = await getItems(orderBy);
     setProducts(list);
+
+    const { list: bestItems } = await getItems((orderBy = 'favorite'));
+    setBestProducts(bestItems);
   };
 
-  const sortedBestItemsAlign = [...bestProducts].sort(
-    (a, b) => b.favoriteCount - a.favoriteCount
-  );
-  const sortedBestItems = sortedBestItemsAlign.slice(0, 4);
-
-  const sortedItems = [...products].sort((a, b) => b[order] - a[order]);
+  const bannerBestItems = bestProducts.slice(0, 4);
 
   const handleClickAlign = () => {
     setDropdownView(!isDropdownView);
@@ -33,25 +31,21 @@ function Items() {
 
   const handleSelectMenu = (onSelect) => {
     setSelectMenu(onSelect);
-    setOrder(onSelect === '최신순' ? 'createdAt' : 'favoriteCount');
+    setOrderBy(onSelect === '최신순' ? 'recent' : 'favorite');
     setDropdownView(false);
   };
 
   useEffect(() => {
-    contentLoad();
-  }, []);
-
-  useEffect(() => {
-    setBestProducts(products);
-  }, [products]);
+    contentLoad(orderBy);
+  }, [orderBy]);
 
   return (
     <div>
       <div className="bestProducts">
         <h1>베스트 상품</h1>
         <ul className="bestProductList">
-          {sortedBestItems.length > 0 ? (
-            sortedBestItems.map((item) => (
+          {bannerBestItems.length > 0 ? (
+            bannerBestItems.map((item) => (
               <li key={item.id}>
                 <ItemList className="itemList" item={item} />
               </li>
@@ -84,8 +78,8 @@ function Items() {
           </div>
         </div>
         <ul className="productList">
-          {sortedItems.length > 0 ? (
-            sortedItems.map((item) => (
+          {products.length > 0 ? (
+            products.map((item) => (
               <li key={item.id}>
                 <ItemList className="itemList" item={item} />
               </li>
