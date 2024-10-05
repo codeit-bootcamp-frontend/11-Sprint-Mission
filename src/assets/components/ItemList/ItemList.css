@@ -1,0 +1,62 @@
+.ItemList {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 1200px;
+  margin: 0 auto;
+  gap: 24px;
+}
+
+.ItemList-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  height: 42px;
+}
+
+.ItemList-header .utils {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ItemList-header .title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.ItemList-header .btn-add {
+  background-color: var(--blue);
+  color: var(--gray-100);
+  padding: 12px 23px;
+  border: none;
+  border-radius: 8px;
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.ItemList-header select {
+  padding: 10.75px 37.5px;
+  border-radius: 12px;
+  border: 1px solid var(--gray-200);
+  background-color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 400;
+
+  appearance: none;
+  background-image: url("../../images/ic_arrow_down.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.ItemList-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 23.75px;
+}
