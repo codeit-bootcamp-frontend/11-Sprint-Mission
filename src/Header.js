@@ -2,10 +2,10 @@ import logoLarge from "./assets/Property 1=lg.png";
 import profileIcon from "./assets/Frame 2609463.png";
 import "./Header.css";
 
-const Header = () => {
+function Header() {
   return (
     <header className="header">
-      <div className="container">
+      <div className="header-container">
         <img src={logoLarge} alt="판다마켓 로고" className="logo-large" />
         <nav className="nav">
           <p className="free-board">자유게시판</p>
@@ -17,6 +17,6 @@ const Header = () => {
       </div>
     </header>
   );
-};
+}
 
 export default Header;
