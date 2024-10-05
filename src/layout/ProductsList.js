@@ -1,12 +1,8 @@
-import { useState } from "react";
-import Button from "../components/Button";
 import HeartCountArea from "../components/HeartCountArea";
 import ProductImage from "../components/Product/ProductImage";
 import ProductName from "../components/Product/ProductName";
 import ProductPrice from "../components/Product/ProductPrice";
-import DropDown from "../components/DropDown";
-import SearchInput from "../components/SearchInput";
-// import "../styles/Products/ProductsList.css";
+import ProductManagement from "../components/Product/ProductManagement";
 
 const ProductItem = ({ item, imageSize, countSize }) => {
   return (
@@ -17,29 +13,6 @@ const ProductItem = ({ item, imageSize, countSize }) => {
         <ProductPrice price={item.price} />
         <HeartCountArea count={item.favoriteCount} size={countSize} />
       </div>
-    </>
-  );
-};
-
-const ProductManagement = ({ onSubmit, onBest, onNewest }) => {
-  const options = [
-    { label: "최신순", value: "recent" },
-    { label: "좋아요순", value: "favorite" },
-  ];
-  const handleSelect = (value) => {
-    if (value === "recent") {
-      onNewest();
-    } else if (value === "favorite") {
-      onBest();
-    }
-  };
-  return (
-    <>
-      <SearchInput onSubmit={onSubmit} />
-      <Button link={true} href='/additem' className='additem' style='square blue'>
-        상품 등록하기
-      </Button>
-      <DropDown options={options} onSelect={handleSelect} />
     </>
   );
 };
