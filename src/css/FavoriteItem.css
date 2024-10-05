@@ -1,0 +1,108 @@
+.favorite-box {
+  margin-bottom: 40px;
+}
+
+.favorite-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.favorite-list {
+  list-style: none;
+  width: calc(25% - 24px);
+}
+
+.product-image {
+  width: 282px;
+  height: 282px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.product-name {
+  font-family: "Pretendard";
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+  margin: 16px 0 6px 0;
+}
+
+.product-price {
+  font-family: "Pretendard";
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+}
+
+.favorite-count-box {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+
+  height: 18px;
+}
+
+.favorite-count-image {
+  width: 13px;
+  height: 11px;
+}
+
+.favorite-count {
+  font-family: "Pretendard";
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
+}
+
+.favorite-head {
+  font-family: "Pretendard";
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+/* 반응형 - Tablet*/
+@media screen and (max-width: 1199px) and (min-width: 768px) {
+  .product-image {
+    width: 343px;
+    height: 343px;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+  .favorite-list {
+    display: none;
+  }
+
+  .favorite-list:nth-child(1),
+  .favorite-list:nth-child(2) {
+    display: block;
+    width: calc((100% - 24px) / 2);
+  }
+}
+/* 반응형 - Mobile*/
+@media screen and (max-width: 767px) {
+  .favorite-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+  }
+
+  .favorite-list {
+    display: none; /* 모든 리스트 아이템 숨기기 */
+  }
+
+  .favorite-list:nth-child(1) {
+    display: block; /* 첫 번째 아이템만 보이게 설정 */
+    width: 100%; /* 1개 아이템에 대한 너비 조정 */
+  }
+
+  .favorite-box {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
