@@ -4,10 +4,12 @@
   display: flex;
   padding: 0px 200px;
   justify-content: space-between;
+  border: 1px solid #dfdfdf;
 }
 
-.container {
+.header-container {
   display: flex;
+  align-items: center;
   gap: 32px;
 }
 
@@ -18,7 +20,6 @@
 
 .nav {
   display: flex;
-  align-items: center;
   gap: 30px;
 }
 
@@ -27,10 +28,18 @@
   align-items: center;
 }
 
-p {
+.free-board {
   font-size: 18px;
   line-height: 26px;
   text-align: center;
   font-weight: 700;
   color: #4b5563;
+}
+
+.used-market {
+  font-size: 18px;
+  line-height: 26px;
+  text-align: center;
+  font-weight: 700;
+  color: 3692FF;
 }
