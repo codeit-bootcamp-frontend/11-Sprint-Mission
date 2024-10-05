@@ -4,7 +4,7 @@ import Main from "./components/Main";
 
 const Items = () => {
   return (
-    <div className="w-screen">
+    <div className="w-full">
       <Nav />
       <Main />
     </div>

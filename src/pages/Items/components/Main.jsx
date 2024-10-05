@@ -32,7 +32,7 @@ const Main = () => {
   if (isBestItemsLoading || isAllItemsLoading) return <div>Loading...</div>;
   console.log(allItemsData);
   return (
-    <main className="flex justify-center items-center flex-col mt-5 w-screen">
+    <main className="w-full flex justify-center items-center flex-col mt-5 ">
       <BestItems data={data} bestDisplayCount={bestDisplayCount} />
       <AllItems
         handleSortChange={handleSortChange}

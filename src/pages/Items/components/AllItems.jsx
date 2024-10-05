@@ -23,7 +23,7 @@ const AllItems = ({
         <div className="flex items-center gap-x-3 ">
           <div className="relative flex gap-x-3">
             <input
-              className="p-2 pl-6  h-9 w-30 bg-[#F3F4F6]"
+              className="p-2 pl-6 h-9 w-30 border rounded-lg bg-[#F3F4F6]"
               placeholder="검색할 상품을 입력해주세요"
             />{" "}
             <img className="absolute left-1 top-3" src={glass} />
@@ -76,7 +76,7 @@ const AllItems = ({
               <img className="w-2/3" src={selectButton}></img>
             </button>
             {isOpen && (
-              <ul className="absolute right-0 mt-1 w-28 border rounded-lg bg-white  shadow-lg z-10 text-[10px]">
+              <ul className="absolute right-0 mt-1 w-28 border rounded-lg bg-white  shadow-lg z-10 text-sm">
                 <li
                   className="p-[2px] hover:bg-gray-200 cursor-pointer flex justify-center"
                   onClick={() => handleOptionClick("recent")}
