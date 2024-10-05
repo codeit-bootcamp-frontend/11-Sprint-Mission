@@ -37,6 +37,10 @@ body {
   color: #4b5563;
 }
 
+.nav-link .active-link {
+  color: #3692ff;
+}
+
 a {
   text-decoration: none;
 }
