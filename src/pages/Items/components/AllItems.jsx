@@ -59,10 +59,10 @@ const AllItems = ({
           </Link>
         </div>
 
-        <div className="flex  w-full justify-between items-center gap-x-3 ">
+        <div className="flex  w-full justify-between items-center gap-x-3  mb-1">
           <div className="relative w-full flex gap-x-3">
             <input
-              className="p-2 pl-6  h-9 w-5/6 bg-[#F3F4F6]"
+              className="p-2 pl-8 rounded-lg  h-9 w-5/6 bg-[#F3F4F6]"
               placeholder="검색할 상품을 입력해주세요"
             />{" "}
             <img className="absolute left-1 top-3" src={glass} />
@@ -70,21 +70,21 @@ const AllItems = ({
 
           <div className="relative">
             <button
-              className="w-24 flex justify-center"
+              className="w-12 flex justify-center border rounded-lg"
               onClick={() => setIsOpen(!isOpen)}
             >
-              <img className="w-1/4" src={selectButton}></img>
+              <img className="w-2/3" src={selectButton}></img>
             </button>
             {isOpen && (
-              <ul className="absolute mt-1 w-full border bg-white rounded shadow-lg z-10 text-xs">
+              <ul className="absolute right-0 mt-1 w-28 border rounded-lg bg-white  shadow-lg z-10 text-[10px]">
                 <li
-                  className="p-2 hover:bg-gray-200 cursor-pointer"
+                  className="p-[2px] hover:bg-gray-200 cursor-pointer flex justify-center"
                   onClick={() => handleOptionClick("recent")}
                 >
                   최신순
                 </li>
                 <li
-                  className="p-2 hover:bg-gray-200 cursor-pointer"
+                  className="p-[2px] hover:bg-gray-200 cursor-pointer flex justify-center"
                   onClick={() => handleOptionClick("favorite")}
                 >
                   좋아요순
