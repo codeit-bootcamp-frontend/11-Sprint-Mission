@@ -67,6 +67,7 @@ const AllProducts = () => {
         onBest={handleBestClick}
         onNewest={handleNewestClick}
         isLoading={isLoading}
+        className='all'
       >
         전체 상품
       </ProductsList>

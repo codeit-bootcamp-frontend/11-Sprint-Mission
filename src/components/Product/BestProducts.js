@@ -33,7 +33,14 @@ const BestProducts = () => {
   return (
     <>
       {loadingError?.message && <span>{loadingError.message}</span>}
-      <ProductsList list={items} imageSize='large' countSize='small' productManagement={false} isLoading={isLoading}>
+      <ProductsList
+        list={items}
+        imageSize='large'
+        countSize='small'
+        productManagement={false}
+        isLoading={isLoading}
+        className='best'
+      >
         베스트 상품
       </ProductsList>
     </>

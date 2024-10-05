@@ -4,9 +4,9 @@ import HeartCountArea from "../components/HeartCountArea";
 import ProductImage from "../components/Product/ProductImage";
 import ProductName from "../components/Product/ProductName";
 import ProductPrice from "../components/Product/ProductPrice";
-import "../styles/Products/ProductsList.css";
 import DropDown from "../components/DropDown";
 import SearchInput from "../components/SearchInput";
+// import "../styles/Products/ProductsList.css";
 
 const ProductItem = ({ item, imageSize, countSize }) => {
   return (
@@ -44,9 +44,20 @@ const ProductManagement = ({ onSubmit, onBest, onNewest }) => {
   );
 };
 
-const ProductsList = ({ list, imageSize, countSize, children, onSubmit, productManagement, onBest, onNewest, isLoading }) => {
+const ProductsList = ({
+  list,
+  imageSize,
+  countSize,
+  children,
+  onSubmit,
+  productManagement,
+  onBest,
+  onNewest,
+  isLoading,
+  className,
+}) => {
   return (
-    <div className='product-area'>
+    <div className={`product-area ${className}`}>
       <div className='product-category'>
         <h2 className='product-category-name'>{children}</h2>
         {productManagement ? <ProductManagement onSubmit={onSubmit} onBest={onBest} onNewest={onNewest} /> : ""}
