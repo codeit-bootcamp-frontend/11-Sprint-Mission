@@ -14,7 +14,8 @@ main {
   width: 396px;
   height: 132px;
 }
-.signin_form {
+.signin_form,
+.signup_form {
   width: 640px;
   height: 446px;
   text-align: left;
@@ -30,8 +31,7 @@ label {
   line-height: 26px;
 }
 
-input[type="email"],
-input[type="password"] {
+input {
   width: 100%;
   box-sizing: border-box;
   height: 56px;
@@ -43,7 +43,8 @@ input[type="password"] {
 }
 
 .email_container,
-.password_container {
+.password_container,
+.nickname_container {
   position: relative;
   display: inline-block;
 }
@@ -62,7 +63,8 @@ input[type="password"] {
   cursor: pointer;
 }
 
-.signin_button {
+.signin_button,
+.signup_button {
   height: 56px;
   border: none;
   border-radius: 40px;
@@ -89,7 +91,8 @@ input[type="password"] {
   gap: 16px;
 }
 
-.To_signup {
+.To_signup,
+.To_signin {
   text-align: center;
   font-size: 14px;
   line-height: 24px;
