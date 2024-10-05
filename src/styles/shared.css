@@ -11,6 +11,7 @@
   --gray-500: #6b7280;
   --gray-400: #9ca3af;
   --gray-200: #e5e7eb;
+  --gray-150: #dfdfdf;
   --gray-100: #f3f4f6;
   --gray-50: #f9fafb;
   --white: #ffffff;
@@ -24,4 +25,16 @@
 
 body {
   font-family: "Pretendard Variable";
+}
+
+.nav-bar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding: 0 200px;
+  margin: 0;
+  background-color: var(--white);
 }

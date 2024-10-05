@@ -3,6 +3,7 @@ import LoginOption from "../../common/auth/LoginOption";
 import InputPassword from "../../common/auth/InputPassword";
 import AuthLogo from "../../common/auth/AuthLogo";
 import "../../../styles/auth.css";
+import { Link } from "react-router-dom";
 
 function LoginPage() {
   return (

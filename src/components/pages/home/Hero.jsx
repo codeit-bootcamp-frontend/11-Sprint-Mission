@@ -22,7 +22,7 @@ function Hero({ title, buttonText, imageSrc, altText, isBottom }) {
             ))}
           </h2>
           {buttonText && (
-            <a href="/pages/items.html" className="btn see-more">
+            <a href="/items" className="btn see-more">
               {buttonText}
             </a>
           )}
