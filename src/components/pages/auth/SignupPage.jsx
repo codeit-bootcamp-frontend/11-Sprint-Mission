@@ -40,9 +40,9 @@ function SignupPage() {
 
           <p className="auth-prompt">
             이미 회원이신가요?
-            <a className="auth-link" href="/pages/login.html">
+            <Link to="/login" className="auth-link">
               로그인
-            </a>
+            </Link>
           </p>
         </div>
       </main>
