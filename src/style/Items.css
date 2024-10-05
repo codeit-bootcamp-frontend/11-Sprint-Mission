@@ -1,0 +1,148 @@
+.itempagecontainer {
+  width: 1200px;
+  margin: auto;
+}
+
+.sectionTitle {
+  font-family: Pretendard;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+  text-align: left;
+  color: #111827;
+}
+
+.itemCard {
+  color: #1f2937;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.itemName {
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  color: #1f2937;
+}
+
+.itemPrice {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
+  text-align: left;
+  color: #1f2937;
+}
+
+.favoriteCount {
+  font-family: Pretendard;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: left;
+  color: #4b5563;
+  display: flex;
+}
+
+.bestItemsContainer {
+  padding-top: 17px;
+  padding-bottom: 24px;
+}
+
+.bestItemsCard {
+  display: flex;
+}
+
+.itemSummary {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.itemCardImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 1;
+  margin-bottom: 16px;
+}
+
+.allItemsHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.allItemsCardSection {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 8px;
+}
+
+.allItemsSectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.allItemsSectionHeader:first-child {
+  padding-bottom: 8px;
+}
+
+.allItemsSectionHeader:nth-child(2) {
+  padding-bottom: 16px;
+}
+
+.itemRegisterbtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 23px;
+  gap: 10px;
+  border: 0;
+  height: 42px;
+  background: #3692ff;
+  border-radius: 8px;
+  color: #f3f4f6;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .bestItemsContainer {
+    margin-bottom: 40px;
+  }
+
+  .bestItemsCard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .allItemsCardSection {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 16px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .bestItemsCard {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .allItemsCardSection {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 40px 24px;
+  }
+}
