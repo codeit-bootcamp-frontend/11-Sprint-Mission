@@ -9,14 +9,14 @@ const LeftNav = () => {
       <div className="flex flex-row items-center gap-x-2">
         <Link to="/">
           <div className="flex flex-row items-center gap-x-2">
-            <img className="hidden sm:block" src={logo} alt="로고 이미지" />
+            <img className=" hidden sm:block " src={logo} alt="로고 이미지" />
 
-            <img src={logoText} alt="판다마켓"></img>
+            <img className="h-3 sm:h-4" src={logoText} alt="판다마켓"></img>
           </div>
         </Link>
       </div>
 
-      <div className="flex flex-row items-center gap-x-1 sm:gap-x-3 ">
+      <div className="flex flex-row items-center gap-x-1 text-[10px] sm:gap-x-3 sm:text-base">
         <div>자유게시판</div>
         <Link to="/items">
           <div>중고마켓</div>
