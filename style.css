@@ -1,18 +1,16 @@
-*{
+* {
   box-sizing: border-box;
-  font-size: 16px;
   margin: 0;
-  padding: 0;
 }
-
 body {
-  font-family: 'Pretendard-Regular', Arial, Helvetica, sans-serif;
   width: 100%;
+  font-family: "Pretendard-Regular", Arial, Helvetica, sans-serif;
+  font-size: 16px;
 }
 
 @font-face {
-  font-family: 'Pretendard-Regular';
-  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
@@ -30,7 +28,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   height: 70px;
   padding: 9px 400px;
   /* 스프린트 미션 2에서 추가한 코드 */
@@ -44,7 +42,7 @@ button {
 }
 
 .navbar_login {
-  background-color: #3692FF;
+  background-color: #3692ff;
   padding: 12px 23px;
   border-radius: 8px;
   color: rgba(243, 244, 246, 1);
@@ -55,7 +53,7 @@ button {
 
 .content_top_title,
 .content_bottom_title {
-  background-color: #CFE5FF;
+  background-color: #cfe5ff;
   height: 540px;
 }
 
@@ -79,7 +77,7 @@ button {
 }
 
 .content_top_title_button {
-  background-color: #3692FF;
+  background-color: #3692ff;
   padding: 16px 124px;
   border-radius: 40px;
   color: rgba(249, 250, 251, 1);
@@ -100,13 +98,13 @@ button {
   align-items: center;
 }
 
-.content_item_page_components, 
+.content_item_page_components,
 .content_search_page_components,
 .content_register_page_components {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #FCFCFC;
+  background-color: #fcfcfc;
   width: 988px;
 }
 
@@ -120,7 +118,7 @@ button {
 .content_search_page_intro,
 .content_register_page_intro {
   padding-bottom: 12px;
-  color: #3692FF;
+  color: #3692ff;
   font-weight: 700;
   font-size: 18px;
 }
@@ -151,7 +149,6 @@ button {
   justify-content: center;
   align-items: center;
   padding-top: 143px;
-
 }
 
 /* 푸터 */
@@ -165,7 +162,7 @@ footer {
 }
 
 .footer_copyright {
-  color: #9CA3AF;
+  color: #9ca3af;
 }
 
 .footer_menu {
@@ -177,7 +174,7 @@ footer {
 }
 
 .footer_menu a {
-  color: #E5E7EB;
+  color: #e5e7eb;
 }
 
 .footer_sns {
@@ -193,12 +190,6 @@ footer {
     padding: 1.2vw 200px;
   }
 }
-
-/* PC */
-@media (min-width: 1200px) {
-
-}
-
 /* Tablet */
 @media (min-width: 768px) and (max-width: 1199px) {
   .navbar {
@@ -241,7 +232,7 @@ footer {
     width: 696px;
   }
   .content_item_page_img,
-  .content_search_page_img, 
+  .content_search_page_img,
   .content_register_page_img {
     width: 100%;
   }
@@ -298,23 +289,64 @@ footer {
   .content_top_title {
     height: 540px;
   }
-  /*
   .content_top_title_components {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0;
+    padding-top: 48px;
+    padding-bottom: 0;
+    gap: 144px;
   }
   .content_top_title_text {
-    align-items: center;
-    padding: 84px 0 211px 0;
+    width: 240px;
+    gap: 18px;
+  }
+  .content_top_title_intro {
+    font-size: 32px;
+    text-align: center;
+  }
+  .content_top_title_text > button {
+    height: 48px;
+    padding: 0;
+  }
+  .content_top_title_components > img {
+    width: 100%;
+    height: 204px;
   }
   .content_item_page {
-    padding: 24px;
+    padding: 52px 15px 0;
   }
-  .content_search_page,
+  .content_search_page {
+    padding: 40px 15px;
+  }
   .content_register_page {
-    padding: 52px 24px;
+    padding: 40px 15px 83px;
+  }
+  .content_item_page_img,
+  .content_search_page_img,
+  .content_register_page_img {
+    width: 100%;
+  }
+  .content_item_page_components,
+  .content_register_page_components {
+    flex-direction: column;
+    text-align: left;
+    /* width: 696px; */
+  }
+  .content_search_page_components {
+    flex-direction: column-reverse;
+    text-align: right;
+  }
+  /* 아래 내용을 보니 클래스명 지정 시, 언더바 말고 띄어쓰기로 할 걸 그랬나 싶습니다(안 그러니 하나하나 다 지정해야 하는..) */
+  .content_item_page_intro,
+  .content_search_page_intro,
+  .content_register_page_intro {
+    font-size: 16px;
+  }
+  .content_item_page_eg,
+  .content_search_page_eg,
+  .content_register_page_eg {
+    font-size: 18px;
   }
   .content_top_title_intro > br,
   .content_item_page_title > br,
@@ -323,60 +355,49 @@ footer {
     display: inline-block;
     content: "";
   }
-  .content_item_page_components,
-  .content_register_page_components {
-    flex-direction: column;
-    width: 696px;
-  }
-  .content_search_page_components {
-    flex-direction: column-reverse;
-    width: 696px;
-  }
-  .content_item_page_img,
-  .content_search_page_img, 
-  .content_register_page_img {
-    width: 100%;
+  .content_item_page_title,
+  .content_search_page_title,
+  .content_register_page_title {
+    font-size: 24px;
   }
   .content_item_page_text,
   .content_register_page_text {
     width: 100%;
-    display: flex;
-    flex-direction: column;
     align-items: flex-start;
     padding: 24px 0;
   }
   .content_search_page_text {
     width: 100%;
-    display: flex;
-    flex-direction: column;
     align-items: flex-end;
     padding: 24px 0;
   }
-  .content_item_page_title,
-  .content_search_page_title,
-  .content_register_page_title {
-    font-weight: 700;
-    font-size: 32px;
-  }
-  .content_item_page_eg,
-  .content_search_page_eg,
-  .content_register_page_eg {
-    font-size: 18px;
-  }
   .content_bottom_title {
-    height: 927px;
+    height: 540px;
   }
   .content_bottom_title_components {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0;
+    padding-top: 121px;
+    padding-bottom: 0;
+    gap: 125px;
   }
   .content_bottom_title_text {
-    align-items: center;
-    padding: 217px 0;
+    text-align: center;
+    font-size: 32px;
+  }
+  .content_bottom_title_components > img {
+    width: 100%;
+    height: 198px;
   }
   footer {
-    padding: 32px 104px 64px 104px;
-  } */
+    height: 160px;
+    justify-content: space-between;
+    padding: 32px;
+    flex-wrap: wrap;
+  }
+  /* flex item 순서 변경 */
+  footer > div:nth-of-type(1) {
+    order: 3;
+  }
 }
