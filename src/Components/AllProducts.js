@@ -2,11 +2,16 @@ import { useEffect, useRef, useState } from 'react';
 import { getProducts } from '../api';
 import Product from './Product';
 import { ArrowPathIcon } from '@heroicons/react/24/solid';
+import Pagination from './Pagination';
+
+const PAGE_SIZE = 10;
 
 export default function AllProducts() {
+  const [page, setPage] = useState(1);
   const [products, setProducts] = useState([]);
   const [keyword, setKeyword] = useState('');
   const [orderBy, setOrderBy] = useState('recent');
+  let [totalCount, setTotalCount] = useState(0);
   const inSearchRef = useRef();
 
   const handleLoad = async (options = {}) => {
@@ -17,6 +22,7 @@ export default function AllProducts() {
       console.log('error', error.message);
     }
     setProducts(result.list);
+    setTotalCount(result.totalCount);
   };
 
   const handleOrder = (e) => {
@@ -32,9 +38,14 @@ export default function AllProducts() {
     setKeyword('');
   };
 
+  const handlePaginationClick = (pageNum) => {
+    // console.log('fn:handlePaginationClick', pageNum);
+    setPage(pageNum);
+  };
+
   useEffect(() => {
-    handleLoad({ keyword, orderBy });
-  }, [keyword, orderBy]);
+    handleLoad({ keyword, orderBy, page });
+  }, [keyword, orderBy, page]);
 
   return (
     <div className="products">
@@ -63,6 +74,14 @@ export default function AllProducts() {
           <Product key={id} image={images[0]} name={name} price={price} favoriteCount={favoriteCount} />
         ))}
       </div>
+
+      <Pagination
+        className="my-10 mx-auto justify-center"
+        page={page}
+        pageSize={PAGE_SIZE}
+        totalCount={totalCount}
+        onClick={handlePaginationClick}
+      />
     </div>
   );
 }
