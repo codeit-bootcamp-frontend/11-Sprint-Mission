@@ -1,0 +1,13 @@
+.aitop {
+  display: flex;
+  align-items: center;
+}
+.aitop h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  flex: 1;
+}
+.aitop .altop-flex {
+  display: flex;
+  gap: 12px;
+}
