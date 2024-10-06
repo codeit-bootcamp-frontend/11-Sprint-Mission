@@ -1,0 +1,42 @@
+.enter-products {
+  width: 100%;
+  height: auto;
+  gap: 16px;
+  display: grid;
+  grid-template: repeat(2, 1fr) / repeat(5, 1fr);
+  background-color: var(--gray-10);
+}
+
+.product-img {
+  width: 282px;
+  height: 282px;
+  border-radius: 17px;
+}
+
+.text-box {
+  gap: 10px;
+}
+
+.product-name {
+  width: 282px;
+  font-family: "pretendard Variable", "Noto Sans Korean";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--approx-midnight);
+}
+
+.product-price {
+  font-family: "pretendard Variable", "Noto Sans Korean";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.like-it {
+  gap: 4px;
+  font-family: "pretendard Variable", "Noto Sans Korean";
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+}
