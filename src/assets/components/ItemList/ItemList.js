@@ -5,6 +5,7 @@ import "./ItemList.css";
 import Pagination from "../Pagination/Pagination";
 import arrowDown from "../../images/ic_arrow_down.svg";
 import ic_sort from "../../images/ic_sort.svg";
+import ic_search from "../../images/ic_search.svg";
 
 /**
  * 전체 상품 리스트 컴포넌트다.
@@ -98,8 +99,9 @@ function Header({ view, order, setOrder }) {
 
 function Search() {
   return (
-    <form className="search">
-      <input className="search" placeholder="검색할 상품을 입력해주세요" />
+    <form className="search-form">
+      <img src={ic_search} alt="검색" />
+      <input placeholder="검색할 상품을 입력해주세요" />
     </form>
   );
 }

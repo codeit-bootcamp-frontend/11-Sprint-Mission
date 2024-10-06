@@ -29,6 +29,28 @@
   line-height: 32px;
 }
 
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: 288px;
+  height: 42px;
+  padding: 0 20px;
+  border-radius: 12px;
+  background-color: var(--gray-200);
+}
+
+.search-form input {
+  border: none;
+  background-color: inherit;
+  color: var(--gray-400);
+}
+
+.search-form input:focus-visible {
+  outline: none;
+}
+
 .ItemList-header .btn-add {
   background-color: var(--blue);
   color: var(--gray-100);
