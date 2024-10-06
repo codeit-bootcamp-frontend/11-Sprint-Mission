@@ -27,8 +27,8 @@ export default function BestProducts() {
     <div className="products">
       <h2 className="products-title">베스트 상품</h2>
       <div className="best">
-        {products.map(({ id, images, name, price }) => (
-          <Product key={id} image={images[0]} name={name} price={price} />
+        {products.map(({ id, images, name, price, favoriteCount }) => (
+          <Product key={id} image={images[0]} name={name} price={price} favoriteCount={favoriteCount} />
         ))}
       </div>
     </div>
