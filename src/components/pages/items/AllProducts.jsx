@@ -20,6 +20,8 @@ function AllProducts({ products }) {
           return b.favoriteCount - a.favoriteCount;
         } else if (option === "recent") {
           return new Date(b.updatedAt) - new Date(a.updatedAt);
+        } else {
+          return 0;
         }
       });
     };
