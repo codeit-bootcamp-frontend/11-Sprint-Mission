@@ -2,6 +2,7 @@ import iconHeart from '../assets/icon-heart.svg';
 import noImage from '../assets/no-image.svg';
 
 export default function Product({ image = noImage, name, price = 0, favoriteCount = 0 }) {
+  // 에러 이미지 처리
   const handleImageError = (e) => {
     e.target.src = noImage;
   };

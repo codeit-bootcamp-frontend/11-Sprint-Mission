@@ -5,6 +5,7 @@ import Product from './Product';
 export default function BestProducts() {
   const [products, setProducts] = useState([]);
 
+  // 상품 가져오기
   const handleLoad = async (options = {}) => {
     let result;
     try {
@@ -16,6 +17,7 @@ export default function BestProducts() {
   };
 
   useEffect(() => {
+    // 좋아요순으로 4개 가져오기
     const options = {
       pageSize: 4,
       orderBy: 'favorite',

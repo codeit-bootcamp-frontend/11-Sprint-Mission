@@ -5,6 +5,7 @@ import Pagination from './Pagination';
 import { ArrowPathIcon } from '@heroicons/react/24/solid';
 import IconSearch from '../assets/icon-search.svg';
 
+// 기본 페이지 사이즈
 const PAGE_SIZE = 10;
 
 export default function AllProducts() {
@@ -15,6 +16,7 @@ export default function AllProducts() {
   let [totalCount, setTotalCount] = useState(0);
   const inSearchRef = useRef();
 
+  // 데이터 가져오기
   const handleLoad = async (options = {}) => {
     let result;
     try {
@@ -26,10 +28,12 @@ export default function AllProducts() {
     setTotalCount(result.totalCount);
   };
 
+  // 정렬 변경
   const handleOrder = (e) => {
     setOrderBy(e.target.value);
   };
 
+  // 검색어 필터링
   const handleKeywordSubmit = (e) => {
     e.preventDefault();
     const inputSearch = inSearchRef.current;
@@ -39,6 +43,7 @@ export default function AllProducts() {
     setKeyword('');
   };
 
+  // 페이지네이션 처리
   const handlePaginationClick = (pageNum) => {
     // console.log('fn:handlePaginationClick', pageNum);
     setPage(pageNum);
