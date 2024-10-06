@@ -1,5 +1,5 @@
 import Nav from "../../shared/ui/nav/Nav";
-import Main from "../../features/items/ui/Main";
+import Main from "../../widgets/items/Main";
 
 const Items = () => {
   return (

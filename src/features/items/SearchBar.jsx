@@ -1,5 +1,5 @@
 import React from "react";
-import glass from "../../../shared/assets/glass.svg";
+import glass from "../../shared/assets/glass.svg";
 const SearchBar = () => {
   return (
     <div className="relative flex gap-x-3">

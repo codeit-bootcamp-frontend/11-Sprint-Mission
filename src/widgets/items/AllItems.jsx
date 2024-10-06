@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import AllItem from "./AllItem";
 
-import selectButton from "../../../shared/assets/selectButton.svg";
-import glass from "../../../shared/assets/glass.svg";
-import AddItemButton from "./AddItemButton";
-import SearchBar from "./SearchBar";
-import SortSelect from "./SortSelect";
-import SortDropDownList from "./SortDropDownList";
+import selectButton from "../../shared/assets/selectButton.svg";
+import glass from "../../shared/assets/glass.svg";
+
+import SearchBar from "../../features/items/SearchBar";
+import SortSelect from "../../features/items/SortSelect";
+import SortDropDownList from "../../features/items/SortDropDownList";
+import AddItemButton from "../../features/items/AddItemButton";
 
 const AllItems = ({
   data,

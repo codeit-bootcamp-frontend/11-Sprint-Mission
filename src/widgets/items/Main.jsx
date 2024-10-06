@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 
 import { useQuery } from "@tanstack/react-query";
-import { fetchPosts } from "../../post/model/fetchPost";
+import { fetchPosts } from "../../features/post/model/fetchPost";
 import { useState } from "react";
 import BestItems from "./BestItems";
-import useResponsiveDisplayCount from "../hooks/useResponsiveDisplayCount";
+import useResponsiveDisplayCount from "../../features/items/hooks/useResponsiveDisplayCount";
 import AllItems from "./AllItems";
 
 const Main = () => {

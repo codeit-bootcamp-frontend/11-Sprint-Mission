@@ -1,4 +1,4 @@
-import heart from "../../../shared/assets/heart.svg";
+import heart from "../../shared/assets/heart.svg";
 const AllItem = ({ product }) => {
   return (
     <div key={product.id}>
