@@ -1,0 +1,44 @@
+.dd-con {
+  position: relative;
+}
+.dd-con .dd-box {
+  width: 130px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gray200);
+  border-radius: 12px;
+  gap: 24px;
+  cursor: pointer;
+}
+.dd-con .dd-box .d-icon {
+  width: 16px;
+}
+.dd-con .dd-box .d-icon img {
+  width: 100%;
+}
+.dd-con .dd-list {
+  position: absolute;
+  top: 0;
+  transform: translateY(50px);
+}
+
+.dd-con .dd-list button {
+  width: 130px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gray200);
+  gap: 24px;
+  cursor: pointer;
+}
+.dd-con .dd-list .newbtn {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.dd-con .dd-list .goodbtn {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
