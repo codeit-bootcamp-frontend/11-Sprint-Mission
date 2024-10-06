@@ -1,0 +1,45 @@
+.headerLeft {
+  align-items: center;
+  display: flex;
+}
+
+.headerLogo {
+  margin-inline-end: 16px;
+}
+
+.globalHeader nav ul {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #4b5563;
+}
+
+.globalHeader nav ul li a:hover {
+  color: var(--blue);
+}
+
+.loginLink {
+  padding: 11.5px 23px;
+  font-size: 16px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .globalHeader nav ul {
+    gap: 36px;
+    font-size: 18px;
+  }
+
+  .headerLogo {
+    margin-inline-end: 35px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .headerLogo {
+    margin-inline-end: 47px;
+  }
+}

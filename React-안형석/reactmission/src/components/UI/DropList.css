@@ -1,0 +1,22 @@
+.dropList {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  z-index: 99;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dropItem {
+  padding: 12px 44px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #1f2937;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.dropItem:last-of-type {
+  border-bottom: none;
+}

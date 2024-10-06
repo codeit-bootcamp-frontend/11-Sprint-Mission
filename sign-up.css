@@ -1,0 +1,163 @@
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Pretendard', sans-serif;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.loginpage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  width: 640px;
+}
+
+.sign {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.signform {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.signsection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.signlabel {
+  font-weight: 700;
+  font-size: 17px;
+  color: #1f2937;
+}
+
+.signinput, .input_password {
+  background-color: #f3f4f6;
+  padding: 16px 24px;
+  border-radius: 10px;
+  border: 0;
+}
+
+.input_password {
+  background: url(button/closeEye.png) no-repeat 95% center;
+  background-size: 24px;
+}
+
+input:focus {
+  outline-color: #3692ff;
+}
+
+.signbutton {
+  background-color: #9ca3af;
+  padding: 16px;
+  border-radius: 40px;
+  border: 0;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 600;
+  color: #f3f4f6;
+  cursor: pointer;
+}
+
+.tologin {
+  display: flex;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  justify-content: center;
+}
+
+.tologin > a {
+  color: #3692ff;
+}
+
+.linkbox {
+  background-color: #e6f2ff;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* 반응형 */
+
+/* tablet */
+@media screen and (max-width: 1199px) {
+  .loginpage {
+      width: 100%;
+      padding: 0 40px;
+  }
+
+  .signbutton {
+      padding: 16px 80px;
+  }
+
+  .linkbox {
+      padding: 16px 16px;
+  }
+}
+
+/* mobile */
+@media screen and (max-width: 767px) {
+  .loginpage {
+      width: 100%;
+      padding: 0 20px;
+  }
+
+  .signinput, .input_password {
+      padding: 12px 16px;
+  }
+
+  .signbutton {
+      padding: 16px 60px;
+  }
+
+  .linkbox {
+      padding: 16px 10px;
+  }
+}
+
+.password-toggle-button {
+  position: absolute;
+  right: 24px;
+}
+
+.error-message {
+  color: #f74747;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 18px;
+  margin-top: 8px;
+  display: none;
+  padding-left: 16px;
+}
+
+
+
+@media screen and (max-width: 400px) {
+  .loginpage {
+      max-width: 400px;
+  }
+}
+

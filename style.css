@@ -1,0 +1,146 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 16px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 70px;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    width: 128px;
+}
+
+.login {
+    width: 128px;
+}
+
+section {
+    padding: 40px 20px;
+}
+
+.landingimg1 {
+    background-color: #CFE5FF;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.imgtop {
+    max-width: 100%;
+    height: auto;
+}
+
+.need_1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.top_text {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #374151;
+    margin-bottom: 20px;
+}
+
+.btn_1 {
+    background-color: #3692ff;
+    color: #fff;
+    padding: 16px 40px;
+    font-size: 20px;
+    border-radius: 40px;
+    cursor: pointer;
+    border: none;
+}
+
+.footer {
+    background-color: #111827;
+    color: #9CA3AF;
+    text-align: center;
+    padding: 32px;
+}
+
+.btmset {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.codeit {
+    font-size: 16px;
+}
+
+.icon {
+    display: flex;
+    gap: 20px;
+}
+
+.icon img {
+    width: 24px;
+    height: 24px;
+}
+
+/* 반응형 디자인 */
+
+@media screen and (min-width: 1200px) {
+    header {
+        padding: 0 24px;
+    }
+    .footer {
+        padding: 32px 400px;
+    }
+}
+
+/* Tablet */
+@media screen and (max-width: 1199px) and (min-width: 768px) {
+    header {
+        padding: 0 24px;
+    }
+    .logo {
+        margin-left: 24px;
+    }
+    .login {
+        margin-right: 24px;
+    }
+    .footer {
+        padding: 32px;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+    header {
+        padding: 0 16px;
+    }
+    .logo {
+        margin-left: 16px;
+    }
+    .login {
+        margin-right: 16px;
+    }
+    section {
+        padding: 40px 16px;
+    }
+    .footer {
+        padding: 32px 16px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .need_1, .need_3, .need_5 {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
