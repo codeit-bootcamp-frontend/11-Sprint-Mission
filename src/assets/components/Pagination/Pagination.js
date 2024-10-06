@@ -60,7 +60,7 @@ function Pagination({ page, setPage, pageSize, total }) {
    * @description 클릭한 버튼의 value 속성에 해당하는 페이지로 이동
    */
   const handlePageClick = (e) => {
-    const targetPage = Number(e.target.value);
+    const targetPage = Number(e.target.dataset.page);
     if (!targetPage) return;
     if (targetPage < 1) return;
     if (targetPage > lastPage) return;
@@ -70,12 +70,12 @@ function Pagination({ page, setPage, pageSize, total }) {
   return (
     <ul className="Pagination" onClick={handlePageClick}>
       <li className="page-btn-first">
-        <button value={1}>
+        <button data-page={String(1)}>
           <img src={arrowLeftDouble} alt="첫 페이지" />
         </button>
       </li>
       <li>
-        <button value={page - 1}>
+        <button data-page={String(page - 1)}>
           <img src={arrowLeft} alt="이전 페이지" />
         </button>
       </li>
@@ -85,12 +85,12 @@ function Pagination({ page, setPage, pageSize, total }) {
         </li>
       ))}
       <li>
-        <button value={page + 1}>
+        <button data-page={String(page + 1)}>
           <img src={arrowRight} alt="다음 페이지" />
         </button>
       </li>
       <li className="page-btn-last">
-        <button value={lastPage}>
+        <button data-page={String(lastPage)}>
           <img src={arrowRightDouble} alt="끝 페이지" />
         </button>
       </li>
@@ -108,7 +108,7 @@ function Pagination({ page, setPage, pageSize, total }) {
 function PageButton({ page, current }) {
   const isCurrent = page === current ? "current" : "";
   return (
-    <button className={isCurrent} value={page}>
+    <button className={isCurrent} data-page={String(page)}>
       {page}
     </button>
   );
