@@ -1,17 +1,20 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 import './Pagination.css';
 
-export default function Pagination({ page = 1, pageSize = 10, totalCount = 0, onClick, className = '' }) {
-  // 전체 페이지네이션 배열 생성
+// 전체 페이지네이션 배열 생성
+function getPages(size, total) {
   let count = 1;
-  const pageCount = totalCount ? Math.ceil(totalCount / pageSize) : 1;
-  const pages = Array(pageCount)
+  const pageCount = total ? Math.ceil(total / size) : 1;
+  return Array(pageCount)
     .fill(0)
     .map((num) => num + count++);
+}
 
-  // 보여줄 페이지네이션 배열 생성
+// 보여줄 페이지네이션 - 5개 배열 생성
+function getShowPages(page, pages) {
   let indexStart = page - 3;
   let indexEnd = page + 2;
+
   if (indexStart < 0) {
     indexEnd = indexEnd - indexStart;
     indexStart = 0;
@@ -19,7 +22,13 @@ export default function Pagination({ page = 1, pageSize = 10, totalCount = 0, on
     indexStart = indexStart - (indexEnd - pages.length);
     indexEnd = pages.length;
   }
-  const showPages = pages.slice(indexStart, indexEnd);
+
+  return pages.slice(indexStart, indexEnd);
+}
+
+export default function Pagination({ page = 1, pageSize = 10, totalCount = 0, onClick, className = '' }) {
+  const pages = getPages(pageSize, totalCount);
+  const showPages = getShowPages(page, pages);
 
   // 페이지네이션 버튼 클릭
   const handleClick = (nextPage) => {
