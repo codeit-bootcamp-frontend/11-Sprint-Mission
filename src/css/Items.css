@@ -92,12 +92,16 @@ li {
   align-items: flex-start;
 }
 
+.topInfo h1 {
+  position: relative;
+  top: 5px;
+}
+
 .utils button:last-child {
   align-items: center;
 }
 
 .utils {
-  position: relative;
   display: flex;
   justify-content: flex-end;
   gap: 0.75rem;
@@ -121,6 +125,10 @@ li {
   background-color: #ffffff;
   color: var(--gray-900);
   border: 1px solid var(--gray-200);
+}
+
+.search {
+  position: relative;
 }
 
 .utils input {
@@ -184,14 +192,14 @@ li {
 }
 
 .paging {
-  display: flex;
-  justify-content: center;
   margin: 3rem 0 5rem;
 }
 
 .pagination {
   display: flex;
+  justify-content: center;
   gap: 0.4rem;
+  padding: 0;
 }
 
 .pagination a {
@@ -213,4 +221,90 @@ li {
   background-color: var(--blue);
   color: #fff;
   border: none;
+}
+
+@media (max-width: 1280px) {
+  html {
+    font-size: 14px;
+  }
+
+  .allProducts,
+  .bestProducts {
+    max-width: 696px;
+  }
+
+  .bestProducts .thumbnail {
+    width: 343px;
+    height: 343px;
+  }
+
+  .bestProductList {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .productList {
+    grid-template: repeat(2, 1fr) / repeat(3, 1fr);
+    row-gap: 2rem;
+    column-gap: 16.5px;
+  }
+
+  .price {
+    margin: 0.6rem 0 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 12px;
+  }
+
+  .allProducts,
+  .bestProducts {
+    max-width: 343px;
+  }
+
+  .productList .thumbnail {
+    width: 168px;
+    height: 168px;
+  }
+
+  .productList {
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+    row-gap: 1.5rem;
+    column-gap: 7px;
+  }
+
+  .utils {
+    display: grid;
+    position: relative;
+    row-gap: 20px;
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+    grid-template-areas:
+      'post dropdown'
+      'input .';
+  }
+
+  .search {
+    position: absolute;
+    left: -130px;
+    grid-area: input;
+  }
+
+  .search input {
+    width: 343px;
+    border-radius: 5px;
+  }
+
+  .searchIcon {
+    top: 9px;
+  }
+
+  #postButton {
+    grid-area: post;
+  }
+
+  .selectAlignMenu {
+    grid-area: dropdown;
+  }
 }

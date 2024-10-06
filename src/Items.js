@@ -12,7 +12,7 @@ import Pagination from 'react-js-pagination';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-const deviceBestItem = () => {
+const getBestPageSize = () => {
   const width = window.innerWidth;
   if (width < 768) {
     return 1;
@@ -23,7 +23,7 @@ const deviceBestItem = () => {
   }
 };
 
-const deviceItem = () => {
+const getPageSize = () => {
   const width = window.innerWidth;
   if (width < 768) {
     return 4;
@@ -43,6 +43,7 @@ function Items() {
   const [keyword, setKeyword] = useState('');
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
+  const [pageSize, setPageSize] = useState(getPageSize());
 
   const contentLoad = async (orderBy, keyword, page) => {
     const { list, totalCount } = await getItems(orderBy, keyword, page);
@@ -53,8 +54,8 @@ function Items() {
     setBestProducts(bestItems);
   };
 
-  const mainBestItems = bestProducts.slice(0, deviceBestItem());
-  const mainItems = products.slice(0, deviceItem());
+  const mainBestItems = bestProducts.slice(0, getBestPageSize());
+  const mainItems = products.slice(0, getPageSize());
 
   const handleDropdownView = () => {
     setDropdownView(!isDropdownView);
@@ -81,6 +82,19 @@ function Items() {
     contentLoad(orderBy, keyword, page);
   }, [orderBy, keyword, page]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setPageSize(getPageSize());
+    };
+
+    window.addEventListener('resize', handleResize);
+    contentLoad();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [pageSize]);
+
   return (
     <div>
       <div className="bestProducts">
@@ -101,13 +115,15 @@ function Items() {
         <div className="topInfo">
           <h1>전체 상품</h1>
           <div className="utils">
-            <input
-              type="text"
-              onChange={handleSearchSubmit}
-              placeholder="검색할 상품을 입력해주세요."
-            />
-            <img className="searchIcon" src={searchIcon} alt="검색하기" />
-            <button>상품 등록하기</button>
+            <div className="search">
+              <input
+                type="text"
+                onChange={handleSearchSubmit}
+                placeholder="검색할 상품을 입력해주세요."
+              />
+              <img className="searchIcon" src={searchIcon} alt="검색하기" />
+            </div>
+            <button id="postButton">상품 등록하기</button>
             <div className="selectAlignMenu">
               <label onClick={handleDropdownView}>
                 <button>
