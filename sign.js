@@ -1,124 +1,151 @@
 document.addEventListener("DOMContentLoaded", function () {
-    //유효성 검사
-    let emailValid = false;
-    let usernameValid = false;
-    let passwordValid = false;
-    let passwordRepeatValid = false;
+  // 유효성 검사 상태
+  let emailValid = false;
+  let usernameValid = false;
+  let passwordValid = false;
+  let passwordRepeatValid = false;
 
-    //요소 접근
-    const loginGeneral = document.getElementById("loginGeneral");
-    const signupGeneral = document.getElementById("signupGeneral");
-    const emailText = document.getElementById("email");
-    const usernameText = document.getElementById("username");
-    const passwordText = document.getElementById("password");
-    const passwordRepeatText = document.getElementById("password_repeat");
-    const submitButton = document.getElementById("login_button");
+  // 요소 접근
+  const loginForm = document.getElementById("loginGeneral");
+  const signupForm = document.getElementById("signupGeneral");
+  const emailInput = document.getElementById("email");
+  const usernameInput = document.getElementById("username");
+  const passwordInput = document.getElementById("password");
+  const passwordRepeatInput = document.getElementById("password_repeat");
+  const submitButton = document.getElementById("login_button");
 
-    //오류 메세지 보여주기
-    function show(input, errorId) {
-        if(!errorId) return; //errorId가 null일 경우 아무 작업도 하지 않음 (userId에는 valid에러가 없기 때문에 추가한 코드)
-        const errorElement = document.getElementById(errorId);
-        errorElement.style.display = "block";
-        //멘토님이 display 속성을 block, none으로 하는 것 보다 opacity를 바꾸는게 좋다고 언급.
-        input.style.border = "1px solid #f74747";
-    }
+  // 오류 메시지 보여주기
+  function showErrorMessage(input, errorId) {
+    if (!errorId) return;
+    const errorElement = document.getElementById(errorId);
+    errorElement.style.display = "block";
+    input.style.border = "1px solid #f74747";
+  }
 
-    //오류 메세지 가리기
-    function hide(input, errorId) {
-        if(!errorId) return;
-        const errorElement = document.getElementById(errorId);
-        //멘토님이 display 속성을 none으로 하는 것 보다 opacity를 바꾸는게 좋다고 언급.
-        errorElement.style.display = "none";
-        input.style.border = "none";
-    }
+  // 오류 메시지 가리기
+  function hideErrorMessage(input, errorId) {
+    if (!errorId) return;
+    const errorElement = document.getElementById(errorId);
+    errorElement.style.display = "none";
+    input.style.border = "none";
+  }
 
-    //이메일 검증
-    function regularEmail(email) {
-        const emailForm = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        return emailForm.test(email);
-    }
+  // 공통 오류 처리 함수
+  function handleValidation(
+    inputElement,
+    value,
+    emptyErrorId,
+    invalidErrorId,
+    validationFn
+  ) {
+    hideErrorMessage(inputElement, emptyErrorId);
+    hideErrorMessage(inputElement, invalidErrorId);
 
-    //유효성 검사 모듈
-    function validateInput(inputElement, validationFn, emptyErrorId, invalidErrorId) {
-        const value = inputElement.value.trim();
-        hide(inputElement, emptyErrorId);
-        hide(inputElement, invalidErrorId);
+    if (!value) {
+      showErrorMessage(inputElement, emptyErrorId);
+      return false;
+    } else if (validationFn && !validationFn(value)) {
+      showErrorMessage(inputElement, invalidErrorId);
+      return false;
+    }
+    return true;
+  }
 
-        if (!value) {
-            show(inputElement, emptyErrorId);
-            return false;
-        } else if (validationFn && !validationFn(value)) {
-            show(inputElement, invalidErrorId);
-            return false;
-        } else {
-            return true;
-        }
-    }
+  // 이메일 유효성 검사
+  function validateEmailInput() {
+    const value = emailInput.value.trim();
+    const validationFn = (value) =>
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
+    emailValid = handleValidation(
+      emailInput,
+      value,
+      "emailEmptyError",
+      "emailInvalidError",
+      validationFn
+    );
+    updateSubmitBtnState();
+  }
 
-    //이메일 검증
-    function checkEmail() {
-        emailValid = validateInput(emailText, regularEmail, "emailEmptyError", "emailInvalidError");
-        submitState();
-    }
-    //닉네임 검증
-    function checkUsername() {
-        usernameValid = validateInput(usernameText, (value) => value.length > 0, "usernameEmptyError", null);
-        submitState();
-    }
-    //비밀번호 검증
-    function checkPassword() {
-        passwordValid = validateInput(passwordText, (value) => value.length >= 8, "passwordEmptyError", "passwordInvalidError");
-        submitState();
-    }
-    //비밀번호 재확인 검증, 단순 형식이나 true 여부가 아닌 일치를 검사하기에 모듈 활용이 아닌 직접 작성
-    function checkPasswordRepeat() {
-        const passwordRepeatValue = passwordRepeatText.value.trim();
-        passwordRepeatValid = passwordRepeatValue && passwordRepeatValue === passwordText.value.trim();
-        if (!passwordRepeatValid) {
-            show(passwordRepeatText, "passwordRepeatInvalidError");
-        } else {
-            hide(passwordRepeatText, "passwordRepeatInvalidError");
-        }
-        submitState();
-    }
-    //submitButton을 조정하기 위한 함수, 삼항연산자로 폼을 체크 후 할당
-    function submitState() {
-        const valueValid = signupGeneral
-            ? emailValid && usernameValid && passwordValid && passwordRepeatValid
-            : emailValid && passwordValid;
-        submitButton.disabled = !valueValid;
-    }
+  // 닉네임 유효성 검사
+  function validateUsernameInput() {
+    const value = usernameInput.value.trim();
+    usernameValid = handleValidation(
+      usernameInput,
+      value,
+      "usernameEmptyError",
+      null,
+      null
+    );
+    updateSubmitBtnState();
+  }
 
-    //이벤트 리스너를 추가, 입력 필드와 핸들러를 가져와 객체에 담고 forEach로 할당
-    const inputEvents = [
-        { element: emailText, handler: checkEmail },
-        { element: passwordText, handler: checkPassword },
-    ];
+  // 비밀번호 유효성 검사
+  function validatePasswordInput() {
+    const value = passwordInput.value.trim();
+    const validationFn = (value) => value.length >= 8;
+    passwordValid = handleValidation(
+      passwordInput,
+      value,
+      "passwordEmptyError",
+      "passwordInvalidError",
+      validationFn
+    );
+    updateSubmitBtnState();
+  }
 
-    if (signupGeneral) {
-        inputEvents.push(
-            { element: usernameText, handler: checkUsername },
-            { element: passwordRepeatText, handler: checkPasswordRepeat }
-        );
+  // 비밀번호 확인 유효성 검사
+  function validatePasswordRepeatInput() {
+    const passwordRepeatValue = passwordRepeatInput.value.trim();
+    passwordRepeatValid =
+      passwordRepeatValue && passwordRepeatValue === passwordInput.value.trim();
+    if (!passwordRepeatValid) {
+      showErrorMessage(passwordRepeatInput, "passwordRepeatInvalidError");
+    } else {
+      hideErrorMessage(passwordRepeatInput, "passwordRepeatInvalidError");
     }
+    updateSubmitBtnState();
+  }
 
-    inputEvents.forEach(({ element, handler }) => {
-        element.addEventListener("input", handler);
-        element.addEventListener("focusout", handler);
+  // 제출 버튼 상태 업데이트
+  function updateSubmitBtnState() {
+    const isAllInputValid =
+      emailValid && usernameValid && passwordValid && passwordRepeatValid;
+    const valueValid = signupForm
+      ? isAllInputValid
+      : emailValid && passwordValid;
+    submitButton.disabled = !valueValid;
+  }
+
+  // 이벤트 리스너 추가
+  const inputEvents = [
+    { element: emailInput, handler: validateEmailInput },
+    { element: passwordInput, handler: validatePasswordInput },
+  ];
+
+  if (signupForm) {
+    inputEvents.push(
+      { element: usernameInput, handler: validateUsernameInput },
+      { element: passwordRepeatInput, handler: validatePasswordRepeatInput }
+    );
+  }
+
+  inputEvents.forEach(({ element, handler }) => {
+    element.addEventListener("input", handler);
+    element.addEventListener("focusout", handler);
+  });
+
+  // 폼 제출
+  if (loginForm) {
+    loginForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      location.href = "items.html";
     });
+  }
 
-    // 제출되면 이동될 주소
-    if (loginGeneral) {
-        loginGeneral.addEventListener("submit", function (event) {
-            event.preventDefault();
-            location.href = "items.html";
-        });
-    }
-
-    if (signupGeneral) {
-        signupGeneral.addEventListener("submit", function (event) {
-            event.preventDefault();
-            location.href = "signup.html";
-        });
-    }
+  if (signupForm) {
+    signupForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      location.href = "signup.html";
+    });
+  }
 });
