@@ -2,15 +2,33 @@
   @apply my-6;
 
   .best {
-    @apply flex gap-6;
+    @apply grid gap-6 md:grid-cols-2 xl:grid-cols-4;
   }
   .all {
-    @apply grid grid-cols-5 gap-6;
+    @apply grid grid-cols-2 xl:grid-cols-5 gap-6;
   }
 }
 .products-title {
   @apply text-xl font-bold my-4;
 }
+.product {
+  @apply flex flex-col gap-2 flex-1;
+
+  .wrap-img {
+    @apply aspect-square rounded-2xl overflow-hidden;
+
+    img {
+      @apply w-full h-full object-cover;
+    }
+  }
+}
+.product-title {
+  @apply text-sm font-medium truncate;
+}
+.product-favorite {
+  @apply flex items-center gap-1 text-xs font-medium;
+}
+
 .in-search {
   @apply py-2 px-6 rounded-lg;
   padding-left: 44px;

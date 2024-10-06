@@ -7,16 +7,16 @@ export default function Product({ image = noImage, name, price = 0, favoriteCoun
   };
 
   return (
-    <div className="flex flex-col gap-2 flex-1">
-      <figure className="aspect-square rounded-2xl overflow-hidden">
-        <img className="w-full h-full object-cover" src={image} alt={name} onError={handleImageError} />
+    <div className="product">
+      <figure className="wrap-img">
+        <img src={image} alt={name} onError={handleImageError} />
       </figure>
 
-      <h3 className="text-sm font-medium truncate">{name}</h3>
+      <h3 className="product-title">{name}</h3>
 
       <div className="font-bold">{price.toLocaleString()}원</div>
 
-      <div className="flex items-center gap-1 text-xs font-medium">
+      <div className="product-favorite">
         <img src={iconHeart} alt="" />
         {favoriteCount}
       </div>
