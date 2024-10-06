@@ -70,7 +70,7 @@ function Header({ view, order, setOrder }) {
       <div className="ItemList-header">
         <h2 className="title">전체 상품</h2>
         <div className="utils">
-          <input className="search" placeholder="검색할 상품을 입력해주세요" />
+          <Search />
           <button className="btn-add" onClick={handleAddClick}>
             상품 등록하기
           </button>
@@ -88,12 +88,20 @@ function Header({ view, order, setOrder }) {
           </button>
         </div>
         <div className="mobile-wrap">
-          <input className="search" placeholder="검색할 상품을 입력해주세요" />
+          <Search />
           <Select view={view} order={order} setOrder={setOrder} />
         </div>
       </div>
     );
   }
+}
+
+function Search() {
+  return (
+    <form className="search">
+      <input className="search" placeholder="검색할 상품을 입력해주세요" />
+    </form>
+  );
 }
 
 function Select({ view, order, setOrder }) {
@@ -110,8 +118,14 @@ function Select({ view, order, setOrder }) {
 
   return (
     <div className="select-order" onClick={handleSelectClick}>
-      <p>{order === "recent" ? "최신순" : "좋아요순"}</p>
-      <img src={arrowDown} alt="▼" />
+      {view !== "mobile" ? (
+        <>
+          <p>{order === "recent" ? "최신순" : "좋아요순"}</p>
+          <img src={arrowDown} alt="▼" />
+        </>
+      ) : (
+        <img src={ic_sort} alt="▼" />
+      )}
       <div className="option-wrap" onClick={handleSelectChange}>
         <div className="option" data-order="recent">
           최신순
