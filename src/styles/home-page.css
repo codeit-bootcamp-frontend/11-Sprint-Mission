@@ -1,20 +1,10 @@
-.btn {
-  display: inline-block;
-  background-color: var(--blue-500);
-  color: var(--gray-100);
-  font-weight: 600;
-  text-align: center;
-  text-decoration: none;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 23px;
-  font-size: 16px;
-  line-height: 26px;
-}
-
 .main-login {
   width: 128px;
   height: 48px;
+  padding: 12px 23px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
 }
 
 .hero {

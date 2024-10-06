@@ -3,6 +3,7 @@ import "../../../styles/items.css";
 import BestProducts from "./BestProducts";
 import getProducts from "../../../api/items/getProducts";
 import { useEffect, useState } from "react";
+import AllProducts from "./AllProducts";
 
 function ItemsPage() {
   const [products, setProducts] = useState([]);
@@ -26,10 +27,10 @@ function ItemsPage() {
   return (
     <>
       <ItemsHeader />
-      <main>
+      <main className="items-wrapper">
         {console.log(bestProducts)}
         <BestProducts bestProducts={bestProducts} />
-        <section></section>
+        <AllProducts products={products}/>
       </main>
     </>
   );

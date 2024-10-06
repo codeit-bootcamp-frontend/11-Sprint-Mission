@@ -38,3 +38,13 @@ body {
   margin: 0;
   background-color: var(--white);
 }
+
+.btn {
+  display: inline-block;
+  background-color: var(--blue-500);
+  color: var(--gray-100);
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+}
