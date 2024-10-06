@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { getProducts } from '../api';
 import Product from './Product';
-import { ArrowPathIcon } from '@heroicons/react/24/solid';
 import Pagination from './Pagination';
+import { ArrowPathIcon } from '@heroicons/react/24/solid';
+import IconSearch from '../assets/icon-search.svg';
 
 const PAGE_SIZE = 10;
 
@@ -52,8 +53,9 @@ export default function AllProducts() {
       <div className="flex items-center gap-3">
         <h2 className="products-title mr-auto">전체 상품</h2>
 
-        <form className="flex gap-1" onSubmit={handleKeywordSubmit}>
+        <form className="flex gap-1 relative" onSubmit={handleKeywordSubmit}>
           <input className="in-search" type="text" ref={inSearchRef} placeholder="검색할 상품을 입력해 주세요" />
+          <img className="absolute top-2 left-3" src={IconSearch} alt="" />
           <button className="btn-reset" type="reset" title="초기화" onClick={handleKeywordReset}>
             <ArrowPathIcon className="size-4 mx-auto" />
           </button>
