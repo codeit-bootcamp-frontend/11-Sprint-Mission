@@ -1,0 +1,61 @@
+header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  margin: 0 auto;
+  background-color: white;
+  height: 70px;
+  border-bottom: 1px solid var(--light-gray);
+  padding: 9px auto;
+}
+
+header {
+  width: auto;
+  background-size: auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+}
+
+.logo,
+.tab {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-family: "ROKAF Sans", sans-serif;
+  color: var(--primary);
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  font-size: 26px;
+  line-height: 35px;
+}
+
+a {
+  font-family: "pretendard Variable", "Noto Sans Korean";
+  color: var(--grayish-blue);
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 26px;
+  padding: 21px 15px;
+  gap: 10px;
+}
