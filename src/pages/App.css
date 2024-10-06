@@ -13,16 +13,14 @@
   white-space: nowrap;
 }
 
-.main-header li {
-  float: left;
+.main-header-left {
+  display: flex;
+  align-items: center;
+  gap: 32px;
 }
 
-.main-nav {
-  display: flex;
-  position: relative;
-  align-items: center;
-  left: -282px;
-  /* padding-left: 32px; */
+.main-header li {
+  float: left;
 }
 
 .main-nav-li {
@@ -66,30 +64,14 @@
 }
 
 .product-cardlist {
-  width: 1200px;
   display: grid;
   gap: 24px;
   grid-template-columns: repeat(4, 1fr);
 }
 
-/* TABLET */
-@media (min-width: 768px) and (max-width: 1199px) {
-  .product-cardlist {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Mobile */
-@media (min-width: 365px) and (max-width: 767px) {
-  .product-cardlist {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
 .product-cardlist.fiveRow {
-  width: 1200px;
   display: grid;
-  grid-template-columns: 221px 221px 221px 221px 221px;
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .best-product {
@@ -97,11 +79,8 @@
 }
 
 .card-img {
-  background-image: url("../images/image.png");
-  background-image: no-repeat;
-  background-position: left bottom;
-  background-size: cover;
   border-radius: 16px;
+  width: 100%;
 }
 
 .name {
@@ -159,6 +138,53 @@ input::placeholder {
   position: absolute;
   top: 13px;
   left: 20px;
+}
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .main-header {
+    padding: 0 24px;
+  }
+
+  .main-header-left {
+    gap: 35px;
+  }
+
+  .product-cardlist {
+    max-width: 695px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .product-cardlist.fiveRow {
+    max-width: 695px;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile */
+@media (min-width: 365px) and (max-width: 767px) {
+  .main-header {
+    padding: 0 16px;
+  }
+
+  .main-header-left {
+    gap: 8px;
+  }
+
+  .product-cardlist {
+    max-width: 344px;
+    grid-template-columns: 1fr;
+  }
+
+  .product-cardlist.fiveRow {
+    max-width: 344px;
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* 수정 */

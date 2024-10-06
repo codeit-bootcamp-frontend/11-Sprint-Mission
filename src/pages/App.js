@@ -43,30 +43,30 @@ const App = () => {
     <div className="container">
       <header>
         <div className="main-header">
-          <Link to="">
-            <img
-              className="image-logo"
-              src={require("../images/logo_image.png")}
-              alt="판다마켓로고"
-              width={"153px"}
-              height={"51px"}
-            />
-          </Link>
-          <div className="main-nav">
-            <nav>
-              <ul>
-                <li className="main-nav-li">
-                  <Link className="nav-li" to="/items">
-                    자유게시판
-                  </Link>
-                </li>
-                <li className="main-nav-li">
-                  <Link className="nav-li" to="/items">
-                    중고마켓
-                  </Link>
-                </li>
-              </ul>
-            </nav>
+          <div className="main-header-left">
+            <Link to="">
+              <img
+                className="image-logo"
+                src={require("../images/logo_image.png")}
+                alt="판다마켓로고"
+              />
+            </Link>
+            <div className="main-nav">
+              <nav>
+                <ul>
+                  <li className="main-nav-li">
+                    <Link className="nav-li" to="/items">
+                      자유게시판
+                    </Link>
+                  </li>
+                  <li className="main-nav-li">
+                    <Link className="nav-li" to="/items">
+                      중고마켓
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
           <img alt="" src={myprofile} width={"40px"} height={"40px"} />
         </div>
@@ -78,7 +78,7 @@ const App = () => {
               <div className="topbar-label">베스트 상품</div>
             </div>
             <div className="product-cardlist">
-              <Cardlist productBestLists={productBestList} width={282} />
+              <Cardlist productBestLists={productBestList} />
             </div>
           </div>
         </section>
@@ -107,10 +107,8 @@ const App = () => {
               </div>
             </div>
             <div className="all-product">
-              <div className="topbar between">
-                <div className="product-cardlist fiveRow">
-                  <Cardlist productBestLists={productList} width={221} />
-                </div>
+              <div className="product-cardlist fiveRow">
+                <Cardlist productBestLists={productList} />
               </div>
             </div>
           </div>
