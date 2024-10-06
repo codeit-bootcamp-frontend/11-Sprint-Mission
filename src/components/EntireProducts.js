@@ -11,7 +11,7 @@ function ProductsList({ item }) {
         <h3 className="product-name">{item.name}</h3>
         <p className="product-price">{price}</p>
         <div className="heart">
-          <img src={heart} className="heart-img" alt="좋아요"/>
+          <img src={heart} className="heart-img" alt="좋아요" />
           <p className="like-it">{favoriteCount}</p>
         </div>
       </div>
