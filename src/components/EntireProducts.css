@@ -1,24 +1,34 @@
-.entire-products {
-  width: 100%;
+.entire-products-container {
   height: auto;
-  gap: 16px;
+  width: auto;
+  gap: 24px;
   display: grid;
   grid-template: repeat(2, 1fr) / repeat(5, 1fr);
+}
+
+.entire-product {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  gap: 16px;
   background-color: var(--gray-10);
 }
 
-.product-img {
-  width: 282px;
-  height: 282px;
-  border-radius: 17px;
+.entire-product-img {
+  width: 221px;
+  height: 221px;
+  border-radius: 16px;
 }
 
 .text-box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   gap: 10px;
 }
 
 .product-name {
-  width: 282px;
+  width: 221px;
   font-family: "pretendard Variable", "Noto Sans Korean";
   font-weight: 500;
   font-size: 14px;
@@ -33,8 +43,13 @@
   line-height: 26px;
 }
 
-.like-it {
+.heart {
+  display: flex;
+  width: 100px;
   gap: 4px;
+}
+
+.like-it {
   font-family: "pretendard Variable", "Noto Sans Korean";
   font-weight: 500;
   font-size: 12px;

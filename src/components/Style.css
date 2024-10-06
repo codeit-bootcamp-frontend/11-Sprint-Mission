@@ -5,8 +5,10 @@
 
 * {
   --primary: #3692ff;
+  --primary-sub: #2f80ed;
   --cyan-blue: #cfe5ff;
   --white: #ffffff;
+  --gray-500: #6b7280;
   --gray-400: #9ca3af;
   --light-gray: #dfdfdf;
   --gray-200: #e5e7eb;

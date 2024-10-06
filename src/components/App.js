@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { getList } from "../api";
 import Nav from "./Nav";
-import ProductsCategory from "./ProductsCategory";
 import BestProducts from "./BestProducts";
 import EntireProducts from "./EntireProducts";
 import Button from "./Button";
 import "./Style.css";
-import "./SearchBar.css";
 import "./App.css";
+import "./SearchBar.css";
+import magnifier from "../images/Vector.svg";
 
 function App() {
   const [items, setItems] = useState([]);
@@ -40,49 +40,64 @@ function App() {
     <>
       <Nav></Nav>
       <body>
-        <section className="best-section">
-          <ProductsCategory>베스트 상품</ProductsCategory>
-          <div className="best-grid-container">
+        <main className="body">
+          <section className="best-section">
+            <h2>베스트 상품</h2>
             <BestProducts items={sortedItems}></BestProducts>
-          </div>
-        </section>
-        <section className="entire-section">
-          <ProductsCategory>전체 상품</ProductsCategory>
-          <aside>
-            <input
-              placeholder="검색할 상품을 입력해주세요"
-              className="input-search"
-            ></input>
-            <a href="./AddItem" className="register">
-              상품 등록하기
-            </a>
-            <label htmlFor="order"></label>
-            <select id="order" onChange={handleClick}>
-              <option value="recent">최신순</option>
-              <option value="favoriteCount">좋아요순</option>
-            </select>
-          </aside>
-          <div className="entire-grid-container">
+          </section>
+          <section className="entire-section">
+            <div className="section-to-us">
+              <h2>전체 상품</h2>
+              <aside>
+                <div className="for-products">
+                  <img src={magnifier} className="magnifier" alt="상품찾기" />
+                  <input
+                    placeholder="검색할 상품을 입력해주세요"
+                    className="input-search"
+                  ></input>
+                  <a href="./AddItem" className="small-button">
+                    <p>상품 등록하기</p>
+                  </a>
+                </div>
+                <label htmlFor="order"></label>
+                <select id="order" onChange={handleClick} className="drop-down">
+                  <option value="recent" className="drop-down">
+                    최신순
+                  </option>
+                  <option value="favoriteCount" className="drop-down">
+                    좋아요순
+                  </option>
+                </select>
+              </aside>
+            </div>
             <EntireProducts items={sortedItems}></EntireProducts>
-          </div>
-        </section>
+          </section>
+        </main>
       </body>
       <footer>
-        <Button value={1} clickBtn={handleLoadMore}>
-          1
-        </Button>
-        <Button value={2} clickBtn={handleLoadMore}>
-          2
-        </Button>
-        <Button value={3} clickBtn={handleLoadMore}>
-          3
-        </Button>
-        <Button value={4} clickBtn={handleLoadMore}>
-          4
-        </Button>
-        <Button value={4} clickBtn={handleLoadMore}>
-          5
-        </Button>
+        <div className="pagination">
+          <Button type="button" clickBtn={handleLoadMore}>
+            &lt;
+          </Button>
+          <Button type="button" value={1} clickBtn={handleLoadMore}>
+            1
+          </Button>
+          <Button type="button" value={2} clickBtn={handleLoadMore}>
+            2
+          </Button>
+          <Button type="button" value={3} clickBtn={handleLoadMore}>
+            3
+          </Button>
+          <Button type="button" value={4} clickBtn={handleLoadMore}>
+            4
+          </Button>
+          <Button type="button" value={5} clickBtn={handleLoadMore}>
+            5
+          </Button>
+          <Button type="button" clickBtn={handleLoadMore}>
+            &gt;
+          </Button>
+        </div>
       </footer>
     </>
   );

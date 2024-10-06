@@ -1,18 +1,19 @@
 import "./BestProducts.css";
-import heart from "../images/heart.svg";
+import heart from "../images/Icon.svg";
 
 function ProductsList({ item }) {
   const { images, name, price, favoriteCount } = item;
 
   return (
-    <div className="product">
-      <img src={images} alt={name} className="product-img" />
+    <div className="best-product">
+      <img src={images} alt={name} className="best-product-img" />
       <div className="text-box">
         <h3 className="product-name">{item.name}</h3>
         <p className="product-price">{price}</p>
-        <a src={heart} className="like-it">
-          {favoriteCount}
-        </a>
+        <div className="heart">
+          <img src={heart} alt="좋아요" />
+          <p className="like-it">{favoriteCount}</p>
+        </div>
       </div>
     </div>
   );
@@ -20,7 +21,7 @@ function ProductsList({ item }) {
 
 function BestProducts({ items }) {
   return (
-    <div className="best-products">
+    <div className="best-products-container">
       {items && items.length > 0 ? (
         items.map((item) => (
           <div key={item.id}>
@@ -28,7 +29,7 @@ function BestProducts({ items }) {
           </div>
         ))
       ) : (
-        <p>비어있는 값입니다..</p>
+        <p>상품을 준비중입니다.</p>
       )}
     </div>
   );
