@@ -2,7 +2,7 @@ import React from "react";
 
 function Search({ setProducts, perPage }) {
   const handleChange = ({ target }) => {
-    const search = target.value;
+    // const search = target.value;
   };
   return (
     <div className="input-area">
