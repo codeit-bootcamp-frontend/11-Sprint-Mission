@@ -14,15 +14,24 @@
             <div class="loginpage">
                 <a href="./index.html"><img src="logo/Property 1=lg.png" class="logoimage"></a>
              <div class="sign">
-                <form class="signform"> 
+                <form id="loginForm" class="signform"> 
                     <div class="signsection">
                             <label class="signlabel">이메일</label>
-                            <input class="signinput" type="email" placeholder="이메일을 입력해주세요"/>
+                            <input id= "email" class="signinput" type="email" placeholder="이메일을 입력해주세요"/>
+                            <span id="emailEmptyError" class="error-message">이메일을 입력해 주세요</span>
+                            <span id="emailInvalidError" class="error-message">잘못된 이메일 형식입니다</span>
                         </div>
                         <div class="signsection">
                             <label class="signlabel">비밀번호</label>
                             <input class="input_password" type="password" placeholder="비밀번호를 입력해주세요">
+                            <button type="button" class="password-toggle-button" aria-label="비밀번호 보기">
+                            <img class="password-toggle-icon"
+                                src="button/closeEye.png"
+                                alt="비밀번호 숨김 상태 아이콘"/>
+                            </button>
                         </div>
+                        <span id="passwordEmptyError" class="error-message">비밀번호를 입력해 주세요</span>
+                        <span id="passwordInvalidError" class="error-message">비밀번호를 8자 이상 입력해 주세요</span>
                         <div>
                             <button class="signbutton" type="submit">로그인</button>
                         </div>
@@ -41,5 +50,6 @@
                     </div>    
             </div>
         </main>
+        <script src="/main.js"></script>
     </body>
 </html>
