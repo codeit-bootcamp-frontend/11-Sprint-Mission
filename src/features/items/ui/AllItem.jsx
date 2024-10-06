@@ -1,4 +1,3 @@
-import React from "react";
 import heart from "../../../shared/assets/heart.svg";
 const AllItem = ({ product }) => {
   return (

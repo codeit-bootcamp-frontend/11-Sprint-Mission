@@ -1,6 +1,5 @@
-import React from "react";
 import Nav from "../../shared/ui/nav/Nav";
-import Main from "./components/Main";
+import Main from "../../features/items/ui/Main";
 
 const Items = () => {
   return (
