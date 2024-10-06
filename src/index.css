@@ -20,11 +20,15 @@ select {
 }
 
 .container {
-  @apply mx-auto;
-  width: 1200px;
+  @apply mx-auto px-4;
+  max-width: 1200px;
 }
 .btn {
   @apply py-2 px-6 font-semibold rounded-lg;
   color: #f3f4f6;
-  background: #3692ff;
+  background-color: #3692ff;
+
+  &:hover {
+    background-color: #1967d6;
+  }
 }
