@@ -56,7 +56,7 @@ export default function AllProducts() {
         <form className="flex gap-1 relative" onSubmit={handleKeywordSubmit}>
           <input className="in-search" type="text" ref={inSearchRef} placeholder="검색할 상품을 입력해 주세요" />
           <img className="absolute top-2 left-3" src={IconSearch} alt="" />
-          <button className="btn-reset" type="reset" title="초기화" onClick={handleKeywordReset}>
+          <button className="btn-reset" type="reset" title="검색 초기화" onClick={handleKeywordReset}>
             <ArrowPathIcon className="size-4 mx-auto" />
           </button>
         </form>

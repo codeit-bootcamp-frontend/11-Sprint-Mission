@@ -2,18 +2,28 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 import './Pagination.css';
 
 export default function Pagination({ page = 1, pageSize = 10, totalCount = 0, onClick, className = '' }) {
-  const getPages = () => {
-    let count = 1;
-    const pageCount = totalCount ? Math.ceil(totalCount / pageSize) : 1;
-    return Array(pageCount)
-      .fill(0)
-      .map((num) => num + count++);
-  };
+  // 전체 페이지네이션 배열 생성
+  let count = 1;
+  const pageCount = totalCount ? Math.ceil(totalCount / pageSize) : 1;
+  const pages = Array(pageCount)
+    .fill(0)
+    .map((num) => num + count++);
 
-  const pagesLength = getPages().length;
+  // 보여줄 페이지네이션 배열 생성
+  let indexStart = page - 3;
+  let indexEnd = page + 2;
+  if (indexStart < 0) {
+    indexEnd = indexEnd - indexStart;
+    indexStart = 0;
+  } else if (indexEnd > pages.length) {
+    indexStart = indexStart - (indexEnd - pages.length);
+    indexEnd = pages.length;
+  }
+  const showPages = pages.slice(indexStart, indexEnd);
 
-  const handleClick = (nextPageNum) => {
-    return () => onClick(nextPageNum);
+  // 페이지네이션 버튼 클릭
+  const handleClick = (nextPage) => {
+    return () => onClick(nextPage);
   };
 
   return (
@@ -23,7 +33,7 @@ export default function Pagination({ page = 1, pageSize = 10, totalCount = 0, on
           <ChevronLeftIcon className="size-4 mx-auto" />
         </button>
       </li>
-      {getPages().map((pageNum) => (
+      {showPages.map((pageNum) => (
         <li key={pageNum}>
           <button className={`btn-pn ${page === pageNum ? 'active' : ''}`} type="button" onClick={handleClick(pageNum)}>
             {pageNum}
@@ -31,7 +41,7 @@ export default function Pagination({ page = 1, pageSize = 10, totalCount = 0, on
         </li>
       ))}
       <li>
-        <button className="btn-pn" type="button" onClick={handleClick(page + 1)} disabled={page === pagesLength}>
+        <button className="btn-pn" type="button" onClick={handleClick(page + 1)} disabled={page === pages.length}>
           <ChevronRightIcon className="size-4 mx-auto" />
         </button>
       </li>
