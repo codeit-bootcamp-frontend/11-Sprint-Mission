@@ -1,0 +1,34 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
+:root {
+  --gray900: #111827;
+  --gray800: #1f2937;
+  --gray700: #374151;
+  --gray600: #4b5563;
+  --gray500: #6b7280;
+  --gray400: #9ca3af;
+  --gray200: #e5e7eb;
+  --gray100: #f3f4f6;
+  --gray50: #f9fafb;
+
+  --blue: #3692ff;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font: 16px / 1.4 Pretendard, "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  border: 0;
+  background: 0;
+  cursor: pointer;
+}
