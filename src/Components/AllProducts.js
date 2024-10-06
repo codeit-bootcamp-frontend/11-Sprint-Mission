@@ -50,7 +50,7 @@ export default function AllProducts() {
 
   return (
     <div className="products">
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 flex-wrap my-4 justify-end">
         <h2 className="products-title mr-auto">전체 상품</h2>
 
         <form className="flex gap-1 relative" onSubmit={handleKeywordSubmit}>

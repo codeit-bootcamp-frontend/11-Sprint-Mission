@@ -9,7 +9,7 @@
   }
 }
 .products-title {
-  @apply text-xl font-bold my-4;
+  @apply text-xl font-bold;
 }
 .product {
   @apply flex flex-col gap-2 flex-1;

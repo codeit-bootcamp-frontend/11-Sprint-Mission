@@ -9,7 +9,7 @@ export default function Header() {
       <div className="container">
         <nav className="gnb" aria-label="Global">
           <a href="/#" className="flex items-center gap-2">
-            <img src={logo} alt="판다마켓 로고" />
+            <img className="hidden sm:block" src={logo} alt="판다마켓 로고" />
             <img src={txtLogo} alt="판다마켓" />
           </a>
 
