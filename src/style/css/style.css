@@ -1,0 +1,1402 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/
+   v5.0.2 | 20191019
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
+  display: block;
+}
+
+/* HTML5 hidden-attribute fix for newer browsers */
+*[hidden] {
+  display: none;
+}
+
+body {
+  line-height: 1;
+}
+
+menu,
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+/* Document
+   ========================================================================== */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+img {
+  border-style: none;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+[type=checkbox],
+[type=radio] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type=search] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/* Misc
+   ========================================================================== */
+/**
+ * Add the correct display in IE 10+.
+ */
+template {
+  display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+[hidden] {
+  display: none;
+}
+
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+:root {
+  /* Color-Primary */
+  --primary100: #3692ff;
+  --primary200: #1967d6;
+  --primary300: #1251aa;
+  /* Color-Secondary */
+  --gray900: #111827;
+  --gray800: #1f2937;
+  --gray700: #374151;
+  --gray600: #4b5563;
+  --gray500: #6b7280;
+  --gray400: #9ca3af;
+  --gray200: #e5e7eb;
+  --gray100: #f3f4f6;
+  --gray50: #f9fafb;
+  /* Color-Error */
+  --error: #f74747;
+  /* Font-Weight */
+  --normal: 400;
+  --medium: 500;
+  --semiBold: 600;
+  --bold: 700;
+}
+
+* {
+  font-family: "Pretendard-Regular";
+  box-sizing: border-box;
+}
+
+html {
+  /* 브라우저 폰트 사이즈 16px * 0.625 = 10px */
+  font-size: 62.5%;
+}
+
+body {
+  /* 1rem = html의 폰트 사이즈 */
+  font-size: 1rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allow;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+  border: 0;
+  clip: rect(0 0 0 0);
+}
+
+header {
+  /* [Srpint2] 헤더 GNB를 위해 position sticky 추가 */
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 7rem;
+  /* 로고 & 로그인 버튼 여백 200px 유지하기 위해 rem 사용 X */
+  padding: 0.8rem 200px;
+  border-bottom: 0.1rem solid #dfdfdf;
+  background-color: #fff;
+}
+header .logo {
+  width: 15.3rem;
+  min-width: 15.3rem;
+  height: 5.1rem;
+}
+header .logo-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+header .logo-img.logo-mobile {
+  display: none;
+}
+header .login-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-left: 4.7rem;
+}
+header .login-area .content-link a {
+  font-size: 1.8rem;
+  font-weight: var(--bold);
+  line-height: 2.6rem;
+  color: var(--gray600);
+}
+header .login-area .content-link a + a {
+  margin-left: 3rem;
+}
+header .login-area .content-link a.active {
+  color: var(--primary100);
+}
+header .login-area .link-profile {
+  width: 4rem;
+  height: 4rem;
+}
+header .link-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 12.8rem;
+  height: 4.8rem;
+  border-radius: 0.8rem;
+  background-color: var(--primary100);
+  font-size: 1.6rem;
+  font-weight: var(--semiBold);
+  line-height: 2.6rem;
+  color: var(--gray100);
+}
+header .link-login:hover {
+  background-color: var(--primary200);
+}
+header .link-login:active {
+  background-color: var(--primary300);
+}
+
+@media (max-width: 1199px) {
+  header {
+    padding: 0.8rem 2.4rem;
+  }
+  header .login-area {
+    margin-left: 3.5rem;
+  }
+}
+@media (max-width: 767px) {
+  header {
+    padding: 0.8rem 1.6rem;
+  }
+  header .logo {
+    width: 8.1rem;
+    min-width: 8.1rem;
+    height: 4rem;
+  }
+  header .logo-img.logo-pc {
+    display: none;
+  }
+  header .logo-img.logo-mobile {
+    display: block;
+  }
+  header .login-area {
+    margin-left: 0.8rem;
+  }
+  header .login-area .content-link a {
+    font-size: 1.6rem;
+  }
+  header .login-area .content-link a + a {
+    margin-left: 0.8rem;
+  }
+}
+/* Footer */
+footer {
+  background-color: var(--gray900);
+}
+footer .footer-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 112rem;
+  margin: 0 auto;
+  padding: 3.2rem 0 10.8rem;
+}
+footer .footer-wrap > div {
+  font-size: 1.6rem;
+  font-weight: var(--normal);
+}
+footer .footer-wrap .corp {
+  color: var(--gray400);
+}
+footer .footer-wrap .links {
+  display: flex;
+  gap: 0 3rem;
+}
+footer .footer-wrap .links a {
+  color: var(--gray200);
+}
+footer .footer-wrap .sns {
+  display: flex;
+  gap: 0 2rem;
+}
+footer .footer-wrap .sns a {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+}
+footer .footer-wrap .sns a img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 1199px) {
+  footer .footer-wrap {
+    padding: 3.2rem 10.4rem 10.8rem;
+  }
+  footer .footer-wrap .sns {
+    gap: 0 1.2rem;
+  }
+}
+@media (max-width: 767px) {
+  footer .footer-wrap {
+    position: relative;
+    padding: 3.2rem 3.2rem 11rem;
+  }
+  footer .footer-wrap .corp {
+    position: absolute;
+    bottom: 3.2rem;
+    left: 3.2rem;
+  }
+}
+.product {
+  width: 100%;
+}
+.product .img-wrap {
+  aspect-ratio: 1/1;
+  border-radius: 1.6rem;
+  overflow: hidden;
+}
+.product .img-wrap img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.product .desc-wrap .product-name {
+  margin-top: 1.6rem;
+  font-size: 1.4rem;
+  font-weight: var(--medium);
+  line-height: 2.4rem;
+  color: var(--gray800);
+}
+.product .desc-wrap .product-price {
+  margin-top: 0.6rem;
+  font-size: 1.6rem;
+  font-weight: var(--bold);
+  line-height: 2.6rem;
+  color: var(--gray800);
+}
+.product .desc-wrap .product-favorite {
+  display: flex;
+  align-items: center;
+  margin-top: 0.6rem;
+}
+.product .desc-wrap .product-favorite img {
+  display: block;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-right: 0.4rem;
+}
+.product .desc-wrap .product-favorite span {
+  font-size: 1.2rem;
+  font-weight: var(--medium);
+  line-height: 1.8rem;
+  color: var(--gray600);
+}
+
+.sort-area {
+  position: relative;
+  width: 13rem;
+  height: 4.2rem;
+}
+.sort-area .btn-sort {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0 2rem;
+  border: 0.1rem solid var(--gray200);
+  border-radius: 1.2rem;
+  background-color: #fff;
+  font-size: 1.6rem;
+  line-height: 4.2rem;
+  color: var(--gray800);
+  text-align: left;
+}
+.sort-area .btn-sort::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 2rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: url(/public/images/icons/ic_arrow_down.svg) no-repeat center/cover;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+.sort-area .options {
+  display: none;
+  overflow: hidden;
+  position: absolute;
+  top: calc(100% + 0.8rem);
+  left: 0;
+  width: 13rem;
+  border: 0.1rem solid var(--gray200);
+  border-radius: 1.2rem;
+}
+.sort-area .options[open] {
+  display: block;
+}
+.sort-area .options button {
+  display: block;
+  width: 100%;
+  border: 0;
+  background-color: #fff;
+  font-size: 1.6rem;
+  line-height: 4.2rem;
+  text-align: center;
+  color: var(--gray800);
+}
+.sort-area .options button + button {
+  border-top: 0.1rem solid var(--gray200);
+}
+
+@media (max-width: 767px) {
+  .sort-area {
+    width: 4.2rem;
+  }
+  .sort-area .btn-sort::before {
+    left: 50%;
+    background-image: url(/public/images/icons/ic_sort.svg);
+    transform: translate(-50%, -50%);
+  }
+  .sort-area .btn-sort .mo-hidden {
+    display: none;
+  }
+  .sort-area .options {
+    left: auto;
+    right: 0;
+  }
+}
+.btn-primary {
+  border: 0;
+  border-radius: 0.8rem;
+  background-color: var(--primary100);
+  font-size: 1.6rem;
+  font-weight: var(--semiBold);
+  line-height: 2.6rem;
+  color: var(--gray100);
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 0.4rem;
+  margin: 4.3rem 0 5.8rem;
+}
+.pagination .btn-pagination {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 0.1rem solid var(--gray200);
+  background-color: #fff;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  color: var(--gray500);
+}
+.pagination .btn-pagination[active] {
+  background-color: #2f80ed;
+  color: #fff;
+}
+.pagination .btn-pagination.btn-prev, .pagination .btn-pagination.btn-next {
+  background: url(/public/images/icons/ic_arrow_right.svg) no-repeat center/1.6rem 1.6rem;
+}
+.pagination .btn-pagination.btn-prev:disabled, .pagination .btn-pagination.btn-next:disabled {
+  cursor: not-allowed;
+  background-image: url(/public/images/icons/ic_arrow_right_disable.svg);
+}
+.pagination .btn-pagination.btn-next {
+  transform: rotate(180deg);
+}
+
+/* Main & Section */
+.section-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 72rem;
+}
+.section-layout .section-wrap {
+  display: flex;
+  width: 112rem;
+  justify-content: center;
+}
+.section-layout .section-content {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.2rem;
+  background-color: #fcfcfc;
+}
+.section-layout .section-content .img-home,
+.section-layout .section-content .img-home {
+  max-width: 74.6rem;
+}
+.section-layout .section-title {
+  font-size: 4rem;
+  font-weight: var(--bold);
+  line-height: 5.6rem;
+  color: var(--gray700);
+}
+.section-layout .section-title.mb-60 {
+  margin-bottom: 6rem;
+}
+.section-layout-bg {
+  align-items: end;
+  height: 54rem;
+  background-color: #cfe5ff;
+}
+.section-layout-bg .section-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 0;
+  background-color: transparent;
+}
+.section-layout-bg .section-content-inner {
+  margin-bottom: 6rem;
+}
+.section-layout-bg .section-content-inner .link-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35.7rem;
+  height: 5.6rem;
+  margin-top: 3.2rem;
+  border-radius: 4rem;
+  background-color: var(--primary100);
+  font-size: 2rem;
+  font-weight: var(--semiBold);
+  line-height: 3.2rem;
+  color: var(--gray50);
+}
+.section-layout-bg .section-content-inner .link-item:hover {
+  background-color: var(--primary200);
+}
+.section-layout-bg .section-content-inner .link-item:active {
+  background-color: var(--primary300);
+}
+.section-layout-card .section-content {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 98.8rem;
+  border-radius: 1.2rem;
+  background-color: #fcfcfc;
+}
+.section-layout-card .section-content img {
+  display: none;
+}
+.section-layout-card .section-content img.img-pc {
+  display: block;
+  width: 57.9rem;
+  height: 44.4rem;
+}
+.section-layout-card .section-content-inner {
+  display: flex;
+  flex-grow: 1;
+  margin-left: 6.4rem;
+}
+.section-layout-card .section-content-inner > * {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.section-layout-card .section-content .badge {
+  margin-bottom: 1.2rem;
+  font-size: 1.8rem;
+  font-weight: var(--bold);
+  line-height: 2.6rem;
+  color: var(--primary100);
+}
+.section-layout-card .section-content .section-desc {
+  margin-top: 2.4rem;
+  font-size: 2.4rem;
+  font-weight: var(--medium);
+  line-height: 3.2rem;
+  color: var(--gray700);
+}
+.section-layout-card:nth-child(2n+1) .section-content-inner {
+  margin-left: 1.4rem;
+  text-align: right;
+}
+
+@media (max-width: 1199px) {
+  .section-layout {
+    height: auto;
+  }
+  .section-layout .section-wrap {
+    width: 100%;
+  }
+  .section-layout:not(:nth-child(5)) .section-title br {
+    display: none;
+  }
+  .section-layout-bg .section-content {
+    flex-direction: column;
+  }
+  .section-layout-bg .section-content-inner {
+    text-align: center;
+  }
+  .section-layout-bg .section-content-inner .link-item {
+    margin: 2.4rem auto 0;
+  }
+  .section-layout-bg.top .section-content-inner {
+    margin-bottom: 21.1rem;
+    padding-top: 8.4rem;
+  }
+  .section-layout-bg.bottom .section-content-inner {
+    margin-bottom: 15.7rem;
+    padding-top: 20.1rem;
+  }
+  .section-layout-card {
+    margin: 2.4rem 2.4rem 5.6rem;
+  }
+  .section-layout-card .section-content {
+    flex-direction: column;
+    align-items: start;
+    gap: 2.4rem 0;
+    width: 69.6rem;
+  }
+  .section-layout-card .section-content-inner {
+    margin-left: 0;
+  }
+  .section-layout-card .section-content img {
+    width: 100%;
+  }
+  .section-layout-card .section-content img.img-pc {
+    display: none;
+  }
+  .section-layout-card .section-content img.img-tablet {
+    display: block;
+  }
+  .section-layout-card .section-content .section-title {
+    margin-top: 1.6rem;
+    font-size: 3.2rem;
+    line-height: 4rem;
+  }
+  .section-layout-card .section-content .section-desc {
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+  }
+  .section-layout-card:nth-child(2n+1) .section-content {
+    flex-direction: column-reverse;
+    align-items: end;
+  }
+}
+@media (max-width: 767px) {
+  .section-layout-bg .section-content .img-home {
+    max-width: 44.8rem;
+    width: 100%;
+  }
+  .section-layout-bg .section-content-inner .link-item {
+    width: 24rem;
+    height: 4.8rem;
+    margin-top: 1.8rem;
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+  }
+  .section-layout-bg .section-content-inner .section-title {
+    font-size: 3.2rem;
+    line-height: 4.48rem;
+  }
+  .section-layout-bg .section-content-inner .section-title br {
+    display: block;
+  }
+  .section-layout-bg.top {
+    margin-bottom: 5.2rem;
+  }
+  .section-layout-bg.top .section-content-inner {
+    margin-bottom: 13.2rem;
+    padding-top: 4.8rem;
+  }
+  .section-layout-bg.bottom .section-content-inner {
+    margin-bottom: 7.1rem;
+    padding-top: 12.1rem;
+  }
+  .section-layout-card {
+    margin: 0 1.5rem 4rem;
+  }
+  .section-layout-card .section-content {
+    max-width: 34.4rem;
+    width: 100%;
+  }
+  .section-layout-card .section-content img.img-pc, .section-layout-card .section-content img.img-tablet {
+    display: none;
+  }
+  .section-layout-card .section-content img.img-mobile {
+    display: block;
+  }
+  .section-layout-card .section-content .badge {
+    font-size: 1.6rem;
+  }
+  .section-layout-card .section-content .section-title {
+    margin-top: 0.8rem;
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+  }
+  .section-layout-card .section-content .section-desc {
+    margin-top: 1.6rem;
+    font-size: 1.6rem;
+  }
+  .section-layout-card:nth-child(4) {
+    margin-bottom: 8.3rem;
+  }
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* [Sprint2] 로그인 & 회원가입 컨텐츠 영역을 가운데 위치시키기 
+  위해 min-width 100vh로 최소 높이를 뷰포트 높이로 지정,
+  컨텐츠 영역이 뷰포트 높이보다 커지는 상황을 고려해 상하 패딩 추가 */
+  min-height: 100vh;
+  padding: 6rem 0;
+}
+.container .logo {
+  width: 39.6rem;
+  height: 13.2rem;
+}
+.container .logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.container form {
+  display: flex;
+  flex-direction: column;
+  width: 64rem;
+  gap: 2.4rem;
+  margin-top: 4rem;
+}
+.container form .input-area {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.container form .input-area label {
+  margin-bottom: 1.6rem;
+  font-size: 1.8rem;
+  font-weight: var(--bold);
+  line-height: 2.6rem;
+}
+.container form .input-area input {
+  height: 5.6rem;
+  padding: 1.5rem 2.4rem;
+  border: 0;
+  border-radius: 1.2rem;
+  background-color: var(--gray100);
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+}
+.container form .input-area input::-moz-placeholder {
+  color: var(--gray400);
+}
+.container form .input-area input::placeholder {
+  color: var(--gray400);
+}
+.container form .input-area input:focus {
+  outline-color: var(--primary100);
+}
+.container form .input-area input.pw[type=text] ~ .btn-toggle {
+  background-image: url(/public/images/icons/ic_visibility_on.png);
+}
+.container form .input-area input.pw[type=password] ~ .btn-toggle {
+  background-image: url(/public/images/icons/ic_visibility_off.png);
+}
+.container form .input-area input.invalid {
+  border: 0.1rem solid var(--error);
+}
+.container form .input-area input.invalid ~ .msg-error {
+  display: block;
+}
+.container form .input-area .btn-toggle {
+  position: absolute;
+  top: 5.8rem;
+  right: 2.4rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.container form .input-area .btn-toggle img {
+  width: 100%;
+  height: 100%;
+}
+.container form .input-area .msg-error {
+  display: none;
+  margin: 0.8rem 0 0 1.6rem;
+  font-size: 1.4rem;
+  font-weight: var(--semiBold);
+  line-height: 2.4rem;
+  color: var(--error);
+}
+.container form .btn {
+  height: 5.6rem;
+  padding: 0;
+  border: 0;
+  border-radius: 4rem;
+  background-color: var(--primary100);
+  font-size: 2rem;
+  font-weight: var(--semiBold);
+  color: #fff;
+  /* 폼 양식 input 영역 미완성인 경우 */
+}
+.container form .btn:disabled {
+  background-color: var(--gray400);
+  cursor: not-allowed;
+}
+.container form .sns-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.6rem 2.3rem;
+  border-radius: 0.8rem;
+  background-color: #e6f2ff;
+}
+.container form .sns-area span {
+  font-size: 1.6rem;
+  font-weight: var(--medium);
+  color: var(--gray800);
+}
+.container form .sns-area .sns-wrap {
+  display: flex;
+  gap: 0 1.6rem;
+}
+.container form .sns-area .sns-wrap .btn-sns {
+  display: block;
+  width: 4.2rem;
+  height: 4.2rem;
+}
+.container form .sns-area .sns-wrap .btn-sns img {
+  width: 100%;
+  height: 100%;
+}
+.container form .switch-area {
+  font-size: 1.4rem;
+  font-weight: var(--medium);
+  line-height: 2.4rem;
+  text-align: center;
+}
+.container form .switch-area a {
+  color: var(--primary100);
+  text-decoration: underline;
+}
+
+/* BreakPoint Mobile */
+@media (max-width: 767px) {
+  .container .logo {
+    width: 19.8rem;
+    height: 6.6rem;
+  }
+  .container form {
+    gap: 1.6rem;
+    max-width: 40rem;
+    width: 100%;
+    padding: 0 1.6rem;
+  }
+  .container form .input-area label {
+    margin-bottom: 0.8rem;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+  }
+  .container form .sns-area {
+    margin-top: 0.8rem;
+  }
+}
+@media (max-width: 767px) {
+  .container form .input-area .btn-toggle {
+    top: 5rem;
+  }
+}
+.page-items {
+  margin-top: 2.4rem;
+}
+.page-items section {
+  width: 1200px;
+  margin: 0 auto;
+}
+.page-items section + section {
+  margin-top: 4rem;
+}
+.page-items section#section_favorite .products-title {
+  margin-bottom: 1.6rem;
+  font-size: 2rem;
+  font-weight: var(--bold);
+  line-height: 3.2rem;
+}
+.page-items section#section_all .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.4rem;
+}
+.page-items section#section_all .top .products-title {
+  font-size: 2rem;
+  font-weight: var(--bold);
+  line-height: 3.2rem;
+}
+.page-items section#section_all .top .filter-area {
+  display: flex;
+  align-items: center;
+  gap: 0 1.2rem;
+}
+.page-items section#section_all .top .filter-area .input-area {
+  position: relative;
+  width: 32.5rem;
+  height: 4.2rem;
+}
+.page-items section#section_all .top .filter-area .input-area img {
+  position: absolute;
+  top: 0.9rem;
+  left: 1.6rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  z-index: 1;
+}
+.page-items section#section_all .top .filter-area .input-area input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0.9rem 2.4rem 0.9rem 4.4rem;
+  border: 0;
+  border-radius: 1.2rem;
+  background-color: var(--gray100);
+  font-size: 1.6rem;
+}
+.page-items section#section_all .top .filter-area .input-area input::-moz-placeholder {
+  color: var(--gray400);
+}
+.page-items section#section_all .top .filter-area .input-area input::placeholder {
+  color: var(--gray400);
+}
+.page-items section#section_all .top .filter-area .input-area input:focus {
+  outline: 0.1rem solid var(--primary100);
+}
+.page-items section#section_all .top .filter-area .btn-register {
+  padding: 0.8rem 2.3rem;
+}
+.page-items section .products-wrap {
+  display: grid;
+  gap: 4rem 2.4rem;
+}
+.page-items section .products-wrap.favorite {
+  grid-template-columns: repeat(4, 1fr);
+}
+.page-items section .products-wrap.all {
+  grid-template-columns: repeat(5, 1fr);
+}
+.page-items section .products-wrap.all .product-item {
+  min-width: 22.1rem;
+}
+
+@media (max-width: 1199px) {
+  .page-items section {
+    width: 69.6rem;
+  }
+  .page-items section#section_all .top .filter-area .input-area {
+    width: 24.2rem;
+  }
+  .page-items section .products-wrap {
+    gap: 4rem 1.6rem;
+  }
+  .page-items section .products-wrap.favorite {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .page-items section .products-wrap.favorite .product-item:nth-child(n+3) {
+    display: none;
+  }
+  .page-items section .products-wrap.all {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .page-items section .products-wrap.all .product-item {
+    min-width: auto;
+  }
+}
+@media (max-width: 767px) {
+  .page-items section {
+    width: 100%;
+    max-width: 34.3rem;
+  }
+  .page-items section#section_all .top {
+    display: block;
+    position: relative;
+  }
+  .page-items section#section_all .top .products-title {
+    font-size: 2rem;
+    font-weight: var(--bold);
+    line-height: 3.2rem;
+  }
+  .page-items section#section_all .top .filter-area {
+    gap: 0 1.4rem;
+    margin-top: 1.3rem;
+  }
+  .page-items section#section_all .top .filter-area .input-area {
+    position: relative;
+    width: 100%;
+  }
+  .page-items section#section_all .top .filter-area .btn-register {
+    position: absolute;
+    top: -0.5rem;
+    right: 0;
+  }
+  .page-items section .products-wrap {
+    gap: 4rem 0.8rem;
+  }
+  .page-items section .products-wrap.favorite {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .page-items section .products-wrap.favorite .product-item:nth-child(n+2) {
+    display: none;
+  }
+  .page-items section .products-wrap.all {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/* BreakPoint Tablet */
+/* BreakPoint Mobile */

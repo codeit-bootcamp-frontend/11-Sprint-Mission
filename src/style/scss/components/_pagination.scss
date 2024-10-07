@@ -1,0 +1,33 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 0.4rem;
+  margin: 4.3rem 0 5.8rem;
+  .btn-pagination {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: 0.1rem solid var(--gray200);
+    background-color: #fff;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    color: var(--gray500);
+    &[active] {
+      background-color: #2f80ed;
+      color: #fff;
+    }
+    &.btn-prev,
+    &.btn-next {
+      background: url(/public/images/icons/ic_arrow_right.svg) no-repeat center /
+        1.6rem 1.6rem;
+      &:disabled {
+        cursor: not-allowed;
+        background-image: url(/public/images/icons/ic_arrow_right_disable.svg);
+      }
+    }
+    &.btn-next {
+      transform: rotate(180deg);
+    }
+  }
+}
