@@ -1,0 +1,17 @@
+.pagination {
+  @apply flex gap-1;
+
+  .btn-pn {
+    @apply block w-10 h-10 border rounded-full font-semibold;
+
+    &.active {
+      color: #f9fafb;
+      background-color: #2f80ed;
+      border-color: #2f80ed;
+    }
+
+    &:disabled {
+      @apply bg-gray-100 opacity-50;
+    }
+  }
+}
