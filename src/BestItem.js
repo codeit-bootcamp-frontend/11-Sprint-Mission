@@ -5,6 +5,31 @@ import Item from "./Item.js";
 
 function BestItem() {
   const [items, setItems] = useState([]);
+  const [pageSize, setPageSize] = useState(4);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const updatePageSize = () => {
+    if (window.innerWidth > 1152) {
+      setPageSize(4);
+    } else if (window.innerWidth > 768) {
+      setPageSize(2);
+    } else {
+      setPageSize(1);
+    }
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      updatePageSize();
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleLoad = async (options) => {
     let result;
@@ -18,11 +43,11 @@ function BestItem() {
 
   useEffect(() => {
     const options = {
-      pageSize: 4,
+      pageSize: pageSize,
       orderBy: "favorite",
     };
     handleLoad(options);
-  }, []);
+  }, [pageSize]);
 
   return (
     <div className="bestItems">

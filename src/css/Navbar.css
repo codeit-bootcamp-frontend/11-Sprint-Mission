@@ -9,7 +9,7 @@
   position: fixed;
   top: 0;
   background-color: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid gray;
 }
 
 .logoAndMenu {

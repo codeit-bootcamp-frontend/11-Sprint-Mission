@@ -8,6 +8,31 @@ function BestItem() {
   const [items, setItems] = useState([]);
   const [orderBy, setOrderBy] = useState("recent");
   const [keyword, setKeyword] = useState("");
+  const [pageSize, setPageSize] = useState(10);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const updatePageSize = () => {
+    if (window.innerWidth > 1152) {
+      setPageSize(10);
+    } else if (window.innerWidth > 768) {
+      setPageSize(6);
+    } else {
+      setPageSize(4);
+    }
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      updatePageSize();
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleLoad = async (options) => {
     let result;
@@ -29,8 +54,8 @@ function BestItem() {
   };
 
   useEffect(() => {
-    handleLoad({ orderBy, keyword });
-  }, [orderBy, keyword]);
+    handleLoad({ pageSize, orderBy, keyword });
+  }, [pageSize, orderBy, keyword]);
 
   return (
     <div className="allItems">

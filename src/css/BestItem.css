@@ -15,3 +15,23 @@
   display: flex;
   gap: 30px;
 }
+
+@media (max-width: 1152px) {
+  .bestItems {
+    width: 810px;
+  }
+
+  .items {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .bestItems {
+    width: 520px;
+  }
+
+  .items {
+    flex-wrap: wrap;
+  }
+}

@@ -66,3 +66,19 @@
   flex-wrap: wrap;
   gap: 30px;
 }
+
+@media (max-width: 1152px) {
+  .searchBar {
+    width: 200px;
+  }
+
+  .indivItems {
+    width: 810px;
+  }
+}
+
+@media (max-width: 768px) {
+  .indivItems {
+    width: 530px;
+  }
+}
