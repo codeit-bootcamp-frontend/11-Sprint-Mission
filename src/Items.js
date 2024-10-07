@@ -45,8 +45,19 @@ function Items() {
   const [total, setTotal] = useState(0);
   const [pageSize, setPageSize] = useState(getPageSize());
 
-  const contentLoad = async (orderBy, keyword, page) => {
-    const { list, totalCount } = await getItems(orderBy, keyword, page);
+  const contentLoad = async (orderBy, keyword, page, pageSize) => {
+    const { list, totalCount } = await getItems(
+      orderBy,
+      keyword,
+      page,
+      pageSize
+    );
+
+    if (totalCount === 0 && page > 1) {
+      setPage(1);
+      return;
+    }
+
     setTotal(totalCount);
     setProducts(list);
 
@@ -71,29 +82,36 @@ function Items() {
     e.preventDefault();
     const value = e.target.value;
     setKeyword(value);
+
+    if (value === '') {
+      setPage(1);
+    }
   };
 
   const handlePageChange = (page) => {
     setPage(page);
-    contentLoad(orderBy, keyword, page);
+    contentLoad(orderBy, keyword, page, pageSize);
   };
 
   useEffect(() => {
-    contentLoad(orderBy, keyword, page);
-  }, [orderBy, keyword, page]);
+    contentLoad(orderBy, keyword, page, pageSize);
+  }, [orderBy, keyword, page, pageSize]);
 
   useEffect(() => {
     const handleResize = () => {
       setPageSize(getPageSize());
+
+      setPage(1);
+      contentLoad(orderBy, keyword, 1, pageSize);
     };
 
     window.addEventListener('resize', handleResize);
-    contentLoad();
+    contentLoad(orderBy, keyword, page, pageSize);
 
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [pageSize]);
+  }, [orderBy, keyword, page, pageSize]);
 
   return (
     <div>
@@ -154,7 +172,7 @@ function Items() {
       <div className="paging">
         <Pagination
           activePage={page}
-          itemsCountPerPage={10}
+          itemsCountPerPage={pageSize}
           totalItemsCount={total}
           pageRangeDisplayed={5}
           prevPageText={<img src={prev} alt="prev" />}
