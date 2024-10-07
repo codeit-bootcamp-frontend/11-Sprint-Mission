@@ -7,12 +7,14 @@ export async function getBestProducts({ pageSize = 4 }) {
 }
 
 export async function getAllProducts({
-  page = "1",
-  pageSize = "10",
+  page = 1,
+  pageSize = 10,
   orderBy = "recent",
 }) {
   const query = `page=${page}&pageSize=${pageSize}&orderBy=${orderBy}`;
-  const response = await fetch(`https://learn.codeit.kr/api/foods?${query}`);
+  const response = await fetch(
+    `https://panda-market-api.vercel.app/products?${query}`
+  );
   if (!response.ok) {
     throw new Error("데이터를 불러오는데 실패했습니다");
   }
