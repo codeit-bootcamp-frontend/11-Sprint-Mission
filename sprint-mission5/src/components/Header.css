@@ -2,6 +2,10 @@ header {
   width: 100%;
   height: 70px;
   border-bottom: 1px solid var(--bordercode);
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  background-color: var(--white);
 }
 header .header-container {
   width: 100%;

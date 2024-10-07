@@ -1,4 +1,21 @@
 .bitop h1 {
   font-size: 1.25rem;
   font-weight: 700;
+  margin-bottom: 20px;
+}
+.best-item-con {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.best-item-con .item-con .item-img {
+  width: 282px;
+  height: 282px;
+}
+.best-item-con .item-con .item-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
 }
