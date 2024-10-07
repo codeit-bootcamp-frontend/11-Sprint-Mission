@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,10 +11,14 @@
       <a href="/index.html"
         ><img class="logoImage" src="img\logo\Property 1=sm.svg" alt="판다마켓"
       /></a>
-      <form class="signin_form">
+      <form class="signup_form">
         <label>이메일</label>
         <div class="email_container">
           <input type="email" placeholder="이메일을 입력해주세요." />
+        </div>
+        <label>닉네임</label>
+        <div class="nickname_container">
+          <input type="text" placeholder="닉네임을 입력해주세요." />
         </div>
         <label>비밀번호</label>
         <div class="password_container">
@@ -26,7 +30,20 @@
             />
           </button>
         </div>
-        <button class="signin_button">로그인</button>
+        <label>비밀번호 확인</label>
+        <div class="password_container">
+          <input
+            type="password"
+            placeholder="비밀번호를 다시 한 번 입력해주세요."
+          />
+          <button class="toggle_see_password">
+            <img
+              src="img\login\btn_visibility_on_24px.svg"
+              alt="비밀번호 토글 버튼"
+            />
+          </button>
+        </div>
+        <button class="signup_button">회원가입</button>
         <div class="sns_signin">
           <p>간편 로그인하기</p>
           <div class="sns_link">
@@ -37,8 +54,8 @@
             /></a>
           </div>
         </div>
-        <div class="To_signup">
-          판다마켓은 처음이신가요? <a href="/signup.html">회원가입</a>
+        <div class="To_signin">
+          이미 회원이신가요? <a href="/signin.html">로그인</a>
         </div>
       </form>
     </main>
