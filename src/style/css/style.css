@@ -762,7 +762,6 @@ footer .footer-wrap .sns a img {
   z-index: 1;
 }
 .sort-area .options {
-  display: none;
   overflow: hidden;
   position: absolute;
   top: calc(100% + 0.8rem);
@@ -770,9 +769,6 @@ footer .footer-wrap .sns a img {
   width: 13rem;
   border: 0.1rem solid var(--gray200);
   border-radius: 1.2rem;
-}
-.sort-area .options[open] {
-  display: block;
 }
 .sort-area .options button {
   display: block;
