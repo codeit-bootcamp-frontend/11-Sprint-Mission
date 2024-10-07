@@ -1,0 +1,282 @@
+.navHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20vh 0 20vh;
+  margin-top: 5px;
+  border-bottom: 1px solid #dfdfdf;
+}
+.navigation {
+  display: flex;
+  flex-direction: row;
+}
+.navMarket a,
+.navNoticeBoard a {
+  width: 10ch;
+  margin-left: 20px;
+  line-height: 4.3vh;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--gray600);
+}
+.navMarket a {
+  color: var(--skyblue);
+}
+.itemSection {
+  width: 1200px;
+  margin: 0 auto;
+  padding-top: 12px;
+  margin-bottom: 40px;
+  background-color: white;
+}
+.itemContentsTitle {
+  height: 42px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-left: 25px;
+}
+.itemContentsForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 30vh;
+  padding: 0;
+  background: none;
+}
+.itemContentsFormSmall {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 70vh;
+  padding: 0;
+  background: none;
+}
+.bestItemDetail {
+  width: 22%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 24px;
+}
+.bestItemImg {
+  border-radius: 16px;
+  height: 22vh;
+}
+.itemName {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--blueBlack);
+  margin-top: 16px;
+}
+.itemPrice {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--blueBlack);
+  margin: 6px 0;
+}
+.favoriteCount {
+  display: flex;
+  flex-direction: row;
+}
+.favoriteCount a {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--grayBlack);
+}
+.itemDetail {
+  width: 18%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 24px;
+}
+.itemImg {
+  border-radius: 16px;
+  height: 20vh;
+  width: 100%;
+}
+.contentsSearch {
+  display: flex;
+  flex-direction: row;
+  width: 53vh;
+}
+.inputBox {
+  width: 50% !important;
+  height: 42px !important;
+}
+.addItemBtn {
+  width: 25%;
+  margin: 0 12px;
+  border-radius: 30px;
+  border: 0px;
+  border-radius: 8px;
+  background-color: var(--skyblue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.addItemBtn a {
+  height: 26px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  color: var(--gray100);
+}
+.selectBox {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  background-color: white;
+  border-radius: 12px;
+  border: 1px solid var(--gray200);
+}
+.selectBox * {
+  width: 42px;
+  height: 26px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--gray800);
+}
+.pagenation {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.pagenationBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: black;
+  border-radius: 40px;
+}
+.pagenationBtnSelect {
+  background: #2f80ed !important;
+  color: white !important;
+}
+@media (max-width: 1199px) {
+  .itemSection {
+    width: 100%;
+  }
+  .navHeader {
+    padding: 0 24px 0 24px;
+  }
+  .itemContentsForm {
+    height: 40vh;
+    align-content: center;
+    gap: 0 2%;
+  }
+  .bestItemDetail {
+    width: 48%;
+    margin: 0;
+    display: flex;
+    margin: 0;
+  }
+  .bestItemDetail:nth-child(2) {
+    margin: 0;
+  }
+  .itemContentsFormSmall {
+    gap: 40px 2.5%;
+    height: 80vh;
+    margin-bottom: 50px;
+  }
+  .bestItemImg {
+    border-radius: 16px;
+    height: 34vh;
+  }
+  .itemDetail {
+    width: 30%;
+    margin-left: 16px;
+  }
+  .itemImg {
+    border-radius: 16px;
+    height: 221px;
+    width: 100%;
+  }
+  .addItemBtn {
+    width: 20%;
+  }
+}
+@media (max-width: 767px) {
+  .itemLogo {
+    content: url("../../../public/assets/common/ic_logo_item_mobile.png");
+  }
+  .itemSection {
+    width: 100%;
+    padding-top: 0;
+    margin-bottom: 20px;
+  }
+  .navHeader {
+    padding: 0 24px 0 24px;
+  }
+  .itemContentsForm {
+    height: 40vh;
+    align-content: center;
+    gap: 0 2%;
+  }
+  .bestItemDetail {
+    width: 100%;
+    padding: 0 16px;
+  }
+  .itemContentsFormSmall {
+    gap: 40px 2%;
+    height: 80vh;
+  }
+  .itemContentsTitle {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 32px;
+    align-items: flex-start;
+    flex-direction: column;
+    position: relative;
+    height: 60px;
+  }
+  .itemContentsTitle:nth-last-child(3) {
+    height: 120px;
+  }
+  .contentsSearch {
+    flex-direction: row;
+    width: 100%;
+  }
+  .bestItemImg {
+    border-radius: 16px;
+    height: 34vh;
+  }
+  .itemDetail {
+    width: 43%;
+    margin-left: 16px;
+  }
+  .itemImg {
+    border-radius: 16px;
+    height: 221px;
+    width: 100%;
+  }
+  .addItemBtn {
+    width: 20%;
+  }
+  .addItemBtn a {
+    font-size: 12px;
+  }
+}
