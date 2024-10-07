@@ -10,7 +10,7 @@ function ListItem({ item }) {
         <h2 className="item-name">{item.name}</h2>
         <p className="item-price">{item.price.toLocaleString()}원</p>
         <div className="item-good-box">
-          <div>
+          <div className="heart-img">
             <img src={heartIcon} alt="좋아요아이콘" />
           </div>
           <p>{item.favoriteCount}</p>
