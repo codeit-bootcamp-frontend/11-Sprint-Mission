@@ -1,0 +1,65 @@
+@import "./global.css";
+
+.allItems {
+  margin-top: 40px;
+}
+
+.allTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
+.allBars {
+  display: flex;
+  gap: 10px;
+}
+
+.inputContainer {
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.searchBar {
+  background-color: #f3f4f6;
+  border: 0px;
+  border-radius: 8px;
+  height: 35px;
+  width: 250px;
+  padding-left: 30px;
+}
+
+.registerItem {
+  background: #3692ff;
+  color: #ffffff;
+  width: 120px;
+  height: 35px;
+  border: 0px;
+  border-radius: 8px;
+}
+.selectSort {
+  height: 35px;
+  width: 100px;
+  border: 1px solid #f3f4f6;
+  border-radius: 8px;
+}
+
+.selectSort option {
+  height: 35px;
+  width: 100px;
+  border: 1px solid #f3f4f6;
+  border-radius: 8px;
+}
+
+.indivItems {
+  display: flex;
+  gap: 30px;
+}
