@@ -1,0 +1,110 @@
+header {
+  /* [Srpint2] 헤더 GNB를 위해 position sticky 추가 */
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 7rem;
+  /* 로고 & 로그인 버튼 여백 200px 유지하기 위해 rem 사용 X */
+  padding: 0.8rem 200px;
+  border-bottom: 0.1rem solid #dfdfdf;
+  background-color: #fff;
+  .logo {
+    width: 15.3rem;
+    min-width: 15.3rem;
+    height: 5.1rem;
+    &-img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      &.logo-mobile {
+        display: none;
+      }
+    }
+  }
+  .login-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-left: 4.7rem;
+    .content-link {
+      a {
+        font-size: 1.8rem;
+        font-weight: var(--bold);
+        line-height: 2.6rem;
+        color: var(--gray600);
+        & + a {
+          margin-left: 3rem;
+        }
+        &.active {
+          color: var(--primary100);
+        }
+      }
+    }
+    .link-profile {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+  .link-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12.8rem;
+    height: 4.8rem;
+    border-radius: 0.8rem;
+    background-color: var(--primary100);
+    font-size: 1.6rem;
+    font-weight: var(--semiBold);
+    line-height: 2.6rem;
+    color: var(--gray100);
+    &:hover {
+      background-color: var(--primary200);
+    }
+    &:active {
+      background-color: var(--primary300);
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  header {
+    padding: 0.8rem 2.4rem;
+    .login-area {
+      margin-left: 3.5rem;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  header {
+    padding: 0.8rem 1.6rem;
+    .logo {
+      width: 8.1rem;
+      min-width: 8.1rem;
+      height: 4rem;
+      &-img {
+        &.logo-pc {
+          display: none;
+        }
+        &.logo-mobile {
+          display: block;
+        }
+      }
+    }
+    .login-area {
+      margin-left: 0.8rem;
+      .content-link {
+        a {
+          font-size: 1.6rem;
+          & + a {
+            margin-left: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}
