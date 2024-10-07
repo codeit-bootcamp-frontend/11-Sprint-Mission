@@ -1,15 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "./home/home";
-import Login from "./login/Login";
-import Item from "./item/Item";
-import Privacy from "./privacy/Privacy";
-import Fqa from "./fqa/Fqa";
-import Signup from "./signup/Signup";
-import Singin from "./signin/Signin";
-import NoticeBoard from "./noticeBoard/NoticeBoard";
-import Market from "./market/Market";
-import UserInfo from "./userInfo/UserInfo";
-import AddItem from "./addItem/AddItem";
+import Home from "pages/home/home";
+import Login from "pages/login/Login";
+import Item from "pages/item/Item";
+import Privacy from "pages/privacy/Privacy";
+import Fqa from "pages/fqa/Fqa";
+import Signup from "pages/signup/Signup";
+import Singin from "pages/signin/Signin";
+import NoticeBoard from "pages/noticeBoard/NoticeBoard";
+import Market from "pages/market/Market";
+import UserInfo from "pages/userInfo/UserInfo";
+import AddItem from "pages/addItem/AddItem";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },

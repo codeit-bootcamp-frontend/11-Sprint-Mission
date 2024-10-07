@@ -1,6 +1,6 @@
 import React from "react";
 import { RouterProvider } from "react-router-dom";
-import router from "./page/pageRouter.js";
+import router from "pages/pageRouter.js";
 
 function App() {
   return (

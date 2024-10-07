@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import * as validation from "../validation";
+import * as validation from "components/Validation";
 import "./Login.css";
 
 const Login = (props) => {

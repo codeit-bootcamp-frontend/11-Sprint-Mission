@@ -55,7 +55,7 @@
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  height: 60vh;
+  height: 70vh;
   padding: 0;
   background: none;
 }
@@ -242,7 +242,7 @@
   }
   .itemContentsFormSmall {
     gap: 40px 2%;
-    height: 60vh;
+    height: 80vh;
   }
   .itemContentsTitle {
     font-weight: 700;

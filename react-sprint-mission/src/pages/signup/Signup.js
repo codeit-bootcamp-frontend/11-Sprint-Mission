@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Signup.css";
-import * as validation from "../validation";
+import * as validation from "components/Validation";
 import { Link, useNavigate } from "react-router-dom";
 
 function Signup(props) {
