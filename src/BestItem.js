@@ -39,7 +39,7 @@ function BestItem() {
             />
           ))
         ) : (
-          <p>No items found or loading...</p> // 데이터를 불러오는 중이거나 데이터가 없을 때
+          <p>상품을 찾는 중입니다..</p>
         )}
       </div>
     </div>

@@ -5,6 +5,7 @@
 }
 
 .allTitle {
+  max-width: 1370px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -60,6 +61,8 @@
 }
 
 .indivItems {
+  width: 1370px;
   display: flex;
+  flex-wrap: wrap;
   gap: 30px;
 }
