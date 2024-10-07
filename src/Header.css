@@ -1,0 +1,45 @@
+@import url(common.css);
+
+.header {
+  display: flex;
+  padding: 0px 200px;
+  justify-content: space-between;
+  border: 1px solid #dfdfdf;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.logo-large {
+  width: 153px;
+  height: 51px;
+}
+
+.nav {
+  display: flex;
+  gap: 30px;
+}
+
+.profile-icon {
+  display: flex;
+  align-items: center;
+}
+
+.free-board {
+  font-size: 18px;
+  line-height: 26px;
+  text-align: center;
+  font-weight: 700;
+  color: #4b5563;
+}
+
+.used-market {
+  font-size: 18px;
+  line-height: 26px;
+  text-align: center;
+  font-weight: 700;
+  color: 3692FF;
+}

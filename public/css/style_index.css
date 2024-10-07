@@ -1,0 +1,528 @@
+@import url(common.css);
+
+.top {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    height: 70px;
+    padding: 9px 400px 9px 400px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.top-nav {
+    flex : 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.top-nav-logo {
+    width: 153px;
+    height: 51px;
+}
+
+.btn-login {
+    font-family: "Pretendard-Regular";
+    background-color: #3692FF;
+    border: 1px solid #fff;
+    width: 128px;
+    height: 48px;
+    padding: 12px 23px 12px 23px;
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.btn-login:hover,
+.btn-catalog:hover {
+    background-color: #1967D6;
+    cursor: pointer;
+}
+
+.body_1 {
+    padding-top: 70px;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: #CFE5FF;
+    align-items: center;
+    height: 540px;  
+}
+
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 7px;
+}
+
+
+.header-banner {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding : 0px 0px 60px 0px;
+}
+
+
+.header-description {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 56px;
+    color: #374151;
+}
+
+
+.btn-catalog {
+    font-family: "Pretendard-Regular";
+    background-color: #3692ff;
+    border: 1px solid #CFE5FF;
+    border-radius: 40px;
+    padding: 16px 124px 16px 124px;
+    color: #F3F4F6;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.section-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+}
+
+.section-hotitem,
+.section-search,
+.section-register {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    padding: 138px 0 138px 0;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.section-banner {
+    display: flex;
+    gap: 64px;
+}
+
+.section-hotitem-image,
+.section-search-image,
+.section-register-image {
+    width: 579px;
+    height: 444px;
+}
+
+
+.section-hotitem-container,
+.section-register-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center;
+}
+
+
+.section-hotitem-description,
+.section-search-description,
+.section-register-description {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.section-search-container {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center;
+}
+
+p {
+    margin: 0;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26px;
+    color: #3692FF;
+}
+
+
+.section-hotitem-description-Bold,
+.section-search-description-Bold,
+.section-register-description-Bold {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 56px;
+}
+
+.section-hotitem-description-Bold {
+    width: 222px;
+    word-break: keep-all;
+}
+
+.section-search-description-Bold,
+.section-register-description-Bold {
+    width: 293px;
+    word-break: keep-all; /*단어단위로 끊기*/
+}
+
+.section-hotitem-description-regular,
+.section-search-description-regular,
+.section-register-description-regular {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.bottom {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: #CFE5FF;
+    align-items: center;
+    height: 540px; 
+}
+
+.bottom-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 69px;
+}
+
+.bottom-banner {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding : 0px 0px 60px 0px;
+}
+
+.bottom-description {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 56px;
+    color: #374151;
+}
+
+.footer {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #111827;
+    padding: 32px 400px 32px 400px;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.footer-codeit {
+    color: #9CA3AF;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.footer-Privacy_FAQ {
+    display: flex;
+    gap: 30px;
+}
+
+a {
+    color: #E5E7EB;
+    font-weight: 400;
+    font-size: 16px;
+    text-decoration-line: none;
+}
+
+
+/*모바일 미디어쿼리*/
+
+@media (max-width: 767px) {
+    .top {
+        padding: 0 16px;
+    }
+
+    .header {
+        padding-top: 48px;
+    }
+
+    .header-container {
+        flex-direction: column;
+        gap: 132px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .header-banner {
+        padding-bottom: 0;
+    }
+
+    .header-description {
+        text-align: center;
+        font-size: 32px;
+        line-height: 44.8px;
+    }
+
+    .btn-catalog {
+        width: 240px;
+        height: 48px;
+        padding: 12px 71px 12px 71px;
+        font-size: 18px;
+        white-space: nowrap;
+    }
+
+    .header-image {
+        height: auto;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .section-container {
+        padding: 52px 15px 83px 15px;
+        gap: 40px;
+        box-sizing: border-box;
+    }
+
+    .section-hotitem,
+    .section-search,
+    .section-register {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .section-banner {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .section-hotitem-image,
+    .section-search-image,
+    .section-register-image {
+        height: auto;
+        width: 100%;
+    }
+
+    .section-hotitem-container,
+    .section-register-container {
+        gap: 8px;
+    }
+
+    .section-search-container {
+        order: 2;
+    }
+
+    .section-search-image {
+        order: 1;
+    }
+
+    .section-hotitem-description,
+    .section-search-description,
+    .section-register-description {
+        gap: 16px;
+    }
+
+    .section-title {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .section-hotitem-description-Bold, 
+    .section-search-description-Bold,
+    .section-register-description-Bold {
+        font-size: 24px;
+        line-height: 32px;
+        width: auto;
+    }
+    
+
+    .section-hotitem-description-regular,
+    .section-search-description-regular,
+    .section-register-description-regular {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .bottom-image {
+        height: auto;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .bottom-container {
+        flex-direction: column;
+    }
+
+    .bottom-description {
+        font-size: 32px;
+        line-height: 44.8px;
+        text-align: center;
+    }
+
+    .footer {
+        padding: 32px 0 32px 0;
+    }
+
+    .footer-container {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        width: 311px;
+        gap: 32px;
+    }
+
+    .footer-codeit {
+        order: 2;
+    }
+}
+
+
+/*태블릿 미디어쿼리*/
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .top {
+        padding: 0 24px 0 24px;
+    }
+
+    .header {
+        height: 771px;
+        padding-top: 84px;
+    }
+
+    .header-container {
+        flex-direction: column;
+        gap: 211px;
+    }
+
+    .header-banner {
+        padding-bottom: 0;
+    }
+
+    .header-description {
+        text-align: center;
+        font-size: 40px;
+        line-height: 56px;
+        white-space: nowrap;
+    }
+
+    .btn-catalog {
+        width: 357px;
+        height: 56px;
+        padding: 16px 124px 16px 124px;
+        font-size: 20px;
+        white-space: nowrap;
+    }
+
+    .header-image {
+        width: 744px;
+        height: 340px;
+    }
+
+    .section-container {
+        padding: 24px 0 56px 0;
+        gap: 52px;
+    }
+
+    .section-hotitem,
+    .section-search,
+    .section-register {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .section-banner {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .section-hotitem-image,
+    .section-search-image,
+    .section-register-image {
+        width: 696px;
+        height: 524px;
+    }
+
+    .section-hotitem-container,
+    .section-register-container {
+        gap: 16px;
+    }
+
+    .section-hotitem-description {
+        gap: 24px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    .section-hotitem-description-Bold, 
+    .section-search-description-Bold,
+    .section-register-description-Bold {
+        font-size: 32px;
+        line-height: 42px;
+        width: auto;
+    }
+
+    .section-hotitem-description-regular,
+    .section-search-description-regular,
+    .section-register-description-regular {
+        font-size: 18px;
+    }
+
+    .section-search-container {
+        order: 2;
+    }
+
+    .section-search-image {
+        order: 1;
+    }
+
+    .bottom {
+        height: 927px;
+    }
+
+    .bottom-image {
+        width: 744px;
+        height: 397px;
+    }
+
+    .bottom-container {
+        flex-direction: column;
+        gap: 150px;
+    }
+
+    .bottom-description {
+        font-size: 40px;
+        line-height: 56px;
+        text-align: center;
+    }
+
+    .footer {
+        padding: 32px 104px 108px 104px
+    }
+}
