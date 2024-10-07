@@ -1,0 +1,16 @@
+@import "./global.css";
+
+.bestItems {
+  margin-top: 100px;
+}
+
+.bestTitle {
+  font-weight: 600;
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
+.items {
+  display: flex;
+  gap: 30px;
+}
