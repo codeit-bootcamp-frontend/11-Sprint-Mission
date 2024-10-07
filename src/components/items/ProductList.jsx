@@ -5,7 +5,7 @@ import { getBreakpoint, updateProductsPerPage } from "utils/checkDevice";
 import Product from "./Product";
 import DropDown from "./DropDown";
 import Search from "./Search";
-import PrimaryButton from "./PrimaryButton";
+import PrimaryButton from "components/common/PrimaryButton";
 import Paginations from "./Paginations";
 
 function ProductList() {
