@@ -1,17 +1,37 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+import "./styles/loading.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const RootComponent = () => {
+  const [loading, setLoading] = useState(true);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  useEffect(() => {
+    const initializeApp = async () => {
+      try {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    initializeApp();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className='loading-spinner'>
+        <div className='loading-spinner-icon'></div>
+      </div>
+    );
+  }
+
+  return (
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
+};
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<RootComponent />);

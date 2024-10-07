@@ -1,0 +1,19 @@
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+.loading-spinner-icon {
+  width: 10rem;
+  height: 10rem;
+  background: url(../assets/ic-loading.png) no-repeat center/cover;
+  animation: rotate_image 6s linear infinite;
+  transform-origin: 50% 50%;
+}
+@keyframes rotate_image {
+  100% {
+    transform: rotate(360deg);
+  }
+}
