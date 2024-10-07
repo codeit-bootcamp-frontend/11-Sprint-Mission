@@ -1,0 +1,62 @@
+@import url(style.css);
+
+header,
+.header__content,
+.header__content__menu {
+  display: flex;
+  align-items: center;
+}
+
+header {
+  width: 100vw;
+  height: 4.375rem;
+  padding: 0 200px;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--gray-400);
+}
+
+.header__content {
+  gap: 4rem;
+}
+
+.header__content__menu {
+  font-size: 1.125rem;
+  font-weight: 700;
+  gap: 2.5rem;
+  text-decoration: none;
+}
+
+.header__content__menu a {
+  color: var(--gray-600);
+  text-decoration: none;
+}
+
+.header__content__menu a.active {
+  color: var(--blue);
+}
+
+.logo {
+  width: 9.56rem;
+  height: 3.19rem;
+}
+
+.profile {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+@media (max-width: 1280px) {
+  header {
+    padding: 0 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 0 60px;
+  }
+
+  .header__content {
+    gap: 2rem;
+  }
+}
