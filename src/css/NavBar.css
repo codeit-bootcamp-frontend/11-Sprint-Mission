@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+  font-family: "Pretendard", "sans-serif";
+}
+
+.Nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  padding: 0 200px;
+  border-bottom: 1px solid #dfdfdf;
+  background-color: #ffffff;
+}
+
+.Nav-first-section {
+  display: flex;
+  align-items: center;
+}
+
+.Nav-logo-box {
+  margin: 10px 32px 9px 0;
+  width: 153px;
+  height: 51px;
+  background-image: url("../../public/assets/Property\ 1=lg.png");
+  background-size: cover;
+}
+
+.Nav-menu-box {
+  display: flex;
+  gap: 30px;
+  margin: 0 15px;
+  line-height: 26px;
+}
+
+.menu-free {
+  font-size: 18px;
+  font-weight: 700;
+  color: #4b5563;
+  white-space: nowrap;
+}
+
+.menu-used {
+  font-size: 18px;
+  font-weight: 700;
+  color: #3692ff;
+  white-space: nowrap;
+}
+
+/* 반응형 - Tablet*/
+@media screen and (max-width: 1199px) and (min-width: 768px) {
+  .Nav {
+    padding: 0 24px;
+    border-bottom: 1px solid #dfdfdf;
+  }
+
+  .Nav-logo-box {
+    margin: 10px 20px 9px 0;
+  }
+
+  .Nav-menu-box {
+    display: flex;
+    gap: 30px;
+    margin: 0 15px;
+    line-height: 26px;
+  }
+}
+
+/* 반응형 - Mobile*/
+@media screen and (max-width: 767px) {
+  .Nav {
+    padding: 0 16px;
+    border-bottom: 1px solid #dfdfdf;
+  }
+
+  .Nav-logo-box {
+    width: 81px;
+    height: 40px;
+    margin: 10px 10px 9px 0;
+    background-image: url("../../public/assets/Property 1=Typo.png");
+  }
+
+  .Nav-menu-box {
+    display: flex;
+    gap: 10px;
+    margin: 0 15px;
+    line-height: 26px;
+  }
+
+  .menu-free {
+    font-size: 16px;
+    font-weight: 700;
+    color: #4b5563;
+    white-space: nowrap;
+  }
+
+  .menu-used {
+    font-size: 16px;
+    font-weight: 700;
+    color: #3692ff;
+    white-space: nowrap;
+  }
+}
