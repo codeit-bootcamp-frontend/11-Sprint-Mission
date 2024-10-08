@@ -15,6 +15,7 @@ function ProductList() {
   const [productsPerPage, setProductsPerPage] = useState(initialperPage); // 반응형에 따라 보여줄 Product 수를 할당할 state
   const [order, setOrder] = useState("recent"); // 데이터 정렬을 위한 queryParam [orderBy]
   const [currentPage, setCurrentPage] = useState(1); // 데이터 호출을 위한 queryParam [page]
+  const [keyword, setKeyword] = useState("");
 
   /**
    * 서버에서 데이터를 가져오는 함수
@@ -22,15 +23,16 @@ function ProductList() {
    */
   const loadProducts = useCallback(
     (page = currentPage, pageSize = productsPerPage) => {
-      fetchProducts({ page, pageSize, orderBy: order }).then(
+      fetchProducts({ page, pageSize, orderBy: order, keyword: keyword }).then(
         ({ list, totalCount }) => {
           const totalPageCount = Math.ceil(totalCount / productsPerPage);
           setProducts({ list: list, totalProductsCount: totalPageCount });
-          if (currentPage > totalPageCount) setCurrentPage(totalPageCount);
+          if (!keyword && currentPage > totalPageCount)
+            setCurrentPage(totalPageCount);
         }
       );
     },
-    [currentPage, productsPerPage, order]
+    [currentPage, productsPerPage, order, keyword]
   );
 
   /**
@@ -66,7 +68,7 @@ function ProductList() {
       <div className="top">
         <h2 className="products-title">전체 상품</h2>
         <div className="filter-area">
-          <Search />
+          <Search setKeyword={setKeyword} />
           <PrimaryButton
             name="btn-register"
             onClick={() => navigate("/addItem")}

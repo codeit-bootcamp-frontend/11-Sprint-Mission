@@ -8,7 +8,7 @@ export const fetchProducts = async ({
 } = {}) => {
   try {
     const queryParams = new URLSearchParams({ page, pageSize, orderBy });
-    if (keyword) queryParams.set("keyword", encodeURIComponent(keyword));
+    if (keyword) queryParams.set("keyword", keyword);
 
     const response = await fetch(`${SERVER_URL}?${queryParams}`);
     if (!response.ok) {
