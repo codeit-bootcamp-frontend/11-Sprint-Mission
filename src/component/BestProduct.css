@@ -1,0 +1,13 @@
+.BestProductItem {
+    width: 282px;
+}
+
+.BestProductItemImg {
+    width: 282px;
+    height: 282px;
+}
+
+.productName {
+    font-size: 14px;
+    font-weight: 500;
+}
