@@ -1,89 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
-  <link rel="stylesheet" href="style.css">
-  <title>판다마켓</title>
-</head>
-<body>
-  <!-- 머리 -->
-  <nav class="navbar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1" />
+    <!-- 메타태그 시작 -->
+    <meta property="og:title" content="판다 마켓" />
+    <meta property="og:description" content="일상의 모든 물건을 거래해보세요" />
+    <!-- netlify 배포 오류 이슈로 임의 url -->
+    <meta property="og:url" content="https://www.codeit.kr" />
+    <meta property="og:image" content="/img_file/gnb/Group 19@3x.png" />
+    <!-- 메타태그 끝 -->
+    <link rel="stylesheet" href="style.css" />
+    <base href="/" />
+    <title>판다마켓</title>
+  </head>
+  <body>
+    <!-- 머리 -->
+    <nav class="navbar">
       <a href="/" class="navbar_link">
-        <img src="/img_file/Property 1=lg.png" alt="판다 로고" class="navbar_logo">
+        <img src="/img_file/Property 1=lg.png" alt="판다 로고" class="navbar_logo" />
       </a>
-    <a href="/login.html" class="navbar_login">로그인</a>
-  </nav>
-  <!-- 몸통 -->
-  <div class="content">
-    <section class="content_top_title">
-      <div class="content_top_title_components">
-        <div class="content_top_title_text">
-          <h1 class="content_top_title_intro">일상의 모든 물건을 <br>거래해 보세요</h1>
-          <button class="content_top_title_button" onclick="location.href='/items'">구경하러 가기</button>
-        </div>
-        <img src="/img_file/Img_home_top.png">
-      </div>
-    </section>
-    <section class="content_item_page">
-      <div class="content_item_page_components">
-        <img src="/img_file/Img_home_01.png" class="content_item_page_img">
-        <div class="content_item_page_text">
-          <p class="content_item_page_intro">Hot item</p>
-          <p class="content_item_page_title">인기 상품을<br> 확인해 보세요</p>
-          <p class="content_item_page_eg">가장 HOT한 중고거래 물품을<br>
-             판다 마켓에서 확인해 보세요</p>
-        </div>
-      </div>
-    </section>
-    <section class="content_search_page">
-      <div class="content_search_page_components">
-        <div class="content_search_page_text">
-          <p class="content_search_page_intro">Search</p>
-          <p class="content_search_page_title">구매를 원하는<br>상품을 검색하세요</p>
-          <p class="content_search_page_eg">구매하고 싶은 물품은 검색해서<br>
-            쉽게 찾아보세요</p>
-        </div>
-        <img src="/img_file/Img_home_02.png" class="content_search_page_img">
-      </div>
-    </section>
-    <section class="content_register_page">
-      <div class="content_register_page_components">
-        <img src="/img_file/Img_home_03.png" class="content_register_page_img">
-        <div class="content_register_page_text">
-          <p class="content_register_page_intro">Register</p>
-          <p class="content_register_page_title">판매를 원하는<br>상품을 등록하세요</p>
-          <p class="content_register_page_eg">어떤 물건이든 판매하고 싶은 상품을<br>
-            쉽게 등록하세요</p>
-        </div>
-      </div>
-    </section>
-    <section class="content_bottom_title">
-      <div class="content_bottom_title_components">
-        <div class="content_bottom_title_text">
-          <h1 class="content_bottom_title_intro">믿을 수 있는 <br>판다마켓 중고 거래</h1>
-        </div>
-        <img src="/img_file/Img_home_bottom.png">
-      </div>
-    </section>
-  </div>
-  <!-- 푸터 -->
-  <footer>
-    <div class="footer_copyright">
-      <p>&copy; codeit - 2024</p>
-    </div>
-    <nav class="footer_nav">
-      <ul class="footer_menu">
-        <li><a href="/privacy">Privacy Policy</a></li>
-        <li><a href="/faq">FAQ</a></li>
-      </ul>
+      <a href="/login.html" class="navbar_login">로그인</a>
     </nav>
-    <div class="footer_sns">
-      <a href="https://facebook.com/" target="blank"><img src="/img_file/ic_facebook.png" alt="facebook"></a>
-      <a href="https://x.com/" target="blank"><img src="/img_file/ic_twitter.png" alt="twitter"></a>
-      <a href="https://www.youtube.com/" target="blank"><img src="/img_file/ic_youtube.png" alt="youtube"></a>
-      <a href="https://www.instagram.com/" target="blank"><img src="/img_file/ic_instagram.png" alt="instagram"></a>
+    <!-- 몸통 -->
+    <div class="content">
+      <section class="content_top_title">
+        <div class="content_top_title_components">
+          <div class="content_top_title_text">
+            <h1 class="content_top_title_intro">일상의 모든 물건을 <br />거래해 보세요</h1>
+            <button class="content_top_title_button" onclick="location.href='/items'">구경하러 가기</button>
+          </div>
+          <img src="/img_file/Img_home_top.png" alt="home-top-img" />
+        </div>
+      </section>
+      <section class="content_item_page">
+        <div class="content_item_page_components">
+          <img src="/img_file/Img_home_01.png" class="content_item_page_img" />
+          <div class="content_item_page_text">
+            <p class="content_item_page_intro">Hot item</p>
+            <p class="content_item_page_title">
+              인기 상품을<br />
+              확인해 보세요
+            </p>
+            <p class="content_item_page_eg">
+              가장 HOT한 중고거래 물품을<br />
+              판다 마켓에서 확인해 보세요
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="content_search_page">
+        <div class="content_search_page_components">
+          <div class="content_search_page_text">
+            <p class="content_search_page_intro">Search</p>
+            <p class="content_search_page_title">
+              구매를 원하는<br />
+              상품을 검색하세요
+            </p>
+            <p class="content_search_page_eg">
+              구매하고 싶은 물품은 검색해서<br />
+              쉽게 찾아보세요
+            </p>
+          </div>
+          <img src="/img_file/Img_home_02.png" class="content_search_page_img" />
+        </div>
+      </section>
+      <section class="content_register_page">
+        <div class="content_register_page_components">
+          <img src="/img_file/Img_home_03.png" class="content_register_page_img" />
+          <div class="content_register_page_text">
+            <p class="content_register_page_intro">Register</p>
+            <p class="content_register_page_title">
+              판매를 원하는<br />
+              상품을 등록하세요
+            </p>
+            <p class="content_register_page_eg">
+              어떤 물건이든 판매하고 싶은 상품을<br />
+              쉽게 등록하세요
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="content_bottom_title">
+        <div class="content_bottom_title_components">
+          <div class="content_bottom_title_text">
+            <h1 class="content_bottom_title_intro">믿을 수 있는 <br />판다마켓 중고 거래</h1>
+          </div>
+          <img src="/img_file/Img_home_bottom.png" alt="home-bottom-img" />
+        </div>
+      </section>
     </div>
-  </footer>
-</body>
+    <!-- 푸터 -->
+    <footer>
+      <div class="footer_copyright">
+        <p>&copy; codeit - 2024</p>
+      </div>
+      <nav class="footer_nav">
+        <ul class="footer_menu">
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="footer_sns">
+        <a href="https://facebook.com/" target="blank"><img src="/img_file/ic_facebook.png" alt="facebook" /></a>
+        <a href="https://x.com/" target="blank"><img src="/img_file/ic_twitter.png" alt="twitter" /></a>
+        <a href="https://www.youtube.com/" target="blank"><img src="/img_file/ic_youtube.png" alt="youtube" /></a>
+        <a href="https://www.instagram.com/" target="blank"><img src="/img_file/ic_instagram.png" alt="instagram" /></a>
+      </div>
+    </footer>
+  </body>
 </html>

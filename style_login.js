@@ -12,3 +12,18 @@
 // };
 
 // inputTags.forEach(input => input.addEventListener('input', checkInputs));
+
+// input 관련해 만드는 중
+
+// function loginCheck() {
+//   const email = document.getElementsByid("email");
+//   const password = document.getElementById("passworrd");
+
+//   if (!email.checkValidity()) {
+//     return alert(email.validationMessage);
+//   }
+
+//   if (!password.checkValidity()) {
+//     return alert(password.validationMessage);
+//   }
+// }
