@@ -105,3 +105,22 @@ input:focus {
 input:not(:focus) {
   border: none;
 }
+
+.error-message {
+  display: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: #F74747;
+  margin: 8px 0 0 16px;
+}
+
+.signupButton.disabled {
+  background-color: #9ca3af; 
+  cursor: not-allowed;
+}
+
+.signupButton.active {
+  background-color: #3692ff; 
+  color: #ffffff;
+  cursor: pointer;
+}

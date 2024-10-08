@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>판다마켓 - 로그인</title>
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="login.css">
   </head>
   <body>
     <div class="whole login">
@@ -15,21 +15,25 @@
           </a>
         </h1>
         <div class="loginCenter">
-          <form action>
+          <form id="loginForm">
             <div class="input">
               <label for="email-input">이메일</label>
-              <input id="email-input" type="email" placeholder="이메일을 입력해주세요.">
+              <input id="email-input" type="email" placeholder="이메일을 입력해주세요." oninput="validateForm()" required name="email">
+              <span id="emailMessage" class="emailMessage">이메일을 입력해 주세요.</span>
+              <span id="emailErrorMessage" class="emailErrorMessage">잘못된 이메일 형식입니다.</span>
               
             </div>
             <div class="input">
               <label for="password-input">비밀번호</label>
               <div class="password">
-                <input id="password-input" type="password" placeholder="비밀번호를 입력해주세요.">
+                <input id="password-input" type="password" placeholder="비밀번호를 입력해주세요." oninput="validateForm()" required name="password">
                 
               </div>
+              <span id="passwordMessage" class="passwordMessage">비밀번호를 입력해 주세요.</span>
+              <span id="passwordLengthError" class="passwordLengthError">비밀번호를 8자 이상 입력해 주세요.</span>
               
             </div>
-            <button class="loginButton" type="submit">로그인</button> 
+            <button id="loginButton" class="loginButton button" type="submit" onclick="location.href='items.html'" disabled>로그인</button>
           </form>
         </div>
         <div class="easylogin">
@@ -45,11 +49,12 @@
         </div>
         <div class="signup">
           판다마켓이 처음이신가요?
-          <a href="/signup">회원가입</a>
+          <a href="./signup.html">회원가입</a>
         </div>
       </div>
     </div>   
 
-
+    <script src="./valid1.js"></script>
   </body>
+  
 </html>
