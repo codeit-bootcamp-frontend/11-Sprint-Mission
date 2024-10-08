@@ -3,6 +3,7 @@ import BestProduct from '../components/BestProduct';
 import '../styles/items.css';
 import { useEffect, useState } from 'react';
 import { getProducts } from '../hooks/api';
+import { Link } from 'react-router-dom';
 
 const LIMIT = 6;
 
@@ -57,9 +58,9 @@ function Items() {
               <p className="subTitle">전체 상품</p>
               <div className="sub">
                 <input></input>
-                <a href="/additem.js">
+                <Link to="/additem">
                   <button className="productUp">상품 등록하기</button>
-                </a>
+                </Link>
                 <div className="dropdown">
                   <button className="dropdown-button" onClick={toggleDropdown}>
                     {order === 'createdAt' ? '최신순' : '베스트순'} ▼
