@@ -7,7 +7,7 @@ import { getProducts } from '../hooks/api';
 const LIMIT = 6;
 
 function Items() {
-  const [order, setOrder] = useState('createAt');
+  const [order, setOrder] = useState('createdAt');
   const [items, setItems] = useState([]);
   const [bestItem, setBestItem] = useState([]);
   const [offset, setOffset] = useState(0);
@@ -19,14 +19,20 @@ function Items() {
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
   const handleLoad = async (options) => {
-    const { list } = await getProducts(options);
-    if (options.offset === 0) {
-      setItems(list);
-    } else {
-      setItems([...items, ...list]);
+    try {
+      const { list } = await getProducts(options.order);
+
+      if (options.offset === 0) {
+        setItems(list);
+      } else {
+        setItems([...items, ...list]);
+      }
+
+      setOffset(options.offset + list.length);
+      setBestItem(list);
+    } catch (error) {
+      console.error('API 호출 중 오류 발생:', error);
     }
-    setOffset(options.offset + list.length);
-    setBestItem(list);
   };
 
   const handleLoadMore = () => {
@@ -56,13 +62,13 @@ function Items() {
                 </a>
                 <div className="dropdown">
                   <button className="dropdown-button" onClick={toggleDropdown}>
-                    {order === 'createAt' ? '최신순' : '베스트순'} ▼
+                    {order === 'createdAt' ? '최신순' : '베스트순'} ▼
                   </button>
                   {dropdownOpen && (
                     <ul className="dropdown-menu">
                       <p
                         onClick={() => {
-                          setOrder('createAt');
+                          setOrder('createdAt');
                           setDropdownOpen(false);
                         }}
                       >
