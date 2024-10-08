@@ -1,6 +1,7 @@
 import logoImg from '../assets/Group 19.svg';
 import loginImg from '../assets/Frame.svg';
 import '../styles/Header.css';
+import { NavLink } from 'react-router-dom';
 
 function Header() {
   return (
@@ -8,10 +9,18 @@ function Header() {
       <div className="header-left">
         <img src={logoImg} alt="logoImg" />
         <nav>
-          <a className="freeNotice">자유게시판</a>
-          <a className="usedMarket" href="/items">
+          <NavLink
+            to=""
+            className={({ isActive }) => (isActive ? 'active' : '')}
+          >
+            자유게시판
+          </NavLink>
+          <NavLink
+            to="/items"
+            className={({ isActive }) => (isActive ? 'active' : '')}
+          >
             중고마켓
-          </a>
+          </NavLink>
         </nav>
       </div>
       <a>
