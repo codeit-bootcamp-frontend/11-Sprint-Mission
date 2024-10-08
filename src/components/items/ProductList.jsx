@@ -63,6 +63,10 @@ function ProductList() {
     return () => window.removeEventListener("resize", handleResize); // 언마운트: 리사이즈 이벤트 삭제
   }, [productsPerPage, loadProducts]);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [order, keyword]);
+
   return (
     <section id="section_all">
       <div className="top">
