@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../styles/style.css";
 import "../styles/home.css";
 import imgLogo from "../images/logo.png";
@@ -23,10 +24,10 @@ const Home = () => {
           <div>
             <div className="intro-container">
               <h2>
-                일상의 모든 물건을 <br className="r-break" />
+                일상의 모든 물건을 <br className="responsive-break" />
                 거래해 보세요
               </h2>
-              <a href="/items.html">구경하러 가기</a>
+              <Link to={"/items"}>구경하러 가기</Link>
             </div>
             <img src={imgHomeTop} alt="홈페이지 상단 이미지" />
           </div>
@@ -37,7 +38,7 @@ const Home = () => {
             <div className="card-content">
               <p className="card-subtitle">Hot item</p>
               <h2 className="card-title">
-                인기 상품을 <br className="r-break" />
+                인기 상품을 <br className="responsive-break" />
                 확인해 보세요
               </h2>
               <p className="card-text">
@@ -52,7 +53,7 @@ const Home = () => {
             <div className="card-content">
               <p className="card-subtitle">Search</p>
               <h2 className="card-title">
-                구매를 원하는 <br className="r-break" />
+                구매를 원하는 <br className="responsive-break" />
                 상품을 검색하세요
               </h2>
               <p className="card-text">
@@ -67,7 +68,7 @@ const Home = () => {
             <div className="card-content">
               <p className="card-subtitle">Register</p>
               <h2 className="card-title">
-                판매를 원하는 <br className="r-break" />
+                판매를 원하는 <br className="responsive-break" />
                 상품을 등록하세요
               </h2>
               <p className="card-text">
