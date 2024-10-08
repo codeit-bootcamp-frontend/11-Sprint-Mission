@@ -1,9 +1,9 @@
 import axios from "axios";
 
-async function getProducts() {
+async function getAllProducts() {
   try {
     const response = await axios.get(
-      "https://panda-market-api.vercel.app/products?page=1&pageSize=10&orderBy=recent",
+      "https://panda-market-api.vercel.app/products?page=1&pageSize=100&orderBy=recent",
       {
         headers: {
           "Content-Type": "application/json",
@@ -21,4 +21,4 @@ async function getProducts() {
   }
 }
 
-export default getProducts;
+export default getAllProducts;

@@ -1,7 +1,7 @@
 import ItemsHeader from "./ItemsHeader";
 import "../../../styles/items.css";
 import BestProducts from "./BestProducts";
-import getProducts from "../../../api/items/getProducts";
+import getAllProducts from "../../../api/items/productsApi.js";
 import { useEffect, useState } from "react";
 import AllProducts from "./AllProducts";
 
@@ -11,7 +11,7 @@ function ItemsPage() {
 
   useEffect(() => {
     async function fetchData() {
-      const data = await getProducts();
+      const data = await getAllProducts();
 
       if (data) {
         setProducts(data);
