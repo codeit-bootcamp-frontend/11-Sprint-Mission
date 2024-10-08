@@ -10,10 +10,7 @@ export const fetchProducts = async ({
     const queryParams = new URLSearchParams({ page, pageSize, orderBy });
     if (keyword) queryParams.set("keyword", encodeURIComponent(keyword));
 
-    const response = await fetch(
-      // `${SERVER_URL}?page=${page}&pageSize=${pageSize}&orderBy=${order}`
-      `${SERVER_URL}?${queryParams}`
-    );
+    const response = await fetch(`${SERVER_URL}?${queryParams}`);
     if (!response.ok) {
       throw new Error("데이터 불러오기 실패");
     }
