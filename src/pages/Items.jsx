@@ -1,7 +1,9 @@
+import Header from "../components/Header";
+
 const Items = () => {
   return (
     <div>
-      <h1>Items 페이지</h1>
+      <Header isLogin={true} />
     </div>
   );
 };

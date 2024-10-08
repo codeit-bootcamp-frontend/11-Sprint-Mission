@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
 import "../styles/style.css";
 import "../styles/home.css";
-import imgLogo from "../images/logo.png";
 import imgHomeTop from "../images/img_home_top.png";
 import imgHome01 from "../images/img_home_01.png";
 import imgHome02 from "../images/img_home_02.png";
@@ -11,14 +11,7 @@ import imgHomeBottom from "../images/img_home_bottom.png";
 const Home = () => {
   return (
     <div>
-      <nav className="nav">
-        <a href="/" className="logo">
-          <img src={imgLogo} alt="사이트 로고" />
-        </a>
-        <a href="/login.html" className="login">
-          로그인
-        </a>
-      </nav>
+      <Header isLogin={false} />
       <main>
         <section className="intro">
           <div>
