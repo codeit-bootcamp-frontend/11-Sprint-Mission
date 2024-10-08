@@ -1,0 +1,37 @@
+@import "./global.css";
+
+.bestItems {
+  width: 1370px;
+  margin-top: 100px;
+}
+
+.bestTitle {
+  font-weight: 600;
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
+.items {
+  display: flex;
+  gap: 30px;
+}
+
+@media (max-width: 1152px) {
+  .bestItems {
+    width: 810px;
+  }
+
+  .items {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .bestItems {
+    width: 520px;
+  }
+
+  .items {
+    flex-wrap: wrap;
+  }
+}
