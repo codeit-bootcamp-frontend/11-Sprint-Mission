@@ -11,10 +11,9 @@ import Paginations from "./Paginations";
 function ProductList() {
   const navigate = useNavigate();
   const initialperPage = updateProductsPerPage(window.innerWidth);
-  const [products, setProducts] = useState([]); // 서버에서 받아올 Proudcts를 할당할 state
+  const [products, setProducts] = useState({ list: [], totalProductsCount: 0 }); // 서버에서 받아올 Proudcts를 할당할 state
   const [productsPerPage, setProductsPerPage] = useState(initialperPage); // 반응형에 따라 보여줄 Product 수를 할당할 state
   const [order, setOrder] = useState("recent"); // 데이터 정렬을 위한 queryParam [orderBy]
-  const [totalPage, setTotalPage] = useState(0); // Pagination을 위한 전체 페이지 수를 할당할 state
   const [currentPage, setCurrentPage] = useState(1); // 데이터 호출을 위한 queryParam [page]
 
   /**
@@ -25,9 +24,8 @@ function ProductList() {
     (page = currentPage, pageSize = productsPerPage) => {
       fetchProducts({ page, pageSize, orderBy: order }).then(
         ({ list, totalCount }) => {
-          setProducts(list);
           const totalPageCount = Math.ceil(totalCount / productsPerPage);
-          setTotalPage(totalPageCount);
+          setProducts({ list: list, totalProductsCount: totalPageCount });
           if (currentPage > totalPageCount) setCurrentPage(totalPageCount);
         }
       );
@@ -68,7 +66,7 @@ function ProductList() {
       <div className="top">
         <h2 className="products-title">전체 상품</h2>
         <div className="filter-area">
-          <Search setProducts={setProducts} perPage={productsPerPage} />
+          <Search />
           <PrimaryButton
             name="btn-register"
             onClick={() => navigate("/addItem")}
@@ -79,14 +77,14 @@ function ProductList() {
         </div>
       </div>
       <ul className="products-wrap all">
-        {products.map((product) => (
+        {products.list.map((product) => (
           <li key={product.id} className="product-item">
             <Product product={product} />
           </li>
         ))}
       </ul>
       <Paginations
-        totalPage={totalPage}
+        totalPage={products.totalProductsCount}
         currentPage={currentPage}
         handlePageChange={handlePageChange}
       />
