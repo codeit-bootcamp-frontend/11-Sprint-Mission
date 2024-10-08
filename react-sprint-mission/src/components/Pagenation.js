@@ -1,15 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { showInitialDeviceItems } from "utils/initialDevice ";
 
-// 버튼은 < > 포함 7개이며 idx는 1부터 5까지
-const ChangeButtonStyle = (id) => {
-  const pagenationBtn = document.querySelectorAll(".pagenationBtn");
-  for (let i = 0; i < pagenationBtn.length; i++) {
-    pagenationBtn[i].classList.remove("pagenationBtnSelect");
-  }
-  pagenationBtn[id].classList.add("pagenationBtnSelect");
-};
-
 function Pagenation({ totalCount = 0, pageChange }) {
   const [page, setPage] = useState(1);
   const [pagenation, setPagenation] = useState([1, 2, 3, 4, 5]);
@@ -33,7 +24,6 @@ function Pagenation({ totalCount = 0, pageChange }) {
         }
       }
       setPagenation(decreasePagenation);
-      ChangeButtonStyle(1);
       handleChangePage(decreasePagenation[0]);
     }
   };
@@ -48,14 +38,9 @@ function Pagenation({ totalCount = 0, pageChange }) {
           return Math.ceil(totalCount / showPageCount) >= num;
         });
       setPagenation(increasePagenation);
-      ChangeButtonStyle(1);
       handleChangePage(increasePagenation[0]);
     }
   };
-
-  useEffect(() => {
-    ChangeButtonStyle(1);
-  }, []);
 
   useEffect(() => {
     const lastPagenation = Math.ceil(totalCount / showPageCount);
@@ -70,12 +55,11 @@ function Pagenation({ totalCount = 0, pageChange }) {
       {pagenation.map((num, idx) => {
         return (
           <button
-            className={`pagenationBtn ${page % 5 === idx + 1 ? "pagenationBtnSelect" : ""}`}
+            className={`pagenationBtn ${page === num ? "pagenationBtnSelect" : ""}`}
             id={`pageBtn${idx}`}
             key={`pageBtn${idx}`}
             onClick={() => {
               handleChangePage(num);
-              ChangeButtonStyle(idx + 1);
             }}>
             {num}
           </button>
@@ -88,4 +72,4 @@ function Pagenation({ totalCount = 0, pageChange }) {
   );
 }
 
-export { Pagenation, ChangeButtonStyle };
+export { Pagenation };

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
-import { ImgPath } from "components/index";
+import { ImgPath } from "components";
 
 function Home(props) {
   return (
@@ -9,10 +9,10 @@ function Home(props) {
       <header>
         <div className="header">
           <Link to="/">
-            <img className="logo" src={`${ImgPath("/common/logo_pc.png")}`} alt="Home" />
+            <img className="logo" src={ImgPath("/common/logo_pc.png")} alt="Home" />
           </Link>
           <Link to="/Login">
-            <img className="login" src={`${ImgPath("/common/login_bt.png")}`} alt="로그인" />
+            <img className="login" src={ImgPath("/common/login_bt.png")} alt="로그인" />
           </Link>
         </div>
       </header>

@@ -3,15 +3,22 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Item.css";
 import { getAxios } from "utils/api";
 import { showInitialDeviceItems } from "utils/initialDevice ";
-import { Pagenation, ChangeButtonStyle, ImgPath } from "components";
+import { Pagenation, ImgPath } from "components";
 
-const BestItems = () => {
+function Item(props) {
+  const navigate = useNavigate();
   const [bestItemData, setBestItemData] = useState({ list: [], totalCount: 0 });
+  const [search, setSearch] = useState("");
+  const [itemData, setItemData] = useState({ itemList: [], totalCount: 0 });
+  const [page, setPage] = useState(1);
+  const [orderBy, setOrderBy] = useState("recent"); //favorite
+  const pageSize = (type) => showInitialDeviceItems(type);
+
   const getBestItemData = async () => {
     try {
       const res = await getAxios({
         page: 1,
-        pageSize: showInitialDeviceItems("best"),
+        pageSize: pageSize("best"),
         orderBy: "favorite",
       });
       if (res.status === 200) {
@@ -22,51 +29,13 @@ const BestItems = () => {
     }
   };
 
-  useEffect(() => {
-    getBestItemData();
-  }, []);
-
-  const handleDetail = (id) => {
-    console.log(`${id}-상세 상품`);
-  };
-
-  const BestItemDetail = () => {
-    return bestItemData.list.map((item) => {
-      return (
-        <div className="bestItemDetail" key={`bestItem${item.id}`}>
-          <img className="bestItemImg" src={item.images} alt="itemImg" onClick={() => handleDetail(item.id)} />
-          <span className="itemName">{item.name}</span>
-          <span className="itemPrice">{`${item.price.toLocaleString()}원`}</span>
-          <div className="favoriteCount">
-            <img src={ImgPath("/common/ic_heart.png")} alt="heart" />
-            {item.favoriteCount}
-          </div>
-        </div>
-      );
-    });
-  };
-
-  return (
-    <section className="itemSection">
-      <div className="itemContentsTitle">
-        <h3>베스트 상품</h3>
-      </div>
-      <div className="itemContentsForm">
-        <BestItemDetail />
-      </div>
-    </section>
-  );
-};
-
-const Items = () => {
-  const navigate = useNavigate();
-  const [search, setSearch] = useState("");
-  const [itemData, setItemData] = useState({ itemList: [], totalCount: 0 });
-  const [page, setPage] = useState(1);
-  const [orderBy, setOrderBy] = useState("recent"); //favorite
-  const pageSize = showInitialDeviceItems();
-
-  const getItemData = async (pageQuery, pageSizeQuery, orderByQuery, searchQuery = search, searchType) => {
+  const getItemData = async (
+    pageQuery,
+    pageSizeQuery,
+    orderByQuery,
+    searchQuery = search,
+    searchType
+  ) => {
     try {
       let parmas = {
         page: pageQuery,
@@ -87,7 +56,6 @@ const Items = () => {
 
         if (searchType === "keyDown") {
           setPage(1);
-          ChangeButtonStyle(1);
         }
       }
     } catch (e) {
@@ -95,11 +63,16 @@ const Items = () => {
     }
   };
 
-  const ItemDetail = () => {
-    return itemData.itemList.map((item, idx) => {
+  const BestItemDetail = () => {
+    return bestItemData.list.map((item) => {
       return (
-        <div className="itemDetail" key={`item${item.id}`}>
-          <img className="itemImg" src={item.images} alt="itemImg" onClick={() => handleDetail(item.id)} />
+        <div className="bestItemDetail" key={`bestItem${item.id}`}>
+          <img
+            className="bestItemImg"
+            src={item.images}
+            alt="itemImg"
+            onClick={() => handleDetail(item.id)}
+          />
           <span className="itemName">{item.name}</span>
           <span className="itemPrice">{`${item.price.toLocaleString()}원`}</span>
           <div className="favoriteCount">
@@ -111,9 +84,34 @@ const Items = () => {
     });
   };
 
+  const ItemDetail = () => {
+    return itemData.itemList.map((item, idx) => {
+      return (
+        <div className="itemDetail" key={`item${item.id}`}>
+          <img
+            className="itemImg"
+            src={item.images}
+            alt="itemImg"
+            onClick={() => handleDetail(item.id)}
+          />
+          <span className="itemName">{item.name}</span>
+          <span className="itemPrice">{`${item.price.toLocaleString()}원`}</span>
+          <div className="favoriteCount">
+            <img src={ImgPath("/common/ic_heart.png")} alt="heart" />
+            {item.favoriteCount}
+          </div>
+        </div>
+      );
+    });
+  };
+
+  const handleDetail = (id) => {
+    navigate("/");
+  };
+
   const handleKeyDown = (e) => {
     if (e.type === "keydown" && e.keyCode !== 13) return;
-    getItemData(1, pageSize, orderBy, e.target.value, "keyDown");
+    getItemData(1, pageSize(), orderBy, e.target.value, "keyDown");
   };
 
   const handleChangeSearch = (e) => {
@@ -124,56 +122,28 @@ const Items = () => {
     setOrderBy(e.target.value);
   };
 
-  const handleDetail = () => {
-    navigate("/");
-  };
-
   const handleChangePage = (pageNum) => {
     setPage(pageNum);
   };
 
   useEffect(() => {
-    getItemData(page, pageSize, orderBy);
-  }, [page, pageSize, orderBy]);
+    getItemData(page, pageSize(), orderBy);
+  }, [page, pageSize(), orderBy]);
 
-  return (
-    <section className="itemSection">
-      <div className="itemContentsTitle">
-        <h3>전체 상품</h3>
-        <div className="contentsSearch">
-          <input
-            className="inputBox"
-            type="text"
-            placeholder="검색할 상품을 입력해주세요."
-            value={search}
-            onChange={handleChangeSearch}
-            onKeyDown={handleKeyDown}
-          />
-          <button className="addItemBtn">
-            <Link to="/AddItem">상품 등록하기</Link>
-          </button>
-          <select id="itemSelect" className="selectBox" value={orderBy} onChange={handleChangeSelect}>
-            <option value="recent">최신순</option>
-            <option value="favorite">좋아요순</option>
-          </select>
-        </div>
-      </div>
-      <div className="itemContentsFormSmall">
-        <ItemDetail />
-      </div>
-      <Pagenation totalCount={itemData.totalCount} pageChange={handleChangePage} />
-    </section>
-  );
-};
+  useEffect(() => {
+    getBestItemData();
+  }, []);
 
-function Item(props) {
   return (
     <>
       <header className="navHeader">
         <div className="navigation">
           <div className="itemLogo">
             <Link to={"/"}>
-              <img src={ImgPath("/common/ic_logo_item_pc.png")} alt="pandaLogo" />
+              <img
+                src={ImgPath("/common/ic_logo_item_pc.png")}
+                alt="pandaLogo"
+              />
             </Link>
           </div>
           <div className="navNoticeBoard">
@@ -190,8 +160,48 @@ function Item(props) {
         </div>
       </header>
       <main>
-        <BestItems />
-        <Items />
+        <section className="itemSection">
+          <div className="itemContentsTitle">
+            <h3>베스트 상품</h3>
+          </div>
+          <div className="itemContentsForm">
+            <BestItemDetail />
+          </div>
+        </section>
+        <section className="itemSection">
+          <div className="itemContentsTitle">
+            <h3>전체 상품</h3>
+            <div className="contentsSearch">
+              <input
+                className="inputBox"
+                type="text"
+                placeholder="검색할 상품을 입력해주세요."
+                value={search}
+                onChange={handleChangeSearch}
+                onKeyDown={handleKeyDown}
+              />
+              <button className="addItemBtn">
+                <Link to="/AddItem">상품 등록하기</Link>
+              </button>
+              <select
+                id="itemSelect"
+                className="selectBox"
+                value={orderBy}
+                onChange={handleChangeSelect}
+              >
+                <option value="recent">최신순</option>
+                <option value="favorite">좋아요순</option>
+              </select>
+            </div>
+          </div>
+          <div className="itemContentsFormSmall">
+            <ItemDetail />
+          </div>
+          <Pagenation
+            totalCount={itemData.totalCount}
+            pageChange={handleChangePage}
+          />
+        </section>
       </main>
     </>
   );
