@@ -3,9 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Item.css";
 import { getAxios } from "utils/api";
 import { showInitialDeviceItems } from "utils/initialDevice ";
-import { Pagenation, ChangeButtonStyle } from "components";
-
-const imgPath = (fileName) => `${process.env.PUBLIC_URL}/assets${fileName}`;
+import { Pagenation, ChangeButtonStyle, ImgPath } from "components";
 
 const BestItems = () => {
   const [bestItemData, setBestItemData] = useState({ list: [], totalCount: 0 });
@@ -36,16 +34,11 @@ const BestItems = () => {
     return bestItemData.list.map((item) => {
       return (
         <div className="bestItemDetail" key={`bestItem${item.id}`}>
-          <img
-            className="bestItemImg"
-            src={item.images}
-            alt="itemImg"
-            onClick={() => handleDetail(item.id)}
-          />
+          <img className="bestItemImg" src={item.images} alt="itemImg" onClick={() => handleDetail(item.id)} />
           <span className="itemName">{item.name}</span>
           <span className="itemPrice">{`${item.price.toLocaleString()}원`}</span>
           <div className="favoriteCount">
-            <img src={imgPath("/common/ic_heart.png")} alt="heart" />
+            <img src={ImgPath("/common/ic_heart.png")} alt="heart" />
             {item.favoriteCount}
           </div>
         </div>
@@ -73,13 +66,7 @@ const Items = () => {
   const [orderBy, setOrderBy] = useState("recent"); //favorite
   const pageSize = showInitialDeviceItems();
 
-  const getItemData = async (
-    pageQuery,
-    pageSizeQuery,
-    orderByQuery,
-    searchQuery = search,
-    searchType
-  ) => {
+  const getItemData = async (pageQuery, pageSizeQuery, orderByQuery, searchQuery = search, searchType) => {
     try {
       let parmas = {
         page: pageQuery,
@@ -112,16 +99,11 @@ const Items = () => {
     return itemData.itemList.map((item, idx) => {
       return (
         <div className="itemDetail" key={`item${item.id}`}>
-          <img
-            className="itemImg"
-            src={item.images}
-            alt="itemImg"
-            onClick={() => handleDetail(item.id)}
-          />
+          <img className="itemImg" src={item.images} alt="itemImg" onClick={() => handleDetail(item.id)} />
           <span className="itemName">{item.name}</span>
           <span className="itemPrice">{`${item.price.toLocaleString()}원`}</span>
           <div className="favoriteCount">
-            <img src={imgPath("/common/ic_heart.png")} alt="heart" />
+            <img src={ImgPath("/common/ic_heart.png")} alt="heart" />
             {item.favoriteCount}
           </div>
         </div>
@@ -130,11 +112,7 @@ const Items = () => {
   };
 
   const handleKeyDown = (e) => {
-    if (e.keyCode === 13) {
-      getItemData(1, pageSize, orderBy, e.target.value, "keyDown");
-    }
-  };
-  const handleBlur = (e) => {
+    if (e.type === "keydown" && e.keyCode !== 13) return;
     getItemData(1, pageSize, orderBy, e.target.value, "keyDown");
   };
 
@@ -170,17 +148,11 @@ const Items = () => {
             value={search}
             onChange={handleChangeSearch}
             onKeyDown={handleKeyDown}
-            onBlur={handleBlur}
           />
           <button className="addItemBtn">
             <Link to="/AddItem">상품 등록하기</Link>
           </button>
-          <select
-            id="itemSelect"
-            className="selectBox"
-            value={orderBy}
-            onChange={handleChangeSelect}
-          >
+          <select id="itemSelect" className="selectBox" value={orderBy} onChange={handleChangeSelect}>
             <option value="recent">최신순</option>
             <option value="favorite">좋아요순</option>
           </select>
@@ -189,10 +161,7 @@ const Items = () => {
       <div className="itemContentsFormSmall">
         <ItemDetail />
       </div>
-      <Pagenation
-        totalCount={itemData.totalCount}
-        pageChange={handleChangePage}
-      />
+      <Pagenation totalCount={itemData.totalCount} pageChange={handleChangePage} />
     </section>
   );
 };
@@ -204,10 +173,7 @@ function Item(props) {
         <div className="navigation">
           <div className="itemLogo">
             <Link to={"/"}>
-              <img
-                src={imgPath("/common/ic_logo_item_pc.png")}
-                alt="pandaLogo"
-              />
+              <img src={ImgPath("/common/ic_logo_item_pc.png")} alt="pandaLogo" />
             </Link>
           </div>
           <div className="navNoticeBoard">
@@ -219,7 +185,7 @@ function Item(props) {
         </div>
         <div className="userInfo">
           <Link to={"/userInfo"} className="navMarket">
-            <img src={imgPath("/common/ic_user.png")} alt="userInfo" />
+            <img src={ImgPath("/common/ic_user.png")} alt="userInfo" />
           </Link>
         </div>
       </header>

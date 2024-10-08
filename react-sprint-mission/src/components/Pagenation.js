@@ -15,8 +15,7 @@ function Pagenation({ totalCount = 0, pageChange }) {
   const [pagenation, setPagenation] = useState([1, 2, 3, 4, 5]);
   const showPageCount = showInitialDeviceItems();
 
-  const handleChangePage = (id, pageNum) => {
-    ChangeButtonStyle(id);
+  const handleChangePage = (pageNum) => {
     setPage(pageNum);
     pageChange(pageNum);
   };
@@ -34,13 +33,14 @@ function Pagenation({ totalCount = 0, pageChange }) {
         }
       }
       setPagenation(decreasePagenation);
-      handleChangePage(1, decreasePagenation[0]);
+      ChangeButtonStyle(1);
+      handleChangePage(decreasePagenation[0]);
     }
   };
 
   const handleNextPage = () => {
     const lastPage = pagenation[pagenation.length - 1];
-    if (lastPage / 5 > 0 && lastPage * showPageCount < totalCount) {
+    if (lastPage * showPageCount < totalCount) {
       // totalcount 보다 작은 페이지만 필터링
       const increasePagenation = pagenation
         .map((num) => num + 5)
@@ -48,7 +48,8 @@ function Pagenation({ totalCount = 0, pageChange }) {
           return Math.ceil(totalCount / showPageCount) >= num;
         });
       setPagenation(increasePagenation);
-      handleChangePage(1, increasePagenation[0]);
+      ChangeButtonStyle(1);
+      handleChangePage(increasePagenation[0]);
     }
   };
 
@@ -58,42 +59,29 @@ function Pagenation({ totalCount = 0, pageChange }) {
 
   useEffect(() => {
     const lastPagenation = Math.ceil(totalCount / showPageCount);
-    setPagenation(
-      Array.from(
-        { length: lastPagenation > 5 ? 5 : lastPagenation },
-        (_, i) => i + 1
-      )
-    );
+    setPagenation(Array.from({ length: lastPagenation > 5 ? 5 : lastPagenation }, (_, i) => i + 1));
   }, [showPageCount, totalCount]);
 
   return (
     <div className="pagenation">
-      <button
-        className={"pagenationBtn"}
-        key={`pevPageBtn`}
-        onClick={handlePrevPage}
-      >
+      <button className={"pagenationBtn"} key={`pevPageBtn`} onClick={handlePrevPage}>
         {`<`}
       </button>
       {pagenation.map((num, idx) => {
         return (
           <button
-            className={`pagenationBtn ${
-              page % 5 === idx + 1 ? "pagenationBtnSelect" : ""
-            }`}
+            className={`pagenationBtn ${page % 5 === idx + 1 ? "pagenationBtnSelect" : ""}`}
             id={`pageBtn${idx}`}
             key={`pageBtn${idx}`}
-            onClick={() => handleChangePage(idx + 1, num)}
-          >
+            onClick={() => {
+              handleChangePage(num);
+              ChangeButtonStyle(idx + 1);
+            }}>
             {num}
           </button>
         );
       })}
-      <button
-        className={"pagenationBtn"}
-        key={`nextPageBtn`}
-        onClick={handleNextPage}
-      >
+      <button className={"pagenationBtn"} key={`nextPageBtn`} onClick={handleNextPage}>
         {`>`}
       </button>
     </div>

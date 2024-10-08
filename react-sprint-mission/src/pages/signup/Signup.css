@@ -65,8 +65,8 @@
   position: relative;
 }
 .inputBox {
-  width: 100%;
-  height: 56px;
+  width: 100% !important;
+  height: 56px !important;
   background: var(--gray100);
   border-radius: 12px;
   border: 0;

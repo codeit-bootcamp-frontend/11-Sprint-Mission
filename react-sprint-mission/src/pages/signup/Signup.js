@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Signup.css";
 import * as validation from "components/Validation";
 import { Link, useNavigate } from "react-router-dom";
+import { ImgPath } from "components/index";
 
 function Signup(props) {
   const [email, setEmail] = useState("");
@@ -14,7 +15,6 @@ function Signup(props) {
   const [pwdNotice, setPwdNotice] = useState("");
   const [pwdConfirmNotice, setPwdConfirmNotice] = useState("");
   const navigate = useNavigate();
-  const imgPath = (fileName) => `${process.env.PUBLIC_URL}/assets${fileName}`;
   const { emailValidationMsg, pwdValidationMsg, showPassword, emptyCheck } = validation;
 
   const updateLoginButtonState = (noticeMsg) => {
@@ -89,7 +89,7 @@ function Signup(props) {
       <div className="signup-form">
         <header className="signup-header">
           <div className="signup-title">
-            <img src={imgPath("/common/panda.png")} alt="panda" />
+            <img src={ImgPath("/common/panda.png")} alt="panda" />
             <Link to="/">판다마켓</Link>
           </div>
         </header>
@@ -167,10 +167,10 @@ function Signup(props) {
               <span>간편 로그인하기</span>
               <div>
                 <a href="https://www.google.com">
-                  <img src={imgPath("/common/ic_google.png")} alt="google" />
+                  <img src={ImgPath("/common/ic_google.png")} alt="google" />
                 </a>
                 <a href="https://www.kakaocorp.com/page">
-                  <img src={imgPath("/common/ic_kakao.png")} alt="kakao" />
+                  <img src={ImgPath("/common/ic_kakao.png")} alt="kakao" />
                 </a>
               </div>
             </div>

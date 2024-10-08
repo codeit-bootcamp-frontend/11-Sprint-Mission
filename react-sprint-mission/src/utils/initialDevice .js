@@ -1,9 +1,11 @@
 const initialDevice = () => {
-  return window.innerWidth < 1199
-    ? window.innerWidth < 767
-      ? "mobile"
-      : "tablit"
-    : "windows";
+  let device = "mobile";
+  if (window.innerWidth > 1199) {
+    device = "windows";
+  } else if (window.innerWidth > 767) {
+    device = "tablit";
+  }
+  return device;
 };
 
 const showInitialDeviceItems = (contentType = "all") => {
