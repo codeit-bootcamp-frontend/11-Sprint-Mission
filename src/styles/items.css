@@ -214,6 +214,46 @@
   gap: 24px;
 }
 
+.items-footer {
+  margin-top: 50px;
+}
+
+.page-nav-ul {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+
+.page-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: white;
+  color: var(--gray-500);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--gray-200);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.page-btn:hover {
+  background-color: var(--gray-200);
+}
+.arrow-rotated {
+  transform: rotate(180deg);
+}
+
+.current-page {
+  background-color: var(--blue-400);
+  color: white;
+}
+
+.current-page:hover {
+  background-color: var(--blue-400);
+}
+
 #mypage {
   display: block;
 }
