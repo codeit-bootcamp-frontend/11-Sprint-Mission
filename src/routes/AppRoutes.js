@@ -11,7 +11,7 @@ const routes = [
   { path: "", element: <Main /> },
   { path: "/boards", element: <Boards /> },
   { path: "/items", element: <Items /> },
-  { path: "/additem", element: <AddItem /> },
+  { path: "/addItem", element: <AddItem /> },
   { path: "/login", element: <Login /> },
   { path: "*", element: <Notfound /> },
 ];

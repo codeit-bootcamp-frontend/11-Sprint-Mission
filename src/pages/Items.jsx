@@ -55,8 +55,8 @@ function Items() {
             <SearchInput onSubmit={handleSearchSubmit} />
             <Button
               link={true}
-              href='/additem'
-              className='additem'
+              href='/addItem'
+              className='addItem'
               styleType='square blue'
             >
               상품 등록하기
