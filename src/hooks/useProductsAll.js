@@ -3,11 +3,8 @@ import { getProductsList } from "../services/panda-market-api";
 import useResponsivePageSize from "./useProductsPageSize";
 import useAsyncRequest from "./useAsyncRequest";
 
-const useProductsAll = () => {
+const useProductsAll = ({ order, search }) => {
   const [items, setItems] = useState([]);
-  const [search, setSearch] = useState("");
-  const [searchError, setSearchError] = useState(null);
-  const [order, setOrder] = useState("recent");
   const [total, setTotal] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -35,19 +32,6 @@ const useProductsAll = () => {
     });
   }, [execute, pageSize, search, order, currentPage]);
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    const searchValue = e.target["search"].value.trim();
-    if (items.length === 0) {
-      setSearchError({ search });
-    }
-    setSearch(searchValue);
-    setCurrentPage(1);
-  };
-
-  const handleBestClick = () => setOrder("favorite");
-  const handleNewestClick = () => setOrder("recent");
-
   useEffect(() => {
     handleLoad();
   }, [handleLoad]);
@@ -60,10 +44,6 @@ const useProductsAll = () => {
     isLoading,
     fetchError,
     pageSize,
-    handleSearchSubmit,
-    handleBestClick,
-    handleNewestClick,
-    searchError,
   };
 };
 

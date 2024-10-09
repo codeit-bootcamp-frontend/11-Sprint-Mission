@@ -6,8 +6,21 @@ import useProductsFavorite from "../hooks/useProductsFavorite";
 import SearchInput from "../components/common/SearchInput";
 import Button from "../components/common/Button";
 import DropDown from "../components/common/DropDown";
+import { useState } from "react";
 
 function Items() {
+  const [order, setOrder] = useState("recent");
+  const [search, setSearch] = useState("");
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    const searchValue = e.target["search"].value.trim();
+    setSearch(searchValue);
+    setCurrentPage(1);
+  };
+
+  const handleBestClick = () => setOrder("favorite");
+  const handleNewestClick = () => setOrder("recent");
   const {
     items: allItems,
     total,
@@ -16,16 +29,11 @@ function Items() {
     isLoading,
     fetchError,
     pageSize,
-    handleSearchSubmit,
-    handleBestClick,
-    handleNewestClick,
-    searchError,
-  } = useProductsAll();
+  } = useProductsAll({ order, search });
 
   const { items: favoriteItems } = useProductsFavorite();
 
-  const isEmpty =
-    allItems.length === 0 && !searchError && !fetchError && !isLoading;
+  const isEmpty = allItems.length === 0 && !fetchError && !isLoading;
 
   const options = [
     { label: "최신순", value: "recent" },
