@@ -1,33 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { getProductsList } from "../services/panda-market-api";
+import useResponsivePageSize from "./useProductsPageSize";
 
-const useProductsFavorite = (initialPageSize = 4, orderBy = "favorite") => {
+const useProductsFavorite = (orderBy = "favorite") => {
   const [items, setItems] = useState([]);
   const [loadingError, setLoadingError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [pageSize, setPageSize] = useState(initialPageSize);
 
-  // 화면 크기에 따라 pageSize 설정
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.matchMedia("(max-width: 767px)").matches) {
-        setPageSize(1); // 모바일
-      } else if (window.matchMedia("(max-width: 1199px)").matches) {
-        setPageSize(2); // 태블릿
-      } else {
-        setPageSize(initialPageSize); // PC
-      }
-    };
+  const pageSize = useResponsivePageSize({
+    mobileSize: 1,
+    tabletSize: 2,
+    pcSize: 4,
+  });
 
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [initialPageSize]);
-
-  const handleLoad = async () => {
+  const handleLoad = useCallback(async () => {
     const queryParams = {
       pageSize,
       orderBy,
@@ -42,11 +28,11 @@ const useProductsFavorite = (initialPageSize = 4, orderBy = "favorite") => {
     } finally {
       setIsLoading(false);
     }
-  };
-  // 데이터를 로드하는 함수
+  }, [pageSize, orderBy]);
+
   useEffect(() => {
     handleLoad();
-  }, [pageSize, orderBy]);
+  }, [handleLoad]);
 
   return { items, loadingError, isLoading };
 };

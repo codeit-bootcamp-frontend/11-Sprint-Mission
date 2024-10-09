@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { getProductsList } from "../services/panda-market-api";
+import useResponsivePageSize from "./useProductsPageSize";
 
 const useProductsAll = () => {
   const [items, setItems] = useState([]);
@@ -10,26 +11,12 @@ const useProductsAll = () => {
   const [loadingError, setLoadingError] = useState(null);
   const [searchError, setSearchError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [pageSize, setPageSize] = useState(10);
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.matchMedia("(max-width: 767px)").matches) {
-        setPageSize(4);
-      } else if (window.matchMedia("(max-width: 1199px)").matches) {
-        setPageSize(6);
-      } else {
-        setPageSize(10);
-      }
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const pageSize = useResponsivePageSize({
+    mobileSize: 4,
+    tabletSize: 6,
+    pcSize: 10,
+  });
 
   const handleLoad = useCallback(async () => {
     const queryParams = {
