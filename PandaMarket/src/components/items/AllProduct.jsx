@@ -33,7 +33,7 @@ function AllProduct() {
     window.addEventListener("resize", updatePageSize);
 
     // 페이지 사이즈가 설정된 후에 데이터 로드
-    itemsLoad();
+    itemsLoad(pageSize);
 
     return () => window.removeEventListener("resize", updatePageSize);
   }, []); // pageSize가 변경될 때마다 itemsLoad 호출
