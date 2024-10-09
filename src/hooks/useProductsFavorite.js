@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { getProductsList } from "../services/panda-market-api";
 import useResponsivePageSize from "./useProductsPageSize";
 
-const useProductsFavorite = (orderBy = "favorite") => {
+const useProductsFavorite = () => {
   const [items, setItems] = useState([]);
   const [fetchError, setFetchError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -13,10 +13,12 @@ const useProductsFavorite = (orderBy = "favorite") => {
     pcSize: 4,
   });
 
+  const order = "favorite";
+
   const handleLoad = useCallback(async () => {
     const queryParams = {
       pageSize,
-      orderBy,
+      orderBy: order,
     };
     try {
       setIsLoading(true);
@@ -29,7 +31,7 @@ const useProductsFavorite = (orderBy = "favorite") => {
     } finally {
       setIsLoading(false);
     }
-  }, [pageSize, orderBy]);
+  }, [pageSize]);
 
   useEffect(() => {
     handleLoad();
