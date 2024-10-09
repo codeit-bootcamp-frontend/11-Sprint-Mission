@@ -1,12 +1,12 @@
 import "./Items.scss";
+import { useState } from "react";
 import useProductsAll from "../hooks/useProductsAll";
+import useProductsFavorite from "../hooks/useProductsFavorite";
 import ProductsList from "../components/Items/ProductsList";
 import PageNation from "../components/common/PageNation";
-import useProductsFavorite from "../hooks/useProductsFavorite";
 import SearchInput from "../components/common/SearchInput";
 import Button from "../components/common/Button";
 import DropDown from "../components/common/DropDown";
-import { useState } from "react";
 
 function Items() {
   const [order, setOrder] = useState("recent");
