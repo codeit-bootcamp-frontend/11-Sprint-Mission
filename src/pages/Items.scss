@@ -7,7 +7,9 @@
 
 .product {
   &-area {
-    margin: 0 0 4rem;
+    &:not(:last-child) {
+      margin: 0 0 4rem;
+    }
     &.all {
       .product-list {
         grid-template-rows: repeat(2, 1fr);
