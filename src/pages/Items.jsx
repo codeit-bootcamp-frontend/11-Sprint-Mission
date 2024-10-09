@@ -26,14 +26,19 @@ function Items() {
     total,
     currentPage,
     setCurrentPage,
-    isLoading,
-    fetchError,
+    isLoading: productIsLoading,
+    fetchError: productFetchError,
     pageSize,
   } = useProductsAll({ order, search });
 
-  const { items: favoriteItems } = useProductsFavorite();
+  const {
+    items: favoriteItems,
+    fetchError: favoriteFetchError,
+    isLoading: favoriteIsLoading,
+  } = useProductsFavorite();
 
-  const isEmpty = allItems.length === 0 && !fetchError && !isLoading;
+  const isEmpty =
+    allItems.length === 0 && !productFetchError && !productIsLoading;
 
   const options = [
     { label: "최신순", value: "recent" },
@@ -55,7 +60,10 @@ function Items() {
           <div className='product-category'>
             <h2 className='product-category-name'>베스트 상품</h2>
           </div>
-          {isLoading && <p>로딩 중 입니다...</p>}
+          {favoriteIsLoading && <p>로딩 중 입니다...</p>}
+          {favoriteFetchError?.message && (
+            <span>{favoriteFetchError.message}</span>
+          )}
           <ProductsList list={favoriteItems} imageSize='large' />
         </div>
         <div className='product-area all'>
@@ -72,7 +80,10 @@ function Items() {
             </Button>
             <DropDown options={options} onSelect={handleSelect} />
           </div>
-          {isLoading && <p>로딩 중 입니다...</p>}
+          {productIsLoading && <p>로딩 중 입니다...</p>}
+          {productFetchError?.message && (
+            <span>{productFetchError.message}</span>
+          )}
           <ProductsList list={allItems} imageSize='middle' />
           {isEmpty && (
             <div className='error-search'>
