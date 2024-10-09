@@ -1,7 +1,7 @@
+import "./Items.scss";
 import useProductsAll from "../hooks/useProductsAll";
 import ProductsList from "../components/Items/ProductsList";
 import PageNation from "../components/common/PageNation";
-import "./Items.scss";
 import useProductsFavorite from "../hooks/useProductsFavorite";
 import SearchInput from "../components/common/SearchInput";
 import Button from "../components/common/Button";
