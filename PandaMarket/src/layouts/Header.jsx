@@ -13,14 +13,14 @@ export function MainHeader() {
     <header className="MainHeader">
       <div className="inner">
         <h1>
-          <a className="logo" href="/">
+          <Link className="logo" to="/">
             로고
-          </a>
+          </Link>
         </h1>
 
-        <a className="login" href="login.html">
+        <Link className="login" to="login.html">
           로그인
-        </a>
+        </Link>
       </div>
     </header>
   );
@@ -31,9 +31,7 @@ export function SubHeader() {
     <header className="SubHeader">
       <div className="SubHeader__inner">
         <h1>
-          <Link to="/">
-            <a className="SubHeader__logo"></a>
-          </Link>
+          <Link to="/" className="SubHeader__logo"></Link>
         </h1>
 
         <ul className="SubHeader__nav">
@@ -50,9 +48,9 @@ export function SubHeader() {
           </li>
         </ul>
 
-        <a href="#" className="SubHeader__profile">
+        <Link className="SubHeader__profile">
           <img src={profileImg} alt="프로필 이미지" />
-        </a>
+        </Link>
       </div>
     </header>
   );
