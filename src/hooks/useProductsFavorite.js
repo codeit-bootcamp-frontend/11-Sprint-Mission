@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
 import { getProductsList } from "../services/panda-market-api";
 import useResponsivePageSize from "./useProductsPageSize";
+import useAsyncRequest from "./useAsyncRequest";
 
 const useProductsFavorite = () => {
   const [items, setItems] = useState([]);
-  const [fetchError, setFetchError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const { execute, isLoading, error: fetchError } = useAsyncRequest();
 
   const pageSize = useResponsivePageSize({
     mobileSize: 1,
@@ -20,18 +20,12 @@ const useProductsFavorite = () => {
       pageSize,
       orderBy: order,
     };
-    try {
-      setIsLoading(true);
-      setFetchError(null);
+
+    execute(async () => {
       const result = await getProductsList(queryParams);
       setItems(result.list);
-    } catch (error) {
-      setFetchError(error);
-      return;
-    } finally {
-      setIsLoading(false);
-    }
-  }, [pageSize]);
+    });
+  }, [execute, pageSize]);
 
   useEffect(() => {
     handleLoad();

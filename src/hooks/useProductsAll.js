@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { getProductsList } from "../services/panda-market-api";
 import useResponsivePageSize from "./useProductsPageSize";
+import useAsyncRequest from "./useAsyncRequest";
 
 const useProductsAll = () => {
   const [items, setItems] = useState([]);
@@ -9,8 +10,8 @@ const useProductsAll = () => {
   const [order, setOrder] = useState("recent");
   const [total, setTotal] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [fetchError, setFetchError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+
+  const { execute, isLoading, error: fetchError } = useAsyncRequest();
 
   const pageSize = useResponsivePageSize({
     mobileSize: 4,
@@ -25,20 +26,14 @@ const useProductsAll = () => {
       orderBy: order,
       page: currentPage,
     };
-    try {
-      setIsLoading(true);
-      setFetchError(null);
-      setSearchError(null);
+
+    execute(async () => {
       const result = await getProductsList(queryParams);
+      if (!result) return;
       setItems(result.list);
       setTotal(result.totalCount);
-    } catch (error) {
-      setFetchError(error);
-      return;
-    } finally {
-      setIsLoading(false);
-    }
-  }, [pageSize, search, order, currentPage]);
+    });
+  }, [execute, pageSize, search, order, currentPage]);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
