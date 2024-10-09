@@ -33,7 +33,7 @@ export function SubHeader() {
           </li>
 
           <li>
-            <a href="">중고마켓</a>
+            <a href="/">중고마켓</a>
           </li>
         </ul>
 
