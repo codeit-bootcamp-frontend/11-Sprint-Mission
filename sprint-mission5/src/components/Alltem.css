@@ -1,0 +1,30 @@
+.aitop {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.aitop h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  flex: 1;
+}
+.aitop .aitop-flex {
+  display: flex;
+  gap: 12px;
+}
+.allitem-con {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 40px 24px;
+}
+.allitem-con .item-con .item-img {
+  width: 221px;
+  height: 221px;
+}
+.allitem-con .item-con .item-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
