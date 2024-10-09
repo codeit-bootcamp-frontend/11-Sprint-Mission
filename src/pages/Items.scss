@@ -23,7 +23,6 @@
   }
   &-category {
     display: flex;
-    // grid-template-columns: 1fr auto auto auto;
     margin-bottom: 2.4rem;
     gap: 1.2rem;
     flex-wrap: wrap;
@@ -100,7 +99,7 @@
     border: 1px solid var(--gray-200);
     border-radius: 1.2rem;
     background-color: #fff;
-    background-image: url(../../assets/ic_arrow_down.svg);
+    background-image: url(../assets/ic_arrow_down.svg);
     background-size: 2.4rem;
     background-repeat: no-repeat;
     background-position: 8.6rem center;
@@ -224,7 +223,7 @@
   .select {
     &-title {
       width: 4.2rem;
-      background-image: url(../../assets/mobiles/ic_sort.svg);
+      background-image: url(../assets/mobiles/ic_sort.svg);
       font-size: 0;
       background-position: 0.9rem center;
     }

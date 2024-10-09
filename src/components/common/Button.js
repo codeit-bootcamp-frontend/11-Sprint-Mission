@@ -1,8 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/Button/Button.css";
+import "./Button.scss";
 
-const Button = ({ link, href, onClick, children, className, styleType = "" }) => {
+const Button = ({
+  link,
+  href,
+  onClick,
+  children,
+  className,
+  styleType = "",
+}) => {
   return link ? (
     <Link to={href} className={`btn-${className} ${styleType}`}>
       {children}

@@ -1,8 +1,8 @@
-import ProductManagement from "../components/Product/ProductManagement";
+import ProductManagement from "../components/Items/ProductManagement";
 import useProductsAll from "../hooks/useProductsAll";
-import ProductsList from "../layout/ProductsList";
-import PageNation from "../components/PageNation";
-import "../styles/page-items/items.css";
+import ProductsList from "../components/Items/ProductsList";
+import PageNation from "../components/common/PageNation";
+import "./Items.scss";
 import useProductsFavorite from "../hooks/useProductsFavorite";
 
 function Items() {

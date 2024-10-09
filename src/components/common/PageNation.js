@@ -1,4 +1,4 @@
-import "../styles/PageNation/PageNation.css";
+import "./PageNation.scss";
 
 const PageNation = ({ total, pageSize, setCurrentPage, currentPage }) => {
   const totalPageNum = Math.ceil(total / pageSize);
@@ -9,10 +9,14 @@ const PageNation = ({ total, pageSize, setCurrentPage, currentPage }) => {
   };
 
   const handleArrowNextClick = () => {
-    currentPage < totalPageNum ? setCurrentPage(currentPage + 1) : alert("마지막 페이지 입니다.");
+    currentPage < totalPageNum
+      ? setCurrentPage(currentPage + 1)
+      : alert("마지막 페이지 입니다.");
   };
   const handleArrowPrevClick = () => {
-    currentPage > 1 ? setCurrentPage(currentPage - 1) : alert("처음 페이지 입니다.");
+    currentPage > 1
+      ? setCurrentPage(currentPage - 1)
+      : alert("처음 페이지 입니다.");
   };
 
   const getPageNumbers = () => {
@@ -36,7 +40,10 @@ const PageNation = ({ total, pageSize, setCurrentPage, currentPage }) => {
 
   return (
     <ul className='pagination'>
-      <li className='pagination-item arrow-prev' onClick={handleArrowPrevClick}></li>
+      <li
+        className='pagination-item arrow-prev'
+        onClick={handleArrowPrevClick}
+      ></li>
       {pages.map((page) => (
         <li
           key={page}
@@ -46,7 +53,10 @@ const PageNation = ({ total, pageSize, setCurrentPage, currentPage }) => {
           {page}
         </li>
       ))}
-      <li className='pagination-item arrow-next' onClick={handleArrowNextClick}></li>
+      <li
+        className='pagination-item arrow-next'
+        onClick={handleArrowNextClick}
+      ></li>
     </ul>
   );
 };

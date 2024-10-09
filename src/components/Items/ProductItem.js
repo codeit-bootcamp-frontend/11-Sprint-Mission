@@ -1,4 +1,4 @@
-import HeartCountArea from "../HeartCountArea";
+import HeartCountArea from "../common/HeartCountArea";
 
 const ProductItem = ({ item, imageSize }) => {
   const priceReplace = item.price

@@ -1,4 +1,4 @@
-import ProductItem from "../components/Product/ProductItem";
+import ProductItem from "./ProductItem";
 
 const ProductsList = ({ list, imageSize }) => {
   return (

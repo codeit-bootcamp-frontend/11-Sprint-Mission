@@ -1,6 +1,6 @@
 // import { useState } from "react";
-import ProfileImage from "../components/ProfileImage";
-import Logo from "./Logo";
+import ProfileImage from "../components/common/ProfileImage";
+import Logo from "../components/common/Logo";
 import Navigation from "./Navigation.js.js";
 // import Button from "../components/Button";
 

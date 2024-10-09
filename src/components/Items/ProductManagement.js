@@ -1,6 +1,6 @@
-import Button from "../Button";
-import DropDown from "../DropDown";
-import SearchInput from "../SearchInput";
+import Button from "../common/Button";
+import DropDown from "../common/DropDown";
+import SearchInput from "../common/SearchInput";
 
 const ProductManagement = ({ onSubmit, onBest, onNewest }) => {
   const options = [
@@ -17,7 +17,12 @@ const ProductManagement = ({ onSubmit, onBest, onNewest }) => {
   return (
     <>
       <SearchInput onSubmit={onSubmit} />
-      <Button link={true} href='/additem' className='additem' styleType='square blue'>
+      <Button
+        link={true}
+        href='/additem'
+        className='additem'
+        styleType='square blue'
+      >
         상품 등록하기
       </Button>
       <DropDown options={options} onSelect={handleSelect} />

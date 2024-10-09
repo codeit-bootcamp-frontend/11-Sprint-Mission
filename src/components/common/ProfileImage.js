@@ -1,4 +1,4 @@
-import USER_PROFILE from "../assets/ic-profile-default.png";
+import USER_PROFILE from "../../assets/ic-profile-default.png";
 
 const ProfileImage = ({ size }) => {
   return (
