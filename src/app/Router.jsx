@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Items from "../pages/Items/Items";
+import Items from "../pages/Items";
 import Home from "../pages/home/Home";
 import AddItem from "../pages/addItem/AddItem";
 
