@@ -1,15 +1,18 @@
 import HeartCountArea from "../HeartCountArea";
-import ProductImage from "./ProductImage";
-import ProductName from "./ProductName";
-import ProductPrice from "./ProductPrice";
 
-const ProductItem = ({ item }) => {
+const ProductItem = ({ item, imageSize }) => {
+  const priceReplace = item.price
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
   return (
     <>
-      <ProductImage images={item.images} />
+      <div className={`product-images ${imageSize}`}>
+        <img src={item.images} alt={`${item.name} 이미지`} />
+      </div>
       <div className='product-content'>
-        <ProductName name={item.name} />
-        <ProductPrice price={item.price} />
+        <h3 className='product-name'>{item.name}</h3>
+        <p className='product-price'>{priceReplace}원</p>
         <HeartCountArea count={item.favoriteCount} />
       </div>
     </>

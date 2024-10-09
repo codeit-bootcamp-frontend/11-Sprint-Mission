@@ -27,25 +27,24 @@ const useProductsFavorite = (initialPageSize = 4, orderBy = "favorite") => {
     };
   }, [initialPageSize]);
 
+  const handleLoad = async () => {
+    const queryParams = {
+      pageSize,
+      orderBy,
+    };
+    try {
+      setIsLoading(true);
+      setLoadingError(null);
+      const result = await getProductsList(queryParams);
+      setItems(result.list);
+    } catch (error) {
+      setLoadingError(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
   // 데이터를 로드하는 함수
   useEffect(() => {
-    const handleLoad = async () => {
-      const queryParams = {
-        pageSize,
-        orderBy,
-      };
-      try {
-        setIsLoading(true);
-        setLoadingError(null);
-        const result = await getProductsList(queryParams);
-        setItems(result.list);
-      } catch (error) {
-        setLoadingError(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
     handleLoad();
   }, [pageSize, orderBy]);
 

@@ -71,6 +71,7 @@ const useProductsAll = () => {
   useEffect(() => {
     handleLoad();
   }, [handleLoad]);
+
   return {
     items,
     total,
