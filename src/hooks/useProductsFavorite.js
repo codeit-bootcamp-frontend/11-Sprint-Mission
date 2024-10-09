@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { getProductsList } from "../services/panda-market-api";
+import { getProductsList } from "../services/products-api";
 import useResponsivePageSize from "./useProductsPageSize";
 import useAsyncRequest from "./useAsyncRequest";
 
