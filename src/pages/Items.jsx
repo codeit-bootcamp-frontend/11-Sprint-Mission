@@ -14,7 +14,7 @@ function Items() {
     currentPage,
     setCurrentPage,
     isLoading,
-    loadingError,
+    fetchError,
     pageSize,
     handleSearchSubmit,
     handleBestClick,
@@ -25,7 +25,7 @@ function Items() {
   const { items: favoriteItems } = useProductsFavorite();
 
   const isEmpty =
-    allItems.length === 0 && !searchError && !loadingError && !isLoading;
+    allItems.length === 0 && !searchError && !fetchError && !isLoading;
 
   const options = [
     { label: "최신순", value: "recent" },
