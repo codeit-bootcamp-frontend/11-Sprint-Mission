@@ -22,6 +22,9 @@ function Items() {
 
   const { items: favoriteItems } = useProductsFavorite();
 
+  const isEmpty =
+    allItems.length === 0 && !searchError && !loadingError && !isLoading;
+
   return (
     <main className='page-items'>
       <div className='container'>
@@ -43,16 +46,13 @@ function Items() {
           </div>
           {isLoading && <p>로딩 중 입니다...</p>}
           <ProductsList list={allItems} imageSize='middle' />
-          {allItems.length === 0 &&
-            !searchError &&
-            !loadingError &&
-            !isLoading && (
-              <div className='error-search'>
-                <p className='error-search-message'>
-                  검색어와 일치하는 상품이 없습니다.
-                </p>
-              </div>
-            )}
+          {isEmpty && (
+            <div className='error-search'>
+              <p className='error-search-message'>
+                검색어와 일치하는 상품이 없습니다.
+              </p>
+            </div>
+          )}
           <PageNation
             total={total}
             pageSize={pageSize}
