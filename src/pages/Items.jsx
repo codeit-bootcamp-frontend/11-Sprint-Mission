@@ -11,16 +11,6 @@ import DropDown from "../components/common/DropDown";
 function Items() {
   const [order, setOrder] = useState("recent");
   const [search, setSearch] = useState("");
-
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    const searchValue = e.target["search"].value.trim();
-    setSearch(searchValue);
-  };
-
-  const handleBestClick = () => setOrder("favorite");
-  const handleNewestClick = () => setOrder("recent");
-
   const {
     items: allItems,
     isLoading: productIsLoading,
@@ -30,28 +20,22 @@ function Items() {
     setCurrentPage,
     pageSize,
   } = useProductsAll({ order, search });
-
   const {
     items: favoriteItems,
     fetchError: favoriteFetchError,
     isLoading: favoriteIsLoading,
   } = useProductsFavorite();
 
+  const handleSelect = (value) => setOrder(value);
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    const searchValue = e.target["search"].value.trim();
+    setSearch(searchValue);
+  };
+
   const isEmpty =
     allItems.length === 0 && !productFetchError && !productIsLoading;
-
-  const options = [
-    { label: "최신순", value: "recent" },
-    { label: "좋아요순", value: "favorite" },
-  ];
-
-  const handleSelect = (value) => {
-    if (value === "recent") {
-      handleNewestClick();
-    } else if (value === "favorite") {
-      handleBestClick();
-    }
-  };
 
   return (
     <main className='page-items'>
@@ -78,7 +62,19 @@ function Items() {
             >
               상품 등록하기
             </Button>
-            <DropDown options={options} onSelect={handleSelect} />
+            <DropDown>
+              <DropDown.Title>최신순</DropDown.Title>
+              <DropDown.Option
+                label='최신순'
+                value='recent'
+                onSelect={handleSelect}
+              />
+              <DropDown.Option
+                label='좋아요순'
+                value='favorite'
+                onSelect={handleSelect}
+              />
+            </DropDown>
           </div>
           {productIsLoading && <p>로딩 중 입니다...</p>}
           {productFetchError?.message && (

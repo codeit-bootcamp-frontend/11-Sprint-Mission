@@ -1,41 +1,64 @@
 import { useState } from "react";
+import "./DropDown.scss";
 
-/**
- * 드롭다운
- *
- * @param {Array} options - 옵션 개체 배열로, 각각 '라벨'과 '값'을 갖습니다
- * @param {Function} onSelect - 옵션 선택을 처리하는 콜백 기능
- */
-const DropDown = ({ options, onSelect }) => {
+const DropDown = ({ children }) => {
   const [isOptionVisible, setIsOptionVisible] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(options[0].label);
+  const [selectedLabel, setSelectedLabel] = useState(null);
 
   const handleSelectClick = () => {
     setIsOptionVisible(!isOptionVisible);
   };
 
-  const handleOptionClick = (option) => {
-    setSelectedOption(option.label);
+  const handleOptionClick = (label, value) => {
+    setSelectedLabel(label);
     setIsOptionVisible(false);
-    onSelect(option.value);
+    if (value?.onSelect) {
+      value.onSelect(value.value);
+    }
   };
 
   return (
     <div className='select'>
       <button className='select-title' onClick={handleSelectClick}>
-        {selectedOption}
+        {selectedLabel ||
+          children.find((child) => child.type.displayName === "Title")?.props
+            .children ||
+          "옵션을 선택 해주세요"}
       </button>
       {isOptionVisible && (
         <div className='select-option'>
-          {options.map((option) => (
-            <button key={option.value} className='select-option-list' onClick={() => handleOptionClick(option)}>
-              {option.label}
-            </button>
-          ))}
+          {children
+            .filter((child) => child.type.displayName === "Option")
+            .map((child) => (
+              <button
+                key={child.props.value}
+                className='select-option-list'
+                onClick={() =>
+                  handleOptionClick(child.props.label, child.props)
+                }
+              >
+                {child.props.label}
+              </button>
+            ))}
         </div>
       )}
     </div>
   );
 };
+
+const Title = ({ children }) => {
+  return <>{children}</>;
+};
+
+Title.displayName = "Title";
+
+const Option = ({ children }) => {
+  return <>{children}</>;
+};
+
+Option.displayName = "Option";
+
+DropDown.Title = Title;
+DropDown.Option = Option;
 
 export default DropDown;
