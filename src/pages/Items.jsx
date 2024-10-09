@@ -16,18 +16,18 @@ function Items() {
     e.preventDefault();
     const searchValue = e.target["search"].value.trim();
     setSearch(searchValue);
-    setCurrentPage(1);
   };
 
   const handleBestClick = () => setOrder("favorite");
   const handleNewestClick = () => setOrder("recent");
+
   const {
     items: allItems,
+    isLoading: productIsLoading,
+    fetchError: productFetchError,
     total,
     currentPage,
     setCurrentPage,
-    isLoading: productIsLoading,
-    fetchError: productFetchError,
     pageSize,
   } = useProductsAll({ order, search });
 
