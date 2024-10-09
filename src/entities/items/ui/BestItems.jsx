@@ -5,10 +5,10 @@ import { useQuery } from "@tanstack/react-query";
 import useResponsiveDisplayCount from "../hooks/useResponsiveDisplayCount";
 
 const BestItems = () => {
-  const { bestDisplayCount, allDisplayCount } = useResponsiveDisplayCount(); // 훅 사용
+  const { bestDisplayCount } = useResponsiveDisplayCount(); // 훅 사용
   const { data, isLoading, isError } = useQuery({
     //favorit으로만 정렬해서 가져옴
-    queryKey: ["postsFavorit"], // 캐시 키로 사용
+    queryKey: ["postsFavorit", bestDisplayCount], // 캐시 키로 사용
     queryFn: () => fetchItems(1, bestDisplayCount, "favorite"), // 서버에서 데이터를 가져오는 함수
   });
   if (isLoading) return <div>isLoading...</div>;

@@ -16,7 +16,7 @@ const AllItems = () => {
   const { bestDisplayCount, allDisplayCount } = useResponsiveDisplayCount(); // 훅 사용
   const [isOpen, setIsOpen] = useState(false); // 드롭다운 열림/닫힘 상태
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize] = useState(allDisplayCount); // 한 페이지당 아이템 수
+
   const [orderBy, setOrderBy] = useState("recent");
   console.log(allDisplayCount);
   const handlorderByChange = (e) => {
@@ -29,7 +29,7 @@ const AllItems = () => {
   };
 
   const { data, isLoading, isError, isFetching } = useQuery({
-    queryKey: ["posts", currentPage, orderBy], // 캐시 키는 페이지마다 다르게 설정
+    queryKey: ["posts", currentPage, allDisplayCount, orderBy], // 캐시 키는 페이지마다 다르게 설정
     queryFn: () => fetchItems(currentPage, allDisplayCount, orderBy), // 데이터를 가져오는 함수
     keepPreviousData: true, //
     refetchOnWindowFocus: false,
