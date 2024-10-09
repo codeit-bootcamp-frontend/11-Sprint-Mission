@@ -4,7 +4,7 @@ import useResponsivePageSize from "./useProductsPageSize";
 
 const useProductsFavorite = (orderBy = "favorite") => {
   const [items, setItems] = useState([]);
-  const [loadingError, setLoadingError] = useState(null);
+  const [fetchError, setFetchError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const pageSize = useResponsivePageSize({
@@ -20,11 +20,12 @@ const useProductsFavorite = (orderBy = "favorite") => {
     };
     try {
       setIsLoading(true);
-      setLoadingError(null);
+      setFetchError(null);
       const result = await getProductsList(queryParams);
       setItems(result.list);
     } catch (error) {
-      setLoadingError(error);
+      setFetchError(error);
+      return;
     } finally {
       setIsLoading(false);
     }
@@ -34,7 +35,7 @@ const useProductsFavorite = (orderBy = "favorite") => {
     handleLoad();
   }, [handleLoad]);
 
-  return { items, loadingError, isLoading };
+  return { items, fetchError, isLoading };
 };
 
 export default useProductsFavorite;

@@ -5,11 +5,11 @@ import useResponsivePageSize from "./useProductsPageSize";
 const useProductsAll = () => {
   const [items, setItems] = useState([]);
   const [search, setSearch] = useState("");
+  const [searchError, setSearchError] = useState(null);
   const [order, setOrder] = useState("recent");
   const [total, setTotal] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [loadingError, setLoadingError] = useState(null);
-  const [searchError, setSearchError] = useState(null);
+  const [fetchError, setFetchError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const pageSize = useResponsivePageSize({
@@ -25,21 +25,19 @@ const useProductsAll = () => {
       orderBy: order,
       page: currentPage,
     };
-    let result;
     try {
       setIsLoading(true);
-      setLoadingError(null);
+      setFetchError(null);
       setSearchError(null);
-      result = await getProductsList(queryParams);
+      const result = await getProductsList(queryParams);
+      setItems(result.list);
+      setTotal(result.totalCount);
     } catch (error) {
-      setLoadingError(error);
+      setFetchError(error);
       return;
     } finally {
       setIsLoading(false);
     }
-    const { list, totalCount } = result;
-    setItems(list);
-    setTotal(totalCount);
   }, [pageSize, search, order, currentPage]);
 
   const handleSearchSubmit = (e) => {
@@ -65,7 +63,7 @@ const useProductsAll = () => {
     currentPage,
     setCurrentPage,
     isLoading,
-    loadingError,
+    fetchError,
     pageSize,
     handleSearchSubmit,
     handleBestClick,
