@@ -32,27 +32,31 @@ function AddProductInput({
 
   return (
     <form>
-      <p>상품명</p>
+      <p className="cantainerTitle">상품명</p>
       <input
+        className="addProductInput"
         value={productName}
         onChange={(e) => onNameChange(e.target.value)}
         placeholder="상품명을 입력해주세요"
       />
-      <p>상품 소개</p>
-      <input
+      <p className="cantainerTitle">상품 소개</p>
+      <textarea
+        className="productContentInput"
         value={productContent}
         onChange={(e) => onContentChange(e.target.value)}
         placeholder="상품 소개를 입력해주세요"
       />
-      <p>판매가격</p>
+      <p className="cantainerTitle">판매가격</p>
       <input
+        className="addProductInput"
         type="number"
         value={productPrice}
         onChange={(e) => onPriceChange(e.target.value)}
         placeholder="판매 가격을 입력해주세요"
       />
-      <p>태그</p>
+      <p className="cantainerTitle">태그</p>
       <input
+        className="addProductInput"
         value={productTag}
         onChange={(e) => onTagChange(e.target.value)}
         onKeyDown={handleKeyPress}
@@ -60,16 +64,14 @@ function AddProductInput({
       />
 
       <div>
-        <ul>
-          {tags.map((tag, index) => (
-            <li key={index}>
-              {tag}{' '}
-              <button type="button" onClick={() => handleTagDelete(index)}>
-                X
-              </button>
-            </li>
-          ))}
-        </ul>
+        {tags.map((tag, index) => (
+          <p className="tagOutput" key={index}>
+            #{tag}{' '}
+            <button type="button" onClick={() => handleTagDelete(index)}>
+              X
+            </button>
+          </p>
+        ))}
       </div>
     </form>
   );

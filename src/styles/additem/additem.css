@@ -1,0 +1,78 @@
+.container {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.subHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cantainerImageTitle {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.cantainerTitle {
+  font-weight: 700;
+  font-size: 18px;
+  padding-top: 20px;
+}
+
+input::placeholder {
+  color: #9ca3af;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.addProductInput,
+.productContentInput {
+  width: 100%;
+  padding: 5px 24px;
+  border-radius: 12px;
+}
+
+.productContentInput {
+  height: 282px;
+
+  background-color: #f3f4f6;
+  border: none;
+
+  resize: none;
+}
+
+textarea::placeholder {
+  color: #9ca3af;
+  font-size: 16px;
+  font-weight: 100;
+  padding-top: 20px;
+}
+
+.tagOutput {
+  margin-right: 15px;
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #f3f4f6;
+  border-radius: 26px;
+  font-size: 16px;
+}
+
+.tagOutput > button {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-color: #9ca3af;
+  border-radius: 50%;
+  color: #ffffff;
+}
+
+.upButton {
+  font-size: 16px;
+  color: #f3f4f6;
+  background-color: #9ca3af;
+  border: none;
+  padding: 12px 23px;
+  border-radius: 8px;
+  cursor: pointer;
+}

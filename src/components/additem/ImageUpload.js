@@ -31,15 +31,35 @@ function ImageUpload({ name, value, onChange }) {
   }, [value]);
 
   return (
-    <div>
-      <img src={preview} alt="이미지 미리보기" />
-      <input
-        type="file"
-        accept="image/png, image/jpeg"
-        ref={inputRef}
-        onChange={handleChange}
-      />{' '}
-      {value && <button onClick={handleClearClick}>X</button>}
+    <div className="imageUploadContainer">
+      <div className="customFileInput">
+        <label for="fileUpload" className="uploadBox">
+          <div className="uploadBoxContent">
+            <p className="textArea">
+              <span className="plus">+</span>
+              <br /> 이미지 등록
+            </p>
+          </div>
+        </label>
+        <input
+          id="fileUpload"
+          className="imageUploadInput"
+          type="file"
+          accept="image/png, image/jpeg"
+          ref={inputRef}
+          onChange={handleChange}
+          style={{ display: 'none' }}
+        />
+      </div>
+
+      {preview && (
+        <div className="imagePreviewContainer">
+          <img src={preview} alt="미리보기 이미지" className="imagePreview" />
+          <button className="clearButton" onClick={handleClearClick}>
+            X
+          </button>
+        </div>
+      )}
     </div>
   );
 }

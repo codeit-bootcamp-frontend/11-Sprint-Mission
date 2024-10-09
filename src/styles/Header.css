@@ -1,11 +1,4 @@
-@font-face {
-  font-family: 'Pretendard-Regular';
-  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
-    format('woff');
-}
-
 header {
-  font-family: 'Pretendard-Regular', sans-serif;
   height: 4.5rem;
   padding-left: 10rem;
   padding-right: 10rem;
