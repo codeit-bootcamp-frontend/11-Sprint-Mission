@@ -1,13 +1,13 @@
 import React from "react";
 
-const SortSelect = ({ sortBy, handleSortChange }) => {
+const SortSelect = ({ orderBy, handlorderByChange }) => {
   return (
     <div>
       <select
         className="border h-9  w-20 p-1 rounded"
-        id="sortBy"
-        value={sortBy}
-        onChange={handleSortChange}
+        id="orderBy"
+        value={orderBy}
+        onChange={handlorderByChange}
       >
         <option value="recent">최신순</option>
         <option value="favorite">좋아요순</option>
