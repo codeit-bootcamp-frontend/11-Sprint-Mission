@@ -25,7 +25,6 @@
   }
   &-category {
     display: flex;
-    margin-bottom: 2.4rem;
     gap: 1.2rem;
     flex-wrap: wrap;
     &-name {
@@ -135,21 +134,17 @@
   }
 
   .product {
-    &-category {
-      &-name {
-        order: 1;
-      }
-      .btn-addItem {
-        order: 2;
-      }
-      .input-search-wrap {
-        order: 3;
-        width: 28.8rem;
-      }
-      .select {
-        order: 4;
-      }
-    }
+    // &-category {
+    //   &-name {
+    //     order: 1;
+    //   }
+    //   .btn-addItem {
+    //     order: 2;
+    //   }
+    //   .select {
+    //     order: 4;
+    //   }
+    // }
     &-area {
       &.all {
         .product-list {

@@ -7,29 +7,37 @@
   font-family: "Pretendard";
   font-style: normal;
   font-weight: 400;
-  src: url(../assets/fonts/Pretendard-Regular.ttf), url(../assets/fonts/Pretendard-Regular.otf) format("otf"),
-    url(../assets/fonts/Pretendard-Regular.woff) format("woff"), url(../assets/fonts/Pretendard-Regular.woff2) format("woff2");
+  src: url(../assets/fonts/Pretendard-Regular.ttf),
+    url(../assets/fonts/Pretendard-Regular.otf) format("otf"),
+    url(../assets/fonts/Pretendard-Regular.woff) format("woff"),
+    url(../assets/fonts/Pretendard-Regular.woff2) format("woff2");
 }
 @font-face {
   font-family: "Pretendard";
   font-style: normal;
   font-weight: 500;
-  src: url(../assets/fonts/Pretendard-Medium.ttf), url(../assets/fonts/Pretendard-Medium.otf) format("otf"),
-    url(../assets/fonts/Pretendard-Medium.woff) format("woff"), url(../assets/fonts/Pretendard-Medium.woff2) format("woff2");
+  src: url(../assets/fonts/Pretendard-Medium.ttf),
+    url(../assets/fonts/Pretendard-Medium.otf) format("otf"),
+    url(../assets/fonts/Pretendard-Medium.woff) format("woff"),
+    url(../assets/fonts/Pretendard-Medium.woff2) format("woff2");
 }
 @font-face {
   font-family: "Pretendard";
   font-style: normal;
   font-weight: 600;
-  src: url(../assets/fonts/Pretendard-SemiBold.ttf), url(../assets/fonts/Pretendard-SemiBold.otf) format("otf"),
-    url(../assets/fonts/Pretendard-SemiBold.woff) format("woff"), url(../assets/fonts/Pretendard-SemiBold.woff2) format("woff2");
+  src: url(../assets/fonts/Pretendard-SemiBold.ttf),
+    url(../assets/fonts/Pretendard-SemiBold.otf) format("otf"),
+    url(../assets/fonts/Pretendard-SemiBold.woff) format("woff"),
+    url(../assets/fonts/Pretendard-SemiBold.woff2) format("woff2");
 }
 @font-face {
   font-family: "Pretendard";
   font-style: normal;
   font-weight: 700;
-  src: url(../assets/fonts/Pretendard-Bold.ttf), url(../assets/fonts/Pretendard-Bold.otf) format("otf"),
-    url(../assets/fonts/Pretendard-Bold.woff) format("woff"), url(../assets/fonts/Pretendard-Bold.woff2) format("woff2");
+  src: url(../assets/fonts/Pretendard-Bold.ttf),
+    url(../assets/fonts/Pretendard-Bold.otf) format("otf"),
+    url(../assets/fonts/Pretendard-Bold.woff) format("woff"),
+    url(../assets/fonts/Pretendard-Bold.woff2) format("woff2");
 }
 
 body > * {
@@ -219,25 +227,6 @@ div[class^="btn-wrap"] {
 #submitBtn.active {
   background-color: var(--blue-100);
 }
-.input-search-wrap {
-  width: 32.5rem;
-}
-.input-search {
-  width: 100%;
-  font-size: 1.6rem;
-  line-height: 2.6rem;
-  font-weight: 400;
-  padding: 0.9rem 1.6rem 0.9rem 4.4rem;
-  background-color: var(--gray-100);
-  border-radius: 1.2rem;
-  background-image: url(../assets/ic_search.svg);
-  background-size: 2.4rem;
-  background-repeat: no-repeat;
-  background-position: 1.6rem center;
-}
-.input-search::placeholder {
-  color: var(--gray-400);
-}
 
 /* 태블릿 & 모바일 공통 스타일 */
 @media screen and (max-width: 1199px) {
@@ -264,9 +253,6 @@ div[class^="btn-wrap"] {
   /* footer */
   #footer .container {
     padding: 0 10.4rem;
-  }
-  .input-search-wrap {
-    width: 24.2rem;
   }
 }
 

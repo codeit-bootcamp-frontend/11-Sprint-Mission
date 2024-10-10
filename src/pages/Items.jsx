@@ -7,6 +7,7 @@ import PageNation from "../components/common/PageNation";
 import SearchInput from "../components/common/SearchInput";
 import Button from "../components/common/Button";
 import DropDown from "../components/common/DropDown";
+import HeadingTitleArea from "../components/common/HeadingTitleArea";
 
 function Items() {
   const [order, setOrder] = useState("recent");
@@ -41,9 +42,9 @@ function Items() {
     <main className='page-items'>
       <div className='container'>
         <div className='product-area best'>
-          <div className='product-category'>
-            <h2 className='product-category-name'>베스트 상품</h2>
-          </div>
+          <HeadingTitleArea>
+            <h2>베스트 상품</h2>
+          </HeadingTitleArea>
           {favoriteIsLoading && <p>로딩 중 입니다...</p>}
           {favoriteFetchError?.message && (
             <span>{favoriteFetchError.message}</span>
@@ -51,8 +52,8 @@ function Items() {
           <ProductsList list={favoriteItems} imageSize='large' />
         </div>
         <div className='product-area all'>
-          <div className='product-category'>
-            <h2 className='product-category-name'>전체 상품</h2>
+          <HeadingTitleArea>
+            <h2>전체 상품</h2>
             <SearchInput onSubmit={handleSearchSubmit} />
             <Button
               link={true}
@@ -75,7 +76,7 @@ function Items() {
                 onSelect={handleSelect}
               />
             </DropDown>
-          </div>
+          </HeadingTitleArea>
           {productIsLoading && <p>로딩 중 입니다...</p>}
           {productFetchError?.message && (
             <span>{productFetchError.message}</span>
