@@ -23,10 +23,8 @@ const formatPrice = (price) => {
  * @returns
  */
 const formatToPrice = (price) => {
-  // 모든 숫자 외 문자를 제거
-  const removedString = price.replace(/\D/g, "");
-  // 숫자 앞에 0이 있을 경우 제거
-  const formated = removedString.replace(/^0+/, "");
+  const removedString = price.replace(/\D/g, ""); // 숫자를 제외한 입력 삭제
+  const formated = removedString.replace(/^0+/, ""); // 0으로 시작하는 경우 제거
 
   return formated;
 };

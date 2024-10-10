@@ -17,7 +17,7 @@ const INITIAL_INPUT = {
 
 function AddItem() {
   const [userInput, setUserInput] = useState(INITIAL_INPUT);
-  const { images, name, description, price, tags } = userInput;
+  const { name, description, price } = userInput;
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(e);
@@ -25,11 +25,6 @@ function AddItem() {
   return (
     <>
       <Header isLogin />
-      <div>{images}</div>
-      <div>{name}</div>
-      <div>{description}</div>
-      <div>{price}</div>
-      <div>{tags}</div>
       <div className="form-wrap">
         <form onSubmit={handleSubmit}>
           <div className="title-wrap">
