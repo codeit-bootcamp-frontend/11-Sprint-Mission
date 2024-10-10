@@ -2,7 +2,7 @@ import React from "react";
 
 function TextInput({ children, name, placeholder, value, setUserInput }) {
   const handleInput = ({ target }) => {
-    setUserInput((prev) => ({ ...prev, [name]: target.value }));
+    setUserInput((prev) => ({ ...prev, name: target.value }));
   };
 
   return (

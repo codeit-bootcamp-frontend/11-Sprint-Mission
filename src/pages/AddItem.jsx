@@ -2,33 +2,34 @@ import Description from "components/addItem/Description";
 import ImgFileInput from "components/addItem/ImgFileInput";
 import PriceInput from "components/addItem/PriceInput";
 import TextInput from "components/addItem/TextInput";
+import TagInput from "components/addItem/TagInput";
 import Header from "components/common/Header";
 import PrimaryButton from "components/common/PrimaryButton";
 import React, { useState } from "react";
 
 const INITIAL_INPUT = {
-  imgUrl: "",
-  title: "",
+  images: [],
+  name: "",
   description: "",
   price: "",
-  tag: "",
+  tags: [],
 };
 
 function AddItem() {
   const [userInput, setUserInput] = useState(INITIAL_INPUT);
-  const { imgUrl, title, description, price, tag } = userInput;
+  const { images, name, description, price, tags } = userInput;
   const handleSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     // console.log(e);
   };
   return (
     <>
       <Header isLogin />
-      <div>{imgUrl}</div>
-      <div>{title}</div>
+      <div>{images}</div>
+      <div>{name}</div>
       <div>{description}</div>
       <div>{price}</div>
-      <div>{tag}</div>
+      <div>{tags}</div>
       <div className="form-wrap">
         <form onSubmit={handleSubmit}>
           <div className="title-wrap">
@@ -41,8 +42,8 @@ function AddItem() {
             상품 이미지
           </ImgFileInput>
           <TextInput
-            name="title"
-            value={title}
+            name="name"
+            value={name}
             placeholder="상품명을 입력해주세요"
             setUserInput={setUserInput}
           >
@@ -59,14 +60,13 @@ function AddItem() {
           <PriceInput name="price" value={price} setUserInput={setUserInput}>
             판매가격
           </PriceInput>
-          <TextInput
-            name="tag"
-            value={tag}
+          <TagInput
+            name="tags"
             placeholder="태그를 입력해주세요"
             setUserInput={setUserInput}
           >
             태그
-          </TextInput>
+          </TagInput>
         </form>
       </div>
     </>

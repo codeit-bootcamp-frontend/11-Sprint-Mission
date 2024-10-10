@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import formatPriceToKRW from "utils/formatPrice";
+import { formatPriceToKRW } from "utils/formatPrice";
 
 function Product({ product }) {
   const { id, name, price, favoriteCount, images, description } = product;

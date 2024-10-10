@@ -7,7 +7,7 @@ function ImgFileInput({ children, name, setImage }) {
   const isFilled = thumbnail.length > 0;
 
   const setImg = (path) => {
-    setImage((prev) => ({ ...prev, imgUrl: path }));
+    setImage((prev) => ({ ...prev, images: [path] }));
     setThumbnail(path);
   };
 

@@ -1,8 +1,14 @@
 import React from "react";
+import { formatPrice, formatToPrice } from "utils/formatPrice";
 
 function PriceInput({ children, name, value, setUserInput }) {
   const handleInput = ({ target }) => {
-    setUserInput((prev) => ({ ...prev, price: target.value }));
+    const priceValue = formatToPrice(target.value);
+    console.log(priceValue);
+    const regExp = /^\d*$/;
+    if (regExp.test(priceValue)) {
+      setUserInput((prev) => ({ ...prev, price: priceValue }));
+    }
   };
   return (
     <div className="form-input-wrap">
@@ -11,7 +17,7 @@ function PriceInput({ children, name, value, setUserInput }) {
         id={`item_${name}`}
         type="text"
         placeholder="상품 가격을 입력해주세요"
-        value={value}
+        value={formatPrice(value)}
         onChange={handleInput}
         required
       />
