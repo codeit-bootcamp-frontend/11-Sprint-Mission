@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from 'react';
-import '../../styles/additem/ImageUpload.css';
 
 function ImageUpload({ name, value, onChange }) {
   const [preview, setPreview] = useState();

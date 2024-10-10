@@ -1,7 +1,5 @@
 header {
   height: 4.5rem;
-  padding-left: 10rem;
-  padding-right: 10rem;
   display: flex;
   border-bottom: 1px solid #dfdfdf;
   align-items: center;
@@ -10,6 +8,13 @@ header {
   background-color: #ffffff;
   position: sticky;
   top: 0;
+}
+
+.headerBody {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
 }
 
 .header-left {
@@ -29,4 +34,46 @@ a {
   font-size: 18px;
   font-weight: 600;
   color: #4b5563;
+}
+
+/* PC: 1200px 이상 */
+@media (min-width: 1200px) {
+}
+
+/* Tablet: 768px 이상 ~ 1199px 이하 */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .headerBody {
+    width: 85%;
+  }
+
+  nav {
+    margin-left: 20px;
+  }
+}
+
+/* Mobile: 375px 이상 ~ 767px 이하 */
+@media (min-width: 375px) and (max-width: 767px) {
+  .headerBody {
+    width: 94%;
+  }
+
+  .imgContainer {
+    width: 90px;
+    overflow: hidden;
+  }
+
+  .logoImg {
+    width: 120px;
+    object-fit: cover;
+    transform: translateX(-32px);
+  }
+
+  nav {
+    margin-left: 10px;
+    gap: 8px;
+  }
+
+  a {
+    font-size: 16px;
+  }
 }

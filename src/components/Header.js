@@ -12,28 +12,32 @@ function getLinkStyle({ isActive }) {
 function Header() {
   return (
     <header>
-      <div className="header-left">
-        <img src={logoImg} alt="logoImg" />
-        <nav>
-          <NavLink
-            to=""
-            className={({ isActive }) => (isActive ? 'active' : '')}
-            style={getLinkStyle}
-          >
-            자유게시판
-          </NavLink>
-          <NavLink
-            to="/items"
-            className={({ isActive }) => (isActive ? 'active' : '')}
-            style={getLinkStyle}
-          >
-            중고마켓
-          </NavLink>
-        </nav>
+      <div className="headerBody">
+        <div className="header-left">
+          <div className="imgContainer">
+            <img className="logoImg" src={logoImg} alt="logoImg" />
+          </div>
+          <nav>
+            <NavLink
+              to=""
+              className={({ isActive }) => (isActive ? 'active' : '')}
+              style={getLinkStyle}
+            >
+              자유게시판
+            </NavLink>
+            <NavLink
+              to="/items"
+              className={({ isActive }) => (isActive ? 'active' : '')}
+              style={getLinkStyle}
+            >
+              중고마켓
+            </NavLink>
+          </nav>
+        </div>
+        <a>
+          <img src={loginImg} alt="loginImgBtn" />
+        </a>
       </div>
-      <a>
-        <img src={loginImg} alt="loginImgBtn" />
-      </a>
     </header>
   );
 }
