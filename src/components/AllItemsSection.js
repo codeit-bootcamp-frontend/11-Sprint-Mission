@@ -3,6 +3,7 @@ import { getProducts } from '../api';
 import ItemCard from './ItemCard';
 import '../style/Items.css';
 import { ReactComponent as SearchIcon } from '../images/ic_search.svg';
+import { useNavigate } from 'react-router-dom';
 
 const getPageSize = () => {
   const width = window.innerWidth;
@@ -25,11 +26,16 @@ function AllItemsSection() {
   const [itemList, setItemList] = useState([]);
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [totalPageNum, setTotalPageNum] = useState();
+  const navigate = useNavigate();
 
   const fetchSortedData = async ({ orderBy, page, pageSize }) => {
     const products = await getProducts({ orderBy, page, pageSize });
     setItemList(products.list);
     setTotalPageNum(Math.ceil(products.totalCount / pageSize));
+  };
+
+  const handleRegisterbtnClick = () => {
+    navigate('/additem');
   };
 
   useEffect(() => {
@@ -59,7 +65,9 @@ function AllItemsSection() {
               placeholder="검색할 상품을 입력해 주세요"
             />
           </div>
-          <button className="itemRegisterbtn">상품 등록하기</button>
+          <button className="itemRegisterbtn" onClick={handleRegisterbtnClick}>
+            상품 등록하기
+          </button>
         </div>
       </div>
 

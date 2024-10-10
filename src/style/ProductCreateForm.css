@@ -1,0 +1,78 @@
+.ProductContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductImg {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductTitle {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductIntro {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductPrice {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductTitle > input {
+  padding: 16px 24px 16px 24px;
+  gap: 10px;
+  border-radius: 12px;
+  background-color: #f3f4f6;
+  border: 0;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: left;
+  color: #9ca3af;
+}
+
+.ProductTitle > input:focus {
+  outline: none;
+}
+
+.ProductIntro > textarea {
+  padding: 16px 24px 16px 24px;
+  gap: 10px;
+  border-radius: 12px;
+  border: 0;
+  background-color: #f3f4f6;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: left;
+  color: #9ca3af;
+}
+
+.ProductIntro > textarea:focus {
+  outline: none;
+}
+
+.section-title {
+  font-family: Pretendard;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  text-align: left;
+  color: #1f2937;
+}
+
+.container-title {
+  font-family: Pretendard;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+  text-align: left;
+  color: #1f2937;
+}

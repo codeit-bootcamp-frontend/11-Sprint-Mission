@@ -18,7 +18,11 @@ const Navbar = () => {
           <a href="#">자유게시판</a>
           <a
             href="/items"
-            className={location.pathname === '/items' ? 'active-link' : ''}
+            className={
+              location.pathname === '/items' || location.pathname === '/additem'
+                ? 'active-link'
+                : ''
+            }
           >
             중고마켓
           </a>
