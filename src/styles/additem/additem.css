@@ -76,3 +76,13 @@ textarea::placeholder {
   border-radius: 8px;
   cursor: pointer;
 }
+
+.upButton.active {
+  background-color: #3692ff;
+  cursor: pointer;
+}
+
+.upButton.disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}

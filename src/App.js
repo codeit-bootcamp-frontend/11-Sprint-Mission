@@ -7,6 +7,7 @@ import '../src/styles/App.css';
 function App() {
   return (
     <Router>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <Header />
       <Routes>
         <Route path="/items" element={<Items />} />

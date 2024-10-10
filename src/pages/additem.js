@@ -11,6 +11,16 @@ function Additem() {
   const [productTag, setProductTag] = useState('');
   const [productImage, setProductImage] = useState(null);
 
+  const isFormValid = () => {
+    return (
+      productName.trim() !== '' &&
+      productContent.trim() !== '' &&
+      productPrice > 0 &&
+      productTag.trim() !== '' &&
+      productImage !== null
+    );
+  };
+
   const handleSubmit = () => {
     const productData = {
       productImage,
@@ -31,7 +41,7 @@ function Additem() {
       <div className="container">
         <div className="subHeader">
           <p className="subTitle">상품 등록하기</p>
-          <AdditemButton onSubmit={handleSubmit} />
+          <AdditemButton onSubmit={handleSubmit} disabled={!isFormValid()} />
         </div>
         <p className="cantainerImageTitle">상품 이미지</p>
         <ImageUpload

@@ -1,6 +1,10 @@
-function AdditemButton({ onSubmit }) {
+function AdditemButton({ onSubmit, disabled }) {
   return (
-    <button className="upButton" onClick={onSubmit}>
+    <button
+      className={`upButton ${disabled ? 'disabled' : 'active'}`}
+      onClick={onSubmit}
+      disabled={disabled}
+    >
       등록
     </button>
   );
