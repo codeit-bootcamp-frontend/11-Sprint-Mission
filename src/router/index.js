@@ -2,6 +2,7 @@ import Login from "pages/Login";
 import Home from "../pages/Home";
 import Signup from "pages/Signup";
 import Items from "pages/Items";
+import AddItem from "pages/AddItem";
 
 const routes = [
   {
@@ -19,6 +20,10 @@ const routes = [
   {
     path: "/items",
     element: <Items />,
+  },
+  {
+    path: "/additem",
+    element: <AddItem />,
   },
 ];
 

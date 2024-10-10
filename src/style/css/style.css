@@ -804,6 +804,7 @@ footer .footer-wrap .sns a img {
 .btn-primary {
   border: 0;
   border-radius: 0.8rem;
+  padding: 0.8rem 2.3rem;
   background-color: var(--primary100);
   font-size: 1.6rem;
   font-weight: var(--semiBold);
@@ -841,6 +842,82 @@ footer .footer-wrap .sns a img {
 }
 .pagination .btn-pagination.btn-next {
   transform: rotate(180deg);
+}
+
+.form-input-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem 0;
+}
+.form-input-wrap label {
+  font-size: 1.8rem;
+  font-weight: var(--bold);
+  line-height: 2.6rem;
+  color: var(--gray800);
+}
+.form-input-wrap input:not([type=file]),
+.form-input-wrap textarea {
+  border: 0;
+  border-radius: 1.2rem;
+  padding: 1.6rem 2.4rem;
+  background-color: var(--gray100);
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  color: var(--gray800);
+}
+.form-input-wrap input:not([type=file])::-moz-placeholder, .form-input-wrap textarea::-moz-placeholder {
+  color: var(--gray400);
+}
+.form-input-wrap input:not([type=file])::placeholder,
+.form-input-wrap textarea::placeholder {
+  color: var(--gray400);
+}
+.form-input-wrap input:not([type=file]):focus,
+.form-input-wrap textarea:focus {
+  outline: 0.1rem solid var(--primary100);
+}
+.form-input-wrap input[type=file] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.form-input-wrap textarea {
+  height: 28.2rem;
+  resize: none;
+}
+.form-input-wrap .upload-area {
+  display: flex;
+  gap: 0 2.4rem;
+}
+.form-input-wrap .upload-area .btn-upload-img,
+.form-input-wrap .upload-area .thumbnail {
+  width: 28.2rem;
+  aspect-ratio: 1/1;
+  border-radius: 1.2rem;
+}
+.form-input-wrap .upload-area .btn-upload-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem 0;
+  padding: 0;
+  border: 0;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  color: var(--gray400);
+}
+.form-input-wrap .upload-area .btn-upload-img img {
+  width: 4.8rem;
+  height: 4.8rem;
+}
+.form-input-wrap .upload-area .thumbnail {
+  overflow: hidden;
+  border: 0.1rem solid var(--gray50);
+}
+.form-input-wrap .upload-area .thumbnail img {
+  width: 100%;
+  height: 100%;
 }
 
 /* Main & Section */
@@ -1314,9 +1391,6 @@ footer .footer-wrap .sns a img {
 .page-items section#section_all .top .filter-area .input-area input:focus {
   outline: 0.1rem solid var(--primary100);
 }
-.page-items section#section_all .top .filter-area .btn-register {
-  padding: 0.8rem 2.3rem;
-}
 .page-items section .products-wrap {
   display: grid;
   gap: 4rem 2.4rem;
@@ -1394,5 +1468,28 @@ footer .footer-wrap .sns a img {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+.form-wrap {
+  max-width: 120rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2.9rem 0 6.9rem;
+}
+.form-wrap form {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem 0;
+}
+.form-wrap form .title-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.4rem;
+}
+.form-wrap form .title-wrap h2 {
+  font-size: 2rem;
+  font-weight: var(--bold);
+  line-height: 3.2rem;
+}
+
 /* BreakPoint Tablet */
 /* BreakPoint Mobile */

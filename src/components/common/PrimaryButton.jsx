@@ -1,9 +1,9 @@
 import React from "react";
 
-function PrimaryButton({ children, name, onClick }) {
+function PrimaryButton({ children, type = "button", name, onClick }) {
   return (
     <button
-      type="button"
+      type={type}
       className={["btn-primary", name].join(" ")}
       onClick={onClick}
     >
