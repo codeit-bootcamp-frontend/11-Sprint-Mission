@@ -8,15 +8,15 @@ function Additem() {
   const [productName, setProductName] = useState('');
   const [productContent, setProductContent] = useState('');
   const [productPrice, setProductPrice] = useState();
-  const [productTag, setProductTag] = useState('');
+  const [productTag, setProductTag] = useState([]);
   const [productImage, setProductImage] = useState(null);
+  const [tags, setTags] = useState([]);
 
   const isFormValid = () => {
     return (
       productName.trim() !== '' &&
       productContent.trim() !== '' &&
       productPrice > 0 &&
-      productTag.trim() !== '' &&
       productImage !== null
     );
   };
@@ -27,7 +27,7 @@ function Additem() {
       productName,
       productContent,
       productPrice,
-      productTag,
+      productTags: tags,
     };
     console.log('상품 등록 데이터:', productData);
   };
@@ -58,6 +58,7 @@ function Additem() {
           onContentChange={setProductContent}
           onPriceChange={setProductPrice}
           onTagChange={setProductTag}
+          onTagsUpdate={setTags}
         />
       </div>
     </>

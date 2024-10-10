@@ -9,13 +9,16 @@ function AddProductInput({
   onContentChange,
   onPriceChange,
   onTagChange,
+  onTagsUpdate,
 }) {
   const [tags, setTags] = useState([]);
 
   const handleTagSubmit = () => {
     if (productTag.trim() !== '') {
-      setTags([...tags, productTag.trim()]);
-      onTagChange('');
+      const updatedTags = [...tags, productTag.trim()];
+      setTags(updatedTags);
+      onTagChange(''); // Clear input
+      onTagsUpdate(updatedTags); // 부모 컴포넌트로 태그 배열 전달
     }
   };
 
