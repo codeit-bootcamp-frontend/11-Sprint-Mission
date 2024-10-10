@@ -1,0 +1,27 @@
+.all-item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.all-item-header {
+  display: flex;
+}
+
+.all-item-title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.all-item-search {
+  display: flex;
+}
+
+.all-item-card-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 24px;
+  row-gap: 40px;
+}

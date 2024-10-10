@@ -17,8 +17,9 @@
   font-weight: 700;
 }
 
-.best-item-card {
+.best-item-card-container {
   display: flex;
+  flex-direction: row;
   justify-content: flex-start;
   gap: 24px;
 }
