@@ -1,8 +1,8 @@
 import favoriteIcon from "../assets/Icon.svg";
-import "./ItemCard.css";
+import "./BestItemCard.css";
 import "./common.css";
 
-function ItemCard({ item }) {
+function BestItemCard({ item }) {
   return (
     <div className="item-card">
       <a href="/item-information">
@@ -20,4 +20,4 @@ function ItemCard({ item }) {
   );
 }
 
-export default ItemCard;
+export default BestItemCard;

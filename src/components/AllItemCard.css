@@ -1,0 +1,12 @@
+.item-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.all-item-card-img {
+  width: 221px;
+  height: 221px;
+  border-radius: 16px;
+  object-fit: cover;
+}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getProducts } from "../api";
-import ItemCard from "./ItemCard";
+import BestItemCard from "./BestItemCard";
 import "./BestItem.css";
 import "./common.css";
 
@@ -41,9 +41,9 @@ function BestItem() {
     <div className="best-item-container">
       <div className="best-item-content">
         <div className="best-item-title">베스트 상품</div>
-        <div className="best-item-card">
+        <div className="best-item-card-container">
           {items?.map((item) => (
-            <ItemCard item={item} key={`best-item-${item.id}`} />
+            <BestItemCard item={item} key={`best-item-${item.id}`} />
           ))}
         </div>
       </div>
