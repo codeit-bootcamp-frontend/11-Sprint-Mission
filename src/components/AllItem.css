@@ -155,8 +155,11 @@
     row-gap: 32px;
   }
 
+  .all-item-title {
+    order: 0;
+  }
+
   .all-item-header-end {
-    justify-content: flex-start;
     flex-wrap: wrap;
   }
 
@@ -168,7 +171,15 @@
     flex-wrap: wrap;
   }
 
+  .all-item-register-button {
+    order: 1;
+  }
+
   .all-item-search-container {
     order: 2;
+  }
+
+  .all-item-sort-button {
+    width: 42px;
   }
 }
