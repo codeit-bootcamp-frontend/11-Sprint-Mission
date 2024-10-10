@@ -37,9 +37,13 @@ function TagInput({ children, name, placeholder, setUserInput }) {
       />
       <div className="tag-area">
         {tags.map((tag, idx) => (
-          <div key={`tag_${tag}`} className="tag">
-            <span>{tag}</span>
-            <button type="button" onClick={() => deleteTag(idx)}>
+          <div key={`tag_${idx}`} className="tag">
+            <span>#{tag}</span>
+            <button
+              type="button"
+              className="btn-delete-tag"
+              onClick={() => deleteTag(idx)}
+            >
               <span className="sr-only">삭제</span>
             </button>
           </div>

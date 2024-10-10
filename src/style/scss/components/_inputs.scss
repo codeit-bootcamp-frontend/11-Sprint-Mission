@@ -31,6 +31,7 @@
     height: 28.2rem;
     resize: none;
   }
+  /* 상품 이미지 */
   .upload-area {
     display: flex;
     gap: 0 2.4rem;
@@ -68,8 +69,8 @@
         position: absolute;
         top: 1.4rem;
         right: 1.3rem;
-        width: 2rem;
-        height: 2rem;
+        width: 2.2rem;
+        height: 2.4rem;
         border: 0;
         background: url(/public/images/icons/ic_delete.svg) no-repeat center /
           cover;
@@ -80,5 +81,30 @@
     font-size: 1.6rem;
     line-height: 2.6rem;
     color: var(--error);
+  }
+  /* 상품 태그 */
+  .tag-area {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 1.4rem;
+    .tag {
+      position: relative;
+      padding: 0.5rem 4.2rem 0.5rem 1.6rem;
+      border-radius: 2.6rem;
+      background-color: var(--gray100);
+      font-size: 1.6rem;
+      line-height: 2.6rem;
+      color: var(--gray800);
+      .btn-delete-tag {
+        position: absolute;
+        top: 0.6rem;
+        right: 1.2rem;
+        width: 2.2rem;
+        height: 2.4rem;
+        border: 0;
+        background: url(/public/images/icons/ic_delete.svg) no-repeat center /
+          cover;
+      }
+    }
   }
 }

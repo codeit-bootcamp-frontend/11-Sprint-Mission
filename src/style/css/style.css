@@ -848,6 +848,8 @@ footer .footer-wrap .sns a img {
   display: flex;
   flex-direction: column;
   gap: 1.6rem 0;
+  /* 상품 이미지 */
+  /* 상품 태그 */
 }
 .form-input-wrap label {
   font-size: 1.8rem;
@@ -924,8 +926,8 @@ footer .footer-wrap .sns a img {
   position: absolute;
   top: 1.4rem;
   right: 1.3rem;
-  width: 2rem;
-  height: 2rem;
+  width: 2.2rem;
+  height: 2.4rem;
   border: 0;
   background: url(/public/images/icons/ic_delete.svg) no-repeat center/cover;
 }
@@ -933,6 +935,29 @@ footer .footer-wrap .sns a img {
   font-size: 1.6rem;
   line-height: 2.6rem;
   color: var(--error);
+}
+.form-input-wrap .tag-area {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 1.4rem;
+}
+.form-input-wrap .tag-area .tag {
+  position: relative;
+  padding: 0.5rem 4.2rem 0.5rem 1.6rem;
+  border-radius: 2.6rem;
+  background-color: var(--gray100);
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  color: var(--gray800);
+}
+.form-input-wrap .tag-area .tag .btn-delete-tag {
+  position: absolute;
+  top: 0.6rem;
+  right: 1.2rem;
+  width: 2.2rem;
+  height: 2.4rem;
+  border: 0;
+  background: url(/public/images/icons/ic_delete.svg) no-repeat center/cover;
 }
 
 /* Main & Section */
