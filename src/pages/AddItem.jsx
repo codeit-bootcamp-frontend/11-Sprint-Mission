@@ -2,6 +2,7 @@ import React from "react";
 import HeadingTitleArea from "../components/common/HeadingTitleArea";
 import Button from "../components/common/Button";
 import Input from "../components/common/Input";
+import InputFile from "../components/AddItem/InputFile";
 
 function AddItem() {
   return (
@@ -20,7 +21,7 @@ function AddItem() {
         <HeadingTitleArea>
           <h3>상품이미지</h3>
         </HeadingTitleArea>
-        <input type='file' />
+        <InputFile />
         <HeadingTitleArea>
           <h3>상품명</h3>
         </HeadingTitleArea>
