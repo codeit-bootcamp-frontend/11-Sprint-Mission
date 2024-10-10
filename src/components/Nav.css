@@ -1,5 +1,5 @@
 .nav-container {
-  border: 1px solid #dfdfdf;
+  border-bottom: 1px solid #dfdfdf;
 }
 
 .nav-bar {
@@ -39,6 +39,35 @@
 }
 
 .nav-icon {
+  display: block;
   width: 40px;
   height: 40px;
+}
+
+@media (max-width: 1279px) {
+  .nav-bar {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .nav-bar {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .nav-front {
+    gap: 8px;
+  }
+
+  .nav-logo {
+    width: 100px;
+    height: 35px;
+  }
+
+  .nav-board {
+    gap: 8px;
+    font-size: 16px;
+  }
 }

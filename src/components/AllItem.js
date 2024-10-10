@@ -4,6 +4,7 @@ import { getProducts } from "../api";
 import Pagination from "./Pagination";
 import "./common.css";
 import "./AllItem.css";
+import searchIcon from "../assets/ic_search.svg";
 
 const getPageSize = () => {
   const width = window.innerWidth;
@@ -62,27 +63,38 @@ function AllItems() {
       <div className="all-item-content">
         <div className="all-item-header">
           <div className="all-item-title">전체 상품</div>
-          <div className="all-item-search">
-            <div className="all-item-search-container">
-              <input
-                className="all-item-search-input"
-                placeholder="검색할 상품을 입력해주세요"
-              />
-            </div>
-            <button className="all-item-register">상품 등록하기</button>
-          </div>
-          <div className="all-item-sort">
-            <button className="all-item-sort-button" onClick={toggleDropdown}>
-              {orderBy === "recent" ? "최신순" : "좋아요순"} ▼
-            </button>
-            {isDropdown && (
-              <div className="all-item-sort-options">
-                <div onClick={() => handleOrderByChange("recent")}>최신순</div>
-                <div onClick={() => handleOrderByChange("favorite")}>
-                  좋아요순
-                </div>
+          <div className="all-item-header-end">
+            <div className="all-item-search">
+              <div className="all-item-search-container">
+                <img
+                  className="all-item-search-icon"
+                  src={searchIcon}
+                  alt="돋보기 아이콘"
+                />
+                <input
+                  className="all-item-search-input"
+                  placeholder="검색할 상품을 입력해주세요"
+                />
               </div>
-            )}
+              <button className="all-item-register-button">
+                상품 등록하기
+              </button>
+            </div>
+            <div className="all-item-sort">
+              <button className="all-item-sort-button" onClick={toggleDropdown}>
+                {orderBy === "recent" ? "최신순" : "좋아요순"} ▼
+              </button>
+              {isDropdown && (
+                <div className="all-item-sort-options">
+                  <div onClick={() => handleOrderByChange("recent")}>
+                    최신순
+                  </div>
+                  <div onClick={() => handleOrderByChange("favorite")}>
+                    좋아요순
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
         <div className="all-item-card-container">
