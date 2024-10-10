@@ -1,0 +1,44 @@
+.nav-container {
+  border: 1px solid #dfdfdf;
+}
+
+.nav-bar {
+  display: flex;
+  padding-right: 200px;
+  padding-left: 200px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-front {
+  display: flex;
+  align-items: center;
+  gap: 47px;
+}
+
+.nav-logo {
+  width: 153px;
+  height: 51px;
+}
+
+.nav-board {
+  display: flex;
+  gap: 30px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+}
+
+.nav-board a {
+  color: #4b5563;
+  text-decoration: none;
+}
+
+.nav-board-used-market.active {
+  color: #3692ff;
+}
+
+.nav-icon {
+  width: 40px;
+  height: 40px;
+}

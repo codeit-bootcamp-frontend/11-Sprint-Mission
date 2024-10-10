@@ -5,7 +5,9 @@ import "./common.css";
 function ItemCard({ item }) {
   return (
     <div className="item-card">
-      <img src={item.images[0]} alt={item.name} className="item-card-img" />
+      <a href="/item-information">
+        <img src={item.images[0]} alt={item.name} className="item-card-img" />
+      </a>
       <div className="item-description">
         <div className="item-name">{item.name}</div>
         <div className="item-price">{item.price.toLocaleString()}원</div>
