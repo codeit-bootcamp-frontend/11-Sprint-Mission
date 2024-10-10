@@ -64,6 +64,20 @@ button {
   outline: none;
 }
 
+.password-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+}
+
 input,
 button {
   border: none;

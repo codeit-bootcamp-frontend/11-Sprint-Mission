@@ -8,6 +8,7 @@ import {
   isPwdMismatch,
   showError,
   removeError,
+  handleEyeIconClick,
 } from './validation.js';
 
 // 변수 선언
@@ -15,6 +16,10 @@ const emailInput = document.querySelector('#email');
 const nicknameInput = document.querySelector('#nickname');
 const passwordInput = document.querySelector('#password');
 const pwdCheckInput = document.querySelector('#passwordCheck');
+const eyeIcon = document.querySelector('.password-container .eye-icon');
+const eyeCheckIcon = document.querySelector(
+  '.password-container:nth-of-type(2) .eye-icon'
+);
 const signupBtn = document.querySelector('button');
 
 // 이메일 유효성 검사
@@ -75,21 +80,33 @@ function validatePasswordConfirm() {
   }
 }
 
-// 버튼 초기 비활성화
-signupBtn.disabled = true;
+// 첫 번째 비밀번호 필드에 대한 토글 이벤트 리스너
+eyeIcon.addEventListener('click', () => {
+  handleEyeIconClick(passwordInput, eyeIcon);
+});
+
+// 두 번째 비밀번호 확인 필드에 대한 토글 이벤트 리스너
+eyeCheckIcon.addEventListener('click', () => {
+  handleEyeIconClick(pwdCheckInput, eyeCheckIcon);
+});
 
 // 버튼 상태 업데이트 함수
 function updateButtonState() {
-  // prettier-ignore
-  const hasEmailError = isEmailEmpty(emailInput.value) || !isEmailValid(emailInput.value);
-  // prettier-ignore
+  const hasEmailError =
+    isEmailEmpty(emailInput.value) || !isEmailValid(emailInput.value);
   const hasNicknameError = isNicknameEmpty(nicknameInput.value);
-  // prettier-ignore
-  const hasPasswordError = isPasswordEmpty(passwordInput.value) || isShortPassword(passwordInput.value);
-  // prettier-ignore
-  const hasPwdCheckError = isPwdCheckEmpty(pwdCheckInput.value) || isPwdMismatch(passwordInput.value, pwdCheckInput.value);
-  // prettier-ignore
-  const isFormValid = !hasEmailError && !hasNicknameError && !hasPasswordError && !hasPwdCheckError;
+  const hasPasswordError =
+    isPasswordEmpty(passwordInput.value) ||
+    isShortPassword(passwordInput.value);
+  const hasPwdCheckError =
+    isPwdCheckEmpty(pwdCheckInput.value) ||
+    isPwdMismatch(passwordInput.value, pwdCheckInput.value);
+  const isFormValid =
+    !hasEmailError &&
+    !hasNicknameError &&
+    !hasPasswordError &&
+    !hasPwdCheckError;
+
   // 버튼 활성화 상태 설정
   signupBtn.disabled = !isFormValid;
 }
@@ -122,8 +139,9 @@ passwordInput.addEventListener('input', updateButtonState);
 pwdCheckInput.addEventListener('input', updateButtonState);
 
 signupBtn.addEventListener('click', (event) => {
-  if (!signupBtn.disabled) {
+  if (signupBtn.disabled) {
     event.preventDefault();
+  } else {
     location.href = 'signin.html';
   }
 });

@@ -5,11 +5,13 @@ import {
   isShortPassword,
   showError,
   removeError,
+  handleEyeIconClick,
 } from './validation.js';
 
 // 변수 선언
 const emailInput = document.querySelector('#email');
 const passwordInput = document.querySelector('#password');
+const eyeIcon = document.querySelector('.eye-icon');
 const loginBtn = document.querySelector('button');
 
 // 이메일 유효성 검사
@@ -36,15 +38,18 @@ passwordInput.addEventListener('focusout', () => {
   }
 });
 
-// 버튼 초기 비활성화
-loginBtn.disabled = true;
+// 비밀번호 필드에 대한 토글 이벤트
+eyeIcon.addEventListener('click', () => {
+  handleEyeIconClick(passwordInput, eyeIcon);
+});
 
 // 버튼 상태 업데이트 함수
 function updateButtonState() {
-  // prettier-ignore
-  const hasEmailError = isEmailEmpty(emailInput.value) || !isEmailValid(emailInput.value);
-  // prettier-ignore
-  const hasPasswordError = isPasswordEmpty(passwordInput.value) || isShortPassword(passwordInput.value);
+  const hasEmailError =
+    isEmailEmpty(emailInput.value) || !isEmailValid(emailInput.value);
+  const hasPasswordError =
+    isPasswordEmpty(passwordInput.value) ||
+    isShortPassword(passwordInput.value);
   const isFormValid = !hasEmailError && !hasPasswordError;
   // 버튼 활성화 상태 설정
   loginBtn.disabled = !isFormValid;
@@ -65,9 +70,11 @@ passwordInput.addEventListener('focusout', () => {
 emailInput.addEventListener('input', updateButtonState);
 passwordInput.addEventListener('input', updateButtonState);
 
+// 버튼 sj 추가 방어 로직
 loginBtn.addEventListener('click', (event) => {
-  if (!loginBtn.disabled) {
+  if (loginBtn.disabled) {
     event.preventDefault();
+  } else {
     location.href = 'items.html';
   }
 });
