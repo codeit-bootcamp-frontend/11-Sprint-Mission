@@ -59,7 +59,7 @@ function Items() {
               link={true}
               href='/addItem'
               className='addItem'
-              styleType='square blue'
+              styleType='square blue small_40'
             >
               상품 등록하기
             </Button>

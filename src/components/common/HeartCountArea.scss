@@ -1,0 +1,26 @@
+.btn-heart {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  .count {
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.8rem;
+    color: var(--gray-600);
+  }
+
+  .small {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  .middle {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  .large {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import HEART_ICON_IMAGE from "../../assets/ic_heart.svg";
+import "./HeartCountArea.scss";
 
 const HeartCountArea = ({ count }) => {
   const [addCount, setAddCount] = useState(0);

@@ -1,5 +1,6 @@
 import React from "react";
 import HeadingTitleArea from "../components/common/HeadingTitleArea";
+import Button from "../components/common/Button";
 
 function AddItem() {
   return (
@@ -7,7 +8,13 @@ function AddItem() {
       <div className='container'>
         <HeadingTitleArea>
           <h2>상품 등록하기</h2>
-          <button>등록</button>
+          <Button
+            link={false}
+            className='post'
+            styleType='square gray small_40'
+          >
+            등록
+          </Button>
         </HeadingTitleArea>
         <HeadingTitleArea>
           <h3>상품이미지</h3>

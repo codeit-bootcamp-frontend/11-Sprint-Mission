@@ -151,36 +151,6 @@ main[class^="page-"]:not(.page-login, .page-signup, .page-error) {
 }
 
 /* btn 공통 스타일 */
-div[class^="btn-wrap"] {
-  display: flex;
-  gap: 1.2rem;
-  white-space: nowrap;
-}
-[class^="btn-"] {
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-}
-[class*="btn-"].round {
-  border-radius: 4rem;
-}
-[class*="btn-"].square {
-  border-radius: 0.8rem;
-}
-[class*="btn-"].blue {
-  background-color: var(--blue-100);
-}
-[class*="btn-"].blue:hover {
-  background-color: var(--blue-300);
-}
-[class*="btn-"].gray {
-  background-color: var(--gray-400);
-}
-[class*="btn-"].white {
-  background-color: var(--gray-50);
-  color: var(--blue-100);
-  border: 1px solid var(--blue-100);
-}
 
 .error {
   padding-left: 1.6rem;
@@ -201,29 +171,6 @@ div[class^="btn-wrap"] {
 .error-search-message {
   font-size: 2rem;
   font-weight: 700;
-}
-.btn-heart {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-.btn-heart .count {
-  font-size: 1.2rem;
-  font-weight: 500;
-  line-height: 1.8rem;
-  color: var(--gray-600);
-}
-.ico-heart.small {
-  width: 1.6rem;
-  height: 1.6rem;
-}
-.ico-heart.middle {
-  width: 2.4rem;
-  height: 2.4rem;
-}
-.ico-heart.large {
-  width: 3.2rem;
-  height: 3.2rem;
 }
 
 #submitBtn.active {
@@ -302,13 +249,6 @@ div[class^="btn-wrap"] {
   #footer .footer-item.link-page .link {
     color: #cfcfcf;
   }
-
-  [class*="btn-"].round {
-    border-radius: 8.2rem;
-  }
-  /* [class*="btn-"].square {
-    border-radius: 1.6rem;
-  } */
 }
 
 @media screen and (min-width: 400px) and (max-width: 767px) {
