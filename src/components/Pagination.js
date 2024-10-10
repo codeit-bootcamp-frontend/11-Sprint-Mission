@@ -1,20 +1,41 @@
-// Pagination.js
 import React from "react";
+import "./pagination.css";
+import prevIcon from "../assets/arrow_left.svg";
+import nextIcon from "../assets/arrow_right.svg";
 
 function Pagination({ currentPage, totalPageNum, onPageChange }) {
   const pageNumbers = [];
+  const maxVisiblePages = 5; // 한 번에 표시할 최대 페이지 수
 
-  for (let i = 1; i <= totalPageNum; i++) {
+  // 현재 페이지가 속한 페이지 그룹 계산
+  const currentGroup = Math.floor((currentPage - 1) / maxVisiblePages);
+  const startPage = currentGroup * maxVisiblePages + 1;
+  const endPage = Math.min(startPage + maxVisiblePages - 1, totalPageNum);
+
+  for (let i = startPage; i <= endPage; i++) {
     pageNumbers.push(i);
   }
 
+  // 다음 5개로 이동하는 함수
+  const goToNextGroup = () => {
+    const nextGroupPage = startPage + maxVisiblePages;
+    if (nextGroupPage <= totalPageNum) {
+      onPageChange(nextGroupPage);
+    }
+  };
+
+  // 이전 5개로 이동하는 함수
+  const goToPreviousGroup = () => {
+    const prevGroupPage = startPage - maxVisiblePages;
+    if (prevGroupPage > 0) {
+      onPageChange(prevGroupPage);
+    }
+  };
+
   return (
     <div className="pagination">
-      <button
-        disabled={currentPage === 1}
-        onClick={() => onPageChange(currentPage - 1)}
-      >
-        이전
+      <button disabled={startPage === 1} onClick={goToPreviousGroup}>
+        <img src={prevIcon} alt="이전 버튼" />
       </button>
       {pageNumbers.map((number) => (
         <button
@@ -25,11 +46,8 @@ function Pagination({ currentPage, totalPageNum, onPageChange }) {
           {number}
         </button>
       ))}
-      <button
-        disabled={currentPage === totalPageNum}
-        onClick={() => onPageChange(currentPage + 1)}
-      >
-        다음
+      <button disabled={endPage === totalPageNum} onClick={goToNextGroup}>
+        <img src={nextIcon} alt="다음 버튼" />
       </button>
     </div>
   );
