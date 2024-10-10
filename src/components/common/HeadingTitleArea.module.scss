@@ -1,0 +1,17 @@
+.heading {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  color: var(--gray-800);
+  h2 {
+    flex: 1;
+    font-size: 2rem;
+    line-height: 3.2rem;
+  }
+  h3 {
+    flex: 1;
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+    font-weight: 700;
+  }
+}
