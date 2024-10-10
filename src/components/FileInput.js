@@ -1,4 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
+import '../style/ProductCreateForm.css';
+import { ReactComponent as PlusIcon } from '../images/ic_plus.svg';
+import { ReactComponent as DeleteIcon } from '../images/ic_X.svg';
 
 function FileInput({ name, value, initialPreview, onChange }) {
   const [preview, setPreview] = useState(initialPreview);
@@ -30,15 +33,26 @@ function FileInput({ name, value, initialPreview, onChange }) {
   }, [value, initialPreview]);
 
   return (
-    <div>
-      <img src={preview} alt="이미지 미리보기" />
+    <div className="image-input-form">
       <input
+        id="file"
         type="file"
         accept="image/png, image/jpeg"
         onChange={handleChange}
         ref={inputRef}
       />
-      {value && <button onClick={handleClearClick}>X</button>}
+      <label htmlFor="file" className="filelabel">
+        <PlusIcon />
+        이미지 등록
+      </label>
+      {value && (
+        <div className="preview-container">
+          <img className="image-preview" src={preview} alt="이미지 미리보기" />
+          <button className="image-delete-btn" onClick={handleClearClick}>
+            <DeleteIcon />
+          </button>
+        </div>
+      )}
     </div>
   );
 }

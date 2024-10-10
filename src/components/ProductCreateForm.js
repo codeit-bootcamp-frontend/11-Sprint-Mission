@@ -1,7 +1,22 @@
-import '../style/ProductCreateForm.css';
+import '../style/FileInput.css';
 import FileInput from './FileInput';
+import { useState } from 'react';
 
-function ProductCreateForm() {
+const INITIAL_VALUES = {
+  title: '',
+  content: '',
+  imgFile: null,
+  price: 0,
+  tag: null,
+};
+
+function ProductCreateForm(initialValues = INITIAL_VALUES, initialPreivew) {
+  const [values, setValues] = useState(initialValues);
+
+  const handleChange = (name, value) => {
+    setValues((preValues) => ({ ...preValues, [name]: value }));
+  };
+
   return (
     <div className="ProductContainer">
       <div className="container-title">
@@ -11,7 +26,12 @@ function ProductCreateForm() {
       <div className="container-body">
         <div className="ProductImg section-title">
           상품 이미지
-          <FileInput name="imgFile" />
+          <FileInput
+            name="imgFile"
+            value={values.imgFile}
+            initialPreivew={initialPreivew}
+            onChange={handleChange}
+          />
         </div>
         <div className="ProductTitle section-title">
           상품명
