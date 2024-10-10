@@ -34,20 +34,34 @@
           placeholder="닉네임을 입력해주세요"
         />
         <label for="password">비밀번호</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="비밀번호를 입력해주세요"
-        />
+        <div class="password-container">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="비밀번호를 입력해주세요"
+          />
+          <img
+            src="image/icon/eye-close.png"
+            class="eye-icon"
+            alt="비밀번호 숨기기"
+          />
+        </div>
         <label for="passwordCheck">비밀번호 확인</label>
-        <input
-          type="password"
-          id="passwordCheck"
-          name="passwordCheck"
-          placeholder="비밀번호를 다시 한 번 입력해주세요"
-        />
-        <button>회원가입</button>
+        <div class="password-container">
+          <input
+            type="password"
+            id="passwordCheck"
+            name="passwordCheck"
+            placeholder="비밀번호를 다시 한 번 입력해주세요"
+          />
+          <img
+            src="image/icon/eye-close.png"
+            class="eye-icon"
+            alt="비밀번호 숨기기"
+          />
+        </div>
+        <button disabled="true">회원가입</button>
         <div class="simple-login">
           <div>간편 로그인하기</div>
           <div class="social-icon">

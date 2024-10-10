@@ -31,6 +31,30 @@ export function isPwdMismatch(password, confirmPassword) {
   return password.trim() !== confirmPassword.trim();
 }
 
+// 비밀번호 표시 토글 함수
+export function togglePasswordVisibility(passwordInput) {
+  // 토글이니 가려져 있으면 text로 바꿔서 보이게, 보일 때는 안 보이게 password로 변경
+  const isPasswordHidden = passwordInput.type === 'password';
+  passwordInput.type = isPasswordHidden ? 'text' : 'password';
+}
+
+// 비밀번호 아이콘 표시 토글 함수
+export function toggleEyeIcon(eyeIcon, passwordInput) {
+  // 비밀번호 인풋이 text일 때, 즉 비밀번호가 보일 때를 변수로 할당
+  const isPasswordVisible = passwordInput.type === 'text';
+  if (isPasswordVisible) {
+    eyeIcon.src = 'image/icon/eye-open.png';
+  } else {
+    eyeIcon.src = 'image/icon/eye-close.png';
+  }
+}
+
+// 비밀번호 아이콘 클릭 할 때의 실행 함수
+export function handleEyeIconClick(passwordInput, eyeIcon) {
+  togglePasswordVisibility(passwordInput); // 비밀번호 표시 토글
+  toggleEyeIcon(eyeIcon, passwordInput); // 아이콘 변경
+}
+
 // 에러 생성 함수
 export function showError(inputElement, message) {
   let errorDiv = inputElement.nextElementSibling;
@@ -46,7 +70,7 @@ export function showError(inputElement, message) {
 
 // 에러 삭제 함수
 export function removeError(inputElement) {
-  let errorDiv = inputElement.nextElementSibling;
+  const errorDiv = inputElement.nextElementSibling;
   if (errorDiv && errorDiv.classList.contains('error-message')) {
     errorDiv.remove();
   }
