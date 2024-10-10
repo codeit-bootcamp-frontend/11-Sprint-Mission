@@ -1,0 +1,35 @@
+.item-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.item-card-img {
+  width: 282px;
+  height: 282px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.item-description {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.item-name {
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.item-price {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 700;
+}
+
+.item-favorite-count {
+  display: flex;
+  gap: 4px;
+}

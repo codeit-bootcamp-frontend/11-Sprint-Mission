@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import logoLarge from "../assets/Property 1=lg.png";
 import profileIcon from "../assets/Frame 2609463.png";
+import "./common.css";
 
 const Nav = () => {
   const location = useLocation();

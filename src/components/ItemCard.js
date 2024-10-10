@@ -1,4 +1,6 @@
 import favoriteIcon from "../assets/Icon.svg";
+import "./ItemCard.css";
+import "./common.css";
 
 function ItemCard({ item }) {
   return (
