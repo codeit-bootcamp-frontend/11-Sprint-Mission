@@ -58,11 +58,27 @@
     }
     .thumbnail {
       overflow: hidden;
+      position: relative;
       border: 0.1rem solid var(--gray50);
       img {
         width: 100%;
         height: 100%;
       }
+      .btn-delete-thumbnail {
+        position: absolute;
+        top: 1.4rem;
+        right: 1.3rem;
+        width: 2rem;
+        height: 2rem;
+        border: 0;
+        background: url(/public/images/icons/ic_delete.svg) no-repeat center /
+          cover;
+      }
     }
+  }
+  .error-msg {
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    color: var(--error);
   }
 }

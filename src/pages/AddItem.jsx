@@ -15,15 +15,20 @@ const INITIAL_INPUT = {
 };
 
 function AddItem() {
-  const [useInput, setUserInput] = useState(INITIAL_INPUT);
-  const { imgUrl, title, description, price, tag } = useInput;
+  const [userInput, setUserInput] = useState(INITIAL_INPUT);
+  const { imgUrl, title, description, price, tag } = userInput;
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(e);
+    // e.preventDefault();
+    // console.log(e);
   };
   return (
     <>
       <Header isLogin />
+      <div>{imgUrl}</div>
+      <div>{title}</div>
+      <div>{description}</div>
+      <div>{price}</div>
+      <div>{tag}</div>
       <div className="form-wrap">
         <form onSubmit={handleSubmit}>
           <div className="title-wrap">
@@ -32,13 +37,14 @@ function AddItem() {
               등록
             </PrimaryButton>
           </div>
-          <ImgFileInput name="image" value={imgUrl} setImage={setUserInput}>
+          <ImgFileInput name="image" setImage={setUserInput}>
             상품 이미지
           </ImgFileInput>
           <TextInput
             name="title"
             value={title}
             placeholder="상품명을 입력해주세요"
+            setUserInput={setUserInput}
           >
             상품명
           </TextInput>
@@ -46,13 +52,19 @@ function AddItem() {
             name="description"
             value={description}
             placeholder="상품 소개를 입력해주세요"
+            setUserInput={setUserInput}
           >
             상품 소개
           </Description>
-          <PriceInput name="price" value={price}>
+          <PriceInput name="price" value={price} setUserInput={setUserInput}>
             판매가격
           </PriceInput>
-          <TextInput name="tag" value={tag} placeholder="태그를 입력해주세요">
+          <TextInput
+            name="tag"
+            value={tag}
+            placeholder="태그를 입력해주세요"
+            setUserInput={setUserInput}
+          >
             태그
           </TextInput>
         </form>
