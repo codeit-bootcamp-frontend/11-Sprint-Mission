@@ -24,9 +24,6 @@
       outline: 0.1rem solid var(--primary100);
     }
   }
-  input[type="file"] {
-    appearance: none;
-  }
   textarea {
     height: 28.2rem;
     resize: none;
@@ -104,6 +101,20 @@
         border: 0;
         background: url(/public/images/icons/ic_delete.svg) no-repeat center /
           cover;
+      }
+    }
+  }
+}
+
+/* BreakPoint Tablet */
+@media (max-width: 1199px) {
+  .form-input-wrap {
+    /* 상품 이미지 */
+    .upload-area {
+      gap: 0 1rem;
+      .btn-upload-img,
+      .thumbnail {
+        width: 16.8rem;
       }
     }
   }

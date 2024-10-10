@@ -20,3 +20,17 @@
     }
   }
 }
+
+/* BreakPoint Tablet */
+@media (max-width: 1199px) {
+  .form-wrap {
+    max-width: 69.6rem;
+  }
+}
+
+/* BreakPoint Mobile */
+@media (max-width: 767px) {
+  .form-wrap {
+    max-width: 34.6rem;
+  }
+}

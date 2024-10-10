@@ -878,11 +878,6 @@ footer .footer-wrap .sns a img {
 .form-input-wrap textarea:focus {
   outline: 0.1rem solid var(--primary100);
 }
-.form-input-wrap input[type=file] {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-}
 .form-input-wrap textarea {
   height: 28.2rem;
   resize: none;
@@ -960,6 +955,19 @@ footer .footer-wrap .sns a img {
   background: url(/public/images/icons/ic_delete.svg) no-repeat center/cover;
 }
 
+/* BreakPoint Tablet */
+@media (max-width: 1199px) {
+  .form-input-wrap {
+    /* 상품 이미지 */
+  }
+  .form-input-wrap .upload-area {
+    gap: 0 1rem;
+  }
+  .form-input-wrap .upload-area .btn-upload-img,
+  .form-input-wrap .upload-area .thumbnail {
+    width: 16.8rem;
+  }
+}
 /* Main & Section */
 .section-layout {
   display: flex;
@@ -1531,5 +1539,17 @@ footer .footer-wrap .sns a img {
   line-height: 3.2rem;
 }
 
+/* BreakPoint Tablet */
+@media (max-width: 1199px) {
+  .form-wrap {
+    max-width: 69.6rem;
+  }
+}
+/* BreakPoint Mobile */
+@media (max-width: 767px) {
+  .form-wrap {
+    max-width: 34.6rem;
+  }
+}
 /* BreakPoint Tablet */
 /* BreakPoint Mobile */
