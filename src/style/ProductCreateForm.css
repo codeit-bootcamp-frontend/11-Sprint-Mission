@@ -1,6 +1,40 @@
 .ProductContainer {
   display: flex;
   flex-direction: column;
+  gap: 24px;
+  width: 1200px;
+  margin: 24px auto;
+}
+
+.container-title {
+  display: flex;
+  justify-content: space-between;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+  text-align: left;
+  color: #1f2937;
+}
+
+.container-body {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.Registerbtn {
+  padding: 12px 23px 12px 23px;
+  gap: 10px;
+  border-radius: 8px;
+  border: 0;
+  background-color: #9ca3af;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  text-align: left;
+  color: #f3f4f6;
 }
 
 .ProductImg {
@@ -23,7 +57,14 @@
   flex-direction: column;
 }
 
-.ProductTitle > input {
+.ProductTag {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductTitle > input,
+.ProductPrice > input,
+.ProductTag > input {
   padding: 16px 24px 16px 24px;
   gap: 10px;
   border-radius: 12px;
@@ -66,13 +107,5 @@
   line-height: 26px;
   text-align: left;
   color: #1f2937;
-}
-
-.container-title {
-  font-family: Pretendard;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 32px;
-  text-align: left;
-  color: #1f2937;
+  gap: 16px;
 }
