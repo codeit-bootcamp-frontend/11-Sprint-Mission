@@ -4,10 +4,9 @@ import { formatPrice, formatToPrice } from "utils/formatPrice";
 function PriceInput({ children, name, value, setUserInput }) {
   const handleInput = ({ target }) => {
     const priceValue = formatToPrice(target.value);
-    console.log(priceValue);
     const regExp = /^\d*$/;
     if (regExp.test(priceValue)) {
-      setUserInput((prev) => ({ ...prev, price: priceValue }));
+      setUserInput((prev) => ({ ...prev, price: +priceValue }));
     }
   };
   return (

@@ -11,7 +11,7 @@ const INITIAL_INPUT = {
   images: [],
   name: "",
   description: "",
-  price: "",
+  price: 0,
   tags: [],
 };
 

@@ -8,17 +8,27 @@ const formatPriceToKRW = (price) => {
 };
 
 /**
- * Input의 String 타입을 금액 형식으로 리턴
+ * Input의 입력을 금액 형식으로 리턴
  * ex) 1000 -> 1,000
  * @param {*} price
  */
 const formatPrice = (price) => {
-  return price.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  if (!price) return "";
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
+/**
+ * 금액 형식의(ex: 1,000) 데이터를 API 규격에 맞게(1000) 리턴
+ * @param {*} price
+ * @returns
+ */
 const formatToPrice = (price) => {
-  if (!price) return "";
-  return price.replace("/,/g", "");
+  // 모든 숫자 외 문자를 제거
+  const removedString = price.replace(/\D/g, "");
+  // 숫자 앞에 0이 있을 경우 제거
+  const formated = removedString.replace(/^0+/, "");
+
+  return formated;
 };
 
 export { formatPriceToKRW, formatPrice, formatToPrice };

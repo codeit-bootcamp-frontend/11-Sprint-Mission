@@ -34,7 +34,6 @@ function TagInput({ children, name, placeholder, setUserInput }) {
         value={value}
         onKeyDown={handleKeyDown}
         onChange={handleInput}
-        required
       />
       <div className="tag-area">
         {tags.map((tag, idx) => (
