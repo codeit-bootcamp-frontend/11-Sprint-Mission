@@ -6,8 +6,10 @@ function TagInput({ children, name, placeholder, setUserInput }) {
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      setTags((prev) => [...prev, e.target.value]);
-      setValue("");
+      if (e.target.value.trim() !== "") {
+        setTags((prev) => [...prev, e.target.value]);
+        setValue("");
+      }
     }
   };
 
