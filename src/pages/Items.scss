@@ -1,14 +1,7 @@
-.page-items {
-  .container {
-    max-width: 125rem;
-    padding: 2.4rem 2.4rem 5.8rem;
-  }
-}
-
 .product {
   &-area {
     &:not(:last-child) {
-      margin: 0 0 4rem;
+      margin: 0 0 1.6rem;
     }
     &.all {
       .product-list {
@@ -127,25 +120,11 @@
 }
 
 @media screen and (max-width: 767px) {
-  .page-items {
-    .container {
-      padding: 1.6rem 1.6rem 3.5rem;
-    }
-  }
-
   .product {
-    // &-category {
-    //   &-name {
-    //     order: 1;
-    //   }
-    //   .btn-addItem {
-    //     order: 2;
-    //   }
-    //   .select {
-    //     order: 4;
-    //   }
-    // }
     &-area {
+      &:not(:last-child) {
+        margin: 0 0 0.8rem;
+      }
       &.all {
         .product-list {
           grid-template-rows: repeat(2, 1fr);

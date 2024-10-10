@@ -3,19 +3,17 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 1.2rem;
-  margin: 2.4rem 0;
+  padding: 2.4rem 0;
   width: 100%;
   font-weight: 700;
   color: var(--gray-800);
   h2 {
     flex: 1;
-    // order: 1;
     font-size: 2rem;
     line-height: 3.2rem;
   }
   h3 {
     flex: 1;
-    // order: 1;
     font-size: 1.8rem;
     line-height: 2.6rem;
     font-weight: 700;
@@ -24,6 +22,7 @@
 
 @media screen and (max-width: 767px) {
   .heading {
+    padding: 1.6rem 0;
     h2 {
       order: 1;
     }
