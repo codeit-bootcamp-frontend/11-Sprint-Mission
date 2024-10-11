@@ -4,8 +4,7 @@
 
 .nav-bar {
   display: flex;
-  padding-right: 200px;
-  padding-left: 200px;
+  padding: 9px 200px;
   justify-content: space-between;
   align-items: center;
 }
@@ -19,6 +18,7 @@
 .nav-logo {
   width: 153px;
   height: 51px;
+  display: block;
 }
 
 .nav-board {
