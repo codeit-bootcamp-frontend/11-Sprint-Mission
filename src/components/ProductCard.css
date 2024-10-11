@@ -4,6 +4,10 @@
   margin: 0 auto;
 }
 
+.product-wrapped {
+  gap: 24px;
+}
+
 .best-products,
 .all-products {
   display: grid;
@@ -24,26 +28,21 @@
 .all-products {
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(2, auto);
-  margin-top: 40px;
+  margin-top: 24px;
 }
 
-.all-products-header {
+.products-header {
+  max-width: 1200px; /* 원하는 최대 너비 설정 */
+  margin: 0 auto; /* 가운데 정렬 */
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-.all-products-header .sort-menu {
+.products-header .sort-menu {
   display: flex;
   gap: 12px;
-}
-
-input {
-  border: none;
-  border-radius: 12px;
-  background-color: #f3f4f6;
-  outline: none;
-  width: 325px;
-  height: 42px;
 }
 
 .input-container {
@@ -52,13 +51,22 @@ input {
   align-items: center;
 }
 
+input {
+  border: none;
+  border-radius: 12px;
+  background-color: #f3f4f6;
+  padding-left: 35px;
+  outline: none;
+  width: 325px;
+  height: 42px;
+}
+
 .input-icon {
   position: absolute;
   left: 10px;
 }
 
 .input-container input::placeholder {
-  padding-left: 35px;
   color: #9ca3af;
   font-size: 16px;
   font-weight: 400;
@@ -76,7 +84,10 @@ button {
 }
 
 select {
+  width: 130px;
+  height: 42px;
   border-radius: 12px;
+  padding-left: 20px;
 }
 .product-card {
   overflow: hidden;
@@ -112,7 +123,6 @@ select {
 }
 
 h2 {
-  margin-bottom: 16px;
   font-size: 20px;
   color: #111827;
   font-weight: 700;

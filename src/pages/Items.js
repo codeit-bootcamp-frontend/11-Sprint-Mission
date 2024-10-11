@@ -1,13 +1,15 @@
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getProducts } from '../api/ProductAPI';
 import BestProducts from '../components/BestProducts';
 import AllProducts from '../components/AllProducts';
-import '../styles/Items.css';
 import SearchIcon from '../image/search-icon.png';
+import '../styles/Items.css';
 
 function Items() {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -28,9 +30,9 @@ function Items() {
 
   return (
     <div className="product-wrapped">
-      <h2>베스트 상품</h2>
+      <h2 class="products-header">베스트 상품</h2>
       <BestProducts products={products} />
-      <div className="all-products-header">
+      <div className="products-header">
         <h2>전체 상품</h2>
         <div className="sort-menu">
           <div class="input-container">
@@ -39,7 +41,7 @@ function Items() {
             </span>
             <input type="text" placeholder="검색할 상품을 입력해주세요" />
           </div>
-          <button>상품 등록하기</button>
+          <button onClick={() => navigate('/additem')}>상품 등록하기</button>
           <select>
             <option value="latest">최신순</option>
             <option value="favorite">좋아요순</option>
