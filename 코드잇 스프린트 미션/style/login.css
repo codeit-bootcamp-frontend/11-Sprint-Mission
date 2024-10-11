@@ -67,7 +67,22 @@ label {
   cursor: pointer;
 }
 
-input::placeholder {
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 10px;
+}
+
+.input-container input {
+  padding-left: 30px;
+}
+
+.input-container input::placeholder {
   color: #9ca3af;
 }
 
