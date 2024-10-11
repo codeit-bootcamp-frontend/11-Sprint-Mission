@@ -89,7 +89,7 @@ function AddItem() {
                   value={formValues.productTag}
                   onChange={handleInputChange}
                 />
-                <TagsList />
+                <TagsList tags={["티셔츠", "상의"]} remove={true} />
               </div>
             </div>
           </div>
