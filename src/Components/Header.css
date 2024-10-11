@@ -24,3 +24,9 @@
     }
   }
 }
+
+.gnb-market {
+  nav .market {
+    color: #3692ff;
+  }
+}

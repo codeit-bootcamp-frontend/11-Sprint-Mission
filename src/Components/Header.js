@@ -19,7 +19,9 @@ export default function Header() {
               <a href="#/">자유게시판</a>
             </li>
             <li>
-              <NavLink to="/items">중고마켓</NavLink>
+              <NavLink to="/items" className="market">
+                중고마켓
+              </NavLink>
             </li>
           </ul>
         </nav>
