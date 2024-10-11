@@ -5,7 +5,7 @@ import TextInput from "components/addItem/TextInput";
 import TagInput from "components/addItem/TagInput";
 import Header from "components/common/Header";
 import PrimaryButton from "components/common/PrimaryButton";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const INITIAL_INPUT = {
   images: [],
@@ -17,11 +17,21 @@ const INITIAL_INPUT = {
 
 function AddItem() {
   const [userInput, setUserInput] = useState(INITIAL_INPUT);
-  const { name, description, price } = userInput;
+  const { name, description, price, tags } = userInput;
+  const [isFormValid, setIsFormValid] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(e);
+    if (isFormValid) {
+      // 추후 POST API 연동 예정
+      console.log(e);
+    }
   };
+
+  useEffect(() => {
+    const isValid =
+      name !== "" && description !== "" && price !== 0 && tags.length > 0;
+    setIsFormValid(isValid);
+  }, [name, description, price, tags.length]);
   return (
     <>
       <Header isLogin />
@@ -29,7 +39,7 @@ function AddItem() {
         <form onSubmit={handleSubmit}>
           <div className="title-wrap">
             <h2>상품 등록하기</h2>
-            <PrimaryButton type="submit" name="btn-add">
+            <PrimaryButton type="submit" name="btn-add" disabled={!isFormValid}>
               등록
             </PrimaryButton>
           </div>

@@ -811,6 +811,10 @@ footer .footer-wrap .sns a img {
   line-height: 2.6rem;
   color: var(--gray100);
 }
+.btn-primary:disabled {
+  cursor: not-allowed;
+  background-color: var(--gray400);
+}
 
 .pagination {
   display: flex;
