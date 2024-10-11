@@ -1,6 +1,7 @@
 import "./InputFile.scss";
 import IC_PLUS from "../../assets/ic_plus.svg";
 import { useRef, useState } from "react";
+import ButtonClose from "../common/ButtonClose";
 
 function InputFile() {
   const [preview, setPreview] = useState(null);
@@ -33,28 +34,26 @@ function InputFile() {
 
   return (
     <>
-      <div className='productFile-area'>
-        <label htmlFor='productFile'>
-          <img src={IC_PLUS} alt='플러스 아이콘' className='icon-plus' />
-          <div className='input-file'>이미지 등록</div>
+      <div className="productFile-area">
+        <label htmlFor="productFile">
+          <img src={IC_PLUS} alt="플러스 아이콘" className="icon-plus" />
+          <div className="input-file">이미지 등록</div>
         </label>
         <input
-          type='file'
-          name='file'
-          id='productFile'
+          type="file"
+          name="file"
+          id="productFile"
           onChange={handleFileChange}
           ref={fileInputRef}
         />
         {preview && (
-          <div className='productFile-preview'>
-            <img src={preview} alt='이미지 프리뷰' />
-            <button onClick={handleDelete} className='btn-delete'>
-              삭제
-            </button>
+          <div className="productFile-preview">
+            <img src={preview} alt="이미지 프리뷰" />
+            <ButtonClose onClick={handleDelete} />
           </div>
         )}
       </div>
-      {error && <p className='productFile-error'>{error}</p>}
+      {error && <p className="productFile-error">{error}</p>}
     </>
   );
 }
