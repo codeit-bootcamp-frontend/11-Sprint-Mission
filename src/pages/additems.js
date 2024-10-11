@@ -19,7 +19,12 @@ function AddItems() {
   };
   return (
     <div className="addItemPage">
-      <h2>상품 등록하기</h2>
+      <div className="pageTitle">
+        <h2>상품 등록하기</h2>
+        <button disabled className="register">
+          등록
+        </button>
+      </div>
       <form>
         <p>상품 이미지</p>
         <div className="fileArea">
