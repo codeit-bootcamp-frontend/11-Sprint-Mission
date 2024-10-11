@@ -24,6 +24,5 @@ export async function getProducts(
   keyword && url.searchParams.append("keyword", keyword);
 
   const res = await fetch(url.href);
-  const data = await res.json();
-  return data;
+  return res.json();
 }
