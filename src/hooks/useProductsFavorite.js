@@ -21,7 +21,7 @@ const useProductsFavorite = () => {
       orderBy: order,
     };
 
-    execute(async () => {
+    await execute(async () => {
       const result = await getProductsList(queryParams);
       if (!result) return;
       setItems(result.list);
