@@ -2,33 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
-    'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', sans-serif;
-  font-size: 16px;
-}
-body {
-  background-color: #fcfcfc;
-}
-input,
-button,
-select {
-  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
-    'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', sans-serif;
+:root {
+  --base-font: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+    Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
 }
 
-.container {
-  @apply mx-auto px-4;
-  max-width: 1200px;
+@layer base {
+  html {
+    font-family: var(--base-font);
+    font-size: 16px;
+  }
+  body {
+    background-color: #fcfcfc;
+  }
+  input,
+  button,
+  select {
+    font-family: var(--base-font);
+  }
 }
-.btn {
-  @apply py-2 px-6 font-semibold rounded-lg;
-  color: #f3f4f6;
-  background-color: #3692ff;
 
-  &:hover {
-    background-color: #1967d6;
+@layer components {
+  .container {
+    @apply mx-auto px-4;
+    max-width: 1200px;
+  }
+}
+
+@layer utilities {
+  .btn {
+    @apply py-2 px-6 font-semibold rounded-lg;
+    color: #f3f4f6;
+    background-color: #3692ff;
+
+    &:hover {
+      background-color: #1967d6;
+    }
   }
 }
