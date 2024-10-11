@@ -1,7 +1,7 @@
 import "./InputFile.scss";
 import IC_PLUS from "../../assets/ic_plus.svg";
 import { useRef, useState } from "react";
-import ButtonClose from "../common/ButtonClose";
+import ButtonClose from "./ButtonClose";
 
 function InputFile() {
   const [preview, setPreview] = useState(null);

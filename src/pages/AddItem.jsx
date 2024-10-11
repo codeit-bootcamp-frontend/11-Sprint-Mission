@@ -3,7 +3,7 @@ import styles from "./AddItem.module.scss";
 import HeadingTitleArea from "../components/common/HeadingTitleArea";
 import Button from "../components/common/Button";
 import Input from "../components/common/Input";
-import InputFile from "../components/AddItem/InputFile";
+import InputFile from "../components/common/InputFile";
 import TagsList from "../components/common/TagsList";
 
 function AddItem() {
@@ -37,7 +37,7 @@ function AddItem() {
               등록
             </Button>
           </HeadingTitleArea>
-          <div className={styles.inputTextArea}>
+          <div className={styles["input-text-area"]}>
             <div>
               <HeadingTitleArea>
                 <h3>상품이미지</h3>
