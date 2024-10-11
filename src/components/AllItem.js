@@ -76,9 +76,11 @@ function AllItems() {
                   placeholder="검색할 상품을 입력해주세요"
                 />
               </div>
-              <button className="all-item-register-button">
-                상품 등록하기
-              </button>
+              <a href="./additem">
+                <button className="all-item-register-button">
+                  상품 등록하기
+                </button>
+              </a>
             </div>
             <div className="all-item-sort">
               <button className="all-item-sort-button" onClick={toggleDropdown}>
