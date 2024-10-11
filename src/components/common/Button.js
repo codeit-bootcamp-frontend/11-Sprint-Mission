@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Button.scss";
 
@@ -9,13 +9,17 @@ const Button = ({
   children,
   className,
   styleType = "",
+  disabled,
 }) => {
   return link ? (
     <Link to={href} className={`btn-${className} ${styleType}`}>
       {children}
     </Link>
   ) : (
-    <button onClick={onClick} className={`btn-${className} ${styleType}`}>
+    <button
+      onClick={onClick}
+      className={`btn-${className} ${styleType}`}
+      disabled={disabled}>
       {children}
     </button>
   );
