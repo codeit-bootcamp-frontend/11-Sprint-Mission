@@ -94,7 +94,7 @@ main[class^="page-"]:not(.page-login, .page-signup, .page-error) {
   height: 100%;
   margin: 0 auto;
   max-width: 125rem;
-  padding: 0 2.4rem;
+  padding: 2.4rem;
 }
 
 /* footer */

@@ -9,16 +9,20 @@
   color: var(--gray-800);
   h2 {
     flex: 1;
-    padding: 2.4rem 0;
     font-size: 2rem;
     line-height: 3.2rem;
   }
   h3 {
     flex: 1;
-    padding: 1.6rem 0;
     font-size: 1.8rem;
     line-height: 2.6rem;
     font-weight: 700;
+  }
+  &.h2Margin {
+    margin-bottom: 2.4rem;
+  }
+  &.h3Margin {
+    margin-bottom: 1.6rem;
   }
 }
 
