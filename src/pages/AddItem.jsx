@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./AddItem.module.scss";
 import HeadingTitleArea from "../components/common/HeadingTitleArea";
 import Button from "../components/common/Button";
@@ -7,6 +7,22 @@ import InputFile from "../components/AddItem/InputFile";
 import TagsList from "../components/common/TagsList";
 
 function AddItem() {
+  const [formValues, setFormValues] = useState({
+    productName: "",
+    productDescription: "",
+    productPrice: "",
+    productTag: "",
+  });
+
+  const isFormValid = Object.values(formValues).every(
+    (value) => value.trim() !== ""
+  );
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues((prevValues) => ({ ...prevValues, [name]: value }));
+  };
+
   return (
     <main className="page-addItem">
       <div className="container">
@@ -16,7 +32,8 @@ function AddItem() {
             <Button
               link={false}
               className="post"
-              styleType="square gray small_40">
+              styleType={`square small_40 ${!isFormValid ? "gray" : "blue"}`}
+              disabled={!isFormValid && Object.values(formValues).length > 0}>
               등록
             </Button>
           </HeadingTitleArea>
@@ -34,16 +51,19 @@ function AddItem() {
               <Input
                 placeholder="상품명을 입력해주세요"
                 inputName="productName"
+                value={formValues.productName}
+                onChange={handleInputChange}
               />
             </div>
             <div>
               <HeadingTitleArea>
                 <h3>상품소개</h3>
               </HeadingTitleArea>
-              <Input
-                isInput={false}
-                placeholder="상품 소개를 입력해주세요"
+              <textarea
+                className="default"
                 name="productDescription"
+                placeholder="상품 소개를 입력해주세요"
+                onChange={handleInputChange}
               />
             </div>
             <div>
@@ -54,6 +74,8 @@ function AddItem() {
                 type="number"
                 placeholder="판매 가격을 입력해주세요"
                 inputName="productPrice"
+                value={formValues.productPrice}
+                onChange={handleInputChange}
               />
             </div>
             <div>
@@ -64,6 +86,8 @@ function AddItem() {
                 <Input
                   placeholder="태그를 입력해주세요"
                   inputName="productTag"
+                  value={formValues.productTag}
+                  onChange={handleInputChange}
                 />
                 <TagsList />
               </div>
