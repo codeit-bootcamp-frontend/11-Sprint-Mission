@@ -1,8 +1,12 @@
 import React from "react";
 
 function TextInput({ children, name, placeholder, value, setUserInput }) {
-  const handleInput = ({ target }) => {
-    setUserInput((prev) => ({ ...prev, name: target.value }));
+  const setName = (value) => setUserInput((prev) => ({ ...prev, name: value }));
+
+  const handleInput = ({ target }) => setName(target.value);
+
+  const handleBlur = ({ target }) => {
+    if (!target.value.trim()) setName("");
   };
 
   return (
@@ -13,6 +17,7 @@ function TextInput({ children, name, placeholder, value, setUserInput }) {
         type="text"
         placeholder={placeholder}
         value={value}
+        onBlur={handleBlur}
         onChange={handleInput}
         required
       />
