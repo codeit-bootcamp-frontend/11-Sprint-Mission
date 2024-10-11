@@ -1,6 +1,6 @@
 import { useState } from "react";
-import ButtonClose from "./ButtonClose";
 import styles from "./TagsList.module.scss";
+import Button from "./Button";
 
 function TagsList() {
   const [tagsList, setTagsList] = useState(["티셔츠", "상의"]);
@@ -14,7 +14,12 @@ function TagsList() {
       {tagsList.map((tag) => (
         <li key={tag.length} className={styles.tagItem}>
           <span>#{tag}</span>
-          <ButtonClose onClick={() => handleRemoveTag(tag)} />
+          <Button
+            link={false}
+            className="delete"
+            onClick={() => handleRemoveTag(tag)}>
+            삭제
+          </Button>
         </li>
       ))}
     </ul>

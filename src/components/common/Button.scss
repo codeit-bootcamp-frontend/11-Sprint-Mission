@@ -4,6 +4,13 @@
     font-size: 1.6rem;
     line-height: 2.6rem;
   }
+
+  &delete {
+    width: 2.2rem;
+    height: 2.4rem;
+    background: url(../../assets/ic_X.svg) no-repeat center/contain;
+    font-size: 0;
+  }
 }
 
 div[class^="btn-wrap"] {

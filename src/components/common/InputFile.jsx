@@ -1,7 +1,8 @@
 import "./InputFile.scss";
 import IC_PLUS from "../../assets/ic_plus.svg";
 import { useRef, useState } from "react";
-import ButtonClose from "./ButtonClose";
+// import ButtonClose from "./ButtonClose";
+import Button from "./Button";
 
 function InputFile() {
   const [preview, setPreview] = useState(null);
@@ -49,7 +50,9 @@ function InputFile() {
         {preview && (
           <div className="productFile-preview">
             <img src={preview} alt="이미지 프리뷰" />
-            <ButtonClose onClick={handleDelete} />
+            <Button link={false} className="delete" onClick={handleDelete}>
+              삭제
+            </Button>
           </div>
         )}
       </div>
