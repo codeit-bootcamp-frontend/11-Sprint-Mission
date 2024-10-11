@@ -27,10 +27,9 @@ function Main() {
     else setView("mobile");
   };
 
-  window.addEventListener("resize", handleResize);
-
   useEffect(() => {
     handleResize();
+    window.addEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {

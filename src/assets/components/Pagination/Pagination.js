@@ -51,6 +51,8 @@ function getPageButtonRange(page, lastPage) {
 function Pagination({ page, setPage, pageSize, total }) {
   // 마지막 페이지 번호
   const lastPage = Math.round(total / pageSize) + (total % pageSize > 0);
+  const prev = page - 1;
+  const next = page + 1;
   // 표시할 버튼 번호 배열
   const range = getPageButtonRange(page, lastPage);
 
@@ -60,8 +62,13 @@ function Pagination({ page, setPage, pageSize, total }) {
    * @description 클릭한 버튼의 value 속성에 해당하는 페이지로 이동
    */
   const handlePageClick = (e) => {
-    const targetPage = Number(e.target.dataset.page);
-    if (!targetPage) return;
+    const data = e.target.dataset.page;
+    console.log(data);
+    const targetPage = Number(data);
+    if (!targetPage) {
+      console.log("paginattion err 1");
+      return;
+    }
     if (targetPage < 1) return;
     if (targetPage > lastPage) return;
     setPage(targetPage);
@@ -75,7 +82,7 @@ function Pagination({ page, setPage, pageSize, total }) {
         </button>
       </li>
       <li>
-        <button data-page={String(page - 1)}>
+        <button data-page={String(prev)}>
           <img src={arrowLeft} alt="이전 페이지" />
         </button>
       </li>
@@ -85,7 +92,7 @@ function Pagination({ page, setPage, pageSize, total }) {
         </li>
       ))}
       <li>
-        <button data-page={String(page + 1)}>
+        <button data-page={String(next)}>
           <img src={arrowRight} alt="다음 페이지" />
         </button>
       </li>
