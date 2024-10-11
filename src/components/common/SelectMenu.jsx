@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./SelectMenu.scss";
 
-const SelectMenu = ({ children }) => {
+function SelectMenu({ children }) {
   const [isOptionVisible, setIsOptionVisible] = useState(false);
   const [selectedLabel, setSelectedLabel] = useState(null);
 
@@ -43,7 +43,7 @@ const SelectMenu = ({ children }) => {
       )}
     </div>
   );
-};
+}
 
 const Title = ({ children }) => {
   return <>{children}</>;

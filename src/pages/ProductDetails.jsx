@@ -2,9 +2,23 @@ import { useState } from "react";
 import HeartCountArea from "../components/common/HeartCountArea";
 import Images from "../components/common/Images";
 import TagsList from "../components/common/TagsList";
+import DropDownMenu from "../components/common/DropDownMenu";
+import Button from "../components/common/Button";
 
 function ProductDetails() {
-  const [text, setText] = useState("Some initial text");
+  const handleEditClick = () => console.log("수정하기 버튼 클릭");
+  const handleDeleteClick = () => console.log("삭제하기 버튼 클릭");
+
+  const [formValues, setFormValues] = useState("");
+
+  const isFormValid = Object.values(formValues).every(
+    (value) => value.trim() !== ""
+  );
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setFormValues(value);
+  };
+
   return (
     <main className="page-productDetails">
       <div className="container">
@@ -20,19 +34,18 @@ function ProductDetails() {
             alt="상품 이미지"
           />
           <div className="product-detail-text-area">
-            <div className="btn-more">
-              <div className="toggle">
-                <img src="" alt="" />
-              </div>
-              <ul className="more-list">
-                <li className="more-item">
-                  <button className="btn-remove">수정하기</button>
-                </li>
-                <li className="more-item">
-                  <button className="btn-delete">삭제하기</button>
-                </li>
-              </ul>
-            </div>
+            <DropDownMenu>
+              <DropDownMenu.Item
+                onClick={handleEditClick}
+                className="btn-remove">
+                수정하기
+              </DropDownMenu.Item>
+              <DropDownMenu.Item
+                onClick={handleDeleteClick}
+                className="btn-delete">
+                삭제하기
+              </DropDownMenu.Item>
+            </DropDownMenu>
             <div className="product-detail-text">
               <h2 className="product-detail-title">아이패드 미니 팔아요</h2>
               <p className="product-detail-price">500,000원</p>
@@ -69,11 +82,19 @@ function ProductDetails() {
           <h4>문의하기</h4>
           <form>
             <textarea
-              value={text}
+              className="default"
+              value={formValues}
               name="inquiry"
               placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
-              onChange={(e) => setText(e.target.value)}
+              onChange={handleInputChange}
             />
+            <Button
+              link={false}
+              className="post"
+              styleType={`square small_40 ${!isFormValid ? "gray" : "blue"}`}
+              disabled={!isFormValid && Object.values(formValues).length > 0}>
+              등록
+            </Button>
             <button className="btn-inquiry">등록</button>
           </form>
         </div>
@@ -81,12 +102,12 @@ function ProductDetails() {
           <li className="inquiry-item">
             <div className="inquiry-form">
               <form>
-                <textarea
-                  value={text}
-                  name="inquiry"
+                {/* <textarea
+                  value={formValues}
+                  name="inquiry-remove"
                   placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
-                  onChange={(e) => setText(e.target.value)}
-                />
+                  onChange={handleInputChange}
+                /> */}
                 <div>
                   <div className="user-information">
                     <div className="user-profile">유저 프로필</div>
