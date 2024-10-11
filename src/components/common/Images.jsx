@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import styles from "./Images.module.scss";
+import useReSizing from "../../hooks/useReSizing";
 
 function Images({
   imageSize: { pcSize, tabletSize, mobileSize },
@@ -8,28 +8,10 @@ function Images({
   children,
   classNames = "",
 }) {
-  const [responsiveSize, setResponsiveSize] = useState(pcSize);
-
-  const handleResize = () => {
-    if (window.innerWidth <= 767) {
-      setResponsiveSize(mobileSize);
-    } else if (window.innerWidth <= 1199) {
-      setResponsiveSize(tabletSize);
-    } else {
-      setResponsiveSize(pcSize);
-    }
-  };
-
-  useEffect(() => {
-    handleResize(); // 초기 실행 시 사이즈 설정
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [pcSize, tabletSize, mobileSize]);
+  const imagesSize = useReSizing({ pcSize, tabletSize, mobileSize });
 
   return (
-    <div className={`${styles.images} ${styles[responsiveSize]} ${classNames}`}>
+    <div className={`${styles.images} ${styles[imagesSize]} ${classNames}`}>
       <img src={src} alt={alt} />
       {children}
     </div>

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { getProductsList } from "../services/products-api";
-import useResponsivePageSize from "./useProductsPageSize";
+import useReSizing from "./useReSizing";
 import useAsyncRequest from "./useAsyncRequest";
 
 const useProductsAll = ({ order, search }) => {
@@ -10,7 +10,7 @@ const useProductsAll = ({ order, search }) => {
 
   const { execute, isLoading, error: fetchError } = useAsyncRequest();
 
-  const pageSize = useResponsivePageSize({
+  const pageSize = useReSizing({
     mobileSize: 4,
     tabletSize: 6,
     pcSize: 10,
