@@ -51,6 +51,7 @@ function AddItem() {
                 <h3>판매가격</h3>
               </HeadingTitleArea>
               <Input
+                type="number"
                 placeholder="판매 가격을 입력해주세요"
                 inputName="productPrice"
               />

@@ -40,7 +40,8 @@
     url(../assets/fonts/Pretendard-Bold.woff2) format("woff2");
 }
 
-body > * {
+body > *,
+textarea {
   font-family: "Pretendard", sans-serif;
 }
 
