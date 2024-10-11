@@ -11,7 +11,7 @@ import AddItemButton from "../addItem/AddItemButton";
 import { fetchItems } from "../../entities/items/fetchItems";
 import { useQuery } from "@tanstack/react-query";
 
-import useResponsiveDisplayCount from "../../entities/items/hooks/useResponsiveDisplayCount";
+import useResponsiveDisplayCount from "../../shared/hooks/useResponsiveDisplayCount";
 import Pagination from "../pagination/Pagination";
 const AllItems = () => {
   const { allDisplayCount } = useResponsiveDisplayCount(); // 훅 사용

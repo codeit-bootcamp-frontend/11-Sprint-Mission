@@ -8,13 +8,13 @@ import Layout from "../shared/ui/layout/Layout";
 const Router = () => {
   return (
     <BrowserRouter>
-      <Layout>
-        <Routes>
+      <Routes>
+        <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/items" element={<Items />} />
           <Route path="/addItem" element={<AddItem />} />
-        </Routes>
-      </Layout>
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 };

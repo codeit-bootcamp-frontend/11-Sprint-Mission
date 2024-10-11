@@ -2,7 +2,7 @@ import React from "react";
 import { fetchItems } from "../../entities/items/fetchItems";
 import BestItem from "./BestItem";
 import { useQuery } from "@tanstack/react-query";
-import useResponsiveDisplayCount from "../../entities/items/hooks/useResponsiveDisplayCount";
+import useResponsiveDisplayCount from "../../shared/hooks/useResponsiveDisplayCount";
 
 const BestItems = () => {
   const { bestDisplayCount } = useResponsiveDisplayCount(); // 훅 사용
