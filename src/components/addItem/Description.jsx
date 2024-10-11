@@ -10,7 +10,7 @@ function Description({ children, name, placeholder, setUserInput }) {
       <textarea
         id={`item_${name}`}
         placeholder={placeholder}
-        onClick={handleInput}
+        onChange={handleInput}
         required
       />
     </div>
