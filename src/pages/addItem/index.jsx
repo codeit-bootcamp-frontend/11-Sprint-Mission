@@ -4,6 +4,10 @@ const AddItem = () => {
   const [selectedPicture, setSelectedPicture] = useState(null);
   const [productName, setProductName] = useState("");
   const [productDescription, setProductDescription] = useState("");
+  const [productPrice, setProductPrice] = useState("");
+  const [productTag, setProductTag] = useState("");
+  const [productTagsArray, setProductTagsArray] = useState([]);
+
   const fileInputRef = useRef(null);
 
   // div 클릭 시 파일 선택 창 열기
@@ -33,16 +37,38 @@ const AddItem = () => {
   };
 
   const onChangeProductDescription = (e) => {
-    // 프로덕트 네임바꾸는 함수
+    // 프로덕트디스크립션 바꾸는 함수
     setProductDescription(e.target.value);
   };
+  const onChangeProductPrcie = (e) => {
+    // 프로덕트프라이스 바꾸는 함수
+    setProductPrice(e.target.value);
+  };
 
+  const onChangeProductTag = (e) => {
+    // 프로덕트프라이스 바꾸는 함수
+    setProductTag(e.target.value);
+  };
+  const isButtonValid = () => {
+    // form버튼 활성화 조건
+    return (
+      productName.trim() !== "" &&
+      productDescription.trim() !== "" &&
+      productPrice.trim() !== "" &&
+      productTag.trim() !== ""
+    );
+  };
+  const formButtonBgc = !isButtonValid() ? "bg-[#9CA3AF]" : "bg-blue-500";
   return (
     <div className="w-full flex justify-center">
-      <div className="w-full p-2 flex flex-col gap-y-2 lg:w-2/3 lg:justify-center">
+      <form className="w-full p-2 flex flex-col gap-y-2 lg:w-2/3 lg:justify-center">
         <h2 className="flex justify-between text-lg">
           상품 등록하기
-          <button className="w-14 h-10 border rounded-lg text-slate-100 bg-[#9CA3AF]">
+          <button
+            type="submit"
+            disabled={!isButtonValid()}
+            className={`w-14 h-10 border rounded-lg text-slate-100 ${formButtonBgc}`}
+          >
             등록
           </button>
         </h2>
@@ -102,12 +128,21 @@ const AddItem = () => {
           <input
             className="w-full  h-[56px] py-[16px] px-[24px] bg-slate-200 border rounded-lg text-sm"
             placeholder="판매 가격을 입력해주세요"
+            value={productPrice}
+            onChange={onChangeProductPrcie}
+            type="number"
           ></input>
         </div>
         <div className="flex flex-col gap-y-2">
           <h2>태그</h2>
+          <input
+            className="w-full  h-[56px] py-[16px] px-[24px] bg-slate-200 border rounded-lg text-sm"
+            placeholder="태그를 입력해주세요"
+            value={productTag}
+            onChange={onChangeProductTag}
+          ></input>
         </div>
-      </div>
+      </form>
     </div>
   );
 };
