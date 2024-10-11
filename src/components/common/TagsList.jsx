@@ -5,7 +5,7 @@ import Button from "./Button";
 function TagsList() {
   const [tagsList, setTagsList] = useState(["티셔츠", "상의"]);
 
-  const handleRemoveTag = (tagToRemove) => {
+  const handleClearTagClick = (tagToRemove) => {
     setTagsList((prevTags) => prevTags.filter((tag) => tag !== tagToRemove));
   };
 
@@ -16,8 +16,8 @@ function TagsList() {
           <span>#{tag}</span>
           <Button
             link={false}
-            className="delete"
-            onClick={() => handleRemoveTag(tag)}>
+            className="clear"
+            onClick={() => handleClearTagClick(tag)}>
             삭제
           </Button>
         </li>

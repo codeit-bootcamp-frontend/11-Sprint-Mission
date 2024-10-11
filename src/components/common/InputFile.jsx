@@ -23,7 +23,7 @@ function InputFile() {
     }
   };
 
-  const handleDelete = () => {
+  const handleClearClick = () => {
     if (preview) {
       URL.revokeObjectURL(preview);
     }
@@ -58,7 +58,7 @@ function InputFile() {
             }}
             src={preview}
             alt="이미지 프리뷰">
-            <Button link={false} className="delete" onClick={handleDelete}>
+            <Button link={false} className="clear" onClick={handleClearClick}>
               삭제
             </Button>
           </Images>
