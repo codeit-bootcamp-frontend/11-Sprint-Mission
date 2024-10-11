@@ -1,13 +1,24 @@
+import { useState } from "react";
 import HeartCountArea from "../components/common/HeartCountArea";
+import Images from "../components/common/Images";
+import TagsList from "../components/common/TagsList";
 
 function ProductDetails() {
+  const [text, setText] = useState("Some initial text");
   return (
-    <div className="page-productDetails">
+    <main className="page-productDetails">
       <div className="container">
         <div className="product-detail-area">
-          <div className="product-detail-images">
-            <img src="" alt="상품 이미지" />
-          </div>
+          <Images
+            imageSize={{
+              pcSize: "big",
+              tabletSize: "big-large",
+              mobileSize: "big-large",
+            }}
+            classNames="product-detail-images"
+            src="http://placehold.it/600x600"
+            alt="상품 이미지"
+          />
           <div className="product-detail-text-area">
             <div className="btn-more">
               <div className="toggle">
@@ -37,11 +48,10 @@ function ProductDetails() {
             </div>
             <div className="product-detail-text">
               <h3 className="product-detail-title-sub">상품 태그</h3>
-              <ul className="tag-list">
-                <li className="tag-item">#아이패드미니</li>
-                <li className="tag-item">#애플</li>
-                <li className="tag-item">#가성비</li>
-              </ul>
+              <TagsList
+                tags={["아이패드미니", "애플", "가성비"]}
+                remove={false}
+              />
             </div>
             <div>
               <div className="user-information">
@@ -59,8 +69,11 @@ function ProductDetails() {
           <h4>문의하기</h4>
           <form>
             <textarea
+              value={text}
               name="inquiry"
-              placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."></textarea>
+              placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
+              onChange={(e) => setText(e.target.value)}
+            />
             <button className="btn-inquiry">등록</button>
           </form>
         </div>
@@ -69,10 +82,11 @@ function ProductDetails() {
             <div className="inquiry-form">
               <form>
                 <textarea
+                  value={text}
                   name="inquiry"
-                  placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다.">
-                  혹시 사용 기간이 어떻게 되실까요?
-                </textarea>
+                  placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
+                  onChange={(e) => setText(e.target.value)}
+                />
                 <div>
                   <div className="user-information">
                     <div className="user-profile">유저 프로필</div>
@@ -163,7 +177,7 @@ function ProductDetails() {
         </div>
         <button className="btn-return">목록으로 돌아가기</button>
       </div>
-    </div>
+    </main>
   );
 }
 
