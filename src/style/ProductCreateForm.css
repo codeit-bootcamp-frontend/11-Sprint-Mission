@@ -37,6 +37,11 @@
   color: #f3f4f6;
 }
 
+.Registerbtn.active {
+  background-color: #3692ff;
+  cursor: pointer;
+}
+
 .ProductImg {
   display: flex;
   flex-direction: column;
@@ -75,11 +80,11 @@
   font-weight: 400;
   line-height: 26px;
   text-align: left;
-  color: #9ca3af;
+  outline: none;
 }
 
-.ProductTitle > input:focus {
-  outline: none;
+input::placeholder {
+  color: #9ca3af;
 }
 
 .ProductIntro > textarea {
@@ -93,6 +98,9 @@
   font-weight: 400;
   line-height: 26px;
   text-align: left;
+}
+
+.ProductIntro > textarea::placeholder {
   color: #9ca3af;
 }
 
