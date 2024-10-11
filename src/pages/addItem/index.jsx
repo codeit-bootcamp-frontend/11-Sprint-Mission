@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const AddItem = () => {
   const [selectedPicture, setSelectedPicture] = useState(null);
@@ -7,6 +7,7 @@ const AddItem = () => {
   const [productPrice, setProductPrice] = useState("");
   const [productTag, setProductTag] = useState("");
   const [productTagsArray, setProductTagsArray] = useState([]);
+  const [productsArray, setProductsArray] = useState([]); // product 배열 상태
 
   const fileInputRef = useRef(null);
 
@@ -26,29 +27,53 @@ const AddItem = () => {
     e.target.value = ""; // 파일 선택 후 초기화
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newProduct = {
+      name: productName,
+      description: productDescription,
+      price: productPrice,
+      tag: [...productTagsArray],
+      image: selectedPicture,
+    };
+    // product 배열에 새로운 상품 추가
+    setProductsArray([...productsArray, newProduct]);
+
+    setProductName("");
+    setProductDescription("");
+    setProductPrice("");
+    setProductTag("");
+    setProductTagsArray([]);
+    setSelectedPicture(null);
+  };
+
+  // 엔터를 눌렀을 때 태그를 추가
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (productTag.trim() !== "") {
+        // 태그 배열에 추가
+        setProductTagsArray([...productTagsArray, productTag.trim()]);
+        setProductTag(""); // 입력 필드 초기화
+      }
+    }
+  };
+  // 태그 삭제 처리 함수
+  const handleDeleteTag = (indexToDelete) => {
+    setProductTagsArray(
+      productTagsArray.filter((_, index) => index !== indexToDelete)
+    );
+  };
   // input의 기본 클릭 이벤트를 무효화해서 두 번 열리지 않도록 방지
-  const preventDefaultClick = (e) => {
-    e.stopPropagation();
-  };
+  const preventDefaultClick = (e) => e.stopPropagation();
 
-  const onChangeProductName = (e) => {
-    // 프로덕트 네임바꾸는 함수
-    setProductName(e.target.value);
-  };
-
-  const onChangeProductDescription = (e) => {
-    // 프로덕트디스크립션 바꾸는 함수
+  /////
+  const onChangeProductName = (e) => setProductName(e.target.value);
+  const onChangeProductDescription = (e) =>
     setProductDescription(e.target.value);
-  };
-  const onChangeProductPrcie = (e) => {
-    // 프로덕트프라이스 바꾸는 함수
-    setProductPrice(e.target.value);
-  };
+  const onChangeProductPrcie = (e) => setProductPrice(e.target.value);
+  const onChangeProductTag = (e) => setProductTag(e.target.value);
 
-  const onChangeProductTag = (e) => {
-    // 프로덕트프라이스 바꾸는 함수
-    setProductTag(e.target.value);
-  };
   const isButtonValid = () => {
     // form버튼 활성화 조건
     return (
@@ -58,7 +83,12 @@ const AddItem = () => {
       productTag.trim() !== ""
     );
   };
+
   const formButtonBgc = !isButtonValid() ? "bg-[#9CA3AF]" : "bg-blue-500";
+  console.log(productsArray);
+  useEffect(() => {
+    console.log("Current Tags:", productTagsArray);
+  }, [productTagsArray]);
   return (
     <div className="w-full flex justify-center">
       <form className="w-full p-2 flex flex-col gap-y-2 lg:w-2/3 lg:justify-center">
@@ -68,6 +98,7 @@ const AddItem = () => {
             type="submit"
             disabled={!isButtonValid()}
             className={`w-14 h-10 border rounded-lg text-slate-100 ${formButtonBgc}`}
+            onClick={handleSubmit}
           >
             등록
           </button>
@@ -82,7 +113,9 @@ const AddItem = () => {
               >
                 <div className="flex flex-col justify-center items-center gap-y-2 text-[#9CA3AF]">
                   <div className="flex justify-center text-4xl">+</div>
-                  <div className="font-light ">이미지 등록</div>
+                  <div className="flex justify-center items-center h-1/2 text-xs sm:text-base">
+                    이미지 등록
+                  </div>
                 </div>
                 <input
                   className="absolute inset-0 opacity-0 cursor-pointer"
@@ -108,7 +141,7 @@ const AddItem = () => {
         <div className="flex flex-col gap-y-2">
           <h2 className="w-full">상품명</h2>
           <input
-            className="w-full  h-[56px] py-[16px] px-[24px] bg-slate-200 border rounded-lg text-sm"
+            className="w-full  h-13 py-5 px-5 bg-slate-200 border rounded-lg text-sm"
             placeholder="상품명을 입력해주세요"
             value={productName}
             onChange={onChangeProductName}
@@ -117,7 +150,7 @@ const AddItem = () => {
         <div className="flex flex-col gap-y-2">
           <h2>상품 소개</h2>
           <textarea
-            className="w-full  h-[282px] py-[16px] px-[24px] bg-slate-200 border rounded-lg text-sm"
+            className="w-full h-96 py-5 px-5 bg-slate-200 border rounded-lg text-sm"
             placeholder="상품 소개를 입력해주세요"
             value={productDescription}
             onChange={onChangeProductDescription}
@@ -126,7 +159,7 @@ const AddItem = () => {
         <div className="flex flex-col gap-y-2">
           <h2>판매가격</h2>
           <input
-            className="w-full  h-[56px] py-[16px] px-[24px] bg-slate-200 border rounded-lg text-sm"
+            className="w-full  h-13 py-5 px-5 bg-slate-200 border rounded-lg text-sm"
             placeholder="판매 가격을 입력해주세요"
             value={productPrice}
             onChange={onChangeProductPrcie}
@@ -136,11 +169,30 @@ const AddItem = () => {
         <div className="flex flex-col gap-y-2">
           <h2>태그</h2>
           <input
-            className="w-full  h-[56px] py-[16px] px-[24px] bg-slate-200 border rounded-lg text-sm"
+            className="w-full  h-13 py-5 px-5 bg-slate-200 border rounded-lg text-sm"
             placeholder="태그를 입력해주세요"
             value={productTag}
             onChange={onChangeProductTag}
+            onKeyDown={handleKeyDown}
           ></input>
+          <div className="flex flex-wrap gap-x-2 gap-y-2 ">
+            {productTagsArray.map((tag, index) => (
+              <div
+                className="bg-slate-200  h-10 border rounded-xl flex  p-4  items-center relative"
+                key={index}
+              >
+                {" "}
+                <div>#{tag}</div>
+                <button
+                  type="button"
+                  className="h-6 w-6 flex p-0 items-center justify-center border rounded-full bg-gray-400 text-xl text-gray-50 "
+                  onClick={() => handleDeleteTag(index)}
+                >
+                  <div className="">x</div>
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </form>
     </div>
