@@ -6,6 +6,10 @@ body {
   width: 100%;
 }
 
+.logo-image {
+  width: 153px;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -17,13 +21,14 @@ body {
 
 .nav-front {
   display: flex;
+  align-items: center;
   gap: 10px;
 }
 
 .nav-link {
   display: flex;
   align-items: center;
-  font-family: Pretendard;
+  font-family: 'Pretendard', sans-serif;
   font-size: 18px;
   font-weight: 700;
   line-height: 26px;
@@ -51,9 +56,8 @@ a {
   height: 48px;
   padding: 12px 23px;
   border-radius: 8px;
-  opacity: 0px;
   background-color: #3692ff;
-  font-family: Pretendard;
+  font-family: 'Pretendard', sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 26px;
