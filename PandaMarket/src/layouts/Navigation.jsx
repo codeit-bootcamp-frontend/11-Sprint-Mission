@@ -22,7 +22,7 @@ const Navigation = () => {
     <ul className="SubHeader__nav">
       {linkList.map((link) => {
         return (
-          <li>
+          <li key={link.path}>
             <NavLink to={link.path} style={getLinkStyle}>
               {link.name}
             </NavLink>
