@@ -1,12 +1,7 @@
 import "./Header.css";
 import profileImg from "../assets/profileImg.svg";
-import { Link, NavLink } from "react-router-dom";
-
-function getLinkStyle({ isActive }) {
-  return {
-    color: isActive ? "#3692ff" : undefined,
-  };
-}
+import { Link } from "react-router-dom";
+import Navigation from "./Navigation";
 
 export function MainHeader() {
   return (
@@ -34,19 +29,7 @@ export function SubHeader() {
           <Link to="/" className="SubHeader__logo"></Link>
         </h1>
 
-        <ul className="SubHeader__nav">
-          <li>
-            <NavLink to="/Boards" style={getLinkStyle}>
-              자유게시판
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/items" style={getLinkStyle}>
-              중고마켓
-            </NavLink>
-          </li>
-        </ul>
+        <Navigation />
 
         <Link className="SubHeader__profile">
           <img src={profileImg} alt="프로필 이미지" />
