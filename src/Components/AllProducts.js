@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getProducts } from '../api/api';
 import Product from './Product';
 import Pagination from './Pagination';
@@ -75,9 +76,9 @@ export default function AllProducts() {
           </button>
         </form>
 
-        <a href="/additem" className="btn">
+        <Link to="/additem" className="btn">
           상품 등록하기
-        </a>
+        </Link>
 
         <select className="in-order" onChange={handleOrder} value={orderBy}>
           <option value="recent">최신순</option>

@@ -17,6 +17,10 @@
 
     a {
       @apply px-4 py-3 block;
+
+      &.active {
+        color: #3692ff;
+      }
     }
   }
 }
