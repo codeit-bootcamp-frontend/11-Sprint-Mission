@@ -14,7 +14,7 @@ function TagInput({ children, name, placeholder, setUserInput }) {
       const isValidAddTag =
         e.target.value.trim() !== "" && tags.indexOf(e.target.value); // 공백 & 중복 태그 확인
       if (isValidAddTag) {
-        setTags((prev) => [...prev, e.target.value]);
+        setTags((prev) => [...prev, e.target.value.trim()]);
         setValue("");
       }
     }

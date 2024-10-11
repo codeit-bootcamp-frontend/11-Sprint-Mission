@@ -5,9 +5,7 @@ function TextInput({ children, name, placeholder, value, setUserInput }) {
 
   const handleInput = ({ target }) => setName(target.value);
 
-  const handleBlur = ({ target }) => {
-    if (!target.value.trim()) setName("");
-  };
+  const handleBlur = ({ target }) => setName(target.value.trim());
 
   return (
     <div className="form-input-wrap">
