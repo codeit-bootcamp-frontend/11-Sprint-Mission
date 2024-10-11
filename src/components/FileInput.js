@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import placeholderImg from "../assets/placeholder_img.png";
 import resetImg from "../assets/ic_X.svg";
 import "./FileInput.css";
+import plusIcon from "../assets/ic_plus.svg";
 
 function FileInput({ className = "", name, value, initialPreview, onChange }) {
-  const [preview, setPreview] = useState(initialPreview || placeholderImg);
+  const [preview, setPreview] = useState(initialPreview);
   const [isImageUploaded, setIsImageUploaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const inputRef = useRef();
@@ -12,30 +12,32 @@ function FileInput({ className = "", name, value, initialPreview, onChange }) {
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
+      if (isImageUploaded) {
+        setErrorMessage("*이미지 등록은 최대 1개까지 가능합니다.");
+        return;
+      }
       const previewUrl = URL.createObjectURL(selectedFile);
       setPreview(previewUrl);
       onChange(name, selectedFile);
-      setErrorMessage("");
       setIsImageUploaded(true);
+      setErrorMessage("");
     }
   };
 
   const handleClearClick = () => {
     if (inputRef.current) {
       inputRef.current.value = "";
-      setPreview(placeholderImg);
+      setPreview(null);
       onChange(name, null);
-      setErrorMessage("");
       setIsImageUploaded(false);
+      setErrorMessage("");
     }
   };
 
-  const handleImageClick = () => {
-    if (value) {
-      // 이미 이미지가 등록된 상태면 경고 메시지 표시
+  const handleUploadClick = (e) => {
+    if (isImageUploaded) {
+      e.preventDefault(); // 파일 선택 창이 열리지 않도록 방지
       setErrorMessage("*이미지 등록은 최대 1개까지 가능합니다.");
-    } else if (inputRef.current) {
-      inputRef.current.click();
     }
   };
 
@@ -46,21 +48,32 @@ function FileInput({ className = "", name, value, initialPreview, onChange }) {
       setIsImageUploaded(true);
       return () => URL.revokeObjectURL(previewUrl);
     } else {
-      setPreview(placeholderImg);
+      setPreview(null);
       setIsImageUploaded(false);
     }
   }, [value]);
 
   return (
-    <div className={`"file-input" ${className}`}>
+    <div className={`file-input ${className}`}>
       <div className="file-input-preview-container">
-        <div className="file-input-upload-container" onClick={handleImageClick}>
-          <img
-            className="file-input-upload-placeholder"
-            src={placeholderImg}
-            alt="이미지 등록"
+        <label className="file-input-label">
+          <input
+            type="file"
+            accept="image/png, image/jpeg"
+            onChange={handleFileChange}
+            onClick={handleUploadClick} // 클릭 핸들러 추가
+            ref={inputRef}
+            className="file-input-hidden"
           />
-        </div>
+          <div className="file-input-upload-text">
+            <img
+              className="file-input-upload-icon"
+              src={plusIcon}
+              alt="이미지 등록 아이콘"
+            />
+            이미지 등록
+          </div>
+        </label>
         {isImageUploaded && (
           <div className="file-input-preview-selected">
             <img
@@ -78,14 +91,6 @@ function FileInput({ className = "", name, value, initialPreview, onChange }) {
           </div>
         )}
       </div>
-      <input
-        className="file-input-hidden-overlay"
-        type="file"
-        accept="image/png, image/jpeg"
-        style={{ display: "none" }}
-        onChange={handleFileChange}
-        ref={inputRef}
-      />
       {errorMessage && (
         <div className="file-input-error-message">{errorMessage}</div>
       )}

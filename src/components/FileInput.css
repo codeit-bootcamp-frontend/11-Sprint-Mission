@@ -1,37 +1,92 @@
+.file-input-container {
+  display: flex;
+  align-items: center;
+}
+
 .file-input-preview-container {
   display: flex;
   gap: 24px;
 }
 
-.file-input-preview-selected {
-  position: relative;
-  display: inline-block;
+.file-input-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f4f6;
+  border-style: none;
   width: 282px;
   height: 282px;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: center;
 }
 
-.file-input-hidden-overlay {
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
+.file-input-hidden {
+  display: none;
+}
+
+.file-input-upload-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  line-height: 26px;
+  color: #9ca3af;
+  gap: 12px;
+}
+
+.file-input-upload-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.file-input-preview-selected {
+  position: relative;
+  width: 282px;
+  height: 282px;
+  border-radius: 12px;
 }
 
 .file-input-preview {
-  object-fit: cover;
-  display: block;
-  object-position: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
   object-fit: cover;
 }
 
 .file-input-clear-button {
   position: absolute;
-  top: 12px; /* 이미지 안에서의 위치 조정 */
-  right: 12px; /* 이미지 안에서의 위치 조정 */
-  background: transparent;
+  top: 12px;
+  right: 12px;
+  background: none;
   border: none;
   cursor: pointer;
+}
+
+.file-input-error-message {
+  color: #f74747;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+@media (max-width: 1279px) {
+  .file-input-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .file-input-preview-container {
+    display: flex;
+    gap: 10px;
+  }
+
+  .file-input-label {
+    width: 168px;
+    height: 168px;
+  }
+
+  .file-input-preview-selected {
+    width: 168px;
+    height: 168px;
+  }
 }

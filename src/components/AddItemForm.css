@@ -74,8 +74,9 @@
 }
 
 .add-item-img-preview {
-  width: 282px;
-  height: 282px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 input {
@@ -129,4 +130,17 @@ textarea::placeholder {
 .add-item-tag-remove-button img {
   width: 20px;
   height: 20px;
+}
+
+@media (max-width: 1279px) {
+  .add-item-form-total-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 24px;
+  }
+
+  .add-item-form-container {
+    gap: 24px;
+  }
 }
