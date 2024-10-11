@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './Header.js';
 import Board from '../Board.js';
 import Items from '../Items.js';
+import AddItem from '../AddItem.js';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/Board" element={<Board>자유게시판</Board>} />
           <Route path="/Items" element={<Items>중고마켓</Items>} />
+          <Route path="/AddItem" element={<AddItem />} />
         </Routes>
       </Router>
     </>
