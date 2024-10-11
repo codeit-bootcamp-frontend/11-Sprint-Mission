@@ -1,0 +1,113 @@
+.addItem__inner {
+  width: 1200px;
+  margin: 24px auto 60px auto;
+}
+
+.addItem__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.addItem__head h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.addItem__head .addBtn {
+  border-radius: 8px;
+  background: var(--blue);
+  width: 74px;
+  height: 42px;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.addItem__head .addBtn:disabled {
+  background: #9ca3af;
+  cursor: auto;
+}
+
+.addItem__inner label {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 32px 0 16px;
+}
+
+.addItem__inner input {
+  border: 0;
+  border-radius: 12px;
+  background: #f3f4f6;
+  width: 100%;
+  height: 56px;
+  padding: 0 24px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox  */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.addItem__inner textarea {
+  border: 0;
+  border-radius: 12px;
+  background: #f3f4f6;
+  width: 100%;
+  height: 282px;
+  padding: 16px 24px;
+  resize: none;
+}
+
+.addItem__inner input::placeholder,
+.addItem__inner textarea::placeholder {
+  color: #9ca3af;
+}
+
+.addItem__inner input:focus,
+.addItem__inner textarea:focus {
+  outline-color: var(--blue);
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.tagList li {
+  border-radius: 26px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  height: 36px;
+  color: #1f2937;
+  padding: 0 42px 0 16px;
+  position: relative;
+}
+
+.tagList li button {
+  width: 22px;
+  height: 24px;
+  background: url(../../assets/delete_icon.svg);
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 1200px) {
+  .addItem__inner {
+    width: 93.5%;
+  }
+}
