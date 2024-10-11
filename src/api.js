@@ -1,4 +1,6 @@
-const originUrl = "https://panda-market-api.vercel.app";
+// import dotenv from "dotenv";
+// dotenv.config();
+const BASE_URL = "https://panda-market-api.vercel.app";
 
 /**
  * 상품 검색 API
@@ -14,7 +16,8 @@ export async function getProducts(
   orderBy = "recent",
   keyword = undefined
 ) {
-  const url = new URL(originUrl + "/products");
+  if (!BASE_URL) throw new Error("요청을 보낼 수 없습니다.");
+  const url = new URL(BASE_URL + "/products");
   url.searchParams.append("page", page);
   url.searchParams.append("pageSize", pageSize);
   url.searchParams.append("orderBy", orderBy);
