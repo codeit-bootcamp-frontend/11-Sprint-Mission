@@ -1,11 +1,11 @@
 import { SubHeader } from "../layouts/Header";
-import AddItemWrapper from "../components/addItem/AddItemWrapper";
+import AddProduct from "../components/addItem/AddProduct";
 
 const AddItem = () => {
   return (
     <>
       <SubHeader />
-      <AddItemWrapper />
+      <AddProduct />
     </>
   );
 };
