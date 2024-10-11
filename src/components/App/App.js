@@ -4,6 +4,7 @@ import BestItemList from "../BestItemList/BestItemList";
 import ItemList from "../ItemList/ItemList";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
+import AddItemForm from "../AddItemForm/AddItemForm";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       </header>
       <Routes>
         <Route path="/items" element={<Main />} />
+        <Route path="/additem" element={<AddItemForm />} />
       </Routes>
     </BrowserRouter>
   );
