@@ -1,11 +1,13 @@
-import Main from "../../entities/items/ui/Main";
-import Nav from "../../shared/ui/nav/Nav";
+import AllItems from "../../features/allItem/AllItems";
+import BestItems from "../../features/bestItem/BestItems";
 
 const Items = () => {
   return (
     <div className="w-full">
-      <Nav />
-      <Main />
+      <div className="w-full flex justify-center items-center flex-col mt-5 ">
+        <BestItems />
+        <AllItems />
+      </div>
     </div>
   );
 };

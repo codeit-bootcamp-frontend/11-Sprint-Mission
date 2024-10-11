@@ -1,5 +1,5 @@
 import React from "react";
-import heart from "../../../shared/assets/heart.svg";
+import heart from "../../shared/ui/assets/heart.svg";
 const BestItem = ({ item }) => {
   return (
     <div key={item.id} className="">
