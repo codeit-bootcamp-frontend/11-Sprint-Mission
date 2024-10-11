@@ -1,24 +1,14 @@
-// import { useState } from "react";
 import ProfileImage from "../components/common/ProfileImage";
 import Logo from "../components/common/Logo";
-import Navigation from "./Navigation.js.js";
-// import Button from "../components/Button";
+import Navigation from "./Navigation";
 
 const Headers = (props) => {
-  // const [isLogin, setIsLogin] = useState(true);
-
   return (
-    <div id='header'>
-      <div className='container'>
+    <div id="header">
+      <div className="container">
         <Logo />
         <Navigation />
         <ProfileImage size={{ width: "4rem", height: "4rem" }} />
-        {/* {isLogin ? (
-        ) : (
-          <Button className='login' link={true} href='/login' styleType={"square blue"}>
-            로그인
-          </Button>
-        )} */}
       </div>
     </div>
   );
