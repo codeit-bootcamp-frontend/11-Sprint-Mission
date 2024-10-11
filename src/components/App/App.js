@@ -1,7 +1,7 @@
 import "./App.css";
-import ItemList from "./assets/components/ItemList/ItemList";
-import BestItemList from "./assets/components/BestItemList/BestItemList";
-import Navigation from "./assets/components/Navigation/Navigation";
+import Navigation from "../Navigation/Navigation";
+import BestItemList from "../BestItemList/BestItemList";
+import ItemList from "../ItemList/ItemList";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 

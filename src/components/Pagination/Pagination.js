@@ -1,8 +1,8 @@
 import "./Pagination.css";
-import arrowLeft from "../../images/arrow_left.svg";
-import arrowRight from "../../images/arrow_right.svg";
-import arrowLeftDouble from "../../images/arrow_left_double.svg";
-import arrowRightDouble from "../../images/arrow_right_double.svg";
+import arrowLeft from "../../assets/images/arrow_left.svg";
+import arrowRight from "../../assets/images/arrow_right.svg";
+import arrowLeftDouble from "../../assets/images/arrow_left_double.svg";
+import arrowRightDouble from "../../assets/images/arrow_right_double.svg";
 
 /**
  * 렌더링할 페이지 번호 배열을 반환하는 함수

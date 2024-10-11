@@ -1,6 +1,6 @@
 import "./Navigation.css";
-import logoIcon from "../../images/logo_icon.svg";
-import profile from "../../images/profile.svg";
+import logoIcon from "../../assets/images/logo_icon.svg";
+import profile from "../../assets/images/profile.svg";
 
 function Navigation() {
   const tabs = [

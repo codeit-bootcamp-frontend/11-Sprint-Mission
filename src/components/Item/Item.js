@@ -1,6 +1,6 @@
 import "./Item.css";
-import ic_heart from "../../images/ic_heart.svg";
-import thumbDefault from "../../images/thumbnail-placeholder.png";
+import ic_heart from "../../assets/images/ic_heart.svg";
+import thumbDefault from "../../assets/images/thumbnail-placeholder.png";
 
 /**
  * 상품 요소 컴포넌트
