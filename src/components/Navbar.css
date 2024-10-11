@@ -1,0 +1,46 @@
+.navbar {
+  display: flex;
+  height: 70px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dfdfdf;
+  white-space: nowrap;
+  padding: 0 24px;
+}
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.navbar-logo img {
+  width: 153px;
+  height: 51px;
+  cursor: pointer;
+}
+
+.navbar-menus {
+  display: flex;
+  gap: 30px;
+  margin: 21px 15px;
+}
+
+.navbar-menus :hover {
+  color: #3692ff;
+}
+
+.navbar-menu {
+  text-decoration: none;
+  color: inherit;
+  font-size: 18px;
+  color: #4b5563;
+  font-weight: 700;
+}
+
+@media (min-width: 1200px) {
+  .navbar {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+}
