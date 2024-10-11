@@ -2,12 +2,12 @@ import "./Navigation.css";
 import logoIcon from "../../assets/images/logo_icon.svg";
 import profile from "../../assets/images/profile.svg";
 
-function Navigation() {
-  const tabs = [
-    { id: 0, name: "자유게시판", path: "/borad" },
-    { id: 1, name: "중고마켓", path: "/items" },
-  ];
+const tabs = [
+  { id: 0, name: "자유게시판", path: "/borad" },
+  { id: 1, name: "중고마켓", path: "/items" },
+];
 
+function Navigation() {
   return (
     <nav className="Navigation">
       <div className="Navigation-wrap">
