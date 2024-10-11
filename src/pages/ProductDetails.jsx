@@ -4,6 +4,7 @@ import Images from "../components/common/Images";
 import TagsList from "../components/common/TagsList";
 import DropDownMenu from "../components/common/DropDownMenu";
 import Button from "../components/common/Button";
+import ProfileImage from "../components/common/ProfileImage";
 
 function ProductDetails() {
   const handleEditClick = () => console.log("수정하기 버튼 클릭");
@@ -11,9 +12,8 @@ function ProductDetails() {
 
   const [formValues, setFormValues] = useState("");
 
-  const isFormValid = Object.values(formValues).every(
-    (value) => value.trim() !== ""
-  );
+  const isFormValid = formValues.trim() !== "";
+
   const handleInputChange = (e) => {
     const value = e.target.value;
     setFormValues(value);
@@ -68,7 +68,7 @@ function ProductDetails() {
             </div>
             <div>
               <div className="user-information">
-                <div className="user-profile">유저 프로필</div>
+                <ProfileImage />
                 <div className="user-information-details">
                   <p className="user-nickName">총명한판다</p>
                   <span className="date-creation">2024. 01. 02</span>
@@ -110,7 +110,7 @@ function ProductDetails() {
                 /> */}
                 <div>
                   <div className="user-information">
-                    <div className="user-profile">유저 프로필</div>
+                    <ProfileImage imageSize="small" />
                     <div className="user-information-details">
                       <p className="user-nickName">똑똑한판다</p>
                       <span className="date-creation">1시간 전</span>
@@ -123,22 +123,21 @@ function ProductDetails() {
             </div>
           </li>
           <li className="inquiry-item">
-            <div className="btn-more">
-              <div className="toggle">
-                <img src="" alt="" />
-              </div>
-              <ul className="more-list">
-                <li className="more-item">
-                  <button className="btn-remove">수정하기</button>
-                </li>
-                <li className="more-item">
-                  <button className="btn-delete">삭제하기</button>
-                </li>
-              </ul>
-            </div>
+            <DropDownMenu>
+              <DropDownMenu.Item
+                onClick={handleEditClick}
+                className="btn-remove">
+                수정하기
+              </DropDownMenu.Item>
+              <DropDownMenu.Item
+                onClick={handleDeleteClick}
+                className="btn-delete">
+                삭제하기
+              </DropDownMenu.Item>
+            </DropDownMenu>
             <p className="inquiries">혹시 사용기간이 어떻게 되실까요?</p>
             <div className="user-information">
-              <div className="user-profile">유저 프로필</div>
+              <ProfileImage imageSize="small" />
               <div className="user-information-details">
                 <p className="user-nickName">똑똑한판다</p>
                 <span className="date-creation">1시간 전</span>
@@ -146,22 +145,21 @@ function ProductDetails() {
             </div>
           </li>
           <li className="inquiry-item">
-            <div className="btn-more">
-              <div className="toggle">
-                <img src="" alt="" />
-              </div>
-              <ul className="more-list">
-                <li className="more-item">
-                  <button className="btn-remove">수정하기</button>
-                </li>
-                <li className="more-item">
-                  <button className="btn-delete">삭제하기</button>
-                </li>
-              </ul>
-            </div>
+            <DropDownMenu>
+              <DropDownMenu.Item
+                onClick={handleEditClick}
+                className="btn-remove">
+                수정하기
+              </DropDownMenu.Item>
+              <DropDownMenu.Item
+                onClick={handleDeleteClick}
+                className="btn-delete">
+                삭제하기
+              </DropDownMenu.Item>
+            </DropDownMenu>
             <p className="inquiries">혹시 사용기간이 어떻게 되실까요?</p>
             <div className="user-information">
-              <div className="user-profile">유저 프로필</div>
+              <ProfileImage imageSize="small" />
               <div className="user-information-details">
                 <p className="user-nickName">똑똑한판다</p>
                 <span className="date-creation">1시간 전</span>
@@ -169,22 +167,21 @@ function ProductDetails() {
             </div>
           </li>
           <li className="inquiry-item">
-            <div className="btn-more">
-              <div className="toggle">
-                <img src="" alt="" />
-              </div>
-              <ul className="more-list">
-                <li className="more-item">
-                  <button className="btn-remove">수정하기</button>
-                </li>
-                <li className="more-item">
-                  <button className="btn-delete">삭제하기</button>
-                </li>
-              </ul>
-            </div>
+            <DropDownMenu>
+              <DropDownMenu.Item
+                onClick={handleEditClick}
+                className="btn-remove">
+                수정하기
+              </DropDownMenu.Item>
+              <DropDownMenu.Item
+                onClick={handleDeleteClick}
+                className="btn-delete">
+                삭제하기
+              </DropDownMenu.Item>
+            </DropDownMenu>
             <p className="inquiries">혹시 사용기간이 어떻게 되실까요?</p>
             <div className="user-information">
-              <div className="user-profile">유저 프로필</div>
+              <ProfileImage imageSize="small" />
               <div className="user-information-details">
                 <p className="user-nickName">똑똑한판다</p>
                 <span className="date-creation">1시간 전</span>

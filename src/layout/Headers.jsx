@@ -8,7 +8,7 @@ const Headers = (props) => {
       <div className="container">
         <Logo />
         <Navigation />
-        <ProfileImage size={{ width: "4rem", height: "4rem" }} />
+        <ProfileImage />
       </div>
     </div>
   );
