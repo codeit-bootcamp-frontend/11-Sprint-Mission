@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { getProducts } from '../api';
+import { getProducts } from '../api/api';
 import Product from './Product';
 import Pagination from './Pagination';
 import { ArrowPathIcon } from '@heroicons/react/24/solid';
@@ -13,7 +13,7 @@ export default function AllProducts() {
   const [products, setProducts] = useState([]);
   const [keyword, setKeyword] = useState('');
   const [orderBy, setOrderBy] = useState('recent');
-  let [totalCount, setTotalCount] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
   const inSearchRef = useRef();
 
   // 데이터 가져오기
@@ -59,9 +59,18 @@ export default function AllProducts() {
         <h2 className="products-title mr-auto">전체 상품</h2>
 
         <form className="flex gap-1 relative" onSubmit={handleKeywordSubmit}>
-          <input className="in-search" type="text" ref={inSearchRef} placeholder="검색할 상품을 입력해 주세요" />
+          <input
+            className="in-search"
+            type="text"
+            ref={inSearchRef}
+            placeholder="검색할 상품을 입력해 주세요"
+          />
           <img className="absolute top-2 left-3" src={IconSearch} alt="" />
-          <button className="btn-reset" type="reset" title="검색 초기화" onClick={handleKeywordReset}>
+          <button
+            className="btn-reset"
+            type="reset"
+            title="검색 초기화"
+            onClick={handleKeywordReset}>
             <ArrowPathIcon className="size-4 mx-auto" />
           </button>
         </form>
@@ -78,7 +87,13 @@ export default function AllProducts() {
 
       <div className="all">
         {products.map(({ id, images, name, price, favoriteCount }) => (
-          <Product key={id} image={images[0]} name={name} price={price} favoriteCount={favoriteCount} />
+          <Product
+            key={id}
+            image={images[0]}
+            name={name}
+            price={price}
+            favoriteCount={favoriteCount}
+          />
         ))}
       </div>
 

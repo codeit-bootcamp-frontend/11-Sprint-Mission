@@ -5,7 +5,7 @@
     @apply grid gap-6 md:grid-cols-2 xl:grid-cols-4;
   }
   .all {
-    @apply grid grid-cols-2 xl:grid-cols-5 gap-6;
+    @apply grid md:grid-cols-3 xl:grid-cols-5 gap-6;
   }
 }
 .products-title {
