@@ -1,12 +1,38 @@
+import { useState } from "react";
 import "./additems.css";
 
 function AddItems() {
+  const [preview, setPreview] = useState(null);
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    const previewFile = new FileReader();
+
+    if (file) {
+      previewFile.onload = (e) => {
+        setPreview(e.target.result);
+      };
+      previewFile.readAsDataURL(file);
+    } else {
+      setPreview(null);
+    }
+  };
   return (
     <div className="addItemPage">
       <h2>상품 등록하기</h2>
       <form>
         <p>상품 이미지</p>
-        <input type="file"></input>
+        <div className="fileArea">
+          <div className="addFile">
+            <label for="ex-file">이미지 선택</label>
+            <input type="file" id="ex-file" onChange={handleFileChange}></input>
+          </div>
+          <div>
+            {preview && (
+              <img className="previewImg" src={preview} alt="미리보기" />
+            )}
+          </div>
+        </div>
         <p>상품명</p>
         <input
           className="input title"

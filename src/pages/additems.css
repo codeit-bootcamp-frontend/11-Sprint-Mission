@@ -2,9 +2,36 @@ textarea {
   resize: none;
 }
 
+.fileArea {
+  display: flex;
+  gap: 20px;
+}
+
+.addFile input {
+  display: none;
+}
+
 .addItemPage {
   width: 100%;
   padding: 100px 150px;
+}
+
+.addFile label {
+  display: flex;
+  width: 250px;
+  height: 250px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.previewImg {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .input {
