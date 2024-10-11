@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import throttle from "lodash/throttle";
 
 // 커스텀 훅: 화면 크기에 따라 디스플레이 개수를 업데이트
 const useResponsiveDisplayCount = () => {
@@ -19,16 +20,19 @@ const useResponsiveDisplayCount = () => {
       setAllDisplayCount(4); // 모바일에서 전체 4개
     }
   };
-
+  const throttledUpdateDisplayCount = throttle(updateDisplayCount, 100);
   useEffect(() => {
     // 초기 설정
     updateDisplayCount();
 
-    // 윈도우 리사이즈 이벤트 리스너 설정
-    window.addEventListener("resize", updateDisplayCount);
+    // 윈도우 리사이즈 이벤트 리스너 설정 (스로틀 적용)
+    window.addEventListener("resize", throttledUpdateDisplayCount);
 
-    // 컴포넌트 언마운트 시 이벤트 리스너 제거
-    return () => window.removeEventListener("resize", updateDisplayCount);
+    // 컴포넌트 언마운트 시 이벤트 리스너 및 스로틀된 함수 제거
+    return () => {
+      window.removeEventListener("resize", throttledUpdateDisplayCount);
+      throttledUpdateDisplayCount.cancel(); // 스로틀된 함수 취소
+    };
   }, []);
 
   // 상태값이 변경될 때마다 로그를 찍어 상태 확인
