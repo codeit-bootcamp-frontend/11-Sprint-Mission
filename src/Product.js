@@ -1,9 +1,9 @@
-import "./css/Item.css";
+import "./css/Product.css";
 import heart from "./img/icon/icon_heart.png";
 
-function Item({ image, name, price, favoriteCount }) {
+function Product({ image, name, price, favoriteCount }) {
   return (
-    <div className="Item">
+    <div className="product">
       <img className="image" src={image} alt={name} />
       <div className="title">{name}</div>
       <div className="price">{price} 원</div>
@@ -15,4 +15,4 @@ function Item({ image, name, price, favoriteCount }) {
   );
 }
 
-export default Item;
+export default Product;

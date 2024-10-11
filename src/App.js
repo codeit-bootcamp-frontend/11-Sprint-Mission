@@ -1,17 +1,17 @@
-import BestItem from "./BestItem";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
-import AllItems from "./AllItems";
-import "./css/App.css";
+import Items from "./pages/items";
+import AddItems from "./pages/additems";
 
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <Navbar />
-      <div className="itemPage">
-        <BestItem />
-        <AllItems />
-      </div>
-    </div>
+      <Routes>
+        <Route path="/" element={<Items />} />
+        <Route path="additems" element={<AddItems />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
