@@ -4,6 +4,7 @@ import HeadingTitleArea from "../components/common/HeadingTitleArea";
 import Button from "../components/common/Button";
 import Input from "../components/common/Input";
 import InputFile from "../components/AddItem/InputFile";
+import TagsList from "../components/common/TagsList";
 
 function AddItem() {
   return (
@@ -58,15 +59,12 @@ function AddItem() {
               <HeadingTitleArea>
                 <h3>태그</h3>
               </HeadingTitleArea>
-              <div className="input-tag-area">
+              <div className={styles["input-tag-area"]}>
                 <Input
                   placeholder="태그를 입력해주세요"
                   inputName="productTag"
                 />
-                <ul className="input-tag-list">
-                  <li className="input-tag-item">#티셔츠</li>
-                  <li className="input-tag-item">#상의</li>
-                </ul>
+                <TagsList />
               </div>
             </div>
           </div>
