@@ -225,7 +225,7 @@ main[class^="page-"]:not(.page-login, .page-signup, .page-error) {
   }
 
   .container {
-    padding: 0 1.6rem;
+    padding: 2.4rem 1.5rem;
   }
 
   /* footer */
