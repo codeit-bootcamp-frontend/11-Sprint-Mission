@@ -6,7 +6,7 @@ import ProductsList from "../components/Items/ProductsList";
 import PageNation from "../components/common/PageNation";
 import SearchInput from "../components/common/SearchInput";
 import Button from "../components/common/Button";
-import DropDown from "../components/common/DropDown";
+import DropDown from "../components/common/SelectMenu";
 import HeadingTitleArea from "../components/common/HeadingTitleArea";
 
 function Items() {

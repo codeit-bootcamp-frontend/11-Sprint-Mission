@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./DropDown.scss";
+import "./SelectMenu.scss";
 
-const DropDown = ({ children }) => {
+const SelectMenu = ({ children }) => {
   const [isOptionVisible, setIsOptionVisible] = useState(false);
   const [selectedLabel, setSelectedLabel] = useState(null);
 
@@ -18,25 +18,24 @@ const DropDown = ({ children }) => {
   };
 
   return (
-    <div className='select'>
-      <button className='select-title' onClick={handleSelectClick}>
+    <div className="select">
+      <button className="select-title" onClick={handleSelectClick}>
         {selectedLabel ||
           children.find((child) => child.type.displayName === "Title")?.props
             .children ||
           "옵션을 선택 해주세요"}
       </button>
       {isOptionVisible && (
-        <div className='select-option'>
+        <div className="select-option">
           {children
             .filter((child) => child.type.displayName === "Option")
             .map((child) => (
               <button
                 key={child.props.value}
-                className='select-option-list'
+                className="select-option-list"
                 onClick={() =>
                   handleOptionClick(child.props.label, child.props)
-                }
-              >
+                }>
                 {child.props.label}
               </button>
             ))}
@@ -58,7 +57,7 @@ const Option = ({ children }) => {
 
 Option.displayName = "Option";
 
-DropDown.Title = Title;
-DropDown.Option = Option;
+SelectMenu.Title = Title;
+SelectMenu.Option = Option;
 
-export default DropDown;
+export default SelectMenu;
