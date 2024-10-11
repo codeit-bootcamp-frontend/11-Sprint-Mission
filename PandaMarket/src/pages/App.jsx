@@ -13,7 +13,7 @@ function App() {
       <Route path="/items" element={<Items />} />
       <Route path="/addItem" element={<AddItem />} />
 
-      <Route path="/Boards" element={<Boards />} />
+      <Route path="/boards" element={<Boards />} />
 
       <Route path="*" element={<Notfound />} />
     </Routes>

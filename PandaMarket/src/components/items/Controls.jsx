@@ -1,4 +1,6 @@
-const ProductControls = ({
+import { Link } from "react-router-dom";
+
+const Controls = ({
   order,
   isActive,
   toggleOptionList,
@@ -13,9 +15,9 @@ const ProductControls = ({
         placeholder="검색할 상품을 입력해주세요"
       />
 
-      <a href="/addItem" className="allProduct__linkButton">
+      <Link to="/addItem" className="allProduct__linkButton">
         상품 등록하기
-      </a>
+      </Link>
 
       <div className="allProduct__select">
         <button className="allProduct__button" onClick={toggleOptionList}>
@@ -36,4 +38,4 @@ const ProductControls = ({
   );
 };
 
-export default ProductControls;
+export default Controls;

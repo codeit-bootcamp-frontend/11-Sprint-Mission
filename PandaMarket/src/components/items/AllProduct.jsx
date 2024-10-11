@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllItems } from "../../api";
-import ProductControls from "./ProductControls";
+import Controls from "./Controls";
 import AllProductItem from "./AllProductItem";
 import "./AllProduct.css";
 
@@ -33,7 +33,7 @@ function AllProduct() {
     window.addEventListener("resize", updatePageSize);
 
     // 페이지 사이즈가 설정된 후에 데이터 로드
-    itemsLoad(pageSize);
+    // itemsLoad(pageSize);
 
     return () => window.removeEventListener("resize", updatePageSize);
   }, []); // pageSize가 변경될 때마다 itemsLoad 호출
@@ -78,7 +78,7 @@ function AllProduct() {
         <div className="allProduct__inner">
           <div className="allProduct__head">
             <h2 className="allProduct__title">전체 상품</h2>
-            <ProductControls
+            <Controls
               order={order}
               isActive={isActive}
               toggleOptionList={toggleOptionList}
