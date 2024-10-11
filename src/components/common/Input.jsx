@@ -1,29 +1,26 @@
 import "./Input.scss";
 
 function Input({
-  isInput = true,
   type = "text",
   placeholder = null,
   styles = "default",
   inputName = null,
+  value = "",
+  onChange = null,
 }) {
+  const handleChange = (e) => {
+    const newValue = e.target.value;
+    onChange({ target: { name: inputName, value: newValue } });
+  };
   return (
-    <>
-      {isInput ? (
-        <input
-          type={type}
-          placeholder={placeholder}
-          className={styles}
-          name={inputName}
-        />
-      ) : (
-        <textarea
-          placeholder={placeholder}
-          className={styles}
-          name={inputName}
-        />
-      )}
-    </>
+    <input
+      type={type}
+      placeholder={placeholder}
+      className={styles}
+      name={inputName}
+      value={value}
+      onChange={handleChange}
+    />
   );
 }
 
