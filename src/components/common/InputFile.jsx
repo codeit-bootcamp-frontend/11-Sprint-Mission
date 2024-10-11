@@ -3,6 +3,7 @@ import IC_PLUS from "../../assets/ic_plus.svg";
 import { useRef, useState } from "react";
 // import ButtonClose from "./ButtonClose";
 import Button from "./Button";
+import Images from "./Images";
 
 function InputFile() {
   const [preview, setPreview] = useState(null);
@@ -48,12 +49,19 @@ function InputFile() {
           ref={fileInputRef}
         />
         {preview && (
-          <div className="productFile-preview">
-            <img src={preview} alt="이미지 프리뷰" />
+          <Images
+            classNames="productFile-preview"
+            imageSize={{
+              pcSize: "large",
+              tabletSize: "big-small",
+              mobileSize: "big-small",
+            }}
+            src={preview}
+            alt="이미지 프리뷰">
             <Button link={false} className="delete" onClick={handleDelete}>
               삭제
             </Button>
-          </div>
+          </Images>
         )}
       </div>
       {error && <p className="productFile-error">{error}</p>}

@@ -1,5 +1,9 @@
 function ProductDetails() {
-  return <p>페이지</p>;
+  return (
+    <div className="page-productDetails">
+      <div className="container"></div>
+    </div>
+  );
 }
 
 export default ProductDetails;

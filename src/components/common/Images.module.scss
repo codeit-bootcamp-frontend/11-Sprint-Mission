@@ -1,0 +1,32 @@
+.images {
+  border-radius: 1.6rem;
+  overflow: hidden;
+  &.big {
+    width: 48.6rem;
+    height: 48.6rem;
+  }
+  &.big-large {
+    width: 34.3rem;
+    height: 34.3rem;
+    border-radius: 1.946rem;
+  }
+  &.large {
+    width: 28.2rem;
+    height: 28.2rem;
+    border-radius: 1.6rem;
+  }
+  &.middle {
+    width: 22.1rem;
+    height: 22.1rem;
+    border-radius: 1.6rem;
+  }
+  &.big-small {
+    width: 16.8rem;
+    height: 16.8rem;
+    border-radius: 1.2rem;
+  }
+  &.small {
+    width: 7.2rem;
+    height: 7.2rem;
+  }
+}

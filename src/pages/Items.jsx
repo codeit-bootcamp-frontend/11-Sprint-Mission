@@ -49,7 +49,14 @@ function Items() {
           {favoriteFetchError?.message && (
             <span>{favoriteFetchError.message}</span>
           )}
-          <ProductsList list={favoriteItems} imageSize="large" />
+          <ProductsList
+            list={favoriteItems}
+            imageSize={{
+              pcSize: "large",
+              tabletSize: "big-large",
+              mobileSize: "big-large",
+            }}
+          />
         </div>
         <div className="product-area all">
           <HeadingTitleArea>
@@ -59,8 +66,7 @@ function Items() {
               link={true}
               href="/addItem"
               className="addItem"
-              styleType="square blue small_40"
-            >
+              styleType="square blue small_40">
               상품 등록하기
             </Button>
             <DropDown>
@@ -81,7 +87,14 @@ function Items() {
           {productFetchError?.message && (
             <span>{productFetchError.message}</span>
           )}
-          <ProductsList list={allItems} imageSize="middle" />
+          <ProductsList
+            list={allItems}
+            imageSize={{
+              pcSize: "middle",
+              tabletSize: "middle",
+              mobileSize: "big-small",
+            }}
+          />
           {isEmpty && (
             <div className="error-search">
               <p className="error-search-message">
