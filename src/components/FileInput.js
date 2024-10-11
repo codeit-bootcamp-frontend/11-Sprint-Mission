@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import placeholderImg from "../assets/placeholder_img.png";
 import resetImg from "../assets/ic_X.svg";
+import "./FileInput.css";
 
 function FileInput({ className = "", name, value, initialPreview, onChange }) {
   const [preview, setPreview] = useState(initialPreview || placeholderImg);
@@ -51,25 +52,25 @@ function FileInput({ className = "", name, value, initialPreview, onChange }) {
   }, [value]);
 
   return (
-    <div className={`FileInput ${className}`}>
-      <div className="FileInput-preview-container">
-        <div className="FileInput-upload-container" onClick={handleImageClick}>
+    <div className={`"file-input" ${className}`}>
+      <div className="file-input-preview-container">
+        <div className="file-input-upload-container" onClick={handleImageClick}>
           <img
-            className="FileInput-upload-placeholder"
+            className="file-input-upload-placeholder"
             src={placeholderImg}
             alt="이미지 등록"
           />
         </div>
         {isImageUploaded && (
-          <div className="FileInput-preview-selected">
+          <div className="file-input-preview-selected">
             <img
-              className="FileInput-preview"
+              className="file-input-preview"
               src={preview}
               alt="이미지 미리보기"
             />
             <button
               type="button"
-              className="FileInput-clear-button"
+              className="file-input-clear-button"
               onClick={handleClearClick}
             >
               <img src={resetImg} alt="선택 해제" />
@@ -78,6 +79,7 @@ function FileInput({ className = "", name, value, initialPreview, onChange }) {
         )}
       </div>
       <input
+        className="file-input-hidden-overlay"
         type="file"
         accept="image/png, image/jpeg"
         style={{ display: "none" }}
@@ -85,7 +87,7 @@ function FileInput({ className = "", name, value, initialPreview, onChange }) {
         ref={inputRef}
       />
       {errorMessage && (
-        <div className="FileInput-error-message">{errorMessage}</div>
+        <div className="file-input-error-message">{errorMessage}</div>
       )}
     </div>
   );

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import FileInput from "./FileInput";
 import useAsync from "../hooks/useAsync";
+import "./AddItemForm.css";
+import resetImg from "../assets/ic_X.svg";
 
 const INITIAL_VALUE = {
   name: "",
@@ -19,7 +21,7 @@ function AddItemForm({
   onSubmitSuccess,
 }) {
   const [values, setValues] = useState(initialValues);
-  const [isSubmitting, onSubmitAsync] = useAsync(onSubmit);
+  const [isSubmitting, submittingError, onSubmitAsync] = useAsync(onSubmit);
   const [isFormValid, setIsFormValid] = useState(false);
   const [tagInput, setTagInput] = useState("");
 
@@ -29,7 +31,7 @@ function AddItemForm({
       values.content &&
       values.imgFile &&
       values.price &&
-      values.tags;
+      values.tags.length > 0;
     setIsFormValid(isValid);
   }, [values]);
 
@@ -60,6 +62,13 @@ function AddItemForm({
     }
   };
 
+  const handleTagKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleTagAdd();
+    }
+  };
+
   const handleTagRemove = (tagToRemove) => {
     handleChange(
       "tags",
@@ -86,87 +95,83 @@ function AddItemForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className={`add-item-form ${className}`}>
+    <form onSubmit={handleSubmit} className="add-item-form-total-container">
       <div className="add-item-form-header">
         <div className="add-item-form-title">상품 등록하기</div>
         <button
           type="submit"
-          className="submit-button"
+          className="add-item-submit-button"
           disabled={!isFormValid || isSubmitting}
         >
           등록
         </button>
       </div>
-      <div className="add-item-img-container">
-        <div className="add-item-img-title">상품 이미지</div>
-        <FileInput
-          className="add-item-img-preview"
-          name="imgFile"
-          value={values.imgFile}
-          initialPreview={initialPreview}
-          onChange={handleFileChange}
-        />
-      </div>
-      <div className="add-item-name-container">
-        <div className="add-item-name-title">상품명</div>
-        <input
-          className="add-item-name"
-          name="name"
-          value={values.name}
-          onChange={handleInputChange}
-          placeholder="상품명을 입력해주세요"
-        />
-      </div>
-      <div className="add-item-content-container">
-        <div className="add-item-content-title">상품 소개</div>
-        <textarea
-          className="add-item-content"
-          name="content"
-          value={values.content}
-          onChange={handleInputChange}
-          placeholder="상품 소개를 입력해주세요"
-        />
-      </div>
-      <div className="add-item-price-container">
-        <div className="add-item-price-title">판매가격</div>
-        <input
-          className="add-item-price"
-          type="number"
-          name="price"
-          value={values.price}
-          onChange={handleInputChange}
-          placeholder="판매 가격을 입력해주세요"
-        />
-      </div>
-      <div className="add-item-tags-container">
-        <div className="add-item-tags-title">태그</div>
-        <input
-          className="add-item-tag-input"
-          type="text"
-          value={tagInput}
-          onChange={handleTagInputChange}
-          placeholder="태그를 입력해주세요"
-        />
-        <button
-          type="button"
-          className="add-item-tag-add-button"
-          onClick={handleTagAdd}
-        >
-          추가
-        </button>
-        <div className="add-item-tags-list">
-          {values.tags.map((tag) => (
-            <div key={tag} className="add-item-tag">
-              #{tag}
-              <button
-                type="button"
-                className="add-item-tag-remove-button"
-                onClick={() => handleTagRemove(tag)}
-              >
-                ✕
-              </button>
-            </div>
-          ))}
+      <div className="add-item-form-container">
+        <div className="add-item-img-container">
+          <div className="add-item-img-title">상품 이미지</div>
+          <FileInput
+            className="add-item-img-preview"
+            name="imgFile"
+            value={values.imgFile}
+            initialPreview={initialPreview}
+            onChange={handleFileChange}
+          />
+        </div>
+        <div className="add-item-name-container">
+          <div className="add-item-name-title">상품명</div>
+          <input
+            className="add-item-name"
+            name="name"
+            value={values.name}
+            onChange={handleInputChange}
+            placeholder="상품명을 입력해주세요"
+          />
+        </div>
+        <div className="add-item-content-container">
+          <div className="add-item-content-title">상품 소개</div>
+          <textarea
+            className="add-item-content"
+            name="content"
+            value={values.content}
+            onChange={handleInputChange}
+            placeholder="상품 소개를 입력해주세요"
+          />
+        </div>
+        <div className="add-item-price-container">
+          <div className="add-item-price-title">판매가격</div>
+          <input
+            className="add-item-price"
+            type="number"
+            name="price"
+            value={values.price}
+            onChange={handleInputChange}
+            placeholder="판매 가격을 입력해주세요"
+          />
+        </div>
+        <div className="add-item-tags-container">
+          <div className="add-item-tags-title">태그</div>
+          <input
+            className="add-item-tag-input"
+            type="text"
+            value={tagInput}
+            onChange={handleTagInputChange}
+            onKeyDown={handleTagKeyDown}
+            placeholder="태그를 입력해주세요"
+          />
+          <div className="add-item-tags-list">
+            {values.tags.map((tag) => (
+              <div key={tag} className="add-item-tag">
+                #{tag}
+                <button
+                  type="button"
+                  className="add-item-tag-remove-button"
+                  onClick={() => handleTagRemove(tag)}
+                >
+                  <img src={resetImg} alt="제거" />
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </form>
