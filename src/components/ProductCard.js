@@ -1,6 +1,6 @@
 import './ProductCard.css';
 import '../styles/Reset.css';
-import heartIcon from '../image/heart-icon.png';
+import HeartIcon from '../image/heart-icon.png';
 
 function ProductCard({ product, className }) {
   return (
@@ -13,7 +13,7 @@ function ProductCard({ product, className }) {
       <h3>{product.name}</h3>
       <p>{product.price}원</p>
       <div class="favorite-count">
-        <img src={heartIcon} alt="좋아요 아이콘" />
+        <img src={HeartIcon} alt="좋아요 아이콘" />
         <span>{product.favoriteCount}</span>
       </div>
     </div>
