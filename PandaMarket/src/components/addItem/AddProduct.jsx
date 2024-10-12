@@ -74,6 +74,14 @@ const AddProduct = () => {
     }
   }, [values]);
 
+  // 상품 가격 3자리마다 콤마 추가, 모바일에서 text 입력되는 경우도 해결
+  const onInput = (e) => {
+    const onlyDigits = e.target.value.replace(/[^0-9]/g, "");
+    const formattedValue = onlyDigits.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+    e.target.value = formattedValue;
+  };
+
   return (
     <div className="addItem__inner">
       <div className="addItem__head">
@@ -117,10 +125,11 @@ const AddProduct = () => {
         labelName="판매가격"
         name="price"
         htmlForId="price"
-        type="number"
-        value={values.price.toLocaleString()}
+        type="text"
+        value={values.price}
         placeholder="판매 가격을 입력해주세요"
         onChange={handleChange}
+        onInput={onInput}
       />
 
       <InputField

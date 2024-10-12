@@ -7,6 +7,7 @@ const InputField = ({
   placeholder,
   onKeyDown,
   onChange,
+  onInput,
 }) => {
   return (
     <div>
@@ -19,6 +20,7 @@ const InputField = ({
         placeholder={placeholder}
         onKeyDown={onKeyDown}
         onChange={onChange}
+        onInput={onInput}
       />
     </div>
   );
