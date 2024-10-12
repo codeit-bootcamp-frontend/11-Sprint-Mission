@@ -27,6 +27,7 @@ function ItemForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(values);
     setValues(INITIAL_VALUES);
     setTags([]);
     setTagInputValue("");
