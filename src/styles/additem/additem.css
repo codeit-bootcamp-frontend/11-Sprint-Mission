@@ -1,0 +1,176 @@
+.container {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.subHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cantainerImageTitle {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.imageUploadContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.uploadBox {
+  width: 282px;
+  height: 282px;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.textArea {
+  margin-top: 16px;
+}
+
+.plus {
+  font-size: 80px;
+}
+
+.uploadBoxContent {
+  font-size: 16px;
+  font-weight: 400;
+  color: #9ca3af;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.imagePreviewContainer {
+  position: relative;
+}
+
+.imagePreview {
+  width: 282px;
+  height: 282px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.clearButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #9ca3af;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 5px 8px;
+}
+
+.cantainerTitle {
+  font-weight: 700;
+  font-size: 18px;
+  padding-top: 20px;
+}
+
+input::placeholder {
+  color: #9ca3af;
+  font-size: 16px;
+  font-weight: 100;
+}
+.addProductInput,
+.productContentInput {
+  width: 95%;
+  border-radius: 12px;
+  height: 56px;
+  padding-left: 24px;
+}
+
+.productContentInput {
+  height: 282px;
+  background-color: #f3f4f6;
+  border: none;
+  resize: none;
+}
+
+textarea::placeholder {
+  color: #9ca3af;
+  font-size: 16px;
+  font-weight: 100;
+  padding-top: 20px;
+}
+
+.tagOutput {
+  margin-right: 15px;
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #f3f4f6;
+  border-radius: 26px;
+  font-size: 16px;
+}
+
+.tagOutput > button {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-color: #9ca3af;
+  border-radius: 50%;
+  color: #ffffff;
+}
+
+.upButton {
+  font-size: 16px;
+  color: #f3f4f6;
+  background-color: #9ca3af;
+  border: none;
+  padding: 12px 23px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.upButton.active {
+  background-color: #3692ff;
+  cursor: pointer;
+}
+
+.upButton.disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.errorMessage {
+  font-size: 16px;
+  color: #f74747;
+}
+
+/* PC: 1200px 이상 */
+@media (min-width: 1200px) {
+}
+
+/* Tablet: 768px 이상 ~ 1199px 이하 */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .container {
+    width: 85%;
+  }
+
+  .uploadBox,
+  .imagePreview {
+    width: 168px;
+    height: 168px;
+  }
+}
+
+/* Mobile: 375px 이상 ~ 767px 이하 */
+@media (min-width: 375px) and (max-width: 767px) {
+  .container {
+    width: 95%;
+  }
+
+  .uploadBox,
+  .imagePreview {
+    width: 168px;
+    height: 168px;
+  }
+}
