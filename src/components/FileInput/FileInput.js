@@ -9,6 +9,11 @@ function FileInput({ value, onChange }) {
   const [previews, setPreviews] = useState(PREVIEWS_DEFAULT);
   const [isLimit, setIsLimit] = useState(false);
 
+  /**
+   * 상품 이미지를 추가하기 위한 핸들러.
+   * 파일이 업로드될 시 호출된다.
+   * @param {Event} e 이벤트 객체
+   */
   const handleChange = (e) => {
     if (isLimit) {
       alert("상품 이미지는 최대 3개까지 업로드 할 수 있습니다.");
@@ -18,6 +23,9 @@ function FileInput({ value, onChange }) {
     onChange(name, files[0]);
   };
 
+  /**
+   * 미이보기 이미지의 주소를 저장한 배열을 초기화 한다.
+   */
   const handlePreviewsClear = () => {
     setPreviews((prev) => {
       prev.forEach((src) => {
