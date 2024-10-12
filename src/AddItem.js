@@ -10,17 +10,21 @@ function AddItem() {
     name: '',
     description: '',
     price: 0,
-    tags: '',
+    tags: [],
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('images', values.images);
+    formData.append('images[]', values.images);
     formData.append('name', values.name);
     formData.append('description', values.description);
     formData.append('price', values.price);
-    formData.append('tags', values.tags);
+    values.tags.forEach((tag) => {
+      formData.append('tags[]', tag);
+    });
+
+    console.log([...formData.entries()]);
 
     try {
       await createItems(formData);
@@ -37,7 +41,7 @@ function AddItem() {
       name: '',
       description: '',
       price: 0,
-      tags: '',
+      tags: [],
     });
   };
 
@@ -60,7 +64,14 @@ function AddItem() {
 
   const handleInputChange = (e) => {
     const { name, value, type } = e.target;
-    handleChange(name, sanitize(type, value));
+    if (name === 'tags') {
+      handleChange(
+        name,
+        value.split(',').map((tag) => tag.trim())
+      );
+    } else {
+      handleChange(name, sanitize(type, value));
+    }
   };
 
   return (
@@ -106,7 +117,7 @@ function AddItem() {
         <label htmlFor="tags">태그</label>
         <input
           name="tags"
-          value={values.tag}
+          value={values.tags.join(',')}
           placeholder="태그를 입력해주세요."
           id="tags"
           onChange={handleInputChange}
