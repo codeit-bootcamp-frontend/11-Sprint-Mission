@@ -1,11 +1,10 @@
 import React from "react";
-import { RouterProvider } from "react-router-dom";
-import router from "pages/pageRouter.js";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <RouterProvider router={router} />
+      <Outlet />
     </div>
   );
 }

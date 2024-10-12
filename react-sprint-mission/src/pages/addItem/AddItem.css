@@ -1,0 +1,33 @@
+.addItemContentsTitle {
+  height: 42px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.itemSubmit {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 74px;
+  height: 42px;
+  border-radius: 8px;
+  background: var(--gray400);
+  border: 1px solid var(--gray400);
+}
+.AddItemIC {
+  width: 282px;
+  height: 282px;
+  margin-right: 24px;
+}
+
+.addItemContentsForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 30vh;
+    margin-bottom: 32px;
+    background: none;
+  }

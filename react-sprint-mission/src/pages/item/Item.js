@@ -4,6 +4,7 @@ import "./Item.css";
 import { getAxios } from "utils/api";
 import { showInitialDeviceItems } from "utils/initialDevice ";
 import { Pagenation, ImgPath } from "components";
+import ItemHeader from "components/ItemHeader";
 
 function Item(props) {
   const navigate = useNavigate();
@@ -136,30 +137,8 @@ function Item(props) {
 
   return (
     <>
-      <header className="navHeader">
-        <div className="navigation">
-          <div className="itemLogo">
-            <Link to={"/"}>
-              <img
-                src={ImgPath("/common/ic_logo_item_pc.png")}
-                alt="pandaLogo"
-              />
-            </Link>
-          </div>
-          <div className="navNoticeBoard">
-            <Link to={"/noticeBoard"}>자유 게시판</Link>
-          </div>
-          <div className="navMarket">
-            <Link to={"/market"}>중고 마켓</Link>
-          </div>
-        </div>
-        <div className="userInfo">
-          <Link to={"/userInfo"} className="navMarket">
-            <img src={ImgPath("/common/ic_user.png")} alt="userInfo" />
-          </Link>
-        </div>
-      </header>
       <main>
+        <ItemHeader />
         <section className="itemSection">
           <div className="itemContentsTitle">
             <h3>베스트 상품</h3>
