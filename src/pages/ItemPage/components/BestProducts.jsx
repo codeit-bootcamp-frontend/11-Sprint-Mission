@@ -14,33 +14,33 @@ const getUserWidth = () => {
 };
 
 function BestProducts() {
-  const [productList, setProductList] = useState([]);
-  const [userWidth, setUserWidth] = useState(getUserWidth());
+  const [itemList, setItemList] = useState([]);
+  const [pageSize, setPageSize] = useState(getUserWidth());
 
-  const fetchData = async ({ orderBy, userWidth }) => {
-    const products = await fetchProducts({ orderBy, userWidth });
-    setProductList(products.list);
+  const fetchData = async ({ orderBy, pageSize }) => {
+    const products = await fetchProducts({ orderBy, pageSize });
+    setItemList(products.list);
   };
 
   useEffect(() => {
     const handleUserWidth = () => {
-      setUserWidth(getUserWidth());
+      setPageSize(getUserWidth());
     };
 
     window.addEventListener("resize", handleUserWidth);
-    fetchData({ orderBy: "favorite", userWidth });
+    fetchData({ orderBy: "favorite", pageSize });
 
     return () => {
       window.removeEventListener("resize", handleUserWidth);
     };
-  }, [userWidth]);
+  }, [pageSize]);
 
   return (
-    <div className="bestProductContainer">
+    <div className="productContainer">
       <h1 className="sectionTitle">베스트 상품</h1>
       <div className="bestProductCard">
-        {productList?.map((product) => (
-          <ProductCard product={product} key={`best-product-${product.id}`} />
+        {itemList?.map((item) => (
+          <ProductCard item={item} key={`best-product-${item.id}`} />
         ))}
       </div>
     </div>

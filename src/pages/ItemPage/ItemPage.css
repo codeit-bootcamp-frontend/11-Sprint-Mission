@@ -8,7 +8,6 @@
 .productCard {
   color: #1f2937;
   overflow: hidden;
-  cursor: pointer;
 }
 
 .productCardImg {
@@ -44,15 +43,103 @@
 .favoriteCount {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
   color: #4b5563;
   font-size: 12px;
 }
 
-.bestProductContainer {
+.productContainer {
   padding-top: 20px;
   padding-bottom: 25px;
-  margin: 70px 20px 0;
+}
+
+.allProductsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.rightHeader {
+  display: flex;
+  gap: 20px;
+}
+
+.searchInput {
+  width: 325px;
+  height: 42px;
+}
+
+.searchBar {
+  display: flex;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  flex: 1;
+  align-items: center;
+  padding: 5px 15px;
+}
+
+.searchInput {
+  border: none;
+  flex: 1;
+  background-color: inherit;
+}
+
+.searchInput::placeholder {
+  color: #9ca3af;
+  font-size: 16px;
+}
+
+.searchInput:focus {
+  outline: none;
+}
+
+.addItem {
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--blue);
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 8px;
+  width: 133px;
+}
+
+.sortWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.sortButton {
+  background-color: #ffffff;
+  width: 130px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.dropDown {
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  top: 55px;
+}
+
+.dropDownMenu {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #1f2937;
+  cursor: pointer;
+  width: 130px;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.allProductCard {
+  grid-template-columns: repeat(2, 1fr);
 }
 
 @media (min-width: 768px) {
@@ -61,11 +148,27 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
+
+  .productContainer {
+    margin: 20px 20px;
+  }
+
+  .allProductCard {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (min-width: 1200px) {
   .bestProductCard {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
+  }
+
+  .productContainer {
+    margin: 70px 200px 0;
+  }
+
+  .allProductCard {
+    grid-template-columns: repeat(5, 1fr);
   }
 }
