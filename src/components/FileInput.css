@@ -21,6 +21,10 @@
   text-align: center;
 }
 
+.file-input-label:hover {
+  background-color: #fcfcfc;
+}
+
 .file-input-hidden {
   display: none;
 }

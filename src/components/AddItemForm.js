@@ -3,6 +3,7 @@ import FileInput from "./FileInput";
 import useAsync from "../hooks/useAsync";
 import "./AddItemForm.css";
 import resetImg from "../assets/ic_X.svg";
+import { useNavigate } from "react-router-dom";
 
 const INITIAL_VALUE = {
   name: "",
@@ -20,6 +21,7 @@ function AddItemForm({
   onSubmit,
   onSubmitSuccess,
 }) {
+  const navigate = useNavigate();
   const [values, setValues] = useState(initialValues);
   const [isSubmitting, submittingError, onSubmitAsync] = useAsync(onSubmit);
   const [isFormValid, setIsFormValid] = useState(false);
@@ -27,11 +29,7 @@ function AddItemForm({
 
   useEffect(() => {
     const isValid =
-      values.name &&
-      values.content &&
-      values.imgFile &&
-      values.price &&
-      values.tags.length > 0;
+      values.name && values.content && values.price && values.tags.length > 0;
     setIsFormValid(isValid);
   }, [values]);
 
@@ -92,6 +90,8 @@ function AddItemForm({
     const { review } = result;
     setValues(INITIAL_VALUE);
     onSubmitSuccess(review);
+
+    navigate("/items");
   };
 
   return (
