@@ -1,7 +1,8 @@
 .insteadFile {
-  @apply flex flex-col items-center justify-center gap-3 rounded-xl font-normal text-base cursor-pointer;
+  @apply flex flex-col items-center justify-center gap-3 rounded-xl font-normal text-base cursor-pointer aspect-square;
   width: 282px;
-  height: 282px;
+  max-width: 282px;
+  max-height: 282px;
   color: var(--gray-400);
   background-color: var(--gray-100);
 
@@ -11,9 +12,10 @@
 }
 
 .wrapPreview {
-  @apply relative rounded-xl overflow-hidden;
+  @apply relative rounded-xl overflow-hidden aspect-square;
   width: 282px;
-  height: 282px;
+  max-width: 282px;
+  max-height: 282px;
   border: 1px solid var(--gray-50);
 
   img {
