@@ -65,29 +65,25 @@ function AddItem() {
     }
   };
 
-  const handleButtonActive = () => {
-    return (
-      values.name &&
-      values.description &&
-      values.price &&
-      values.tags.length > 0
-    );
-  };
+  const buttonActive = Boolean(
+    values.name && values.description && values.price && values.tags.length > 0
+  );
 
   return (
     <div className="content">
       <h1>상품 등록하기</h1>
       <form onSubmit={handleSubmit}>
-        {isLoading && { handleButtonActive } && (
+        {!isLoading && buttonActive && (
           <button className="buttonEnabled" type="submit">
             등록
           </button>
         )}
-        {
-          <button className="buttonDisabled" type="submit" disabled>
-            등록
-          </button>
-        }
+        {isLoading ||
+          (!buttonActive && (
+            <button className="buttonDisabled" type="submit" disabled>
+              등록
+            </button>
+          ))}
         {errorMessage?.message && (
           <div className="errorMessage">상품을 등록하는데 실패했습니다.</div>
         )}
