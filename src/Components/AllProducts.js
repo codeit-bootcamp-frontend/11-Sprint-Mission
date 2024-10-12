@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getProducts } from '../api/api';
+import useAsync from '../hooks/useAsync';
 import Product from './Product';
 import Pagination from './Pagination';
+import Loading from './Loading';
 import { ArrowPathIcon } from '@heroicons/react/24/solid';
 import IconSearch from '../assets/icon-search.svg';
 
@@ -15,19 +17,20 @@ export default function AllProducts() {
   const [keyword, setKeyword] = useState('');
   const [orderBy, setOrderBy] = useState('recent');
   const [totalCount, setTotalCount] = useState(0);
+  const [isLoading, loadingError, getProductsAsync] = useAsync(getProducts);
   const inSearchRef = useRef();
 
   // 데이터 가져오기
-  const handleLoad = async (options = {}) => {
-    let result;
-    try {
-      result = await getProducts(options);
-    } catch (error) {
-      console.log('error', error.message);
-    }
-    setProducts(result.list);
-    setTotalCount(result.totalCount);
-  };
+  const handleLoad = useCallback(
+    async (options = {}) => {
+      const result = await getProductsAsync(options);
+      if (!result) return;
+
+      setProducts(result.list);
+      setTotalCount(result.totalCount);
+    },
+    [getProductsAsync]
+  );
 
   // 정렬 변경
   const handleOrder = (e) => {
@@ -40,7 +43,7 @@ export default function AllProducts() {
     const inputSearch = inSearchRef.current;
     setKeyword(inputSearch.value);
   };
-  const handleKeywordReset = (e) => {
+  const handleKeywordReset = () => {
     setKeyword('');
   };
 
@@ -52,7 +55,7 @@ export default function AllProducts() {
 
   useEffect(() => {
     handleLoad({ keyword, orderBy, page });
-  }, [keyword, orderBy, page]);
+  }, [keyword, orderBy, page, handleLoad]);
 
   return (
     <div className="products">
@@ -87,6 +90,8 @@ export default function AllProducts() {
       </div>
 
       <div className="all">
+        <Loading visible={isLoading} />
+
         {products.map(({ id, images, name, price, favoriteCount }) => (
           <Product
             key={id}
@@ -96,6 +101,8 @@ export default function AllProducts() {
             favoriteCount={favoriteCount}
           />
         ))}
+
+        {loadingError?.message && <p className="text-center font-bold">{loadingError.message}</p>}
       </div>
 
       <Pagination
