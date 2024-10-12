@@ -1,0 +1,20 @@
+.item-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.all-item-card-img {
+  display: block;
+  width: 221px;
+  height: 221px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .all-item-card-img {
+    width: 168px;
+    height: 168px;
+  }
+}
