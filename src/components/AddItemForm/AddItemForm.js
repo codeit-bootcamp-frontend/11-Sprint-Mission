@@ -1,14 +1,24 @@
+import { useState } from "react";
+import FileInput from "../FileInput/FileInput";
+
+const DEFALT_FORM_VALUES = {
+  imgFiles: [],
+  title: null,
+  content: null,
+  price: null,
+  tags: [],
+};
+
 function AddItemForm() {
+  const [values, setValues] = useState(DEFALT_FORM_VALUES);
+
   return (
     <form id="form-item-add">
       <div className="form-header">
         <h2>상품 등록하기</h2>
         <button type="submit">등록</button>
       </div>
-      <fieldset>
-        <label htmlFor="input-image">상품 이미지</label>
-        <input name="images" type="file" id="input-image" />
-      </fieldset>
+      <FileInput />
       <fieldset>
         <label htmlFor="input-title">상품명</label>
         <input
