@@ -140,6 +140,11 @@ textarea::placeholder {
   cursor: not-allowed;
 }
 
+.errorMessage {
+  font-size: 16px;
+  color: #f74747;
+}
+
 /* PC: 1200px 이상 */
 @media (min-width: 1200px) {
 }
