@@ -11,15 +11,6 @@ const Allitem = () => {
   const [productList, setProductList] = useState([]);
   const [order, setOrder] = useState("recent");
 
-  // const handleRcentClick = () => {
-  //   setOrder("recent");
-  //   setIsOpen(false);
-  // };
-  // const handleFavoriteClick = () => {
-  //   setOrder("favorite");
-  //   setIsOpen(false);
-  // };
-
   const handleOrderChange = useCallback((newOrder) => {
     setOrder(newOrder);
     setIsOpen(false);
