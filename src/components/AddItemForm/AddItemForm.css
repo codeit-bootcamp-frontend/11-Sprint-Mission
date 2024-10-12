@@ -73,7 +73,6 @@
   outline-color: var(--blue);
 }
 
-label[for="input-image"],
 label[for="input-title"],
 label[for="input-content"],
 label[for="input-price"],

@@ -3,7 +3,7 @@ import FileInput from "../FileInput/FileInput";
 import "./AddItemForm.css";
 
 const DEFALT_FORM_VALUES = {
-  imgFiles: [],
+  images: null,
   title: null,
   content: null,
   price: null,
@@ -34,7 +34,7 @@ function AddItemForm() {
         <h2>상품 등록하기</h2>
         <button type="submit">등록</button>
       </header>
-      <FileInput />
+      <FileInput onChange={handleChange} value={values.images} />
       <fieldset>
         <label htmlFor="input-title">상품명</label>
         <input
