@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import FileInput from "./FileInput";
 import DELETE from "../img/icon/ic_X.png";
-import "./ItemForm.css";
+import "../css/ItemForm.css";
 
 const INITIAL_VALUES = {
   imgFile: null,
@@ -96,13 +96,13 @@ function ItemForm() {
             등록
           </button>
         </div>
-        <p>상품 이미지</p>
+        <p className="formTitle">상품 이미지</p>
         <FileInput
           name="imgFile"
           value={values.imgFile}
           onChange={handleChange}
         />
-        <p>상품명</p>
+        <p className="formTitle">상품명</p>
         <input
           className="input name"
           name="name"
@@ -110,7 +110,7 @@ function ItemForm() {
           onChange={handleInputChange}
           placeholder="상품명을 입력해주세요"
         />
-        <p>상품소개</p>
+        <p className="formTitle">상품소개</p>
         <textarea
           className="input description"
           name="description"
@@ -118,7 +118,7 @@ function ItemForm() {
           onChange={handleInputChange}
           placeholder="상품 소개를 입력해주세요"
         />
-        <p>상품가격</p>
+        <p className="formTitle">상품가격</p>
         <input
           className="input price"
           name="price"
@@ -126,7 +126,7 @@ function ItemForm() {
           onChange={handleInputChange}
           placeholder="판매 가격을 입력해주세요"
         />
-        <p>태그</p>
+        <p className="formTitle">태그</p>
         <input
           className="input tags"
           name="tags"

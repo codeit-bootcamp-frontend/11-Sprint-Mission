@@ -3,6 +3,7 @@ import { getItems } from "./api.js";
 import "./css/AllProducts.css";
 import searchIcon from "./img/icon/ic_search.png";
 import Product from "./Product.js";
+import { Link } from "react-router-dom";
 
 function AllProducts() {
   const [products, setProducts] = useState([]);
@@ -72,7 +73,9 @@ function AllProducts() {
               />
             </form>
           </div>
-          <button className="registerItem">상품 등록하기</button>
+          <Link to="/additem">
+            <button className="registerItem">상품 등록하기</button>
+          </Link>
           <select className="selectSort" onChange={handleOrderByChange}>
             <option value="recent">최신순</option>
             <option value="favorite">좋아요 순</option>

@@ -4,6 +4,10 @@
   align-items: center;
 }
 
+.formTitle {
+  font-weight: 600;
+}
+
 .register {
   background: #3692ff;
   color: #ffffff;

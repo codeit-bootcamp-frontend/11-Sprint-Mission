@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./FileInput.css";
+import "../css/FileInput.css";
 import UPLOADIMAGE from "../img/icon/upload.png";
 import DELETE from "../img/icon/ic_X.png";
 

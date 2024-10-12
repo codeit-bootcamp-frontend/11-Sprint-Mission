@@ -3,6 +3,7 @@ import userImg from "./img/icon/user.png";
 import smallLogoImg from "./img/logo/smallLogo.png";
 import "./css/Navbar.css";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [logoImg, setLogoImg] = useState(mainLogoImg);
@@ -27,7 +28,9 @@ function Navbar() {
   return (
     <div className="Navibar">
       <div className="logoAndMenu">
-        <img className="MainLogo" src={logoImg} alt="판다마켓" />
+        <Link to="/">
+          <img className="MainLogo" src={logoImg} alt="판다마켓" />
+        </Link>
         <div className="menu">
           <p>자유게시판</p>
           <p>중고마켓</p>

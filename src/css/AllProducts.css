@@ -45,6 +45,7 @@
   height: 35px;
   border: 0px;
   border-radius: 8px;
+  cursor: pointer;
 }
 .selectSort {
   height: 35px;

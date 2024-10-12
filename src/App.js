@@ -9,7 +9,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Items />} />
-        <Route path="additems" element={<AddItems />} />
+        <Route path="additem" element={<AddItems />} />
       </Routes>
     </BrowserRouter>
   );
