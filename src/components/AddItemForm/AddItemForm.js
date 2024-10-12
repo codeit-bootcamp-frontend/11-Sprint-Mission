@@ -24,7 +24,7 @@ function AddItemForm() {
     }));
   };
 
-  const handleDelete = (name, { key, value }) => {
+  const handleDelete = (name, value, key) => {
     if (!key) return;
     setValues((prev) => {
       const result = prev[name].filter((e) => e[key] !== value);

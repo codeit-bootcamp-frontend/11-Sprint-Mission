@@ -25,7 +25,7 @@ function FileInput({ name, value, onChange, onDelete }) {
 
   const handleDelete = (e) => {
     const id = e.currentTarget.dataset.id;
-    onDelete(name, { key: "id", value: id });
+    onDelete(name, id, "id");
   };
 
   /**
