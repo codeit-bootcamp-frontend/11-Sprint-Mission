@@ -25,6 +25,12 @@
   border-radius: 8px;
 }
 
+.uploadImg {
+  width: 250px;
+  height: 250px;
+  cursor: pointer;
+}
+
 .ImgErrorMsg {
   color: red;
   font-size: 14px;

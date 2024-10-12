@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./FileInput.css";
+import UPLOADIMAGE from "../img/icon/upload.png";
 
 function FileInput({ name, value, onChange }) {
   const [preview, setPreview] = useState();
@@ -13,6 +14,10 @@ function FileInput({ name, value, onChange }) {
       return;
     }
     onChange(name, nextValue);
+  };
+
+  const handleImageClick = () => {
+    document.getElementById("fileInput").click();
   };
 
   useEffect(() => {
@@ -30,8 +35,13 @@ function FileInput({ name, value, onChange }) {
     <div>
       <div className="fileArea">
         <div className="addFile">
-          <label for="ex-file">이미지 선택</label>
-          <input type="file" id="ex-file" onChange={handleChange} />
+          <img
+            className="uploadImg"
+            src={UPLOADIMAGE}
+            alt="이미지 업로드"
+            onClick={handleImageClick}
+          />
+          <input type="file" id="fileInput" onChange={handleChange} />
         </div>
         {preview && <img className="previewImg" src={preview} alt="미리보기" />}
       </div>
