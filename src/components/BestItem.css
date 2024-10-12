@@ -1,0 +1,25 @@
+.best-item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 24px;
+}
+
+.best-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.best-item-title {
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 700;
+}
+
+.best-item-card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 24px;
+}
