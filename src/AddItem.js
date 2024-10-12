@@ -74,7 +74,7 @@ function AddItem() {
 
   // 파일 제외 input에 값 있을 때 true 반환
   const buttonActive = Boolean(
-    values.name && values.description && values.price && values.tags.length > 0
+    values.name && values.description && values.price && values.tags.join('')
   );
 
   // 브라우저에 return 될 최종 값, price는 숫자만 입력 가능, tags는 join으로 배열 -> 문자열로 변환
