@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import FileInput from "./FileInput";
+import DELETE from "../img/icon/ic_X.png";
 import "./ItemForm.css";
 
 const INITIAL_VALUES = {
@@ -45,11 +46,11 @@ function ItemForm() {
     handleChange(name, sanitize(type, value));
   };
 
-  const onChange = (e) => {
+  const handleTagChange = (e) => {
     setTagInputValue(e.target.value.trim());
   };
 
-  const onKeyDown = (e) => {
+  const handleTagKeyDown = (e) => {
     if (e.key === "Enter" && tagInputValue.trim() !== "") {
       e.preventDefault();
 
@@ -58,6 +59,10 @@ function ItemForm() {
         setTagInputValue("");
       }
     }
+  };
+
+  const handleTagDelete = (DeleteTag) => {
+    setTags((prevTags) => prevTags.filter((tag) => tag !== DeleteTag));
   };
 
   useEffect(() => {
@@ -126,14 +131,24 @@ function ItemForm() {
           className="input tags"
           name="tags"
           value={tagInputValue}
-          onChange={onChange}
-          onKeyDown={onKeyDown}
+          onChange={handleTagChange}
+          onKeyDown={handleTagKeyDown}
           placeholder="태그를 입력해주세요"
         />
         {tags.length !== 0 && (
           <ul className="tagArray">
             {tags.map((tag, idx) => {
-              return <li key={idx}>{tag}</li>;
+              return (
+                <li key={idx}>
+                  {tag}
+                  <img
+                    className="DeleteIcon"
+                    src={DELETE}
+                    alt="태그 삭제"
+                    onClick={() => handleTagDelete(tag)}
+                  />
+                </li>
+              );
             })}
           </ul>
         )}
