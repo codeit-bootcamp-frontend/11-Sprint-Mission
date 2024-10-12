@@ -1,5 +1,5 @@
 import "./Button.css";
-import items from "../../pages/items/items";
+import items from "../../pages/items/Items";
 
 function HeroButton({ text }) {
   return (
