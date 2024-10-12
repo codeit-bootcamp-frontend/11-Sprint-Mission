@@ -1,6 +1,6 @@
 const SubmitSection = ({ isDisabled, formButtonBgc }) => {
   return (
-    <h2 className="flex justify-between text-lg">
+    <h2 className="flex justify-between text-lg mb-10">
       상품 등록하기
       <button
         type="submit"
