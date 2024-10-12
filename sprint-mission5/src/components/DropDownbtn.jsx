@@ -1,13 +1,7 @@
 import "./DropDownbtn.css";
 import downIcon from "../images/dropdown/downicon.png";
 
-const DropDownbtn = ({
-  order,
-  isOpen,
-  toggleDropdown,
-  handleRcentClick,
-  handleFavoriteClick,
-}) => {
+const DropDownbtn = ({ order, isOpen, toggleDropdown, handleOrderChange }) => {
   return (
     <div className="dd-con">
       <div className="dd-box" onClick={toggleDropdown}>
@@ -18,10 +12,16 @@ const DropDownbtn = ({
       </div>
       {isOpen && (
         <div className="dd-list">
-          <button className="newbtn" onClick={handleRcentClick}>
+          <button
+            className="newbtn"
+            onClick={() => handleOrderChange("recent")}
+          >
             최신순
           </button>
-          <button className="goodbtn" onClick={handleFavoriteClick}>
+          <button
+            className="goodbtn"
+            onClick={() => handleOrderChange("favorite")}
+          >
             좋아요순
           </button>
         </div>

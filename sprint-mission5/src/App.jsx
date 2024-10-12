@@ -1,7 +1,7 @@
 import "./App.css";
 import Header from "./components/Header";
 import BestItem from "./components/BestItem";
-import Alltem from "./components/Alltem";
+import Allitem from "./components/Allitem";
 function App() {
   return (
     <div className="app-container">
@@ -10,7 +10,7 @@ function App() {
         <BestItem />
       </section>
       <section className="all-section">
-        <Alltem />
+        <Allitem />
       </section>
     </div>
   );

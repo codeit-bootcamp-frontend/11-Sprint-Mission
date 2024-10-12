@@ -1,21 +1,30 @@
 import Searchbox from "./Searchbox";
 import ItemSubmit from "./ItemSubmit";
 import DropDownbtn from "./DropDownbtn";
-import "./Alltem.css";
+import "./Allitem.css";
 import { getAllProducts } from "../api";
 import ListItem from "./ItemList";
 import { useEffect, useState } from "react";
-const Alltem = () => {
+import { useCallback } from "react";
+import { useMemo } from "react";
+const Allitem = () => {
   const [productList, setProductList] = useState([]);
   const [order, setOrder] = useState("recent");
-  const handleRcentClick = () => {
-    setOrder("recent");
+
+  // const handleRcentClick = () => {
+  //   setOrder("recent");
+  //   setIsOpen(false);
+  // };
+  // const handleFavoriteClick = () => {
+  //   setOrder("favorite");
+  //   setIsOpen(false);
+  // };
+
+  const handleOrderChange = useCallback((newOrder) => {
+    setOrder(newOrder);
     setIsOpen(false);
-  };
-  const handleFavoriteClick = () => {
-    setOrder("favorite");
-    setIsOpen(false);
-  };
+  }, []);
+
   const loadList = async (options) => {
     const { list } = await getAllProducts(options);
     setProductList(list);
@@ -31,7 +40,9 @@ const Alltem = () => {
     setIsOpen(!isOpen);
   };
 
-  const sortedItems = productList.sort((a, b) => b[order] - a[order]);
+  const sortedItems = useMemo(() => {
+    return [...productList].sort((a, b) => b[order] - a[order]);
+  }, [productList, order]);
   return (
     <div>
       <div className="aitop">
@@ -43,17 +54,16 @@ const Alltem = () => {
             order={order}
             isOpen={isOpen}
             toggleDropdown={toggleDropdown}
-            handleRcentClick={handleRcentClick}
-            handleFavoriteClick={handleFavoriteClick}
+            handleOrderChange={handleOrderChange}
           />
         </div>
       </div>
       <div className="allitem-con">
-        {sortedItems?.map((item) => (
+        {sortedItems.map((item) => (
           <ListItem item={item} key={`all-item-${item.id}`} />
         ))}
       </div>
     </div>
   );
 };
-export default Alltem;
+export default Allitem;
