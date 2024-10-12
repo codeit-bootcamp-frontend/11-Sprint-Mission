@@ -82,7 +82,6 @@ function AddItem() {
       'tags',
       values.tags.filter((item, index) => index !== idx)
     );
-    console.log(idx);
   };
 
   // 폼 서브밋 처리
@@ -93,6 +92,7 @@ function AddItem() {
     for (const key in values) {
       formData.append(key, values[key]);
     }
+    console.log('폼데이터 完:', formData.get('name'));
   };
 
   useEffect(() => {
