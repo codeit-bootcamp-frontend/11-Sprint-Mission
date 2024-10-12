@@ -35,3 +35,16 @@
   color: red;
   font-size: 14px;
 }
+
+.previewContainer {
+  position: relative;
+}
+
+.ImgDeleteIcon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
