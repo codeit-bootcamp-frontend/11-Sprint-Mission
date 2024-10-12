@@ -3,10 +3,10 @@ import FileInput from "../FileInput/FileInput";
 import "./AddItemForm.css";
 
 const DEFALT_FORM_VALUES = {
-  images: null,
-  title: null,
-  content: null,
-  price: null,
+  images: [],
+  title: "",
+  content: "",
+  price: 0,
   tags: [],
 };
 
@@ -14,13 +14,14 @@ function AddItemForm() {
   const [values, setValues] = useState(DEFALT_FORM_VALUES);
 
   const handleChange = (name, value) => {
-    setValues((prev) => {
-      const nextValues = {
-        ...prev,
-        [name]: value,
-      };
-      return nextValues;
-    });
+    const nextValue = Array.isArray(values[name])
+      ? [...values[name], value]
+      : value;
+
+    setValues((prev) => ({
+      ...prev,
+      [name]: nextValue,
+    }));
   };
 
   const handleInputChange = (e) => {
