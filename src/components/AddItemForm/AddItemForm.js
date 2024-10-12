@@ -13,25 +13,68 @@ const DEFALT_FORM_VALUES = {
 function AddItemForm() {
   const [values, setValues] = useState(DEFALT_FORM_VALUES);
 
+  /**
+   * values에 값의 변경하거나 삽입하기 위한 핸들러
+   * @param {stirng} name values의 _key_. 변경하거나 삽입할 값의 이름
+   * @param {*} value 변경 혹은 삽입할 값. 문자열 타입일 경우 좌우 공백이 제거됩니다.
+   * @example
+   * ```
+   * // 원시 타입 변수
+   * values[name] : 'primitive' -> value
+   * // 참조 타입 변수
+   * values[name] : [ ...prev ] -> [ ...prev, value ]
+   * ```
+   */
   const handleChange = (name, value) => {
-    const nextValue = Array.isArray(values[name])
-      ? [...values[name], value]
-      : value;
-
-    setValues((prev) => ({
+    setValues((prev) => {
+      const _value = typeof value === "string" ? value.trim() : value;
+      const result = Array.isArray(prev[name])
+        ? [...prev[name], _value]
+        : _value;
+      return {
       ...prev,
-      [name]: nextValue,
-    }));
+        [name]: result,
+      };
+    });
   };
 
   /**
-   * values에 저장된 특정 값을 제거하거나 초기값으로 되돌리기 위한 핸들러
-   * @param {string} name (requiered) values의 *key
-   * @param {*} value 제거할 값. name의 *value 타입이 객체 경우 입력
-   * @param {string} key 제거할 값이 객체일 경우 입력.
+   * 주어진 이름(name)과 값(value)을 기반으로 상태에서 값을 삭제하는 핸들러
+   * @param {string} name 삭제할 값이 포함된 상태의 키
+   * @param {*} [value] 삭제할 값. 값이 없을 경우 해당 키의 기본값으로 초기화됩니다.
+   * @param {string} [key] 객체 배열에서 삭제할 특정 키. 제공되지 않으면 값 자체로 필터링합니다.
+   * @example
+   * ```
+   * // name 전달
+   * values[name] : prev -> DEFAULT_FORM_VLAUE[name]
+   * // name, value 전달
+   * values[name] : prev -> value
+   * // name, value, key 전달
+   * values[name] : { key : prev } -> { key : value }
+   * ```
    */
   const handleDelete = (name, value, key) => {
-    if (!key) return;
+    if (!name) throw new Error("name을 아규먼트에 추가하세요");
+
+    if (!value) {
+      setValues((prev) => ({
+        ...prev,
+        [name]: DEFALT_FORM_VALUES[name],
+      }));
+      return;
+    }
+
+    if (!key) {
+      setValues((prev) => {
+        const result = prev[name].filter((e) => e !== value);
+        return {
+          ...prev,
+          [name]: result,
+        };
+      });
+      return;
+    }
+
     setValues((prev) => {
       const result = prev[name].filter((e) => e[key] !== value);
       return {
