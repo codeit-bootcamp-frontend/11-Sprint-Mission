@@ -1,13 +1,14 @@
 import '../style/FileInput.css';
 import FileInput from './FileInput';
 import { useState, useEffect } from 'react';
+import TagInput from './TagInput';
 
 const INITIAL_VALUES = {
   title: '',
   content: '',
   imgFile: null,
   price: '',
-  tag: '',
+  tag: [],
 };
 
 function ProductCreateForm({ initialValues = INITIAL_VALUES, initialPreivew }) {
@@ -21,13 +22,17 @@ function ProductCreateForm({ initialValues = INITIAL_VALUES, initialPreivew }) {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     handleChange(name, value);
-    console.log(name);
-    console.log(value);
+  };
+
+  // 태그 값이 변경될 때 태그 상태 업데이트
+  const handleTagChange = (tags) => {
+    handleChange('tag', tags);
   };
 
   useEffect(() => {
     const { title, content, price, tag } = values;
-    if (title && content && price && tag) {
+    // 태그 값이 배열로 존재하는지 확인
+    if (title && content && price && tag.length > 0) {
       setIsFormValid(true);
     } else {
       setIsFormValid(false);
@@ -83,15 +88,8 @@ function ProductCreateForm({ initialValues = INITIAL_VALUES, initialPreivew }) {
             onChange={handleInputChange}
           />
         </div>
-        <div className="ProductTag section-title">
-          태그
-          <input
-            name="tag"
-            placeholder="태그를 입력해주세요"
-            value={values.tag}
-            onChange={handleInputChange}
-          />
-        </div>
+        {/* 태그 변경 시 부모 컴포넌트로 알림 */}
+        <TagInput value={values.tag} onChange={handleTagChange} />
       </div>
     </div>
   );
