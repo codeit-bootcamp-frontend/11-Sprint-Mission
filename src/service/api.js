@@ -19,7 +19,7 @@ async function getItems(
   try {
     const response = await fetch(`${apiUrl}${query}`);
     if (!response.ok) {
-      throw new Error('정보를 불러오는데 실패했습니다.');
+      throw new Error('데이터를 불러오는데 실패했습니다.');
     }
     return await response.json();
   } catch (error) {
@@ -28,4 +28,20 @@ async function getItems(
   }
 }
 
-export default getItems;
+async function createItems(formData) {
+  try {
+    const response = await fetch(`${apiUrl}/`, {
+      method: 'POST',
+      body: formData,
+    });
+    if (!response.ok) {
+      throw new Error('데이터를 생성하는데 실패했습니다.');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('패칭 중 오류가 발생했습니다.', error);
+    throw new Error('상품을 등록하는데 실패했습니다.');
+  }
+}
+
+export { getItems, createItems };

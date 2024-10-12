@@ -2,7 +2,7 @@
 import './css/Items.css';
 
 // 사용된 컴포넌트
-import getItems from './service/api.js';
+import { getItems } from './service/api.js';
 import ItemList from './library/items/ItemList.js';
 import Dropdown from './library/items/Dropdown.js';
 
