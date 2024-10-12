@@ -1,8 +1,13 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ItemsPage from "./pages/ItemsPage";
+
 function App() {
   return (
-    <>
-      <h1>Hello</h1>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/items" element={<ItemsPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
