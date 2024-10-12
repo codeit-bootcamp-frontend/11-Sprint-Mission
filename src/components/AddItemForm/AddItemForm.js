@@ -12,6 +12,21 @@ const DEFALT_FORM_VALUES = {
 function AddItemForm() {
   const [values, setValues] = useState(DEFALT_FORM_VALUES);
 
+  const handleChange = (name, value) => {
+    setValues((prev) => {
+      const nextValues = {
+        ...prev,
+        [name]: value,
+      };
+      return nextValues;
+    });
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    handleChange(name, value);
+  };
+
   return (
     <form id="form-item-add">
       <div className="form-header">
@@ -26,6 +41,7 @@ function AddItemForm() {
           type="text"
           id="input-title"
           placeholder="상품명을 입력해주세요"
+          onChange={handleInputChange}
         />
       </fieldset>
       <fieldset>
@@ -35,6 +51,7 @@ function AddItemForm() {
           type="text"
           id="input-content"
           placeholder="상품 소개를 입력해주세요"
+          onChange={handleInputChange}
         />
       </fieldset>
       <fieldset>
@@ -44,10 +61,11 @@ function AddItemForm() {
           type="number"
           id="input-price"
           placeholder="상품명을 입력해주세요"
+          onChange={handleInputChange}
         />
       </fieldset>
       <fieldset>
-        <label>상품명</label>
+        <label>태</label>
         <input
           name="tag"
           type="text"
