@@ -1,7 +1,12 @@
-import FileInput from './library/AddItem/FileInput.js';
-import { useState } from 'react';
-import { createItems } from './service/api.js';
+// css
 import './css/AddItem.css';
+
+// 사용한 컴포넌트
+import { createItems } from './service/api.js';
+import FileInput from './library/AddItem/FileInput.js';
+
+// react hook
+import { useState } from 'react';
 
 function AddItem() {
   const [isLoading, setIsLoading] = useState(false);
@@ -14,6 +19,7 @@ function AddItem() {
     tags: [],
   });
 
+  // 폼 제출 시 실행될 함수
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -46,6 +52,7 @@ function AddItem() {
     });
   };
 
+  // input 값 입력 시 value에 반영, tags는 split으로 문자열 -> 배열로 변환
   const handleChange = (name, value) => {
     setValues((prevValues) => ({
       ...prevValues,
@@ -65,10 +72,12 @@ function AddItem() {
     }
   };
 
+  // 파일 제외 input에 값 있을 때 true 반환
   const buttonActive = Boolean(
     values.name && values.description && values.price && values.tags.length > 0
   );
 
+  // 브라우저에 return 될 최종 값, price는 숫자만 입력 가능, tags는 join으로 배열 -> 문자열로 변환
   return (
     <div className="content">
       <h1>상품 등록하기</h1>

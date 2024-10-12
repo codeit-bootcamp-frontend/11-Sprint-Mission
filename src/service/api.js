@@ -2,13 +2,19 @@ import axios from 'axios';
 
 const apiUrl = 'https://panda-market-api.vercel.app/products';
 
-/**
- * 상품 목록을 로드하는 비동기 함수.
- * @param {string} orderBy - 정렬 기준 ('recent' 또는 'favorite').
- * @param {string} keyword - 검색 키워드.
- * @param {number} page - 현재 페이지 번호.
- * @param {number} pageSize - 페이지당 아이템 수.
- */
+// 로그인 기능 구현 후 작업됩니다.
+/* let accessToken;
+if (typeof window !== 'undefined') {
+  accessToken = localStorage.getItem('accessToken') ?? '';
+
+  // 테스트용
+  if (accessToken) {
+    console.log('Access Token 있음', accessToken);
+  } else {
+    console.log('Access Token 없음');
+  }
+} */
+
 function getItems(orderBy = 'recent', keyword = '', page = 1, pageSize = 10) {
   const query = `?orderBy=${orderBy}&keyword=${keyword}&page=${page}&pageSize=${pageSize}`;
 
@@ -21,12 +27,12 @@ function getItems(orderBy = 'recent', keyword = '', page = 1, pageSize = 10) {
     });
 }
 
-// 상품을 등록하는 함수
 function createItems(formData) {
   return axios
     .post(apiUrl, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
+        // Authorization: `Bearer ${accessToken}`,
       },
     })
     .then((response) => response.data)

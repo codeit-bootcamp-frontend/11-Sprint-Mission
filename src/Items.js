@@ -18,12 +18,7 @@ import Pagination from 'react-js-pagination';
 import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-/**
- * 주어진 타입에 따라 페이지 크기를 결정하는 함수.
- * @param {string} type - 'normal' 또는 'favorite'에 따라 다른 페이지 크기를 반환.
- * @returns {number} - 결정된 페이지 크기.
- */
-
+// 주어진 타입에 따라 페이지 크기를 결정함
 const getPageSize = (type = 'normal') => {
   const width = window.innerWidth;
   if (width < 768) {
@@ -46,15 +41,7 @@ function Items() {
   const [total, setTotal] = useState(0);
   const [pageSize, setPageSize] = useState(getPageSize());
 
-  /**
-   * 상품 목록을 로드하는 비동기 함수.
-   * @param {string} orderBy - 정렬 기준 ('recent' 또는 'favorite').
-   * @param {string} keyword - 검색 키워드.
-   * @param {number} page - 현재 페이지 번호.
-   * @param {number} pageSize - 페이지당 아이템 수.
-   */
-
-  // promise.all로 상단에 배치될 베스트 상품과 전체 상품을 받고 있음.
+  // promise.all로 상단에 배치될 베스트 상품과 전체 상품을 로드하는 비동기 함수
   const contentLoad = async (orderBy, keyword, page, pageSize) => {
     try {
       const [productResponse, bestProductResponse] = await Promise.all([
@@ -77,22 +64,18 @@ function Items() {
   const mainBestItems = bestProducts.slice(0, getPageSize('favorite'));
   const mainItems = products.slice(0, getPageSize());
 
-  // setDropdownView가 false 시 드롭다운 닫힘, true 시 열림
+  // dropdown 기능 구현
   const handleDropdownView = () => {
     setDropdownView(!isDropdownView);
   };
 
-  /**
-   * 드롭다운 메뉴에서 선택한 항목을 처리하는 함수.
-   * @param {string} onSelect - 선택한 항목.
-   */
   const handleSelectMenu = (onSelect) => {
     setSelectMenu(onSelect);
     setOrderBy(onSelect === '최신순' ? 'recent' : 'favorite');
     setDropdownView(false);
   };
 
-  // 검색 기능을 위한 input -> useRef 사용, 초기 값 null
+  // 검색 기능 구현, input -> useRef 사용, 초기 값 null
   const inputRef = useRef(null);
 
   const handleSearchSubmit = (e) => {
@@ -105,10 +88,7 @@ function Items() {
     }
   };
 
-  /**
-   * 페이지 변경을 처리하는 함수.
-   * @param {number} page - 변경할 페이지 번호.
-   */
+  // 페이지 변경을 처리하는 함수
   const handlePageChange = (page) => {
     setPage(page);
     contentLoad(orderBy, keyword, page, pageSize);
@@ -133,7 +113,7 @@ function Items() {
     };
   }, []);
 
-  // 브라우저에 return 될 최종 값, Pagination은 라이브러리 사용.
+  // 브라우저에 return 될 최종 값, Pagination은 라이브러리 사용
   return (
     <div className="content">
       <div className="bestProducts">

@@ -96,7 +96,6 @@ form button {
   height: 1.5rem;
   top: 1.5rem;
   right: 0.625rem;
-  font-size: 1.25rem;
   padding: 0;
   pointer-events: initial;
   cursor: pointer;
@@ -149,4 +148,16 @@ input::placeholder,
 input:focus,
 textarea:focus {
   outline-color: var(--blue);
+}
+
+@media (max-width: 1280px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 12px;
+  }
 }
