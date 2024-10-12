@@ -52,6 +52,9 @@
     &:hover {
       background-color: var(--primary-200);
     }
+    &:disabled {
+      background-color: var(--gray-400);
+    }
   }
   .btn-default {
     background-color: var(--gray-400);
