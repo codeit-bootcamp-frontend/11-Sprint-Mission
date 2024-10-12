@@ -6,7 +6,7 @@ const DEFAULT_HEADERS = {
   "Content-Type": "application/json",
 };
 
-export async function fetchProducts(params) {
+async function fetchProducts(params) {
   try {
     const response = await axios.get(BASE_URL, {
       headers: DEFAULT_HEADERS,
@@ -18,7 +18,7 @@ export async function fetchProducts(params) {
   }
 }
 
-async function getAllProducts() {
+export async function getAllProducts() {
   return fetchProducts({
     page: 1,
     pageSize: TOTAL_COUNT,
@@ -26,13 +26,12 @@ async function getAllProducts() {
   });
 }
 
-async function getProductsByPage(pageNum, pageLimit) {
+export async function getProducts(pageNum, pageLimit, query = '') {
   const data = await fetchProducts({
     page: pageNum,
     pageSize: pageLimit,
     orderBy: 'recent',
+    keyword: query,
   });
-  return data.list;
+  return data;
 }
-
-export { getAllProducts, getProductsByPage };

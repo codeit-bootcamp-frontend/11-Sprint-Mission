@@ -1,8 +1,17 @@
+import { useState } from "react";
+
 function SearchBar({ onSearch }) {
+  const [keyword, setKeyword] = useState('');
+
   const handleInputChange = (e) => {
-    const newQuery = e.target.value;
-    onSearch(newQuery); // 실시간으로 검색어 전달
+    setKeyword(e.target.value);
   };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      onSearch(keyword);
+    }
+  }
 
   return (
     <div className="search-container">
@@ -14,8 +23,10 @@ function SearchBar({ onSearch }) {
       <input
         className="search-input"
         type="text"
+        value={keyword}
         placeholder="검색할 상품을 입력해주세요"
         onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
       />
     </div>
   );

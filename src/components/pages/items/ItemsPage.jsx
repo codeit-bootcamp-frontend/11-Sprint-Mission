@@ -1,15 +1,12 @@
+import { useEffect, useState, useCallback } from "react";
+import { Link } from "react-router-dom";
 import "../../../styles/items.css";
 import BestProducts from "./BestProducts";
-import {
-  getAllProducts,
-  getProductsByPage,
-} from "../../../api/items/productsApi.js";
-import { useEffect, useState } from "react";
 import AllProducts from "./AllProducts";
 import PageNavigation from "./PageNavigation.jsx";
+import { getAllProducts, getProducts } from "../../../api/items/productsApi.js";
 import { getPageLimit, useResize } from "../../../utills.js";
 import Header from "../../common/auth/home/Header.jsx";
-import { Link } from "react-router-dom";
 
 function ItemsPage() {
   const [products, setProducts] = useState([]);
@@ -19,6 +16,7 @@ function ItemsPage() {
   const [bestProductsLimit, setBestProductsLimit] = useState(4);
   const [productsLimit, setProductsLimit] = useState(10);
   const [totalCount, setTotalCount] = useState();
+  const [searchQuery, setSearchQuery] = useState("");
 
   useResize(() => {
     const pageLimit = getPageLimit();
@@ -45,20 +43,36 @@ function ItemsPage() {
   useEffect(() => {
     if (totalCount) {
       setTotalPages(Math.ceil(totalCount / productsLimit));
+    } else {
+      setTotalCount(1)
     }
-  }, [totalCount]);
+  }, [totalCount, productsLimit]);
 
   useEffect(() => {
     async function fetchData() {
-      const data = await getProductsByPage(currentPageNum, productsLimit);
-
-      if (data) {
-        setProducts(data);
+      if (searchQuery === "") {
+        const data = await getProducts(currentPageNum, productsLimit);
+        setProducts(data.list);
+        setTotalCount(data.totalCount);
+      } else {
+        const data = await getProducts(
+          currentPageNum,
+          productsLimit,
+          searchQuery
+        );
+        setProducts(data.list);
+        setTotalCount(data.totalCount);
+        console.log(data);
       }
     }
 
     fetchData();
-  }, [currentPageNum, productsLimit]);
+  }, [currentPageNum, productsLimit, searchQuery]);
+
+  const handleSearch = useCallback((query) => {
+    setSearchQuery(query);
+    setCurrentPageNum(1);
+  }, []);
 
   return (
     <>
@@ -81,7 +95,7 @@ function ItemsPage() {
       />
       <main className="items-wrapper">
         <BestProducts bestProducts={bestProducts.slice(0, bestProductsLimit)} />
-        <AllProducts products={products} />
+        <AllProducts products={products} onSearch={handleSearch} />
       </main>
 
       <PageNavigation
