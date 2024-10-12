@@ -35,11 +35,6 @@ const useResponsiveDisplayCount = () => {
     };
   }, []);
 
-  // 상태값이 변경될 때마다 로그를 찍어 상태 확인
-  useEffect(() => {
-    console.log("allDisplayCount가 변경됨:", allDisplayCount);
-  }, [allDisplayCount]);
-
   return { bestDisplayCount, allDisplayCount };
 };
 

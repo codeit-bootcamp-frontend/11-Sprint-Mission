@@ -19,7 +19,7 @@ const AllItems = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const [orderBy, setOrderBy] = useState("recent");
-  console.log(allDisplayCount);
+
   const handlorderByChange = (e) => {
     e.preventDefault(); // 기본 동작 방지
     setOrderBy(e.target.value); // 선택된 옵션에 따라 sortBy 값을 업데이트
