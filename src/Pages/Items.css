@@ -2,10 +2,12 @@
   @apply my-6;
 
   .best {
-    @apply grid gap-6 md:grid-cols-2 xl:grid-cols-4;
+    @apply relative grid gap-6 md:grid-cols-2 xl:grid-cols-4;
+    min-height: 300px;
   }
   .all {
-    @apply grid grid-cols-2 xl:grid-cols-5 gap-6;
+    @apply relative grid md:grid-cols-3 xl:grid-cols-5 gap-6;
+    min-height: 300px;
   }
 }
 .products-title {

@@ -2,33 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
-    'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', sans-serif;
-  font-size: 16px;
-}
-body {
-  background-color: #fcfcfc;
-}
-input,
-button,
-select {
-  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
-    'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', sans-serif;
+:root {
+  --base-font: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+    Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  --primary-100: #3692ff;
+  --primary-200: #1967d6;
+  --primary-300: #1251aa;
+  --error: #f74747;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
 }
 
-.container {
-  @apply mx-auto px-4;
-  max-width: 1200px;
+@layer base {
+  html {
+    font-family: var(--base-font);
+    font-size: 16px;
+  }
+  body {
+    background-color: #fcfcfc;
+  }
+  input,
+  button,
+  select {
+    font-family: var(--base-font);
+  }
 }
-.btn {
-  @apply py-2 px-6 font-semibold rounded-lg;
-  color: #f3f4f6;
-  background-color: #3692ff;
 
-  &:hover {
-    background-color: #1967d6;
+@layer components {
+  .container {
+    @apply mx-auto px-4;
+    max-width: 1200px;
+  }
+}
+
+@layer utilities {
+  .btn {
+    @apply py-2 px-6 font-semibold rounded-lg transition-all;
+    color: var(--gray-100);
+    background-color: var(--primary-100);
+
+    &:hover {
+      background-color: var(--primary-200);
+    }
+    &:disabled {
+      background-color: var(--gray-400);
+    }
+  }
+  .btn-default {
+    background-color: var(--gray-400);
+    &:hover {
+      background-color: var(--gray-500);
+    }
   }
 }

@@ -1,7 +1,12 @@
-import Items from './Pages/Items';
+import Header from './Components/Header';
 
-function App() {
-  return <Items />;
+function App({ children }) {
+  return (
+    <>
+      <Header />
+      <main className="container">{children}</main>
+    </>
+  );
 }
 
 export default App;

@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import logo from '../assets/logo.svg';
 import txtLogo from '../assets/txt-logo.svg';
 import baseAvatar from '../assets/base-avatar.svg';
@@ -8,7 +9,7 @@ export default function Header() {
     <header className="header">
       <div className="container">
         <nav className="gnb" aria-label="Global">
-          <a href="/#" className="flex items-center gap-2">
+          <a href="#/" className="flex items-center gap-2">
             <img className="hidden sm:block" src={logo} alt="판다마켓 로고" />
             <img src={txtLogo} alt="판다마켓" />
           </a>
@@ -18,7 +19,9 @@ export default function Header() {
               <a href="#/">자유게시판</a>
             </li>
             <li>
-              <a href="/items">중고마켓</a>
+              <NavLink to="/items" className="market">
+                중고마켓
+              </NavLink>
             </li>
           </ul>
         </nav>

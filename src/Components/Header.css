@@ -1,5 +1,5 @@
 .header {
-  @apply py-2 border-b bg-white sticky top-0;
+  @apply py-2 border-b bg-white sticky top-0 z-50;
   border-color: #dfdfdf;
 
   .container {
@@ -8,7 +8,7 @@
   }
 }
 .gnb {
-  @apply flex gap-8 mr-auto;
+  @apply flex gap-2 sm:gap-8 mr-auto;
 
   .links {
     @apply flex font-bold;
@@ -16,7 +16,17 @@
     color: #4b5563;
 
     a {
-      @apply px-4 py-3 block;
+      @apply px-2 sm:px-4 py-3 block;
+
+      &.active {
+        color: #3692ff;
+      }
     }
+  }
+}
+
+.gnb-market {
+  nav .market {
+    color: #3692ff;
   }
 }
