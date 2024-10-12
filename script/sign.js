@@ -1,7 +1,7 @@
 // 변수는 카멜케이스 사용
 document.addEventListener("DOMContentLoaded", () => {
 	// 유효성검사
-    let isEmailValid = false;
+  let isEmailValid = false;
 	let isNicknameValid = false;
 	let isPwdValid = false;
 	let isPwdConfirmValid = false;
@@ -14,29 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
 	const pwdConfirmInput = document.getElementById("pwd_confirm");
 	const submitBtn = document.querySelector('.sign-container form btn');
 
-	/* 디버깅
-	console.log(loginForm);
-	console.log(signupForm);
-	console.log(emailInput);
-	console.log(nicknameInput);
-	console.log(pwdInput);
-	console.log(pwdConfirmInput);
-	console.log(submitBtn);
-	*/
-
-	// 오류메세지
-	function errMsg(input, errId) {
-		const errValue = document.getElementById(errId);
-    	errValue.style.display = "block";
-		// 빨간색
-    	input.style.border = "1px solid #f74747";
-	}
-
-	// 초기화
-	function resetState(input, errId) {
-		const errValue = document.getElementById(errId);
-		errValue.style.display = "none";
-		input.style.border = "none";
+	// 오류 메세지 + 초기화
+	function setErrorState(input, errorId, isError) {
+		const errorElement = document.getElementById(errorId);
+		errorElement.style.display = isError ? "block" : "none";
+		input.input.style.border = isError ? "1px solid #f74747" : "none";
 	}
 
 	// 폼 비활성화
@@ -47,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			isFormValid = isFormValid && isNicknameValid && isPwdConfirmValid;
 		}
 	
-		submitBtn.disabled = !isFormValid; // Set the disabled property
+		submitBtn.disabled = !isFormValid;
 	}
 
 	function validationString(email) {
@@ -61,22 +43,21 @@ document.addEventListener("DOMContentLoaded", () => {
 	// 유효성 검사 함수
 	function checkEmail() {
 		const emailValue = emailInput.value.trim();
-		console.log(emailValue);
 		isEmailValid = false;
 		
 		// 이메일이 입력이 안됐을때
 		if(!emailValue) {
-			errMsg(emailInput, "email_empty_err");
+			setErrorState(emailInput, "email_empty_err", true);
 		}
 		// 이메일형식이 아닐때
 		else if(!validationString(emailValue)) {
-			errMsg(emailInput, "email_invalid_err");
+			setErrorState(emailInput, "email_empty_err", true);
 		}
 		// 이메일일때
 		else {
 			isEmailValid = true;
-			resetState(emailInput, "email_empty_err");
-			resetState(emailInput, "email_invalid_err");
+			setErrorState(emailInput, "email_empty_err", false);
+			setErrorState(emailInput, "email_empty_err", false);
 		}
 		formDeactivate();
 	}
@@ -86,11 +67,11 @@ document.addEventListener("DOMContentLoaded", () => {
 		isNicknameValid = false;
 
 		if(!nicknameValue) {
-			errMsg(nicknameInput, "nickname_empty_err");
+			setErrorState(nicknameInput, "nickname_empty_err", true);
 		} 
 		else {
 			isNicknameValid = true;
-			resetState(emailInput, "nickname_empty_err");
+			setErrorState(nicknameInput, "nickname_empty_err", false);
 		}
 		formDeactivate();
 	}
@@ -100,15 +81,15 @@ document.addEventListener("DOMContentLoaded", () => {
 		isPwdValid = false;
 
 		if(!pwdValue) {
-			errMsg(pwdInput, "pwd_empty_err");
+			setErrorState(pwdInput, "pwd_empty_err", true);
 		}
 		else if(pwdValue.length < 8) {
-			errMsg(pwdInput, "pwd_invalid_err");
+			setErrorState(pwdInput, "pwd_empty_err", true);
 		}
 		else {
 			isPwdValid = true;
-			resetState(pwdInput, "pwd_empty_err");
-			resetState(pwdInput, "pwd_invalid_err");
+			setErrorState(pwdInput, "pwd_empty_err", false);
+			setErrorState(pwdInput, "pwd_empty_err", false);
 		}
 		formDeactivate();
 	}
@@ -119,16 +100,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		// 패스워드 짧을때
 		if(!isPwdValid) {
-			errMsg(pwdConfirmInput, "pwd_confirm_init_err");
+			setErrorState(pwdConfirmInput, "pwd_confirm_init_err", true);
 		}
 		// 패스워드 확인이 비어있거나 원래 패스워드와 일치하지않으면,
 		else if(!pwdConfirmValue || pwdConfirmValue !== pwdInput.value.trim()) {
-			errMsg(pwdConfirmInput, "pwd_confirm_err");
+			setErrorState(pwdConfirmInput, "pwd_confirm_init_err", true);
 		}
 		else {
 			isPwdConfirmValid = true;
-			resetState(pwdConfirmInput, "pwd_confirm_init_err");
-			resetState(pwdConfirmInput, "pwd_confirm_err");
+			setErrorState(pwdConfirmInput, "pwd_confirm_init_err", false);
+			setErrorState(pwdConfirmInput, "pwd_confirm_init_err", false);
 		}
 		formDeactivate();
 	}
@@ -153,17 +134,10 @@ document.addEventListener("DOMContentLoaded", () => {
  
 	formDeactivate();
 
-	if(loginForm) {
-		loginForm.addEventListener("submit", function(e) {
-			e.preventDefault();
-			window.location.href = "item.html";
-		});
-	}
+	form.addEventListener("submit", function(e) {
+		e.preventDefault();
+		window.location.href = form.id === "login_form" ? "item.html" : "signup.html";
+	});
 
-	if(signupForm) {
-		signupForm.addEventListener("submit", function(e) {
-			e.preventDefault();
-			window.location.href = "signup.html";
-		});
-	}
+	// 심화요소 토글버튼 수행x
 });

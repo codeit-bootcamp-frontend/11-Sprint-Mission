@@ -2,9 +2,9 @@
 /* header */
 #login_btn {
 	font-size: 16px;
-  	font-weight: 600;
-  	border-radius: 8px;
-  	padding: 11.5px 23px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 11.5px 23px;
 }
 
 .logo img {
@@ -15,13 +15,13 @@
 /* 1) hero */
 .banner {
 	text-align: left;
-   	height: 540px;
-   	display: flex;
-   	align-items: center;
+  height: 540px;
+  display: flex;
+  align-items: center;
 	background-color: #cfe5ff;
 	background-repeat: no-repeat;
-    background-position: 80% bottom;
-   	background-size: 55%;
+  background-position: 80% bottom;
+  background-size: 55%;
 }
 
 #hero {
