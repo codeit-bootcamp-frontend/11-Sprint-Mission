@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FileInput from "./FileInput";
 import "./ItemForm.css";
 
@@ -22,10 +22,14 @@ function sanitize(type, value) {
 
 function ItemForm() {
   const [values, setValues] = useState(INITIAL_VALUES);
+  const [tags, setTags] = useState([]);
+  const [tagInputValue, setTagInputValue] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(values);
+    setValues(INITIAL_VALUES);
+    setTags([]);
+    setTagInputValue("");
   };
 
   const handleChange = (name, value) => {
@@ -39,6 +43,28 @@ function ItemForm() {
     const { name, value, type } = e.target;
     handleChange(name, sanitize(type, value));
   };
+
+  const onChange = (e) => {
+    setTagInputValue(e.target.value.trim());
+  };
+
+  const onKeyDown = (e) => {
+    if (e.key === "Enter" && tagInputValue.trim() !== "") {
+      e.preventDefault();
+
+      if (!tags.includes(tagInputValue.trim())) {
+        setTags((prevTags) => [...prevTags, tagInputValue]);
+        setTagInputValue("");
+      }
+    }
+  };
+
+  useEffect(() => {
+    setValues((prevTags) => ({
+      ...prevTags,
+      tags,
+    }));
+  }, [tags]);
 
   const isRegisterValid = () => {
     if (
@@ -98,10 +124,18 @@ function ItemForm() {
         <input
           className="input tags"
           name="tags"
-          value={values.tags}
-          onChange={handleInputChange}
+          value={tagInputValue}
+          onChange={onChange}
+          onKeyDown={onKeyDown}
           placeholder="태그를 입력해주세요"
         />
+        {tags.length !== 0 && (
+          <ul className="tagArray">
+            {tags.map((tag, idx) => {
+              return <li key={idx}>{tag}</li>;
+            })}
+          </ul>
+        )}
       </form>
     </div>
   );

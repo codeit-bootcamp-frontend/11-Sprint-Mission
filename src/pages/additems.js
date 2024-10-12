@@ -4,9 +4,7 @@ import ItemForm from "../components/ItemForm.js";
 function AddItems() {
   return (
     <div className="addItemPage">
-      <form>
-        <ItemForm />
-      </form>
+      <ItemForm />
     </div>
   );
 }
