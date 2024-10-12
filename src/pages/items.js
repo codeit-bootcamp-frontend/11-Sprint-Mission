@@ -1,5 +1,5 @@
-import BestProduct from "../BestProduct";
-import AllProducts from "../AllProducts";
+import BestProduct from "../components/BestProduct";
+import AllProducts from "../components/AllProducts";
 import "./items.css";
 
 function Items() {

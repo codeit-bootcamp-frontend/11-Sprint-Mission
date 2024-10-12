@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getItems } from "./api";
-import "./css/BestProduct.css";
+import { getItems } from "../api.js";
+import "../css/BestProduct.css";
 import Product from "./Product.js";
 
 function BestProduct() {

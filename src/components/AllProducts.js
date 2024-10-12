@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getItems } from "./api.js";
-import "./css/AllProducts.css";
-import searchIcon from "./img/icon/ic_search.png";
+import { getItems } from "../api.js";
+import "../css/AllProducts.css";
+import searchIcon from "../img/icon/ic_search.png";
 import Product from "./Product.js";
 import { Link } from "react-router-dom";
 

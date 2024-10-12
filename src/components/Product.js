@@ -1,5 +1,5 @@
-import "./css/Product.css";
-import heart from "./img/icon/icon_heart.png";
+import "../css/Product.css";
+import heart from "../img/icon/icon_heart.png";
 
 function Product({ image, name, price, favoriteCount }) {
   return (

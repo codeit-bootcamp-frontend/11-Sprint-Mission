@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./Navbar";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Navbar from "./components/Navbar.js";
 import Items from "./pages/items";
 import AddItems from "./pages/additems";
 
@@ -8,8 +8,9 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Items />} />
+        <Route path="/items" element={<Items />} />
         <Route path="additem" element={<AddItems />} />
+        <Route path="/" element={<Navigate to="/items" />} />
       </Routes>
     </BrowserRouter>
   );
