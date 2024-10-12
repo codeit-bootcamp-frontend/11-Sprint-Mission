@@ -1,5 +1,6 @@
 import { useState } from "react";
 import FileInput from "../FileInput/FileInput";
+import "./AddItemForm.css";
 
 const DEFALT_FORM_VALUES = {
   imgFiles: [],
@@ -29,10 +30,10 @@ function AddItemForm() {
 
   return (
     <form id="form-item-add">
-      <div className="form-header">
+      <header className="header-form">
         <h2>상품 등록하기</h2>
         <button type="submit">등록</button>
-      </div>
+      </header>
       <FileInput />
       <fieldset>
         <label htmlFor="input-title">상품명</label>
@@ -65,7 +66,7 @@ function AddItemForm() {
         />
       </fieldset>
       <fieldset>
-        <label>태</label>
+        <label htmlFor="input-tag">태그</label>
         <input
           name="tag"
           type="text"
