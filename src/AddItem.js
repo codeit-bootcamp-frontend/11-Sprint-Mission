@@ -52,7 +52,7 @@ function AddItem() {
     });
   };
 
-  // input 값 입력 시 value에 반영, tags는 split으로 문자열 -> 배열로 변환
+  // input 값 입력 시 value에 반영
   const handleChange = (name, value) => {
     setValues((prevValues) => ({
       ...prevValues,
@@ -60,8 +60,12 @@ function AddItem() {
     }));
   };
 
+  // title, name에 공백만 입력 금지, tags는 split으로 문자열 -> 배열로 변환
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    if ((name === 'name' || name === 'description') && value.trim() === '') {
+      return;
+    }
     if (name === 'tags') {
       handleChange(
         name,
@@ -72,7 +76,7 @@ function AddItem() {
     }
   };
 
-  // 파일 제외 input에 값 있을 때 true 반환
+  // 파일 제외 input에 값 있을 때 true 반환, tags에서 태그 입력 후 지웠을 때 join(',') 남아있던 거 초기화
   const buttonActive = Boolean(
     values.name && values.description && values.price && values.tags.join('')
   );
