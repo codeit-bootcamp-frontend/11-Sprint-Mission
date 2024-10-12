@@ -1,5 +1,5 @@
-import logo from "../images/logo.png";
-import character from "../images/character.svg";
+import logo from "../assets/logo.png";
+import character from "../assets/character.svg";
 import "./Nav.css";
 
 function Nav() {
@@ -19,7 +19,7 @@ function Nav() {
             <a id="board" href="./board">
               자유게시판
             </a>
-            <a id="fleaMarket" href="./Items">
+            <a id="fleaMarket" href="./items">
               중고마켓
             </a>
           </div>
