@@ -6,10 +6,6 @@ body {
   width: 100%;
 }
 
-.logo-image {
-  width: 153px;
-}
-
 .navbar {
   display: flex;
   justify-content: space-between;

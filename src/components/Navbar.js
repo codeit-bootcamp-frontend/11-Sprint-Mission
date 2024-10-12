@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import '../style/Navbar.css';
+import { ReactComponent as Logo } from '../images/ic_logo.svg';
 
 const Navbar = () => {
   const location = useLocation();
@@ -8,11 +9,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="nav-front">
         <a href="./index.html">
-          <img
-            className="logo-image"
-            src={process.env.PUBLIC_URL + '/images/Property 1=md.svg'}
-            alt="판다마켓 로고"
-          />
+          <Logo />
         </a>
         <div className="nav-link">
           <a href="#">자유게시판</a>

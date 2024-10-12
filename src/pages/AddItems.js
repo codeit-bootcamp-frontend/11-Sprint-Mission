@@ -1,4 +1,3 @@
-import Navbar from '../components/Navbar';
 import ProductCreateForm from '../components/ProductCreateForm';
 
 function AddItems() {
