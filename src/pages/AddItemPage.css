@@ -1,32 +1,46 @@
-.registerForm {
+.registerForm,
+main,
+.formTop,
+.smallButton,
+.formBody,
+section,
+.inputTag,
+.tag {
+  display: flex;
+}
+
+main,
+.formBody,
+section,
+.inputTag {
+  flex-direction: column;
+}
+
+.registerForm,
+.formTop,
+.smallButton {
+  align-items: center;
+}
+
+.registerForm,
+.inputTag {
   width: 100%;
+}
+
+.registerForm {
   height: auto;
   margin-top: 24px;
   margin-bottom: 69px;
-  display: flex;
   justify-content: center;
-  align-items: center;
   gap: 24px;
 }
 
 main {
-  display: flex;
-  flex-direction: column;
   width: 1200px;
 }
 
 .formTop {
-  display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-
-h2 {
-  font-family: "pretendard Variable", "Noto Sans Korean";
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 32px;
-  color: var(--approx-midnight);
 }
 
 .smallButton {
@@ -35,79 +49,89 @@ h2 {
   padding: 12px 23px;
   background-color: var(--gray-400);
   border: none;
-  display: flex;
-  align-items: center;
 }
 
 .smallButton:hover {
   cursor: pointer;
 }
 
-.smallButton > p {
-  font-family: "pretendard Variable", "Noto Sans Korean";
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 26px;
-  color: var(--gray-100);
-}
-
 .formBody {
   margin-top: 24px;
-  display: flex;
-  flex-direction: column;
   gap: 32px;
 }
 
 section {
-  display: flex;
   gap: 16px;
-  flex-direction: column;
-}
-
-h3 {
-  font-family: "pretendard Variable", "Noto Sans Korean";
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 26px;
-  color: var(--approx-midnight);
-}
-
-input {
-  height: 56px;
-  padding: 16px 24px;
-  gap: 10px;
-  border-radius: 12px;
-  border: none;
-  background-color: var(--gray-100);
-  font-family: "pretendard Variable", "Noto Sans Korean";
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
-  color: var(--gray-400);
-}
-
-textarea {
-  height: 282px;
-  padding: 16px 24px;
-  border-radius: 12px;
-  gap: 10px;
-  border: none;
-  background-color: var(--gray-100);
-  font-family: "pretendard Variable", "Noto Sans Korean";
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
-  color: var(--gray-400);
 }
 
 .inputTag {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
   gap: 14px;
 }
 
 .tag {
-  display: flex;
   gap: 12px;
+}
+
+h2,
+.smallButton > p,
+h3,
+input,
+textarea {
+  font-family: "pretendard Variable", "Noto Sans Korean";
+}
+
+h2,
+h3 {
+  font-weight: 700;
+}
+
+.smallButton > p,
+h3,
+input,
+textarea {
+  line-height: 26px;
+}
+
+.smallButton > p,
+input,
+textarea {
+  font-size: 16px;
+}
+
+h2,
+h3 {
+  color: var(--approx-midnight);
+}
+
+input,
+textarea {
+  padding: 16px 24px;
+  gap: 10px;
+  border-radius: 12px;
+  border: none;
+  background-color: var(--gray-100);
+  font-weight: 400;
+  color: var(--gray-400);
+}
+
+h2 {
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.smallButton > p {
+  font-weight: 600;
+  color: var(--gray-100);
+}
+
+h3 {
+  font-size: 18px;
+}
+
+input {
+  height: 56px;
+}
+
+textarea {
+  height: 282px;
 }
