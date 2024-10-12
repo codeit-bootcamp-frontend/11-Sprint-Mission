@@ -21,7 +21,7 @@ function Navbar() {
           />
         </Link>
         <nav>
-          <ul>
+          <ul id="navUl">
             <li>
               <NavLink to="/community" style={getNavStyle}>
                 자유게시판
