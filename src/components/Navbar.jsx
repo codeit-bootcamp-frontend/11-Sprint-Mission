@@ -1,34 +1,46 @@
-import "../../style/home.css";
-{
-  /* 기존 파일들은 어떻게 하죠...? 전부 리액트 컴퍼넌트로 바꿔야 하나요?
-   */
+import { Link, NavLink } from "react-router-dom";
+import Logo from "../BeforeSprintReact/images/logos/panda.png";
+import Icon from "../images/icons/account.png";
+import "../BeforeSprintReact/style/global.css";
+import "./Navbar.css";
+
+function getNavStyle({ isTrue }) {
+  return { color: isTrue ? "#3692FF" : undefined };
 }
 
 function Navbar() {
   return (
-    <div>
-      <a href="/">
-        <img
-          id="header_logo"
-          src="images/logos/panda.png"
-          alt="판다마켓 헤더 로고"
-        />
-      </a>
-      <nav>
-        <ul>
-          <li>
-            <a href="freeboard.html">자유게시판</a>
-          </li>
-          <li>
-            <a href="/items.html">중고마켓</a>
-          </li>
-        </ul>
-      </nav>
+    <header>
+      <div className="navLeft">
+        <Link to="../BeforeSprintReact/index.html">
+          <img
+            width="150"
+            src={Logo}
+            alt="판다마켓 헤더 로고"
+            className="haderLogo"
+          />
+        </Link>
+        <nav>
+          <ul>
+            <li>
+              <NavLink to="/community" style={getNavStyle}>
+                자유게시판
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/items" style={getNavStyle}>
+                중고마켓
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+      </div>
 
-      {/* 사용자 계정? 아이콘?에 대한 설명이 없어서 일단 임시로 로그인 버튼을 그대로 가져왔습니다. */}
-      <a href="login.html" id="login" className="a_button">
-        로그인
-      </a>
-    </div>
+      <Link to="../BeforeSprintReact/login.html">
+        <img src={Icon} alt="계정아이콘" id="accountButton" />
+      </Link>
+    </header>
   );
 }
+
+export default Navbar;

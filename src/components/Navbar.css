@@ -1,0 +1,42 @@
+header {
+  position: fixed;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border-bottom: 1px solid #dfdfdf;
+
+  z-index: 999;
+}
+
+.haderLogo {
+  margin-right: 40px;
+}
+.navLeft {
+  display: flex;
+  align-items: center;
+}
+
+.navLeft nav ul {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+  font-size: 16px;
+  color: #4b5563;
+  /* 이 부분 color 값이 551A8B로 뜨는데 어떻게 해결하나요? */
+  font-weight: 700;
+}
+
+@media (min-width: 1200px) {
+  header {
+    padding: 0 200px;
+  }
+}
+
+@media (max-width: 1199px) {
+  header {
+    padding: 0 16px;
+  }
+}
