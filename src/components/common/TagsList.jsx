@@ -11,8 +11,8 @@ function TagsList({ tags, remove }) {
 
   return (
     <ul className={styles.tagList}>
-      {tagsList.map((tag) => (
-        <li key={tag.length} className={styles.tagItem}>
+      {tagsList.map((tag, index) => (
+        <li key={`${tag}-${index}`} className={styles.tagItem}>
           <span>#{tag}</span>
           {remove ? (
             <Button
