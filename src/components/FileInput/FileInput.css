@@ -44,7 +44,7 @@ label[for="input-images"] {
   object-fit: cover;
 }
 
-.img-preview button {
+.img-preview .overlay {
   position: absolute;
   display: none;
   top: 0;
@@ -59,11 +59,11 @@ label[for="input-images"] {
   font-weight: 400;
 }
 
-.img-preview button img {
+.img-preview .overlay img {
   transform: rotate(45deg);
 }
 
-.img-preview:hover button {
+.img-preview:hover .overlay {
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -5,7 +5,7 @@ import ic_upload from "../../assets/images/ic_plus.svg";
 const UPLOAD_LIMIT = 3;
 const PREVIEWS_DEFAULT = [];
 
-function FileInput({ value, onChange }) {
+function FileInput({ name, value, onChange, onDelete }) {
   const [previews, setPreviews] = useState(PREVIEWS_DEFAULT);
   const [isLimit, setIsLimit] = useState(false);
 
@@ -19,8 +19,13 @@ function FileInput({ value, onChange }) {
       alert("상품 이미지는 최대 3개까지 업로드 할 수 있습니다.");
       return;
     }
-    const { name, files } = e.target;
-    onChange(name, files[0]);
+    const image = e.target.files[0];
+    onChange(name, { id: Date.now().toString(), image: image });
+  };
+
+  const handleDelete = (e) => {
+    const id = e.currentTarget.dataset.id;
+    onDelete(name, { key: "id", value: id });
   };
 
   /**
@@ -28,8 +33,8 @@ function FileInput({ value, onChange }) {
    */
   const handlePreviewsClear = () => {
     setPreviews((prev) => {
-      prev.forEach((src) => {
-        URL.revokeObjectURL(src);
+      prev.forEach((img) => {
+        URL.revokeObjectURL(img.src);
       });
       return PREVIEWS_DEFAULT;
     });
@@ -41,7 +46,7 @@ function FileInput({ value, onChange }) {
     else setIsLimit(false);
     const nextPreviews = [];
     value.forEach((el) => {
-      nextPreviews.push(URL.createObjectURL(el));
+      nextPreviews.push({ id: el.id, src: URL.createObjectURL(el.image) });
     });
     setPreviews(nextPreviews);
     return () => handlePreviewsClear;
@@ -51,7 +56,7 @@ function FileInput({ value, onChange }) {
     <fieldset>
       <label id="label-input-images">상품 이미지</label>
       <input
-        name="images"
+        name={name}
         type="file"
         id="input-images"
         onChange={handleChange}
@@ -61,14 +66,19 @@ function FileInput({ value, onChange }) {
           <img src={ic_upload} alt="이미지 업로드" />
           <div>이미지 등록</div>
         </label>
-        {previews.map((imgSrc) => {
+        {previews.map((img) => {
           return (
-            <div key={imgSrc} className="img-preview">
-              <img src={imgSrc} alt="미리보기 이미지" />
-              <button type="button">
+            <div
+              key={img.id}
+              className="img-preview"
+              data-id={img.id}
+              onClick={handleDelete}
+            >
+              <img src={img.src} alt="미리보기 이미지" />
+              <div className="overlay">
                 <img src={ic_upload} alt="이미지 제거" />
                 <div>삭제하기</div>
-              </button>
+              </div>
             </div>
           );
         })}

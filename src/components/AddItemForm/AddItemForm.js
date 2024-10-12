@@ -4,9 +4,9 @@ import "./AddItemForm.css";
 
 const DEFALT_FORM_VALUES = {
   images: [],
-  title: "",
-  content: "",
-  price: 0,
+  title: null,
+  content: null,
+  price: null,
   tags: [],
 };
 
@@ -24,6 +24,17 @@ function AddItemForm() {
     }));
   };
 
+  const handleDelete = (name, { key, value }) => {
+    if (!key) return;
+    setValues((prev) => {
+      const result = prev[name].filter((e) => e[key] !== value);
+      return {
+        ...prev,
+        [name]: result,
+      };
+    });
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     handleChange(name, value);
@@ -35,7 +46,12 @@ function AddItemForm() {
         <h2>상품 등록하기</h2>
         <button type="submit">등록</button>
       </header>
-      <FileInput onChange={handleChange} value={values.images} />
+      <FileInput
+        name="images"
+        onChange={handleChange}
+        onDelete={handleDelete}
+        value={values.images}
+      />
       <fieldset>
         <label htmlFor="input-title">상품명</label>
         <input
