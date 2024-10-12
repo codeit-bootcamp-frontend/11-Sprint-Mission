@@ -1,4 +1,3 @@
-import ItemsHeader from "./ItemsHeader";
 import "../../../styles/items.css";
 import BestProducts from "./BestProducts";
 import {
@@ -8,7 +7,9 @@ import {
 import { useEffect, useState } from "react";
 import AllProducts from "./AllProducts";
 import PageNavigation from "./PageNavigation.jsx";
-import { getPageLimit } from "../../../utills.js";
+import { getPageLimit, useResize } from "../../../utills.js";
+import Header from "../../common/auth/home/Header.jsx";
+import { Link } from "react-router-dom";
 
 function ItemsPage() {
   const [products, setProducts] = useState([]);
@@ -19,19 +20,11 @@ function ItemsPage() {
   const [productsLimit, setProductsLimit] = useState(10);
   const [totalCount, setTotalCount] = useState();
 
-  useEffect(() => {
-    const handleResize = () => {
-      const pageLimit = getPageLimit();
-      setBestProductsLimit(pageLimit[0]);
-      setProductsLimit(pageLimit[1]);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  useResize(() => {
+    const pageLimit = getPageLimit();
+    setBestProductsLimit(pageLimit[0]);
+    setProductsLimit(pageLimit[1]);
+  });
 
   useEffect(() => {
     async function fetchData() {
@@ -69,7 +62,23 @@ function ItemsPage() {
 
   return (
     <>
-      <ItemsHeader />
+      <Header
+        leftMenu={
+          <>
+            <Link className="menu-item">자유게시판</Link>
+            <Link className="menu-item">중고마켓</Link>
+          </>
+        }
+        rightMenu={
+          <Link to="/mypage">
+            <img
+              id="mypage"
+              src="images/icons/ic_mypage.svg"
+              alt="마이페이지 아이콘"
+            />
+          </Link>
+        }
+      />
       <main className="items-wrapper">
         <BestProducts bestProducts={bestProducts.slice(0, bestProductsLimit)} />
         <AllProducts products={products} />

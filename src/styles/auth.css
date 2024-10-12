@@ -146,12 +146,6 @@
   color: var(--blue-500);
 }
 
-#auth-logo {
-  width: 396px;
-  height: 132px;
-  margin: 0 auto;
-}
-
 @media (max-width: 767px) {
   .auth-container {
     width: 100%;
