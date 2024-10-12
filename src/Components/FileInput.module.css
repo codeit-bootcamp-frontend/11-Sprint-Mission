@@ -1,0 +1,25 @@
+.insteadFile {
+  @apply flex flex-col items-center justify-center gap-3 rounded-xl font-normal text-base cursor-pointer;
+  width: 282px;
+  height: 282px;
+  color: var(--gray-400);
+  background-color: var(--gray-100);
+
+  + input[type='file'] {
+    display: none;
+  }
+}
+
+.wrapPreview {
+  @apply relative rounded-xl overflow-hidden;
+  width: 282px;
+  height: 282px;
+  border: 1px solid var(--gray-50);
+
+  img {
+    @apply w-full h-full object-cover;
+  }
+  .btnClose {
+    @apply absolute w-6 h-6 right-3 top-3;
+  }
+}

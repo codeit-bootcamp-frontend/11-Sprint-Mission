@@ -1,0 +1,23 @@
+.title {
+  @apply text-xl font-bold;
+}
+.formGroup {
+  @apply flex flex-col gap-4;
+
+  label {
+    @apply self-start font-bold text-lg;
+  }
+  input,
+  textarea {
+    @apply px-6 py-4 rounded-xl;
+    background-color: var(--gray-100);
+  }
+}
+.tag {
+  @apply inline-flex gap-2 items-center pl-4 pr-3 py-2 rounded-full;
+  background-color: var(--gray-100);
+
+  svg {
+    color: var(--gray-400);
+  }
+}
