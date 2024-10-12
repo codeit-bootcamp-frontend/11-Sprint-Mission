@@ -2,27 +2,6 @@ textarea {
   resize: none;
 }
 
-.pageTitle {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.register {
-  background: #3692ff;
-  color: #ffffff;
-  width: 60px;
-  height: 35px;
-  border: 0px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.register:disabled {
-  background: #9ca3af;
-  cursor: default;
-}
-
 .addItemPage {
   width: 100%;
   padding: 100px 150px;

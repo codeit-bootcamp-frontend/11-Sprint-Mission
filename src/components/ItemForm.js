@@ -40,12 +40,27 @@ function ItemForm() {
     handleChange(name, sanitize(type, value));
   };
 
+  const isRegisterValid = () => {
+    if (
+      values.name !== "" &&
+      values.description !== "" &&
+      values.price !== "" &&
+      values.tags.length !== 0
+    )
+      return false;
+    else return true;
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <div className="pageTitle">
           <h2>상품 등록하기</h2>
-          <button type="submit" className="register">
+          <button
+            disabled={isRegisterValid()}
+            type="submit"
+            className="register"
+          >
             등록
           </button>
         </div>
