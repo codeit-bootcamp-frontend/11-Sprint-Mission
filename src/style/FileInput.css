@@ -1,0 +1,58 @@
+#file {
+  display: none;
+}
+
+.filelabel {
+  width: 282px;
+  height: 282px;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  opacity: 0px;
+  cursor: pointer;
+  background-color: #f3f4f6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 16px;
+}
+
+.image-input-form {
+  display: flex;
+  gap: 24px;
+}
+
+.preview-container {
+  position: relative;
+}
+
+.image-preview {
+  width: 282px;
+  height: 282px;
+  border-radius: 12px;
+  border: 1px solid #f9fafb;
+  object-fit: cover;
+}
+
+.image-delete-btn {
+  position: absolute;
+  width: 22px;
+  height: 24px;
+  top: 12px;
+  left: 248px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.image-warning-message {
+  margin: 10px 0;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: left;
+  color: #f74747;
+}

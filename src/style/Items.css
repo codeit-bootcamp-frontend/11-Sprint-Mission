@@ -118,6 +118,7 @@
   font-weight: 600;
   line-height: 26px;
   text-align: left;
+  cursor: pointer;
 }
 
 .searchBarWrapper {

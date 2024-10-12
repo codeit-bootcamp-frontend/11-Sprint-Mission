@@ -1,0 +1,116 @@
+.ProductContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 1200px;
+  margin: 24px auto;
+}
+
+.container-title {
+  display: flex;
+  justify-content: space-between;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+  text-align: left;
+  color: #1f2937;
+}
+
+.container-body {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.Registerbtn {
+  padding: 12px 23px 12px 23px;
+  gap: 10px;
+  border-radius: 8px;
+  border: 0;
+  background-color: #9ca3af;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  text-align: left;
+  color: #f3f4f6;
+}
+
+.Registerbtn.active {
+  background-color: #3692ff;
+  cursor: pointer;
+}
+
+.ProductImg {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductTitle {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductIntro {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductPrice {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductTag {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductTitle > input,
+.ProductPrice > input,
+.ProductTag > input {
+  padding: 16px 24px 16px 24px;
+  gap: 10px;
+  border-radius: 12px;
+  background-color: #f3f4f6;
+  border: 0;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: left;
+  outline-color: #3692ff;
+}
+
+input::placeholder {
+  color: #9ca3af;
+}
+
+.ProductIntro > textarea {
+  padding: 16px 24px 16px 24px;
+  gap: 10px;
+  border-radius: 12px;
+  border: 0;
+  background-color: #f3f4f6;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: left;
+  outline-color: #3692ff;
+}
+
+.ProductIntro > textarea::placeholder {
+  color: #9ca3af;
+}
+
+.section-title {
+  font-family: Pretendard;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  text-align: left;
+  color: #1f2937;
+  gap: 16px;
+}

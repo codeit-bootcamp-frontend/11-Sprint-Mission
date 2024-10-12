@@ -1,0 +1,28 @@
+.tag-item-container {
+  display: flex;
+  gap: 12px;
+}
+
+.tag-item {
+  display: flex;
+  padding: 6px 12px 6px 16px;
+  gap: 10px;
+  border-radius: 26px;
+  background-color: #f3f4f6;
+}
+
+.tag-value {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: left;
+  color: #1f2937;
+}
+
+.tag-delete-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
