@@ -81,16 +81,21 @@
 
 input {
   background-color: #f3f4f6;
-  border-style: none;
+  border: 1px solid #f3f4f6;
   border-radius: 12px;
   padding: 16px 24px;
 }
 
 textarea {
   background-color: #f3f4f6;
-  border-style: none;
+  border: 1px solid #f3f4f6;
   border-radius: 12px;
   padding: 16px 24px 240px 24px;
+}
+input:focus,
+textarea:focus {
+  border-color: #3692ff;
+  outline: none;
 }
 
 input::placeholder,

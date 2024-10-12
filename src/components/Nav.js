@@ -21,7 +21,10 @@ const Nav = () => {
             <a
               href="/items"
               className={`nav-board-used-market ${
-                location.pathname === "/items" ? "active" : ""
+                location.pathname === "/items" ||
+                location.pathname === "/additem"
+                  ? "active"
+                  : ""
               }`}
             >
               중고마켓
