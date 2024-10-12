@@ -20,6 +20,7 @@ function App() {
   );
 }
 
+// @todo 뷰포트 너비 구하는 핸들러 -> 커스텀 훅으로 만들 예정
 function Main() {
   const [view, setView] = useState();
   const handleResize = () => {
@@ -34,10 +35,6 @@ function Main() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  useEffect(() => {
-    console.log(view);
-  }, [view]);
 
   return (
     <main className="main-wrapper">
