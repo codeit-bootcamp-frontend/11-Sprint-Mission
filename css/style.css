@@ -1,0 +1,124 @@
+/* PC(1200px) */
+/* header */
+#login_btn {
+	font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 11.5px 23px;
+}
+
+.logo img {
+	width: 153px;
+}
+
+/* main */
+/* 1) hero */
+.banner {
+	text-align: left;
+  height: 540px;
+  display: flex;
+  align-items: center;
+	background-color: #cfe5ff;
+	background-repeat: no-repeat;
+  background-position: 80% bottom;
+  background-size: 55%;
+}
+
+#hero {
+	background-image: url("../img/home/hero-image.png");
+}
+
+.banner h1 {
+	padding: 0 0 32 0;
+}
+
+#features {
+	padding: 138px 0;
+}
+
+.feature {
+	margin-bottom: 64px;
+	display: flex;
+	align-items: center;
+	gap: 5%;
+}
+
+.feature.search {
+	flex-direction: row-reverse;
+}
+
+.feature img {
+	width: 50%;
+}
+
+.feature-content {
+	flex: 1;
+}
+
+.feature-des {
+	margin: 24px 0 0 0;
+}
+
+#bottomBanner {
+	background-image: url("../img/home/bottom-banner-image.png");
+}
+
+/* Tablet(768px ~ 1199px) */
+@media (max-width: 1279px) and (min-width: 768px) {
+	/* header */
+
+	/* main */
+	.banner {
+		text-align: center;
+		height: 90vh;	/* 반응형은 vh권장 */
+		background-size: 120%;
+	}
+
+	.banner {
+		padding: 84px 0 24px 0;
+	}
+
+	#hero h1 br {
+		display: none;
+	}
+
+	#feature {
+		padding: 24px 0 16px 0;
+	}
+
+	.feature {
+		display: block;
+	}
+
+	.feature img {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+}
+
+/* Mobile(375px ~ 767px) */
+@media(max-width: 767px) {
+	/* header */
+
+	/* main */
+	/* 1) hero */
+	.banner {
+		height: 60vh;
+    	text-align: center;
+    	background-position: bottom;
+    	background-size: 130%;
+	}
+
+	/* 2) feature */
+	#features {
+		padding-top: 51px;
+	}
+
+	.feature-des {
+		margin-top: 20px;
+	}
+
+	/* 3) bottom */
+	
+	/* footer*/
+}

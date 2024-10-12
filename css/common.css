@@ -1,0 +1,203 @@
+/* Mobile */
+:root {
+	--gray-900: #1b1d1f;
+	--gray-800: #26282b;
+	--gray-600: #454c53;
+	--gray-500: #72787f;
+	--gray-400: #9ea4a8;
+	--gray-200: #e5e7eb;
+	--gray-100: #e8ebed;
+	--gray-50: #f7f7f8;
+	--blue: #3692ff;
+
+}
+
+/* reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+  
+button,
+input,
+textarea,
+select {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	color: inherit;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+button {
+	background: none;
+	border: none;
+	outline: none;
+	box-shadow: none;
+	cursor: pointer;
+}
+
+/* 텍스트 라인 가장 아래쪽으로 맞춤 */
+img {
+	vertical-align: bottom;
+}
+
+body {
+	color: #374151;
+	font-family: "Pretendard", sans-serif;
+}
+
+header {
+	position: fixed;
+	width: 100%;
+	display: flex;	/* 세로 중앙 정렬 */
+	justify-content: space-between;
+	align-items: center;	/* 세로 중앙 정렬 */
+	padding: 0 16px;
+	background-color: #ffffff;
+	border-bottom: 1px solid #dfdfdf;
+}
+
+h1 {
+	font-size: 40px;
+	font-weight: 700;
+	line-height: 56px;
+	letter-spacing: 0.02em;
+}
+
+/* header */
+
+/* main */
+
+.wrapper {
+	width: 100%;
+  	padding: 0 16px;
+}
+
+/* footer */
+footer {
+	background-color: #111827;
+	color: #9ca3af;
+	font-size: 16px;
+	padding: 32px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 60px;
+}
+
+#copyright {
+	order: 3;
+	flex-basis: 100%;
+}
+
+#footer_menu {
+	display: flex;
+	gap: 30px;
+	color: var(--gray-200);
+}
+ 
+#social-media {
+	display: flex;
+	gap: 12px;
+}
+
+/* btn */
+.btn {
+	background-color: var(--blue);
+	color: #ffffff;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: 40;
+}
+
+/* 버튼 클릭시 색상 변경 시각화 */
+.btn:hover {
+	background-color: #1967d6;
+}
+  
+.btn:focus {
+	background-color: #1251aa;
+}
+  
+/* 질문 : disabled를 이용해서 했는데 적용이 안되는데 이유를 모르겠음 */
+.btn:disabled {
+	background-color: #9ca3af;
+	cursor: default;
+	pointer-events: none;
+}
+
+.watch-btn {
+	font-size: 16px;
+  	font-weight: 600;
+  	border-radius: 999px;
+  	padding: 14.5px 33.5px;
+}
+
+/* 질문 : 로그인과 회원가입 페이지에서 버튼 정렬때문에 했는데 괜찮은지? */
+.watch-btn.full-width-btn {
+    display: block;
+    width: 100%;
+    margin: 24px auto; 
+}
+
+/* Tablet(768px ~ 1199px) */
+@media (max-width: 1279px) and (min-width: 768px) {
+	header {
+		padding: 0 24px;
+	}
+	
+	.wrapper {
+		padding: 0 24px;
+	}
+	
+	.watch-btn {
+		font-size: 20px;
+    	font-weight: 700;
+		padding: 16px 126px;
+	}
+	
+	footer {
+		padding: 32px 104px 108px 104px;
+	}
+	
+	#copyright {
+		flex-basis: auto;
+		order: 0;
+	}
+}
+
+/* PC(1200px) */
+@media(min-width: 1200px) {
+	.banner h1 {
+		text-align: left;
+		padding: 24px;
+	}
+
+	.watch-btn {
+		margin: 0 0 0 40px;
+	}
+
+	header {
+		padding: 0 200px;
+	}
+	
+	.wrapper {
+		width: 1200px;
+		padding: 0 auto;
+	}
+	
+	footer {
+		padding: 32px 200px 108px 200px;
+	}
+}

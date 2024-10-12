@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:type" content="website" />
+  <meta property="og:url" content="https://panda-market-sample.netlify.app/signup" />
+  <meta property="og:title" content="판다마켓 - 회원가입" />
+  <meta property="og:image" content="images/logo/og-image.png" />
+  <meta property="og:description" content="일상의 모든 물건을 거래해 보세요" />
+	<title>판다마켓(회원가입)</title>
+	<link rel="icon" href="img/logo/favicon.ico"/>
+	<!--웹폰트-->
+	<link
+    rel="stylesheet"
+    as="style"
+    crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+  />
+	<link rel="stylesheet"  href="css/style.css"/>
+	<link rel="stylesheet"  href="css/common.css"/>
+	<link rel="stylesheet"  href="css/sign.css"/>
+</head>
+<body>
+	<!--main태그로 변경-->
+	<main class="sign-container">
+		<a href="index.html" class="gohome-logo">
+			<img src="img/logo/logo.svg" alt="판다마켓로고" width="153">
+		</a>
+
+		<form id="signup_form" method="post">
+			<div class="input-val">
+				<label for="email">이메일</label>
+				<!--required는 필수입력하는 속성-->
+				<input id="email" type="email" placeholder="이메일 입력" required />
+				<span id="email_empty_err" class="err-msg">이메일을 입력해주세요</span>
+				<span id="email_invalid_rr" class="err-msg">잘못된 이메일 형식입니다</span>
+			</div>
+
+			<div class="input-val">
+				<label for="nickname">닉네임</label>
+				<input id="nickname" type="text" placeholder="닉네임 입력" required />
+				<span id="nickname_empty_err" class="err-msg">닉네임을 입력해 주세요</span>
+			</div>
+
+			<div class="input-val">
+				<label for="pwd">비밀번호</label>
+				<div class="input-wrapper">
+					<input id="pwd" type="password" placeholder="비밀번호 입력" required>
+					<button type="button" class="pwd-toggle-btn">
+						<img src="img/icon/eye-invisible.svg" class="toggle-pwd" alt="숨김">
+					</button>
+				</div>
+				<span id="pwd_empty_err" class="err-msg">비밀번호를 입력해 주세요</span>
+        <span id="pwd_invalid_err" class="err-msg">비밀번호를 8자 이상 입력해 주세요</span>	
+			</div>
+
+			<div class="input-val">
+				<label for="pwd_confirm">비밀번호확인</label>
+				<div class="input-wrapper">
+					<input id="pwd_confirm" type="password" placeholder="다시 입력해주세요" required />
+					<button type="button" class="pwd-toggle-btn">
+						<img src="img/icon/eye-invisible.svg" class="toggle-pwd" alt="숨김">
+					</button>
+				</div>
+				<span id="pwd_confirm_init_err" class="err-msg">먼저 조건에 맞는 비밀번호를 입력해 주세요</span>
+        <span id="pwd_confirm_err" class="err-msg">비밀번호가 일치하지 않습니다</span>
+			</div>
+			<button class="btn watch-btn full-width-btn">회원가입</button>
+		</form>
+	</div>
+
+	<div class="social-container">
+		<h1>간편 로그인</h3>
+		<div class="social-btn-container">
+			<a href="https://www.google.com/" target="_blank" rel="noopener noreferrer">
+				<img src="img/social/google.png" alt="구글" />
+			</a>
+			<a href="https://www.kakaocorp.com/page/" target="_blank" rel="noopener noreferrer">
+				<img src="img/social/kakao.png" alt="카카오" />
+			</a>
+		</div>
+	</main>
+	<div class="switch-page">
+		이미 회원이신가요? <a href="signin.html">로그인</a>
+	</div>
+	<script src="/script/sign.js" defer></script>
+</body>
+</html>
