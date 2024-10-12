@@ -24,6 +24,12 @@ function AddItemForm() {
     }));
   };
 
+  /**
+   * values에 저장된 특정 값을 제거하거나 초기값으로 되돌리기 위한 핸들러
+   * @param {string} name (requiered) values의 *key
+   * @param {*} value 제거할 값. name의 *value 타입이 객체 경우 입력
+   * @param {string} key 제거할 값이 객체일 경우 입력.
+   */
   const handleDelete = (name, value, key) => {
     if (!key) return;
     setValues((prev) => {
