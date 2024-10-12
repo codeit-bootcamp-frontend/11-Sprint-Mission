@@ -1,6 +1,7 @@
 import FileInput from './library/AddItem/FileInput.js';
 import { useState } from 'react';
 import { createItems } from './service/api.js';
+import './css/AddItem.css';
 
 function AddItem() {
   const [isLoading, setIsLoading] = useState(false);
@@ -9,7 +10,7 @@ function AddItem() {
     images: null,
     name: '',
     description: '',
-    price: 0,
+    price: '',
     tags: [],
   });
 
@@ -40,7 +41,7 @@ function AddItem() {
       images: null,
       name: '',
       description: '',
-      price: 0,
+      price: '',
       tags: [],
     });
   };
@@ -52,34 +53,44 @@ function AddItem() {
     }));
   };
 
-  function sanitize(type, value) {
-    switch (type) {
-      case 'number':
-        return Number(value) || 0;
-
-      default:
-        return value;
-    }
-  }
-
   const handleInputChange = (e) => {
-    const { name, value, type } = e.target;
+    const { name, value } = e.target;
     if (name === 'tags') {
       handleChange(
         name,
         value.split(',').map((tag) => tag.trim())
       );
     } else {
-      handleChange(name, sanitize(type, value));
+      handleChange(name, value);
     }
   };
 
+  const handleButtonActive = () => {
+    return (
+      values.name &&
+      values.description &&
+      values.price &&
+      values.tags.length > 0
+    );
+  };
+
   return (
-    <div>
+    <div className="content">
       <h1>상품 등록하기</h1>
       <form onSubmit={handleSubmit}>
-        {!isLoading && <button type="submit">등록</button>}
-        {errorMessage?.message && <div>"상품을 불러오는데 실패했습니다."</div>}
+        {isLoading && { handleButtonActive } && (
+          <button className="buttonEnabled" type="submit">
+            등록
+          </button>
+        )}
+        {
+          <button className="buttonDisabled" type="submit" disabled>
+            등록
+          </button>
+        }
+        {errorMessage?.message && (
+          <div className="errorMessage">상품을 등록하는데 실패했습니다.</div>
+        )}
         <span>상품 이미지</span>
         <FileInput
           name="images"
@@ -107,11 +118,13 @@ function AddItem() {
         <label htmlFor="price">판매 가격</label>
         <input
           name="price"
-          type="number"
           value={values.price}
           placeholder="판매 가격을 입력해주세요."
           id="price"
-          onChange={handleInputChange}
+          onChange={(e) => {
+            const value = e.target.value.replace(/[^0-9]/g, '');
+            handleChange('price', value);
+          }}
           required
         />
         <label htmlFor="tags">태그</label>

@@ -135,7 +135,7 @@ function Items() {
 
   // 브라우저에 return 될 최종 값, Pagination은 라이브러리 사용.
   return (
-    <div>
+    <div className="content">
       <div className="bestProducts">
         <h1>베스트 상품</h1>
         <ul className="bestProductList">

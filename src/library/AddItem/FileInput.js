@@ -30,13 +30,23 @@ function FileInput({ name, value, onChange }) {
 
   return (
     <div>
-      {preview && <img src={preview} alt="이미지 미리보기" />}
-      <input type="file" onChange={handleChange} ref={inputRef} />
-      {preview && (
-        <button type="button" onClick={handleClearClick}>
-          X
-        </button>
-      )}
+      <div className="fileInput">
+        <div className="image">
+          {preview && (
+            <img className="imagePreview" src={preview} alt="이미지 미리보기" />
+          )}
+          {preview && (
+            <button type="button" onClick={handleClearClick}>
+              ×
+            </button>
+          )}
+        </div>
+        <label className="imageLabel" htmlFor="images">
+          <span>+</span>
+          <span>이미지 등록</span>
+        </label>
+        <input id="images" type="file" onChange={handleChange} ref={inputRef} />
+      </div>
     </div>
   );
 }
