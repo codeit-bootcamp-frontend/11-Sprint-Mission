@@ -1,0 +1,20 @@
+.input {
+  width: 100%;
+  background-color: #f3f4f6;
+  border: 0px;
+  border-radius: 8px;
+  padding-left: 10px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.name,
+.price,
+.tags {
+  height: 40px;
+}
+
+.description {
+  padding-top: 10px;
+  height: 250px;
+}

@@ -15,61 +15,15 @@ textarea {
   height: 35px;
   border: 0px;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .register:disabled {
   background: #9ca3af;
-}
-
-.fileArea {
-  display: flex;
-  gap: 20px;
-}
-
-.addFile input {
-  display: none;
+  cursor: default;
 }
 
 .addItemPage {
   width: 100%;
   padding: 100px 150px;
-}
-
-.addFile label {
-  display: flex;
-  width: 250px;
-  height: 250px;
-  background: #f3f4f6;
-  border-radius: 8px;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.previewImg {
-  width: 250px;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.input {
-  width: 100%;
-  background-color: #f3f4f6;
-  border: 0px;
-  border-radius: 8px;
-  padding-left: 10px;
-  font-weight: 500;
-  font-size: 14px;
-}
-
-.title,
-.price,
-.tag {
-  height: 40px;
-}
-
-.description {
-  padding-top: 10px;
-  height: 250px;
 }
