@@ -1,13 +1,74 @@
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+}
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+body {
+  font-family: "Pretendard-Regular";
+  background-color: #fff;
+  font-size: 16px;
+  color: #000000;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+img {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  border: unset;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+section {
+  position: relative;
+}
+
+footer {
+  position: relative;
+}
+
+input {
+  display: block;
+}
+
+:root {
+  --skyblue: #3692ff;
+  --middeblue: #1967d6;
+  --darkblue: #1251aa;
+  --white: #ffffff;
+  --red: #f74747;
+  --gray900: #111827;
+  --gray800: #1f2937;
+  --gray700: #374151;
+  --gray600: #4b5563;
+  --gray500: #6b7280;
+  --gray400: #9ca3af;
+  --gray200: #e5e7eb;
+  --gray100: #f3f4f6;
+  --gray50: #f9fafb;
+  --gray10: #fcfcfc;
+  --bgcolor: #cfe5ff;
+  --bgquicklogin: #e6f2ff;
+  --bgkakao: #f5e14b;
+  --ftcode: #676767;
+  --bordercode: #dfdfdf;
 }
