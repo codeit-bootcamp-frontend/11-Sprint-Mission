@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { switchGnbClass } from '../utils/switchGnbClass';
-import styles from './AddItem.module.css';
 import FileInput from '../Components/FileInput';
+import styles from './AddItem.module.css';
 
 function Tag({ idx, children, onDelete }) {
   // tag 삭제
@@ -19,7 +19,8 @@ function Tag({ idx, children, onDelete }) {
         height="24"
         viewBox="0 0 22 24"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg">
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <circle cx="11" cy="12" r="10" fill="#9CA3AF" />
         <path
           d="M7.08032 8L15.0803 16"
@@ -44,7 +45,6 @@ const INITIAL_VALUES = {
 
 function AddItem() {
   const [values, setValues] = useState(INITIAL_VALUES);
-  const [btnDisabled, setBtnDisabled] = useState(true);
 
   // 값 변경에 따른 처리: 비제어
   const handleChange = (name, value) => {
@@ -62,7 +62,6 @@ function AddItem() {
 
   // tag 값 입력
   const handleTagsKeydown = (e) => {
-    // console.log('fn:handleTagsKeydown:', e);
     if (e.key !== 'Enter') return;
     e.preventDefault();
 
@@ -100,18 +99,15 @@ function AddItem() {
     switchGnbClass('market');
   }, []);
 
-  useEffect(() => {
-    // 버튼 활성화
-    const validValues = [values.name, values.description, values.price > 0, values.tags.length > 0];
-    const disabled = validValues.some((value) => Boolean(value) === false);
-    setBtnDisabled(disabled);
-  }, [values]);
+  // 등록 버튼 활성화 여부
+  const validValues = [values.name, values.description, values.price > 0, values.tags.length > 0];
+  const disabled = validValues.some((value) => Boolean(value) === false);
 
   return (
     <form className="mt-6 mb-16 flex flex-col gap-8" onSubmit={handleSubmit}>
       <div className="flex justify-between">
         <h2 className={styles.title}>상품 등록하기</h2>
-        <button className="btn" type="submit" disabled={btnDisabled}>
+        <button className="btn" type="submit" disabled={disabled}>
           등록
         </button>
       </div>
