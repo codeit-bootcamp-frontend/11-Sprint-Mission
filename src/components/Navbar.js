@@ -1,12 +1,16 @@
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 import '../styles/Reset.css';
 import logoImg from '../image/login-logo.png';
 import profileImg from '../image/profile-img.png';
 
-function Navbar() {
-  const location = useLocation();
+function getLinkStyle({ isActive }) {
+  return {
+    color: isActive ? '#3692ff' : undefined,
+  };
+}
 
+function Navbar() {
   return (
     <div className="navbar">
       <div className="nav-wrapper">
@@ -14,20 +18,12 @@ function Navbar() {
           <img src={logoImg} alt="로고" />
         </div>
         <div className="navbar-menus">
-          <Link
-            to="/freeboard"
-            className="navbar-menu"
-            style={{ color: location.pathname === '/freeboard' && '#3692FF' }}
-          >
+          <NavLink to="/freeboard" style={getLinkStyle} className="navbar-menu">
             자유게시판
-          </Link>
-          <Link
-            to="/items"
-            className="navbar-menu"
-            style={{ color: location.pathname === '/items' && '#3692FF' }}
-          >
+          </NavLink>
+          <NavLink to="/items" style={getLinkStyle} className="navbar-menu">
             중고마켓
-          </Link>
+          </NavLink>
         </div>
       </div>
       <div className="navbar-profile">
