@@ -1,13 +1,12 @@
 import "./Tag.css";
-import x from "../assets/ic_X.svg";
 
 function Tag({ children }) {
   return (
     <>
-      <button>
+      <div className="single-tag">
         {children}
-        <img src={x} className="x" alt="태그삭제" />
-      </button>
+        <button className="x-button">x</button>
+      </div>
     </>
   );
 }

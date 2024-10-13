@@ -68,7 +68,7 @@ aside {
   align-items: center;
 }
 
-.small-button > p {
+.small-btn-text {
   font-size: 16px;
   line-height: 26px;
   font-family: "pretendard Variable", "Noto Sans Korean";
@@ -78,7 +78,7 @@ aside {
 }
 
 .button:hover {
-  background-color: #2877d4;
+  background-color: var(--primary-sub);
 }
 
 .drop-down {

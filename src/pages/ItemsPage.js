@@ -56,11 +56,11 @@ function ItemsPage() {
                   className="input-search"
                 ></input>
 
-                <a href="/additem" className="small-button">
+                <button className="small-button">
                   <Link to="/additem">
-                    <p>상품 등록하기</p>
+                    <p className="small-btn-text">상품 등록하기</p>
                   </Link>
-                </a>
+                </button>
               </div>
               <label htmlFor="order"></label>
               <select id="order" onChange={handleChange} className="drop-down">
