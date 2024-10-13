@@ -23,11 +23,17 @@
   height: 42px;
   border: none;
   border-radius: 8px;
-  background-color: var(--gray-400);
+  background-color: var(--blue);
 
   color: var(--gray-100);
   font-size: 16px;
   font-weight: 600;
+  cursor: pointer;
+}
+
+#form-item-add button:disabled[type="submit"] {
+  background-color: var(--gray-400);
+  cursor: no-drop;
 }
 
 #form-item-add fieldset {
@@ -47,6 +53,13 @@
   border-radius: 12px;
 }
 
+#form-item-add input[name="title"].error,
+#form-item-add input[name="price"].error,
+#form-item-add input[name="tags"].error,
+#form-item-add textarea[name="content"].error {
+  outline: var(--warning) solid 3px;
+}
+
 #form-item-add input::placeholder {
   color: var(--gray-400);
   font-size: 16px;
@@ -60,6 +73,13 @@
   border: none;
   border-radius: 12px;
   resize: none;
+}
+
+#form-item-add input[name="title"].error,
+#form-item-add input[name="price"].error,
+#form-item-add input[name="tags"].error,
+#form-item-add textarea[name="content"].error {
+  outline: var(--warning) solid 3px;
 }
 
 #form-item-add textarea::placeholder {
@@ -81,6 +101,12 @@ label[for="input-tags"] {
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 16px;
+}
+
+label span.error {
+  margin-left: 8px;
+  color: var(--warning);
+  font-size: 14px;
 }
 
 .wrap-tags {

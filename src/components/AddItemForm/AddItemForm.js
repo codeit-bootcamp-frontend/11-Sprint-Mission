@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FileInput from "../FileInput/FileInput";
 import "./AddItemForm.css";
 import ic_tag_x from "../../assets/images/ic_tag_x.svg";
 
-const DEFALT_FORM_VALUES = {
+const DEFAULT_FORM_VALUES = {
   images: [],
   title: null,
   content: null,
@@ -11,8 +11,41 @@ const DEFALT_FORM_VALUES = {
   tags: [],
 };
 
+const DEFAULT_VALUES_VALID = {
+  title: { ok: false, msg: null },
+  content: { ok: false, msg: null },
+  price: { ok: false, msg: null },
+  // tags: { ok: false, msg: null },
+};
+
+const checkValueFormat = {
+  title: (title) => {
+    if (title.length < 1) return { ok: false, msg: "상품명을 입력하세요" };
+    return { ok: true, msg: null };
+  },
+  content: (content) => {
+    if (content.length < 1) return { ok: false, msg: "상품 소개를 입력하세요" };
+    return { ok: true, msg: null };
+  },
+  price: (price) => {
+    if (price.length < 1) return { ok: false, msg: "상품 가격을 입력하세요" };
+    const _price = Number(price);
+    if (Number.isNaN(_price))
+      return { ok: false, msg: "상품 가격은 숫자만 입력할 수 있습니다." };
+    if (_price < 0)
+      return { ok: false, msg: "상품 가격은 음수가 될 수 없습니다." };
+    return { ok: true, msg: null };
+  },
+  tags: (tags) => {
+    if (tags.length) return { ok: false, msg: "태그를 하나 이상 입력하세요" };
+    return { ok: true, msg: null };
+  },
+};
+
 function AddItemForm() {
-  const [values, setValues] = useState(DEFALT_FORM_VALUES);
+  const [values, setValues] = useState(DEFAULT_FORM_VALUES);
+  const [isValuesValid, setIsValuesValid] = useState(DEFAULT_VALUES_VALID);
+  const [isFormValid, setIsFromValid] = useState(false);
 
   /**
    * values에 값의 변경하거나 삽입하기 위한 핸들러
@@ -61,7 +94,7 @@ function AddItemForm() {
     if (!value) {
       setValues((prev) => ({
         ...prev,
-        [name]: DEFALT_FORM_VALUES[name],
+        [name]: DEFAULT_FORM_VALUES[name],
       }));
       return;
     }
@@ -89,17 +122,37 @@ function AddItemForm() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     handleChange(name, value);
+    handleInputValid(name, value);
+  };
+
+  const handleInputValid = (name, value) => {
+    const result = checkValueFormat[name](value);
+    setIsValuesValid((prev) => ({
+      ...prev,
+      [name]: result,
+    }));
   };
 
   const handlePreventEnterSubmit = (e) => {
-    e.preventDefault();
+    if (e.key === "Enter") e.preventDefault();
   };
 
+  useEffect(() => {
+    let flag = true;
+    for (const name in isValuesValid) {
+      const { ok } = isValuesValid[name];
+      if (!ok) flag = false;
+    }
+    setIsFromValid(flag);
+  }, [isValuesValid]);
+
   return (
-    <form id="form-item-add" onSubmit={handlePreventEnterSubmit}>
+    <form id="form-item-add" onKeyDown={handlePreventEnterSubmit}>
       <header className="header-form">
         <h2>상품 등록하기</h2>
-        <button type="submit">등록</button>
+        <button type="submit" disabled={!isFormValid}>
+          등록
+        </button>
       </header>
       <FileInput
         name="images"
@@ -108,31 +161,49 @@ function AddItemForm() {
         value={values.images}
       />
       <fieldset>
-        <label htmlFor="input-title">상품명</label>
+        <label htmlFor="input-title">
+          상품명
+          {isValuesValid["title"].msg && (
+            <span className="error">{isValuesValid["title"].msg}</span>
+          )}
+        </label>
         <input
           name="title"
           type="text"
           id="input-title"
+          className={isValuesValid["title"].msg && "error"}
           placeholder="상품명을 입력해주세요"
           onChange={handleInputChange}
         />
       </fieldset>
       <fieldset>
-        <label htmlFor="input-content">상품 소개</label>
+        <label htmlFor="input-content">
+          상품 소개
+          {isValuesValid["content"].msg && (
+            <span className="error">{isValuesValid["content"].msg}</span>
+          )}
+        </label>
         <textarea
           name="content"
           type="text"
           id="input-content"
+          className={isValuesValid["content"].msg && "error"}
           placeholder="상품 소개를 입력해주세요"
           onChange={handleInputChange}
         />
       </fieldset>
       <fieldset>
-        <label htmlFor="input-price">판매 가격</label>
+        <label htmlFor="input-price">
+          판매 가격
+          {isValuesValid["price"].msg && (
+            <span className="error">{isValuesValid["price"].msg}</span>
+          )}
+        </label>
         <input
           name="price"
-          type="number"
+          type="text"
           id="input-price"
+          className={isValuesValid["price"].msg && "error"}
           placeholder="상품명을 입력해주세요"
           onChange={handleInputChange}
         />
