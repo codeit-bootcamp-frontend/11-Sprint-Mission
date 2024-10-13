@@ -5,9 +5,10 @@ import "./AllItems.css";
 const AllItems = ({ items }) => {
   return (
     <div className="allItems">
-      {items.map(({ price, name, images, favoriteCount }) => {
+      {items.map(({ id, price, name, images, favoriteCount }) => {
         return (
           <Item
+            key={id}
             price={price}
             name={name}
             images={images}
