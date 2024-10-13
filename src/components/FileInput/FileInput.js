@@ -20,7 +20,7 @@ function FileInput({ name, value, onChange, onDelete }) {
       return;
     }
     const image = e.target.files[0];
-    onChange(name, { id: Date.now().toString(), image: image });
+    image && onChange(name, { id: Date.now().toString(), image: image });
   };
 
   const handleDelete = (e) => {
