@@ -79,8 +79,8 @@ function ItemsPage() {
       <Header
         leftMenu={
           <>
-            <Link className="menu-item">자유게시판</Link>
-            <Link className="menu-item">중고마켓</Link>
+            <Link className="menu-item free-board">자유게시판</Link>
+            <Link className="menu-item secondhand-market">중고마켓</Link>
           </>
         }
         rightMenu={
