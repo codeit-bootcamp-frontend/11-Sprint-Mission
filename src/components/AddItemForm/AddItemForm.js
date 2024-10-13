@@ -72,6 +72,7 @@ function AddItemForm() {
       const result = Array.isArray(prev[name])
         ? [...prev[name], _value]
         : _value;
+      handleInputValid(name, _value);
       return {
         ...prev,
         [name]: result,
@@ -82,43 +83,22 @@ function AddItemForm() {
   /**
    * 주어진 name과 value를 기반으로 상태에서 값을 삭제하는 핸들러
    * @param {string} name 삭제할 값이 포함된 상태의 키
-   * @param {*} [value] 삭제할 값. 값이 없을 경우 해당 키의 기본값으로 초기화됩니다.
+   * @param {*} value 삭제할 값.
    * @param {string} [key] 객체 배열에서 삭제할 특정 키. 제공되지 않으면 값 자체로 필터링합니다.
    * @example
    * ```
-   * // name 전달
-   * values[name] : prev -> DEFAULT_FORM_VLAUE[name]
    * // name, value 전달
    * values[name] : prev -> value
    * // name, value, key 전달
    * values[name] : { key : prev } -> { key : value }
    * ```
-   * @todo 시간될 때 기능을 분할하기
    */
   const handleDelete = (name, value, key) => {
-    if (!name) throw new Error("name을 아규먼트에 추가하세요");
-
-    if (!value) {
-      setValues((prev) => ({
-        ...prev,
-        [name]: DEFAULT_FORM_VALUES[name],
-      }));
-      return;
-    }
-
-    if (!key) {
-      setValues((prev) => {
-        const result = prev[name].filter((e) => e !== value);
-        return {
-          ...prev,
-          [name]: result,
-        };
-      });
-      return;
-    }
-
     setValues((prev) => {
-      const result = prev[name].filter((e) => e[key] !== value);
+      const result = key
+        ? prev[name].filter((e) => e[key] !== value)
+        : prev[name].filter((e) => e !== value);
+      handleInputValid(name, result);
       return {
         ...prev,
         [name]: result,
@@ -129,11 +109,12 @@ function AddItemForm() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     handleChange(name, value);
-    handleInputValid(name, value);
   };
 
   const handleInputValid = (name, value) => {
-    const result = checkValueFormat[name](value);
+    const isValid = checkValueFormat[name];
+    if (!isValid) return;
+    const result = isValid(value);
     setIsValuesValid((prev) => ({
       ...prev,
       [name]: result,
