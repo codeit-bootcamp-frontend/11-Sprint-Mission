@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FileInput from "../FileInput/FileInput";
 import "./AddItemForm.css";
+import ic_tag_x from "../../assets/images/ic_tag_x.svg";
 
 const DEFALT_FORM_VALUES = {
   images: [],
@@ -32,14 +33,14 @@ function AddItemForm() {
         ? [...prev[name], _value]
         : _value;
       return {
-      ...prev,
+        ...prev,
         [name]: result,
       };
     });
   };
 
   /**
-   * 주어진 이름(name)과 값(value)을 기반으로 상태에서 값을 삭제하는 핸들러
+   * 주어진 name과 value를 기반으로 상태에서 값을 삭제하는 핸들러
    * @param {string} name 삭제할 값이 포함된 상태의 키
    * @param {*} [value] 삭제할 값. 값이 없을 경우 해당 키의 기본값으로 초기화됩니다.
    * @param {string} [key] 객체 배열에서 삭제할 특정 키. 제공되지 않으면 값 자체로 필터링합니다.
@@ -89,8 +90,12 @@ function AddItemForm() {
     handleChange(name, value);
   };
 
+  const handleEnterSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <form id="form-item-add">
+    <form id="form-item-add" onSubmit={handleEnterSubmit}>
       <header className="header-form">
         <h2>상품 등록하기</h2>
         <button type="submit">등록</button>
@@ -131,17 +136,66 @@ function AddItemForm() {
           onChange={handleInputChange}
         />
       </fieldset>
-      <fieldset>
-        <label htmlFor="input-tag">태그</label>
-        <input
-          name="tag"
-          type="text"
-          id="input-tag"
-          placeholder="상품명을 입력해주세요"
-        />
-        <div className="list-tag"></div>
-      </fieldset>
+      <TagInput
+        name="tags"
+        value={values.tags}
+        onChange={handleChange}
+        onDelete={handleDelete}
+      />
     </form>
+  );
+}
+
+/**
+ * 태그를 추가하거나 삭제할 수 있는 컴포넌트
+ * @param {object} props
+ * @param {string} props.name values의 _key_
+ * @param {*} props.value - values[name] 상태 값
+ * @param {function} props.onChange values 갑을 변경 혹은 삽입할 수 이는 핸들러
+ * @param {function} props.onDelete values 겂울 삭재헐 수 있는 핸들러
+ * @returns 태그 컴포넌트
+ */
+function TagInput({ name, value, onChange, onDelete }) {
+  const handleEnter = (event) => {
+    if (event.key === "Enter") {
+      const tag = event.target.value.trim();
+      let flag = true;
+      value.every((e) => (flag = e !== tag));
+      flag && onChange(name, tag);
+      event.target.value = "";
+    }
+  };
+
+  const handleDelete = (e) => {
+    const tag = e.currentTarget.dataset.tag;
+    onDelete(name, tag);
+  };
+
+  return (
+    <fieldset>
+      <label htmlFor="input-tags">태그</label>
+      <input
+        name="tags"
+        type="text"
+        id="input-tag"
+        placeholder="상품명을 입력해주세요"
+        onKeyDown={handleEnter}
+      />
+      <div className="wrap-tags">
+        {value.map((e) => (
+          <Tag tag={e} onDelete={handleDelete} />
+        ))}
+      </div>
+    </fieldset>
+  );
+}
+
+function Tag({ tag, onDelete }) {
+  return (
+    <div key={tag} className="tag">
+      <div>{`#${tag}`}</div>
+      <img src={ic_tag_x} alt="태그 삭제" data-tag={tag} onClick={onDelete} />
+    </div>
   );
 }
 

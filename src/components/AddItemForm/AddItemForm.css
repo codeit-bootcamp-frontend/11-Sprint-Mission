@@ -40,7 +40,7 @@
 
 #form-item-add input[name="title"],
 #form-item-add input[name="price"],
-#form-item-add input[name="tag"] {
+#form-item-add input[name="tags"] {
   background-color: var(--gray-100);
   padding: 16px 24px;
   border: none;
@@ -76,9 +76,31 @@
 label[for="input-title"],
 label[for="input-content"],
 label[for="input-price"],
-label[for="input-tag"] {
+label[for="input-tags"] {
   color: var(--gray-800);
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 16px;
+}
+
+.wrap-tags {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.wrap-tags .tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  width: 110px;
+  height: 36px;
+  border-radius: 26px;
+  background-color: var(--gray-100);
+
+  color: var(--gray-800);
+  font-size: 16px;
+  font-weight: 400;
 }
