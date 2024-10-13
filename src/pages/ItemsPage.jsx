@@ -3,6 +3,8 @@ import Header from "../components/Header";
 import { fetchItems } from "../api";
 import AllItems from "../components/AllItems";
 
+import "./ItemsPage.css";
+
 const ItemsPage = () => {
   const [items, setItems] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
@@ -19,6 +21,11 @@ const ItemsPage = () => {
   return (
     <>
       <Header />
+      <div className="root">
+        <main className="main">
+          <AllItems items={items} />
+        </main>
+      </div>
     </>
   );
 };
