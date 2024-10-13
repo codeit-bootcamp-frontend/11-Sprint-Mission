@@ -53,6 +53,7 @@ function AddItemForm() {
    * // name, value, key 전달
    * values[name] : { key : prev } -> { key : value }
    * ```
+   * @todo 시간될 때 기능을 분할하기
    */
   const handleDelete = (name, value, key) => {
     if (!name) throw new Error("name을 아규먼트에 추가하세요");
@@ -85,25 +86,17 @@ function AddItemForm() {
     });
   };
 
-  /**
-   * onChange로 상태값을 변경하기 위한 핸들러
-   * @param {Event} e
-   */
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     handleChange(name, value);
   };
 
-  /**
-   * 엔터 키다운으로 submit이 발생하는 것을 막기 위한 핸들러
-   * @param {Event} e
-   */
-  const handleEnterSubmit = (e) => {
+  const handlePreventEnterSubmit = (e) => {
     e.preventDefault();
   };
 
   return (
-    <form id="form-item-add" onSubmit={handleEnterSubmit}>
+    <form id="form-item-add" onSubmit={handlePreventEnterSubmit}>
       <header className="header-form">
         <h2>상품 등록하기</h2>
         <button type="submit">등록</button>
