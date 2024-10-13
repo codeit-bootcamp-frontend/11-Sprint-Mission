@@ -85,11 +85,19 @@ function AddItemForm() {
     });
   };
 
+  /**
+   * onChange로 상태값을 변경하기 위한 핸들러
+   * @param {Event} e
+   */
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     handleChange(name, value);
   };
 
+  /**
+   * 엔터 키다운으로 submit이 발생하는 것을 막기 위한 핸들러
+   * @param {Event} e
+   */
   const handleEnterSubmit = (e) => {
     e.preventDefault();
   };
@@ -156,6 +164,10 @@ function AddItemForm() {
  * @returns 태그 컴포넌트
  */
 function TagInput({ name, value, onChange, onDelete }) {
+  /**
+   * 태그 삽입 이벤트 핸들러. 엔터 키다운 시 동작함. 중복 입력은 허용하지 않는다.
+   * @param {Event} event
+   */
   const handleEnter = (event) => {
     if (event.key === "Enter") {
       const tag = event.target.value.trim();
