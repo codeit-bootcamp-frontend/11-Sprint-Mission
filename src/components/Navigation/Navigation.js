@@ -39,7 +39,6 @@ function Tab({ path, children }) {
   const isCurrent = Array.isArray(path)
     ? path.some((e) => currnetPath === e)
     : currnetPath === path;
-  console.log(isCurrent);
 
   const classNames = `tab ${isCurrent ? "current" : ""}`;
 
