@@ -1,0 +1,13 @@
+.AllProductItem {
+    width: 221px;
+}
+
+.AllProductItemImg {
+    width: 221px;
+    height: 221px;
+}
+
+.productName {
+    font-size: 14px;
+    font-weight: 500;
+}
