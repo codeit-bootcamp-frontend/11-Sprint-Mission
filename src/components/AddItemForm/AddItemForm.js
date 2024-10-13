@@ -18,6 +18,13 @@ const DEFAULT_VALUES_VALID = {
   // tags: { ok: false, msg: null },
 };
 
+const PLACEHOLDER = {
+  title: "상품명을 입력해주세요",
+  content: "상품 소개를 입력해주세요",
+  price: "판매 가격을 입력해 주세요",
+  tags: "태그를 입력해주세요",
+};
+
 const checkValueFormat = {
   title: (title) => {
     if (title.length < 1) return { ok: false, msg: "상품명을 입력하세요" };
@@ -160,54 +167,22 @@ function AddItemForm() {
         onDelete={handleDelete}
         value={values.images}
       />
-      <fieldset>
-        <label htmlFor="input-title">
-          상품명
-          {isValuesValid["title"].msg && (
-            <span className="error">{isValuesValid["title"].msg}</span>
-          )}
-        </label>
-        <input
-          name="title"
-          type="text"
-          id="input-title"
-          className={isValuesValid["title"].msg && "error"}
-          placeholder="상품명을 입력해주세요"
-          onChange={handleInputChange}
-        />
-      </fieldset>
-      <fieldset>
-        <label htmlFor="input-content">
-          상품 소개
-          {isValuesValid["content"].msg && (
-            <span className="error">{isValuesValid["content"].msg}</span>
-          )}
-        </label>
-        <textarea
-          name="content"
-          type="text"
-          id="input-content"
-          className={isValuesValid["content"].msg && "error"}
-          placeholder="상품 소개를 입력해주세요"
-          onChange={handleInputChange}
-        />
-      </fieldset>
-      <fieldset>
-        <label htmlFor="input-price">
-          판매 가격
-          {isValuesValid["price"].msg && (
-            <span className="error">{isValuesValid["price"].msg}</span>
-          )}
-        </label>
-        <input
-          name="price"
-          type="text"
-          id="input-price"
-          className={isValuesValid["price"].msg && "error"}
-          placeholder="상품명을 입력해주세요"
-          onChange={handleInputChange}
-        />
-      </fieldset>
+      <InputField
+        name="title"
+        valid={isValuesValid["title"]}
+        onChange={handleInputChange}
+      />
+      <InputField
+        htmlTag="textarea"
+        name="content"
+        valid={isValuesValid["content"]}
+        onChange={handleInputChange}
+      />
+      <InputField
+        name="price"
+        valid={isValuesValid["price"]}
+        onChange={handleInputChange}
+      />
       <TagInput
         name="tags"
         value={values.tags}
@@ -215,6 +190,45 @@ function AddItemForm() {
         onDelete={handleDelete}
       />
     </form>
+  );
+}
+
+/**
+ * values의 값을 입력하기 위한 컴포넌트
+ * @param {object} props
+ * @param {string} [props.htmlTag] 입력 요소의 태그명. input의 기본
+ * @param {string} props.name values의 _key_
+ * @param {object} props.valid value의 유효성
+ * @param {function} props.onChange inputChange 핸들러
+ * @returns 입력 컴포넌트
+ */
+function InputField({ htmlTag = "input", name, valid, onChange }) {
+  return (
+    <fieldset>
+      <label htmlFor={`input-${name}`}>
+        상품명
+        {valid.msg && <span className="error">{valid.msg}</span>}
+      </label>
+      {htmlTag === "textarea" ? (
+        <textarea
+          name={name}
+          type="text"
+          id={`input-${name}`}
+          className={valid.msg && "error"}
+          placeholder={PLACEHOLDER[name]}
+          onChange={onChange}
+        />
+      ) : (
+        <input
+          name={name}
+          type="text"
+          id={`input-${name}`}
+          className={valid.msg && "error"}
+          placeholder={PLACEHOLDER[name]}
+          onChange={onChange}
+        />
+      )}
+    </fieldset>
   );
 }
 
