@@ -70,3 +70,15 @@ label[for="input-images"] {
   align-items: center;
   gap: 12px;
 }
+
+@media screen and (max-width: 1199px) {
+  label[for="input-images"] {
+    width: 168px;
+    height: 168px;
+  }
+
+  .img-preview > img {
+    width: 168px;
+    height: 168px;
+  }
+}

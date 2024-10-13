@@ -1,5 +1,5 @@
 #form-item-add {
-  width: 1200px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -128,4 +128,16 @@ label span.error {
   color: var(--gray-800);
   font-size: 16px;
   font-weight: 400;
+}
+
+@media screen and (max-width: 1199px) {
+  #form-item-add {
+    max-width: 696px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #form-item-add {
+    max-width: 346px;
+  }
 }
