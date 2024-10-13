@@ -15,7 +15,7 @@ const DEFAULT_VALUES_VALID = {
   title: { ok: false, msg: null },
   content: { ok: false, msg: null },
   price: { ok: false, msg: null },
-  // tags: { ok: false, msg: null },
+  tags: { ok: false, msg: null },
 };
 
 const PLACEHOLDER = {
@@ -44,7 +44,8 @@ const checkValueFormat = {
     return { ok: true, msg: null };
   },
   tags: (tags) => {
-    if (tags.length) return { ok: false, msg: "태그를 하나 이상 입력하세요" };
+    if (tags.length < 1)
+      return { ok: false, msg: "태그를 하나 이상 입력하세요" };
     return { ok: true, msg: null };
   },
 };
@@ -149,17 +150,20 @@ function AddItemForm() {
         value={values.images}
       />
       <InputField
+        label="상품명"
         name="title"
         valid={isValuesValid["title"]}
         onChange={handleInputChange}
       />
       <InputField
+        label="상품 소개"
         htmlTag="textarea"
         name="content"
         valid={isValuesValid["content"]}
         onChange={handleInputChange}
       />
       <InputField
+        label="판매 가격"
         name="price"
         valid={isValuesValid["price"]}
         onChange={handleInputChange}
@@ -167,6 +171,7 @@ function AddItemForm() {
       <TagInput
         name="tags"
         value={values.tags}
+        valid={isValuesValid["tags"]}
         onChange={handleChange}
         onDelete={handleDelete}
       />
@@ -183,11 +188,11 @@ function AddItemForm() {
  * @param {function} props.onChange inputChange 핸들러
  * @returns 입력 컴포넌트
  */
-function InputField({ htmlTag = "input", name, valid, onChange }) {
+function InputField({ label, htmlTag = "input", name, valid, onChange }) {
   return (
     <fieldset>
       <label htmlFor={`input-${name}`}>
-        상품명
+        {label}
         {valid.msg && <span className="error">{valid.msg}</span>}
       </label>
       {htmlTag === "textarea" ? (
@@ -222,7 +227,7 @@ function InputField({ htmlTag = "input", name, valid, onChange }) {
  * @param {function} props.onDelete values 겂울 삭재헐 수 있는 핸들러
  * @returns 태그 컴포넌트
  */
-function TagInput({ name, value, onChange, onDelete }) {
+function TagInput({ name, value, valid, onChange, onDelete }) {
   /**
    * 태그 삽입 이벤트 핸들러. 엔터 키다운 시 동작함. 중복 입력은 허용하지 않는다.
    * @param {Event} event
@@ -244,26 +249,32 @@ function TagInput({ name, value, onChange, onDelete }) {
 
   return (
     <fieldset>
-      <label htmlFor="input-tags">태그</label>
+      <label htmlFor="input-tags">
+        태그
+        {valid?.msg && <span className="error">{valid?.msg}</span>}
+      </label>
       <input
         name="tags"
         type="text"
-        id="input-tag"
-        placeholder="상품명을 입력해주세요"
+        id="input-tags"
+        className={valid.msg && "error"}
+        placeholder={PLACEHOLDER["tags"]}
         onKeyDown={handleEnter}
       />
-      <div className="wrap-tags">
+      <ul className="wrap-tags">
         {value.map((e) => (
-          <Tag tag={e} onDelete={handleDelete} />
+          <li key={e}>
+            <Tag tag={e} onDelete={handleDelete} />
+          </li>
         ))}
-      </div>
+      </ul>
     </fieldset>
   );
 }
 
 function Tag({ tag, onDelete }) {
   return (
-    <div key={tag} className="tag">
+    <div className="tag">
       <div>{`#${tag}`}</div>
       <img src={ic_tag_x} alt="태그 삭제" data-tag={tag} onClick={onDelete} />
     </div>
