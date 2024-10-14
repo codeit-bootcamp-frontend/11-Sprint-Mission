@@ -1,4 +1,4 @@
-const BASE_URL = "https://panda-market-api.vercel.app";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export async function getProducts(params = {}) {
   const query = new URLSearchParams(params).toString();
