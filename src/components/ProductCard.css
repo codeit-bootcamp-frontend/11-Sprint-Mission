@@ -32,8 +32,8 @@
 }
 
 .products-header {
-  max-width: 1200px; /* 원하는 최대 너비 설정 */
-  margin: 0 auto; /* 가운데 정렬 */
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -116,6 +116,7 @@ select {
   width: 221px;
   height: 221px;
   border-radius: 16px;
+  display: inline-block;
 }
 
 .favorite-count {

@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/AddItem.css';
 
 function AddItem() {
   return (

@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
-import '../styles/Reset.css';
 import logoImg from '../image/login-logo.png';
 import profileImg from '../image/profile-img.png';
 
