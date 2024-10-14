@@ -13,7 +13,6 @@ function App() {
           <Route index element={<Items />} />
           <Route path="/items" element={<Items />} />
           <Route path="/items/:productId" element={<ItemDetailForm />} />{" "}
-          {/* 이 경로가 정확히 설정되어 있어야 함 */}
           <Route path="*" element={<div>페이지를 찾을 수 없습니다.</div>} />
           <Route path="/additem" element={<AddItem />} />
         </Route>
