@@ -5,21 +5,19 @@ import plusIcon from "../assets/ic_plus.svg";
 
 function FileInput({ className = "", name, value, initialPreview, onChange }) {
   const [preview, setPreview] = useState(initialPreview);
-  const [isImageUploaded, setIsImageUploaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const inputRef = useRef();
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
-      if (isImageUploaded) {
+      if (value) {
         setErrorMessage("*이미지 등록은 최대 1개까지 가능합니다.");
         return;
       }
       const previewUrl = URL.createObjectURL(selectedFile);
       setPreview(previewUrl);
       onChange(name, selectedFile);
-      setIsImageUploaded(true);
       setErrorMessage("");
     }
   };
@@ -29,13 +27,12 @@ function FileInput({ className = "", name, value, initialPreview, onChange }) {
       inputRef.current.value = "";
       setPreview(null);
       onChange(name, null);
-      setIsImageUploaded(false);
       setErrorMessage("");
     }
   };
 
   const handleUploadClick = (e) => {
-    if (isImageUploaded) {
+    if (value) {
       e.preventDefault(); // 파일 선택 창이 열리지 않도록 방지
       setErrorMessage("*이미지 등록은 최대 1개까지 가능합니다.");
     }
@@ -45,11 +42,9 @@ function FileInput({ className = "", name, value, initialPreview, onChange }) {
     if (value) {
       const previewUrl = URL.createObjectURL(value);
       setPreview(previewUrl);
-      setIsImageUploaded(true);
       return () => URL.revokeObjectURL(previewUrl);
     } else {
       setPreview(null);
-      setIsImageUploaded(false);
     }
   }, [value]);
 
@@ -61,7 +56,7 @@ function FileInput({ className = "", name, value, initialPreview, onChange }) {
             type="file"
             accept="image/png, image/jpeg"
             onChange={handleFileChange}
-            onClick={handleUploadClick} // 클릭 핸들러 추가
+            onClick={handleUploadClick}
             ref={inputRef}
             className="file-input-hidden"
           />
@@ -74,7 +69,7 @@ function FileInput({ className = "", name, value, initialPreview, onChange }) {
             이미지 등록
           </div>
         </label>
-        {isImageUploaded && (
+        {value && (
           <div className="file-input-preview-selected">
             <img
               className="file-input-preview"
