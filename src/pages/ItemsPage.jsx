@@ -5,14 +5,24 @@ import AllProducts from "../components/AllProducts";
 import { useEffect, useState } from "react";
 
 const ItemsPage = () => {
+  const [order, setOrder] = useState("recent");
   const [products, setProducts] = useState([]);
   const [loadingError, setLoadingError] = useState(null);
+
+  const [bestProducts, setBestProducts] = useState([]);
 
   const handleLoad = async () => {
     try {
       setLoadingError(null);
-      const result = await getProducts({ order: "recent" });
+      const result = await getProducts({ order });
       setProducts(result.list);
+      // console.log(result.list);
+      setBestProducts(
+        result.list
+          .slice()
+          .sort((a, b) => b.favoriteCount - a.favoriteCount)
+          .slice(0, 4)
+      );
     } catch (e) {
       setLoadingError(e);
       return;
@@ -21,15 +31,23 @@ const ItemsPage = () => {
 
   useEffect(() => {
     handleLoad();
-  }, []);
+  }, [order]);
 
   return (
     <div>
       <Header isLogin={true} />
-      <h2>베스트 상품</h2>
-      <BestProducts products={products} />
-      <h2>전체 상품</h2>
-      <AllProducts products={products} />
+      <div>
+        <h2>베스트 상품</h2>
+        <BestProducts products={bestProducts} />
+      </div>
+      <div>
+        <h2>전체 상품</h2>
+        <input></input>
+        <select>
+          <option></option>
+        </select>
+        <AllProducts products={products} order={order} />
+      </div>
       {loadingError?.message && <span>{loadingError.message}</span>}
     </div>
   );
