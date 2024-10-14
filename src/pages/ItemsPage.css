@@ -1,0 +1,9 @@
+.main {
+  width: 1200px;
+}
+
+.root {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
