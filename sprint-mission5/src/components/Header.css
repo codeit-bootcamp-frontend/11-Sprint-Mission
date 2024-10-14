@@ -44,9 +44,6 @@ header .header-container .header-nav ol li a {
   font-size: 1.125rem;
   font-weight: 700;
 }
-header .header-container .header-nav ol li .used-market {
-  color: var(--skyblue);
-}
 header .header-container .header-myicon {
   width: 40px;
   height: 40px;
@@ -56,13 +53,13 @@ header .header-container .header-myicon img {
   height: 100%;
 }
 /* Tablet */
-@media (min-width: 744px) and (max-width: 1199px) {
+@media (min-width: 768px) and (max-width: 1279px) {
   header .header-container {
     padding: 0px 24px;
   }
 }
 /* Mobile */
-@media (min-width: 375px) and (max-width: 744px) {
+@media (min-width: 320px) and (max-width: 767px) {
   header .header-container {
     padding: 0px 14px;
   }
