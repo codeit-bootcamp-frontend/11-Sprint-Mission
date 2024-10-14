@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import FileInput from "./FileInput";
 import useAsync from "../hooks/useAsync";
 import "./AddItemForm.css";
@@ -24,14 +24,11 @@ function AddItemForm({
   const navigate = useNavigate();
   const [values, setValues] = useState(initialValues);
   const [isSubmitting, submittingError, onSubmitAsync] = useAsync(onSubmit);
-  const [isFormValid, setIsFormValid] = useState(false);
   const [tagInput, setTagInput] = useState("");
 
-  useEffect(() => {
-    const isValid =
-      values.name && values.content && values.price && values.tags.length > 0;
-    setIsFormValid(isValid);
-  }, [values]);
+  // 유효성 검사
+  const isValidForm =
+    values.name && values.content && values.price && values.tags.length > 0;
 
   const handleChange = (name, value) => {
     setValues((prevValues) => ({
@@ -101,7 +98,7 @@ function AddItemForm({
         <button
           type="submit"
           className="add-item-submit-button"
-          disabled={!isFormValid || isSubmitting}
+          disabled={!isValidForm || isSubmitting}
         >
           등록
         </button>
