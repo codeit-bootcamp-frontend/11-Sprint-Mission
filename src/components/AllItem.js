@@ -25,15 +25,15 @@ function AllItems() {
   const [isDropdown, setIsDropdown] = useState(false);
   const [totalPageNum, setTotalPageNum] = useState();
 
-  const fetchProducts = async ({ orderBy, page, pageSize }) => {
-    const products = await getProducts({ orderBy, page, pageSize });
-    setItems(products.list);
-    setTotalPageNum(Math.ceil(products.totalCount / pageSize));
-  };
-
   useEffect(() => {
     const handleFixSize = () => {
       setPageSize(getPageSize());
+    };
+
+    const fetchProducts = async ({ orderBy, page, pageSize }) => {
+      const products = await getProducts({ orderBy, page, pageSize });
+      setItems(products.list);
+      setTotalPageNum(Math.ceil(products.totalCount / pageSize));
     };
 
     window.addEventListener("resize", handleFixSize);
