@@ -1,0 +1,143 @@
+#form-item-add {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#form-item-add .header-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 24px;
+}
+
+#form-item-add .header-form h2 {
+  color: var(--gray-800);
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 700;
+}
+
+#form-item-add button[type="submit"] {
+  width: 74px;
+  height: 42px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--blue);
+
+  color: var(--gray-100);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#form-item-add button:disabled[type="submit"] {
+  background-color: var(--gray-400);
+  cursor: no-drop;
+}
+
+#form-item-add fieldset {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: none;
+  margin-bottom: 32px;
+}
+
+#form-item-add input[name="title"],
+#form-item-add input[name="price"],
+#form-item-add input[name="tags"] {
+  background-color: var(--gray-100);
+  padding: 16px 24px;
+  border: none;
+  border-radius: 12px;
+}
+
+#form-item-add input[name="title"].error,
+#form-item-add input[name="price"].error,
+#form-item-add input[name="tags"].error,
+#form-item-add textarea[name="content"].error {
+  outline: var(--warning) solid 3px;
+}
+
+#form-item-add input::placeholder {
+  color: var(--gray-400);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+#form-item-add textarea[name="content"] {
+  background-color: var(--gray-100);
+  min-height: 282px;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 12px;
+  resize: none;
+}
+
+#form-item-add input[name="title"].error,
+#form-item-add input[name="price"].error,
+#form-item-add input[name="tags"].error,
+#form-item-add textarea[name="content"].error {
+  outline: var(--warning) solid 3px;
+}
+
+#form-item-add textarea::placeholder {
+  color: var(--gray-400);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+#form-item-add input:focus-visible,
+#form-item-add textarea:focus-visible {
+  outline-color: var(--blue);
+}
+
+label[for="input-title"],
+label[for="input-content"],
+label[for="input-price"],
+label[for="input-tags"] {
+  color: var(--gray-800);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+label span.error {
+  margin-left: 8px;
+  color: var(--warning);
+  font-size: 14px;
+}
+
+.wrap-tags {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.wrap-tags .tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  padding: 6px 12px;
+  border-radius: 26px;
+  background-color: var(--gray-100);
+
+  color: var(--gray-800);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 1199px) {
+  #form-item-add {
+    max-width: 696px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #form-item-add {
+    max-width: 346px;
+  }
+}

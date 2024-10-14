@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { getProducts } from "../../../api";
+import { getProducts } from "../../api";
 import Item from "../Item/Item";
 import "./ItemList.css";
 import Pagination from "../Pagination/Pagination";
-import arrowDown from "../../images/ic_arrow_down.svg";
-import ic_sort from "../../images/ic_sort.svg";
-import ic_search from "../../images/ic_search.svg";
+import arrowDown from "../../assets/images/ic_arrow_down.svg";
+import ic_sort from "../../assets/images/ic_sort.svg";
+import ic_search from "../../assets/images/ic_search.svg";
 
 /**
  * 전체 상품 리스트 컴포넌트다.

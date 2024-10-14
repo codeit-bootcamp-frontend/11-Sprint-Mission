@@ -1,9 +1,10 @@
 import "./App.css";
-import ItemList from "./assets/components/ItemList/ItemList";
-import BestItemList from "./assets/components/BestItemList/BestItemList";
-import Navigation from "./assets/components/Navigation/Navigation";
+import Navigation from "../Navigation/Navigation";
+import BestItemList from "../BestItemList/BestItemList";
+import ItemList from "../ItemList/ItemList";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
+import AddItemForm from "../AddItemForm/AddItemForm";
 
 function App() {
   return (
@@ -13,11 +14,13 @@ function App() {
       </header>
       <Routes>
         <Route path="/items" element={<Main />} />
+        <Route path="/additem" element={<AddItemForm />} />
       </Routes>
     </BrowserRouter>
   );
 }
 
+// @todo 뷰포트 너비 구하는 핸들러 -> 커스텀 훅으로 만들 예정
 function Main() {
   const [view, setView] = useState();
   const handleResize = () => {
@@ -27,15 +30,11 @@ function Main() {
     else setView("mobile");
   };
 
-  window.addEventListener("resize", handleResize);
-
   useEffect(() => {
     handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  useEffect(() => {
-    console.log(view);
-  }, [view]);
 
   return (
     <main className="main-wrapper">

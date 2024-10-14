@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getProducts } from "../../../api";
+import { getProducts } from "../../api";
 import Item from "../Item/Item";
 import "./BestItemList.css";
 

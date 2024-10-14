@@ -1,6 +1,6 @@
 import "./Item.css";
-import ic_heart from "../../images/ic_heart.svg";
-import thumbDefault from "../../images/thumbnail-placeholder.png";
+import ic_heart from "../../assets/images/ic_heart.svg";
+import thumbDefault from "../../assets/images/thumbnail-placeholder.png";
 
 /**
  * 상품 요소 컴포넌트
@@ -19,10 +19,10 @@ function Item({ item, type = null }) {
       <img className="thumbnail" src={thumbnail} alt={item.name} />
       <div className="Item-content">
         <h4 className="name">{item.name}</h4>
-        <p className="price">{`${item.price}원`}</p>
+        <div className="price">{`${item.price}원`}</div>
         <div className="favorite">
           <img src={ic_heart} alt="좋아요" />
-          <p>{item.favoriteCount}</p>
+          <div>{item.favoriteCount}</div>
         </div>
       </div>
     </div>

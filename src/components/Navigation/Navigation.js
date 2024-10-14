@@ -1,13 +1,13 @@
 import "./Navigation.css";
-import logoIcon from "../../images/logo_icon.svg";
-import profile from "../../images/profile.svg";
+import logoIcon from "../../assets/images/logo_icon.svg";
+import profile from "../../assets/images/profile.svg";
+
+const tabs = [
+  { id: 0, name: "자유게시판", path: "/borad" },
+  { id: 1, name: "중고마켓", path: ["/items", "/additem"] },
+];
 
 function Navigation() {
-  const tabs = [
-    { id: 0, name: "자유게시판", path: "/borad" },
-    { id: 1, name: "중고마켓", path: "/items" },
-  ];
-
   return (
     <nav className="Navigation">
       <div className="Navigation-wrap">
@@ -36,10 +36,14 @@ function Navigation() {
 
 function Tab({ path, children }) {
   const currnetPath = window.location.pathname;
-  const classNames = `tab ${currnetPath === path ? "current" : ""}`;
+  const isCurrent = Array.isArray(path)
+    ? path.some((e) => currnetPath === e)
+    : currnetPath === path;
+
+  const classNames = `tab ${isCurrent ? "current" : ""}`;
 
   return (
-    <a className={classNames} href={path}>
+    <a className={classNames} href={path[0]}>
       <span>{children}</span>
     </a>
   );
