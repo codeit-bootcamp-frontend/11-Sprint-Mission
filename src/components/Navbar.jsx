@@ -4,8 +4,8 @@ import Icon from "../images/icons/account.png";
 import "../BeforeSprintReact/style/global.css";
 import "./Navbar.css";
 
-function getNavStyle({ isTrue }) {
-  return { color: isTrue ? "#3692FF" : undefined };
+function getNavStyle({ isActive }) {
+  return { color: isActive ? "#3692FF" : undefined };
 }
 
 function Navbar() {

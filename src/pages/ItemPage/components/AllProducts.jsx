@@ -39,7 +39,7 @@ function AllProducts() {
     };
 
     window.addEventListener("resize", handleUserWidth);
-    fetchData({ orderBy: "favorite", pageSize });
+    fetchData({ orderBy, pageSize });
 
     return () => {
       window.removeEventListener("resize", handleUserWidth);
@@ -72,7 +72,7 @@ function AllProducts() {
           </div>
         </div>
       </div>
-      <div className="AllProductCard">
+      <div className="allProductCard">
         {itemList?.map((item) => (
           <ProductCard item={item} key={`best-product-${item.id}`} />
         ))}
