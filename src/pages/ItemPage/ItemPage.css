@@ -146,9 +146,6 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 10px 10px;
   }
-  .productContainer {
-    margin: 20px 20px;
-  }
 }
 
 @media (min-width: 768px) {
@@ -156,10 +153,6 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-  }
-
-  .productContainer {
-    margin: 20px 20px;
   }
 
   .allProductCard {
@@ -176,9 +169,5 @@
   .allProductCard {
     grid-template-columns: repeat(5, 1fr);
     gap: 36px 25px;
-  }
-
-  .productContainer {
-    margin: 70px 200px 0;
   }
 }
