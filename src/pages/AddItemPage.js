@@ -8,7 +8,7 @@ function AddItemPage() {
   const [values, setValues] = useState({
     title: "",
     content: "",
-    price: "",
+    price: 0,
     tag: "",
     imgFile: null,
   });

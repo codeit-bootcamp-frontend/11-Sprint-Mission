@@ -4,15 +4,20 @@ import "./FileInput.css";
 import plus from "../assets/ic_plus.svg";
 const style = { display: "none" };
 
-function FileInput({ name, onChange }) {
+function FileInput({ name, value, onChange }) {
   const inputRef = useRef();
 
   const handleChange = (e) => {
     const nextValue = e.target.files[0];
     onChange(name, nextValue);
+  };
 
-    const files = e.currentTarget.files;
-    if (![files].length <= 1) return;
+  const handleDeleteClick = () => {
+    const inputNode = inputRef.current;
+    if (!inputNode) return;
+
+    inputNode.value = "";
+    onChange(name, null);
   };
 
   const handleClick = () => {
@@ -21,18 +26,24 @@ function FileInput({ name, onChange }) {
 
   return (
     <>
-      <input
-        type="file"
-        accept=".jpg, .jpeg"
-        onChange={handleChange}
-        ref={inputRef}
-        style={style}
-      />
       <div className="imageUpload" onClick={handleClick}>
         <div className="imageUploadText">
           <img src={plus} className="plus" alt="상품등록" />
-          <p>이미지 등록</p>
+          <label htmlFor="fileInput" className="input-file">
+            이미지 등록
+          </label>
         </div>
+        {value && <button onClick={handleDeleteClick}>x</button>}
+      </div>
+      <div>
+        <input
+          type="file"
+          id="fileInput"
+          accept="img/jpg img/jpeg"
+          onChange={handleChange}
+          ref={inputRef}
+          style={style}
+        />
       </div>
     </>
   );
