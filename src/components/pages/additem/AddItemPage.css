@@ -1,0 +1,24 @@
+.add-item-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 360px;
+}
+
+.add-item-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-item-register-btn {
+  width: 74px;
+  height: 42px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  background-color: var(--gray-400);
+  font-weight: 600;
+  border: none;
+  color: var(--gray-100);
+}

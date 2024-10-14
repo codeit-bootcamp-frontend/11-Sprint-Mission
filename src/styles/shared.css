@@ -26,6 +26,7 @@
 
 body {
   font-family: "Pretendard Variable";
+  white-space: nowrap;
 }
 
 .nav-bar {
