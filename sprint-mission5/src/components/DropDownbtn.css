@@ -12,11 +12,19 @@
   gap: 24px;
   cursor: pointer;
 }
+.dd-con .dd-box p {
+  display: block;
+}
 .dd-con .dd-box .d-icon {
   width: 16px;
 }
-.dd-con .dd-box .d-icon img {
+.dd-con .dd-box .d-icon .pc-downicon {
+  display: block;
   width: 100%;
+}
+.dd-con .dd-box .d-icon .m-downicon {
+  width: 100%;
+  display: none;
 }
 .dd-con .dd-list {
   position: absolute;
@@ -43,4 +51,25 @@
 .dd-con .dd-list .goodbtn {
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
+}
+
+/* Mobile */
+@media (min-width: 320px) and (max-width: 767px) {
+  .dd-con .dd-box {
+    width: 42px;
+  }
+  .dd-con .dd-box p {
+    display: none;
+  }
+  .dd-con .dd-box .d-icon .m-downicon {
+    width: 100%;
+    display: block;
+  }
+  .dd-con .dd-box .d-icon .pc-downicon {
+    display: none;
+    width: 100%;
+  }
+  .dd-con .dd-list {
+    left: -85px;
+  }
 }
