@@ -2,47 +2,84 @@ import Searchbox from "./Searchbox";
 import ItemSubmit from "./ItemSubmit";
 import DropDownbtn from "./DropDownbtn";
 import "./Allitem.css";
-import { getAllProducts } from "../api";
+import { getAllProducts } from "../api/api";
 import ListItem from "./ItemList";
 import { useEffect, useState } from "react";
 import { useCallback } from "react";
 import { useMemo } from "react";
+import Pagination from "./Pagination";
+
+const getPageSize = () => {
+  const width = window.innerWidth;
+  if (width < 767) {
+    // Mobile viewport
+    return 4;
+  } else if (width < 1279) {
+    // Tablet viewport
+    return 6;
+  } else {
+    // Desktop viewport
+    return 10;
+  }
+};
+
 const Allitem = () => {
   const [productList, setProductList] = useState([]);
-  const [order, setOrder] = useState("recent");
+  const [orderBy, setOrderBy] = useState("recent");
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(getPageSize());
+  const [totalPageNum, setTotalPageNum] = useState();
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
+  const loadList = async ({ orderBy, page, pageSize }) => {
+    const itmes = await getAllProducts({ orderBy, page, pageSize });
+    setProductList(itmes.list);
+    setTotalPageNum(Math.ceil(itmes.totalCount / pageSize));
+  };
   const handleOrderChange = useCallback((newOrder) => {
-    setOrder(newOrder);
+    setOrderBy(newOrder);
     setIsOpen(false);
   }, []);
 
-  const loadList = async (options) => {
-    const { list } = await getAllProducts(options);
-    setProductList(list);
-  };
-
   useEffect(() => {
-    loadList({ page: 1, pageSize: 10, orderBy: order });
-  }, [order]);
+    const handleResize = () => {
+      setPageSize(getPageSize());
+      setIsMobile(window.innerWidth <= 768);
+    };
 
-  const [isOpen, setIsOpen] = useState(false);
+    window.addEventListener("resize", handleResize);
+    loadList({ orderBy, page, pageSize });
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [orderBy, page, pageSize]);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
+  const onPageChange = (pageNumber) => {
+    setPage(pageNumber);
+  };
+
   const sortedItems = useMemo(() => {
-    return [...productList].sort((a, b) => b[order] - a[order]);
-  }, [productList, order]);
+    return [...productList].sort((a, b) => b[orderBy] - a[orderBy]);
+  }, [productList, orderBy]);
+
   return (
-    <div>
+    <>
       <div className="aitop">
-        <h1>전체상품</h1>
+        <div className="m-Item-flex">
+          <h1>전체상품</h1>
+          <div className="mItemsubmit">{isMobile && <ItemSubmit />}</div>
+        </div>
         <div className="aitop-flex">
           <Searchbox />
-          <ItemSubmit />
+          {!isMobile && <ItemSubmit />}
           <DropDownbtn
-            order={order}
+            orderBy={orderBy}
             isOpen={isOpen}
             toggleDropdown={toggleDropdown}
             handleOrderChange={handleOrderChange}
@@ -54,7 +91,12 @@ const Allitem = () => {
           <ListItem item={item} key={`all-item-${item.id}`} />
         ))}
       </div>
-    </div>
+      <Pagination
+        totalPageNum={totalPageNum}
+        activePageNum={page}
+        onPageChange={onPageChange}
+      />
+    </>
   );
 };
 export default Allitem;
