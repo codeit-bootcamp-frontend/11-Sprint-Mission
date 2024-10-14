@@ -1,3 +1,7 @@
+a {
+  text-decoration: none;
+}
+
 h1,
 h2,
 p {
@@ -9,6 +13,7 @@ h1 {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--gray-900);
+  margin-bottom: 2rem;
 }
 
 h2 {
@@ -25,6 +30,11 @@ li {
   list-style-type: none;
 }
 
+.content {
+  width: 1200px;
+  margin: 0 auto;
+}
+
 .thumbnail {
   background-color: #fff;
   border: 1px solid #cccccc;
@@ -34,8 +44,7 @@ li {
 
 .allProducts,
 .bestProducts {
-  max-width: 1200px;
-  margin: 3.5rem auto 5rem;
+  margin: 3.5rem 0 5rem;
 }
 
 .productList,
@@ -43,7 +52,6 @@ li {
   padding: 0;
   display: grid;
   column-gap: 24px;
-  margin-top: 2rem;
 }
 
 .bestProductList {
@@ -104,10 +112,13 @@ li {
 .utils {
   display: flex;
   justify-content: flex-end;
+  align-items: flex-start;
   gap: 0.75rem;
+  margin-bottom: 1rem;
 }
 
-.utils button {
+.utils button,
+#postButton {
   width: 8.44rem;
   height: 2.625rem;
   background-color: var(--blue);
@@ -140,7 +151,8 @@ li {
   border-radius: 12px;
   font-size: 1rem;
   font-weight: 400;
-  padding-left: 44px;
+  margin: 0;
+  padding: 0 0 0 44px;
 }
 
 .utils input:focus {
@@ -228,8 +240,7 @@ li {
     font-size: 14px;
   }
 
-  .allProducts,
-  .bestProducts {
+  .content {
     max-width: 696px;
   }
 
@@ -252,6 +263,11 @@ li {
   .price {
     margin: 0.6rem 0 1.2rem;
   }
+
+  #postButton {
+    white-space: nowrap;
+    padding-left: 1.3rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -259,9 +275,17 @@ li {
     font-size: 12px;
   }
 
-  .allProducts,
-  .bestProducts {
+  .content {
     max-width: 343px;
+  }
+
+  .topInfo {
+    align-items: flex-start;
+  }
+
+  .topInfo h1 {
+    position: relative;
+    top: -2px;
   }
 
   .productList .thumbnail {
