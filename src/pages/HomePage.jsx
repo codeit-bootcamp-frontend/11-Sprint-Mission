@@ -8,7 +8,7 @@ import imgHome02 from "../images/img_home_02.png";
 import imgHome03 from "../images/img_home_03.png";
 import imgHomeBottom from "../images/img_home_bottom.png";
 
-const Home = () => {
+const HomePage = () => {
   return (
     <div>
       <Header isLogin={false} />
@@ -142,4 +142,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
