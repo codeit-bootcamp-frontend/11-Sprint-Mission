@@ -15,3 +15,12 @@
   font-size: 16px;
   line-height: 26px;
 }
+
+.btn-gray {
+  background-color: var(--gray-400);
+  padding: 8px 23px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+}
