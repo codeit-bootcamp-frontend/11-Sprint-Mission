@@ -10,7 +10,7 @@ function AllItemCard({ item }) {
 
   return (
     <div className="item-card">
-      <a href="/item-information">
+      <a href="/items/{productId}">
         <img
           src={item.images[0]}
           alt={item.name}
