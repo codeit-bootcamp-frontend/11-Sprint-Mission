@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Nav from "../components/Nav";
-import { getList } from "../api";
+import { getList } from "../api/ItemsPageApi";
 import BestProducts from "../components/BestProducts";
 import EntireProducts from "../components/EntireProducts";
 import Button from "../components/Button";
 import "../utils/Style.css";
 import "./ItemsPage.css";
 import "../components/SearchBar.css";
-import magnifier from "../assets/Vector.svg";
+import magnifier from "../assets/icons/Vector.svg";
 
 function ItemsPage() {
   const [items, setItems] = useState([]);

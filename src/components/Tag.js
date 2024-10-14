@@ -1,5 +1,5 @@
 import "./Tag.css";
-import x from "../assets/ic_x.svg";
+import x from "../assets/icons/ic_x.svg";
 
 function Tag({ children }) {
   return (

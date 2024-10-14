@@ -1,5 +1,5 @@
-import logo from "../assets/logo.png";
-import character from "../assets/character.svg";
+import logo from "../assets/images/logo.png";
+import character from "../assets/images/character.svg";
 import "./Nav.css";
 
 function Nav() {

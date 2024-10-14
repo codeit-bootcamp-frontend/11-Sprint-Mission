@@ -22,7 +22,7 @@
 
 @font-face {
   font-family: "ROKAF Sans";
-  src: url("./ROKAF\ Sans\ Bold.ttf") format("truetype");
+  src: url("../assets/fonts/ROKAF\ Sans\ Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }

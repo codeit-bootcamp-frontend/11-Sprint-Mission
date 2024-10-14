@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import "./ImageUpload.css";
 import "./FileInput.css";
-import plus from "../assets/ic_plus.svg";
+import plus from "../assets/icons/ic_plus.svg";
 const style = { display: "none" };
 
 function FileInput({ name, value, onChange }) {
