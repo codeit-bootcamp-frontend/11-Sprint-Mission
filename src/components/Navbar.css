@@ -1,0 +1,42 @@
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border-bottom: 1px solid #dfdfdf;
+
+  z-index: 999;
+}
+
+.haderLogo {
+  margin-right: 40px;
+}
+.navLeft {
+  display: flex;
+  align-items: center;
+}
+
+#navUl {
+  display: flex;
+  list-style: none;
+  gap: 23px;
+  font-size: 16px;
+  color: #4b5563;
+  font-weight: 700;
+}
+
+@media (min-width: 1200px) {
+  header {
+    padding: 0 200px;
+  }
+}
+
+@media (max-width: 1199px) {
+  header {
+    padding: 0 16px;
+  }
+}
