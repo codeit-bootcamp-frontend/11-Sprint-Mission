@@ -1,0 +1,77 @@
+.navbar {
+  width: auto;
+  height: 70px;
+  border-bottom: 1px solid #dfdfdf;
+  position: sticky;
+  background-color: #fff;
+  top: 0;
+  z-index: 1;
+}
+
+.nav-container {
+  width: auto;
+  padding: 0 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  top: 15px;
+  gap: 0px;
+  opacity: 0px;
+}
+
+.profile-link {
+  display: flex;
+  align-items: bottom;
+}
+
+.logo {
+  width: 153px;
+  height: 51px;
+}
+
+.nav-links {
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #4b5563;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar .active {
+  color: #3692ff;
+}
+
+/* Tablet: 768px 이상 ~ 1199px 이하 */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .nav-container {
+    padding: 0px;
+  }
+  .navbar a {
+    margin: 16px;
+  }
+}
+
+/* Mobile:  ~ 767px 이하 */
+@media (max-width: 767px) and (min-width: 0px) {
+  .nav-container {
+    padding: 0px;
+  }
+  .navbar a {
+    margin: 4px;
+    font-size: 16px;
+  }
+}

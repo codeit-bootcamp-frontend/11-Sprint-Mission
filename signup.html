@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="common.css">
+  </head>
+  <body>
+    <header>
+     <a href='/' class="logo"><img src="img/logo.png" alt="판다마켓 메인"></a>
+    </header>
+    <form>
+      <label for="email">이메일</label>
+      <input id="email" name="email" placeholder="이메일을 입력해주세요" >
+      <div class="error-message" id="emailError"></div>
+      <label for="nickname">닉네임</label>
+      <input id="nickname" name="nickname" placeholder="닉네임을 입력해주세요" >
+      <div class="error-message" id="nicknameError"></div>
+      <label for="password" >비밀번호</label>
+      <div class="password-field">
+      <input id="password" name="password" type="password" placeholder="비밀번호를 입력해주세요" >
+      <div class="error-message" id="passwordError"></div>
+      <span class="password-toggle">
+        <img id="toggleIcon" src="img/ic_visibility_off.png" alt="비밀번호 보기 아이콘">
+      </span>
+      </div>
+      <label for="password" >비밀번호 확인</label>
+      <div class="password-confirm-field">
+        <input id="password-confirm" name="password-confirm" type="password" placeholder="비밀번호를 다시 한 번 입력해주세요" >
+        <div class="error-message" id="confirmPasswordError"></div>
+        <span class="password-toggle">
+          <img id="toggleConfirmIcon" src="img/ic_visibility_off.png" alt="비밀번호 보기 아이콘">
+        </span>
+        </div>
+      <button type="submit" id="signupBtn" disabled>회원가입</button>
+      <div class="simple-login">
+        <div>간편 로그인하기</div>
+       <div class="icons">
+          <a href="https://www.google.com/" class="sns-icon"><img src="img/ic_google.png" alt="구글"></a>
+          <a href="https://www.kakaocorp.com/page/" class="sns-icon"><img src="img/ic_kakao.png" alt="카카오"></a>
+       </div>
+      </div> 
+      <div class="login">
+        <div class="login-title">이미 회원이신가요?</div>
+        <a href="login.html" class="login-button">로그인</a>
+      </div>
+    </form>
+    <script src="signup.js"></script>
+  </body>
+</html>

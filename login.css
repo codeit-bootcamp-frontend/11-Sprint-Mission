@@ -1,0 +1,181 @@
+body {
+  padding-top: 231px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.logo  img {
+  width: 396px;
+  height: 132px;
+  gap: 0px;
+  opacity: 0px;
+}
+
+form {
+  width: 640px;
+  gap: 24px;
+}
+
+label {
+  color: #1F2937;
+  display: block;
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  text-align: left;
+  text-decoration: none;
+}
+
+input::placeholder {
+font-size: 16px;
+font-weight: 400;
+line-height: 26px;
+text-align: left;
+color:#9CA3AF 
+}
+
+.password-field {
+  position: relative;
+}
+
+input:focus {
+  background-color: 3692FF;
+}
+
+input {
+  border: none; 
+  background-color:#F3F4F6;
+  padding: 16px 24px 16px 24px;
+  border: none;
+  opacity: 0px;
+  border-radius: 12px;
+  width: 100%;
+  height: 56px;
+  margin: 8px 0px;
+}
+
+.error-message {
+  color: #F74747;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+  visibility: hidden; 
+  padding-left: 8px;
+  padding-bottom: 16px;
+}
+
+input.error {
+  border: 1px solid #F74747;
+}
+
+button:disabled {
+  background-color: #9CA3AF;
+  cursor: not-allowed;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 24px;
+  right: 14px;
+  cursor: pointer;
+}
+
+.password-toggle img {
+  width: 24px;
+  height: 24px;
+}
+
+#loginBtn {
+  height: 56px;
+  background: #9CA3AF;
+  border-radius: 40px;
+  border: none;
+  color: #ffffff;
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  text-align: center;
+  width: 100%;
+}
+
+#loginBtn.active{
+  background-color: #3692FF;
+  cursor: pointer;
+}
+
+.simple-login {
+  background-color: #E6F2FF;
+  width: 100%;
+  height: 74px;
+  padding: 16px 23px;
+  gap: 10px;
+  border-radius: 8px; 
+  opacity: 0px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  color: #1F2937;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 24px 0;
+  text-decoration: none;
+}
+
+.icons {
+  display: flex;
+  gap: 16px;
+}
+
+.sns-icon img {
+  width: 42px;
+  height: 42px;
+}
+
+.signup {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: center;
+}
+
+.signup-title {
+font-size: 14px;
+font-weight: 500;
+line-height: 24px;
+text-align: left;
+}
+
+.signup-button {
+font-size: 14px;
+font-weight: 500;
+line-height: 16.71px;
+text-align: left;
+color:#3692FF;
+text-decoration: underline;
+}
+
+  /* Mobile: 375px 이상 ~ 767px 이하 */
+@media (max-width: 767px) and (min-width: 375px) {
+  .logo  img {
+    width: 198px;
+    height: 66px;
+    gap: 0px;
+    opacity: 0px;
+  }
+  body {
+    padding-top: 80px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  form {
+    width: 100%;
+    max-width: 400px;
+    gap: 24px;
+  }
+}
