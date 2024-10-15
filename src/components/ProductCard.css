@@ -125,7 +125,7 @@ select {
   gap: 4px;
 }
 
-h2 {
+.products-header {
   font-size: 20px;
   color: #111827;
   font-weight: 700;

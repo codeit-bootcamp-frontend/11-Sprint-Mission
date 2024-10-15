@@ -54,8 +54,8 @@ label {
   gap: 16px;
 }
 
-input,
-textarea {
+.add-item-form input,
+.add-item-form textarea {
   width: 100%;
   padding: 16px;
   padding-left: 24px;
