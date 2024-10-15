@@ -1,6 +1,6 @@
 import React from "react";
 
-const SortDropDownList = ({ handleOptionClick, isOpen }) => {
+const SortDropDownList = ({ handleOptionClick }) => {
   return (
     <ul className="absolute right-0 mt-1 w-28 border rounded-lg bg-white  shadow-lg z-10 text-sm">
       <li

@@ -1,4 +1,4 @@
-export async function fetchPosts(page = 1, pageSize = 10, orderBy = "") {
+export async function fetchItems(page = 1, pageSize = 10, orderBy = "recent") {
   const url = `https://panda-market-api.vercel.app/products?page=${page}&pageSize=${pageSize}&orderBy=${orderBy}`;
 
   const response = await fetch(url);
