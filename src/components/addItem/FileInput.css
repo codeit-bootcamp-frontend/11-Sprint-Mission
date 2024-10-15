@@ -1,0 +1,83 @@
+.FileInput > div {
+  display: flex;
+  gap: 24px;
+}
+
+.FileInput > p {
+  color: #f74747;
+  margin-top: 16px;
+}
+
+.FileInput input {
+  display: none;
+}
+
+.FileInput label {
+  border-radius: 12px;
+  background: #f3f4f6 url(../../assets/addFile_icon.svg) no-repeat;
+  background-size: 48px;
+  background-position: 50% 98px;
+  display: block;
+  width: 282px;
+  height: 282px;
+  margin: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.FileInput label span {
+  color: #9ca3af;
+  position: absolute;
+  bottom: 98px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.FileInput .preview {
+  border-radius: 12px;
+  width: 282px;
+  height: 282px;
+  overflow: hidden;
+  position: relative;
+}
+
+.FileInput .preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.FileInput .preview button {
+  width: 22px;
+  height: 24px;
+  background: url(../../assets/delete_icon.svg) no-repeat;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+@media (max-width: 1200px) {
+  .FileInput {
+    overflow: scroll;
+  }
+
+  .FileInput > div {
+    width: 348px;
+    gap: 12px;
+  }
+
+  .FileInput label {
+    background-position: 50% 41px;
+    width: 168px;
+    height: 168px;
+  }
+
+  .FileInput label span {
+    bottom: 41px;
+  }
+
+  .FileInput .preview {
+    width: 168px;
+    height: 168px;
+  }
+}
