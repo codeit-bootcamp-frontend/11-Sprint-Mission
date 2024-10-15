@@ -33,19 +33,25 @@ form {
   margin: 20px 0;
 }
 
-.imgContainer img {
+.prevImgLayout {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
   gap: 12px;
 }
 
 .imgButton {
-  margin-top: 15px;
   border: none;
   border-radius: 12px;
   cursor: pointer;
+}
+
+.errorMsg {
+  color: red;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  margin-top: 10px;
 }
 
 .inputSection {
@@ -58,7 +64,7 @@ form {
 
 .inputLabel {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 18px;
   font-size: 18px;
   font-weight: 700;
 }

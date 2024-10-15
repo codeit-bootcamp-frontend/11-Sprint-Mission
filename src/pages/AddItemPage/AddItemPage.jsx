@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./AddItemPage.css";
 import InputField from "./components/InputField";
 import ImageUpload from "./components/ImageUpload";
+import InputTag from "./components/InputTag";
 
 function AddItem() {
   const [productName, setProductName] = useState("");
@@ -46,6 +47,7 @@ function AddItem() {
             onChange={(e) => setProductPrice(e.target.value)}
           />
           {/* 태그는 아직 미구현 */}
+          <InputTag />
         </section>
       </form>
     </div>
