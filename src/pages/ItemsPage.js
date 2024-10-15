@@ -4,7 +4,7 @@ import Nav from "../components/Nav";
 import { getList } from "../api/ItemsPageApi";
 import BestProducts from "../components/BestProducts";
 import EntireProducts from "../components/EntireProducts";
-import Button from "../components/Button";
+import PageButton from "../components/PageButton";
 import "../utils/Style.css";
 import "./ItemsPage.css";
 import "../components/SearchBar.css";
@@ -57,9 +57,9 @@ function ItemsPage() {
                     className="input-search"
                   />
                 </div>
-                <button className="small-button">
+                <button className="medium-button">
                   <Link to="/additem">
-                    <p className="small-btn-text">상품 등록하기</p>
+                    <p className="medium-btn-text">상품 등록하기</p>
                   </Link>
                 </button>
               </div>
@@ -79,27 +79,27 @@ function ItemsPage() {
       </main>
       <footer>
         <div className="pagination">
-          <Button type="button" clickBtn={handleLoadMore}>
+          <PageButton type="button" clickBtn={handleLoadMore}>
             &lt;
-          </Button>
-          <Button type="button" value={1} clickBtn={handleLoadMore}>
+          </PageButton>
+          <PageButton type="button" value={1} clickBtn={handleLoadMore}>
             1
-          </Button>
-          <Button type="button" value={2} clickBtn={handleLoadMore}>
+          </PageButton>
+          <PageButton type="button" value={2} clickBtn={handleLoadMore}>
             2
-          </Button>
-          <Button type="button" value={3} clickBtn={handleLoadMore}>
+          </PageButton>
+          <PageButton type="button" value={3} clickBtn={handleLoadMore}>
             3
-          </Button>
-          <Button type="button" value={4} clickBtn={handleLoadMore}>
+          </PageButton>
+          <PageButton type="button" value={4} clickBtn={handleLoadMore}>
             4
-          </Button>
-          <Button type="button" value={5} clickBtn={handleLoadMore}>
+          </PageButton>
+          <PageButton type="button" value={5} clickBtn={handleLoadMore}>
             5
-          </Button>
-          <Button type="button" clickBtn={handleLoadMore}>
+          </PageButton>
+          <PageButton type="button" clickBtn={handleLoadMore}>
             &gt;
-          </Button>
+          </PageButton>
         </div>
       </footer>
     </>

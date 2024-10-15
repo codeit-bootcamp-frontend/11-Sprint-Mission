@@ -1,7 +1,6 @@
 .registerForm,
 .form-body,
 .formTop,
-.smallButton,
 .formBody,
 section,
 .inputTag,
@@ -17,8 +16,7 @@ section,
 }
 
 .registerForm,
-.formTop,
-.smallButton {
+.formTop {
   align-items: center;
 }
 
@@ -43,21 +41,9 @@ section,
   justify-content: space-between;
 }
 
-.smallButton,
 input,
 textarea {
   border: none;
-}
-
-.smallButton {
-  height: 42px;
-  border-radius: 8px;
-  padding: 12px 23px;
-  background-color: var(--gray-400);
-}
-
-.smallButton:hover {
-  cursor: pointer;
 }
 
 .formBody {
@@ -77,9 +63,7 @@ section {
   gap: 12px;
 }
 
-h2,
-.smallButton > p,
-h3,
+h2 h3,
 input,
 textarea {
   font-family: "pretendard Variable", "Noto Sans Korean";
@@ -90,14 +74,12 @@ h3 {
   font-weight: 700;
 }
 
-.smallButton > p,
 h3,
 input,
 textarea {
   line-height: 26px;
 }
 
-.smallButton > p,
 input,
 textarea {
   font-size: 16px;
@@ -121,11 +103,6 @@ textarea {
 h2 {
   font-size: 20px;
   line-height: 32px;
-}
-
-.smallButton > p {
-  font-weight: 600;
-  color: var(--gray-100);
 }
 
 h3 {

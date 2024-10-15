@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Nav from "../components/Nav";
+import SmallButton from "../components/SmallButton";
 import FileInput from "../components/FileInput";
 import Tag from "../components/Tag";
 import "./AddItemPage.css";
@@ -37,13 +38,9 @@ function AddItemPage() {
         <main className="form-body">
           <aside className="formTop">
             <h2>상품 등록하기</h2>
-            <button
-              type="submit"
-              disabled={!isFormValid}
-              className="smallButton"
-            >
-              <p>등록</p>
-            </button>
+            <SmallButton type="submit" disabled={!isFormValid}>
+              등록
+            </SmallButton>
           </aside>
           <div className="formBody">
             <section>

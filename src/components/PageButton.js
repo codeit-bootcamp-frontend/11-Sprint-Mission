@@ -1,6 +1,6 @@
-import "./Button.css";
+import "./PageButton.css";
 
-function Button({ children, clickBtn }) {
+function PageButton({ children, clickBtn }) {
   return (
     <button onClick={clickBtn} className="page-button">
       <p>{children}</p>
@@ -8,4 +8,4 @@ function Button({ children, clickBtn }) {
   );
 }
 
-export default Button;
+export default PageButton;
