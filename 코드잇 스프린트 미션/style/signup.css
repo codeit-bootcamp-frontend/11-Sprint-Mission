@@ -1,0 +1,166 @@
+body {
+  padding: 40px 0;
+}
+
+.signup-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header img {
+  width: auto;
+  height: auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+input {
+  width: 100%;
+}
+
+label {
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  color: #1f2937;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+}
+
+#email,
+#nickname,
+#password,
+#passwordCheck {
+  border-radius: 12px;
+  padding: 16px 24px;
+  background-color: #f3f4f6;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+#email,
+#nickname,
+#password,
+#passwordCheck,
+button {
+  width: 640px;
+  height: 56px;
+  outline: none;
+}
+
+.password-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+}
+
+input,
+button {
+  border: none;
+}
+
+input:focus {
+  border: 2px solid #3692ff;
+  outline: none;
+}
+
+input::placeholder {
+  color: #9ca3af;
+}
+
+button {
+  display: block;
+  margin-top: 18px;
+  background-color: #9ca3af;
+  border-radius: 40px;
+  color: #f3f4f6;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+button:hover {
+  background-color: #3692ff;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  background-color: #9ca3af;
+}
+
+.simple-login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 24px 0 24px;
+  padding: 16px 23px;
+  background-color: #e6f2ff;
+  border-radius: 8px;
+  color: #1f2937;
+}
+
+.social-icon {
+  display: flex;
+  gap: 16px;
+}
+
+.login-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 4px;
+}
+
+.login-box a {
+  text-decoration: underline;
+  color: #3692ff;
+}
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  body {
+    padding: 24px 0;
+  }
+
+  header,
+  form label,
+  form input,
+  form .password-container,
+  form button,
+  .simple-login,
+  .login-box {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  header img {
+    width: 198px;
+    height: 66px;
+  }
+}
