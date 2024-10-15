@@ -6,49 +6,43 @@ import Pagination from "../Pagination/Pagination";
 import arrowDown from "../../assets/images/ic_arrow_down.svg";
 import ic_sort from "../../assets/images/ic_sort.svg";
 import ic_search from "../../assets/images/ic_search.svg";
+import { useDeviceType } from "../../contexts/DeviceTypeContext";
+
+const PAGE_SIZE = {
+  desktop: 12,
+  tablet: 6,
+  mobile: 4,
+};
 
 /**
  * 전체 상품 리스트 컴포넌트다.
  * 키워드 검색, 상품 등록, 조건 검색 기능을 제공한다.
  * @returns 리스트 컴포넌트
  */
-function ItemList({ view }) {
+function ItemList() {
   const [items, setItems] = useState([]);
   const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState();
   const [order, setOrder] = useState("recent");
   const [total, setTotal] = useState(0);
-
-  useEffect(() => {
-    switch (view) {
-      case "mobile":
-        setPageSize(4);
-        break;
-      case "tablet":
-        setPageSize(6);
-        break;
-      default:
-        setPageSize(12);
-    }
-  }, [view]);
+  const deviceType = useDeviceType();
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getProducts(page, pageSize, order);
+      const result = await getProducts(page, PAGE_SIZE[deviceType], order);
       setItems(result.list);
       setTotal(result.totalCount);
     };
     fetchData();
-  }, [page, pageSize, order]);
+  }, [deviceType, page, order]);
 
   return (
     <div className="ItemList">
-      <Header view={view} order={order} setOrder={setOrder} />
+      <Header view={deviceType} order={order} setOrder={setOrder} />
       <Content items={items} />
       <Pagination
         page={page}
         setPage={setPage}
-        pageSize={pageSize}
+        pageSize={PAGE_SIZE[deviceType]}
         total={total}
       />
     </div>
