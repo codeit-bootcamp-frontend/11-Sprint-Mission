@@ -14,7 +14,6 @@ export function DeviceTypeProvider({ children }) {
     } else {
       setDeviceType("desktop");
     }
-    console.log(window.innerWidth);
   }, 300);
 
   useEffect(() => {
