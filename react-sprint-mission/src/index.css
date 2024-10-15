@@ -46,3 +46,15 @@ body {
   border-bottom: 1px solid #dfdfdf;
   z-index: 999;
 }
+.tagButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 12px 6px 16px;
+  gap: 10px;
+  width: 110px;
+  background: var(--gray100);
+  border-radius: 26px;
+  border: 0 solid var(--gray100);
+}

@@ -3,10 +3,6 @@ import { ImgPath } from ".";
 import { Link, NavLink } from "react-router-dom";
 
 function ItemHeader(props) {
-  const getLinkStyle = (isActive) => {
-    console.log("스타일 지정 가능");
-  };
-
   return (
     <header className="navHeader">
       <div className="navigation">
@@ -16,12 +12,12 @@ function ItemHeader(props) {
           </Link>
         </div>
         <div className="navNoticeBoard">
-          <NavLink to={"/noticeBoard"} style={getLinkStyle}>
+          <NavLink to={"/noticeBoard"} style={{}}>
             자유 게시판
           </NavLink>
         </div>
         <div className="navMarket">
-          <NavLink to={"/market"} style={getLinkStyle}>
+          <NavLink to={"/market"} style={{}}>
             중고 마켓
           </NavLink>
         </div>

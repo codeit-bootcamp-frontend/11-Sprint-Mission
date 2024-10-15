@@ -15,19 +15,76 @@
   border-radius: 8px;
   background: var(--gray400);
   border: 1px solid var(--gray400);
+  color: white;
 }
 .AddItemIC {
   width: 282px;
   height: 282px;
   margin-right: 24px;
 }
-
 .addItemContentsForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  flex-wrap: wrap;
+  height: 100%;
+  margin-bottom: 32px;
+  background: none;
+}
+.tagButton {
+  width: auto;
+  margin: 5px;
+}
+.addItemImageBtn {
+  background-color: transparent;
+  border: 1px solid white;
+  width: 290px;
+}
+
+@media (max-width: 1199px) {
+  .addItemContentsTitle {
+    height: 42px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .itemSubmit {
+    display: flex;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
+    width: 74px;
+    height: 42px;
+    border-radius: 8px;
+    background: var(--gray400);
+    border: 1px solid var(--gray400);
+    color: white;
+  }
+  .AddItemIC {
+    width: 282px;
+    height: 282px;
+    margin-right: 24px;
+  }
+  .addItemContentsForm {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
     flex-wrap: wrap;
-    height: 30vh;
+    height: 100%;
     margin-bottom: 32px;
     background: none;
   }
+  .tagButton {
+    width: auto;
+    margin: 5px;
+  }
+  .addItemImageBtn {
+    background-color: transparent;
+    border: 1px solid white;
+    width: 290px;
+  }
+}
+@media (max-width: 767px) {
+  
+}
