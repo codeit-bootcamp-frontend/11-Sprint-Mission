@@ -50,12 +50,13 @@ function ItemsPage() {
             <h2>전체 상품</h2>
             <aside>
               <div className="for-products">
-                <img src={magnifier} className="magnifier" alt="상품찾기" />
-                <input
-                  placeholder="검색할 상품을 입력해주세요"
-                  className="input-search"
-                ></input>
-
+                <div className="input-container">
+                  <img src={magnifier} className="magnifier" alt="상품찾기" />
+                  <input
+                    placeholder="검색할 상품을 입력해주세요"
+                    className="input-search"
+                  />
+                </div>
                 <button className="small-button">
                   <Link to="/additem">
                     <p className="small-btn-text">상품 등록하기</p>
