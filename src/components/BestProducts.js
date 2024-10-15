@@ -1,5 +1,5 @@
 import "./BestProducts.css";
-import heart from "../images/Icon.svg";
+import heart from "../assets/icons/Icon.svg";
 
 function ProductsList({ item }) {
   const { images, name, price, favoriteCount } = item;

@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+* {
+  --primary: #3692ff;
+  --primary-sub: #2877d4;
+  --cyan-blue: #cfe5ff;
+  --white: #ffffff;
+  --gray-400: #9ca3af;
+  --light-gray: #dfdfdf;
+  --gray-200: #e5e7eb;
+  --gray-100: #f3f4f6;
+  --gray-50: #f9fafb;
+  --gray-10: #fcfcfc;
+  --black-900: #111827;
+  --approx-midnight: #1f2937;
+  --black-700: #374151;
+  --grayish-blue: #4b5563;
+}
+
+@font-face {
+  font-family: "ROKAF Sans";
+  src: url("../assets/fonts/ROKAF\ Sans\ Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}

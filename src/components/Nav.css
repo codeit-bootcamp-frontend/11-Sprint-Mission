@@ -1,0 +1,59 @@
+.nav-bar,
+.nav-content,
+.logo,
+.tab,
+.title {
+  display: flex;
+}
+
+.nav-bar,
+.logo,
+.tab,
+.title {
+  align-items: center;
+}
+
+.nav-bar {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  padding: 9px 0;
+  background-color: white;
+  height: 70px;
+  border-bottom: 1px solid var(--light-gray);
+  justify-content: space-around;
+}
+
+.title,
+.tab-list {
+  font-family: "ROKAF Sans", sans-serif;
+  text-align: center;
+}
+
+.title {
+  justify-content: center;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 35px;
+}
+
+li {
+  list-style: none;
+}
+
+.tab-list {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+  padding: 21px 15px;
+  gap: 10px;
+}
+
+li > a {
+  color: var(--grayish-blue);
+}
+
+a {
+  text-decoration: none;
+}

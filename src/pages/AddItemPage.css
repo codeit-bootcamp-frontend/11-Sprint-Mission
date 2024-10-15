@@ -1,0 +1,141 @@
+.registerForm,
+.form-body,
+.formTop,
+.smallButton,
+.formBody,
+section,
+.inputTag,
+.tag {
+  display: flex;
+}
+
+.form-body,
+.formBody,
+section,
+.inputTag {
+  flex-direction: column;
+}
+
+.registerForm,
+.formTop,
+.smallButton {
+  align-items: center;
+}
+
+.registerForm,
+.inputTag {
+  width: 100%;
+}
+
+.registerForm {
+  height: auto;
+  margin-top: 24px;
+  margin-bottom: 69px;
+  justify-content: center;
+  gap: 24px;
+}
+
+.form-body {
+  width: 1200px;
+}
+
+.formTop {
+  justify-content: space-between;
+}
+
+.smallButton,
+input,
+textarea {
+  border: none;
+}
+
+.smallButton {
+  height: 42px;
+  border-radius: 8px;
+  padding: 12px 23px;
+  background-color: var(--gray-400);
+}
+
+.smallButton:hover {
+  cursor: pointer;
+}
+
+.formBody {
+  margin-top: 24px;
+  gap: 32px;
+}
+
+section {
+  gap: 16px;
+}
+
+.inputTag {
+  gap: 14px;
+}
+
+.tag {
+  gap: 12px;
+}
+
+h2,
+.smallButton > p,
+h3,
+input,
+textarea {
+  font-family: "pretendard Variable", "Noto Sans Korean";
+}
+
+h2,
+h3 {
+  font-weight: 700;
+}
+
+.smallButton > p,
+h3,
+input,
+textarea {
+  line-height: 26px;
+}
+
+.smallButton > p,
+input,
+textarea {
+  font-size: 16px;
+}
+
+h2,
+h3 {
+  color: var(--approx-midnight);
+}
+
+input,
+textarea {
+  padding: 16px 24px;
+  gap: 10px;
+  border-radius: 12px;
+  background-color: var(--gray-100);
+  font-weight: 400;
+  color: var(--gray-400);
+}
+
+h2 {
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.smallButton > p {
+  font-weight: 600;
+  color: var(--gray-100);
+}
+
+h3 {
+  font-size: 18px;
+}
+
+input {
+  height: 56px;
+}
+
+textarea {
+  height: 282px;
+}
