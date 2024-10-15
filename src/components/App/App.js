@@ -20,7 +20,6 @@ function App() {
   );
 }
 
-// @todo 뷰포트 너비 구하는 핸들러 -> 커스텀 훅으로 만들 예정
 function Main() {
   return (
     <>

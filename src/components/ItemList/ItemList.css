@@ -52,10 +52,14 @@
 }
 
 .ItemList-header .btn-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   background-color: var(--blue);
   color: var(--gray-100);
+  width: 130px;
   height: 42px;
-  padding: 0 23px;
   border: none;
   border-radius: 8px;
 
