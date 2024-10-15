@@ -1,18 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
+import { ImgPath } from "components";
 
 function Home(props) {
-  const imgPath = (fileName) => `${process.env.PUBLIC_URL}/assets${fileName}`;
   return (
     <>
       <header>
         <div className="header">
           <Link to="/">
-            <img className="logo" src={`${imgPath("/common/logo_pc.png")}`} alt="Home" />
+            <img className="logo" src={ImgPath("/common/logo_pc.png")} alt="Home" />
           </Link>
           <Link to="/Login">
-            <img className="login" src={`${imgPath("/common/login_bt.png")}`} alt="로그인" />
+            <img className="login" src={ImgPath("/common/login_bt.png")} alt="로그인" />
           </Link>
         </div>
       </header>
@@ -32,7 +32,7 @@ function Home(props) {
         <section>
           <div className="contents">
             <div className="contentsForm">
-              <img className="contents-home-img" src={imgPath("/main/pc_content_hot_item.png")} alt="hotItem" />
+              <img className="contents-home-img" src={ImgPath("/main/pc_content_hot_item.png")} alt="hotItem" />
               <div className="contents-detail">
                 <h2 className="contents-detail-top">Hot item</h2>
                 <h1 className="contents-detail-mid">
@@ -69,12 +69,12 @@ function Home(props) {
                   쉽게 찾아보세요
                 </p>
               </div>
-              <img className="contentsSearch-img" src={imgPath("/main/pc_content_search.png")} alt="search" />
+              <img className="contentsSearch-img" src={ImgPath("/main/pc_content_search.png")} alt="search" />
             </div>
           </div>
           <div className="contents">
             <div className="contentsForm">
-              <img className="contents-register-img" src={imgPath("/main/pc_content_register.png")} alt="register" />
+              <img className="contents-register-img" src={ImgPath("/main/pc_content_register.png")} alt="register" />
               <div className="contents-detail">
                 <h2 className="contents-detail-top">Register</h2>
                 <h1 className="contents-detail-mid">
@@ -109,21 +109,21 @@ function Home(props) {
       </main>
       <footer className="home-footer">
         <div className="since">
-          <img src={imgPath("/common/since.png")} alt="since" />
+          <img src={ImgPath("/common/since.png")} alt="since" />
         </div>
         <div className="info">
           <Link to="/Privacy">
-            <img src={imgPath("/common/privacy_policy.png")} alt="policy" />
+            <img src={ImgPath("/common/privacy_policy.png")} alt="policy" />
           </Link>
           <Link to="/Fqa">
-            <img src={imgPath("/common/FAQ.png")} alt="faq" />
+            <img src={ImgPath("/common/FAQ.png")} alt="faq" />
           </Link>
         </div>
         <div className="platforms">
-          <img src={imgPath("/common/ic_facebook.png")} alt="facebook" />
-          <img src={imgPath("/common/ic_instagram.png")} alt="instagram" />
-          <img src={imgPath("/common/ic_twitter.png")} alt="twitter" />
-          <img src={imgPath("/common/ic_youtube.png")} alt="youtube" />
+          <img src={ImgPath("/common/ic_facebook.png")} alt="facebook" />
+          <img src={ImgPath("/common/ic_instagram.png")} alt="instagram" />
+          <img src={ImgPath("/common/ic_twitter.png")} alt="twitter" />
+          <img src={ImgPath("/common/ic_youtube.png")} alt="youtube" />
         </div>
       </footer>
     </>

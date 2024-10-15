@@ -46,11 +46,11 @@ const showPassword = (e) => {
 
   if (isPwdOpened) {
     e.target.classList.remove("show-eye");
-    e.target.style.backgroundImage = `url('${process.env.PUBLIC_URL}/assets/common/ic_clossEye.png')`;
+    e.target.style.backgroundImage = `url('assets/common/ic_clossEye.png')`;
     prevElement.type = "password";
   } else {
     e.target.classList.add("show-eye");
-    e.target.style.backgroundImage = `url(${process.env.PUBLIC_URL}/assets/common/ic_openEye.png)`;
+    e.target.style.backgroundImage = `url('assets/common/ic_openEye.png')`;
     prevElement.type = "";
   }
 };

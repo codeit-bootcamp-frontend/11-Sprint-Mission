@@ -7,7 +7,6 @@
 .jsconfig.json
 # testing
 /coverage
-.env
 
 # production
 /build

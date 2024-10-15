@@ -110,14 +110,10 @@
 .contentsSearch {
   display: flex;
   flex-direction: row;
-  width: 53vh;
-}
-.inputBox {
-  width: 50% !important;
-  height: 42px !important;
+  width: 70%;
 }
 .addItemBtn {
-  width: 25%;
+  width: 210px;
   margin: 0 12px;
   border-radius: 30px;
   border: 0px;
@@ -138,7 +134,7 @@
   color: var(--gray100);
 }
 .selectBox {
-  width: 25%;
+  width: 110px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -167,7 +163,7 @@
   align-items: center;
   width: 40px;
   height: 40px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--gray200);
   background: #ffffff;
   color: black;
   border-radius: 40px;
@@ -215,13 +211,18 @@
     height: 221px;
     width: 100%;
   }
-  .addItemBtn {
-    width: 20%;
+  .addItemBtn,
+  .selectBox {
+    width: 145px;
+  }
+  .selectBox *,
+  .addItemBtn a {
+    font-size: 0.7rem;
   }
 }
 @media (max-width: 767px) {
   .itemLogo {
-    content: url("../../../public/assets/common/ic_logo_item_mobile.png");
+    content: url("assets/common/ic_logo_item_mobile.png");
   }
   .itemSection {
     width: 100%;
@@ -257,7 +258,6 @@
     height: 120px;
   }
   .contentsSearch {
-    flex-direction: row;
     width: 100%;
   }
   .bestItemImg {
@@ -273,10 +273,12 @@
     height: 221px;
     width: 100%;
   }
-  .addItemBtn {
-    width: 20%;
+  .addItemBtn,
+  .selectBox {
+    width: 140px;
   }
+  .selectBox *,
   .addItemBtn a {
-    font-size: 12px;
+    font-size: 0.6rem;
   }
 }
