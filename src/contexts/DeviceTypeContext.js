@@ -1,27 +1,27 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import useDebounce from "../hooks/useDebounce";
 
 const DeviceTypeContext = createContext();
 
 export function DeviceTypeProvider({ children }) {
   const [deviceType, setDeviceType] = useState("desktop");
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setDeviceType("mobile");
-        return;
-      }
-      if (window.innerWidth < 1200) {
-        setDeviceType("tablet");
-        return;
-      }
+  const handleResize = useDebounce(() => {
+    if (window.innerWidth < 768) {
+      setDeviceType("mobile");
+    } else if (window.innerWidth < 1200) {
+      setDeviceType("tablet");
+    } else {
       setDeviceType("desktop");
-    };
+    }
+    console.log(window.innerWidth);
+  }, 300);
 
+  useEffect(() => {
     window.addEventListener("resize", handleResize);
     handleResize();
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [handleResize]);
 
   return (
     <DeviceTypeContext.Provider value={deviceType}>
