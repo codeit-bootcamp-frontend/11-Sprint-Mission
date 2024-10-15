@@ -6,22 +6,20 @@ import AddItem from "../pages/AddItem";
 import Notfound from "../pages/Notfound";
 import Boards from "../pages/Boards";
 import Login from "../pages/Login";
-
-const routes = [
-  { path: "", element: <Main /> },
-  { path: "/boards", element: <Boards /> },
-  { path: "/items", element: <Items /> },
-  { path: "/additem", element: <AddItem /> },
-  { path: "/login", element: <Login /> },
-  { path: "*", element: <Notfound /> },
-];
+import ProductDetails from "../pages/ProductDetails";
 
 export default function AppRoutes() {
   return (
     <Routes>
-      {routes.map(({ path, element }) => (
-        <Route key={path} path={path} element={element} />
-      ))}
+      <Route path="/" element={<Main />} />
+      <Route path="boards" element={<Boards />} />
+      <Route path="items">
+        <Route index element={<Items />} />
+        <Route path="productDetails" element={<ProductDetails />} />
+      </Route>
+      <Route path="addItem" element={<AddItem />} />
+      <Route path="login" element={<Login />} />
+      <Route path="*" element={<Notfound />} />
     </Routes>
   );
 }

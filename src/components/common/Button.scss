@@ -1,0 +1,73 @@
+.btn- {
+  &login {
+    padding: 1.1rem 4.3rem;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+  }
+
+  &clear {
+    width: 2.2rem;
+    height: 2.4rem;
+    background: url(../../assets/ic_X.svg) no-repeat center/contain;
+    font-size: 0;
+  }
+}
+
+div[class^="btn-wrap"] {
+  display: flex;
+  gap: 1.2rem;
+  white-space: nowrap;
+}
+[class^="btn-"] {
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+
+  &.round {
+    border-radius: 4rem;
+  }
+
+  &.square {
+    border-radius: 0.8rem;
+  }
+
+  &.blue {
+    background-color: var(--blue-100);
+    &:hover {
+      background-color: var(--blue-300);
+    }
+  }
+
+  &.gray {
+    background-color: var(--gray-400);
+  }
+
+  &.white {
+    background-color: var(--gray-50);
+    color: var(--blue-100);
+    border: 1px solid var(--blue-100);
+  }
+
+  &.small_40 {
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    padding: 0.8rem 2.3rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .btn- {
+    &addItem {
+      order: 2;
+    }
+    &post {
+      order: 2;
+    }
+  }
+
+  [class*="btn-"] {
+    &.round {
+      border-radius: 8.2rem;
+    }
+  }
+}

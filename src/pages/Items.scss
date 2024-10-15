@@ -1,0 +1,120 @@
+.product {
+  &-area {
+    &:not(:last-child) {
+      margin: 0 0 1.6rem;
+    }
+    &.all {
+      .product-list {
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+    &.best {
+      .product-list {
+        grid-template-rows: repeat(1, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  }
+  &-category {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    &-name {
+      flex: 1;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 3.2rem;
+      color: var(--gray-800);
+    }
+  }
+  &-list {
+    display: grid;
+    gap: 4rem 2.4rem;
+    max-width: 125rem;
+  }
+  &-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+  &-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  &-name {
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 2.4rem;
+    color: var(--gray-800);
+  }
+  &-price {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 2.6rem;
+    color: var(--gray-800);
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1265px) {
+  html {
+    font-size: 0.7905vw;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .product {
+    &-area {
+      &.all {
+        .product-list {
+          grid-template-rows: repeat(2, 1fr);
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      &.best {
+        .product-list {
+          grid-template-rows: repeat(1, 1fr);
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .product {
+    &-area {
+      &:not(:last-child) {
+        margin: 0 0 0.8rem;
+      }
+      &.all {
+        .product-list {
+          grid-template-rows: repeat(2, 1fr);
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      &.best {
+        .product-list {
+          grid-template-rows: repeat(1, 1fr);
+          grid-template-columns: repeat(1, 1fr);
+        }
+      }
+    }
+    &-list {
+      gap: 3.2rem 0.7rem;
+    }
+  }
+
+  .select {
+    &-title {
+      width: 4.2rem;
+      background-image: url(../assets/mobiles/ic_sort.svg);
+      font-size: 0;
+      background-position: 0.9rem center;
+    }
+    &-option {
+      left: -8.7rem;
+    }
+  }
+}

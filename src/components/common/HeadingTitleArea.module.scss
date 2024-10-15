@@ -1,0 +1,38 @@
+.heading {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+
+  width: 100%;
+  font-weight: 700;
+  color: var(--gray-800);
+  h2 {
+    flex: 1;
+    font-size: 2rem;
+    line-height: 3.2rem;
+  }
+  h3 {
+    flex: 1;
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+    font-weight: 700;
+  }
+  &.h2Margin {
+    margin-bottom: 2.4rem;
+  }
+  &.h3Margin {
+    margin-bottom: 1.6rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .heading {
+    h2 {
+      order: 1;
+    }
+    h3 {
+      order: 1;
+    }
+  }
+}

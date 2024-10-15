@@ -1,0 +1,17 @@
+.tag {
+  &List {
+    display: flex;
+    gap: 1.2rem;
+  }
+  &Item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.5rem 1.6rem;
+    background-color: var(--gray-100);
+    border-radius: 5rem;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    font-weight: 400;
+  }
+}

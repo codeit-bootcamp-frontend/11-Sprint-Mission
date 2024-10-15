@@ -1,0 +1,35 @@
+input {
+  width: 100%;
+  // margin-bottom: 1.6rem;
+  &[type="text"],
+  &[type="number"] {
+    border-radius: 1.2rem;
+    background-color: var(--gray-100);
+    &.default {
+      padding: 1.6rem 2.4rem 1.4rem;
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 2.6rem;
+    }
+  }
+  &::placeholder {
+    color: var(--gray-400);
+  }
+}
+
+textarea {
+  width: calc(100% - 4.8rem);
+  border-radius: 1.2rem;
+  background-color: var(--gray-100);
+  border: none;
+  resize: none;
+  &.default {
+    padding: 1.6rem 2.4rem 1.4rem;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 2.6rem;
+  }
+  &::placeholder {
+    color: var(--gray-400);
+  }
+}
