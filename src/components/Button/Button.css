@@ -1,0 +1,43 @@
+a {
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+a:hover {
+  background-color: #1967d6;
+}
+
+a:focus {
+  background-color: #1251aa;
+}
+
+a:disabled {
+  background-color: #9ca3af;
+  cursor: default;
+  pointer-events: none;
+}
+
+.LoginButton {
+  width: 128px;
+  height: 48px;
+  border-radius: 8px;
+  padding: 12px 23px;
+  background-color: #3692ff;
+  color: #f3f4f6;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+.PillButton {
+  color: #f9fafb;
+  background-color: #3692ff;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 16px 124px;
+}

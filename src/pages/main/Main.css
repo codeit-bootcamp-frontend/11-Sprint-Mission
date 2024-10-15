@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  word-break: keep-all;
+  font-family: "Pretendard", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 200px;
+  margin: 0 200px;
+}
+
+.Logo {
+  width: 153px;
+  height: 51px;
+}
+
+.heroSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #cfe5ff;
+  padding-top: 200px; /*주어진 자료와 비슷하게 하기 위해 추가함.*/
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroWordBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 60px;
+  gap: 32px;
+}
+
+.mainWord {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+  letter-spacing: 0.02em;
+}
+
+.Button {
+  background-color: #3692ff;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroImage {
+  max-width: 750px; /*사진이 너무 커서 크기를 지정함.*/
+}
+
+.mainSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.sections {
+  width: 1920px;
+  padding: 138px 466px;
+  gap: 10px;
+  background-color: #ffffff;
+}
+
+figure {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 988px;
+  border-radius: 12px;
+  gap: 64px;
+  background-color: #fcfcfc;
+}
+
+.homeImage {
+  max-width: 580px;
+}
+
+footer {
+  background-color: #111827;
+  padding: 32px 400px;
+}
+
+.footerFrame {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 80px; /*디자인과 맞추기위해 추가*/
+  color: #9ca3af;
+}
+
+.footerMenu {
+  display: flex;
+  gap: 30px;
+  color: #e5e7eb;
+  text-decoration: none;
+}
