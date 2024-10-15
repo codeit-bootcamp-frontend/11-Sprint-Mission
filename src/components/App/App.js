@@ -1,20 +1,18 @@
 import "./App.css";
 import Navigation from "../Navigation/Navigation";
-import BestItemList from "../BestItemList/BestItemList";
-import ItemList from "../ItemList/ItemList";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AddItemForm from "../AddItemForm/AddItemForm";
+import ItemListPage from "../../pages/ItemListPage";
 
 function App() {
   return (
     <BrowserRouter>
-      <header>
-        <Navigation />
-      </header>
       <Routes>
-        <Route path="/items" element={<Main />} />
-        <Route path="/additem" element={<AddItemForm />} />
+        <Route path="/" element={<Main />}>
+          <Route path="/items" element={<ItemListPage />} />
+          <Route path="/additem" element={<AddItemForm />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
@@ -37,10 +35,10 @@ function Main() {
   }, []);
 
   return (
-    <main className="main-wrapper">
-      <BestItemList view={view} />
-      <ItemList view={view} />
-    </main>
+    <>
+      <Navigation />
+      <Outlet view={view} />
+    </>
   );
 }
 
