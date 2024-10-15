@@ -1,12 +1,17 @@
 import React from "react";
 
-const InputField = ({ label, type, placeholder, value, onChange }) => {
+const InputField = ({ id, label, type, placeholder, value, onChange }) => {
   return (
     <div className="inputField">
-      {label && <label className="inputLabel">{label}</label>}
+      {label && (
+        <label className="inputLabel" htmlFor={id}>
+          {label}
+        </label>
+      )}
       {type === "textarea" ? (
         <textarea
           className="inputTextarea"
+          id={id}
           placeholder={placeholder}
           value={value}
           onChange={onChange}
@@ -14,6 +19,7 @@ const InputField = ({ label, type, placeholder, value, onChange }) => {
       ) : (
         <input
           className="inputText"
+          id={id}
           type={type}
           placeholder={placeholder}
           value={value}

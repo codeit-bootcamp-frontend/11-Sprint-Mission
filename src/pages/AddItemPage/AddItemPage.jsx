@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./AddItemPage.css";
 import InputField from "./components/InputField";
+import ImageUpload from "./components/ImageUpload";
 
 function AddItem() {
   const [productName, setProductName] = useState("");
@@ -16,8 +17,10 @@ function AddItem() {
         </section>
         <section className="inputSection">
           {/* 이미지는 아직 미구현 */}
+          <ImageUpload title="상품 이미지" />
 
           <InputField
+            id="name"
             label="상품명"
             type="text"
             placeholder="상품명을 입력해주세요"
@@ -26,6 +29,7 @@ function AddItem() {
           />
 
           <InputField
+            id="introduction"
             label="상품 소개"
             type="textarea"
             placeholder="상품 소개를 입력해주세요"
@@ -34,6 +38,7 @@ function AddItem() {
           />
 
           <InputField
+            id="price"
             label="판매가격"
             type="text"
             placeholder="판매 가격을 입력해주세요"

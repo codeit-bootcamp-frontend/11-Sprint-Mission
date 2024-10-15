@@ -6,6 +6,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   background-color: #ffffff;
   border-bottom: 1px solid #dfdfdf;
   z-index: 999;
@@ -17,6 +18,7 @@ header {
 .navLeft {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 #navUl {

@@ -29,6 +29,24 @@ form {
 }
 
 /*아래부터 input css */
+.imgContainer {
+  margin: 20px 0;
+}
+
+.imgContainer img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.imgButton {
+  margin-top: 15px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
 
 .inputSection {
   margin-top: 10px;
@@ -45,8 +63,13 @@ form {
   font-weight: 700;
 }
 
+.inputText {
+  height: 56px;
+}
+
 .inputTextarea {
   resize: none;
+  height: 282px;
 }
 
 .inputText,
@@ -65,14 +88,4 @@ form {
 .inputText::placeholder,
 .inputTextarea::placeholder {
   color: #9ca3af;
-}
-
-@media (min-width: 1200px) {
-  .inputText {
-    height: 56px;
-  }
-
-  .inputTextarea {
-    height: 282px;
-  }
 }
