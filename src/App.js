@@ -3,6 +3,7 @@ import HomePage from "./components/pages/home/HomePage";
 import LoginPage from "./components/pages/auth/LoginPage";
 import SignupPage from "./components/pages/auth/SignupPage";
 import ItemsPage from "./components/pages/items/ItemsPage";
+import AddItemPage from "./components/pages/additem/AddItemPage";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/items" element={<ItemsPage />} />
+        <Route path="/additem" element={<AddItemPage />} />
       </Routes>
     </Router>
   );

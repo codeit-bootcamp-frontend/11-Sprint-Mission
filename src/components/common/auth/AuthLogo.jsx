@@ -4,7 +4,6 @@ function AuthLogo() {
   return (
     <Link to="/">
       <img
-        id="auth-logo"
         src="/images/logos/logo-big.png"
         alt="판다마켓 로고"
       />

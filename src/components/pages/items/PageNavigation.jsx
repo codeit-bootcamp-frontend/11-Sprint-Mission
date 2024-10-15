@@ -1,8 +1,8 @@
-const PageNavigation = ({ currentPage, totalPages, onPageChange }) => {
+function PageNavigation({ currentPage, totalPages, onPageChange }) {
   const maxPagesToShow = 5;
   const startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
   const endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
-
+  
   const handlePreviousClick = () => {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
@@ -69,6 +69,6 @@ const PageNavigation = ({ currentPage, totalPages, onPageChange }) => {
       </nav>
     </footer>
   );
-};
+}
 
 export default PageNavigation;

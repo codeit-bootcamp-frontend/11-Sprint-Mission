@@ -1,14 +1,12 @@
-import ItemsHeader from "./ItemsHeader";
+import { useEffect, useState, useCallback } from "react";
+import { Link } from "react-router-dom";
 import "../../../styles/items.css";
 import BestProducts from "./BestProducts";
-import {
-  getAllProducts,
-  getProductsByPage,
-} from "../../../api/items/productsApi.js";
-import { useEffect, useState } from "react";
 import AllProducts from "./AllProducts";
 import PageNavigation from "./PageNavigation.jsx";
-import { getPageLimit } from "../../../utills.js";
+import { getAllProducts, getProducts } from "../../../api/items/productsApi.js";
+import { getPageLimit, useResize } from "../../../utills.js";
+import Header from "../../common/auth/home/Header.jsx";
 
 function ItemsPage() {
   const [products, setProducts] = useState([]);
@@ -18,20 +16,13 @@ function ItemsPage() {
   const [bestProductsLimit, setBestProductsLimit] = useState(4);
   const [productsLimit, setProductsLimit] = useState(10);
   const [totalCount, setTotalCount] = useState();
+  const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(() => {
-    const handleResize = () => {
-      const pageLimit = getPageLimit();
-      setBestProductsLimit(pageLimit[0]);
-      setProductsLimit(pageLimit[1]);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  useResize(() => {
+    const pageLimit = getPageLimit();
+    setBestProductsLimit(pageLimit[0]);
+    setProductsLimit(pageLimit[1]);
+  });
 
   useEffect(() => {
     async function fetchData() {
@@ -52,27 +43,59 @@ function ItemsPage() {
   useEffect(() => {
     if (totalCount) {
       setTotalPages(Math.ceil(totalCount / productsLimit));
+    } else {
+      setTotalCount(1)
     }
-  }, [totalCount]);
+  }, [totalCount, productsLimit]);
 
   useEffect(() => {
     async function fetchData() {
-      const data = await getProductsByPage(currentPageNum, productsLimit);
-
-      if (data) {
-        setProducts(data);
+      if (searchQuery === "") {
+        const data = await getProducts(currentPageNum, productsLimit);
+        setProducts(data.list);
+        setTotalCount(data.totalCount);
+      } else {
+        const data = await getProducts(
+          currentPageNum,
+          productsLimit,
+          searchQuery
+        );
+        setProducts(data.list);
+        setTotalCount(data.totalCount);
+        console.log(data);
       }
     }
 
     fetchData();
-  }, [currentPageNum, productsLimit]);
+  }, [currentPageNum, productsLimit, searchQuery]);
+
+  const handleSearch = useCallback((query) => {
+    setSearchQuery(query);
+    setCurrentPageNum(1);
+  }, []);
 
   return (
     <>
-      <ItemsHeader />
+      <Header
+        leftMenu={
+          <>
+            <Link className="menu-item free-board">자유게시판</Link>
+            <Link className="menu-item secondhand-market">중고마켓</Link>
+          </>
+        }
+        rightMenu={
+          <Link to="/mypage">
+            <img
+              id="mypage"
+              src="images/icons/ic_mypage.svg"
+              alt="마이페이지 아이콘"
+            />
+          </Link>
+        }
+      />
       <main className="items-wrapper">
         <BestProducts bestProducts={bestProducts.slice(0, bestProductsLimit)} />
-        <AllProducts products={products} />
+        <AllProducts products={products} onSearch={handleSearch} />
       </main>
 
       <PageNavigation

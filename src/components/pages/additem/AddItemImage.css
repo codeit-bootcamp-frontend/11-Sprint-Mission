@@ -1,0 +1,48 @@
+.upload-item-image {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.upload-image-container {
+  display: flex;
+  width: 100%;
+  max-width: 282px;
+  aspect-ratio: 1 / 1;
+  background-color: var(--gray-100);
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+}
+
+.upload-image-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+}
+
+.upload-image-description {
+  font-size: 16px;
+  color: var(--gray-400);
+}
+
+.image-preview {
+  width: 100%;
+  max-width: 282px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.remove-upload-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+#image-input {
+  display: none;
+}

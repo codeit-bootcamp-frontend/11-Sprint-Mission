@@ -1,0 +1,29 @@
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--gray-100);
+  border-radius: 26px;
+  padding: 6px 12px 6px 16px;
+}
+
+.tag-name {
+  color: var(--gray-800);
+}
+
+.delete-tag-btn {
+  border: none;
+  display: block;
+  padding: 0;
+  cursor: pointer;
+}
+
+.x-btn {
+  display: block;
+}

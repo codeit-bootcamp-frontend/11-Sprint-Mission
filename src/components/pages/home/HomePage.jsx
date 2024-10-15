@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
+
 import React from "react";
-import HomeHeader from "./HomeHeader";
+import Header from "../../common/auth/home/Header";
 import Content from "./Content";
 import HomeFooter from "./HomeFooter";
 import Hero from "./Hero";
@@ -8,7 +10,14 @@ import "../../../styles/home-page.css";
 function HomePage() {
   return (
     <>
-      <HomeHeader />
+      <Header
+        leftMenu={null}
+        rightMenu={
+          <Link to="/login" className="btn main-login">
+            로그인
+          </Link>
+        }
+      />
       <main>
         <Hero
           title="일상의 모든 물건을<br />거래해 보세요"

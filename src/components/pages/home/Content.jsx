@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { renderLines } from "../../../utills";
 
 function Content({
   title,
@@ -16,21 +16,9 @@ function Content({
           <div className="caption">{caption}</div>
           <div className="description">
             <h2 className="description-main">
-              {title.split("<br />").map((line, index) => (
-                <Fragment key={index}>
-                  {line}
-                  <br className={brClassName ? brClassName : ""} />
-                </Fragment>
-              ))}
+              <h2 className="description-main">{renderLines(title)}</h2>
             </h2>
-            <p className="description-additional">
-              {description.split("<br />").map((line, index) => (
-                <Fragment key={index}>
-                  {line}
-                  <br />
-                </Fragment>
-              ))}
-            </p>
+            <p className="description-additional">{renderLines(description)}</p>
           </div>
         </div>
       </div>
