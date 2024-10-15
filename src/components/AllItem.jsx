@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { getProducts } from "../api/api.js";
 import { Link } from "react-router-dom";
 import "../css/AllItem.css";
-import { useMediaQuery } from "react-responsive";
+import SelectOrderBy from "./SelectOrderBy.jsx";
+import Pagination from "./Pagination.jsx";
 
 const AllItem = () => {
   const [products, setProducts] = useState([]); // 제품 리스트 저장 상태
@@ -11,21 +12,40 @@ const AllItem = () => {
   const [orderBy, setOrderBy] = useState("recent"); //정렬 상태
   const [page, setPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
+  const [pageSize, setPageSize] = useState(getPageSize(window.innerWidth));
 
-  const isDesktop = useMediaQuery({ minWidth: 1200 });
-  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1199 });
-  const isMobile = useMediaQuery({ maxWidth: 767 });
+  function getPageSize(width) {
+    // 윈도우 크기에 따라 pageSize 계산하는 함수
+    if (width >= 1200) {
+      return 10;
+    } else if (width >= 768) {
+      return 6;
+    } else {
+      return 4;
+    }
+  }
 
-  const pageSize = isDesktop ? 10 : isTablet ? 6 : isMobile ? 4 : 10;
+  useEffect(() => {
+    // 윈도우 크기 변경 시 pageSize를 업데이트
+    const handleResize = () => {
+      setPageSize(getPageSize(window.innerWidth));
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const totalPage = Math.ceil(totalCount / pageSize); // 전체 페이지 개수 구하기
 
   useEffect(() => {
     const fetchProducts = async () => {
-      let result;
       try {
         setLoading(true);
-        result = await getProducts({
+        const result = await getProducts({
           page: page,
           pageSize: pageSize,
           orderBy: orderBy,
@@ -64,16 +84,8 @@ const AllItem = () => {
     }
   };
 
-  const getPageNumber = () => {
-    //페이지네이션 넘버링을 위한 계산
-    const pageNumbers = [];
-    const start = Math.max(1, page - 2);
-    const end = Math.min(start + 4, totalPage); //마지막 페이지가 5개묶음 도중 끝날경우 대비
-
-    for (let i = start; i <= end; i++) {
-      pageNumbers.push(i);
-    }
-    return pageNumbers;
+  const handlePageSelect = (selectedPage) => {
+    setPage(selectedPage);
   };
 
   if (loading) {
@@ -97,18 +109,11 @@ const AllItem = () => {
           <Link to="/additem">
             <button className="add-button">상품 등록하기</button>
           </Link>
-          <select
+          <SelectOrderBy
             className="option-select"
             value={orderBy}
             onChange={handleOrderChange}
-          >
-            <option className="option" value="recent">
-              최신순
-            </option>
-            <option className="option" value="favorite">
-              좋아요순
-            </option>
-          </select>
+          />
         </div>
       </div>
       <ul className="all-product-list-container">
@@ -140,33 +145,13 @@ const AllItem = () => {
           <p>No products available</p>
         )}
       </ul>
-      <div className="pagination">
-        <button
-          onClick={handlePrevPage}
-          disabled={page === 1}
-          className="pagination-button"
-        >
-          &lt;
-        </button>
-        {getPageNumber().map((number) => (
-          <button
-            key={number}
-            onClick={() => setPage(number)}
-            className={
-              number === page ? "pagination-active" : "pagination-inactive"
-            }
-          >
-            {number}
-          </button>
-        ))}
-        <button
-          onClick={handleNextPage}
-          disabled={page === totalPage}
-          className="pagination-button"
-        >
-          &gt;
-        </button>
-      </div>
+      <Pagination
+        page={page}
+        totalPage={totalPage}
+        onNext={handleNextPage}
+        onPrev={handlePrevPage}
+        onPageSelect={handlePageSelect}
+      />
     </div>
   );
 };
