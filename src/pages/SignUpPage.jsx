@@ -3,7 +3,7 @@ import "../styles/auth.css";
 
 import logo from "../images/logo.png";
 
-const SignUp = () => {
+const SignUpPage = () => {
   return (
     <div>
       <div className="container signup">
@@ -94,4 +94,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignUpPage;

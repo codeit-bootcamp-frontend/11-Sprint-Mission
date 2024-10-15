@@ -2,8 +2,9 @@ import "../styles/style.css";
 import "../styles/auth.css";
 
 import logo from "../images/logo.png";
+import { Link } from "react-router-dom";
 
-const Login = () => {
+const LoginPage = () => {
   return (
     <div>
       <div className="container login">
@@ -63,11 +64,11 @@ const Login = () => {
         </div>
         <div className="auth-toggle">
           <p>판다마켓이 처음이신가요?</p>
-          <a href="/signup.html">회원가입</a>
+          <Link to={"/signup"}>회원가입</Link>
         </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default LoginPage;
