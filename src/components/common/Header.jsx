@@ -1,7 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useLocation, NavLink } from "react-router-dom";
 
 function Header({ isLogin = false }) {
+  const location = useLocation();
   return (
     <header>
       <h1 className="logo">
@@ -24,7 +25,16 @@ function Header({ isLogin = false }) {
             <NavLink to="/board" title="자유 게시판 페이지 이동">
               자유게시판
             </NavLink>
-            <NavLink to="/items" title="중고 마켓 페이지 이동">
+            <NavLink
+              to="/items"
+              title="중고 마켓 페이지 이동"
+              className={
+                location.pathname.startsWith("/items") ||
+                location.pathname.startsWith("/addItem")
+                  ? "active"
+                  : null
+              }
+            >
               중고마켓
             </NavLink>
           </div>

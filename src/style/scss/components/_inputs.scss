@@ -1,0 +1,121 @@
+.form-input-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem 0;
+  label {
+    font-size: 1.8rem;
+    font-weight: var(--bold);
+    line-height: 2.6rem;
+    color: var(--gray800);
+  }
+  input:not([type="file"]),
+  textarea {
+    border: 0;
+    border-radius: 1.2rem;
+    padding: 1.6rem 2.4rem;
+    background-color: var(--gray100);
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    color: var(--gray800);
+    &::placeholder {
+      color: var(--gray400);
+    }
+    &:focus {
+      outline: 0.1rem solid var(--primary100);
+    }
+  }
+  textarea {
+    height: 28.2rem;
+    resize: none;
+  }
+  /* 상품 이미지 */
+  .upload-area {
+    display: flex;
+    gap: 0 2.4rem;
+    .btn-upload-img,
+    .thumbnail {
+      width: 28.2rem;
+      aspect-ratio: 1 / 1;
+      border-radius: 1.2rem;
+    }
+    .btn-upload-img {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem 0;
+      padding: 0;
+      border: 0;
+      font-size: 1.6rem;
+      line-height: 2.6rem;
+      color: var(--gray400);
+      img {
+        width: 4.8rem;
+        height: 4.8rem;
+      }
+    }
+    .thumbnail {
+      overflow: hidden;
+      position: relative;
+      border: 0.1rem solid var(--gray50);
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      .btn-delete-thumbnail {
+        position: absolute;
+        top: 1.4rem;
+        right: 1.3rem;
+        width: 2.2rem;
+        height: 2.4rem;
+        border: 0;
+        background: url(/public/images/icons/ic_delete.svg) no-repeat center /
+          cover;
+      }
+    }
+  }
+  .error-msg {
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    color: var(--error);
+  }
+  /* 상품 태그 */
+  .tag-area {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 1.4rem;
+    .tag {
+      position: relative;
+      padding: 0.5rem 4.2rem 0.5rem 1.6rem;
+      border-radius: 2.6rem;
+      background-color: var(--gray100);
+      font-size: 1.6rem;
+      line-height: 2.6rem;
+      color: var(--gray800);
+      .btn-delete-tag {
+        position: absolute;
+        top: 0.6rem;
+        right: 1.2rem;
+        width: 2.2rem;
+        height: 2.4rem;
+        border: 0;
+        background: url(/public/images/icons/ic_delete.svg) no-repeat center /
+          cover;
+      }
+    }
+  }
+}
+
+/* BreakPoint Tablet */
+@media (max-width: 1199px) {
+  .form-input-wrap {
+    /* 상품 이미지 */
+    .upload-area {
+      gap: 0 1rem;
+      .btn-upload-img,
+      .thumbnail {
+        width: 16.8rem;
+      }
+    }
+  }
+}

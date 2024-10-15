@@ -35,20 +35,20 @@ function Paginations({ totalPage, currentPage, handlePageChange }) {
         <span className="sr-only">이전</span>
       </button>
 
-      {Array.from(
-        { length: endPage - startPage + 1 },
-        (_, idx) => startPage + idx
-      ).map((page) => (
-        <button
-          key={`pagination_${page}`} // key props이 숫자라 pagination_ 추가
-          className="btn-pagination"
-          active={page === currentPage ? "active" : null} // 현재 페이지 active 처리
-          onClick={() => handlePageChange(page)}
-          disabled={page === currentPage} // active 페이지인 경우 버튼 클릭 막음
-        >
-          {page}
-        </button>
-      ))}
+      {[...Array(endPage - startPage + 1).keys()].map((_, idx) => {
+        const page = startPage + idx;
+        return (
+          <button
+            key={`pagination_${page}`} // key props이 숫자라 pagination_ 추가
+            className="btn-pagination"
+            active={page === currentPage ? "active" : null} // 현재 페이지 active 처리
+            onClick={() => handlePageChange(page)}
+            disabled={page === currentPage} // active 페이지인 경우 버튼 클릭 막음
+          >
+            {page}
+          </button>
+        );
+      })}
 
       {/* 다음 그룹으로 이동 */}
       <button
