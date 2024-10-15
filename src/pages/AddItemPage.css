@@ -1,5 +1,5 @@
 .registerForm,
-main,
+.form-body,
 .formTop,
 .smallButton,
 .formBody,
@@ -9,7 +9,7 @@ section,
   display: flex;
 }
 
-main,
+.form-body,
 .formBody,
 section,
 .inputTag {
@@ -35,7 +35,7 @@ section,
   gap: 24px;
 }
 
-main {
+.form-body {
   width: 1200px;
 }
 

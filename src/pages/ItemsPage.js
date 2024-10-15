@@ -40,7 +40,7 @@ function ItemsPage() {
   return (
     <>
       <Nav />
-      <main className="body">
+      <main className="items-body">
         <section className="best-section">
           <h2>베스트 상품</h2>
           <BestProducts items={sortedItems}></BestProducts>

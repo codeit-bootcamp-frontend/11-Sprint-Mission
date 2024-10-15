@@ -34,7 +34,7 @@ function AddItemPage() {
     <>
       <Nav />
       <form onSubmit={handleSubmit} className="registerForm">
-        <main>
+        <main className="form-body">
           <aside className="formTop">
             <h2>상품 등록하기</h2>
             <button
