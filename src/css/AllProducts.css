@@ -1,6 +1,6 @@
 @import "./global.css";
 
-.allItems {
+.allProducts {
   margin-top: 40px;
 }
 
@@ -45,6 +45,7 @@
   height: 35px;
   border: 0px;
   border-radius: 8px;
+  cursor: pointer;
 }
 .selectSort {
   height: 35px;
@@ -60,7 +61,7 @@
   border-radius: 8px;
 }
 
-.indivItems {
+.indivProducts {
   width: 1370px;
   display: flex;
   flex-wrap: wrap;
@@ -72,13 +73,13 @@
     width: 200px;
   }
 
-  .indivItems {
+  .indivProducts {
     width: 810px;
   }
 }
 
 @media (max-width: 768px) {
-  .indivItems {
+  .indivProducts {
     width: 530px;
   }
 }

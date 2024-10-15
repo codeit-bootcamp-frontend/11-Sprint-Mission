@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { getItems } from "./api";
-import "./css/BestItem.css";
-import Item from "./Item.js";
+import { getItems } from "../api.js";
+import "../css/BestProduct.css";
+import Product from "./Product.js";
 
-function BestItem() {
-  const [items, setItems] = useState([]);
+function BestProduct() {
+  const [products, setProducts] = useState([]);
   const [pageSize, setPageSize] = useState(4);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -38,7 +38,7 @@ function BestItem() {
     } catch (error) {
       console.log(error);
     }
-    setItems(result.list);
+    setProducts(result.list);
   };
 
   useEffect(() => {
@@ -50,12 +50,12 @@ function BestItem() {
   }, [pageSize]);
 
   return (
-    <div className="bestItems">
+    <div className="bestProducts">
       <div className="bestTitle">베스트 상품</div>
-      <div className="items">
-        {items && items.length > 0 ? (
-          items.map(({ id, images, name, price, favoriteCount }) => (
-            <Item
+      <div className="products">
+        {products && products.length > 0 ? (
+          products.map(({ id, images, name, price, favoriteCount }) => (
+            <Product
               key={id}
               image={images[0]}
               name={name}
@@ -71,4 +71,4 @@ function BestItem() {
   );
 }
 
-export default BestItem;
+export default BestProduct;

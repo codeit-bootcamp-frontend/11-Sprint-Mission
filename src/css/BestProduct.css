@@ -1,6 +1,6 @@
 @import "./global.css";
 
-.bestItems {
+.bestProducts {
   width: 1370px;
   margin-top: 100px;
 }
@@ -11,13 +11,13 @@
   padding-bottom: 20px;
 }
 
-.items {
+.products {
   display: flex;
   gap: 30px;
 }
 
 @media (max-width: 1152px) {
-  .bestItems {
+  .bestProducts {
     width: 810px;
   }
 
@@ -27,7 +27,7 @@
 }
 
 @media (max-width: 768px) {
-  .bestItems {
+  .bestProducts {
     width: 520px;
   }
 

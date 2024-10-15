@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { getItems } from "./api";
-import "./css/AllItems.css";
-import searchIcon from "./img/icon/ic_search.png";
-import Item from "./Item.js";
+import { getItems } from "../api.js";
+import "../css/AllProducts.css";
+import searchIcon from "../img/icon/ic_search.png";
+import Product from "./Product.js";
+import { Link } from "react-router-dom";
 
-function BestItem() {
-  const [items, setItems] = useState([]);
+function AllProducts() {
+  const [products, setProducts] = useState([]);
   const [orderBy, setOrderBy] = useState("recent");
   const [keyword, setKeyword] = useState("");
   const [pageSize, setPageSize] = useState(10);
@@ -41,7 +42,7 @@ function BestItem() {
     } catch (error) {
       console.log(error);
     }
-    setItems(result.list);
+    setProducts(result.list);
   };
 
   const handleKeyworSubmit = (e) => {
@@ -58,12 +59,12 @@ function BestItem() {
   }, [pageSize, orderBy, keyword]);
 
   return (
-    <div className="allItems">
+    <div className="allProducts">
       <div className="allTitle">
         <p>전체 상품</p>
         <div className="allBars">
           <div className="inputContainer">
-            <img className="searchIcon" src={searchIcon} />
+            <img className="searchIcon" src={searchIcon} alt="검색창 찾기" />
             <form onSubmit={handleKeyworSubmit}>
               <input
                 name="keyword"
@@ -72,17 +73,19 @@ function BestItem() {
               />
             </form>
           </div>
-          <button className="registerItem">상품 등록하기</button>
+          <Link to="/additem">
+            <button className="registerItem">상품 등록하기</button>
+          </Link>
           <select className="selectSort" onChange={handleOrderByChange}>
             <option value="recent">최신순</option>
             <option value="favorite">좋아요 순</option>
           </select>
         </div>
       </div>
-      <div className="indivItems">
-        {items && items.length > 0 ? (
-          items.map(({ id, images, name, price, favoriteCount }) => (
-            <Item
+      <div className="indivProducts">
+        {products && products.length > 0 ? (
+          products.map(({ id, images, name, price, favoriteCount }) => (
+            <Product
               key={id}
               image={images[0]}
               name={name}
@@ -98,4 +101,4 @@ function BestItem() {
   );
 }
 
-export default BestItem;
+export default AllProducts;

@@ -1,17 +1,18 @@
-import BestItem from "./BestItem";
-import Navbar from "./Navbar";
-import AllItems from "./AllItems";
-import "./css/App.css";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Navbar from "./components/Navbar.js";
+import Items from "./pages/items";
+import AddItems from "./pages/additems";
 
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <Navbar />
-      <div className="itemPage">
-        <BestItem />
-        <AllItems />
-      </div>
-    </div>
+      <Routes>
+        <Route path="/items" element={<Items />} />
+        <Route path="additem" element={<AddItems />} />
+        <Route path="/" element={<Navigate to="/items" />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
