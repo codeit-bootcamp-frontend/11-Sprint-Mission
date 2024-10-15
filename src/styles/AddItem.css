@@ -43,6 +43,11 @@ label {
   cursor: pointer;
 }
 
+.submit-btn:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
 .item-image-input,
 .item-name-input,
 .item-intro-input,

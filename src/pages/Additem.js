@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/AddItem.css';
 
 function AddItem() {
+  const [itemName, setItemName] = useState('');
+  const [itemIntro, setItemIntro] = useState('');
+  const [itemPrice, setItemPrice] = useState('');
+  const [itemTags, setItemTags] = useState('');
+
+  const isFormValid = itemName && itemIntro && itemPrice && itemTags;
+
   return (
     <div className="add-item-form">
       <div className="product-registration">
         <h1>상품 등록하기</h1>
-        <button className="submit-btn">등록</button>
+        <button className="submit-btn" disabled={!isFormValid}>
+          등록
+        </button>
       </div>
 
       <div className="item-image-input">
@@ -20,7 +29,13 @@ function AddItem() {
 
       <div className="item-name-input">
         <label htmlFor="item-name">상품명</label>
-        <input id="item-name" type="text" placeholder="상품명을 입력해주세요" />
+        <input
+          id="item-name"
+          type="text"
+          placeholder="상품명을 입력해주세요"
+          value={itemName}
+          onChange={(e) => setItemName(e.target.value)}
+        />
       </div>
 
       <div className="item-intro-input">
@@ -28,6 +43,8 @@ function AddItem() {
         <textarea
           id="item-intro"
           placeholder="상품 소개를 입력해주세요"
+          value={itemIntro}
+          onChange={(e) => setItemIntro(e.target.value)}
         ></textarea>
       </div>
 
@@ -37,12 +54,20 @@ function AddItem() {
           id="item-price"
           type="text"
           placeholder="판매 가격을 입력해주세요"
+          value={itemPrice}
+          onChange={(e) => setItemPrice(e.target.value)}
         />
       </div>
 
       <div className="item-tags-input">
         <label htmlFor="item-tags">태그</label>
-        <input id="item-tags" type="text" placeholder="태그를 입력해주세요" />
+        <input
+          id="item-tags"
+          type="text"
+          placeholder="태그를 입력해주세요"
+          value={itemTags}
+          onChange={(e) => setItemTags(e.target.value)}
+        />
         <div className="tags">
           {/* 태그는 동적으로 추가될 예정 */}
           <div className="tag">태그1</div>
