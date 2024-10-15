@@ -1,10 +1,11 @@
 import "./ItemSubmit.css";
+import { Link } from "react-router-dom";
 const ItemSubmit = () => {
   return (
     <>
-      <button className="submitbtn" type="submit">
-        상품 등록
-      </button>
+      <Link to="/Additem" className="submitbtn">
+        <span>상품 등록하기</span>
+      </Link>
     </>
   );
 };

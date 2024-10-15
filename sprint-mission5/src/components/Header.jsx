@@ -1,41 +1,55 @@
 import logoFace from "../images/head/logo_face.png";
 import logoTxt from "../images/head/logo_txt.png";
 import myPageIcon from "../images/head/myPageIcon.png";
+import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
+
+function getLinkStyle({ isActive }) {
+  return { color: isActive ? "var(--pgnibtn)" : undefined };
+}
+
 const Header = () => {
   return (
     <header>
       <div className="header-container">
         <div className="header-logo-wrap">
           <div className="header-face-logo">
-            <a href="/">
+            <Link to="/">
               <img src={logoFace} alt="판다얼굴" />
-            </a>
+            </Link>
           </div>
           <div className="header-face-tetx">
-            <a href="/">
+            <Link to="/">
               <img src={logoTxt} alt="판다텍스트" />
-            </a>
+            </Link>
           </div>
         </div>
         <nav className="header-nav">
           <ol>
             <li>
-              <a className="free-board" href="/">
+              <NavLink
+                to="/FreeBoard"
+                className="free-board"
+                style={getLinkStyle}
+              >
                 자유게시판
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a className="used-market" href="/">
+              <NavLink
+                to="/ItemContainer"
+                className="used-market"
+                style={getLinkStyle}
+              >
                 중고마켓
-              </a>
+              </NavLink>
             </li>
           </ol>
         </nav>
         <div className="header-myicon">
-          <a href="/">
+          <Link to="/">
             <img src={myPageIcon} alt="마이페이지아이콘" />
-          </a>
+          </Link>
         </div>
       </div>
     </header>

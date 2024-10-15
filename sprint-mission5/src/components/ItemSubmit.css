@@ -2,8 +2,13 @@
   width: 133px;
   height: 42px;
   background-color: var(--skyblue);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.submitbtn span {
   color: var(--white);
   font-weight: 600;
   font-size: 1rem;
-  border-radius: 8px;
 }

@@ -1,18 +1,21 @@
-import "./App.css";
 import Header from "./components/Header";
-import BestItem from "./components/BestItem";
-import Alltem from "./components/Alltem";
+import Additem from "./page/Additem";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ItemContainer from "./page/ItemCotainer";
+import FreeBoard from "./page/FreeBoard";
+import Mainpage from "./page/Mainpage";
+
 function App() {
   return (
-    <div className="app-container">
+    <BrowserRouter>
       <Header />
-      <section className="best-section">
-        <BestItem />
-      </section>
-      <section className="all-section">
-        <Alltem />
-      </section>
-    </div>
+      <Routes>
+        <Route index element={<Mainpage />} />
+        <Route path="FreeBoard" element={<FreeBoard />} />
+        <Route path="ItemContainer" element={<ItemContainer />} />
+        <Route path="Additem" element={<Additem />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
