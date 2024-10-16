@@ -8,7 +8,7 @@ import PageButton from "../components/PageButton";
 import "../utils/Style.css";
 import "./ItemsPage.css";
 import "../components/SearchBar.css";
-import magnifier from "../assets/icons/Vector.svg";
+import magnifier from "../assets/icons/ic_magnifier.svg";
 
 function ItemsPage() {
   const [items, setItems] = useState([]);
@@ -57,11 +57,11 @@ function ItemsPage() {
                     className="input-search"
                   />
                 </div>
-                <button className="medium-button">
-                  <Link to="/additem">
+                <Link to="/additem">
+                  <button className="medium-button">
                     <p className="medium-btn-text">상품 등록하기</p>
-                  </Link>
-                </button>
+                  </button>
+                </Link>
               </div>
               <label htmlFor="order"></label>
               <select id="order" onChange={handleChange} className="drop-down">
