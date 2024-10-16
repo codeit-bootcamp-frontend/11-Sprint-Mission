@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "components/Header";
-import BestProduct from "components/BestProductList";
-import ProductList from "components/ProductList";
+import Header from "components/common/Header";
+import BestProduct from "components/items/BestProductList";
+import ProductList from "components/items/ProductList";
 
 function Items() {
   return (

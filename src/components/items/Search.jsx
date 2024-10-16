@@ -1,9 +1,7 @@
 import React from "react";
 
-function Search({ setProducts, perPage }) {
-  const handleChange = ({ target }) => {
-    // const search = target.value;
-  };
+function Search({ setKeyword }) {
+  const handleChange = ({ target }) => setKeyword(target.value);
   return (
     <div className="input-area">
       <img src="/images/icons/ic_search.svg" alt="검색할 상품을 입력해주세요" />
