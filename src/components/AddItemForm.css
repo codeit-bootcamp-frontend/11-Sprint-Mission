@@ -43,7 +43,7 @@
 }
 
 .add-item-submit-button:enabled:hover {
-  background-color: #1967d6;
+  background-color: #2e7ae4;
 }
 
 .add-item-form-container {
@@ -86,7 +86,7 @@ input {
   padding: 16px 24px;
 }
 
-textarea {
+.add-item-content-container textarea {
   background-color: #f3f4f6;
   border: 1px solid #f3f4f6;
   border-radius: 12px;
