@@ -5,7 +5,8 @@ export async function getProducts({ page = 1, pageSize = 10, orderBy = 'recent',
   const response = await fetch(`${BASE_URL}products?${query}`);
 
   if (!response.ok) {
-    throw new Error('데이터 로드에 실패했습니다.');
+    // status 값 출력
+    throw new Error('데이터 로드에 실패했습니다:', response.status);
   }
   return response.json();
 }
