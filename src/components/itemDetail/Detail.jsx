@@ -45,11 +45,14 @@ function Detail() {
         <div className="desc-wrap">
           <h2 className="detail-name">{name}</h2>
           <div className="detail-price">{price}</div>
-          <p className="detail-description">{description}</p>
+          <div className="detail-description-wrap">
+            <div className="detail-description-title">상품 소개</div>
+            <p className="detail-description">{description}</p>
+          </div>
           <div className="detail-tag-wrap">
             <div className="detail-tag-title">상품 태그</div>
             {tags.map((tag) => (
-              <span className="detail-tag">{tag}</span>
+              <span className="detail-tag">#{tag}</span>
             ))}
           </div>
           <div className="detail-footer">
