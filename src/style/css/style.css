@@ -1215,6 +1215,8 @@ footer .footer-wrap .sns a img {
 .content-inquiry .inquiry-comment p {
   margin-bottom: 2.4rem;
   margin-right: 2.8rem;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
 }
 .content-inquiry .inquiry-comment textarea {
   display: block;

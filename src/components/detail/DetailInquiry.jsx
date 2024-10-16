@@ -1,5 +1,6 @@
 import React from "react";
 import DropDownInquiry from "./DropDownInquiry";
+import { calculateGapHour } from "utils/formatDate";
 
 function DetailInquiry({ content, writer, updatedAt }) {
   return (
@@ -15,7 +16,7 @@ function DetailInquiry({ content, writer, updatedAt }) {
         </div>
         <div>
           <div className="writer-name">{writer.nickname}</div>
-          <div className="date-update">{updatedAt}</div>
+          <div className="date-update">{calculateGapHour(updatedAt)}</div>
         </div>
       </div>
     </div>

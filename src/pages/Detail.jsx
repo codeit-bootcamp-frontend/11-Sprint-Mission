@@ -78,6 +78,7 @@ function Detail() {
               key={`comment_${id}`}
               content={content}
               writer={writer}
+              updatedAt={updatedAt}
             />
           ))
         ) : (
