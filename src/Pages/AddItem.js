@@ -1,33 +1,9 @@
 import { useEffect, useState } from 'react';
 import { switchGnbClass } from '../utils/switchGnbClass';
 import FileInput from '../Components/FileInput';
+import Tag from '../Components/Tag';
+//
 import styles from './AddItem.module.css';
-
-function Tag({ idx, children, onDelete }) {
-  // tag 삭제
-  const handleDeleteClick = () => {
-    onDelete(idx);
-  };
-
-  return (
-    <span className={styles.tag}>
-      #{children}
-      <svg
-        className="cursor-pointer"
-        onClick={handleDeleteClick}
-        width="22"
-        height="24"
-        viewBox="0 0 22 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle cx="11" cy="12" r="10" fill="#9CA3AF" />
-        <path d="M7.08032 8L15.0803 16" stroke="#F9FAFB" strokeWidth="1.8" strokeLinecap="round" />
-        <path d="M15 8L7 16" stroke="#F9FAFB" strokeWidth="1.8" strokeLinecap="round" />
-      </svg>
-    </span>
-  );
-}
 
 // form 초기값
 const INITIAL_VALUES = {
@@ -62,7 +38,7 @@ function AddItem() {
 
     const el = e.target;
     const value = el.value.trim();
-    const hasValue = values.tags.some((tag) => tag === value);
+    const hasValue = values.tags.includes(value);
 
     // 빈값 & 중복 체크
     if (value && !hasValue) {
@@ -94,14 +70,14 @@ function AddItem() {
     switchGnbClass('market');
 
     return () => {
-      console.log('정리?');
+      // gnb 클래스 삭제
       switchGnbClass();
     };
   }, []);
 
   // 등록 버튼 활성화 여부
-  const validValues = [values.name, values.description, values.price > 0, values.tags.length > 0];
-  const disabled = validValues.some((value) => Boolean(value) === false);
+  const disabled =
+    !values.name || !values.description || !(values.price > 0) || !values.tags.length;
 
   return (
     <form className="mt-6 mb-16 flex flex-col gap-8" onSubmit={handleSubmit}>
@@ -148,6 +124,7 @@ function AddItem() {
         <input
           id="price"
           name="price"
+          min="0"
           value={values.price}
           type="number"
           placeholder="판매 가격을 입력해주세요"

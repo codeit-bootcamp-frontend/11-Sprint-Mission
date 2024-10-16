@@ -1,0 +1,8 @@
+.tag {
+  @apply inline-flex gap-2 items-center pl-4 pr-3 py-2 rounded-full;
+  background-color: var(--gray-100);
+
+  svg {
+    color: var(--gray-400);
+  }
+}
