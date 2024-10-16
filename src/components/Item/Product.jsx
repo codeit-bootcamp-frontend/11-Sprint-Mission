@@ -11,22 +11,19 @@ import {
 
 import { useState, useEffect } from "react";
 import { getItem } from "../../api";
-import { useParams } from "react-router-dom";
 import Profile from "./Profile";
 import Likes from "./Likes";
 import TagList from "./TagList";
 
-const Product = () => {
+const Product = ({ id }) => {
   const [item, setItem] = useState(null);
 
-  const { id } = useParams();
-
   useEffect(() => {
-    const fetchData = async () => {
+    const productDataLoad = async () => {
       const data = await getItem(id);
       setItem(data);
     };
-    fetchData();
+    productDataLoad();
   }, [id]);
 
   if (!item) return;
