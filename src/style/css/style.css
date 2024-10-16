@@ -987,6 +987,7 @@ footer .footer-wrap .sns a img {
   width: 48.6rem;
   height: 48.6rem;
   border-radius: 1.6rem;
+  overflow: hidden;
 }
 .page-detail .product-detail-contents .img-wrap img {
   width: 100%;
