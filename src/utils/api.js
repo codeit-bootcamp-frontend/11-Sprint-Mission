@@ -1,6 +1,6 @@
 const SERVER_URL = "https://panda-market-api.vercel.app/products";
 
-export const fetchProducts = async ({
+const fetchProducts = async ({
   page = 1,
   pageSize = 10,
   orderBy = "recent",
@@ -20,4 +20,16 @@ export const fetchProducts = async ({
   }
 };
 
-export default fetchProducts;
+const fetchProductById = async (id) => {
+  try {
+    const response = await fetch(`${SERVER_URL}/${id}`);
+    if (!response.ok) {
+      throw new Error("데이터 불러오기 실패");
+    }
+    return await response.json();
+  } catch (error) {
+    throw error;
+  }
+};
+
+export { fetchProducts, fetchProductById };

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import fetchProducts from "utils/api";
+import { fetchProducts } from "utils/api";
 import { updateProductsPerPage } from "utils/checkDevice";
 import Product from "./Product";
 import DropDown from "./DropDown";
