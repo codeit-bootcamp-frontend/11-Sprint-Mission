@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchProductById } from "utils/api";
 import { formatPriceToKRW } from "utils/formatPrice";
+import { formatDate } from "utils/formatDate";
 
 const INITIAL_DETAILS = {
   name: "",
@@ -70,7 +71,7 @@ function Detail() {
               </div>
               <div className="owner-desc">
                 <div className="owner-name">{ownerNickname}</div>
-                <div className="date-update">{updatedAt}</div>
+                <div className="date-update">{formatDate(updatedAt)}</div>
               </div>
             </div>
             <button className="btn-favorite">
