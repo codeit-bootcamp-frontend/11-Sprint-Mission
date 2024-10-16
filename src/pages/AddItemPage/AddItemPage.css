@@ -95,3 +95,25 @@ form {
 .inputTextarea::placeholder {
   color: #9ca3af;
 }
+
+.tagSection {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tagItem {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  background-color: #f3f4f6;
+  border-radius: 26px;
+  padding: 6px 12px;
+  min-width: 90px;
+}
+
+.tagText {
+  font-size: 16px;
+  font-weight: 400;
+  color: #1f2937;
+}

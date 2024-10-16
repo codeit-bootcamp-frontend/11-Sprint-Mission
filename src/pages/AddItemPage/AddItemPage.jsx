@@ -10,6 +10,11 @@ function AddItem() {
   const [productName, setProductName] = useState("");
   const [productIntroduction, setProductIntroduction] = useState("");
   const [productPrice, setProductPrice] = useState("");
+  const [tags, setTags] = useState([]);
+
+  const addTag = (newTag) => {
+    setTags([...tags, newTag]);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault(); // 폼 제출 방지
@@ -52,8 +57,8 @@ function AddItem() {
             value={productPrice}
             onChange={(e) => setProductPrice(e.target.value)}
           />
-          {/* 태그는 아직 구현중 */}
-          <InputTag />
+
+          <InputTag tags={tags} addTag={addTag} />
         </section>
       </form>
     </div>

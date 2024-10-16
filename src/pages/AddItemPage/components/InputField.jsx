@@ -1,6 +1,14 @@
 import React from "react";
 
-const InputField = ({ id, label, type, placeholder, value, onChange }) => {
+const InputField = ({
+  id,
+  label,
+  type,
+  placeholder,
+  value,
+  onChange,
+  onKeyDown,
+}) => {
   return (
     <div className="inputField">
       {label && (
@@ -24,6 +32,7 @@ const InputField = ({ id, label, type, placeholder, value, onChange }) => {
           placeholder={placeholder}
           value={value}
           onChange={onChange}
+          onKeyDown={onKeyDown}
         />
       )}
     </div>
