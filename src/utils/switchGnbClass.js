@@ -1,7 +1,10 @@
+// body 에 gnb 클래스를 이용하여 nav 메뉴 활성 제어
 export function switchGnbClass(navClass) {
   const classHead = 'gnb-';
   const bodyClassList = document.body.classList;
+  // gnb- 로 시작하는 클래스 있는지 확인 -> 있으면 삭제
   const r = [...bodyClassList].find((item) => item.startsWith(classHead));
   if (r) bodyClassList.remove(r);
-  bodyClassList.add(classHead + navClass);
+  // navClass 가 있을면 추가
+  if (navClass) bodyClassList.add(classHead + navClass);
 }

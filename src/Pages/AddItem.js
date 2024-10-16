@@ -22,13 +22,8 @@ function Tag({ idx, children, onDelete }) {
         xmlns="http://www.w3.org/2000/svg"
       >
         <circle cx="11" cy="12" r="10" fill="#9CA3AF" />
-        <path
-          d="M7.08032 8L15.0803 16"
-          stroke="#F9FAFB"
-          stroke-width="1.8"
-          stroke-linecap="round"
-        />
-        <path d="M15 8L7 16" stroke="#F9FAFB" stroke-width="1.8" stroke-linecap="round" />
+        <path d="M7.08032 8L15.0803 16" stroke="#F9FAFB" strokeWidth="1.8" strokeLinecap="round" />
+        <path d="M15 8L7 16" stroke="#F9FAFB" strokeWidth="1.8" strokeLinecap="round" />
       </svg>
     </span>
   );
@@ -97,6 +92,11 @@ function AddItem() {
   useEffect(() => {
     // 상단 네비 '중고마켓' 활성화
     switchGnbClass('market');
+
+    return () => {
+      console.log('정리?');
+      switchGnbClass();
+    };
   }, []);
 
   // 등록 버튼 활성화 여부
