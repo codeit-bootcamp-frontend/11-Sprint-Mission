@@ -157,6 +157,7 @@
 .item-detail-favorite-icon {
   width: 32px;
   height: 32px;
+  opacity: 70%;
 }
 
 .item-detail-favorite-count {
@@ -190,6 +191,11 @@
   border-radius: 40px;
   padding: 12px 64px;
   border-style: none;
+}
+
+.item-detail-back-button:hover {
+  background-color: #2e7ae4;
+  cursor: pointer;
 }
 
 .back-icon {
