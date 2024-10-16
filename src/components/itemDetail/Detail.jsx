@@ -2,6 +2,7 @@ import Image from "components/common/Image";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchProductById } from "utils/api";
+import { formatPriceToKRW } from "utils/formatPrice";
 
 const INITIAL_DETAILS = {
   name: "",
@@ -44,16 +45,20 @@ function Detail() {
         <Image images={images} name={name} />
         <div className="desc-wrap">
           <h2 className="detail-name">{name}</h2>
-          <div className="detail-price">{price}</div>
+          <div className="detail-price">{formatPriceToKRW(price)}</div>
           <div className="detail-description-wrap">
             <div className="detail-description-title">상품 소개</div>
             <p className="detail-description">{description}</p>
           </div>
           <div className="detail-tag-wrap">
             <div className="detail-tag-title">상품 태그</div>
-            {tags.map((tag) => (
-              <span className="detail-tag">#{tag}</span>
-            ))}
+            <div className="detail-tags">
+              {tags.map((tag) => (
+                <span key={tag} className="detail-tag">
+                  #{tag}
+                </span>
+              ))}
+            </div>
           </div>
           <div className="detail-footer">
             <div className="owner-wrap">
