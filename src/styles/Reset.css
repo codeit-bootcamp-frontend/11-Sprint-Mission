@@ -109,12 +109,6 @@ section {
   display: block;
 }
 
-*,
-body {
-  font-family: 'Pretendard-regular', sans-serif;
-  line-height: 1;
-}
-
 ol,
 ul {
   list-style: none;
