@@ -1,7 +1,7 @@
 import React from "react";
 
-function TextInput({ children, name, placeholder, value, setUserInput }) {
-  const setName = (value) => setUserInput((prev) => ({ ...prev, name: value }));
+function TextInput({ children, name, placeholder, value, dispatch }) {
+  const setName = (value) => dispatch({ type: "SET_NAME", payload: value });
 
   const handleInput = ({ target }) => setName(target.value);
 

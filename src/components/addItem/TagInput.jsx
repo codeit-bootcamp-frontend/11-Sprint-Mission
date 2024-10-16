@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-function TagInput({ children, name, placeholder, setUserInput }) {
+function TagInput({ children, name, tags, placeholder, dispatch }) {
   const [value, setValue] = useState(""); // input state
-  const [tags, setTags] = useState([]); // 화면 노출 및 form의 tags를 위한 state
 
   /**
    * 엔터를 입력 받으면 태그 추가 - 공백, 중복 추가 불가
@@ -11,17 +10,14 @@ function TagInput({ children, name, placeholder, setUserInput }) {
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
+      const trimmedValue = e.target.value;
       const isValidAddTag =
-        e.target.value.trim() !== "" && tags.indexOf(e.target.value); // 공백 & 중복 태그 확인
+        trimmedValue.trim() !== "" && tags.indexOf(trimmedValue); // 공백 & 중복 태그 확인
       if (isValidAddTag) {
-        setTags((prev) => [...prev, e.target.value.trim()]);
+        dispatch({ type: "SET_TAGS", payload: [...tags, trimmedValue.trim()] });
         setValue("");
       }
     }
-  };
-
-  const handleInput = (e) => {
-    setValue(e.target.value);
   };
 
   /**
@@ -29,17 +25,11 @@ function TagInput({ children, name, placeholder, setUserInput }) {
    * @param {*} index 태그 삭제를 위한 인덱싱 변수
    * @returns
    */
-  const deleteTag = (index) => setTags(tags.filter((_, idx) => idx !== index));
-
-  /**
-   * tag state가 변할 때(추가, 삭제) form의 tags 업데이트
-   */
-  useEffect(() => {
-    setUserInput((prev) => ({
-      ...prev,
-      tags: tags,
-    }));
-  }, [tags, setUserInput]);
+  const deleteTag = (index) =>
+    dispatch({
+      type: "SET_TAGS",
+      payload: tags.filter((_, idx) => idx !== index),
+    });
 
   return (
     <div className="form-input-wrap">
@@ -50,7 +40,7 @@ function TagInput({ children, name, placeholder, setUserInput }) {
         placeholder={placeholder}
         value={value}
         onKeyDown={handleKeyDown}
-        onChange={handleInput}
+        onChange={(e) => setValue(e.target.value)}
       />
       <div className="tag-area">
         {tags.map((tag, idx) => (

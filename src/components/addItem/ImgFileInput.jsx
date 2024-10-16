@@ -1,25 +1,23 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-function ImgFileInput({ children, name, setImage }) {
-  const input = useRef();
-  const [thumbnail, setThumbnail] = useState(""); // 추가한 이미지를 관리하기 위한 state
+function ImgFileInput({ children, images, name, dispatch }) {
+  const inputRef = useRef();
   const [showWarn, setShowWarn] = useState(false); // 이미지를 1개 이상 추가하려고 할 때를 위한 state
-  const isFilled = thumbnail.length > 0;
+  const isFilled = images.length > 0;
 
   /**
    * form의 이미지를 저장하고 화면에 추가한 이미지를 렌더링
    * @param {*} path 인코딩된 파일 스트링
    */
   const setImg = (path) => {
-    setImage((prev) => ({ ...prev, images: [path] }));
-    setThumbnail(path);
+    dispatch({ type: "SET_IMAGES", payload: path ? [path] : [] });
   };
 
   /**
    * 이미지 파일 추가 - 1개 이상인 경우 클릭 시 경고 노출
    */
   const handleClick = () => {
-    if (!isFilled) input.current.click();
+    if (!isFilled) inputRef.current.click();
     else setShowWarn(true);
   };
 
@@ -30,12 +28,9 @@ function ImgFileInput({ children, name, setImage }) {
   const handleFileInput = (e) => {
     const imgUrl = e.target.files[0];
     if (imgUrl) {
-      const fileReader = new FileReader();
-      fileReader.onload = () => {
-        const imgPath = fileReader.result;
-        setImg(imgPath);
-      };
-      fileReader.readAsDataURL(imgUrl);
+      const imgPath = URL.createObjectURL(imgUrl);
+      setImg(imgPath);
+      inputRef.current.value = null;
     }
   };
 
@@ -43,15 +38,24 @@ function ImgFileInput({ children, name, setImage }) {
    * 이미지 삭제
    */
   const handleDelete = () => {
-    setImg("");
+    setImg();
     setShowWarn(false);
   };
+
+  /**
+   * 컴포넌트 언마운트 시 객체 URL이 있으면 해제
+   */
+  useEffect(() => {
+    return () => {
+      if (images.length > 0) URL.revokeObjectURL(images[0]);
+    };
+  }, [images]);
 
   return (
     <div className="form-input-wrap">
       <label htmlFor={`item_${name}`}>{children}</label>
       <input
-        ref={input}
+        ref={inputRef}
         id={`item_${name}`}
         className="sr-only"
         type="file"
@@ -69,9 +73,9 @@ function ImgFileInput({ children, name, setImage }) {
           <img src="/images/icons/ic_plus.svg" alt="이미지 등록" />
           이미지 등록
         </button>
-        {thumbnail && (
+        {isFilled && (
           <div className="thumbnail">
-            <img src={thumbnail} alt="thumbnail" />
+            <img src={images[0]} alt="thumbnail" />
             <button
               type="button"
               className="btn-delete-thumbnail"

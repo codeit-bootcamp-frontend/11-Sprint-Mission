@@ -1,7 +1,7 @@
 import React from "react";
 import { formatPrice, formatToPrice } from "utils/formatPrice";
 
-function PriceInput({ children, name, value, setUserInput }) {
+function PriceInput({ children, name, value, dispatch }) {
   /**
    * String 타입의 입력을 금액 형식으로 formating해 input에 출력
    */
@@ -9,7 +9,7 @@ function PriceInput({ children, name, value, setUserInput }) {
     const priceValue = formatToPrice(target.value);
     const regExp = /^\d*$/; // 숫자만 입력 가능하게 하기 위한 정규식
     if (regExp.test(priceValue)) {
-      setUserInput((prev) => ({ ...prev, price: +priceValue })); // form의 price state 저장할 때는 Number 타입으로 변환해서 저장
+      dispatch({ type: "SET_PRICE", payload: +priceValue });
     }
   };
   return (

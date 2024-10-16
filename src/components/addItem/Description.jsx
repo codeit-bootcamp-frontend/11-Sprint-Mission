@@ -1,8 +1,8 @@
 import React from "react";
 
-function Description({ children, name, value, placeholder, setUserInput }) {
+function Description({ children, name, value, placeholder, dispatch }) {
   const setDescription = (value) =>
-    setUserInput((prev) => ({ ...prev, description: value }));
+    dispatch({ type: "SET_DESCRIPTION", payload: value });
 
   const handleInput = ({ target }) => setDescription(target.value);
 
