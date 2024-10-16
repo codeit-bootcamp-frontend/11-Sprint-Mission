@@ -40,6 +40,7 @@ export default function AllProducts() {
   // 검색어 필터링
   const handleKeywordSubmit = (e) => {
     e.preventDefault();
+
     const inputSearch = inSearchRef.current;
     setKeyword(inputSearch.value);
   };
@@ -49,7 +50,6 @@ export default function AllProducts() {
 
   // 페이지네이션 처리
   const handlePaginationClick = (pageNum) => {
-    // console.log('fn:handlePaginationClick', pageNum);
     setPage(pageNum);
   };
 
@@ -62,7 +62,11 @@ export default function AllProducts() {
       <div className="flex items-center gap-3 flex-wrap my-4 justify-end">
         <h2 className="products-title mr-auto">전체 상품</h2>
 
-        <form className="flex gap-1 relative" onSubmit={handleKeywordSubmit}>
+        <form
+          className="flex gap-1 relative"
+          onSubmit={handleKeywordSubmit}
+          onReset={handleKeywordReset}
+        >
           <input
             className="in-search"
             type="text"
@@ -70,11 +74,7 @@ export default function AllProducts() {
             placeholder="검색할 상품을 입력해 주세요"
           />
           <img className="absolute top-2 left-3" src={IconSearch} alt="" />
-          <button
-            className="btn-reset"
-            type="reset"
-            title="검색 초기화"
-            onClick={handleKeywordReset}>
+          <button className="btn-reset" type="reset" title="검색 초기화">
             <ArrowPathIcon className="size-4 mx-auto" />
           </button>
         </form>
