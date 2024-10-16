@@ -2,23 +2,24 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as validation from "components/Validation";
 import "./Login.css";
-import { ImgPath } from "components/index";
+import { ImgPath, TextInput } from "components/index";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginDisabled, setLoginDisabled] = useState(true);
   const [emailNotice, setEmailNotice] = useState("");
-  const [passwordNotice, setPasswordNotice] = useState("");
+  const [pwdNotice, setPwdNotice] = useState("");
   const navigate = useNavigate();
-  const { emailValidationMsg, pwdValidationMsg, showPassword, emptyCheck } = validation;
+  const { emailValidationMsg, pwdValidationMsg, showPassword, emptyCheck } =
+    validation;
 
   const updateLoginButtonState = () => {
     // 다른 input에 값이 있는지 체크
     const checkInput = emptyCheck([email, password]);
     const button = document.querySelector(".login-btn");
     // 로그인 버튼 활성화
-    if (checkInput && emailNotice.length < 1 && passwordNotice.length < 1) {
+    if (checkInput && emailNotice.length < 1 && pwdNotice.length < 1) {
       button.classList.add("login-btn-active");
       setLoginDisabled(false);
     } else {
@@ -37,7 +38,7 @@ const Login = (props) => {
       setEmailNotice(noticeMsg);
     } else {
       noticeMsg = pwdValidationMsg(inputValue);
-      setPasswordNotice(noticeMsg);
+      setPwdNotice(noticeMsg);
     }
 
     // 알림 활성화
@@ -49,13 +50,11 @@ const Login = (props) => {
     updateLoginButtonState();
   };
 
-  const inputChange = (inputType) => (e) => {
-    const inputValue = e.target.value;
-    if (inputType === "email") {
-      setEmail(inputValue);
-    } else {
-      setPassword(inputValue);
-    }
+  const handleEmailChange = (inputValue) => {
+    setEmail(inputValue);
+  };
+  const handlePasswordChange = (inputValue) => {
+    setPassword(inputValue);
   };
 
   const loginClick = () => {
@@ -72,39 +71,40 @@ const Login = (props) => {
           </div>
         </header>
         <main>
-          <div className="content-big">
-            <form className="content-title">이메일</form>
-            <input
+          <TextInput
+            className="inputBox"
+            type="email"
+            placeholder="이메일을 입력해주세요"
+            onChange={handleEmailChange}
+            onBlur={inputBlur}
+          >
+            <h3>이메일</h3>
+          </TextInput>
+          <span id="message" className="notice-email">
+            {emailNotice}
+          </span>
+          <div className="inputBox-eye">
+            <TextInput
+              id="password"
               className="inputBox"
-              type="email"
-              placeholder="이메일을 입력해주세요"
-              value={email}
-              onChange={inputChange("email")}
+              type="password"
+              placeholder="비밀번호를 입력해주세요"
+              onChange={handlePasswordChange}
               onBlur={inputBlur}
-            />
-            <span id="message" className="notice-email">
-              {emailNotice}
-            </span>
-          </div>
-          <div className="content-big">
-            <form className="content-title">비밀번호</form>
-            <div className="inputBox-eye">
-              <input
-                className="inputBox"
-                type="password"
-                placeholder="비밀번호를 입력해주세요"
-                value={password}
-                onChange={inputChange("pwd")}
-                onBlur={inputBlur}
-              />
+            >
+              <h3>비밀번호</h3>
               <input type="button" className="eye" onClick={showPassword} />
-            </div>
+            </TextInput>
             <span id="message" className="notice-password">
-              {passwordNotice}
+              {pwdNotice}
             </span>
           </div>
           <div className="content">
-            <button className="login-btn" disabled={loginDisabled} onClick={loginClick}>
+            <button
+              className="login-btn"
+              disabled={loginDisabled}
+              onClick={loginClick}
+            >
               로그인
             </button>
           </div>

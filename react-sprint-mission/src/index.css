@@ -58,3 +58,10 @@ body {
   border-radius: 26px;
   border: 0 solid var(--gray100);
 }
+.contentsTopTitle {
+  height: 42px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}

@@ -1,16 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ImgPath } from ".";
 import styled from "styled-components";
 
 function ItemImage({ onChange }) {
   const inputRef = useRef();
   const [preview, setPreview] = useState(null);
-
-  const handleImageClick = () => {
-    if (inputRef.current) {
-      inputRef.current.click();
-    }
-  };
 
   const handleImageChange = (e) => {
     if (!e.target.files || e.target.files.length < 1) return;
@@ -25,42 +19,56 @@ function ItemImage({ onChange }) {
     inputRef.current.value = "";
   };
 
+  useEffect(() => {
+    if (preview === null) {
+      URL.revokeObjectURL(preview);
+    }
+  }, [preview]);
+
   return (
-    <>
-      <img
-        className="AddItemIC"
-        src={ImgPath("/common/ic_add_image.png")}
-        alt="addImg"
-        onClick={handleImageClick}
-        style={{ cursor: "pointer" }}
-      />
+    <AddItemWrap>
+      <label className="addItemIC" htmlFor="imgInput">
+        <img src={ImgPath("/common/ic_add_image.png")} alt="addImg" />
+        <AddItemInput
+          id="imgInput"
+          className="addItemInput"
+          type="file"
+          accept="image/*"
+          multiple
+          ref={inputRef}
+          onChange={handleImageChange}
+        />
+      </label>
       {preview && (
         <PrevImageForm>
           <img src={preview} style={{ width: "100%" }} alt="previewImage" />
-          <img
+          <ClearImg
             src={ImgPath("/common/ic_X.png")}
-            style={{ position: "absolute", top: 0, right: 0 }}
             alt="cancel"
             onClick={handleImgClear}
           />
         </PrevImageForm>
       )}
-      <input
-        ref={inputRef}
-        style={{ display: "none" }}
-        type="file"
-        accept="image/*"
-        multiple
-        onChange={handleImageChange}
-      />
-    </>
+    </AddItemWrap>
   );
 }
 
+const AddItemWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+const AddItemInput = styled.input`
+  display: none;
+`;
 const PrevImageForm = styled.div`
   width: 23%;
   display: flex;
   flex-direction: row;
   position: relative;
+`;
+const ClearImg = styled.img`
+  position: absolute;
+  top: 0;
+  right: 0;
 `;
 export { ItemImage };

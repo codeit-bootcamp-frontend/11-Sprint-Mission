@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Signup.css";
 import * as validation from "components/Validation";
 import { Link, useNavigate } from "react-router-dom";
-import { ImgPath } from "components/index";
+import { ImgPath, TextInput } from "components/index";
 
 function Signup(props) {
   const [email, setEmail] = useState("");
@@ -15,7 +15,8 @@ function Signup(props) {
   const [pwdNotice, setPwdNotice] = useState("");
   const [pwdConfirmNotice, setPwdConfirmNotice] = useState("");
   const navigate = useNavigate();
-  const { emailValidationMsg, pwdValidationMsg, showPassword, emptyCheck } = validation;
+  const { emailValidationMsg, pwdValidationMsg, showPassword, emptyCheck } =
+    validation;
 
   const updateLoginButtonState = (noticeMsg) => {
     // 다른 input에 값이 있는지 체크
@@ -62,22 +63,17 @@ function Signup(props) {
     updateLoginButtonState(noticeMsg);
   };
 
-  const inputChange = (inputType) => (e) => {
-    const inputValue = e.target.value;
-    switch (inputType) {
-      case "email":
-        setEmail(inputValue);
-        break;
-      case "nickname":
-        setNickname(inputValue);
-        break;
-      case "pwd":
-        setPassword(inputValue);
-        break;
-      default:
-        setPwdConfirm(inputValue);
-        break;
-    }
+  const handleEmailChange = (inputValue) => {
+    setEmail(inputValue);
+  };
+  const handleNicknameChange = (inputValue) => {
+    setNickname(inputValue);
+  };
+  const handlePasswordChange = (inputValue) => {
+    setPassword(inputValue);
+  };
+  const handlePwdConfirmChange = (inputValue) => {
+    setPwdConfirm(inputValue);
   };
 
   const loginClick = () => {
@@ -94,71 +90,67 @@ function Signup(props) {
           </div>
         </header>
         <main>
-          <div className="content-big">
-            <form className="content-title">이메일</form>
-            <input
+          <TextInput
+            className="inputBox"
+            type="email"
+            placeholder="이메일을 입력해주세요"
+            onChange={handleEmailChange}
+            onBlur={inputBlur("email")}
+          >
+            <h3>이메일</h3>
+          </TextInput>
+          <span id="message" className="notice-email">
+            {emailNotice}
+          </span>
+          <TextInput
+            className="inputBox"
+            type="text"
+            placeholder="닉네임을 입력해주세요"
+            onChange={handleNicknameChange}
+            onBlur={inputBlur("nickname")}
+          >
+            <h3>닉네임</h3>
+          </TextInput>
+          <span id="message" className="notice-nickname">
+            {nicknameNotice}
+          </span>
+          <div className="inputBox-eye">
+            <TextInput
+              id="password"
               className="inputBox"
-              type="email"
-              placeholder="이메일을 입력해주세요"
-              value={email}
-              onChange={inputChange("email")}
-              onBlur={inputBlur("email")}
-            />
-            <span id="message" className="notice-email">
-              {emailNotice}
-            </span>
-          </div>
-          <div className="content-big">
-            <form className="content-title">닉네임</form>
-            <input
-              className="inputBox"
-              type="text"
-              placeholder="닉네임을 입력해주세요"
-              value={nickname}
-              onChange={inputChange("nickname")}
-              onBlur={inputBlur("nickname")}
-            />
-            <span id="message" className="notice-nickname">
-              {nicknameNotice}
-            </span>
-          </div>
-          <div className="content-big">
-            <form className="content-title">비밀번호</form>
-            <div className="inputBox-eye">
-              <input
-                id="password"
-                className="inputBox"
-                type="password"
-                placeholder="비밀번호를 입력해주세요"
-                value={password}
-                onChange={inputChange("pwd")}
-                onBlur={inputBlur("pwd")}
-              />
+              type="password"
+              placeholder="비밀번호를 입력해주세요"
+              onChange={handlePasswordChange}
+              onBlur={inputBlur("pwd")}
+            >
+              <h3>비밀번호</h3>
               <input type="button" className="eye" onClick={showPassword} />
-            </div>
+            </TextInput>
             <span id="message" className="notice-password">
               {pwdNotice}
             </span>
           </div>
-          <div className="content-big">
-            <form className="content-title">비밀번호 확인</form>
-            <div className="inputBox-eye">
-              <input
-                className="inputBox"
-                type="password"
-                placeholder="비밀번호를 다시 한 번 입력해주세요"
-                value={pwdConfirm}
-                onChange={inputChange("pwdConfirm")}
-                onBlur={inputBlur("pwdConfirm")}
-              />
+          <div className="inputBox-eye">
+            <TextInput
+              className="inputBox"
+              type="password"
+              placeholder="비밀번호를 다시 한 번 입력해주세요"
+              onChange={handlePwdConfirmChange}
+              onBlur={inputBlur("pwdConfirm")}
+            >
+              <h3>비밀번호 확인</h3>
               <input type="button" className="eye" onClick={showPassword} />
-            </div>
+            </TextInput>
             <span id="message" className="notice-password-confirm">
               {pwdConfirmNotice}
             </span>
           </div>
           <div className="content">
-            <button className="signup-btn" disabled={loginDisabled} onClick={loginClick}>
+            <button
+              className="signup-btn"
+              disabled={loginDisabled}
+              onClick={loginClick}
+            >
               회원가입
             </button>
           </div>

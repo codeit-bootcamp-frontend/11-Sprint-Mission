@@ -1,3 +1,5 @@
+import { ImgPath } from ".";
+
 // 이메일 조건 체크
 const emailValidationMsg = (emailValue) => {
   let massage = "";
@@ -41,16 +43,16 @@ const pwdValidationMsg = (pwdValue, comfirm = false) => {
 // 비밀번호 숨김 기능
 // **이전 요소를 참조하니 주의할 것**
 const showPassword = (e) => {
-  let prevElement = e.target.previousElementSibling;
+  let prevElement = e.target.parentElement.nextElementSibling;
   const isPwdOpened = e.target.classList.contains("show-eye");
 
   if (isPwdOpened) {
     e.target.classList.remove("show-eye");
-    e.target.style.backgroundImage = `url('assets/common/ic_clossEye.png')`;
+    e.target.style.backgroundImage = `url(${ImgPath("/common/ic_clossEye.png")})`;
     prevElement.type = "password";
   } else {
     e.target.classList.add("show-eye");
-    e.target.style.backgroundImage = `url('assets/common/ic_openEye.png')`;
+    e.target.style.backgroundImage = `url(${ImgPath("/common/ic_openEye.png")})`;
     prevElement.type = "";
   }
 };
