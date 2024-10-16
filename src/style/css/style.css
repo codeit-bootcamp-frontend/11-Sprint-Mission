@@ -1106,6 +1106,41 @@ footer .footer-wrap .sns a img {
   line-height: 2.6rem;
   color: var(--gray500);
 }
+.page-detail .product-inquiry-wrap form label {
+  display: block;
+  margin-bottom: 0.9rem;
+  font-size: 1.6rem;
+  font-weight: var(--semiBold);
+  line-height: 2.6rem;
+  color: var(--gray900);
+}
+.page-detail .product-inquiry-wrap form textarea {
+  display: block;
+  width: 100%;
+  height: 10.4rem;
+  margin-bottom: 1.6rem;
+  padding: 1.6rem 2.4rem;
+  border: 0;
+  border-radius: 1.2rem;
+  background-color: var(--gray100);
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  color: var(--gray800);
+  resize: none;
+}
+.page-detail .product-inquiry-wrap form textarea::-moz-placeholder {
+  color: var(--gray400);
+}
+.page-detail .product-inquiry-wrap form textarea::placeholder {
+  color: var(--gray400);
+}
+.page-detail .product-inquiry-wrap form textarea:focus {
+  outline: 0.1rem solid var(--primary100);
+}
+.page-detail .product-inquiry-wrap form .btn-add {
+  display: block;
+  margin: 0 0 0 auto;
+}
 
 @media (max-width: 1199px) {
   .page-detail {
@@ -1157,41 +1192,108 @@ footer .footer-wrap .sns a img {
   .page-detail .product-detail-contents .desc-wrap .detail-price {
     font-size: 2.4rem;
   }
+  .page-detail .product-inquiry-wrap form label {
+    margin-bottom: 1.6rem;
+  }
+  .page-detail .product-inquiry-wrap form textarea {
+    height: 12.9rem;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+  }
 }
-.product-inquiry-wrap form label {
-  display: block;
-  margin-bottom: 0.9rem;
-  font-size: 1.6rem;
-  font-weight: var(--semiBold);
-  line-height: 2.6rem;
-  color: var(--gray900);
+.content-inquiry {
+  position: relative;
+  margin-top: 2.4rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 0.1rem solid var(--gray200);
 }
-.product-inquiry-wrap form textarea {
+.content-inquiry .menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.content-inquiry .inquiry-comment p {
+  margin-bottom: 2.4rem;
+  margin-right: 2.8rem;
+}
+.content-inquiry .inquiry-comment textarea {
   display: block;
   width: 100%;
-  height: 10.4rem;
+  height: 8rem;
   margin-bottom: 1.6rem;
   padding: 1.6rem 2.4rem;
   border: 0;
   border-radius: 1.2rem;
   background-color: var(--gray100);
-  font-size: 1.6rem;
-  line-height: 2.6rem;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
   color: var(--gray800);
   resize: none;
 }
-.product-inquiry-wrap form textarea::-moz-placeholder {
+.content-inquiry .inquiry-comment textarea:focus {
+  border: 0.1rem solid var(--primary100);
+}
+.content-inquiry .inquiry-comment textarea::-moz-placeholder {
   color: var(--gray400);
 }
-.product-inquiry-wrap form textarea::placeholder {
+.content-inquiry .inquiry-comment textarea::placeholder {
   color: var(--gray400);
 }
-.product-inquiry-wrap form textarea:focus {
-  outline: 0.1rem solid var(--primary100);
+.content-inquiry .inquiry-footer {
+  display: flex;
+  gap: 0.8rem;
 }
-.product-inquiry-wrap form .btn-add {
+.content-inquiry .inquiry-footer .writer-icon {
+  width: 3.2rem;
+  height: 3.2rem;
+}
+.content-inquiry .inquiry-footer .writer-icon img {
+  width: 100%;
+  height: 100%;
+}
+.content-inquiry .inquiry-footer .writer-name {
+  margin-bottom: 0.4rem;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  color: var(--gray600);
+}
+.content-inquiry .inquiry-footer .date-update {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  color: var(--gray400);
+}
+
+.btn-open-menu {
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0;
+  border: 0;
+  background-color: #fff;
+}
+.btn-open-menu img {
   display: block;
-  margin: 0 0 0 auto;
+  width: 100%;
+  height: 100%;
+}
+
+.menus {
+  position: absolute;
+  top: 3.4rem;
+  right: 0;
+  border-radius: 0.8rem;
+  border: 0.1rem solid #d1d5db;
+  overflow: hidden;
+}
+.menus button {
+  width: -moz-max-content;
+  width: max-content;
+  height: 4.6rem;
+  padding: 0 4.15rem;
+  border: 0;
+  background-color: #fff;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  color: var(--gray500);
 }
 
 /* Main & Section */

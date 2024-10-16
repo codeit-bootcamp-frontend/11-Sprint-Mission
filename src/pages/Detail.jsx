@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchProductById, fetchInquiryById } from "utils/api";
 import DetailProduct from "components/detail/DetailProduct";
 import PrimaryButton from "components/common/PrimaryButton";
+import DetailInquiry from "components/detail/DetailInquiry";
 
 const INITIAL_DETAILS = {
   name: "",
@@ -73,21 +74,11 @@ function Detail() {
         </form>
         {comments.length > 0 ? (
           comments.map(({ id, content, writer }) => (
-            <div key={`comment_${id}`}>
-              <p>{content}</p>
-              <div>
-                <div>
-                  <img
-                    src="/images/icons/ic_user_login.svg"
-                    alt={writer.nickname}
-                  />
-                </div>
-                <div>
-                  <div>{writer.nickname}</div>
-                  <div>{updatedAt}</div>
-                </div>
-              </div>
-            </div>
+            <DetailInquiry
+              key={`comment_${id}`}
+              content={content}
+              writer={writer}
+            />
           ))
         ) : (
           <div>아직 문의가 없어요</div>
