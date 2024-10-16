@@ -3,7 +3,7 @@ import Home from "../pages/Home";
 import Signup from "pages/Signup";
 import Items from "pages/Items";
 import AddItem from "pages/AddItem";
-import Detail from "components/itemDetail/Detail";
+import Detail from "pages/Detail";
 
 const routes = [
   {
