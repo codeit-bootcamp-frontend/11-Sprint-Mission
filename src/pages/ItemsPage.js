@@ -14,13 +14,26 @@ function ItemsPage() {
   const [items, setItems] = useState([]);
   const [orderBy, setOrderBy] = useState("recent");
   const [page, setPage] = useState(1);
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [loadingError, setLoadingError] = useState(null);
   const sortedItems = items.sort((a, b) => b[orderBy] - a[orderBy]);
 
   const handleChange = (e) => setOrderBy(e.target.value);
 
   const handleLoad = async (options) => {
-    const { list } = await getList(options);
+    let result;
+    try {
+      setIsLoading(true);
+      setLoadingError(null);
+      result = await getList(options);
+    } catch (error) {
+      setLoadingError(error);
+      return;
+    } finally {
+      setIsLoading(false);
+    }
+
+    const { list } = result;
     if (options.page === 0) {
       setItems(list);
     } else {
@@ -79,27 +92,61 @@ function ItemsPage() {
       </main>
       <footer>
         <div className="pagination">
-          <PageButton type="button" clickBtn={handleLoadMore}>
+          <PageButton
+            type="button"
+            disabled={isLoading}
+            clickBtn={handleLoadMore}
+          >
             &lt;
           </PageButton>
-          <PageButton type="button" value={1} clickBtn={handleLoadMore}>
+          <PageButton
+            type="button"
+            disabled={isLoading}
+            value={1}
+            clickBtn={handleLoadMore}
+          >
             1
           </PageButton>
-          <PageButton type="button" value={2} clickBtn={handleLoadMore}>
+          <PageButton
+            type="button"
+            disabled={isLoading}
+            value={2}
+            clickBtn={handleLoadMore}
+          >
             2
           </PageButton>
-          <PageButton type="button" value={3} clickBtn={handleLoadMore}>
+          <PageButton
+            type="button"
+            disabled={isLoading}
+            value={3}
+            clickBtn={handleLoadMore}
+          >
             3
           </PageButton>
-          <PageButton type="button" value={4} clickBtn={handleLoadMore}>
+          <PageButton
+            type="button"
+            disabled={isLoading}
+            value={4}
+            clickBtn={handleLoadMore}
+          >
             4
           </PageButton>
-          <PageButton type="button" value={5} clickBtn={handleLoadMore}>
+          <PageButton
+            type="button"
+            disabled={isLoading}
+            value={5}
+            clickBtn={handleLoadMore}
+          >
             5
           </PageButton>
-          <PageButton type="button" clickBtn={handleLoadMore}>
+          <PageButton
+            type="button"
+            disabled={isLoading}
+            clickBtn={handleLoadMore}
+          >
             &gt;
           </PageButton>
+          {loadingError?.message && <span>{loadingError.message}</span>}
         </div>
       </footer>
     </>
