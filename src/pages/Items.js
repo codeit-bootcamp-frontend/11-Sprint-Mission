@@ -55,7 +55,7 @@ function Items() {
             <input type="text" placeholder="검색할 상품을 입력해주세요" />
           </div>
           <button onClick={() => navigate('/additem')}>상품 등록하기</button>
-          <select>
+          <select id="dropdown-content">
             <option value="latest">최신순</option>
             <option value="favorite">좋아요순</option>
           </select>
