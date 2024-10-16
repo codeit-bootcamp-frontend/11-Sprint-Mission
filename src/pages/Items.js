@@ -1,27 +1,40 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getProducts } from '../api/ProductAPI';
+import { getProducts, getBestProducts } from '../api/ProductAPI';
 import BestProducts from '../components/BestProducts';
 import AllProducts from '../components/AllProducts';
 import SearchIcon from '../image/search-icon.png';
 import '../styles/Items.css';
 
 function Items() {
-  const [products, setProducts] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
+  const [bestProducts, setBestProducts] = useState([]);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchAllProducts = async () => {
       try {
         const data = await getProducts();
-        setProducts(data.list || []);
+        setAllProducts(data.list || []);
       } catch (error) {
         setError(error.message);
       }
     };
 
-    fetchProducts();
+    const fetchBestProducts = async () => {
+      try {
+        const data = await getBestProducts();
+        if (data && data.list) {
+          setBestProducts(data.list);
+        }
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchAllProducts();
+    fetchBestProducts();
   }, []);
 
   if (error) {
@@ -30,13 +43,13 @@ function Items() {
 
   return (
     <div className="product-wrapped">
-      <h2 class="products-header">베스트 상품</h2>
-      <BestProducts products={products} />
+      <h2 className="products-header">베스트 상품</h2>
+      <BestProducts products={bestProducts} />
       <div className="products-header">
         <h2>전체 상품</h2>
         <div className="sort-menu">
-          <div class="input-container">
-            <span class="input-icon">
+          <div className="input-container">
+            <span className="input-icon">
               <img src={SearchIcon} alt="검색 아이콘" />
             </span>
             <input type="text" placeholder="검색할 상품을 입력해주세요" />
@@ -48,7 +61,7 @@ function Items() {
           </select>
         </div>
       </div>
-      <AllProducts products={products} />
+      <AllProducts products={allProducts} />
     </div>
   );
 }
