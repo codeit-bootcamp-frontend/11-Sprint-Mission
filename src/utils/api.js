@@ -32,4 +32,16 @@ const fetchProductById = async (id) => {
   }
 };
 
-export { fetchProducts, fetchProductById };
+const fetchInquiryById = async (id) => {
+  try {
+    const response = await fetch(`${SERVER_URL}/${id}/comments?limit=5`);
+    if (!response.ok) {
+      throw new Error("데이터 불러오기 실패");
+    }
+    return await response.json();
+  } catch (error) {
+    throw error;
+  }
+};
+
+export { fetchProducts, fetchProductById, fetchInquiryById };
