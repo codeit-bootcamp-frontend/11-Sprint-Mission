@@ -9,7 +9,10 @@ function ItemDetailForm() {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const dateOnly = item.createdAt.split("T")[0].replace(/-/g, ".");
+  const dateOnly =
+    item && item.createdAt
+      ? item.createdAt.split("T")[0].replace(/-/g, ".")
+      : "";
 
   useEffect(() => {
     const fetchProductDetail = async () => {
