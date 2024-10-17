@@ -1,7 +1,6 @@
 import "./InputFile.scss";
 import IC_PLUS from "../../assets/ic_plus.svg";
-import { useRef, useState } from "react";
-// import ButtonClose from "./ButtonClose";
+import { useEffect, useRef, useState } from "react";
 import Button from "./Button";
 import Images from "./Images";
 
@@ -33,6 +32,14 @@ function InputFile() {
       fileInputRef.current.value = "";
     }
   };
+
+  useEffect(() => {
+    return () => {
+      if (preview) {
+        URL.revokeObjectURL(preview);
+      }
+    };
+  }, [preview]);
 
   return (
     <>
