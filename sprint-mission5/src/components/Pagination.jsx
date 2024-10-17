@@ -1,6 +1,7 @@
 import "./Pagination.css";
 import LeftArrow from "../images/pagination/left_arrow.png";
 import RightArrow from "../images/pagination/right_arrow.png";
+import classNames from "classnames";
 
 const Pagination = ({ totalPageNum, activePageNum, onPageChange }) => {
   const maxVisiblePages = 5;
@@ -19,7 +20,7 @@ const Pagination = ({ totalPageNum, activePageNum, onPageChange }) => {
   );
 
   return (
-    <div className="pagination-wrap">
+    <nav className="pagination-wrap">
       <button
         className="pagin-btn"
         disabled={activePageNum === 1}
@@ -30,7 +31,9 @@ const Pagination = ({ totalPageNum, activePageNum, onPageChange }) => {
       {pages.map((page) => (
         <button
           key={page}
-          className={`pagin-btn ${activePageNum === page ? "active" : ""}`}
+          className={classNames("pagin-btn", {
+            active: activePageNum === page,
+          })}
           onClick={() => onPageChange(page)}
         >
           {page}
@@ -43,7 +46,7 @@ const Pagination = ({ totalPageNum, activePageNum, onPageChange }) => {
       >
         <img src={RightArrow} alt="오른쪽버튼" />
       </button>
-    </div>
+    </nav>
   );
 };
 export default Pagination;
