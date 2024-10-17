@@ -8,29 +8,16 @@ import { useEffect, useState } from "react";
 import { useCallback } from "react";
 import { useMemo } from "react";
 import Pagination from "./Pagination";
-
-const getPageSize = () => {
-  const width = window.innerWidth;
-  if (width < 767) {
-    // Mobile viewport
-    return 4;
-  } else if (width < 1279) {
-    // Tablet viewport
-    return 6;
-  } else {
-    // Desktop viewport
-    return 10;
-  }
-};
+import useHandleResize from "../hooks/UseDebouceSize";
 
 const Allitem = () => {
   const [productList, setProductList] = useState([]);
   const [orderBy, setOrderBy] = useState("recent");
   const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(getPageSize());
   const [totalPageNum, setTotalPageNum] = useState();
   const [isOpen, setIsOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+
+  const { pageSize, isMobile } = useHandleResize(false);
 
   const loadList = async ({ orderBy, page, pageSize }) => {
     const itmes = await getAllProducts({ orderBy, page, pageSize });
@@ -43,17 +30,7 @@ const Allitem = () => {
   }, []);
 
   useEffect(() => {
-    const handleResize = () => {
-      setPageSize(getPageSize());
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    window.addEventListener("resize", handleResize);
     loadList({ orderBy, page, pageSize });
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
   }, [orderBy, page, pageSize]);
 
   const toggleDropdown = () => {
