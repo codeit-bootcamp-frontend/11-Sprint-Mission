@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { ReactComponent as PlusImg } from "../../../images/icons/plusimg.svg";
+import DeleteButton from "../../../components/DeleteButton";
 
 function ImageUpload({ title }) {
   const [preview, setPreview] = useState("");
@@ -27,6 +28,12 @@ function ImageUpload({ title }) {
     }
   };
 
+  const handleImageDelete = () => {
+    setPreview("");
+    setErrorMessage("");
+    fileInput.current.value = "";
+  };
+
   return (
     <div className="imgContainer">
       {title && (
@@ -47,7 +54,12 @@ function ImageUpload({ title }) {
         />
 
         {preview && (
-          <img className="prevImg" src={preview} alt="이미지 미리보기" />
+          <div className="imgContainergo">
+            <img className="prevImg" src={preview} alt="이미지 미리보기" />
+            <div className="imgDeleteButtonContainer">
+              <DeleteButton onClick={handleImageDelete} />
+            </div>
+          </div>
         )}
       </div>
       {errorMessage && <p className="errorMsg">{errorMessage}</p>}

@@ -18,8 +18,8 @@ form {
   display: flex;
   align-items: center;
   height: 42px;
-  background-color: #9ca3af;
   color: #f3f4f6;
+  cursor: pointer;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
@@ -38,6 +38,22 @@ form {
   flex-direction: row;
   align-items: center;
   gap: 12px;
+}
+
+.prevImg {
+  margin-left: 15px;
+  width: 282px;
+  height: 282px;
+  border-radius: 12px;
+}
+
+.imgContainergo {
+  position: relative;
+}
+.imgDeleteButtonContainer {
+  position: absolute;
+  top: 15px;
+  right: 16px;
 }
 
 .imgButton {
@@ -104,12 +120,13 @@ form {
 
 .tagItem {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   height: 36px;
   background-color: #f3f4f6;
   border-radius: 26px;
   padding: 6px 12px;
-  min-width: 90px;
+  position: relative;
 }
 
 .tagText {

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import InputField from "./InputField";
+import DeleteButton from "../../../components/DeleteButton";
 
-function InputTag({ tags, addTag }) {
+function InputTag({ tags, addTag, deleteTag }) {
   const [tag, setTag] = useState("");
 
   const pressEnter = (e) => {
@@ -30,6 +31,7 @@ function InputTag({ tags, addTag }) {
           더 좋은 방법이 있을까요? */
           <div key={tag} className="tagItem">
             <span className="tagText">{`#${tag}`}</span>
+            <DeleteButton onClick={() => deleteTag(tag)} />
           </div>
         ))}
       </div>
