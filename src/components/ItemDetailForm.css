@@ -1,14 +1,12 @@
 .item-detail {
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding-top: 24px;
 }
 
 .item-detail-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .item-detail-top-container {
@@ -267,6 +265,10 @@
   .item-detail-favorite-icon {
     width: 20px;
     height: 20px;
+  }
+
+  .item-detail-bottom-container {
+    width: 100%;
   }
 }
 
