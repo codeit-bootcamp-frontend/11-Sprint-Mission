@@ -6,6 +6,7 @@ import TagInput from "components/addItem/TagInput";
 import Header from "components/common/Header";
 import PrimaryButton from "components/common/PrimaryButton";
 import React, { useEffect, useReducer, useState } from "react";
+import { postProduct } from "utils/api";
 
 const INITIAL_INPUT = {
   images: [],
@@ -37,7 +38,8 @@ function AddItem() {
     e.preventDefault();
     if (isFormValid) {
       // 추후 POST API 연동 예정
-      console.log(e);
+      // console.log(e);
+      postProduct({ content: userInput });
     }
   };
 

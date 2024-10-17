@@ -46,8 +46,25 @@ const fetchInquiryById = async (id) => {
   }
 };
 
+const postProduct = async ({ content }) => {
+  try {
+    const response = await fetch(`${SERVER_URL}/products`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // Authorization: 'Jwt Token'
+      },
+      body: JSON.stringify(content),
+    });
+    if (!response.ok) {
+      throw new Error("상품 추가 실패");
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
 const postComment = async (id, { content }) => {
-  console.log(JSON.stringify(content));
   try {
     const response = await fetch(`${SERVER_URL}/products/${id}/comments`, {
       method: "POST",
@@ -87,6 +104,7 @@ export {
   fetchProducts,
   fetchProductById,
   fetchInquiryById,
+  postProduct,
   postComment,
   updateComment,
 };
