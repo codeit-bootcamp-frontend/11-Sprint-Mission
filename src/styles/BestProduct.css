@@ -10,12 +10,13 @@
   border-radius: 1rem;
 }
 
-.BestProduct {
+.BestProductList {
   width: 100%;
   display: flex;
   list-style-type: none;
   padding: 0;
   justify-content: space-between;
+  gap: 24px;
 }
 
 .BestProductName {
