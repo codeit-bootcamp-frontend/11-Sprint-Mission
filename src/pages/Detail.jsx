@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
-import { fetchProductById, fetchInquiryById } from "utils/api";
+import { fetchProductById, fetchInquiryById, postComment } from "utils/api";
 import DetailProduct from "components/detail/DetailProduct";
 import PrimaryButton from "components/common/PrimaryButton";
 import DetailInquiry from "components/detail/DetailInquiry";
@@ -19,6 +19,7 @@ const INITIAL_DETAILS = {
 
 function Detail() {
   const { id } = useParams();
+  const [newComment, setNewComment] = useState("");
   const [product, setProduct] = useState(INITIAL_DETAILS);
   const [comments, setComments] = useState({ list: [], nextCursor: null });
   const {
@@ -46,6 +47,11 @@ function Detail() {
     });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    postComment(id, { content: newComment }); // Jwt Token 추가 예정
+  };
+
   useEffect(() => {
     loadProductById(id);
     loadInquiryById(id);
@@ -64,13 +70,15 @@ function Detail() {
         updatedAt={updatedAt}
       />
       <div className="product-inquiry-wrap">
-        <form>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="input_inquiry">문의하기</label>
           <textarea
             id="input_inquiry"
+            value={newComment}
             placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
+            onChange={({ target }) => setNewComment(target.value)}
           />
-          <PrimaryButton type="submit" name="btn-add">
+          <PrimaryButton type="submit" name="btn-add" disabled={!newComment}>
             등록
           </PrimaryButton>
         </form>
