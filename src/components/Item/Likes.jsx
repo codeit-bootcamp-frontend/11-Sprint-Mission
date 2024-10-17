@@ -1,13 +1,14 @@
 import LikeIcon from "../../assets/likes_icon.svg";
+import Like from "./Likes.style";
 
-const Likes = () => {
+const Likes = ({ item }) => {
   return (
-    <span className="likes">
+    <Like>
       <i>
         <img src={LikeIcon} alt="좋아요" />
       </i>
-      123
-    </span>
+      {item.favoriteCount}
+    </Like>
   );
 };
 
