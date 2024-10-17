@@ -1,11 +1,10 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import { fetchProductById, fetchInquiryById } from "utils/api";
 import DetailProduct from "components/detail/DetailProduct";
 import PrimaryButton from "components/common/PrimaryButton";
 import DetailInquiry from "components/detail/DetailInquiry";
 import InquiryEmpty from "components/detail/InquiryEmpty";
-import Paginations from "components/items/Paginations";
 
 const INITIAL_DETAILS = {
   name: "",
@@ -83,7 +82,6 @@ function Detail() {
               content={content}
               writer={writer}
               updatedAt={updatedAt}
-              updateComment={setComments}
             />
           ))
         ) : (

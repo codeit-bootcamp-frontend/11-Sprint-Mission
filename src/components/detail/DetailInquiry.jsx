@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import DropDownInquiry from "./DropDownInquiry";
 import { calculateGapHour } from "utils/formatDate";
+// import { updateComment } from "utils/api";
 
-function DetailInquiry({ id, content, writer, updatedAt, updateComment }) {
+function DetailInquiry({ id, content, writer, updatedAt }) {
   const INITIAL_COMMENT = content;
   const [isEditting, setIsEditting] = useState(false);
   const [comment, setComment] = useState(INITIAL_COMMENT);
@@ -12,7 +13,10 @@ function DetailInquiry({ id, content, writer, updatedAt, updateComment }) {
     setComment(INITIAL_COMMENT);
   };
 
-  const handleEdit = () => {};
+  const handleEdit = () => {
+    setIsEditting(false);
+    // updateComment(id, { content: comment }); // Jwt Token 생성 후 추가 할 예정
+  };
 
   return (
     <div className="content-inquiry">
