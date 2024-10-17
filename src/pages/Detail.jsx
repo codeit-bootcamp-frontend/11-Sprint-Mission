@@ -4,6 +4,7 @@ import { fetchProductById, fetchInquiryById } from "utils/api";
 import DetailProduct from "components/detail/DetailProduct";
 import PrimaryButton from "components/common/PrimaryButton";
 import DetailInquiry from "components/detail/DetailInquiry";
+import InquiryEmpty from "components/detail/InquiryEmpty";
 
 const INITIAL_DETAILS = {
   name: "",
@@ -82,7 +83,7 @@ function Detail() {
             />
           ))
         ) : (
-          <div>아직 문의가 없어요</div>
+          <InquiryEmpty />
         )}
       </div>
     </div>
