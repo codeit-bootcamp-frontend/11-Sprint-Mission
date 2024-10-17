@@ -175,6 +175,19 @@
       }
     }
   }
+  .navigate-to-items {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    width: fit-content;
+    margin: 0 auto 4rem;
+    padding: 1.1rem 3.95rem;
+    border-radius: 4rem;
+    background-color: var(--primary100);
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+    color: #fff;
+  }
 }
 
 @media (max-width: 1199px) {

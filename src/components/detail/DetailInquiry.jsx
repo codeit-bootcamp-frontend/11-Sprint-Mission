@@ -1,23 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import DropDownInquiry from "./DropDownInquiry";
 import { calculateGapHour } from "utils/formatDate";
 
-function DetailInquiry({ content, writer, updatedAt }) {
+function DetailInquiry({ id, content, writer, updatedAt, updateComment }) {
+  const INITIAL_COMMENT = content;
+  const [isEditting, setIsEditting] = useState(false);
+  const [comment, setComment] = useState(INITIAL_COMMENT);
+
+  const handleCancel = () => {
+    setIsEditting(false);
+    setComment(INITIAL_COMMENT);
+  };
+
+  const handleEdit = () => {};
+
   return (
     <div className="content-inquiry">
-      <DropDownInquiry />
+      {!isEditting && <DropDownInquiry setIsEditting={setIsEditting} />}
       <div className="inquiry-comment">
-        <p>{content}</p>
-        <textarea name="inquiry_comment" id="inquiry_comment" />
+        {isEditting ? (
+          <textarea
+            name="inquiry_comment"
+            id="inquiry_comment"
+            value={comment}
+            onChange={({ target }) => setComment(target.value)}
+          />
+        ) : (
+          <p>{content}</p>
+        )}
       </div>
       <div className="inquiry-footer">
-        <div className="writer-icon">
-          <img src="/images/icons/ic_user_login.svg" alt={writer.nickname} />
+        <div className="user-area">
+          <div className="writer-icon">
+            <img src="/images/icons/ic_user_login.svg" alt={writer.nickname} />
+          </div>
+          <div>
+            <div className="writer-name">{writer.nickname}</div>
+            <div className="date-update">{calculateGapHour(updatedAt)}</div>
+          </div>
         </div>
-        <div>
-          <div className="writer-name">{writer.nickname}</div>
-          <div className="date-update">{calculateGapHour(updatedAt)}</div>
-        </div>
+        {isEditting && (
+          <div className="edit-area">
+            <button className="btn-cancel" onClick={handleCancel}>
+              취소
+            </button>
+            <button className="btn-edit" onClick={handleEdit}>
+              수정 완료
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

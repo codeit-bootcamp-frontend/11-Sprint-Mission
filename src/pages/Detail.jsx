@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useReducer, useState } from "react";
+import { NavLink, useParams } from "react-router-dom";
 import { fetchProductById, fetchInquiryById } from "utils/api";
 import DetailProduct from "components/detail/DetailProduct";
 import PrimaryButton from "components/common/PrimaryButton";
 import DetailInquiry from "components/detail/DetailInquiry";
 import InquiryEmpty from "components/detail/InquiryEmpty";
+import Paginations from "components/items/Paginations";
 
 const INITIAL_DETAILS = {
   name: "",
@@ -20,7 +21,7 @@ const INITIAL_DETAILS = {
 function Detail() {
   const { id } = useParams();
   const [product, setProduct] = useState(INITIAL_DETAILS);
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState({ list: [], nextCursor: null });
   const {
     name,
     description,
@@ -32,6 +33,7 @@ function Detail() {
     updatedAt,
     isFavorite,
   } = product;
+  const { list, nextCursor } = comments;
 
   const loadProductById = (id) => {
     fetchProductById(id).then((response) => {
@@ -40,8 +42,8 @@ function Detail() {
   };
 
   const loadInquiryById = (id) => {
-    fetchInquiryById(id).then(({ list }) => {
-      setComments(list);
+    fetchInquiryById(id).then(({ list, nextCursor }) => {
+      setComments({ list: list, nextCursor: nextCursor });
     });
   };
 
@@ -73,19 +75,26 @@ function Detail() {
             등록
           </PrimaryButton>
         </form>
-        {comments.length > 0 ? (
-          comments.map(({ id, content, writer }) => (
+        {list.length > 0 ? (
+          list.map(({ id, content, writer, updatedAt }) => (
             <DetailInquiry
               key={`comment_${id}`}
+              id={id}
               content={content}
               writer={writer}
               updatedAt={updatedAt}
+              updateComment={setComments}
             />
           ))
         ) : (
           <InquiryEmpty />
         )}
+        {/* {nextCursor && <button onClick={}>더 보기</button>} */}
       </div>
+      <NavLink to="/items" className="navigate-to-items">
+        목록으로 돌아가기
+        <img src="/images/icons/ic_back.svg" alt="목록으로 돌아가기" />
+      </NavLink>
     </div>
   );
 }

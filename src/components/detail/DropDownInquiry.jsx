@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
-function DropDownInquiry() {
+function DropDownInquiry({ setIsEditting }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleEdit = () => {
     setIsOpen(false);
+    setIsEditting(true);
   };
 
   const handleDelete = () => {
