@@ -11,7 +11,7 @@ const INITIAL_VALUES = {
   tag: [],
 };
 
-function ProductCreateForm({ initialValues = INITIAL_VALUES, initialPreivew }) {
+function ProductCreateForm({ initialValues = INITIAL_VALUES, initialPreview }) {
   const [values, setValues] = useState(initialValues);
   const [isFormValid, setIsFormValid] = useState(false);
 
@@ -56,7 +56,7 @@ function ProductCreateForm({ initialValues = INITIAL_VALUES, initialPreivew }) {
           <FileInput
             name="imgFile"
             value={values.imgFile}
-            initialPreivew={initialPreivew}
+            initialPreview={initialPreview}
             onChange={handleChange}
           />
         </div>

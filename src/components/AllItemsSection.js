@@ -29,9 +29,13 @@ function AllItemsSection() {
   const navigate = useNavigate();
 
   const fetchSortedData = async ({ orderBy, page, pageSize }) => {
-    const products = await getProducts({ orderBy, page, pageSize });
-    setItemList(products.list);
-    setTotalPageNum(Math.ceil(products.totalCount / pageSize));
+    try {
+      const products = await getProducts({ orderBy, page, pageSize });
+      setItemList(products.list);
+      setTotalPageNum(Math.ceil(products.totalCount / pageSize));
+    } catch (error) {
+      throw new Error('정보를 불러오는데 실패했습니다.');
+    }
   };
 
   const handleRegisterbtnClick = () => {
