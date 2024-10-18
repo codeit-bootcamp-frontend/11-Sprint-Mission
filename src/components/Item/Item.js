@@ -1,6 +1,7 @@
 import "./Item.css";
 import ic_heart from "../../assets/images/ic_heart.svg";
 import thumbDefault from "../../assets/images/thumbnail-placeholder.png";
+import { Link } from "react-router-dom";
 
 /**
  * 상품 요소 컴포넌트
@@ -15,17 +16,19 @@ function Item({ item, type = null }) {
   const thumbnail = item.images[0] ?? thumbDefault;
 
   return (
-    <div className={classNames}>
-      <img className="thumbnail" src={thumbnail} alt={item.name} />
-      <div className="Item-content">
-        <h4 className="name">{item.name}</h4>
-        <div className="price">{`${item.price}원`}</div>
-        <div className="favorite">
-          <img src={ic_heart} alt="좋아요" />
-          <div>{item.favoriteCount}</div>
+    <Link to={`/items/${item.id}`}>
+      <div className={classNames}>
+        <img className="thumbnail" src={thumbnail} alt={item.name} />
+        <div className="Item-content">
+          <h4 className="name">{item.name}</h4>
+          <div className="price">{`${item.price}원`}</div>
+          <div className="favorite">
+            <img src={ic_heart} alt="좋아요" />
+            <div>{item.favoriteCount}</div>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
