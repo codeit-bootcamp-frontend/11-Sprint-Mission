@@ -6,8 +6,7 @@ function Input({
   className = "default",
   name = "",
   value = "",
-  onChange = () => {},
-  onKeyDown = () => {},
+  ...rest
 }) {
   return (
     <input
@@ -16,8 +15,7 @@ function Input({
       className={className}
       name={name}
       value={value}
-      onChange={onChange}
-      onKeyDown={onKeyDown}
+      {...rest}
     />
   );
 }
