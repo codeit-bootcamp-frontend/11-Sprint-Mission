@@ -5,6 +5,7 @@ import styled from "styled-components";
 import DetailTop from "../components/DetailTop";
 import OwnerFlexBox from "../components/OwnerFlexBox";
 import DetailContact from "../components/DetailContact";
+import { Helmet } from "react-helmet";
 
 function DetailItem() {
   const { productId } = useParams();
@@ -28,6 +29,9 @@ function DetailItem() {
   }
   return (
     <>
+      <Helmet>
+        <title>상품 상세 페이지</title>
+      </Helmet>
       <DetailCon>
         <DetailFlexAll>
           <DetailImgWrap>
