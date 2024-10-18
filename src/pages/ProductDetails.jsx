@@ -42,9 +42,6 @@ function ProductDetails() {
     handleCommentsListLoad();
   }, [productId]);
 
-  const handleEditClick = () => console.log("수정하기 버튼 클릭");
-  const handleDeleteClick = () => console.log("삭제하기 버튼 클릭");
-
   const [formValues, setFormValues] = useState("");
 
   const isFormValid = formValues.trim() !== "";
@@ -86,6 +83,13 @@ function ProductDetails() {
       const day = String(registrationDate.getDate()).padStart(2, "0");
       return `${year}.${month}.${day}`;
     }
+  };
+
+  const handleEditClick = () => console.log("수정하기 버튼 클릭");
+  const handleDeleteClick = (itemToDeleteId) => {
+    setCommentsList((prevItems) =>
+      prevItems.filter((item) => item.id !== itemToDeleteId)
+    );
   };
 
   return (
@@ -177,7 +181,7 @@ function ProductDetails() {
                     수정하기
                   </DropDownMenu.Item>
                   <DropDownMenu.Item
-                    onClick={handleDeleteClick}
+                    onClick={() => handleDeleteClick(item.id)}
                     className="btn-delete">
                     삭제하기
                   </DropDownMenu.Item>

@@ -39,7 +39,8 @@ const MoreList = styled.ul`
   padding: 0.4rem 0;
   z-index: 1;
 `;
-const ItemButton = styled.li`
+const ItemButton = styled.button`
+  cursor: pointer;
   font-size: 1.6rem;
   line-height: 2.6rem;
   color: var(--gray-500);
