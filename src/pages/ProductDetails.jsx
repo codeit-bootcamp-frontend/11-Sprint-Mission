@@ -1,14 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getProductsDetail } from "../services/products-api";
+import useAsyncRequest from "../hooks/useAsyncRequest";
+
 import HeartCountArea from "../components/common/HeartCountArea";
 import Images from "../components/common/Images";
 import TagsList from "../components/common/TagsList";
 import DropDownMenu from "../components/common/DropDownMenu";
 import Button from "../components/common/Button";
-import INQUIRY_IMAGE from "../assets/Img_inquiry_empty.svg";
-import styled from "./ProductDetails.module.scss";
 import UserInfo from "../components/common/UserInfo";
 
+import INQUIRY_IMAGE from "../assets/Img_inquiry_empty.svg";
+import styled from "./ProductDetails.module.scss";
+
 function ProductDetails() {
+  const [details, setDetails] = useState({});
+  const { execute, isLoading, error: fetchError } = useAsyncRequest();
+  const { productId } = useParams();
+
+  useEffect(() => {
+    const handleLoad = async () => {
+      const result = await execute(() => getProductsDetail(productId));
+      if (result) {
+        setDetails(result);
+      }
+    };
+
+    handleLoad();
+  }, [productId]);
+
   const handleEditClick = () => console.log("수정하기 버튼 클릭");
   const handleDeleteClick = () => console.log("삭제하기 버튼 클릭");
 
@@ -21,10 +41,44 @@ function ProductDetails() {
     setFormValues(value);
   };
 
+  if (isLoading) {
+    return <p>로딩 중 입니다...</p>;
+  }
+
+  if (fetchError) {
+    return <p>오류 발생: {fetchError.message}</p>;
+  }
+
+  if (!Object.keys(details).length) {
+    return <p>상품 정보를 불러올 수 없습니다.</p>;
+  }
+
+  const priceReplace = details.price
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+  // 날짜 변환 함수
+  const formatRegistrationDate = (isDate) => {
+    const registrationDate = new Date(isDate);
+    const currentDate = new Date();
+    const timeDifference = currentDate - registrationDate;
+    const hoursDifference = timeDifference / (1000 * 60 * 60);
+
+    if (hoursDifference < 24) {
+      const roundedHours = Math.floor(hoursDifference);
+      return roundedHours < 1 ? "방금 전" : `${roundedHours}시간 전`;
+    } else {
+      const year = registrationDate.getFullYear();
+      const month = String(registrationDate.getMonth() + 1).padStart(2, "0");
+      const day = String(registrationDate.getDate()).padStart(2, "0");
+      return `${year}.${month}.${day}`;
+    }
+  };
+
   return (
     <main className="page-productDetails">
       <div className="container">
-        <dir className={styled["product-detail-container"]}>
+        <div className={styled["product-detail-container"]}>
           <Images
             imageSize={{
               pcSize: "big",
@@ -32,34 +86,31 @@ function ProductDetails() {
               mobileSize: "big-large",
             }}
             classNames="product-detail-images"
-            src="http://placehold.it/600x600"
-            alt="상품 이미지"
+            src={details.images}
+            alt={`${details.name} 이미지`}
           />
           <div className={styled["product-detail-info"]}>
             <div className={styled["product-title"]}>
-              <h2>아이패드 미니 팔아요</h2>
-              <p className={styled["price"]}>500,000원</p>
+              <h2>{details.name}</h2>
+              <p className={styled["price"]}>{priceReplace}원</p>
             </div>
             <div className={styled["product-desc"]}>
               <h3>상품 소개</h3>
-              <p>
-                액정에 잔기스랑 주변부 스크래치있습니다만 예민하신분아니면 전혀
-                신경쓰이지않을정도입니다. 박스 보관중입니다. 메모용과
-                넷플릭스용으로만쓰던거라 뭘 해보질 않아 기능이나 문제점을
-                못느꼈네요 잘 안써서 싸게넘깁니다! 택배거래안합니다.
-              </p>
+              <p>{details.description}</p>
             </div>
             <div className={styled["product-tag"]}>
               <h3>상품 태그</h3>
-              <TagsList
-                tags={["아이패드미니", "애플", "가성비"]}
-                remove={false}
-              />
+              <TagsList tags={details.tags} remove={false} />
             </div>
             <div className={styled["user-info"]}>
-              <UserInfo size="big" sort="column" />
+              <UserInfo
+                size="big"
+                sort="column"
+                name={details.ownerNickname}
+                createdDate={formatRegistrationDate(details.createdAt)}
+              />
               <HeartCountArea
-                count="123"
+                count={details.favoriteCount}
                 style="large border"
                 className={styled["btn-heart"]}
               />
@@ -75,7 +126,7 @@ function ProductDetails() {
               삭제하기
             </DropDownMenu.Item>
           </DropDownMenu>
-        </dir>
+        </div>
         <div className={styled["inquiry-form"]}>
           <h4>문의하기</h4>
           <form>

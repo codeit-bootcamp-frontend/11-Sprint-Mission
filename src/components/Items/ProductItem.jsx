@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import HeartCountArea from "../common/HeartCountArea";
 import Images from "../common/Images";
 
@@ -7,7 +8,7 @@ const ProductItem = ({ item, imageSize }) => {
     .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   return (
-    <>
+    <Link to={`/items/${item.id}`}>
       <Images
         imageSize={imageSize}
         src={item.images}
@@ -18,7 +19,7 @@ const ProductItem = ({ item, imageSize }) => {
         <p className="product-price">{priceReplace}원</p>
         <HeartCountArea count={item.favoriteCount} style="small" />
       </div>
-    </>
+    </Link>
   );
 };
 

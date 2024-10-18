@@ -2,7 +2,7 @@ import { useState } from "react";
 import HEART_ICON_IMAGE from "../../assets/ic_heart.svg";
 import "./HeartCountArea.scss";
 
-const HeartCountArea = ({ count, style = "small", className = "" }) => {
+const HeartCountArea = ({ count = 0, style = "small", className = "" }) => {
   const [addCount, setAddCount] = useState(0);
 
   const handleHeartClick = () => setAddCount(addCount + 1);

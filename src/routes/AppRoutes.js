@@ -15,7 +15,7 @@ export default function AppRoutes() {
       <Route path="boards" element={<Boards />} />
       <Route path="items">
         <Route index element={<Items />} />
-        <Route path="productDetails" element={<ProductDetails />} />
+        <Route path=":productId" element={<ProductDetails />} />
       </Route>
       <Route path="addItem" element={<AddItem />} />
       <Route path="login" element={<Login />} />

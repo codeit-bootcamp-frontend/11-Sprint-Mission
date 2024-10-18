@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import ProfileImage from "./ProfileImage";
 
-function UserInfo({ size, sort }) {
+function UserInfo({ size, sort, name = "유저이름", createdDate = "게시날짜" }) {
   return (
     <Container size={size}>
       <ProfileImage imageSize={size} />
       <Details sort={sort} size={size}>
-        <Name size={size}>총명한판다</Name>
-        <Date>2024. 01. 02</Date>
+        <Name size={size}>{name}</Name>
+        <Date>{createdDate}</Date>
       </Details>
     </Container>
   );
