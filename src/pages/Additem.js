@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/AddItem.css';
+import PlusIcon from '../image/plus-icon.png';
 
 function AddItem() {
   const [image, setImage] = useState(null);
@@ -37,6 +38,10 @@ function AddItem() {
         <div className="image-upload">
           <label className="image-placeholder" htmlFor="image-upload">
             <input id="image-upload" type="file" onChange={handleImageUpload} />
+            <div className="image-placeholder">
+              <img src={PlusIcon} alt="이미지 아이콘" />
+              <div className="text">이미지 등록</div>
+            </div>
           </label>
           {/* 이미지가 있을때 */}
           {image && (

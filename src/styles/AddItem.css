@@ -103,6 +103,21 @@ label {
   object-fit: cover;
 }
 
+.image-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.image-placeholder .text {
+  font-size: 16px;
+  font-weight: 400;
+  color: #9ca3af;
+}
+
+.image-placeholder .icon,
 .image-preview {
   position: relative;
 }
