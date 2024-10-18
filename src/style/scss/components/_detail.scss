@@ -175,6 +175,9 @@
       }
     }
   }
+  .end-point {
+    height: 0.1rem;
+  }
   .navigate-to-items {
     display: flex;
     align-items: center;
@@ -187,6 +190,9 @@
     font-size: 1.8rem;
     line-height: 2.6rem;
     color: #fff;
+    &:hover {
+      outline: 0.1rem solid #000;
+    }
   }
 }
 

@@ -815,6 +815,9 @@ footer .footer-wrap .sns a img {
   cursor: not-allowed;
   background-color: var(--gray400);
 }
+.btn-primary.hover {
+  box-shadow: 0.2rem 0.2rem 0.1rem #000;
+}
 
 .pagination {
   display: flex;
@@ -836,6 +839,9 @@ footer .footer-wrap .sns a img {
 .pagination .btn-pagination[active] {
   background-color: #2f80ed;
   color: #fff;
+}
+.pagination .btn-pagination:not([active]):hover {
+  opacity: 0.5;
 }
 .pagination .btn-pagination.btn-prev, .pagination .btn-pagination.btn-next {
   background: url(/public/images/icons/ic_arrow_right.svg) no-repeat center/1.6rem 1.6rem;
@@ -1141,6 +1147,9 @@ footer .footer-wrap .sns a img {
   display: block;
   margin: 0 0 0 auto;
 }
+.page-detail .end-point {
+  height: 0.1rem;
+}
 .page-detail .navigate-to-items {
   display: flex;
   align-items: center;
@@ -1154,6 +1163,9 @@ footer .footer-wrap .sns a img {
   font-size: 1.8rem;
   line-height: 2.6rem;
   color: #fff;
+}
+.page-detail .navigate-to-items:hover {
+  outline: 0.1rem solid #000;
 }
 
 @media (max-width: 1199px) {

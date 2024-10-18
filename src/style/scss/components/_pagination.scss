@@ -17,6 +17,11 @@
       background-color: #2f80ed;
       color: #fff;
     }
+    &:not([active]) {
+      &:hover {
+        opacity: 0.5;
+      }
+    }
     &.btn-prev,
     &.btn-next {
       background: url(/public/images/icons/ic_arrow_right.svg) no-repeat center /
