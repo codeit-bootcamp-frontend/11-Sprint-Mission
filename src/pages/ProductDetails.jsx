@@ -21,6 +21,7 @@ function ProductDetails() {
   const [commentsList, setCommentsList] = useState({});
   const { execute, isLoading, error: fetchError } = useAsyncRequest();
   const { productId } = useParams();
+  const [editingCommentId, setEditingCommentId] = useState(null);
 
   useEffect(() => {
     const handleProductsLoad = async () => {
@@ -85,12 +86,78 @@ function ProductDetails() {
     }
   };
 
-  const handleEditClick = () => console.log("수정하기 버튼 클릭");
+  const handleEditClick = (commentId) => {
+    setEditingCommentId(commentId);
+  };
+
+  const handleCancelEdit = () => {
+    setEditingCommentId(null);
+  };
+
+  const handleEditSubmit = (item, updatedContent) => {
+    if (updatedContent.trim() !== "") {
+      setCommentsList((prevItems) =>
+        prevItems.map((comment) =>
+          comment.id === item.id
+            ? { ...comment, content: updatedContent }
+            : comment
+        )
+      );
+      setEditingCommentId(null);
+    }
+  };
+
   const handleDeleteClick = (itemToDeleteId) => {
     setCommentsList((prevItems) =>
       prevItems.filter((item) => item.id !== itemToDeleteId)
     );
   };
+
+  function CommitEditForm({ item, onCancel, onSubmit }) {
+    const [editValue, setEditValue] = useState(item.content);
+    const isEditValid = editValue.trim() !== "";
+
+    const handleEditInput = (e) => {
+      const value = e.target.value;
+      setEditValue(value);
+    };
+
+    return (
+      <form className={styled.userEditForm}>
+        <textarea
+          className={`default ${styled["inquiry-edit-input"]}`}
+          value={editValue}
+          name="inquiry"
+          onChange={handleEditInput}
+        />
+        <div className={styled.userEditWrap}>
+          <UserInfo
+            size="small"
+            sort="column"
+            name={item.writer.nickname}
+            createdDate={formatRegistrationDate(item.createdAt)}
+          />
+          <div className={`btn-wrap ${styled.btnWrap}`}>
+            <Button
+              link={false}
+              className="cancel"
+              styleType={`square small_40 white`}
+              onClick={onCancel}>
+              취소
+            </Button>
+            <Button
+              link={false}
+              className="post"
+              styleType={`square small_40 ${!isEditValid ? "gray" : "blue"}`}
+              disabled={!isEditValid && Object.values(editValue).length > 0}
+              onClick={() => onSubmit(editValue)}>
+              수정 완료
+            </Button>
+          </div>
+        </div>
+      </form>
+    );
+  }
 
   return (
     <main className="page-productDetails">
@@ -167,25 +234,37 @@ function ProductDetails() {
           <ul className={styled["inquiry-list"]}>
             {commentsList.map((item) => (
               <li key={item.id} className={styled["inquiry-item"]}>
-                <p className={styled.comment}>{item.content}</p>
-                <UserInfo
-                  size="small"
-                  sort="column"
-                  name={item.writer.nickname}
-                  createdDate={formatRegistrationDate(item.createdAt)}
-                />
-                <DropDownMenu classNames={styled["dropdown"]}>
-                  <DropDownMenu.Item
-                    onClick={handleEditClick}
-                    className="btn-remove">
-                    수정하기
-                  </DropDownMenu.Item>
-                  <DropDownMenu.Item
-                    onClick={() => handleDeleteClick(item.id)}
-                    className="btn-delete">
-                    삭제하기
-                  </DropDownMenu.Item>
-                </DropDownMenu>
+                {editingCommentId === item.id ? (
+                  <CommitEditForm
+                    item={item}
+                    onCancel={handleCancelEdit}
+                    onSubmit={(updatedContent) =>
+                      handleEditSubmit(item, updatedContent)
+                    }
+                  />
+                ) : (
+                  <>
+                    <p className={styled.comment}>{item.content}</p>
+                    <UserInfo
+                      size="small"
+                      sort="column"
+                      name={item.writer.nickname}
+                      createdDate={formatRegistrationDate(item.createdAt)}
+                    />
+                    <DropDownMenu classNames={styled["dropdown"]}>
+                      <DropDownMenu.Item
+                        onClick={() => handleEditClick(item.id)}
+                        className="btn-remove">
+                        수정하기
+                      </DropDownMenu.Item>
+                      <DropDownMenu.Item
+                        onClick={() => handleDeleteClick(item.id)}
+                        className="btn-delete">
+                        삭제하기
+                      </DropDownMenu.Item>
+                    </DropDownMenu>
+                  </>
+                )}
               </li>
             ))}
           </ul>

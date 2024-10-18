@@ -70,9 +70,6 @@
     form {
       text-align: right;
       margin-bottom: 2.4rem;
-      button {
-        margin-top: 1.6rem;
-      }
     }
   }
 
@@ -112,10 +109,21 @@
       font-weight: 400;
     }
   }
+}
 
-  &-input {
-    height: 10.4rem;
-  }
+.inquiry-input {
+  height: 10.4rem;
+}
+.inquiry-edit-input {
+  height: 8rem;
+}
+.inquiry-input,
+.inquiry-edit-input {
+  margin-bottom: 1.6rem;
+}
+.userEditWrap {
+  display: flex;
+  justify-content: space-between;
 }
 
 .dropdown {
@@ -141,4 +149,8 @@
 .btn-wrap {
   display: flex;
   justify-content: center;
+}
+
+.btnWrap {
+  justify-content: flex-end;
 }
