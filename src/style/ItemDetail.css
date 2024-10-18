@@ -1,6 +1,9 @@
 .item-detail-page {
   width: 1200px;
   margin: 94px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .item-detail-container {
@@ -143,6 +146,46 @@
 }
 
 .item-inquire {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item-inquire > textarea {
+  padding: 16px 24px 16px 24px;
+  gap: 10px;
+  border-radius: 12px;
+  width: 100%;
+  background-color: #f3f4f6;
+  color: #9ca3af;
+  border: 0;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: left;
+  outline-color: #3692ff;
+  resize: none;
+}
+
+.inquire-Registerbtn {
+  margin: 0 0 0 auto;
+  padding: 12px 23px 12px 23px;
+  gap: 10px;
+  border-radius: 8px;
+  border: 0;
+  background-color: #9ca3af;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  text-align: left;
+  color: #f3f4f6;
+}
+
+.inquire-Registerbtn.active {
+  background-color: #3692ff;
+  cursor: pointer;
 }
 
 .item-inquire-title {

@@ -1,14 +1,25 @@
-import { useLocation, Link, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../style/ItemDetail.css';
 import { ReactComponent as BackIcon } from '../images/ic_back.svg';
 import { ReactComponent as Heart } from '../images/ic_heart.svg';
 import { ReactComponent as Profile } from '../images/ic_profile.svg';
+import { useState, useEffect } from 'react';
 
 function ItemDetail() {
   const location = useLocation();
   const item = location.state.item;
-  console.log(item);
   const navigate = useNavigate();
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [contentValue, setContentValue] = useState('');
+
+  const handleChange = (e) => {
+    setContentValue(e.target.value);
+  };
+
+  useEffect(() => {
+    const isValid = contentValue.length > 0;
+    setIsFormValid(isValid);
+  }, [contentValue]);
 
   const handleBackClick = () => {
     navigate('/items');
@@ -55,8 +66,16 @@ function ItemDetail() {
         <textarea
           placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다.
 "
+          rows={3}
+          value={contentValue}
+          onChange={handleChange}
         ></textarea>
-        <div>등록</div>
+        <button
+          className={`inquire-Registerbtn ${isFormValid ? 'active' : ''}`}
+          disabled={!isFormValid}
+        >
+          등록
+        </button>
       </div>
       <button className="back-to-list" onClick={handleBackClick}>
         목록으로 돌아가기
