@@ -1,12 +1,12 @@
 import React from "react";
 import NavBar from "../common/NavBar";
-import RegisterProduct from "../components/RegisterProduct";
+import FileInput from "../components/FileInput";
 
 const AddItemPage = () => {
   return (
     <>
       <NavBar />
-      <RegisterProduct />
+      <FileInput />
     </>
   );
 };

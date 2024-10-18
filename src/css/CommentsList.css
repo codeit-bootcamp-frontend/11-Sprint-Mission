@@ -1,0 +1,180 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Pretendard";
+}
+
+.comments-list {
+  list-style: none;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.comments-content-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.comments-writer-box {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.writer-profile {
+  width: 32px;
+  height: 32px;
+}
+
+.writer-nickname {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #4b5563;
+}
+
+.write-time {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #9ca3af;
+}
+
+.dropdown-menu {
+  width: 139px;
+  position: absolute;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 8px;
+  z-index: 1;
+  top: 40px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f3f4f6;
+}
+
+.dropdown-text {
+  font-size: 16px;
+  font-weight: 400;
+  color: #6b7280;
+  background: none;
+  border: none;
+  padding-top: 16px;
+  padding-bottom: 12px;
+  font-size: 14px;
+  color: #1f2937;
+  cursor: pointer;
+  height: 46px;
+}
+
+.dropdown-image {
+  cursor: pointer;
+}
+
+.no-question-box {
+  text-align: center;
+  margin-top: 47px;
+}
+
+.no-question-image {
+  width: 173px;
+  height: 137px;
+  margin-bottom: 47px;
+}
+
+.no-question-text {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  color: #9ca3af;
+}
+
+.update-input-box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.update-input {
+  width: 100%;
+  height: 80px;
+  padding: 16px 24px;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  border: none;
+  font-size: 14px;
+  font-weight: 400;
+  color: #1f2937;
+}
+
+.edit-button-box {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.edit-button {
+  color: #f3f4f6;
+  border: none;
+  border-radius: 8px;
+  height: 42px;
+  padding: 12px 23px;
+  background-color: #3692ff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.edit-button:hover {
+  background-color: #6babfa;
+  transform: translateY(-3px);
+}
+
+.cancel-button {
+  font-size: 16px;
+  font-weight: 600;
+  color: #737373;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 23px;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+/* 반응형 - Tablet */
+@media screen and (max-width: 1199px) and (min-width: 768px) {
+  .no-question-box {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .no-question-image {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 33px;
+  }
+}
+
+/* 반응형 - Mobile */
+@media screen and (max-width: 767px) {
+  .no-question-box {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .no-question-image {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 33px;
+  }
+}

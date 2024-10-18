@@ -1,0 +1,342 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Pretendard";
+}
+
+.detailItem-container {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.detailItem-box {
+  display: flex;
+  gap: 24px;
+  margin-top: 24px;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px dotted #e5e7eb;
+}
+
+.deatilItem-image-box {
+  width: 486px;
+  height: 486px;
+}
+
+.deatilItem-image {
+  width: 486px;
+  height: 486px;
+  border-radius: 16px;
+}
+
+.detailItem-content-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.detailItem-header-content {
+  border-bottom: 1px dotted #e5e7eb;
+  padding-bottom: 16px;
+}
+
+.detailItem-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detailItem-name {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  color: #1f2937;
+}
+
+.detailItem-menu {
+  width: 3px;
+  height: 13px;
+}
+
+.detailItem-price {
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 47px;
+  color: #1f2937;
+  margin-top: 10px;
+}
+
+.deatilItem-introduce {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+  color: #4b5563;
+}
+
+.detailItem-description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: #1f2937;
+}
+
+.detailItem-tag-container {
+  display: flex;
+  gap: 8px;
+}
+
+.detailItem-tag-box {
+  height: 36px;
+  padding: 6px 16px;
+  border-radius: 26px;
+  background-color: #f3f4f6;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  text-align: center;
+  color: #1f2937;
+  overflow: hidden;
+}
+
+.user-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-box {
+  display: flex;
+  gap: 16px;
+}
+
+.user-profile {
+  width: 40px;
+  height: 40px;
+}
+
+.user-nickname {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #4b5563;
+}
+
+.created-time {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #9ca3af;
+}
+
+.favoriteCount-container {
+  border-left: 1px solid #e5e7eb;
+  padding-left: 24px;
+}
+
+.favoriteCount-box {
+  height: 40px;
+  border: 1px solid #e5e7eb;
+  border-radius: 35px;
+  padding: 4px 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.favoriteCount-image {
+  width: 26px;
+  height: 23px;
+}
+
+.favoriteCount {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  color: #6b7280;
+}
+
+.question-header {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+  color: #111827;
+  margin-bottom: 9px;
+}
+
+#question-input {
+  width: 100%;
+  height: 104px;
+  padding: 16px 24px;
+  background-color: #f3f4f6;
+  border-radius: 16px;
+  border: none;
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+}
+
+#question-input::placeholder {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+  color: #9ca3af;
+}
+
+.button-box {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.question-register-button.inactive {
+  height: 42px;
+  border-radius: 8px;
+  border: none;
+  padding: 12px 23px;
+  background-color: #9ca3af;
+  font-size: 16px;
+  font-weight: 600;
+  color: #f3f4f6;
+  margin-top: 16px;
+}
+
+.question-register-button.active {
+  background-color: #3692ff;
+  height: 42px;
+  border-radius: 8px;
+  border: none;
+  padding: 12px 23px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #f3f4f6;
+  margin-top: 16px;
+}
+
+.question-register-button.active:hover {
+  background-color: #6babfa;
+  transform: translateY(-3px);
+}
+
+.question-container {
+  margin-bottom: 24px;
+}
+
+.back-button-link {
+  text-decoration: none;
+}
+
+.back-button {
+  margin: 64px auto;
+  width: 240px;
+  height: 48px;
+  border: none;
+  border-radius: 40px;
+  padding: 12px 64px;
+  display: flex;
+  gap: 8px;
+  background-color: #3692ff;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: #6babfa;
+  transform: translateY(-3px);
+}
+
+.back-button-text {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
+  color: #f3f4f6;
+  text-wrap: nowrap;
+}
+
+.button-arrow {
+  width: 19px;
+  height: 16px;
+}
+
+/* 반응형 - Tablet */
+@media screen and (max-width: 1199px) and (min-width: 768px) {
+  .detailItem-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .deatilItem-image-box {
+    width: 340px;
+    height: 340px;
+  }
+
+  .deatilItem-image {
+    width: 340px;
+    height: 340px;
+  }
+}
+
+/* 반응형 - Mobile */
+@media screen and (max-width: 767px) {
+  .detailItem-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  .deatilItem-image-box {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .deatilItem-image {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .detailItem-box {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 24px;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px dotted #e5e7eb;
+  }
+
+  .detailItem-name {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 26px;
+    color: #1f2937;
+  }
+
+  .detailItem-price {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    color: #1f2937;
+    margin-top: 8px;
+  }
+
+  .detailItem-header-content {
+    margin-bottom: 16px;
+  }
+
+  .deatilItem-introduce {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    color: #1f2937;
+    margin-bottom: 8px;
+  }
+
+  .detailItem-description {
+    margin-bottom: 24px;
+  }
+
+  .detailItem-tag-container {
+    margin-bottom: 40px;
+  }
+}
