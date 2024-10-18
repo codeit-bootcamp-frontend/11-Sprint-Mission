@@ -1,13 +1,13 @@
 import styles from "./TagsList.module.scss";
 import Button from "./Button";
 
-function TagsList({ tags, remove, onRemove = null }) {
+function TagsList({ tags, onRemove = null }) {
   return (
     <ul className={styles.tagList}>
       {tags.map((tag, index) => (
         <li key={`${tag}-${index}`} className={styles.tagItem}>
           <span>#{tag}</span>
-          {remove && (
+          {onRemove && (
             <Button
               link={false}
               className="clear"

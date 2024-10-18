@@ -125,7 +125,6 @@ function AddItem() {
                 />
                 <TagsList
                   tags={formValues.productTags}
-                  remove={true}
                   onRemove={handleRemoveTag}
                 />
               </div>
