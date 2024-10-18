@@ -1,10 +1,3 @@
-.addItemContentsTitle {
-  height: 42px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
 .itemSubmit {
   display: flex;
   flex-direction: row;
@@ -17,19 +10,16 @@
   border: 1px solid var(--gray400);
   color: white;
 }
-.AddItemIC {
+.addItemIC {
   width: 282px;
   height: 282px;
   margin-right: 24px;
 }
-.addItemContentsForm {
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-  flex-wrap: wrap;
-  height: 100%;
-  margin-bottom: 32px;
-  background: none;
+.textarea {
+  height: 300px;
+  text-align: left;
+  min-height: 50px;
+  max-height: 300px;
 }
 .tagButton {
   width: auto;
@@ -42,13 +32,6 @@
 }
 
 @media (max-width: 1199px) {
-  .addItemContentsTitle {
-    height: 42px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
   .itemSubmit {
     display: flex;
     flex-direction: row;
@@ -61,12 +44,15 @@
     border: 1px solid var(--gray400);
     color: white;
   }
-  .AddItemIC {
+  .column {
+    flex-direction: column;
+  }
+  .addItemIC {
     width: 282px;
     height: 282px;
     margin-right: 24px;
   }
-  .addItemContentsForm {
+  .addItemContents {
     display: flex;
     flex-direction: row;
     justify-content: left;
@@ -86,5 +72,4 @@
   }
 }
 @media (max-width: 767px) {
-  
 }

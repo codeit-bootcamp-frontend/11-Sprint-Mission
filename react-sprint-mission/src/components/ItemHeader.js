@@ -11,16 +11,18 @@ function ItemHeader(props) {
             <img src={ImgPath("/common/ic_logo_item_pc.png")} alt="pandaLogo" />
           </Link>
         </div>
-        <div className="navNoticeBoard">
-          <NavLink to={"/noticeBoard"} style={{}}>
-            자유 게시판
-          </NavLink>
-        </div>
-        <div className="navMarket">
-          <NavLink to={"/market"} style={{}}>
-            중고 마켓
-          </NavLink>
-        </div>
+        <NavLink
+          to={"/NoticeBoard"}
+          className={({ isActive }) => (isActive ? "activeNav" : "inactiveNav")}
+        >
+          자유 게시판
+        </NavLink>
+        <NavLink
+          to={"/Items"}
+          className={({ isActive }) => (isActive ? "activeNav" : "inactiveNav")}
+        >
+          중고 마켓
+        </NavLink>
       </div>
       <div className="userInfo">
         <Link to={"/userInfo"} className="navMarket">

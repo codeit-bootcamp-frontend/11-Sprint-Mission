@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Home.css";
 import { ImgPath } from "components";
 
@@ -25,7 +25,7 @@ function Home(props) {
               거래해 보세요
             </h1>
             <button className="bannerButton">
-              <Link to="Item">구경하러 가기</Link>
+              <NavLink to="Items">구경하러 가기</NavLink>
             </button>
           </div>
         </div>

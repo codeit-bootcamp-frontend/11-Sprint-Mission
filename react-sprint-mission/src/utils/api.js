@@ -1,12 +1,10 @@
 import axios from "axios";
 
-const getAxios = async (params) => {
+const getAxios = async ({ path, params }) => {
   const queryParams = new URLSearchParams(params);
-
+  const newPath = path ? path : process.env.REACT_APP_API_URL;
   try {
-    const res = await axios.get(
-      `${process.env.REACT_APP_API_URL}?${queryParams}`
-    );
+    const res = await axios.get(`${newPath}?${queryParams}`);
     if (res.status === 200) {
       return res;
     }
