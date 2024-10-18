@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./AddItem.module.scss";
 import HeadingTitleArea from "../components/common/HeadingTitleArea";
 import Button from "../components/common/Button";
@@ -11,17 +11,46 @@ function AddItem() {
     productName: "",
     productDescription: "",
     productPrice: "",
-    productTag: "",
+    productTags: [],
   });
+  const [tagInputValue, setTagInputValue] = useState("");
 
-  const isFormValid = Object.values(formValues).every(
-    (value) => value.trim() !== ""
-  );
+  const isFormValid =
+    formValues.productName.trim() !== "" &&
+    formValues.productDescription.trim() !== "" &&
+    formValues.productPrice.trim() !== "" &&
+    formValues.productTags.length > 0;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormValues((prevValues) => ({ ...prevValues, [name]: value }));
+
+    if (name === "productTags") {
+      if (value.endsWith(",") || value.endsWith(" ")) {
+        if (tagInputValue.trim() !== "") {
+          setFormValues((prevValues) => ({
+            ...prevValues,
+            productTags: [...prevValues.productTags, tagInputValue.trim()],
+          }));
+        }
+        setTagInputValue("");
+      } else {
+        setTagInputValue(value);
+      }
+    } else {
+      setFormValues((prevValues) => ({ ...prevValues, [name]: value }));
+    }
   };
+
+  const handleRemoveTag = (tagRemove) => {
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      productTags: prevValues.productTags.filter((tag) => tag !== tagRemove),
+    }));
+  };
+
+  useEffect(() => {
+    console.log(formValues.productTags);
+  }, [formValues.productTags]);
 
   return (
     <main className="page-addItem">
@@ -50,7 +79,7 @@ function AddItem() {
               </HeadingTitleArea>
               <Input
                 placeholder="상품명을 입력해주세요"
-                inputName="productName"
+                name="productName"
                 value={formValues.productName}
                 onChange={handleInputChange}
               />
@@ -63,6 +92,7 @@ function AddItem() {
                 className="default"
                 name="productDescription"
                 placeholder="상품 소개를 입력해주세요"
+                value={formValues.productDescription}
                 onChange={handleInputChange}
               />
             </div>
@@ -73,7 +103,7 @@ function AddItem() {
               <Input
                 type="number"
                 placeholder="판매 가격을 입력해주세요"
-                inputName="productPrice"
+                name="productPrice"
                 value={formValues.productPrice}
                 onChange={handleInputChange}
               />
@@ -85,11 +115,15 @@ function AddItem() {
               <div className={styles["input-tag-area"]}>
                 <Input
                   placeholder="태그를 입력해주세요"
-                  inputName="productTag"
-                  value={formValues.productTag}
+                  name="productTags"
+                  value={tagInputValue}
                   onChange={handleInputChange}
                 />
-                <TagsList tags={["티셔츠", "상의"]} remove={true} />
+                <TagsList
+                  tags={formValues.productTags}
+                  remove={true}
+                  onRemove={handleRemoveTag}
+                />
               </div>
             </div>
           </div>
