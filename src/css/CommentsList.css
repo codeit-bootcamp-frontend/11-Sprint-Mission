@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Pretendard";
+}
+
+.comments-list {
+  list-style: none;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.comments-content-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.comments-writer-box {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.writer-profile {
+  width: 32px;
+  height: 32px;
+}
+
+.writer-nickname {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #4b5563;
+}
+
+.write-time {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #9ca3af;
+}
+
+.dropdown-menu {
+  width: 139px;
+  position: absolute;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 8px;
+  z-index: 1;
+  top: 40px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f3f4f6;
+}
+
+.dropdown-text {
+  font-size: 16px;
+  font-weight: 400;
+  color: #6b7280;
+  background: none;
+  border: none;
+  padding-top: 16px;
+  padding-bottom: 12px;
+  font-size: 14px;
+  color: #1f2937;
+  cursor: pointer;
+  height: 46px;
+}
+
+.dropdown-image {
+  cursor: pointer;
+}

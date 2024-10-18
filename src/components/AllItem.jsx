@@ -51,7 +51,6 @@ const AllItem = () => {
           orderBy: orderBy,
           keyword: "",
         });
-        // console.log(result);
         setProducts(result.list);
         setTotalCount(result.totalCount);
       } catch (err) {
@@ -119,27 +118,29 @@ const AllItem = () => {
       <ul className="all-product-list-container">
         {products.length > 0 ? (
           products.map((product) => (
-            <li key={product.id} className="all-product-list">
-              {product.images.length > 0 && (
-                <div className="all-product-image-box">
+            <Link to={`/items/${product.id}`} className="detail-link">
+              <li key={product.id} className="all-product-list">
+                {product.images.length > 0 && (
+                  <div className="all-product-image-box">
+                    <img
+                      className="all-product-image"
+                      src={product.images[0]}
+                      alt={product.name}
+                    />
+                  </div>
+                )}
+                <h3 className="all-product-name">{product.name}</h3>
+                <p className="all-product-price">{product.price}원</p>
+                <div className="all-product-count-box">
                   <img
-                    className="all-product-image"
-                    src={product.images[0]}
-                    alt={product.name}
-                  />
+                    className="all-product-count-image"
+                    src="/assets/Icon.png"
+                    alt="좋아요 하트 기호"
+                  ></img>
+                  <p className="all-product-count">{product.favoriteCount}</p>
                 </div>
-              )}
-              <h3 className="all-product-name">{product.name}</h3>
-              <p className="all-product-price">{product.price}원</p>
-              <div className="all-product-count-box">
-                <img
-                  className="all-product-count-image"
-                  src="/assets/Icon.png"
-                  alt="좋아요 하트 기호"
-                ></img>
-                <p className="all-product-count">{product.favoriteCount}</p>
-              </div>
-            </li>
+              </li>
+            </Link>
           ))
         ) : (
           <p>No products available</p>

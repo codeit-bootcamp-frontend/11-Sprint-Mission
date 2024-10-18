@@ -178,6 +178,11 @@
   cursor: pointer;
 }
 
+.detail-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* 반응형 - Tablet */
 @media screen and (max-width: 1199px) and (min-width: 768px) {
   .all-product-list-container {
@@ -226,21 +231,20 @@
   }
 
   .product-head-box {
-    flex-direction: column; /* 모바일에서는 세로로 정렬 */
+    flex-direction: column;
   }
 
-  /* 검색창과 정렬을 한 줄로 배치 */
   .search-box {
     flex-direction: row;
     width: 100%;
   }
 
   .product-search {
-    width: 70%; /* 검색창 넓이 조정 */
+    width: 70%;
   }
 
   .option-select {
-    width: 28%; /* 정렬 셀렉트박스 넓이 조정 */
+    width: 28%;
   }
 
   /* 모바일에서 순서 변경: .page-head와 .add-button이 먼저 나오고 그 아래에 검색창 */
@@ -254,11 +258,11 @@
   .add-button {
     order: 2;
     width: 100%;
-    margin-bottom: 12px; /* 검색창과 간격 */
+    margin-bottom: 12px;
   }
 
   .search-box {
     order: 3;
-    width: 100%; /* 전체 너비로 검색창과 SelectOrderBy 배치 */
+    width: 100%;
   }
 }
