@@ -1,20 +1,20 @@
 import profileImg from "../../assets/profileImg.svg";
 
-import "./Profile.css";
+import { ProfileWrapper, Img, Info } from "./Profile.style";
 
 const Profile = ({ nickname, createdAt }) => {
   const formattedDate = new Date(createdAt).toLocaleDateString();
 
   return (
-    <div className="profile">
-      <div className="profile-img">
+    <ProfileWrapper>
+      <Img>
         <img src={profileImg} alt="프로필 이미지" />
-      </div>
-      <div>
+      </Img>
+      <Info>
         <p>{nickname}</p>
         <span>{formattedDate}</span>
-      </div>
-    </div>
+      </Info>
+    </ProfileWrapper>
   );
 };
 
