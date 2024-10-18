@@ -6,7 +6,7 @@ function UserInfo({ size, sort }) {
     <Container size={size}>
       <ProfileImage imageSize={size} />
       <Details sort={sort} size={size}>
-        <Name>총명한판다</Name>
+        <Name size={size}>총명한판다</Name>
         <Date>2024. 01. 02</Date>
       </Details>
     </Container>
@@ -77,6 +77,16 @@ const Details = styled.div`
 const Name = styled.p`
   color: var(--gray-600);
   font-weight: 500;
+  margin-bottom: ${({ size }) => {
+    switch (size) {
+      case "big":
+        return "0.2rem";
+      case "small":
+        return "0.4rem";
+      default:
+        return "0.2rem";
+    }
+  }};
 `;
 
 const Date = styled.span`
