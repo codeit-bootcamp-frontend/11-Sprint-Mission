@@ -85,9 +85,7 @@ function AddItem() {
       <h1>상품 등록하기</h1>
       <form onSubmit={handleSubmit}>
         <button
-          className={
-            buttonActive && !isLoading ? 'buttonEnabled' : 'buttonDisabled'
-          }
+          className="button"
           type="submit"
           disabled={!buttonActive || isLoading}
         >
