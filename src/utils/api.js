@@ -32,10 +32,12 @@ const fetchProductById = async (id) => {
   }
 };
 
-const fetchInquiryById = async (id) => {
+const fetchInquiryById = async (id, cursor = null) => {
   try {
+    const queryParams = new URLSearchParams({ limit: 5 });
+    if (cursor) queryParams.set("cursor", cursor);
     const response = await fetch(
-      `${SERVER_URL}/products/${id}/comments?limit=5`
+      `${SERVER_URL}/products/${id}/comments?${queryParams}`
     );
     if (!response.ok) {
       throw new Error("데이터 불러오기 실패");
