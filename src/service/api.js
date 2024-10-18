@@ -1,6 +1,11 @@
 import axios from 'axios';
 
-const apiUrl = 'https://panda-market-api.vercel.app/products';
+const instance = axios.create({
+  baseURL: 'https://panda-market-api.vercel.app',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
 
 // 로그인 기능 구현 후 작업됩니다.
 /* let accessToken;
@@ -16,10 +21,15 @@ if (typeof window !== 'undefined') {
 } */
 
 function getItems(orderBy = 'recent', keyword = '', page = 1, pageSize = 10) {
-  const query = `?orderBy=${orderBy}&keyword=${keyword}&page=${page}&pageSize=${pageSize}`;
+  const query = new URLSearchParams({
+    orderBy,
+    keyword,
+    page,
+    pageSize,
+  }).toString();
 
-  return axios
-    .get(`${apiUrl}${query}`)
+  return instance
+    .get(`/products?${query}`)
     .then((response) => response.data)
     .catch((error) => {
       console.error('패칭 중 오류가 발생했습니다', error);
@@ -28,8 +38,8 @@ function getItems(orderBy = 'recent', keyword = '', page = 1, pageSize = 10) {
 }
 
 function createItems(formData) {
-  return axios
-    .post(apiUrl, formData, {
+  return instance
+    .post('/products', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
         // Authorization: `Bearer ${accessToken}`,

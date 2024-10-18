@@ -56,7 +56,7 @@ function Items() {
       setProducts(list);
       setBestProducts(bestItems);
     } catch (error) {
-      console.log('상품 목록 로드 중 오류 발생', error);
+      console.error('상품 목록 로드 중 오류 발생', error);
       throw new Error('상품 목록을 로드하는데 실패했습니다.');
     }
   };
