@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Layout from './Layout';
 import Items from './pages/items';
 import Additem from './pages/additem';
-import ProductId from './pages/productId';
+import ProductDetail from './pages/ProductDetail';
 import '../src/styles/App.css';
 
 function App() {
@@ -12,9 +12,9 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="items" element={<Items />} />
           <Route path="additem" element={<Additem />} />
-          <Route path="items/:productId" element={<ProductId />} />
+          <Route path="items/:productId" element={<ProductDetail />} />
         </Route>
-        //Header가 필요하지 않은 부분
+        {/* 헤더가필요하지않은부분 */}
       </Routes>
     </Router>
   );

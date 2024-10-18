@@ -1,23 +1,24 @@
 const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
-export async function getProducts(
-  page = 1,
-  pageSize = 300,
-  orderBy = 'recent',
-  keyword = ''
-) {
-  const query = `products?orderBy=${orderBy}&keyword=${keyword}&page=${page}&pageSize=${pageSize}`;
+export async function getProducts(page = 1, pageSize = 6, orderBy = 'recent') {
+  const query = `products?page=${page}&pageSize=${pageSize}&orderBy=${orderBy}`;
   const apiUrl = `${baseUrl}/${query}`;
 
-  const response = await fetch(apiUrl);
-  if (!response.ok) {
-    throw new Error('데이터 로드에 실패했습니다.');
-  }
+  try {
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error('데이터 로드에 실패했습니다.');
+    }
 
-  const data = await response.json();
-  return data;
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('API 호출 중 오류 발생:', error);
+    throw error;
+  }
 }
 
+//상품상세정보api
 export async function getProductDetail(productId) {
   const apiUrl = `${baseUrl}/products/${productId}`;
 
@@ -31,6 +32,7 @@ export async function getProductDetail(productId) {
   return data;
 }
 
+//상품댓글api
 export async function getProductDetailComment(
   productId,
   limit = null,

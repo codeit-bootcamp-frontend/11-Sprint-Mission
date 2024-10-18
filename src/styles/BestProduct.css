@@ -22,11 +22,13 @@
 .BestProductName {
   font-size: 14px;
   font-weight: 500;
+  margin-top: 16px;
 }
 
 .BestProductPrice {
   font-size: 16px;
   font-weight: 700;
+  margin: 16px 0;
 }
 
 .BestProductFavoriteCount {

@@ -3,6 +3,10 @@ import icHeart from '../assets/ic_heart.svg';
 import { NavLink } from 'react-router-dom';
 
 function ProductList({ items }) {
+  if (!items || !Array.isArray(items)) {
+    return <div>상품 목록이 없습니다.</div>;
+  }
+
   return (
     <ul className="ProductList">
       {items.map((item) => (

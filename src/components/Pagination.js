@@ -3,7 +3,7 @@ import '../styles/Pagination.css';
 
 function Pagination({ currentPage, totalPages, onPageChange }) {
   const pageNumbers = [];
-  const maxPageNumbers = 5; // 처음 보여줄 페이지 번호 수
+  const maxPageNumbers = 5; // 한 번에 보여줄 최대 페이지 번호 수
   const startPage =
     Math.floor((currentPage - 1) / maxPageNumbers) * maxPageNumbers + 1;
   const endPage = Math.min(startPage + maxPageNumbers - 1, totalPages);
@@ -15,7 +15,16 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
 
   return (
     <div className="pagination-container">
-      {/* 이전 페이지 버튼 */}
+      {/* 처음 페이지로 이동 */}
+      <button
+        onClick={() => onPageChange(1)}
+        disabled={currentPage === 1}
+        className="pagination-button"
+      >
+        &lt;&lt;
+      </button>
+
+      {/* 이전 페이지 */}
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
@@ -24,7 +33,7 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
         &lt;
       </button>
 
-      {/* 페이지 번호 버튼 */}
+      {/* 페이지 번호 */}
       {pageNumbers.map((pageNumber) => (
         <button
           key={pageNumber}
@@ -37,13 +46,22 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
         </button>
       ))}
 
-      {/* 다음 페이지 버튼 */}
+      {/* 다음 페이지 */}
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
         className="pagination-button"
       >
         &gt;
+      </button>
+
+      {/* 마지막 페이지로 이동 */}
+      <button
+        onClick={() => onPageChange(totalPages)}
+        disabled={currentPage === totalPages}
+        className="pagination-button"
+      >
+        &gt;&gt;
       </button>
     </div>
   );
