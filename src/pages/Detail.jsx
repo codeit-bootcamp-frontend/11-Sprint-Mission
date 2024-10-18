@@ -23,63 +23,74 @@ const INITIAL_COMMENTS = { list: [], nextCursor: null };
 function Detail() {
   const { id } = useParams();
   const [newComment, setNewComment] = useState("");
-  const [product, setProduct] = useState(INITIAL_DETAILS);
-  const [comments, setComments] = useState(INITIAL_COMMENTS);
-  const {
-    name,
-    description,
-    images,
-    price,
-    favoriteCount,
-    tags,
-    ownerNickname,
-    updatedAt,
-    isFavorite,
-  } = product;
+  const [product, setProduct] = useState(INITIAL_DETAILS); // 상품 정보 할당할 state
+  const [comments, setComments] = useState(INITIAL_COMMENTS); // 상품 댓글 정보 할당할 state
   const { list, nextCursor } = comments;
-  const endRef = useRef(null);
+  const endRef = useRef(null); // infinity scroll 구현을 위한 endPoint를 할당할 Ref
 
-  const loadProductById = (id) => {
+  /**
+   * 서버에서 상품 상세 정보를 가져오는 함수
+   * @param {*} id 상품 id
+   */
+  const loadProductById = useCallback((id) => {
     fetchProductById(id).then((response) => {
       setProduct(response);
     });
-  };
+  }, []);
 
-  const loadInquiryById = (id, nextCursor = null) => {
+  /**
+   * 서버에서 상품 댓글을 가져오는 함수
+   * @param {*} id 상품 id
+   * @param {*} nextCursor infinity scroll을 위한 변수
+   */
+  const loadInquiryById = useCallback((id, nextCursor = null) => {
     fetchInquiryById(id, nextCursor).then(({ list, nextCursor }) => {
       setComments((prev) => ({
         list: [...prev.list, ...list],
         nextCursor,
       }));
     });
-  };
+  }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    postComment(id, { content: newComment }); // Jwt Token 추가 예정
-    setNewComment("");
-  };
+  /**
+   * 댓글 추가 핸들러
+   * @param {*} e
+   */
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      postComment(id, { content: newComment }); // Jwt Token 추가 예정
+      setNewComment("");
+    },
+    [id, newComment]
+  );
 
+  /**
+   * IntersectionObserver API를 사용한 inifinity scroll
+   */
   const handleObserver = useCallback(
     (entries) => {
-      const [entry] = entries;
+      const [entry] = entries; // 감시 대상 : endRef
       if (entry.isIntersecting && nextCursor) {
+        // 대상이 viewport에 들어왔을 때, nextCursor가 null이 아닌경우 다음 댓글 요청
         loadInquiryById(id, nextCursor);
       }
     },
-    [id, nextCursor]
+    [id, nextCursor, loadInquiryById]
   );
 
   useEffect(() => {
     loadProductById(id);
     loadInquiryById(id);
-  }, [id]);
+  }, [id, loadProductById, loadInquiryById]);
 
+  /**
+   * Intersection Obsever API를 사용해 endRef(.end-point)의 영역을 비동기 감시
+   */
   useEffect(() => {
     const observer = new IntersectionObserver(handleObserver, {
-      root: null,
-      rootMargin: "0px",
-      threshold: 1.0,
+      root: null, // 감시 기준 : viewport
+      threshold: 1.0, // 대상이 viewport에 완전히 노출될 때
     });
     const current = endRef.current;
 
@@ -93,17 +104,7 @@ function Detail() {
     <>
       <Header isLogin />
       <div className="page-detail">
-        <DetailProduct
-          images={images}
-          name={name}
-          price={price}
-          description={description}
-          tags={tags}
-          favoriteCount={favoriteCount}
-          ownerNickname={ownerNickname}
-          isFavorite={isFavorite}
-          updatedAt={updatedAt}
-        />
+        <DetailProduct {...product} />
         <div className="product-inquiry-wrap">
           <form onSubmit={handleSubmit}>
             <label htmlFor="input_inquiry">문의하기</label>
