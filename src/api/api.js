@@ -52,3 +52,25 @@ export async function getCommentsById(productId, { limit = "" }) {
     throw new Error("데이터를 불러오는데 실패했습니다.");
   }
 }
+
+export async function updateCommentsById(commentId, { content }) {
+  try {
+    const response = await fetch(
+      `https://panda-market-api.vercel.app/comments/${commentId}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ content }),
+      }
+    );
+    if (!response.ok) {
+      throw new Error("서버에서 오류 응답을 받았습니다.");
+    }
+    const body = await response.json();
+    return body;
+  } catch (error) {
+    throw new Error("데이터를 불러오는데 실패했습니다.");
+  }
+}

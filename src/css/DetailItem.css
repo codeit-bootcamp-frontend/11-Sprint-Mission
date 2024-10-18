@@ -200,6 +200,11 @@
   margin-top: 16px;
 }
 
+.question-register-button:hover {
+  background-color: #6babfa;
+  transform: translateY(-3px);
+}
+
 .question-container {
   margin-bottom: 24px;
 }
@@ -221,6 +226,11 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: #6babfa;
+  transform: translateY(-3px);
 }
 
 .back-button-text {
