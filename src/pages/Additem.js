@@ -2,12 +2,20 @@ import React, { useState } from 'react';
 import '../styles/AddItem.css';
 
 function AddItem() {
+  const [image, setImage] = useState(null);
   const [itemName, setItemName] = useState('');
   const [itemIntro, setItemIntro] = useState('');
   const [itemPrice, setItemPrice] = useState('');
   const [itemTags, setItemTags] = useState('');
 
   const isFormValid = itemName && itemIntro && itemPrice && itemTags;
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage(URL.createObjectURL(file));
+    }
+  };
 
   return (
     <div className="add-item-form">
@@ -22,8 +30,14 @@ function AddItem() {
         <label htmlFor="image-upload">상품 이미지</label>
         <div className="image-upload">
           <label className="image-placeholder" htmlFor="image-upload">
-            <input id="image-upload" type="file" />
+            <input id="image-upload" type="file" onChange={handleImageUpload} />
           </label>
+          {/* 이미지가 있을때 */}
+          {image && (
+            <div className="image-preview">
+              <img src={image} alt="이미지 미리보기" />
+            </div>
+          )}
         </div>
       </div>
 

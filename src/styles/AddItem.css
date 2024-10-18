@@ -45,7 +45,7 @@ label {
 
 .submit-btn:disabled {
   background-color: #9ca3af;
-  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .item-image-input,
@@ -90,7 +90,8 @@ label {
   gap: 10px;
 }
 
-.image-placeholder {
+.image-placeholder,
+.image-preview img {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -99,6 +100,7 @@ label {
   background-color: #f3f4f6;
   cursor: pointer;
   border-radius: 8px;
+  object-fit: cover;
 }
 
 .image-placeholder input[type='file'] {
@@ -139,7 +141,7 @@ input:focus {
   }
 
   .image-placeholder,
-  .image-preview {
+  .image-preview img {
     width: 168px;
     height: 168px;
   }
@@ -151,7 +153,7 @@ input:focus {
     padding-right: 15px;
   }
   .image-placeholder,
-  .image-preview {
+  .image-preview img {
     width: 168px;
     height: 168px;
   }
