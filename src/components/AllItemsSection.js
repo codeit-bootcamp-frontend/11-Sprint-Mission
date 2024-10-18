@@ -38,10 +38,6 @@ function AllItemsSection() {
     }
   };
 
-  const handleRegisterbtnClick = () => {
-    navigate('/additem');
-  };
-
   useEffect(() => {
     const handleFixsize = () => {
       setPageSize(getPageSize());
@@ -69,7 +65,7 @@ function AllItemsSection() {
               placeholder="검색할 상품을 입력해 주세요"
             />
           </div>
-          <Link className="itemRegisterbtn" onClick={handleRegisterbtnClick}>
+          <Link className="itemRegisterbtn" to={'/additem'}>
             상품 등록하기
           </Link>
         </div>
