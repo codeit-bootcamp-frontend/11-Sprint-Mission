@@ -4,6 +4,8 @@ import InputField from "./components/InputField";
 import ImageUpload from "./components/ImageUpload";
 import InputTag from "./components/InputTag";
 
+/* 추가해야 할 것: 반응형 디자인 검토 */
+
 function AddItem() {
   const [productName, setProductName] = useState("");
   const [productIntroduction, setProductIntroduction] = useState("");
