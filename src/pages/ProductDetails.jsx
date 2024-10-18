@@ -97,18 +97,6 @@ function ProductDetails() {
         </div>
         <ul className={styled["inquiry-list"]}>
           <li className={styled["inquiry-item"]}>
-            <DropDownMenu classNames={styled["dropdown"]}>
-              <DropDownMenu.Item
-                onClick={handleEditClick}
-                className="btn-remove">
-                수정하기
-              </DropDownMenu.Item>
-              <DropDownMenu.Item
-                onClick={handleDeleteClick}
-                className="btn-delete">
-                삭제하기
-              </DropDownMenu.Item>
-            </DropDownMenu>
             <p className={styled["comment"]}>
               혹시 사용기간이 어떻게 되실까요?
             </p>
@@ -127,18 +115,6 @@ function ProductDetails() {
             </DropDownMenu>
           </li>
           <li className={styled["inquiry-item"]}>
-            <DropDownMenu classNames={styled["dropdown"]}>
-              <DropDownMenu.Item
-                onClick={handleEditClick}
-                className="btn-remove">
-                수정하기
-              </DropDownMenu.Item>
-              <DropDownMenu.Item
-                onClick={handleDeleteClick}
-                className="btn-delete">
-                삭제하기
-              </DropDownMenu.Item>
-            </DropDownMenu>
             <p className={styled["comment"]}>
               혹시 사용기간이 어떻게 되실까요?
             </p>
