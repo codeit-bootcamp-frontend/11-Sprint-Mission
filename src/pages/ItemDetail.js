@@ -4,6 +4,7 @@ import { ReactComponent as BackIcon } from '../images/ic_back.svg';
 import { ReactComponent as Heart } from '../images/ic_heart.svg';
 import { ReactComponent as Profile } from '../images/ic_profile.svg';
 import { useState, useEffect } from 'react';
+import ItemComment from '../components/ItemComment';
 
 function ItemDetail() {
   const location = useLocation();
@@ -76,6 +77,7 @@ function ItemDetail() {
         >
           등록
         </button>
+        <ItemComment item={item} />
       </div>
       <button className="back-to-list" onClick={handleBackClick}>
         목록으로 돌아가기

@@ -1,16 +1,9 @@
 import React from 'react';
 import '../style/Items.css';
 import { ReactComponent as Heart } from '../images/ic_heart.svg';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function ItemCard({ item }) {
-  const navigate = useNavigate();
-
-  const handleCardClick = () => {
-    navigate(`/items/${item.id}`);
-    console.log(item.id);
-  };
-
   return (
     <Link to={`/items/${item.id}`} state={{ item: item }}>
       <div className="itemCard">
