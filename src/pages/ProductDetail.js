@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getProductDetail, getProductDetailComment } from '../hooks/api';
 import iconHeart from '../assets/ic_heart.svg';
@@ -92,9 +92,11 @@ function ProductDetail() {
             </div>
           </div>
         </div>
-
         <ProductDetailInput productId={productId} />
         <ProductDetailComment productId={productId} />
+        <NavLink to="/items" className="goTitle">
+          <button className="goTitleButton">목록으로 돌아가기</button>
+        </NavLink>
       </div>
     </body>
   );

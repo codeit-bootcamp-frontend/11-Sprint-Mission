@@ -11,7 +11,7 @@ function ProductDetailInput() {
   return (
     <div className="inquiry">
       <p className="inquiryTitle">문의하기</p>
-      <input
+      <textarea
         className="inquiryInput"
         value={inputValue}
         onChange={handleInputChange}

@@ -1,5 +1,6 @@
 import { getProductDetailComment } from '../../hooks/api';
 import { useState, useEffect } from 'react';
+import noInquiry from '../../assets/no-inquiry.svg';
 
 function ProductDetailComment({ productId }) {
   // productId를 props로 받는다고 가정
@@ -23,7 +24,7 @@ function ProductDetailComment({ productId }) {
   }, [productId]);
 
   return (
-    <div>
+    <div className="comments">
       {comments.length > 0 ? (
         <ul>
           {comments.map((comment) => (
@@ -34,7 +35,10 @@ function ProductDetailComment({ productId }) {
           ))}
         </ul>
       ) : (
-        <p>댓글이 없습니다.</p>
+        <div className="noComment">
+          <img src={noInquiry} />
+          <p>아직 문의가 없어요</p>
+        </div>
       )}
     </div>
   );
