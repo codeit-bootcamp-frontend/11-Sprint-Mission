@@ -1,0 +1,25 @@
+.item-con .item-txt-wrap {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.item-con .item-txt-wrap .item-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray800);
+}
+.item-con .item-txt-wrap .item-good-box {
+  display: flex;
+  gap: 4px;
+}
+.item-con .item-txt-wrap .item-good-box .heart-img {
+  width: 16px;
+}
+.item-con .item-txt-wrap .item-good-box .heart-img img {
+  width: 100%;
+}
+.item-con .item-txt-wrap .item-price {
+  font-size: 1rem;
+  font-weight: 700;
+}
