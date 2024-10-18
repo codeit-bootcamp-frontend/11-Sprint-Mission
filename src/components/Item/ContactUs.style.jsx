@@ -44,6 +44,7 @@ const Button = styled.button`
 
   &:disabled {
     background: #9ca3af;
+    cursor: auto;
   }
 `;
 

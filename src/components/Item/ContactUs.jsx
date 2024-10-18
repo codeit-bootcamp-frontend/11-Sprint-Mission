@@ -3,15 +3,10 @@ import { Inner, Label, Textarea, Button } from "./ContactUs.style";
 
 const ContactUs = () => {
   const [textarea, setTextarea] = useState("");
-  const [disabled, setDisabled] = useState(true);
 
   const onChange = (e) => {
     setTextarea(e.target.value);
   };
-
-  useEffect(() => {
-    textarea === "" ? setDisabled(true) : setDisabled(false);
-  }, [textarea]);
 
   return (
     <Inner>
@@ -24,7 +19,7 @@ const ContactUs = () => {
         onChange={onChange}
       ></Textarea>
 
-      <Button disabled={disabled}>등록</Button>
+      <Button disabled={textarea === ""}>등록</Button>
     </Inner>
   );
 };
