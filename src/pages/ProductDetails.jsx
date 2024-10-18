@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProductsDetail } from "../services/products-api";
+import {
+  getProductsDetail,
+  getProductsDetailComments,
+} from "../services/products-api";
 import useAsyncRequest from "../hooks/useAsyncRequest";
 
 import HeartCountArea from "../components/common/HeartCountArea";
@@ -15,18 +18,28 @@ import styled from "./ProductDetails.module.scss";
 
 function ProductDetails() {
   const [details, setDetails] = useState({});
+  const [commentsList, setCommentsList] = useState({});
   const { execute, isLoading, error: fetchError } = useAsyncRequest();
   const { productId } = useParams();
 
   useEffect(() => {
-    const handleLoad = async () => {
+    const handleProductsLoad = async () => {
       const result = await execute(() => getProductsDetail(productId));
       if (result) {
         setDetails(result);
       }
     };
 
-    handleLoad();
+    const handleCommentsListLoad = async () => {
+      const result = await execute(() => getProductsDetailComments(productId));
+      const { list } = result;
+      if (result) {
+        setCommentsList(list);
+      }
+    };
+
+    handleProductsLoad();
+    handleCommentsListLoad();
   }, [productId]);
 
   const handleEditClick = () => console.log("수정하기 버튼 클릭");
@@ -146,48 +159,38 @@ function ProductDetails() {
             </Button>
           </form>
         </div>
-        <ul className={styled["inquiry-list"]}>
-          <li className={styled["inquiry-item"]}>
-            <p className={styled["comment"]}>
-              혹시 사용기간이 어떻게 되실까요?
-            </p>
-            <UserInfo size="small" sort="column" />
-            <DropDownMenu classNames={styled["dropdown"]}>
-              <DropDownMenu.Item
-                onClick={handleEditClick}
-                className="btn-remove">
-                수정하기
-              </DropDownMenu.Item>
-              <DropDownMenu.Item
-                onClick={handleDeleteClick}
-                className="btn-delete">
-                삭제하기
-              </DropDownMenu.Item>
-            </DropDownMenu>
-          </li>
-          <li className={styled["inquiry-item"]}>
-            <p className={styled["comment"]}>
-              혹시 사용기간이 어떻게 되실까요?
-            </p>
-            <UserInfo size="small" sort="column" />
-            <DropDownMenu classNames={styled["dropdown"]}>
-              <DropDownMenu.Item
-                onClick={handleEditClick}
-                className="btn-remove">
-                수정하기
-              </DropDownMenu.Item>
-              <DropDownMenu.Item
-                onClick={handleDeleteClick}
-                className="btn-delete">
-                삭제하기
-              </DropDownMenu.Item>
-            </DropDownMenu>
-          </li>
-        </ul>
-        <div className={styled["inquiry-list-not"]}>
-          <img src={INQUIRY_IMAGE} alt="문의 없을때 판다 이미지" />
-          <p>아직 문의가 없어요</p>
-        </div>
+        {commentsList.length > 0 ? (
+          <ul className={styled["inquiry-list"]}>
+            {commentsList.map((item) => (
+              <li key={item.id} className={styled["inquiry-item"]}>
+                <p className={styled.comment}>{item.content}</p>
+                <UserInfo
+                  size="small"
+                  sort="column"
+                  name={item.writer.nickname}
+                  createdDate={formatRegistrationDate(item.createdAt)}
+                />
+                <DropDownMenu classNames={styled["dropdown"]}>
+                  <DropDownMenu.Item
+                    onClick={handleEditClick}
+                    className="btn-remove">
+                    수정하기
+                  </DropDownMenu.Item>
+                  <DropDownMenu.Item
+                    onClick={handleDeleteClick}
+                    className="btn-delete">
+                    삭제하기
+                  </DropDownMenu.Item>
+                </DropDownMenu>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className={styled["inquiry-list-not"]}>
+            <img src={INQUIRY_IMAGE} alt="문의 없을때 판다 이미지" />
+            <p>아직 문의가 없어요</p>
+          </div>
+        )}
         <div className={styled["btn-wrap"]}>
           <Button
             link={true}
