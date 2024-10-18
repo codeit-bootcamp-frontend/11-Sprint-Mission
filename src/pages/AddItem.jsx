@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./AddItem.module.scss";
 import HeadingTitleArea from "../components/common/HeadingTitleArea";
 import Button from "../components/common/Button";
@@ -25,19 +25,26 @@ function AddItem() {
     const { name, value } = e.target;
 
     if (name === "productTags") {
-      if (value.endsWith(",") || value.endsWith(" ")) {
-        if (tagInputValue.trim() !== "") {
-          setFormValues((prevValues) => ({
-            ...prevValues,
-            productTags: [...prevValues.productTags, tagInputValue.trim()],
-          }));
-        }
-        setTagInputValue("");
-      } else {
-        setTagInputValue(value);
-      }
+      setTagInputValue(value);
     } else {
       setFormValues((prevValues) => ({ ...prevValues, [name]: value }));
+    }
+  };
+
+  const handleAddTagInput = (e) => {
+    if (e.key === "Enter" && e.nativeEvent.isComposing === false) {
+      e.preventDefault();
+      if (
+        // 빈값이 아닐 때 & 배열에 없는 태그 일 경우
+        tagInputValue.trim() !== "" &&
+        !formValues.productTags.includes(tagInputValue.trim())
+      ) {
+        setFormValues((prevValues) => ({
+          ...prevValues,
+          productTags: [...prevValues.productTags, tagInputValue],
+        }));
+        setTagInputValue("");
+      }
     }
   };
 
@@ -47,10 +54,6 @@ function AddItem() {
       productTags: prevValues.productTags.filter((tag) => tag !== tagRemove),
     }));
   };
-
-  useEffect(() => {
-    console.log(formValues.productTags);
-  }, [formValues.productTags]);
 
   return (
     <main className="page-addItem">
@@ -118,6 +121,7 @@ function AddItem() {
                   name="productTags"
                   value={tagInputValue}
                   onChange={handleInputChange}
+                  onKeyDown={handleAddTagInput}
                 />
                 <TagsList
                   tags={formValues.productTags}
