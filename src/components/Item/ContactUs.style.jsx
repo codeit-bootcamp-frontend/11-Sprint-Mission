@@ -34,12 +34,17 @@ const Textarea = styled.textarea`
 
 const Button = styled.button`
   border-radius: 8px;
-  background: #9ca3af;
+  background: var(--blue);
   width: 74px;
   height: 42px;
   font-weight: 600;
   color: #f3f4f6;
   margin: 16px 0 0 auto;
+  transition: 0.3s;
+
+  &:disabled {
+    background: #9ca3af;
+  }
 `;
 
 export { Inner, Label, Textarea, Button };
