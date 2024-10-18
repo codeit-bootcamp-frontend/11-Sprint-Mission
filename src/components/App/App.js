@@ -4,6 +4,7 @@ import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import AddItemForm from "../AddItemForm/AddItemForm";
 import ItemListPage from "../../pages/ItemListPage";
 import { DeviceTypeProvider } from "../../contexts/DeviceTypeContext";
+import ItemDetailPage from "../../pages/ItemDetailPage";
 
 function App() {
   return (
@@ -11,8 +12,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />}>
-            <Route path="/items" element={<ItemListPage />} />
-            <Route path="/additem" element={<AddItemForm />} />
+            <Route path="items">
+              <Route index element={<ItemListPage />} />
+              <Route path=":id" element={<ItemDetailPage />} />
+            </Route>
+            <Route path="additem" element={<AddItemForm />} />
           </Route>
         </Routes>
       </BrowserRouter>
