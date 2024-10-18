@@ -62,27 +62,27 @@ function AllItems() {
     <div className="all-item-container">
       <div className="all-item-content">
         <div className="all-item-header">
-          <div className="all-item-title">전체 상품</div>
+          <div className="all-item-header-front">
+            <div className="all-item-title">전체 상품</div>
+            <div className="all-item-search-container">
+              <img
+                className="all-item-search-icon"
+                src={searchIcon}
+                alt="돋보기 아이콘"
+              />
+              <input
+                className="all-item-search-input"
+                placeholder="검색할 상품을 입력해주세요"
+              />
+            </div>
+          </div>
           <div className="all-item-header-end">
-            <div className="all-item-search">
-              <div className="all-item-search-container">
-                <img
-                  className="all-item-search-icon"
-                  src={searchIcon}
-                  alt="돋보기 아이콘"
-                />
-                <input
-                  className="all-item-search-input"
-                  placeholder="검색할 상품을 입력해주세요"
-                />
-              </div>
+            <div className="all-item-sort">
               <a href="./additem">
                 <button className="all-item-register-button">
                   상품 등록하기
                 </button>
               </a>
-            </div>
-            <div className="all-item-sort">
               <button className="all-item-sort-button" onClick={toggleDropdown}>
                 {orderBy === "recent" ? "최신순" : "좋아요순"} ▼
               </button>
