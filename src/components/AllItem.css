@@ -13,7 +13,15 @@
 
 .all-item-header {
   display: flex;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+}
+
+.all-item-header-front {
+  display: flex;
   justify-content: space-between;
+  flex-grow: 1;
   align-items: center;
 }
 
@@ -96,6 +104,8 @@
 
 .all-item-sort {
   position: relative;
+  display: flex;
+  gap: 12px;
 }
 
 .all-item-sort-options {
@@ -155,31 +165,19 @@
     row-gap: 32px;
   }
 
-  .all-item-title {
-    order: 0;
-  }
-
-  .all-item-header-end {
-    flex-wrap: wrap;
-  }
-
   .all-item-content {
     width: 343px;
   }
 
-  .all-item-search {
-    flex-wrap: wrap;
+  .all-item-header {
+    flex-direction: column;
   }
 
-  .all-item-register-button {
-    order: 1;
+  .all-item-header-front {
+    width: 100%;
   }
 
-  .all-item-search-container {
-    order: 2;
-  }
-
-  .all-item-sort-button {
-    width: 42px;
+  .all-item-header-end {
+    margin-left: auto;
   }
 }
