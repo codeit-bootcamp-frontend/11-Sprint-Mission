@@ -1,3 +1,7 @@
+body {
+  background-color: #fcfcfc;
+}
+
 .productDetail {
   width: 70%;
   margin: 0 auto;
@@ -61,6 +65,12 @@
   justify-content: space-between;
 }
 
+.pddddd {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .productDetailDescription,
 .productDetailTags {
   padding: 20px 0;
@@ -104,4 +114,45 @@
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.productDetailNickname {
+  font-size: 14px;
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.productDetailUpdateAt {
+  font-size: 14px;
+  font-weight: 400;
+  color: #9ca3af;
+}
+
+.inquiry {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inquiryTitle {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 0;
+}
+
+.inquiryInput {
+  width: 100%;
+  height: 104px;
+  padding: 0 10px;
+}
+
+.inquiryButton {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 23px;
+  color: #f3f4f6;
+  border: none;
+  border-radius: 10px;
+  margin-left: auto;
 }
