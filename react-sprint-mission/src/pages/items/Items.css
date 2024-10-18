@@ -10,8 +10,19 @@
   display: flex;
   flex-direction: row;
 }
-.navMarket a,
-.navNoticeBoard a {
+.activeNav {
+  width: 10ch;
+  margin-left: 20px;
+  line-height: 4.3vh;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--skyblue);
+}
+.inactiveNav {
   width: 10ch;
   margin-left: 20px;
   line-height: 4.3vh;
@@ -22,16 +33,6 @@
   align-items: center;
   text-align: center;
   color: var(--gray600);
-}
-.navMarket a {
-  color: var(--skyblue);
-}
-.itemSection {
-  width: 1200px;
-  margin: 0 auto;
-  padding-top: 12px;
-  margin-bottom: 40px;
-  background-color: white;
 }
 .itemContentsTitle {
   height: 42px;
@@ -94,7 +95,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 18px;
-  color: var(--grayBlack);
+  color: var(--gray600);
 }
 .itemDetail {
   width: 18%;
@@ -112,6 +113,9 @@
   flex-direction: row;
   width: 70%;
 }
+.contentsSearch .inputWrap{
+  width: 100%;
+}
 .addItemBtn {
   width: 210px;
   margin: 0 12px;
@@ -127,7 +131,7 @@
   height: 26px;
   text-decoration: none;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.8rem;
   line-height: 26px;
   display: flex;
   align-items: center;
@@ -164,7 +168,7 @@
   width: 40px;
   height: 40px;
   border: 1px solid var(--gray200);
-  background: #ffffff;
+  background: var(--white);
   color: black;
   border-radius: 40px;
 }
@@ -173,7 +177,7 @@
   color: white !important;
 }
 @media (max-width: 1199px) {
-  .itemSection {
+  .section {
     width: 100%;
   }
   .navHeader {
@@ -216,7 +220,7 @@
     width: 145px;
   }
   .selectBox *,
-  .addItemBtn a {
+  .addItemBtn a{
     font-size: 0.7rem;
   }
 }
@@ -224,7 +228,7 @@
   .itemLogo {
     content: url("assets/common/ic_logo_item_mobile.png");
   }
-  .itemSection {
+  .section {
     width: 100%;
     padding-top: 0;
     margin-bottom: 20px;
@@ -278,7 +282,7 @@
     width: 140px;
   }
   .selectBox *,
-  .addItemBtn a {
+  .addItemBtn  a{
     font-size: 0.6rem;
   }
 }

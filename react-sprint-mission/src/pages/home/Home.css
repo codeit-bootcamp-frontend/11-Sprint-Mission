@@ -37,7 +37,7 @@ h1 br {
   cursor: pointer;
 }
 .bannerButton a {
-  color: var(--white);
+  color: var(--whiteGray);
   font-size: 1.5rem;
   line-height: 20px;
   text-decoration: none;
@@ -163,9 +163,6 @@ h1 br {
   }
   .bannerButton {
     width: 40vw;
-  }
-  section {
-    background-color: var(--white);
   }
   .contents {
     width: 100%;

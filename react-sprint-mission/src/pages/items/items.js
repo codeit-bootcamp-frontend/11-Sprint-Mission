@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "./Item.css";
+import { NavLink, useNavigate } from "react-router-dom";
+import "./Items.css";
 import { getAxios } from "utils/api";
 import { showInitialDeviceItems } from "utils/initialDevice ";
-import { Pagenation, ImgPath } from "components";
+import { Pagenation, ImgPath, TextInput } from "components";
 import ItemHeader from "components/ItemHeader";
 
-function Item(props) {
+function Items(props) {
   const navigate = useNavigate();
   const [bestItemData, setBestItemData] = useState({ list: [], totalCount: 0 });
   const [search, setSearch] = useState("");
@@ -18,9 +18,11 @@ function Item(props) {
   const getBestItemData = async () => {
     try {
       const res = await getAxios({
-        page: 1,
-        pageSize: pageSize("best"),
-        orderBy: "favorite",
+        params: {
+          page: 1,
+          pageSize: pageSize("best"),
+          orderBy: "favorite",
+        },
       });
       if (res.status === 200) {
         setBestItemData(res.data);
@@ -38,17 +40,17 @@ function Item(props) {
     searchType
   ) => {
     try {
-      let parmas = {
+      let params = {
         page: pageQuery,
         pageSize: pageSizeQuery,
         orderBy: orderByQuery,
       };
 
       if (searchQuery.length > 0) {
-        parmas = { ...parmas, keyword: searchQuery };
+        params = { ...params, keyword: searchQuery };
       }
 
-      const res = await getAxios(parmas);
+      const res = await getAxios({ params });
       if (res.status === 200) {
         setItemData({
           itemList: res.data.list,
@@ -107,7 +109,7 @@ function Item(props) {
   };
 
   const handleDetail = (id) => {
-    navigate("/");
+    navigate(`/items/${id}`);
   };
 
   const handleKeyDown = (e) => {
@@ -115,8 +117,8 @@ function Item(props) {
     getItemData(1, pageSize(), orderBy, e.target.value, "keyDown");
   };
 
-  const handleChangeSearch = (e) => {
-    setSearch(e.target.value);
+  const handleChangeSearch = (inputValue) => {
+    setSearch(inputValue);
   };
 
   const handleChangeSelect = (e) => {
@@ -136,54 +138,52 @@ function Item(props) {
   }, []);
 
   return (
-    <>
-      <main>
-        <ItemHeader />
-        <section className="itemSection">
-          <div className="itemContentsTitle">
-            <h3>베스트 상품</h3>
+    <main>
+      <ItemHeader />
+      <section className="section">
+        <div className="itemContentsTitle">
+          <h3>베스트 상품</h3>
+        </div>
+        <div className="itemContentsForm">
+          <BestItemDetail />
+        </div>
+      </section>
+      <section className="section">
+        <div className="itemContentsTitle">
+          <h3>전체 상품</h3>
+          <div className="contentsSearch">
+            <TextInput
+              className="inputBox"
+              type="text"
+              placeholder="검색할 상품을 입력해주세요."
+              value={search}
+              onChange={handleChangeSearch}
+              onKeyDown={handleKeyDown}
+            />
+            <button className="addItemBtn">
+              <NavLink to="addItem">상품 등록하기</NavLink>
+            </button>
+            <select
+              id="itemSelect"
+              className="selectBox"
+              value={orderBy}
+              onChange={handleChangeSelect}
+            >
+              <option value="recent">최신순</option>
+              <option value="favorite">좋아요순</option>
+            </select>
           </div>
-          <div className="itemContentsForm">
-            <BestItemDetail />
-          </div>
-        </section>
-        <section className="itemSection">
-          <div className="itemContentsTitle">
-            <h3>전체 상품</h3>
-            <div className="contentsSearch">
-              <input
-                className="inputBox"
-                type="text"
-                placeholder="검색할 상품을 입력해주세요."
-                value={search}
-                onChange={handleChangeSearch}
-                onKeyDown={handleKeyDown}
-              />
-              <button className="addItemBtn">
-                <Link to="/AddItem">상품 등록하기</Link>
-              </button>
-              <select
-                id="itemSelect"
-                className="selectBox"
-                value={orderBy}
-                onChange={handleChangeSelect}
-              >
-                <option value="recent">최신순</option>
-                <option value="favorite">좋아요순</option>
-              </select>
-            </div>
-          </div>
-          <div className="itemContentsFormSmall">
-            <ItemDetail />
-          </div>
-          <Pagenation
-            totalCount={itemData.totalCount}
-            pageChange={handleChangePage}
-          />
-        </section>
-      </main>
-    </>
+        </div>
+        <div className="itemContentsFormSmall">
+          <ItemDetail />
+        </div>
+        <Pagenation
+          totalCount={itemData.totalCount}
+          pageChange={handleChangePage}
+        />
+      </section>
+    </main>
   );
 }
 
-export default Item;
+export default Items;

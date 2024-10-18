@@ -42,7 +42,7 @@ function AddItem(props) {
   return (
     <main>
       <ItemHeader />
-      <section className="itemSection">
+      <section className="section">
         <div className="contentsTopTitle">
           <h3>상품 등록하기</h3>
           <button
