@@ -2,9 +2,9 @@ import "./App.css";
 import Navigation from "../Navigation/Navigation";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import AddItemForm from "../AddItemForm/AddItemForm";
-import ItemListPage from "../../pages/ItemListPage";
+import ItemListPage from "../../pages/ItemListPage/ItemListPage";
 import { DeviceTypeProvider } from "../../contexts/DeviceTypeContext";
-import ItemDetailPage from "../../pages/ItemDetailPage";
+import ItemDetailPage from "../../pages/ItemDetailPage/ItemDetailPage";
 
 function App() {
   return (
