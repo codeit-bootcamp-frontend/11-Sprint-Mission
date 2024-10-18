@@ -1,22 +1,30 @@
 import React from 'react';
 import '../style/Items.css';
+import { ReactComponent as Heart } from '../images/ic_heart.svg';
+import { Link, useNavigate } from 'react-router-dom';
 
 function ItemCard({ item }) {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/items/${item.id}`);
+    console.log(item.id);
+  };
+
   return (
-    <div className="itemCard">
-      <img src={item.images[0]} alt={item.name} className="itemCardImage" />
-      <div className="itemSummary">
-        <div className="itemName">{item.name}</div>
-        <div className="itemPrice">{item.price.toLocaleString()}원</div>
-        <div className="favoriteCount">
-          <img
-            src={process.env.PUBLIC_URL + '/images/ic_heart.svg'}
-            alt="하트아이콘"
-          />
-          {item.favoriteCount}
+    <Link to={`/items/${item.id}`} state={{ item: item }}>
+      <div className="itemCard">
+        <img src={item.images[0]} alt={item.name} className="itemCardImage" />
+        <div className="itemSummary">
+          <div className="itemName">{item.name}</div>
+          <div className="itemPrice">{item.price.toLocaleString()}원</div>
+          <div className="favoriteCount">
+            <Heart />
+            {item.favoriteCount}
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
