@@ -97,6 +97,7 @@ const updateComment = async (id, { content }) => {
     if (!response.ok) {
       throw new Error("댓글 업데이트 실패");
     }
+    return response;
   } catch (error) {
     throw error;
   }

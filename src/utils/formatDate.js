@@ -7,7 +7,7 @@ const formatDate = (date) => {
   return date.split("T")[0].replace(/-/g, ".");
 };
 
-const calculateGapHour = (date) => {
+const calculateGapTime = (date) => {
   const currentDate = new Date();
   const targetDate = new Date(date);
   const differenceInMinutes = Math.floor(
@@ -25,4 +25,4 @@ const calculateGapHour = (date) => {
   }
 };
 
-export { formatDate, calculateGapHour };
+export { formatDate, calculateGapTime };
