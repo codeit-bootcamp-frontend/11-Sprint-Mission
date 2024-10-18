@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ICON_KEBAB from "../../assets/ic_kebab.svg";
 
-function DropDownMenu({ children, classNames }) {
+function DropDownMenu({ children, classNames = "" }) {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   const handleMenuClick = () => {

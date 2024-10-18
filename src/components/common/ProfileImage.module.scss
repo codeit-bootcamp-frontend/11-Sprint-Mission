@@ -1,6 +1,8 @@
 .user-profile {
-  width: 4rem;
-  height: 4rem;
+  &.big {
+    width: 4rem;
+    height: 4rem;
+  }
   &.small {
     width: 3.2rem;
     height: 3.2rem;

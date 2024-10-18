@@ -1,97 +1,138 @@
-.product-detail-area {
-  display: flex;
-  gap: 2.4rem;
-  margin-bottom: 4rem;
+.product-detail {
+  &-container {
+    position: relative;
+    display: flex;
+    gap: 2.4rem;
+    padding: 0 0 4rem;
+    margin-bottom: 4rem;
+    border-bottom: 1px solid var(--gray-200);
+  }
 
-  .text {
-    &-wrap {
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      max-width: 69rem;
+  &-info {
+    display: flex;
+    flex-direction: column;
+    max-width: 69rem;
+    h2 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      line-height: 3.2rem;
+      margin-bottom: 1.6rem;
     }
 
-    &-area {
-      margin-bottom: 2.4rem;
-      &:first-of-type {
-        padding-bottom: 1.6rem;
-        border-bottom: 1px solid var(--gray-200);
-      }
+    h3 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      line-height: 2.6rem;
+      margin-bottom: 1.6rem;
+      color: var(--gray-600);
+    }
 
-      .title {
-        font-size: 2.4rem;
-        font-weight: 600;
-        line-height: 3.2rem;
-        margin-bottom: 1.6rem;
-      }
-
-      .title-sub {
-        font-size: 1.6rem;
-        font-weight: 600;
-        line-height: 2.6rem;
-        margin-bottom: 1.6rem;
-        color: var(--gray-600);
-      }
-
-      .text-p {
-        font-size: 1.6rem;
-        font-weight: 400;
-        line-height: 2.6rem;
-      }
-
-      .price {
+    p {
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 2.6rem;
+      &.price {
         font-size: 4rem;
         font-weight: 600;
         line-height: 4.473rem;
       }
     }
-  }
 
-  .user-information {
-    &-wrap {
+    .product-title {
+      padding-bottom: 1.6rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .product-desc,
+    .product-tag {
+      margin-top: 2.4rem;
+    }
+
+    .user-info {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       margin-top: auto;
-      .btn-heart {
-        position: relative;
-        &::before {
-          position: absolute;
-          content: "";
-          width: 1px;
-          height: 3.4rem;
-          background-color: var(--gray-200);
-          left: -2.4rem;
-          top: 50%;
-          transform: translateY(-50%);
-        }
+    }
+  }
+}
+
+.inquiry {
+  &-form {
+    h4 {
+      margin-bottom: 0.9rem;
+      font-size: 1.6rem;
+      font-weight: 600;
+      line-height: 2.6rem;
+      color: var(--gray-900);
+    }
+
+    form {
+      text-align: right;
+      margin-bottom: 2.4rem;
+      button {
+        margin-top: 1.6rem;
       }
     }
+  }
 
-    &-area {
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+    margin-bottom: 6.4rem;
+    &-not {
+      width: 100%;
       display: flex;
-      gap: 1.6rem;
+      flex-direction: column;
       align-items: center;
+      margin-bottom: 4.8rem;
+      img {
+        width: 19.6rem;
+        height: 19.6rem;
+        margin-bottom: 0.8rem;
+      }
+      p {
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+        color: var(--gray-400);
+      }
     }
+  }
 
-    &-details {
+  &-item {
+    position: relative;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--gray-200);
+    .comment {
+      margin-bottom: 2.4rem;
       font-size: 1.4rem;
-      line-height: 2.4rem;
+      line-height: 1.4rem;
+      font-weight: 400;
     }
   }
+}
 
-  .user-nickName {
-    font-weight: 500;
-  }
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
 
-  .date-creation {
-    font-weight: 400;
-    color: var(--gray-400);
-  }
-
-  .dropdown {
+.btn-heart {
+  position: relative;
+  &::before {
     position: absolute;
-    right: 0;
-    top: 0;
+    content: "";
+    width: 1px;
+    height: 3.4rem;
+    background-color: var(--gray-200);
+    left: -2.4rem;
+    top: 50%;
+    transform: translateY(-50%);
   }
+}
+
+.btn-wrap {
+  display: flex;
+  justify-content: center;
 }
