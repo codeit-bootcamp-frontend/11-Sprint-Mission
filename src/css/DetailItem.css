@@ -188,7 +188,7 @@
   justify-content: flex-end;
 }
 
-.question-register-button {
+.question-register-button.inactive {
   height: 42px;
   border-radius: 8px;
   border: none;
@@ -200,7 +200,19 @@
   margin-top: 16px;
 }
 
-.question-register-button:hover {
+.question-register-button.active {
+  background-color: #3692ff;
+  height: 42px;
+  border-radius: 8px;
+  border: none;
+  padding: 12px 23px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #f3f4f6;
+  margin-top: 16px;
+}
+
+.question-register-button.active:hover {
   background-color: #6babfa;
   transform: translateY(-3px);
 }

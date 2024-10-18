@@ -10,6 +10,7 @@ const DetailItem = () => {
   const [loading, setLoading] = useState(false);
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
+  const [question, setQuestion] = useState("");
 
   useEffect(() => {
     const fetchProductsById = async () => {
@@ -28,7 +29,7 @@ const DetailItem = () => {
   }, [productId]);
 
   const handleChange = (e) => {
-    const nextValue = e.target.value;
+    setQuestion(e.target.value);
   };
 
   if (loading) {
@@ -112,7 +113,14 @@ const DetailItem = () => {
                 onChange={handleChange}
               ></textarea>
               <div className="button-box">
-                <button className="question-register-button">등록</button>
+                <button
+                  className={`question-register-button ${
+                    question ? "active" : "inactive"
+                  }`}
+                  disabled={!question}
+                >
+                  등록
+                </button>
               </div>
             </form>
           </section>

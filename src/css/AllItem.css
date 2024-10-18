@@ -105,6 +105,11 @@
   white-space: nowrap;
 }
 
+.add-button:hover {
+  background-color: #6babfa;
+  transform: translateY(-3px);
+}
+
 .option-select {
   width: 130px;
   height: 42px;

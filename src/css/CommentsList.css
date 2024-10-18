@@ -135,6 +135,11 @@
   cursor: pointer;
 }
 
+.edit-button:hover {
+  background-color: #6babfa;
+  transform: translateY(-3px);
+}
+
 .cancel-button {
   font-size: 16px;
   font-weight: 600;
