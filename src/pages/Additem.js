@@ -10,11 +10,17 @@ function AddItem() {
 
   const isFormValid = itemName && itemIntro && itemPrice && itemTags;
 
+  // 이미지 업로드 핸들러
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
       setImage(URL.createObjectURL(file));
     }
+  };
+
+  // 이미지 삭제 핸들러
+  const handleImageRemove = () => {
+    setImage(null);
   };
 
   return (
@@ -36,6 +42,9 @@ function AddItem() {
           {image && (
             <div className="image-preview">
               <img src={image} alt="이미지 미리보기" />
+              <button className="image-remove-btn" onClick={handleImageRemove}>
+                X
+              </button>
             </div>
           )}
         </div>

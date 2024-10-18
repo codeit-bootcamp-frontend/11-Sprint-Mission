@@ -103,6 +103,26 @@ label {
   object-fit: cover;
 }
 
+.image-preview {
+  position: relative;
+}
+
+.image-remove-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  background-color: #9ca3af;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 10px;
+}
+
 .image-placeholder input[type='file'] {
   display: none;
 }
