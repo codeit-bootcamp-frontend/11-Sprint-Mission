@@ -1,0 +1,97 @@
+.product-detail-area {
+  display: flex;
+  gap: 2.4rem;
+  margin-bottom: 4rem;
+
+  .text {
+    &-wrap {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      max-width: 69rem;
+    }
+
+    &-area {
+      margin-bottom: 2.4rem;
+      &:first-of-type {
+        padding-bottom: 1.6rem;
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .title {
+        font-size: 2.4rem;
+        font-weight: 600;
+        line-height: 3.2rem;
+        margin-bottom: 1.6rem;
+      }
+
+      .title-sub {
+        font-size: 1.6rem;
+        font-weight: 600;
+        line-height: 2.6rem;
+        margin-bottom: 1.6rem;
+        color: var(--gray-600);
+      }
+
+      .text-p {
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 2.6rem;
+      }
+
+      .price {
+        font-size: 4rem;
+        font-weight: 600;
+        line-height: 4.473rem;
+      }
+    }
+  }
+
+  .user-information {
+    &-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      .btn-heart {
+        position: relative;
+        &::before {
+          position: absolute;
+          content: "";
+          width: 1px;
+          height: 3.4rem;
+          background-color: var(--gray-200);
+          left: -2.4rem;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+
+    &-area {
+      display: flex;
+      gap: 1.6rem;
+      align-items: center;
+    }
+
+    &-details {
+      font-size: 1.4rem;
+      line-height: 2.4rem;
+    }
+  }
+
+  .user-nickName {
+    font-weight: 500;
+  }
+
+  .date-creation {
+    font-weight: 400;
+    color: var(--gray-400);
+  }
+
+  .dropdown {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}

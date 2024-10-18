@@ -16,7 +16,7 @@ const ProductItem = ({ item, imageSize }) => {
       <div className="product-content">
         <h3 className="product-name">{item.name}</h3>
         <p className="product-price">{priceReplace}원</p>
-        <HeartCountArea count={item.favoriteCount} />
+        <HeartCountArea count={item.favoriteCount} style="small" />
       </div>
     </>
   );

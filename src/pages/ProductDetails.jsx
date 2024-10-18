@@ -5,6 +5,8 @@ import TagsList from "../components/common/TagsList";
 import DropDownMenu from "../components/common/DropDownMenu";
 import Button from "../components/common/Button";
 import ProfileImage from "../components/common/ProfileImage";
+import INQUIRY_IMAGE from "../assets/Img_inquiry_empty.svg";
+import styled from "./ProductDetails.module.scss";
 
 function ProductDetails() {
   const handleEditClick = () => console.log("수정하기 버튼 클릭");
@@ -22,7 +24,7 @@ function ProductDetails() {
   return (
     <main className="page-productDetails">
       <div className="container">
-        <div className="product-detail-area">
+        <div className={styled["product-detail-area"]}>
           <Images
             imageSize={{
               pcSize: "big",
@@ -33,8 +35,42 @@ function ProductDetails() {
             src="http://placehold.it/600x600"
             alt="상품 이미지"
           />
-          <div className="product-detail-text-area">
-            <DropDownMenu>
+          <div className={styled["text-wrap"]}>
+            <div className={styled["text-area"]}>
+              <h2 className={styled["title"]}>아이패드 미니 팔아요</h2>
+              <p className={styled["price"]}>500,000원</p>
+            </div>
+            <div className={styled["text-area"]}>
+              <h3 className={styled["title-sub"]}>상품 소개</h3>
+              <p className={styled["text-p"]}>
+                액정에 잔기스랑 주변부 스크래치있습니다만 예민하신분아니면 전혀
+                신경쓰이지않을정도입니다. 박스 보관중입니다. 메모용과
+                넷플릭스용으로만쓰던거라 뭘 해보질 않아 기능이나 문제점을
+                못느꼈네요 잘 안써서 싸게넘깁니다! 택배거래안합니다.
+              </p>
+            </div>
+            <div className={styled["text-area"]}>
+              <h3 className={styled["title-sub"]}>상품 태그</h3>
+              <TagsList
+                tags={["아이패드미니", "애플", "가성비"]}
+                remove={false}
+              />
+            </div>
+            <div className={styled["user-information-wrap"]}>
+              <div className={styled["user-information-area"]}>
+                <ProfileImage />
+                <div className={styled["user-information-details"]}>
+                  <p className={styled["user-nickName"]}>총명한판다</p>
+                  <span className={styled["date-creation"]}>2024. 01. 02</span>
+                </div>
+              </div>
+              <HeartCountArea
+                count="123"
+                style="large border"
+                className={styled["btn-heart"]}
+              />
+            </div>
+            <DropDownMenu classNames={styled["dropdown"]}>
               <DropDownMenu.Item
                 onClick={handleEditClick}
                 className="btn-remove">
@@ -46,36 +82,6 @@ function ProductDetails() {
                 삭제하기
               </DropDownMenu.Item>
             </DropDownMenu>
-            <div className="product-detail-text">
-              <h2 className="product-detail-title">아이패드 미니 팔아요</h2>
-              <p className="product-detail-price">500,000원</p>
-            </div>
-            <div className="product-detail-text">
-              <h3 className="product-detail-title-sub">상품 소개</h3>
-              <p className="product-detail-text-p">
-                액정에 잔기스랑 주변부 스크래치있습니다만 예민하신분아니면 전혀
-                신경쓰이지않을정도입니다. 박스 보관중입니다. 메모용과
-                넷플릭스용으로만쓰던거라 뭘 해보질 않아 기능이나 문제점을
-                못느꼈네요 잘 안써서 싸게넘깁니다! 택배거래안합니다.
-              </p>
-            </div>
-            <div className="product-detail-text">
-              <h3 className="product-detail-title-sub">상품 태그</h3>
-              <TagsList
-                tags={["아이패드미니", "애플", "가성비"]}
-                remove={false}
-              />
-            </div>
-            <div>
-              <div className="user-information">
-                <ProfileImage />
-                <div className="user-information-details">
-                  <p className="user-nickName">총명한판다</p>
-                  <span className="date-creation">2024. 01. 02</span>
-                </div>
-              </div>
-              <HeartCountArea count="123" />
-            </div>
           </div>
         </div>
         <div className="inquiry-form">
@@ -190,7 +196,7 @@ function ProductDetails() {
           </li>
         </ul>
         <div className="inquiry-list-not">
-          <img src="" alt="" />
+          <img src={INQUIRY_IMAGE} alt="문의 없을때 판다 이미지" />
           <p>아직 문의가 없어요</p>
         </div>
         <button className="btn-return">목록으로 돌아가기</button>
