@@ -6,6 +6,16 @@ import NoInquiriesImg from "../../assets/NoInquiries.svg";
 const Inner = styled.div`
   width: 1200px;
   margin: 24px auto 222px auto;
+
+  @media (max-width: 1200px) {
+    width: 93.5%;
+    margin: 16px auto 243px auto;
+  }
+
+  @media (max-width: 744px) {
+    width: 91.7%;
+    margin: 24px auto 65px auto;
+  }
 `;
 
 const CommentList = styled.ul`
@@ -66,6 +76,7 @@ const CommentList = styled.ul`
     position: absolute;
     top: 34px;
     right: 0;
+    z-index: 1;
   }
 
   .EditDelete__toggle.active {
@@ -80,6 +91,28 @@ const CommentList = styled.ul`
   .EditDelete__toggle li button {
     width: 100%;
     height: 100%;
+    color: #6b7280;
+  }
+
+  @media (max-width: 1200px) {
+    margin-bottom: 47px;
+  }
+
+  @media (max-width: 744px) {
+    margin-bottom: 40px;
+
+    li {
+      padding: 16px 0 8px;
+    }
+
+    .EditDelete__toggle {
+      width: 102px;
+      top: 35px;
+    }
+
+    .EditDelete__toggle li button {
+      font-size: 14px;
+    }
   }
 `;
 
@@ -106,6 +139,12 @@ const BackButton = styled.div`
     background: url(${backButtonIcon}) no-repeat;
     background-size: 100%;
     margin-left: 8px;
+  }
+
+  @media (max-width: 1200px) {
+    a {
+      font-size: 18px;
+    }
   }
 `;
 

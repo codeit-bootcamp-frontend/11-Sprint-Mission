@@ -5,6 +5,15 @@ const Inner = styled.div`
   flex-direction: column;
   width: 1200px;
   margin: 40px auto 0 auto;
+
+  @media (max-width: 1200px) {
+    width: 93.5%;
+  }
+
+  @media (max-width: 744px) {
+    width: 91.7%;
+    margin: 24px auto 0 auto;
+  }
 `;
 
 const Label = styled.label`
@@ -29,6 +38,10 @@ const Textarea = styled.textarea`
   &::placeholder {
     font-weight: 400;
     color: #9ca3af;
+  }
+
+  @media (max-width: 744px) {
+    height: 129px;
   }
 `;
 

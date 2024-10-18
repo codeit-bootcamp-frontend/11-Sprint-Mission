@@ -11,6 +11,16 @@ const Img = styled.div`
     height: 100%;
     object-fit: cover;
   }
+
+  @media (max-width: 1200px) {
+    width: 340px;
+    height: 340px;
+  }
+
+  @media (max-width: 744px) {
+    width: 100%;
+    height: 343px;
+  }
 `;
 
 export default Img;

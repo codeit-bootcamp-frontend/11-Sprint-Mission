@@ -17,6 +17,11 @@ const Like = styled.span`
     margin-right: 4px;
   }
 
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
   &::before {
     content: "";
     background: #e5e7eb;
@@ -27,6 +32,15 @@ const Like = styled.span`
     top: 50%;
     left: -24px;
     transform: translateY(-50%);
+  }
+
+  @media (max-width: 1200px) {
+    height: 32px;
+
+    i {
+      width: 24px;
+      height: 24px;
+    }
   }
 `;
 

@@ -24,6 +24,16 @@ const Tag = styled.div`
     color: #1f2937;
     padding: 0 16px;
   }
+
+  @media (max-width: 1200px) {
+    h3 {
+      font-size: 14px;
+    }
+
+    ul {
+      margin-top: 8px;
+    }
+  }
 `;
 
 export default Tag;
