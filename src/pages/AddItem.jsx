@@ -123,10 +123,12 @@ function AddItem() {
                   onChange={handleInputChange}
                   onKeyDown={handleAddTagInput}
                 />
-                <TagsList
-                  tags={formValues.productTags}
-                  onRemove={handleRemoveTag}
-                />
+                {formValues.productTags.length !== 0 && (
+                  <TagsList
+                    tags={formValues.productTags}
+                    onRemove={handleRemoveTag}
+                  />
+                )}
               </div>
             </div>
           </div>
