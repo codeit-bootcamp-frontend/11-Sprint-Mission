@@ -37,6 +37,11 @@ const CommentList = styled.ul`
     font-weight: 400;
     color: #1f2937;
     padding: 16px 24px;
+    resize: none;
+
+    &:focus {
+      outline-color: var(--blue);
+    }
   }
 
   .comment {
@@ -53,6 +58,10 @@ const CommentList = styled.ul`
   }
 
   .EditDelete__toggle {
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #fff;
+    width: 139px;
     display: none;
     position: absolute;
     top: 34px;
@@ -61,6 +70,16 @@ const CommentList = styled.ul`
 
   .EditDelete__toggle.active {
     display: block;
+  }
+
+  .EditDelete__toggle li {
+    height: 46px;
+    padding: 0;
+  }
+
+  .EditDelete__toggle li button {
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -111,4 +130,24 @@ const NoInquiries = styled.p`
   }
 `;
 
-export { Inner, CommentList, BackButton, NoInquiries };
+const Edit = styled.li`
+  padding: 24px 0 27px !important;
+
+  > div:not(.comment) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  button {
+    height: 42px;
+    padding: 0 23px;
+  }
+
+  .btnWrapper .editBtn {
+    border-radius: 8px;
+    background: var(--blue);
+    color: #fff;
+  }
+`;
+
+export { Inner, CommentList, BackButton, NoInquiries, Edit };
