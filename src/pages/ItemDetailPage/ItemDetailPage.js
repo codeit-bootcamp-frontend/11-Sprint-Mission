@@ -1,10 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getProductById } from "../../api";
-import ic_profile from "../../assets/images/profile.svg";
-import ic_favorite from "../../assets/images/ic_heart.svg";
-import ic_kebab from "../../assets/images/ic_kebab.svg";
 import styles from "./ItemDetailPage.module.css";
+import ItemDetail from "../../components/ItemDetail/ItemDetail";
 
 function ItemDetailPage() {
   const [item, setItem] = useState();
@@ -21,52 +19,23 @@ function ItemDetailPage() {
   return (
     <div className={`${styles["container"]}`}>
       <ItemDetail item={item} />
+      <CommentForm />
     </div>
   );
 }
 
-function ItemDetail({ item }) {
+function CommentForm() {
   return (
-    <div className={styles["Item"]}>
-      <img className={styles["image"]} src={item?.images[0]} alt={item?.name} />
-      <div className={styles["main"]}>
-        <div className={styles["header"]}>
-          <h1 className={styles["title"]}>{item?.name}</h1>
-          <img src={ic_kebab} alt="케밥" />
-          <p className={styles["price"]}>
-            {item?.price.toLocaleString("kr-KR")}
-          </p>
-        </div>
-        <div className={styles["description"]}>
-          <h2 className={styles["title"]}>상품 소개</h2>
-          <p className={styles["content"]}>{item?.description}</p>
-        </div>
-        <div className={styles["tag-list"]}>
-          <h2 className={styles["title"]}>상품 태그</h2>
-          <div className={styles["content"]}>
-            {item?.tags.map((tag) => (
-              <span key={tag} className={styles["tag"]}>{`#${tag}`}</span>
-            ))}
-          </div>
-        </div>
-        <div className={styles["footer"]}>
-          <div className={styles["owner"]}>
-            <img
-              className={styles["profile"]}
-              src={ic_profile}
-              alt="판매자 프로필"
-            />
-            <div className={styles["main"]}>
-              <div className={styles["name"]}>총명한 판다</div>
-              <div className={styles["date"]}>2024.01.02</div>
-            </div>
-          </div>
-          <span className={styles["favorite"]}>
-            <img src={ic_favorite} alt="좋아요" />
-            {item?.favoriteCount}
-          </span>
-        </div>
-      </div>
+    <div>
+      <form>
+        <label htmlFor="input-comment">문의하기</label>
+        <textarea
+          name="comment"
+          id="input-comment"
+          placeholder="개인정보를 공유 및 요청하거나, 명예훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 계시자에게 있습니다."
+        />
+        <button type="submit">등록</button>
+      </form>
     </div>
   );
 }
