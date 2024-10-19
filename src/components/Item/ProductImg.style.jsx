@@ -5,6 +5,7 @@ const Img = styled.div`
   width: 486px;
   height: 486px;
   overflow: hidden;
+  flex-shrink: 0;
 
   img {
     width: 100%;

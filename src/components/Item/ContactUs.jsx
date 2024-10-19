@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Inner, Label, Textarea, Button } from "./ContactUs.style";
 
 const ContactUs = () => {
