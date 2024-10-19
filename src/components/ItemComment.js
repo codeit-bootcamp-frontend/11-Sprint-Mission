@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import axiosInstance from '../axiosInstance';
 import { ReactComponent as Profile } from '../images/ic_profile.svg';
-import { ReactComponent as Dropdown } from '../images/ic_kebab.svg';
 import { ReactComponent as EmptyComment } from '../images/Img_inquiry_empty.svg';
 import '../style/ItemComment.css';
+import DropdownMenu from './DropdownMenu';
 
 function ItemComment({ item }) {
-  const [comments, setComments] = useState([]); // 댓글 데이터를 저장할 상태
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -15,18 +15,24 @@ function ItemComment({ item }) {
           `/products/${item.id}/comments`,
           {
             params: {
-              limit: 10, // 요청에 'limit' 값을 쿼리 파라미터로 추가
+              limit: 10,
             },
           },
         );
         console.log(response.data.list);
-        setComments(response.data.list); // 서버에서 받은 데이터를 상태에 저장
+        // 각 댓글에 isEditing 및 originalContent 상태 추가
+        const commentsWithEditState = response.data.list.map((comment) => ({
+          ...comment,
+          isEditing: false,
+          originalContent: comment.content, // 원본 내용을 저장
+        }));
+        setComments(commentsWithEditState);
       } catch (error) {
         console.error('Error fetching comments:', error);
       }
     };
 
-    fetchComments(); // 데이터 요청
+    fetchComments();
   }, []);
 
   const formatDate = (isoDate) => {
@@ -41,6 +47,28 @@ function ItemComment({ item }) {
       .slice(0, -1); // 공백 제거
   };
 
+  // 수정하기 버튼 클릭 시: isEditing을 true로 하고 원본 content 저장
+  const handleEditClick = (index) => {
+    setComments((prevComments) =>
+      prevComments.map((comment, i) =>
+        i === index
+          ? { ...comment, isEditing: true, originalContent: comment.content }
+          : comment,
+      ),
+    );
+  };
+
+  // 수정 취소 버튼 클릭 시: 원본 content로 복구
+  const handleCancelEdit = (index) => {
+    setComments((prevComments) =>
+      prevComments.map((comment, i) =>
+        i === index
+          ? { ...comment, isEditing: false, content: comment.originalContent }
+          : comment,
+      ),
+    );
+  };
+
   return (
     <div>
       {comments.length > 0 ? (
@@ -48,23 +76,63 @@ function ItemComment({ item }) {
           {comments.map((comment, index) => (
             <div className="comment-container" key={index}>
               <div className="comment-header">
-                <div className="comment-content">{comment.content}</div>
-                <Dropdown />
+                {comment.isEditing ? (
+                  <textarea
+                    className="comment-edit-content"
+                    value={comment.content}
+                    onChange={(e) =>
+                      setComments((prevComments) =>
+                        prevComments.map((c, i) =>
+                          i === index ? { ...c, content: e.target.value } : c,
+                        ),
+                      )
+                    }
+                  />
+                ) : (
+                  <>
+                    <div className="comment-content">{comment.content}</div>
+                    <DropdownMenu
+                      onSelection={(action) => {
+                        if (action === 'fixed') {
+                          handleEditClick(index);
+                        }
+                        if (action === 'delete') {
+                          console.log('Delete action triggered');
+                        }
+                      }}
+                    />
+                  </>
+                )}
               </div>
               <div className="comment-info">
-                {comment.writer.image ? (
-                  <img className="profile-icon" src={comment.writer.image} />
-                ) : (
-                  <Profile className="profile-icon" />
-                )}
-                <div className="comment-user-info">
-                  <div className="comment-nickname">
-                    {comment.writer.nickname}
-                  </div>
-                  <div className="comment-updatedAt">
-                    {formatDate(comment.updatedAt)}
+                <div className="comment-info-content">
+                  {comment.writer.image ? (
+                    <img className="profile-icon" src={comment.writer.image} />
+                  ) : (
+                    <Profile className="profile-icon" />
+                  )}
+                  <div className="comment-user-info">
+                    <div className="comment-nickname">
+                      {comment.writer.nickname}
+                    </div>
+                    <div className="comment-updatedAt">
+                      {formatDate(comment.updatedAt)}
+                    </div>
                   </div>
                 </div>
+                {comment.isEditing && (
+                  <div className="comment-edit-actions">
+                    <button
+                      className="comment-edit-cancelbtn"
+                      onClick={() => handleCancelEdit(index)}
+                    >
+                      취소
+                    </button>
+                    <button className="comment-edit-successbtn">
+                      수정 완료
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           ))}

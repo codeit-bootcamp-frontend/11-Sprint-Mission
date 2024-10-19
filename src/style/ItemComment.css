@@ -21,7 +21,30 @@
   color: #1f2937;
 }
 
+.comment-edit-content {
+  padding: 16px 24px;
+  gap: 10px;
+  border-radius: 12px;
+  width: 100%;
+  background-color: #f3f4f6;
+  color: #1f2937;
+  border: 0;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  outline-color: #3692ff;
+  resize: none;
+}
+
 .comment-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-info-content {
   display: flex;
   gap: 8px;
 }
@@ -69,4 +92,31 @@
   line-height: 26px;
   text-align: center;
   color: #9ca3af;
+}
+
+.comment-edit-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.comment-edit-cancelbtn {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  text-align: left;
+  color: #737373;
+}
+
+.comment-edit-successbtn {
+  padding: 12px 23px;
+  gap: 10px;
+  border-radius: 8px;
+  background-color: #3692ff;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  text-align: left;
+  color: #f3f4f6;
 }
