@@ -161,6 +161,7 @@
   line-height: normal;
   height: 42px;
   padding: 12px 22px;
+  border-radius: 8px;
 }
 
 .dropdown-container {
