@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import '../styles/AddItem.css';
 import PlusIcon from '../image/plus-icon.png';
+import RemoveButton from '../components/RemoveButton';
 
 function AddItem() {
   const [image, setImage] = useState(null);
   const [itemName, setItemName] = useState('');
   const [itemIntro, setItemIntro] = useState('');
   const [itemPrice, setItemPrice] = useState('');
-  const [itemTags, setItemTags] = useState('');
+  const [itemTags, setItemTags] = useState([]);
 
   const isFormValid = itemName && itemIntro && itemPrice && itemTags;
 
@@ -22,6 +23,21 @@ function AddItem() {
   // 이미지 삭제 핸들러
   const handleImageRemove = () => {
     setImage(null);
+  };
+
+  // 태그 추가 핸들러
+  const handleTagAdd = (e) => {
+    const tagValue = e.target.value.trim();
+    if (e.key === 'Enter' && tagValue && !itemTags.includes(tagValue)) {
+      e.preventDefault();
+      setItemTags([...itemTags, tagValue]);
+      e.target.value = '';
+    }
+  };
+
+  // 태그 삭제 핸들러
+  const handleTagRemove = (tagToRemove) => {
+    setItemTags(itemTags.filter((tag) => tag !== tagToRemove));
   };
 
   return (
@@ -47,9 +63,10 @@ function AddItem() {
           {image && (
             <div className="image-preview">
               <img src={image} alt="이미지 미리보기" />
-              <button className="image-remove-btn" onClick={handleImageRemove}>
-                X
-              </button>
+              <RemoveButton
+                className="file-remove-btn"
+                onClick={handleImageRemove}
+              />
             </div>
           )}
         </div>
@@ -93,13 +110,22 @@ function AddItem() {
           id="item-tags"
           type="text"
           placeholder="태그를 입력해주세요"
-          value={itemTags}
-          onChange={(e) => setItemTags(e.target.value)}
+          onKeyDown={handleTagAdd}
         />
         <div className="tags">
-          {/* 태그는 동적으로 추가될 예정 */}
-          <div className="tag">태그1</div>
-          <div className="tag">태그2</div>
+          {itemTags.length > 0 &&
+            itemTags.map((tag) => (
+              <div key={tag} className="tag">
+                {tag}
+                {/* 태그가 있을때 */}
+                {tag && (
+                  <RemoveButton
+                    className="tag-remove-btn"
+                    onClick={() => handleTagRemove(tag)}
+                  />
+                )}
+              </div>
+            ))}
         </div>
       </div>
     </div>
