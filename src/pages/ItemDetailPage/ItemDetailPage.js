@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { useDeviceType } from "../../contexts/DeviceTypeContext";
 import { useEffect, useState } from "react";
 import { getProductById } from "../../api";
 import ic_profile from "../../assets/images/profile.svg";
@@ -10,7 +9,6 @@ import styles from "./ItemDetailPage.module.css";
 function ItemDetailPage() {
   const [item, setItem] = useState();
   const { id } = useParams();
-  const deviceType = useDeviceType();
 
   useEffect(() => {
     const fetchDate = async () => {
@@ -21,7 +19,7 @@ function ItemDetailPage() {
   }, [id]);
 
   return (
-    <div className={`${styles[deviceType]}  ${styles["container"]}`}>
+    <div className={`${styles["container"]}`}>
       <div className={styles["Item"]}>
         <img
           className={styles["image"]}
@@ -31,6 +29,7 @@ function ItemDetailPage() {
         <div className={styles["main"]}>
           <div className={styles["header"]}>
             <h1 className={styles["title"]}>{item?.name}</h1>
+            <img src={ic_kebab} alt="케밥" />
             <p className={styles["price"]}>
               {item?.price.toLocaleString("kr-KR")}
             </p>
@@ -56,7 +55,7 @@ function ItemDetailPage() {
               />
               <div className={styles["main"]}>
                 <div className={styles["name"]}>총명한 판다</div>
-                <div>2024.01.02</div>
+                <div className={styles["date"]}>2024.01.02</div>
               </div>
             </div>
             <span className={styles["favorite"]}>

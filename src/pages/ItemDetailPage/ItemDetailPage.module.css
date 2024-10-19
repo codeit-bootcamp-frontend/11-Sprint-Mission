@@ -1,32 +1,44 @@
 .container {
+  width: 1200px;
   margin: 0 auto;
 }
 
 .Item {
   display: flex;
+  gap: 40px;
+  border-bottom: 1px solid var(--gray-300);
+  padding-bottom: 40px;
 }
 
 .main {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .image {
+  width: 486px;
+  height: 486px;
   border-radius: 16px;
 }
 
 .header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 0;
   border-bottom: 1px solid var(--gray-200);
   color: var(--gray-800);
   margin-bottom: 24px;
 }
 .header .title {
+  flex-grow: 1;
   font-size: 24px;
   font-weight: 600;
-  margin-bottom: 16px;
+  align-content: center;
 }
 .header .price {
+  flex: 1 0 100%;
   font-size: 40px;
   font-weight: 600;
   margin-bottom: 16px;
@@ -43,6 +55,7 @@
   margin-bottom: 16px;
 }
 .description .content {
+  font-size: 16px;
   font-weight: 400;
   line-height: 26px;
 }
@@ -77,6 +90,14 @@
   flex-grow: 1;
   display: flex;
   border-right: 1px solid var(--secondary-200);
+  font-size: 14px;
+}
+.footer .owner .name {
+  color: var(--gray-600);
+  margin-bottom: 2px;
+}
+.footer .owner .date {
+  color: var(--gray-400);
 }
 .footer .owner .profile {
   margin-right: 16px;
@@ -98,36 +119,55 @@
   width: 32px;
 }
 
-.desktop.container {
-  width: 1200px;
+@media screen and (max-width: 1199px) {
+  .container {
+    width: 696px;
+  }
+  .Item {
+    gap: 32px;
+    padding-bottom: 32px;
+  }
+  .image {
+    width: 340px;
+    height: 340px;
+  }
+  .header {
+    gap: 8px 0;
+  }
+  .header .title {
+    font-size: 20px;
+  }
+  .header .price {
+    font-size: 32px;
+  }
+  .description .title {
+    font-size: 14px;
+  }
+  .tag-list .title {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .footer .owner .profile img {
+    width: 40px;
+  }
+  .footer .favorite {
+    gap: 4px;
+  }
+  .footer .favorite img {
+    width: 24px;
+  }
 }
-.desktop .Item {
-  gap: 40px;
-}
-.desktop .image {
-  width: 486px;
-  height: 486px;
-}
-
-.tablet.container {
-  width: 696px;
-}
-.tablet .Item {
-  gap: 32px;
-}
-.tablet .image {
-  width: 340px;
-  height: 340px;
-}
-
-.mobile.container {
-  width: 344px;
-}
-.mobile .Item {
-  flex-direction: column;
-  gap: 16px;
-}
-.mobile .image {
-  width: 343px;
-  height: 343px;
-}/*# sourceMappingURL=ItemDetailPage.module.css.map */
+@media screen and (max-width: 767px) {
+  .container {
+    width: 344px;
+  }
+  .Item {
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 24px;
+  }
+  .image {
+    width: 343px;
+    height: 343px;
+  }
+} /*# sourceMappingURL=ItemDetailPage.module.css.map */
