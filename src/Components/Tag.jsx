@@ -1,5 +1,12 @@
 import styles from './Tag.module.css';
 
+/**
+ * 태그 컴포넌트
+ * @param {number} idx : index number
+ * @param {*} children : 내부 요소
+ * @param {function} onDelete : 삭제 함수
+ * @return {JSX}
+ */
 function Tag({ idx, children, onDelete }) {
   // tag 삭제
   const handleDeleteClick = () => {
@@ -10,7 +17,7 @@ function Tag({ idx, children, onDelete }) {
     <span className={styles.tag}>
       #{children}
       {onDelete && (
-        <button title={`${children} 태그 삭제`} onClick={handleDeleteClick}>
+        <button type="button" title={`${children} 태그 삭제`} onClick={handleDeleteClick}>
           <svg
             width="22"
             height="24"

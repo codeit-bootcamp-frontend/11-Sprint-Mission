@@ -1,6 +1,11 @@
 .tag {
-  @apply inline-flex gap-2 items-center pl-4 pr-3 py-2 rounded-full;
+  @apply inline-flex gap-2 items-center px-4 py-2 rounded-full;
+  color: var(--gray-800);
   background-color: var(--gray-100);
+
+  &:has(button) {
+    @apply pl-4 pr-3;
+  }
 
   svg {
     color: var(--gray-400);
