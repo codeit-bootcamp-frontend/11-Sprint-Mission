@@ -125,6 +125,10 @@
   cursor: pointer;
 }
 
+.back-to-list:hover {
+  background-color: #1251aa;
+}
+
 .item-user {
   display: flex;
   justify-content: space-between;
@@ -229,6 +233,10 @@
 .inquire-Registerbtn.active {
   background-color: #3692ff;
   cursor: pointer;
+}
+
+.inquire-Registerbtn.active:hover {
+  background-color: #1251aa;
 }
 
 .item-inquire-title {

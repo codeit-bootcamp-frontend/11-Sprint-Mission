@@ -120,3 +120,7 @@
   text-align: left;
   color: #f3f4f6;
 }
+
+.comment-edit-successbtn:hover {
+  background-color: #1251aa;
+}
