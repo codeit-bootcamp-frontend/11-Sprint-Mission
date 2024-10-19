@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./DetailPages.css";
 import Category from "../components/Category";
@@ -17,7 +17,7 @@ const DetailPages = () => {
   const [editingId, setEditingId] = useState(null);
   const [comment, setComment] = useState("");
 
-  const handleLoadData = async () => {
+  const handleLoadData = useCallback(async () => {
     let result, result2;
 
     const params = {
@@ -32,7 +32,7 @@ const DetailPages = () => {
     result2 = await getProductComment(params2);
     setDetailData(result);
     setCommentList(result2.list);
-  };
+  }, [data.id]);
 
   const handleClickOption = (e, editId) => {
     setEditingId(editId);
@@ -44,7 +44,7 @@ const DetailPages = () => {
 
   useEffect(() => {
     handleLoadData();
-  }, []);
+  }, [handleLoadData]);
 
   return (
     <>
