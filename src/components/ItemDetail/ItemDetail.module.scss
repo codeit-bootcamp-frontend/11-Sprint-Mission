@@ -92,6 +92,7 @@
   .owner {
     flex-grow: 1;
     display: flex;
+    align-items: center;
     border-right: 1px solid var(--secondary-200);
     font-size: 14px;
 
