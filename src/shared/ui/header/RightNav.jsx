@@ -1,5 +1,5 @@
 import React from "react";
-import profile from "../assets/profile.svg";
+import profile from "../../assets/profile.svg";
 const RightNav = () => {
   return (
     <div className="flex items-center p-2">

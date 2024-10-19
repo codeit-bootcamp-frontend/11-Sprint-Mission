@@ -19,17 +19,17 @@ const ImageUploader = ({ selectedPicture, onFileChange }) => {
         <h3 className="text-base">상품 이미지</h3>
         <div className="flex w-full h-full gap-x-4">
           <div
-            className="w-1/2 bg-slate-200 h-full relative flex justify-center items-center"
+            className="w-1/2 bg-slate-200 h-full relative flex justify-center items-center cursor-pointer"
             onClick={handleDivClick}
           >
-            <div className="flex flex-col justify-center items-center gap-y-2 text-[#9CA3AF]">
+            <div className="flex flex-col justify-center items-center gap-y-2 text-[#9CA3AF] ">
               <div className="flex justify-center text-4xl">+</div>
               <div className="flex justify-center items-center h-1/2 text-xs sm:text-base">
                 이미지 등록
               </div>
             </div>
             <input
-              className="absolute inset-0 opacity-0 cursor-pointer"
+              className="absolute inset-0 visibility: hidden cursor-pointer"
               type="file"
               accept="image/*"
               ref={fileInputRef}

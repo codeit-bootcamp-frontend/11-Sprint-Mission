@@ -5,6 +5,8 @@ import Home from "../pages/home/index";
 import AddItem from "../pages/addItem/index";
 import Layout from "../shared/ui/layout/Layout";
 
+import ProductDetail from "../pages/productDetail";
+
 const Router = () => {
   return (
     <BrowserRouter>
@@ -13,6 +15,7 @@ const Router = () => {
           <Route path="/" element={<Home />} />
           <Route path="/items" element={<Items />} />
           <Route path="/addItem" element={<AddItem />} />
+          <Route path="/products/:productId" element={<ProductDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>

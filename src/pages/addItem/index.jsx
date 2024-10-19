@@ -12,14 +12,22 @@ const AddItem = () => {
   const [productPrice, setProductPrice] = useState("");
   const [productTag, setProductTag] = useState("");
   const [productTagsArray, setProductTagsArray] = useState([]);
-  const [productsArray, setProductsArray] = useState([]); // product 배열 상태
+  const [productsArray, setProductsArray] = useState(""); // product 배열 상태
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setSelectedPicture(URL.createObjectURL(file));
+      const objectURL = URL.createObjectURL(file);
+      setSelectedPicture(objectURL);
+
+      // 파일 선택 후 입력 필드를 초기화
+      e.target.value = "";
+
+      // 컴포넌트가 언마운트되거나 이미지가 변경될 때 URL 해제
+      return () => {
+        URL.revokeObjectURL(objectURL); // 메모리 해제
+      };
     }
-    e.target.value = ""; // 파일 선택 후 초기화
   };
 
   const handleSubmit = (e) => {
@@ -31,7 +39,7 @@ const AddItem = () => {
       tag: [...productTagsArray],
       image: selectedPicture,
     };
-    setProductsArray([...productsArray, newProduct]);
+    setProductsArray(newProduct);
 
     // 폼 초기화
     setProductName("");
