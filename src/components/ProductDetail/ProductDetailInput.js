@@ -21,8 +21,8 @@ function ProductDetailInput() {
         className="inquiryButton"
         disabled={!inputValue}
         style={{
-          backgroundColor: inputValue ? '#3692ff' : '#9CA3AF', // 값이 있으면 파란색, 없으면 회색
-          cursor: inputValue ? 'pointer' : 'not-allowed', // 커서 변경
+          backgroundColor: inputValue ? '#3692ff' : '#9CA3AF', // 값이 있으면 파란색 없으면 회색
+          cursor: inputValue ? 'pointer' : 'not-allowed',
         }}
       >
         등록

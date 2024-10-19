@@ -49,7 +49,7 @@ body {
   font-weight: 600;
 }
 
-.dddddd {
+.PDDivDescription {
   padding: 24px 0;
   height: 100%;
   display: flex;
@@ -57,18 +57,18 @@ body {
   justify-content: space-between;
 }
 
-.dddddd p {
+.PDDivDescription p {
   color: #4b5563;
 }
 
-.bbbbbb {
+.PDBottomSection {
   margin-top: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.pddddd {
+.PDEditInfo {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -183,8 +183,8 @@ body {
 .noComment {
   display: flex;
   flex-direction: column;
-  align-items: center; /* 가로 중앙 정렬 */
-  justify-content: center; /* 세로 중앙 정렬 (필요한 경우) */
+  align-items: center;
+  justify-content: center;
   text-align: center;
   margin: 0 auto;
   padding: 40px 0;

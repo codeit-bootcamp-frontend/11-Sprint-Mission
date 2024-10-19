@@ -8,12 +8,12 @@ import '../styles/ProductDetail.css';
 import ProductDetailComment from '../components/ProductDetail/ProductDetailComment';
 import ProductDetailInput from '../components/ProductDetail/ProductDetailInput';
 
-// 날짜 형식 변환 함수
+// 날짜 형식 변환
 const formatDate = (dateString) => {
   const date = new Date(dateString);
   const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0'); // 두 자릿수로 포맷팅
-  const day = String(date.getDate()).padStart(2, '0'); // 두 자릿수로 포맷팅
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // 두 자릿수로
+  const day = String(date.getDate()).padStart(2, '0'); // 두 자릿수로
   return `${year}.${month}.${day}`;
 };
 
@@ -55,7 +55,7 @@ function ProductDetail() {
               <p className="productDetailName">{product.name}</p>
               <p className="productDetailPrice">{product.price}원</p>
             </div>
-            <div className="dddddd">
+            <div className="PDDivDescription">
               <div>
                 <p className="pdSubTitle">상품 소개</p>
                 <p className="productDetailDescription">
@@ -73,10 +73,10 @@ function ProductDetail() {
                 </div>
               </div>
             </div>
-            <div className="bbbbbb">
+            <div className="PDBottomSection">
               <div className="pdSubfooter">
                 <img src={frame} className="frameImg" />
-                <div className="pddddd">
+                <div className="PDEditInfo">
                   <p className="productDetailNickname">
                     {product.ownerNickname}
                   </p>

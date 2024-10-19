@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import noInquiry from '../../assets/no-inquiry.svg';
 
 function ProductDetailComment({ productId }) {
-  // productId를 props로 받는다고 가정
   const [comments, setComments] = useState([]); // 상품 댓글
 
   // 상품 댓글 불러오기
