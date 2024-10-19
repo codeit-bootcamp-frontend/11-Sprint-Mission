@@ -20,7 +20,7 @@ function ItemDetailPage() {
   return (
     <div className={`${styles["container"]}`}>
       <ItemDetail className={styles["ItemDetail"]} item={item} />
-      <CommentForm className={styles["CommentForm"]} />
+      <CommentForm className={styles["CommentForm"]} productId={id} />
     </div>
   );
 }

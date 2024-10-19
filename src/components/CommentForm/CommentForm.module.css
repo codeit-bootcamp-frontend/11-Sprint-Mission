@@ -1,16 +1,17 @@
-.comment-input {
+.comment-input-form {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  margin-bottom: 24px;
 }
-.comment-input label {
+.comment-input-form label {
   width: 100%;
   font-size: 16px;
   font-weight: 600;
   color: var(--gray-900);
   margin-bottom: 8px;
 }
-.comment-input textarea {
+.comment-input-form textarea {
   width: 100%;
   min-height: 104px;
   resize: none;
@@ -20,17 +21,17 @@
   background-color: var(--gray-200);
   margin-bottom: 16px;
 }
-.comment-input textarea::-moz-placeholder {
+.comment-input-form textarea::-moz-placeholder {
   color: var(--gray-400);
   font-size: 16px;
   font-weight: 400;
 }
-.comment-input textarea::placeholder {
+.comment-input-form textarea::placeholder {
   color: var(--gray-400);
   font-size: 16px;
   font-weight: 400;
 }
-.comment-input button {
+.comment-input-form button {
   background-color: var(--gray-400);
   padding: 12px 23px;
   border: none;
@@ -38,4 +39,40 @@
   color: var(--gray-100);
   font-size: 16px;
   font-weight: 600;
+}
+
+.Comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.Comment {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--secondary-200);
+}
+.Comment .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--gray-800);
+  margin-bottom: 24px;
+}
+.Comment .writer {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+.Comment .writer .name {
+  color: var(--gray-600);
+  margin-bottom: 2px;
+}
+.Comment .writer .date {
+  color: var(--gray-400);
+}
+.Comment .writer .profile {
+  margin-right: 8px;
 }/*# sourceMappingURL=CommentForm.module.css.map */
