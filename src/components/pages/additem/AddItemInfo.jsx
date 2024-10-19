@@ -7,6 +7,7 @@ function AddItemInfo({
   name,
   rows = 1,
   placeholder,
+  data,
   setData,
 }) {
   const [inputValue, setInputValue] = useState('');
@@ -20,7 +21,11 @@ function AddItemInfo({
   };
 
   const handleInputChange = (e) => {
-    setInputValue(e.target.value);
+    if (name !== 'tag') {
+      setData(e.target.value);
+    } else {
+      setInputValue(e.target.value);
+    }
   };
 
   return (
@@ -38,7 +43,7 @@ function AddItemInfo({
           id={name}
           rows={rows}
           placeholder={placeholder}
-          value={inputValue}
+          value={name === 'tag' ? inputValue : data}
           onChange={handleInputChange}
           onKeyDown={name === 'tag' ? handleKeyDown : null}
         ></textarea>
