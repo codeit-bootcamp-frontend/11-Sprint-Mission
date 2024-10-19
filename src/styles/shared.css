@@ -37,7 +37,6 @@ body {
   align-items: center;
   justify-content: space-between;
   height: 70px;
-  padding: 0 200px;
   margin: 0;
   background-color: var(--white);
 }
