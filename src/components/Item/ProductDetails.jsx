@@ -16,7 +16,7 @@ const ProductDetails = ({ item }) => {
       {item.tags.length > 0 && <ProductTag item={item} />}
 
       <UserStats>
-        <Profile nickname={item.ownerNickname} createdAt={item.createdAt} />
+        <Profile nickname={item.ownerNickname} updatedAt={item.updatedAt} />
         <Likes item={item} />
       </UserStats>
     </Details>

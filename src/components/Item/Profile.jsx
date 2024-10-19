@@ -2,8 +2,8 @@ import profileImg from "../../assets/profileImg.svg";
 
 import { ProfileWrapper, Img, Info } from "./Profile.style";
 
-const Profile = ({ nickname, createdAt }) => {
-  const formattedDate = new Date(createdAt).toLocaleDateString();
+const Profile = ({ nickname, updatedAt }) => {
+  const formattedDate = new Date(updatedAt).toLocaleDateString();
 
   return (
     <ProfileWrapper>
