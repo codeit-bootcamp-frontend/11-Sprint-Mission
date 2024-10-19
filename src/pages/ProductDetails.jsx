@@ -196,7 +196,7 @@ function ProductDetails() {
               />
               <HeartCountArea
                 count={details.favoriteCount}
-                style="large border"
+                styles="large border"
                 className={styled["btn-heart"]}
               />
             </div>
