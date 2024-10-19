@@ -20,49 +20,51 @@ function ItemDetailPage() {
 
   return (
     <div className={`${styles["container"]}`}>
-      <div className={styles["Item"]}>
-        <img
-          className={styles["image"]}
-          src={item?.images[0]}
-          alt={item?.name}
-        />
-        <div className={styles["main"]}>
-          <div className={styles["header"]}>
-            <h1 className={styles["title"]}>{item?.name}</h1>
-            <img src={ic_kebab} alt="케밥" />
-            <p className={styles["price"]}>
-              {item?.price.toLocaleString("kr-KR")}
-            </p>
+      <ItemDetail item={item} />
+    </div>
+  );
+}
+
+function ItemDetail({ item }) {
+  return (
+    <div className={styles["Item"]}>
+      <img className={styles["image"]} src={item?.images[0]} alt={item?.name} />
+      <div className={styles["main"]}>
+        <div className={styles["header"]}>
+          <h1 className={styles["title"]}>{item?.name}</h1>
+          <img src={ic_kebab} alt="케밥" />
+          <p className={styles["price"]}>
+            {item?.price.toLocaleString("kr-KR")}
+          </p>
+        </div>
+        <div className={styles["description"]}>
+          <h2 className={styles["title"]}>상품 소개</h2>
+          <p className={styles["content"]}>{item?.description}</p>
+        </div>
+        <div className={styles["tag-list"]}>
+          <h2 className={styles["title"]}>상품 태그</h2>
+          <div className={styles["content"]}>
+            {item?.tags.map((tag) => (
+              <span key={tag} className={styles["tag"]}>{`#${tag}`}</span>
+            ))}
           </div>
-          <div className={styles["description"]}>
-            <h2 className={styles["title"]}>상품 소개</h2>
-            <p className={styles["content"]}>{item?.description}</p>
-          </div>
-          <div className={styles["tag-list"]}>
-            <h2 className={styles["title"]}>상품 태그</h2>
-            <div className={styles["content"]}>
-              {item?.tags.map((tag) => (
-                <span key={tag} className={styles["tag"]}>{`#${tag}`}</span>
-              ))}
+        </div>
+        <div className={styles["footer"]}>
+          <div className={styles["owner"]}>
+            <img
+              className={styles["profile"]}
+              src={ic_profile}
+              alt="판매자 프로필"
+            />
+            <div className={styles["main"]}>
+              <div className={styles["name"]}>총명한 판다</div>
+              <div className={styles["date"]}>2024.01.02</div>
             </div>
           </div>
-          <div className={styles["footer"]}>
-            <div className={styles["owner"]}>
-              <img
-                className={styles["profile"]}
-                src={ic_profile}
-                alt="판매자 프로필"
-              />
-              <div className={styles["main"]}>
-                <div className={styles["name"]}>총명한 판다</div>
-                <div className={styles["date"]}>2024.01.02</div>
-              </div>
-            </div>
-            <span className={styles["favorite"]}>
-              <img src={ic_favorite} alt="좋아요" />
-              {item?.favoriteCount}
-            </span>
-          </div>
+          <span className={styles["favorite"]}>
+            <img src={ic_favorite} alt="좋아요" />
+            {item?.favoriteCount}
+          </span>
         </div>
       </div>
     </div>
