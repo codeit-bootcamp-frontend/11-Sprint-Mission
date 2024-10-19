@@ -38,3 +38,12 @@ export async function getProductById(id) {
   const res = await fetch(url.href);
   return res.json();
 }
+
+export async function getCommentById(type, id, limit, cursor) {
+  if (!BASE_URL) throw new Error("요청을 보낼 수 없습니다.");
+  const url = new URL(BASE_URL + `/${type}/${id}/comments`);
+  url.searchParams.append("limit", limit);
+  cursor && url.searchParams.append("cursor", cursor);
+  const res = await fetch(url.href);
+  return res.json();
+}
