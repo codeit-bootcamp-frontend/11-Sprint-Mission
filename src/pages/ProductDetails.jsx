@@ -14,6 +14,7 @@ import Button from "../components/common/Button";
 import UserInfo from "../components/common/UserInfo";
 
 import INQUIRY_IMAGE from "../assets/Img_inquiry_empty.svg";
+import RETURN_IMAGE from "../assets/ic_back.svg";
 import styled from "./ProductDetails.module.scss";
 
 function ProductDetails() {
@@ -281,6 +282,7 @@ function ProductDetails() {
             className="return"
             styleType="round blue medium">
             목록으로 돌아가기
+            <img src={RETURN_IMAGE} alt="" />
           </Button>
         </div>
       </div>
