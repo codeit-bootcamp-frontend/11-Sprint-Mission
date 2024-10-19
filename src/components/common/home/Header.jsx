@@ -7,7 +7,7 @@ function Header({ leftMenu, rightMenu }) {
       <nav className="nav-bar">
         <div className="menu-wrapper">
           <Link to="/" aria-label="Panda Market Home">
-            <img id="logo" src="images/logos/logo.png" alt="판다마켓 로고" />
+            <img id="logo" src="/images/logos/logo.png" alt="판다마켓 로고" />
           </Link>
           <div className="menu">
             {leftMenu}
