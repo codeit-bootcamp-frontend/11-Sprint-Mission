@@ -42,7 +42,7 @@ function ProductDetails() {
 
     handleProductsLoad();
     handleCommentsListLoad();
-  }, [productId]);
+  }, [productId, execute]);
 
   const [formValues, setFormValues] = useState("");
 
