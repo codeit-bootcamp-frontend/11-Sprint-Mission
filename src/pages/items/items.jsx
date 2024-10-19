@@ -1,11 +1,11 @@
 import Header from "../../components/Header";
-import { BestItems } from "./components/BestItems";
+import BestProducts from "./components/BestProducts/BestProduct";
 
 function Items() {
   return (
     <div className="px-4 md:px-6 ">
       <Header />
-      <BestItems />
+      <BestProducts />
     </div>
   );
 }
