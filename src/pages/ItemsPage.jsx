@@ -43,14 +43,7 @@ const ItemsPage = () => {
     <div>
       <Header isLogin />
       <BestProducts products={bestProducts} />
-      <div>
-        <h2>전체 상품</h2>
-        <input></input>
-        <select>
-          <option></option>
-        </select>
-        <AllProducts products={products} order={order} />
-      </div>
+      <AllProducts products={products} order={order} />
       {loadingError?.message && <span>{loadingError.message}</span>}
     </div>
   );
