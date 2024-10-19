@@ -132,10 +132,6 @@
 }
 
 @media screen and (max-width: 1199px) {
-  .container {
-    width: 696px;
-  }
-
   .Item {
     gap: 32px;
     padding-bottom: 32px;
@@ -191,10 +187,6 @@
 }
 
 @media screen and (max-width: 767px) {
-  .container {
-    width: 344px;
-  }
-
   .Item {
     flex-direction: column;
     gap: 16px;
