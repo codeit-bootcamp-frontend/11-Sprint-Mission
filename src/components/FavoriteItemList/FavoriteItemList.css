@@ -3,10 +3,10 @@
   margin: 0;
 }
 
-.ItemList {
+.bestItemList {
   display: flex;
 }
 
-.allItemListSection {
+.favoriteItemList {
   display: flex;
 }

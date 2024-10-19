@@ -1,7 +1,6 @@
 import "./Main.css";
 import Logo from "../../images/logo/panda-market-logo.png";
-import LoginButton from "../../components/Button/LoginButton";
-import HeroButton from "../../components/Button/HeroButton";
+import { HeroButton, LoginButton } from "../../components/Button/Button";
 import firstSectionImage from "../../images/home/hero-image.png";
 import figureImage01 from "../../images/home/feature1-image.png";
 import figureImage02 from "../../images/home/feature2-image.png";
@@ -17,7 +16,7 @@ function Main() {
     <div>
       <header>
         <img className="Logo" src={Logo} alt="" />
-        <LoginButton />
+        <LoginButton text="로그인" />
       </header>
       <main>
         <section className="heroSection">
@@ -107,7 +106,7 @@ function Main() {
             <a href="링크이동주소">Privacy Policy</a>
             <a href="링크이동주소">FAQ</a>
           </div>
-          <div id="socialMedia">
+          <div className="socialMedia">
             <a href="https://www.facebook.com/">
               <img src={facebook} alt="페이스북" width="20" />
             </a>
