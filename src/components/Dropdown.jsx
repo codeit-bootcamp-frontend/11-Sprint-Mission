@@ -1,4 +1,6 @@
 import { useState } from "react";
+import "./Dropdown.css";
+import DropdownIcon from "../images/ic_arrow_down.svg";
 
 const Dropdown = ({ setOrder }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +19,8 @@ const Dropdown = ({ setOrder }) => {
   return (
     <div className="dropdown">
       <button className="dropdown-btn" onClick={handleDropdown}>
-        {selectedItem}
+        <span>{selectedItem}</span>
+        <img src={DropdownIcon} alt="드롭다운 아이콘" />
       </button>
       {isOpen && (
         <ul className="dropdown-menu">
