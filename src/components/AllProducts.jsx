@@ -1,9 +1,10 @@
 import ProductCard from "./ProductCard";
+import Dropdown from "./Dropdown";
 import "./AllProducts.css";
 import SearchIcon from "../images/ic_search.svg";
 import { Link } from "react-router-dom";
 
-const AllProducts = ({ products }) => {
+const AllProducts = ({ products, setOrder }) => {
   return (
     <div className="allproducts-container">
       <div className="allproducts-header">
@@ -20,9 +21,7 @@ const AllProducts = ({ products }) => {
           <Link to={"/additems"} className="additem-btn">
             상품 등록하기
           </Link>
-          <select>
-            <option></option>
-          </select>
+          <Dropdown setOrder={setOrder} />
         </div>
       </div>
       <div className="allcards-container">
