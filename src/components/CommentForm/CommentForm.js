@@ -39,8 +39,6 @@ function CommentForm({ productId, className }) {
     setIsEditing(null);
   };
 
-  const handleEditSubmit = (e) => {};
-
   useEffect(() => {
     const fetchData = async () => {
       const result = await getCommentById("products", productId, 10);
@@ -128,8 +126,18 @@ function CommentEditForm({ data, onCancel }) {
     setContent(next);
   };
 
+  const handleEditSubmit = (e) => {
+    e.preventDefault();
+    alert(`Edit "${content}" from "${data.content.trim()}"`);
+    onCancel();
+  };
+
   return (
-    <form data-id={data.id} className={styles["CommentEditForm"]}>
+    <form
+      data-id={data.id}
+      className={styles["CommentEditForm"]}
+      onSubmit={handleEditSubmit}
+    >
       <textarea value={content} onChange={handleInputChange} />
       <div className={styles["writer"]}>
         <img
