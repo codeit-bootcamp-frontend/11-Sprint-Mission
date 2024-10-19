@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getProductById } from "../../api";
 import styles from "./ItemDetailPage.module.css";
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
+import CommentForm from "../../components/CommentForm/CommentForm";
 
 function ItemDetailPage() {
   const [item, setItem] = useState();

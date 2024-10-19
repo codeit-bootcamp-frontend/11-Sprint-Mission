@@ -1,1 +1,41 @@
-/*# sourceMappingURL=CommentForm.module.css.map */
+.comment-input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.comment-input label {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--gray-900);
+  margin-bottom: 8px;
+}
+.comment-input textarea {
+  width: 100%;
+  min-height: 104px;
+  resize: none;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--gray-200);
+  margin-bottom: 16px;
+}
+.comment-input textarea::-moz-placeholder {
+  color: var(--gray-400);
+  font-size: 16px;
+  font-weight: 400;
+}
+.comment-input textarea::placeholder {
+  color: var(--gray-400);
+  font-size: 16px;
+  font-weight: 400;
+}
+.comment-input button {
+  background-color: var(--gray-400);
+  padding: 12px 23px;
+  border: none;
+  border-radius: 8px;
+  color: var(--gray-100);
+  font-size: 16px;
+  font-weight: 600;
+}/*# sourceMappingURL=CommentForm.module.css.map */
