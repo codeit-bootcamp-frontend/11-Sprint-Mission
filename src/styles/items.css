@@ -5,6 +5,7 @@
 .pandaMarket {
   font-family: 'Pretendard-Regular', sans-serif;
   background-color: #fcfcfc;
+  padding-bottom: 50px;
 }
 
 .page {
@@ -17,6 +18,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 40px;
 }
 
 .subTitle {

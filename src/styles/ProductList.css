@@ -1,3 +1,7 @@
+.AllProductList {
+  margin-top: 40px;
+}
+
 .ProductListItem {
   width: 221px;
   overflow: hidden;
@@ -13,9 +17,10 @@
 .ProductList {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
+  column-gap: 1rem;
   list-style-type: none;
   padding: 0;
+  row-gap: 40px;
 }
 
 .productName {

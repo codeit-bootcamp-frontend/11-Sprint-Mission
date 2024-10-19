@@ -1,32 +1,35 @@
 import '../styles/ProductList.css';
 import icHeart from '../assets/ic_heart.svg';
-
-function ProductListItem({ item }) {
-  return (
-    <div className="ProductListItem">
-      <img className="ProductListItem-img" src={item.images} alt={item.name} />
-      <div>
-        <p className="productName">{item.name}</p>
-        <p className="productPrice">{item.price}원</p>
-        <p className="productFavoriteCount">
-          <img src={icHeart} alt="iconHerat" />
-          {item.favoriteCount}
-        </p>
-      </div>
-    </div>
-  );
-}
+import { NavLink } from 'react-router-dom';
 
 function ProductList({ items }) {
+  if (!items || !Array.isArray(items)) {
+    return <div>상품 목록이 없습니다.</div>;
+  }
+
   return (
     <ul className="ProductList">
-      {items.map((item) => {
-        return (
-          <li key={item.id}>
-            <ProductListItem item={item} />
-          </li>
-        );
-      })}
+      {items.map((item) => (
+        <li key={item.id}>
+          <NavLink to={`/items/${item.id}`}>
+            <div className="ProductListItem">
+              <img
+                className="ProductListItem-img"
+                src={item.images}
+                alt={item.name}
+              />
+              <div>
+                <p className="productName">{item.name}</p>
+                <p className="productPrice">{item.price}원</p>
+                <p className="productFavoriteCount">
+                  <img src={icHeart} alt="iconHerat" />
+                  {item.favoriteCount}
+                </p>
+              </div>
+            </div>
+          </NavLink>
+        </li>
+      ))}
     </ul>
   );
 }
