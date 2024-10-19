@@ -31,14 +31,20 @@
   font-size: 16px;
   font-weight: 400;
 }
+.comment-input-form textarea:focus-visible {
+  outline: 2px solid var(--blue);
+}
 .comment-input-form button {
-  background-color: var(--gray-400);
+  background-color: var(--blue);
   padding: 12px 23px;
   border: none;
   border-radius: 8px;
   color: var(--gray-100);
   font-size: 16px;
   font-weight: 600;
+}
+.comment-input-form button:disabled {
+  background-color: var(--gray-400);
 }
 
 .Comment-list {

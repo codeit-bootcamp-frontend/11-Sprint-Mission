@@ -27,16 +27,24 @@
       font-size: 16px;
       font-weight: 400;
     }
+
+    &:focus-visible {
+      outline: 2px solid var(--blue);
+    }
   }
 
   button {
-    background-color: var(--gray-400);
+    background-color: var(--blue);
     padding: 12px 23px;
     border: none;
     border-radius: 8px;
     color: var(--gray-100);
     font-size: 16px;
     font-weight: 600;
+
+    &:disabled {
+      background-color: var(--gray-400);
+    }
   }
 }
 
