@@ -24,7 +24,7 @@ function SignupPage() {
               placeholder="닉네임을 입력해주세요"
             />
 
-            <InputPassword text="비밀번호" />
+            <InputPassword text="비밀번호" placeholder='비밀번호를 입력해주세요'/>
 
             <InputPassword
               text="비밀번호 확인"

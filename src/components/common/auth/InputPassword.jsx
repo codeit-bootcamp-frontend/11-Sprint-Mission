@@ -1,4 +1,4 @@
-function InputPassword() {
+function InputPassword({ placeholder }) {
   return (
     <div className="input-wrapper">
       <label className="auth-label" htmlFor="password">
@@ -10,7 +10,7 @@ function InputPassword() {
           type="password"
           id="password"
           name="password"
-          placeholder="비밀번호를 입력해주세요"
+          placeholder={placeholder}
         />
         <img
           src="/images/icons/password-visible.svg"

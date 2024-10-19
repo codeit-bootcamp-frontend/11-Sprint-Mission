@@ -25,7 +25,8 @@ function AddItemPage() {
     if (
       productName.trim() !== '' &&
       description.trim() !== '' &&
-      price.trim() !== ''
+      price.trim() !== '' &&
+      0 < tags.length
     ) {
       setIsFormValid(true);
       console.log(11111111);
@@ -33,7 +34,7 @@ function AddItemPage() {
       setIsFormValid(false);
       console.log(222222);
     }
-  }, [productName, description, price]);
+  }, [productName, description, price, tags]);
 
   return (
     <>
