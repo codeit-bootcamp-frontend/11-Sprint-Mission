@@ -21,6 +21,7 @@ const ProductImage = styled.img`
   border-radius: 16px;
   float: left;
   margin-right: 36px;
+  border: 1px solid #ddd;
 `;
 
 const ProductInfo = styled.div`
@@ -171,7 +172,12 @@ function Product() {
         <div>
           <ProductDiv>
             <ProductImage
-              src={item.images.length > 0 ? item.images[0] : noImage}
+              src={
+                item.images.length > 0 &&
+                !item.images[0].startsWith('https://example.com/...')
+                  ? item.images[0]
+                  : noImage
+              }
               alt="상품 이미지"
             />
             <ProductInfo>
