@@ -18,7 +18,7 @@ const AllProducts = ({ products, setOrder }) => {
               placeholder="검색할 상품을 입력해주세요"
             />
           </div>
-          <Link to={"/additems"} className="additem-btn">
+          <Link to={"/additem"} className="additem-btn">
             상품 등록하기
           </Link>
           <Dropdown setOrder={setOrder} />
