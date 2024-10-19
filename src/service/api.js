@@ -52,4 +52,14 @@ function createItems(formData) {
     });
 }
 
-export { getItems, createItems };
+function getDetailItems(id) {
+  return instance
+    .get(`/products/${id}`)
+    .then((response) => response.data)
+    .catch((error) => {
+      console.error('패칭 중 오류가 발생했습니다', error);
+      throw new Error('상품을 불러오는데 실패했습니다.');
+    });
+}
+
+export { getItems, createItems, getDetailItems };
