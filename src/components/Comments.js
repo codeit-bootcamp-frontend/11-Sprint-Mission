@@ -81,7 +81,7 @@ function Comments({ commentList, initialCommentList }) {
     if (!commentsList) return;
     const updatedList = (commentsList) =>
       commentsList.filter((comment) => comment.id !== commentId);
-    console.log("updated comment list:", updatedList);
+    // console.log("updated comment list:", updatedList);
     setCommentsList(updatedList);
   };
 

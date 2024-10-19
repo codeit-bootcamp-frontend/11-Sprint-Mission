@@ -18,7 +18,7 @@ function ItemDetailPage() {
     };
     let result;
     result = await getComment(params);
-    console.log(result.list);
+    // console.log(result.list);
     setData(result.list);
   };
 

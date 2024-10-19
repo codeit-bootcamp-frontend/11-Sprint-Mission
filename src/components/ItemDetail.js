@@ -14,7 +14,7 @@ function formatDate(value) {
 
 function ItemDetail() {
   const itemId = useParams();
-  console.log(itemId);
+  // console.log(itemId);
 
   const [getData, setGetData] = useState(); // 받아온 데이터
 
