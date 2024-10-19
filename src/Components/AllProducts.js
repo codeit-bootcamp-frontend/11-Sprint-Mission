@@ -1,17 +1,23 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getProducts } from '../api/api';
 import useAsync from '../hooks/useAsync';
+//
 import Product from './Product';
 import Pagination from './Pagination';
 import Loading from './Loading';
+//
 import { ArrowPathIcon } from '@heroicons/react/24/solid';
 import IconSearch from '../assets/icon-search.svg';
 
 // 기본 페이지 사이즈
 const PAGE_SIZE = 10;
 
-export default function AllProducts() {
+/**
+ * 중고마켓 메인 페이지 - 전체상품 목록 컴포넌트
+ * @return {JSX}
+ */
+function AllProducts() {
   const [page, setPage] = useState(1);
   const [products, setProducts] = useState([]);
   const [keyword, setKeyword] = useState('');
@@ -19,18 +25,6 @@ export default function AllProducts() {
   const [totalCount, setTotalCount] = useState(0);
   const [isLoading, loadingError, getProductsAsync] = useAsync(getProducts);
   const inSearchRef = useRef();
-
-  // 데이터 가져오기
-  const handleLoad = useCallback(
-    async (options = {}) => {
-      const result = await getProductsAsync(options);
-      if (!result) return;
-
-      setProducts(result.list);
-      setTotalCount(result.totalCount);
-    },
-    [getProductsAsync]
-  );
 
   // 정렬 변경
   const handleOrder = (e) => {
@@ -54,8 +48,17 @@ export default function AllProducts() {
   };
 
   useEffect(() => {
+    // 데이터 가져오기
+    const handleLoad = async (options = {}) => {
+      const result = await getProductsAsync(options);
+      if (!result) return;
+
+      setProducts(result.list);
+      setTotalCount(result.totalCount);
+    };
+
     handleLoad({ keyword, orderBy, page });
-  }, [keyword, orderBy, page, handleLoad]);
+  }, [keyword, orderBy, page]);
 
   return (
     <div className="products">
@@ -95,6 +98,7 @@ export default function AllProducts() {
         {products.map(({ id, images, name, price, favoriteCount }) => (
           <Product
             key={id}
+            id={id}
             image={images[0]}
             name={name}
             price={price}
@@ -115,3 +119,5 @@ export default function AllProducts() {
     </div>
   );
 }
+
+export default AllProducts;
