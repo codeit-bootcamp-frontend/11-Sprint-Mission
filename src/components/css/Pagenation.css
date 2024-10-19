@@ -4,7 +4,7 @@
 }
 
 .button-left {
-  background-image: url("../images/icon/btn_right.svg");
+  background-image: url("../../images/icon/btn_right.svg");
   background-repeat: no-repeat;
   background-color: transparent;
   width: 40px;
@@ -14,7 +14,7 @@
 }
 
 .button-right {
-  background-image: url("../images/icon/btn_left.svg");
+  background-image: url("../../images/icon/btn_left.svg");
   background-repeat: no-repeat;
   background-color: transparent;
   width: 40px;

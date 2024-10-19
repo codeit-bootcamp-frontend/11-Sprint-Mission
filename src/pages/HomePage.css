@@ -37,9 +37,16 @@
   padding-top: 40px;
 }
 
-.card-img {
+.product-cardlist .card-img {
   border-radius: 16px;
-  width: 100%;
+  width: 282px;
+  height: 282px;
+}
+
+.product-cardlist.fiveRow .card-img {
+  border-radius: 16px;
+  width: 221px;
+  height: 221px;
 }
 
 .all-product .topbar {

@@ -7,7 +7,7 @@ import "./HomePage.css";
 import Pagenation from "../components/Pagenation.js";
 
 const HomePage = () => {
-  const [productBestList, setProductBestList] = useState([]);
+  const [productBestList, setProductBestList] = useState();
   const [productList, setProductList] = useState([]);
   const [page, setPage] = useState(1);
   const [totalCount, setTotalCount] = useState(null);
@@ -54,6 +54,7 @@ const HomePage = () => {
     setPage(pageNo);
   };
 
+  // 아래영역
   useEffect(() => {
     handleLoadData({
       orderBy,
@@ -61,6 +62,7 @@ const HomePage = () => {
     });
   }, [orderBy, page]);
 
+  // 윗영역
   useEffect(() => {}, []);
 
   return (
@@ -74,7 +76,7 @@ const HomePage = () => {
             {isLoading ? (
               "로딩중..."
             ) : (
-              <Cardlist productBestLists={productBestList} />
+              <Cardlist productLists={productBestList} />
             )}
             {loadingError && <p>{loadingError.message}</p>}
           </div>
@@ -109,7 +111,7 @@ const HomePage = () => {
               {isLoading ? (
                 "로딩중..."
               ) : (
-                <Cardlist productBestLists={sortedItems} />
+                <Cardlist productLists={sortedItems} />
               )}
               {loadingError && <p>{loadingError.message}</p>}
             </div>

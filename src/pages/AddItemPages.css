@@ -117,33 +117,6 @@
   line-height: 26px;
 }
 
-.tag-area {
-  display: flex;
-  align-items: center;
-  margin-top: 14px;
-}
-
-.tag-box {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  border-radius: 26px;
-  padding: 6px 12px;
-  background-color: var(--gray-100);
-  font-weight: 400;
-  line-height: 26px;
-}
-
-.tag-cancle {
-  background-image: url("../images/icon/btn_cancle.svg");
-  background-repeat: no-repeat;
-  background-color: transparent;
-  background-size: contain;
-  border: none;
-  width: 20px;
-  height: 20px;
-}
-
 /* TABLET */
 @media (min-width: 768px) and (max-width: 1199px) {
   .main-content-additem {

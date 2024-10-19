@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Pagenation.css";
+import "./css/Pagenation.css";
 
 const BUTTONS = [1, 2, 3, 4, 5];
 

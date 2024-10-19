@@ -3,6 +3,8 @@ import "./AddItemPages.css";
 import Input from "../components/Input";
 import FileInput from "../components/FileInput";
 import icPlus from "../images/icon/ic_plus.svg";
+import Category from "../components/Category";
+import Textarea from "../components/TextArea";
 
 const INITIAL_DATA = {
   productName: "",
@@ -11,6 +13,8 @@ const INITIAL_DATA = {
   productTag: "",
   fileInput: null,
 };
+
+const categoryData = ["티셔츠", "티셔츠"];
 
 const AddItemPages = () => {
   const [productData, setProductData] = useState(INITIAL_DATA);
@@ -54,7 +58,7 @@ const AddItemPages = () => {
           <FileInput
             name="fileInput"
             value={productData.fileInput}
-            id="fileInput"
+            id="fileI nput"
             onChange={handleChange}
           />
         </div>
@@ -67,15 +71,11 @@ const AddItemPages = () => {
         label="상품명"
         onChange={handleInputChange}
       />
-      <div>
-        <label className="product-label">상품 소개</label>
-        <textarea
-          name="productInt"
-          className="textarea"
-          placeholder="상품 소개를 입력해주세요"
-          onChange={handleInputChange}
-        ></textarea>
-      </div>
+      <Textarea
+        label="상품 소개"
+        onChange={handleInputChange}
+        placeholder="상품 소개를 입력해주세요"
+      />
       <Input
         name="productPrice"
         type="text"
@@ -93,14 +93,7 @@ const AddItemPages = () => {
           label="태그"
           onChange={handleInputChange}
         />
-        <div className="tag-area">
-          <div className="tag-box">
-            #티셔츠<button className="tag-cancle"></button>
-          </div>
-          <div className="tag-box">
-            #티셔츠<button className="tag-cancle"></button>
-          </div>
-        </div>
+        <Category categoryData={categoryData} />
       </div>
     </div>
   );

@@ -1,15 +1,15 @@
 import React from "react";
 import heart from "../images/icon/heart.svg";
 import { Link } from "react-router-dom";
-import "./Cardlist.css";
+import "./css/Cardlist.css";
 
-const Cardlist = ({ productBestLists, width }) => {
+const Cardlist = ({ productLists, width }) => {
   return (
     <>
-      {productBestLists &&
-        productBestLists.map((data) => (
+      {productLists &&
+        productLists.map((data) => (
           <div key={data.id} className="product-card">
-            <Link className="card">
+            <Link className="card" to={`${data.id}`}>
               <img
                 src={data.images[0]}
                 className="card-img"
