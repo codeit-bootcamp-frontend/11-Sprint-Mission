@@ -33,3 +33,12 @@ textarea {
     color: var(--gray-400);
   }
 }
+
+@media screen and (max-width: 767px) {
+  textarea {
+    &.default {
+      font-size: 1.4rem;
+      line-height: 2.4rem;
+    }
+  }
+}

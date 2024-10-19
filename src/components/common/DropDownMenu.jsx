@@ -51,4 +51,6 @@ const ItemButton = styled.button`
 
 const ToggleButton = styled.button`
   cursor: pointer;
+  width: 2.4rem;
+  height: 2.4rem;
 `;

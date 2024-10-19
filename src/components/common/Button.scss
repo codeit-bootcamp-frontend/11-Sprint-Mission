@@ -58,6 +58,11 @@ div[class^="btn-wrap"] {
     border: 1px solid var(--blue-100);
   }
 
+  &.not {
+    border: none;
+    color: var(--gray-500);
+  }
+
   &.small_40 {
     font-size: 1.6rem;
     line-height: 2.6rem;

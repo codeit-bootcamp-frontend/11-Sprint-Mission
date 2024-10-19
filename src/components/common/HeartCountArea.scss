@@ -44,3 +44,11 @@
     height: 4rem;
   }
 }
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .btn-heart {
+    &.border {
+      height: 3.2rem;
+    }
+  }
+}

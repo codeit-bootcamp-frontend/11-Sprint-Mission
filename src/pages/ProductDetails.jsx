@@ -142,7 +142,7 @@ function ProductDetails() {
             <Button
               link={false}
               className="cancel"
-              styleType={`square small_40 white`}
+              styleType={`square small_40 not`}
               onClick={onCancel}>
               취소
             </Button>
@@ -200,17 +200,19 @@ function ProductDetails() {
                 className={styled["btn-heart"]}
               />
             </div>
+            <DropDownMenu classNames={styled["dropdown"]}>
+              <DropDownMenu.Item
+                onClick={handleEditClick}
+                className="btn-remove">
+                수정하기
+              </DropDownMenu.Item>
+              <DropDownMenu.Item
+                onClick={handleDeleteClick}
+                className="btn-delete">
+                삭제하기
+              </DropDownMenu.Item>
+            </DropDownMenu>
           </div>
-          <DropDownMenu classNames={styled["dropdown"]}>
-            <DropDownMenu.Item onClick={handleEditClick} className="btn-remove">
-              수정하기
-            </DropDownMenu.Item>
-            <DropDownMenu.Item
-              onClick={handleDeleteClick}
-              className="btn-delete">
-              삭제하기
-            </DropDownMenu.Item>
-          </DropDownMenu>
         </div>
         <div className={styled["inquiry-form"]}>
           <h4>문의하기</h4>

@@ -1,6 +1,5 @@
 .product-detail {
   &-container {
-    position: relative;
     display: flex;
     gap: 2.4rem;
     padding: 0 0 4rem;
@@ -9,6 +8,7 @@
   }
 
   &-info {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 69rem;
@@ -153,4 +153,139 @@
 
 .btnWrap {
   justify-content: flex-end;
+}
+
+@media screen and (max-width: 1199px) {
+  .inquiry {
+    &-list {
+      &-not {
+        img {
+          width: 14rem;
+          height: 14rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .product-detail {
+    &-container {
+      gap: 1.6rem;
+      padding: 0 0 3.2rem;
+    }
+
+    &-info {
+      width: 34rem;
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 0.8rem;
+      }
+
+      h3 {
+        font-size: 1.4rem;
+        line-height: 2.4rem;
+        margin-bottom: 0.8rem;
+      }
+
+      p {
+        &.price {
+          font-size: 3.2rem;
+          line-height: 4.2rem;
+        }
+      }
+      .product-desc {
+        margin-top: 1.6rem;
+      }
+      .product-tag {
+        margin-top: 2.4rem;
+      }
+      .user-info {
+        margin-top: 4rem;
+      }
+    }
+  }
+
+  .inquiry {
+    &-form {
+      form {
+        margin-bottom: 4rem;
+      }
+    }
+
+    &-list {
+      margin-bottom: 4.7rem;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .product-detail {
+    &-container {
+      flex-direction: column;
+      gap: 1.6rem;
+      padding: 0 0 2.4rem;
+      margin-bottom: 2.4rem;
+    }
+
+    &-info {
+      width: 100%;
+      h2 {
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+        margin-bottom: 0.8rem;
+      }
+
+      h3 {
+        font-size: 1.4rem;
+        line-height: 2.4rem;
+        margin-bottom: 0.8rem;
+      }
+
+      p {
+        &.price {
+          font-size: 2.4rem;
+          line-height: 3.2rem;
+        }
+      }
+
+      .product-desc {
+        margin-top: 1.6rem;
+      }
+      .product-tag {
+        margin-top: 2.4rem;
+      }
+
+      .user-info {
+        margin-top: 4rem;
+      }
+    }
+  }
+
+  .inquiry {
+    &-form {
+      h4 {
+        margin-bottom: 1.6rem;
+      }
+
+      form {
+        margin-bottom: 4rem;
+      }
+    }
+
+    &-list {
+      gap: 1.6rem;
+      margin-bottom: 4rem;
+    }
+
+    &-item {
+      .comment {
+        padding-right: 3rem;
+      }
+    }
+  }
+
+  .inquiry-input {
+    height: 12.9rem;
+  }
 }
