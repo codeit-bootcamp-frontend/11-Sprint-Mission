@@ -54,11 +54,14 @@
   gap: 40px;
 }
 
-.Comment {
+.CommentListItem {
+  display: flex;
+  flex-wrap: wrap;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--secondary-200);
 
   .content {
+    flex: 0 0 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -66,6 +69,34 @@
     font-weight: 400;
     color: var(--gray-800);
     margin-bottom: 24px;
+    position: relative;
+
+    .select {
+      position: absolute;
+      top: 32px;
+      right: 0;
+
+      .option {
+        padding: 12px 17px;
+        background-color: white;
+        border: 1px solid var(--cool-gray-300);
+        color: var(--gray-500);
+        font-size: 16px;
+        font-weight: 400;
+      }
+
+      .option:first-child {
+        border-bottom: none;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+      }
+
+      .option:last-child {
+        border-top: none;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+    }
   }
 
   .writer {
@@ -86,5 +117,65 @@
     .profile {
       margin-right: 8px;
     }
+  }
+}
+
+.CommentEditForm {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--secondary-200);
+
+  textarea {
+    flex: 0 0 100%;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--gray-200);
+    margin-bottom: 16px;
+    color: var(--gray-800);
+    resize: none;
+    min-height: 80px;
+  }
+
+  .writer {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+
+    .name {
+      color: var(--gray-600);
+      margin-bottom: 2px;
+    }
+
+    .date {
+      color: var(--gray-400);
+    }
+
+    .profile {
+      margin-right: 8px;
+    }
+  }
+
+  button[type="button"] {
+    color: var(--gray-500);
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 18px;
+    border: none;
+    background-color: inherit;
+  }
+
+  button[type="submit"] {
+    color: var(--gray-100);
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 23px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--blue);
+    margin-left: 4px;
   }
 }
