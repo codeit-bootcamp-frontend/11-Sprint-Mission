@@ -1,0 +1,158 @@
+.container {
+  margin: 0 auto;
+}
+
+.Item {
+  display: flex;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.image {
+  border-radius: 16px;
+}
+
+.header {
+  border-bottom: 1px solid var(--gray-200);
+  color: var(--gray-800);
+  margin-bottom: 24px;
+
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .price {
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+}
+
+.description {
+  color: var(--gray-600);
+  margin-bottom: 24px;
+  flex-grow: 1;
+
+  .title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .content {
+    font-weight: 400;
+    line-height: 26px;
+  }
+}
+
+.tag-list {
+  color: var(--gray-600);
+  margin-bottom: 62px;
+
+  .title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    .tag {
+      background-color: var(--gray-100);
+      padding: 6px 16px;
+      border-radius: 26px;
+      color: var(--gray-800);
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+}
+
+.footer {
+  display: flex;
+
+  .owner {
+    flex-grow: 1;
+    display: flex;
+    border-right: 1px solid var(--secondary-200);
+
+    .profile {
+      margin-right: 16px;
+    }
+  }
+
+  .favorite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    padding: 4px 12px;
+    border: 1px solid var(--secondary-200);
+    border-radius: 35px;
+    margin-left: 24px;
+
+    color: var(--gray-500);
+    font-size: 16px;
+    font-weight: 500;
+
+    img {
+      width: 32px;
+    }
+  }
+}
+
+.desktop {
+  &.container {
+    width: 1200px;
+  }
+
+  .Item {
+    gap: 40px;
+  }
+
+  .image {
+    width: 486px;
+    height: 486px;
+  }
+}
+
+.tablet {
+  &.container {
+    width: 696px;
+  }
+
+  .Item {
+    gap: 32px;
+  }
+
+  .image {
+    width: 340px;
+    height: 340px;
+  }
+}
+
+.mobile {
+  &.container {
+    width: 344px;
+  }
+
+  .Item {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .image {
+    width: 343px;
+    height: 343px;
+  }
+}

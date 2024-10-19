@@ -1,0 +1,133 @@
+.container {
+  margin: 0 auto;
+}
+
+.Item {
+  display: flex;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.image {
+  border-radius: 16px;
+}
+
+.header {
+  border-bottom: 1px solid var(--gray-200);
+  color: var(--gray-800);
+  margin-bottom: 24px;
+}
+.header .title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.header .price {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.description {
+  color: var(--gray-600);
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+.description .title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.description .content {
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.tag-list {
+  color: var(--gray-600);
+  margin-bottom: 62px;
+}
+.tag-list .title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.tag-list .content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tag-list .content .tag {
+  background-color: var(--gray-100);
+  padding: 6px 16px;
+  border-radius: 26px;
+  color: var(--gray-800);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.footer {
+  display: flex;
+}
+.footer .owner {
+  flex-grow: 1;
+  display: flex;
+  border-right: 1px solid var(--secondary-200);
+}
+.footer .owner .profile {
+  margin-right: 16px;
+}
+.footer .favorite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 12px;
+  border: 1px solid var(--secondary-200);
+  border-radius: 35px;
+  margin-left: 24px;
+  color: var(--gray-500);
+  font-size: 16px;
+  font-weight: 500;
+}
+.footer .favorite img {
+  width: 32px;
+}
+
+.desktop.container {
+  width: 1200px;
+}
+.desktop .Item {
+  gap: 40px;
+}
+.desktop .image {
+  width: 486px;
+  height: 486px;
+}
+
+.tablet.container {
+  width: 696px;
+}
+.tablet .Item {
+  gap: 32px;
+}
+.tablet .image {
+  width: 340px;
+  height: 340px;
+}
+
+.mobile.container {
+  width: 344px;
+}
+.mobile .Item {
+  flex-direction: column;
+  gap: 16px;
+}
+.mobile .image {
+  width: 343px;
+  height: 343px;
+}/*# sourceMappingURL=ItemDetailPage.module.css.map */
