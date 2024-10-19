@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import React from "react";
-import Header from "../../common/auth/home/Header";
+import Header from "../../common/home/Header";
 import Content from "./Content";
 import HomeFooter from "./HomeFooter";
 import Hero from "./Hero";

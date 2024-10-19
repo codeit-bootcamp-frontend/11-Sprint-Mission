@@ -1,0 +1,6 @@
+/* tablet */
+@media (max-width: 1199px) {
+  .nav-bar {
+    padding: 10px 24px;
+  }
+}

@@ -1,4 +1,4 @@
-import Header from '../../common/auth/home/Header';
+import Header from '../../common/home/Header';
 import { Link } from 'react-router-dom';
 import './AddItemPage.css';
 import AddItemImage from './AddItemImage';
