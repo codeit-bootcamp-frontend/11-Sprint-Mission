@@ -22,6 +22,7 @@ function DetailInquiry({ id, content, writer, updatedAt }) {
     try {
       const response = await updateComment(id, { content: comment }); // Jwt Token 추가 예정
       const data = await response.json(); // 서버에서 받은 response로 새 댓글 추가하는 기능은 추후 추가
+      console.log(data); // netlify build error 방지 임시 콘솔 추가 - The build failure is due to a linting error
       setIsEditing(false);
     } catch (error) {
       console.log(error);
