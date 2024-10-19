@@ -24,7 +24,7 @@ function ItemDetailPage() {
       <CommentForm className={styles["CommentForm"]} productId={id} />
       <Link className={styles["btn-back"]} to="/items">
         목록으로 돌아가기
-        <img src={ic_back} alt="뒤로가기 버튼 아이"/>
+        <img src={ic_back} alt="뒤로가기 버튼 아이콘" />
       </Link>
     </div>
   );

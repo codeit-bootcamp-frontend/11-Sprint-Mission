@@ -161,4 +161,15 @@
   border-radius: 8px;
   background-color: var(--blue);
   margin-left: 4px;
+}
+
+.no-comment {
+  display: block;
+  margin: 48px auto;
+}
+
+@media screen and (max-width: 767px) {
+  .comment-input-form textarea {
+    min-height: 139px;
+  }
 }/*# sourceMappingURL=CommentForm.module.css.map */

@@ -4,6 +4,7 @@ import ic_profile from "../../assets/images/profile.svg";
 import styles from "./CommentForm.module.css";
 import useDebounce from "../../hooks/useDebounce";
 import { getCommentById } from "../../api";
+import no_comment from "../../assets/images/no_comment.svg";
 
 function CommentForm({ productId, className }) {
   const [comment, setComment] = useState("");
@@ -61,23 +62,30 @@ function CommentForm({ productId, className }) {
           등록
         </button>
       </form>
-      <ul className={styles["Comment-list"]}>
-        {comments
-          ? comments.list.map((data) => (
-              <li key={data.id}>
-                {isEditing === String(data.id) ? (
-                  <CommentEditForm data={data} onCancel={handleEditCancel} />
-                ) : (
-                  <CommentListItem
-                    data={data}
-                    isSelected={selectedComment === String(data.id)}
-                    onClick={handleOptionClick}
-                  />
-                )}
-              </li>
-            ))
-          : null}
-      </ul>
+
+      {comments?.list.length ? (
+        <ul className={styles["Comment-list"]}>
+          {comments.list.map((data) => (
+            <li key={data.id}>
+              {isEditing === String(data.id) ? (
+                <CommentEditForm data={data} onCancel={handleEditCancel} />
+              ) : (
+                <CommentListItem
+                  data={data}
+                  isSelected={selectedComment === String(data.id)}
+                  onClick={handleOptionClick}
+                />
+              )}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <img
+          className={styles["no-comment"]}
+          src={no_comment}
+          alt="문의가 읎음"
+        />
+      )}
     </div>
   );
 }
