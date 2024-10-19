@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import AddItemTag from './AddItemTag';
 
 function AddItemPage() {
-  const [images, setImages] = useState([]);
+  const [image, setImage] = useState('');
   const [tags, setTags] = useState([]);
   const [productName, setProductName] = useState('');
   const [description, setDescription] = useState('');
@@ -63,7 +63,7 @@ function AddItemPage() {
           </button>
         </div>
         <AddItemInfo label="상품 이미지" name="image">
-          <AddItemImage images={images} setImages={setImages} />
+          <AddItemImage image={image} setImage={setImage} />
         </AddItemInfo>
         <AddItemInfo
           label="상품명"
