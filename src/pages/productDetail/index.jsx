@@ -68,14 +68,16 @@ const ProductDetail = () => {
                 <div className="flex justify-between w-full">
                   <div className="text-xs">
                     <div>{data.ownerNickname}</div>
-                    <div className="text-[8px]">{formattedDate}</div>
+                    <div className="text-[8px] sm:text-xs">{formattedDate}</div>
                   </div>
                   <div className="flex items-center">
                     <div className="flex  items-center justify-center border rounded-xl p-1 sm:w-16">
                       <div className="h-full ">
                         <img className="h-3 w-5" src={heart}></img>
                       </div>
-                      <div className="text-[8px]">{data.favoriteCount}</div>
+                      <div className="text-[8px] sm:text-xs">
+                        {data.favoriteCount}
+                      </div>
                     </div>
                   </div>
                 </div>
