@@ -7,35 +7,41 @@ import { useEffect, useState } from "react";
 const ItemsPage = () => {
   const [order, setOrder] = useState("recent");
   const [products, setProducts] = useState([]);
+  const [bestProducts, setBestProducts] = useState([]);
   const [loadingError, setLoadingError] = useState(null);
 
-  const [bestProducts, setBestProducts] = useState([]);
-
-  const handleLoad = async () => {
+  const loadBestProducts = async () => {
     try {
-      setLoadingError(null);
-      const result = await getProducts({ order });
-      setProducts(result.list);
-      // console.log(result.list);
-      setBestProducts(
-        result.list
-          .slice()
-          .sort((a, b) => b.favoriteCount - a.favoriteCount)
-          .slice(0, 4)
-      );
+      setLoadingError(null); // 에러 초기화
+      const bestResult = await getProducts({ order: "favorite" });
+      setBestProducts(bestResult.list.slice(0, 4));
+      console.log(bestResult);
     } catch (e) {
       setLoadingError(e);
-      return;
+    }
+  };
+
+  const loadAllProducts = async () => {
+    try {
+      setLoadingError(null);
+      const allResult = await getProducts({ order });
+      setProducts(allResult.list);
+    } catch (e) {
+      setLoadingError(e);
     }
   };
 
   useEffect(() => {
-    handleLoad();
+    loadBestProducts();
+  }, []);
+
+  useEffect(() => {
+    loadAllProducts();
   }, [order]);
 
   return (
     <div>
-      <Header isLogin={true} />
+      <Header isLogin />
       <div>
         <h2>베스트 상품</h2>
         <BestProducts products={bestProducts} />
