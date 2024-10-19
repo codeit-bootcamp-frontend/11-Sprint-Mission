@@ -42,8 +42,16 @@
     font-size: 16px;
     font-weight: 600;
 
+    &:hover {
+      background-color: var(--blue-hover);
+    }
+
+    &:active {
+      background-color: var(--blue-active);
+    }
+
     &:disabled {
-      background-color: var(--gray-400);
+      background-color: var(--inactive);
     }
   }
 }
@@ -137,6 +145,16 @@
     color: var(--gray-800);
     resize: none;
     min-height: 80px;
+
+    &::placeholder {
+      color: var(--gray-400);
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--blue);
+    }
   }
 
   .writer {
@@ -177,6 +195,18 @@
     border-radius: 8px;
     background-color: var(--blue);
     margin-left: 4px;
+
+    &:hover {
+      background-color: var(--blue-hover);
+    }
+
+    &:active {
+      background-color: var(--blue-active);
+    }
+
+    &:disabled {
+      background-color: var(--inactive);
+    }
   }
 }
 

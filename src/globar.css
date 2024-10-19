@@ -32,7 +32,10 @@
   --secondary-200: #e5e7eb;
 
   --blue: #3692ff;
-  --warning: #f74747;
+  --blue-hover: #1967d6;
+  --blue-active: #1251aa;
+  --error: #f74747;
+  --inactive: #9ca3af;
 }
 
 * {

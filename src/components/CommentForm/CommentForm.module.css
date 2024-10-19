@@ -43,8 +43,14 @@
   font-size: 16px;
   font-weight: 600;
 }
+.comment-input-form button:hover {
+  background-color: var(--blue-hover);
+}
+.comment-input-form button:active {
+  background-color: var(--blue-active);
+}
 .comment-input-form button:disabled {
-  background-color: var(--gray-400);
+  background-color: var(--inactive);
 }
 
 .Comment-list {
@@ -128,6 +134,19 @@
   resize: none;
   min-height: 80px;
 }
+.CommentEditForm textarea::-moz-placeholder {
+  color: var(--gray-400);
+  font-size: 16px;
+  font-weight: 400;
+}
+.CommentEditForm textarea::placeholder {
+  color: var(--gray-400);
+  font-size: 16px;
+  font-weight: 400;
+}
+.CommentEditForm textarea:focus-visible {
+  outline: 2px solid var(--blue);
+}
 .CommentEditForm .writer {
   flex-grow: 1;
   display: flex;
@@ -161,6 +180,15 @@
   border-radius: 8px;
   background-color: var(--blue);
   margin-left: 4px;
+}
+.CommentEditForm button[type=submit]:hover {
+  background-color: var(--blue-hover);
+}
+.CommentEditForm button[type=submit]:active {
+  background-color: var(--blue-active);
+}
+.CommentEditForm button[type=submit]:disabled {
+  background-color: var(--inactive);
 }
 
 .no-comment {
