@@ -1,0 +1,40 @@
+.productImage {
+  @apply rounded-3xl overflow-hidden;
+  width: 486px;
+  height: 486px;
+
+  img {
+    @apply w-full h-full object-cover;
+  }
+}
+.name {
+  @apply font-semibold text-2xl;
+}
+.price {
+  @apply font-semibold leading-tight;
+  font-size: 40px;
+}
+.detail {
+  @apply mb-auto;
+  color: var(--gray-600);
+
+  dt {
+    @apply font-semibold;
+  }
+  dd {
+    @apply mt-4;
+  }
+  dd + dt {
+    @apply mt-6;
+  }
+}
+.favorite {
+  @apply flex gap-1 items-center px-3 h-10 border rounded-full bg-white;
+}
+.user {
+  @apply text-sm font-medium;
+}
+.date {
+  @apply mt-1 text-sm;
+  color: var(--gray-400);
+}

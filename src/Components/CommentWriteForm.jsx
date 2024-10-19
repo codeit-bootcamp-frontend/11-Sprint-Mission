@@ -13,12 +13,13 @@ function CommentWriteForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('comment submit');
+    console.log('comment submit', comment);
+    // if 성공하면
+    setComment('');
   };
 
-  let disabled = false;
   const minLength = 5;
-  disabled = comment.length < minLength;
+  const disabled = comment.length < minLength;
 
   return (
     <form onSubmit={handleSubmit}>
@@ -34,7 +35,7 @@ function CommentWriteForm() {
         onChange={handleChange}
         placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
       />
-      <div className="text-right">
+      <div className="flex justify-end">
         <button className="btn" type="submit" disabled={disabled}>
           등록
         </button>

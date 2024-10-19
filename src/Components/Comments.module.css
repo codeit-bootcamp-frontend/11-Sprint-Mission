@@ -1,0 +1,21 @@
+.comment {
+  @apply py-3 border-b;
+  border-color: var(--gray-200);
+
+  .content {
+    @apply mb-6 text-sm;
+  }
+  .user {
+    @apply text-xs;
+    color: var(--gray-600);
+  }
+  .date {
+    @apply text-xs;
+    color: var(--gray-400);
+  }
+}
+
+.empty {
+  @apply my-6 flex flex-col items-center justify-center text-center;
+  color: var(--gray-400);
+}
