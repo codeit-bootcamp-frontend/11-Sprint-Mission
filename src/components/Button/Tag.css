@@ -1,0 +1,16 @@
+.Tag {
+  display: flex;
+  align-items: center;
+  padding: 6px 16px 6px 16px;
+
+  background-color: #f3f4f6;
+  color: #1f2937;
+  font-weight: 400;
+  font-size: 16px;
+
+  border-radius: 26px;
+}
+
+.Tag__text--hasDeleteBtn{
+  margin-right: 8px;
+}
