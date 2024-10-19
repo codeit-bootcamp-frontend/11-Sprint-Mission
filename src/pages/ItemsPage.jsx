@@ -42,10 +42,7 @@ const ItemsPage = () => {
   return (
     <div>
       <Header isLogin />
-      <div>
-        <h2>베스트 상품</h2>
-        <BestProducts products={bestProducts} />
-      </div>
+      <BestProducts products={bestProducts} />
       <div>
         <h2>전체 상품</h2>
         <input></input>
