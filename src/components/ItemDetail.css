@@ -57,7 +57,6 @@
   padding-left: 24px;
   border-left: 1px solid var(--gray-200);
 }
-
 .item-info {
   display: flex;
   width: 100%;
@@ -143,4 +142,10 @@
   border: 1px solid var(--gray-200);
   border-radius: 35px;
   background-color: transparent;
+}
+
+.button-content:hover {
+  cursor: pointer;
+  color: var(--gray-200);
+  background-color: var(--primary);
 }
