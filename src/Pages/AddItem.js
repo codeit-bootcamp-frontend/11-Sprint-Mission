@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { switchGnbClass } from '../utils/switchGnbClass';
+import { switchGnbClass } from '../utils/utils';
+//
 import FileInput from '../Components/FileInput';
 import Tag from '../Components/Tag';
 //
@@ -14,6 +15,10 @@ const INITIAL_VALUES = {
   tags: [],
 };
 
+/**
+ * 상품 등록 페이지
+ * @return {JSX}
+ */
 function AddItem() {
   const [values, setValues] = useState(INITIAL_VALUES);
 
