@@ -10,7 +10,7 @@ function AddItemPage() {
     title: "",
     content: "",
     price: 0,
-    tag: "",
+    tag: [],
     imgFile: null,
   });
 
@@ -37,55 +37,59 @@ function AddItemPage() {
       <form onSubmit={handleSubmit} className="registerForm">
         <main className="form-body">
           <aside className="formTop">
-            <h2>상품 등록하기</h2>
+            <h2 className="form-theme">상품 등록하기</h2>
             <SmallButton type="submit" disabled={!isFormValid}>
               등록
             </SmallButton>
           </aside>
           <div className="formBody">
-            <section>
-              <h3>상품이미지</h3>
+            <section className="item-section">
+              <h3 className="section-theme">상품이미지</h3>
               <FileInput
                 name="imgFile"
                 value={values.imgFile}
                 onChange={handleChange}
               />
             </section>
-            <section>
-              <h3>상품명</h3>
+            <section className="item-section">
+              <h3 className="section-theme">상품명</h3>
               <input
                 name="title"
                 value={values.title}
                 onChange={handleInputChange}
                 placeholder="상품명을 입력해주세요"
+                className="add-item-input"
               />
             </section>
-            <section>
-              <h3>상품 소개</h3>
+            <section className="item-section">
+              <h3 className="section-theme">상품 소개</h3>
               <textarea
                 name="content"
                 value={values.content}
                 onChange={handleInputChange}
                 placeholder="상품 소개를 입력해주세요"
+                className="add-item-content"
               />
             </section>
-            <section>
-              <h3>판매가격</h3>
+            <section className="item-section">
+              <h3 className="section-theme">판매가격</h3>
               <input
                 name="price"
                 value={values.price}
                 onChange={handleInputChange}
                 placeholder="판매가격을 입력해주세요"
+                className="add-item-input"
               />
             </section>
-            <section>
-              <h3>태그</h3>
+            <section className="item-section">
+              <h3 className="section-theme">태그</h3>
               <div className="inputTag">
                 <input
                   name="tag"
                   value={values.tag}
                   onChange={handleInputChange}
                   placeholder="태그를 입력해주세요"
+                  className="add-item-input"
                 />
                 <div className="tag">
                   <Tag>#티셔츠</Tag>

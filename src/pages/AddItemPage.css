@@ -2,7 +2,7 @@
 .form-body,
 .formTop,
 .formBody,
-section,
+.item-section,
 .inputTag,
 .tag {
   display: flex;
@@ -10,7 +10,7 @@ section,
 
 .form-body,
 .formBody,
-section,
+.item-section,
 .inputTag {
   flex-direction: column;
 }
@@ -41,8 +41,8 @@ section,
   justify-content: space-between;
 }
 
-input,
-textarea {
+.add-item-input,
+.add-item-content {
   border: none;
 }
 
@@ -51,7 +51,7 @@ textarea {
   gap: 32px;
 }
 
-section {
+.item-section {
   gap: 16px;
 }
 
@@ -63,35 +63,36 @@ section {
   gap: 12px;
 }
 
-h2 h3,
-input,
-textarea {
+.form-theme,
+.section-theme,
+.add-item-input,
+.add-item-content {
   font-family: "pretendard Variable", "Noto Sans Korean";
 }
 
-h2,
-h3 {
+.form-theme,
+.section-theme {
   font-weight: 700;
 }
 
-h3,
-input,
-textarea {
+.section-theme,
+.add-item-input,
+.add-item-content {
   line-height: 26px;
 }
 
-input,
-textarea {
+.add-item-input,
+.add-item-content {
   font-size: 16px;
 }
 
-h2,
-h3 {
+.form-theme,
+.section-theme {
   color: var(--approx-midnight);
 }
 
-input,
-textarea {
+.add-item-input,
+.add-item-content {
   padding: 16px 24px;
   gap: 10px;
   border-radius: 12px;
@@ -100,19 +101,19 @@ textarea {
   color: var(--gray-400);
 }
 
-h2 {
+.form-theme {
   font-size: 20px;
   line-height: 32px;
 }
 
-h3 {
+.section-theme {
   font-size: 18px;
 }
 
-input {
+.add-item-input {
   height: 56px;
 }
 
-textarea {
+.add-item-content {
   height: 282px;
 }

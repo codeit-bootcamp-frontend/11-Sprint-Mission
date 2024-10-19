@@ -30,6 +30,7 @@
   width: 221px;
   height: 221px;
   border-radius: 16px;
+  color: var(--approx-midnight);
 }
 
 .text-box {
@@ -59,6 +60,7 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 26px;
+  color: var(--approx-midnight);
 }
 
 .heart {
@@ -69,4 +71,5 @@
 .like-it {
   font-size: 12px;
   line-height: 18px;
+  color: var(--approx-midnight);
 }

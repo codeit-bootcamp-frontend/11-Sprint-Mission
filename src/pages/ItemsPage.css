@@ -65,6 +65,7 @@ aside {
   border-radius: 12px;
   padding: 9px 20px 9px 38px;
   border: none;
+  font-family: "pretendard Variable", "Noto Sans Korean";
   background-color: var(--gray-100);
   color: var(--gray-400);
 }

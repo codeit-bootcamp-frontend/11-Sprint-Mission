@@ -6,7 +6,7 @@ function Tag({ children }) {
     <>
       <div className="single-tag">
         <div className="tag-content">
-          <p>{children}</p>
+          <div>{children}</div>
           <button className="x-button">
             <img src={x} alt="태그삭제" />
           </button>

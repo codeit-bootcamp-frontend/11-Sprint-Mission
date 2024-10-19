@@ -1,0 +1,146 @@
+.item-detail-content {
+  display: flex;
+  gap: 24px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.item-img {
+  width: 486px;
+  height: 486px;
+  border-radius: 16px;
+}
+
+.item-detail-text {
+  display: flex;
+  flex-direction: column;
+  width: 690px;
+  gap: 62px;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.detail-head {
+  display: flex;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.detail-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.seller-space {
+  display: flex;
+  justify-content: space-between;
+}
+
+.seller {
+  display: flex;
+  gap: 16px;
+}
+
+.seller-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.like-button {
+  display: flex;
+  padding-left: 24px;
+  border-left: 1px solid var(--gray-200);
+}
+
+.item-info {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.item-title {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 16px;
+}
+
+.item-description {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detail-tags {
+  display: flex;
+}
+
+.item-detail-name {
+  font-family: "pretendard Variable", "Noto Sans Korean";
+  color: var(--approx-midnight);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.item-detail-price {
+  font-family: "pretendard Variable", "Noto Sans Korean";
+  color: var(--approx-midnight);
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 48px;
+}
+
+.item-description-theme {
+  font-family: "pretendard Variable", "Noto Sans Korean";
+  color: var(--grayish-blue);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.item-description-content {
+  font-family: "pretendard Variable", "Noto Sans Korean";
+  color: var(--grayish-blue);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.seller-nickname {
+  font-family: "pretendard Variable", "Noto Sans Korean";
+  color: var(--grayish-blue);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.selling-updatedAt {
+  font-family: "pretendard Variable", "Noto Sans Korean";
+  color: var(--gray-400);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.button-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  padding: 4px 12px;
+  border: 1px solid var(--gray-200);
+  border-radius: 35px;
+  background-color: transparent;
+}

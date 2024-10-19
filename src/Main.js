@@ -3,7 +3,7 @@ import App from "./components/App";
 import HomePage from "./pages/HomePage";
 import ItemsPage from "./pages/ItemsPage";
 import AddItemPage from "./pages/AddItemPage";
-import ItemDescriptionPage from "./pages/ItemDescriptionPage";
+import ItemDetailPage from "./pages/ItemDetailPage";
 
 function Main() {
   return (
@@ -13,7 +13,7 @@ function Main() {
           <Route path="/" element={<HomePage />} />
           <Route path="items">
             <Route index element={<ItemsPage />} />
-            <Route path=":productId" element={<ItemDescriptionPage />} />
+            <Route path=":productId" element={<ItemDetailPage />} />
           </Route>
           <Route path="additem" element={<AddItemPage />} />
         </Routes>

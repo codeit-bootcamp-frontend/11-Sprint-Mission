@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Nav from "../components/Nav";
-import { getList } from "../api/ItemsPageApi";
+import { getList } from "../api/api";
 import BestProducts from "../components/BestProducts";
 import EntireProducts from "../components/EntireProducts";
 import PageButton from "../components/PageButton";

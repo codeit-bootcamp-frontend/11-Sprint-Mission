@@ -4,7 +4,7 @@ function SmallButton({ children }) {
   return (
     <>
       <button className="small-button">
-        <p className="small-btn-text">{children}</p>
+        <div className="small-btn-text">{children}</div>
       </button>
     </>
   );
