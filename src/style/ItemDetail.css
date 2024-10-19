@@ -77,6 +77,15 @@
   gap: 16px;
 }
 
+.item-tags-title {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  text-align: left;
+  color: #4b5563;
+}
+
 .item-tags-main {
   display: flex;
   gap: 8px;
@@ -116,9 +125,43 @@
   cursor: pointer;
 }
 
-.item-userinfo {
+.item-user {
   display: flex;
   justify-content: space-between;
+}
+
+.item-user-image {
+  width: 40px;
+  height: 40px;
+}
+
+.item-user-info {
+  display: flex;
+  gap: 16px;
+}
+
+.item-user-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.item-nickname {
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  color: #4b5563;
+}
+
+.item-updatedAt {
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  color: #9ca3af;
 }
 
 .item-favoriteCount {

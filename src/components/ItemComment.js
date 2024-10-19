@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import axiosInstance from '../axiosInstance';
 import { ReactComponent as Profile } from '../images/ic_profile.svg';
+import { ReactComponent as Dropdown } from '../images/ic_kebab.svg';
+import { ReactComponent as EmptyComment } from '../images/Img_inquiry_empty.svg';
+import '../style/ItemComment.css';
 
 function ItemComment({ item }) {
   const [comments, setComments] = useState([]); // 댓글 데이터를 저장할 상태
-  const [loading, setLoading] = useState(true); // 로딩 상태
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -21,8 +23,6 @@ function ItemComment({ item }) {
         setComments(response.data.list); // 서버에서 받은 데이터를 상태에 저장
       } catch (error) {
         console.error('Error fetching comments:', error);
-      } finally {
-        setLoading(false); // 로딩 상태 해제
       }
     };
 
@@ -41,36 +41,39 @@ function ItemComment({ item }) {
       .slice(0, -1); // 공백 제거
   };
 
-  // 로딩 중일 때 보여줄 내용
-  if (loading) {
-    return <div>Loading comments...</div>;
-  }
-
   return (
     <div>
       {comments.length > 0 ? (
         <div>
           {comments.map((comment, index) => (
             <div className="comment-container" key={index}>
-              <div className="comment-content">{comment.content}</div>
+              <div className="comment-header">
+                <div className="comment-content">{comment.content}</div>
+                <Dropdown />
+              </div>
               <div className="comment-info">
                 {comment.writer.image ? (
-                  <img src={comment.writer.image} />
+                  <img className="profile-icon" src={comment.writer.image} />
                 ) : (
-                  <Profile />
+                  <Profile className="profile-icon" />
                 )}
-                <div className="comment-nickname">
-                  {comment.writer.nickname}
-                </div>
-                <div className="comment-updatedAt">
-                  {formatDate(comment.updatedAt)}
+                <div className="comment-user-info">
+                  <div className="comment-nickname">
+                    {comment.writer.nickname}
+                  </div>
+                  <div className="comment-updatedAt">
+                    {formatDate(comment.updatedAt)}
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
       ) : (
-        <p>No comments available.</p>
+        <div className="comment-empty">
+          <EmptyComment className="comment-empty-icon" />
+          <div className="comment-empty-content">아직 문의가 없어요</div>
+        </div>
       )}
     </div>
   );
