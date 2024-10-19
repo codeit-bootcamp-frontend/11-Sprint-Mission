@@ -1,10 +1,10 @@
-import Header from "../../common/auth/home/Header";
-import { Link } from "react-router-dom";
-import "./AddItemPage.css";
-import AddItemImage from "./AddItemImage";
-import AddItemInfo from "./AddItemInfo";
-import { useState } from "react";
-import AddItemTag from "./AddItemTag";
+import Header from '../../common/auth/home/Header';
+import { Link } from 'react-router-dom';
+import './AddItemPage.css';
+import AddItemImage from './AddItemImage';
+import AddItemInfo from './AddItemInfo';
+import { useState } from 'react';
+import AddItemTag from './AddItemTag';
 
 function AddItemPage() {
   const [images, setImages] = useState([]);
@@ -40,13 +40,9 @@ function AddItemPage() {
           <p className="add-item-title">상품 등록하기</p>
           <button className="add-item-register-btn">등록</button>
         </div>
-        <AddItemInfo
-          label="상품 이미지"
-          name="image"
-          additional={<AddItemImage />}
-          data={images}
-          setData={setImages}
-        />
+        <AddItemInfo label="상품 이미지" name="image">
+          <AddItemImage images={images} setImages={setImages} />
+        </AddItemInfo>
         <AddItemInfo
           label="상품명"
           name="name"
@@ -68,8 +64,9 @@ function AddItemPage() {
           name="tag"
           placeholder="태그를 입력해주세요"
           setData={setTags}
-          additional={<AddItemTag tags={tags} onDeleteTag={handleDeleteTag} />}
-        />
+        >
+          <AddItemTag tags={tags} onDeleteTag={handleDeleteTag} />
+        </AddItemInfo>
       </form>
     </>
   );

@@ -1,21 +1,21 @@
-import { useState } from "react";
-import "./AddItemInfo.css";
+import { useState } from 'react';
+import './AddItemInfo.css';
 
 function AddItemInfo({
+  children,
   label,
   name,
   rows = 1,
   placeholder,
-  additional,
   setData,
 }) {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter" && inputValue.trim() !== "") {
+    if (e.key === 'Enter' && inputValue.trim() !== '') {
       e.preventDefault();
       setData((prevTags) => [...prevTags, inputValue]);
-      setInputValue("");
+      setInputValue('');
     }
   };
 
@@ -29,8 +29,8 @@ function AddItemInfo({
         {label}
       </label>
 
-      {additional && name !== "tag" ? (
-        additional
+      {children && name !== 'tag' ? (
+        children
       ) : (
         <textarea
           className="add-item-description"
@@ -40,11 +40,11 @@ function AddItemInfo({
           placeholder={placeholder}
           value={inputValue}
           onChange={handleInputChange}
-          onKeyDown={name === "tag" ? handleKeyDown : null}
+          onKeyDown={name === 'tag' ? handleKeyDown : null}
         ></textarea>
       )}
 
-      {name === "tag" && additional}
+      {name === 'tag' && children}
     </section>
   );
 }
