@@ -8,11 +8,38 @@ import { getCommentById } from "../../api";
 function CommentForm({ productId, className }) {
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState();
+  const [selectedComment, setSelectedComment] = useState(null);
+  const [isEditing, setIsEditing] = useState(null);
 
   const handleInputChange = useDebounce((e) => {
     const next = e.target.value.trim();
     setComment(next);
   }, 500);
+
+  const handleOptionClick = (e) => {
+    if (e.target.dataset.option === "edit") {
+      setIsEditing(e.currentTarget.dataset.id);
+      setSelectedComment(null);
+      return;
+    }
+
+    if (selectedComment) {
+      setSelectedComment(null);
+      return;
+    }
+
+    if (e.target.classList.contains("feature")) {
+      setSelectedComment(e.currentTarget.dataset.id);
+      return;
+    }
+    setSelectedComment(null);
+  };
+
+  const handleEditCancel = (e) => {
+    setIsEditing(null);
+  };
+
+  const handleEditSubmit = (e) => {};
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,7 +67,15 @@ function CommentForm({ productId, className }) {
         {comments
           ? comments.list.map((data) => (
               <li key={data.id}>
-                <Comment data={data} />
+                {isEditing === String(data.id) ? (
+                  <CommentEditForm data={data} onCancel={handleEditCancel} />
+                ) : (
+                  <CommentListItem
+                    data={data}
+                    isSelected={selectedComment === String(data.id)}
+                    onClick={handleOptionClick}
+                  />
+                )}
               </li>
             ))
           : null}
@@ -49,12 +84,26 @@ function CommentForm({ productId, className }) {
   );
 }
 
-function Comment({ data }) {
+function CommentListItem({ data, isSelected, onClick }) {
   return (
-    <div className={styles["Comment"]}>
+    <div
+      data-id={data.id}
+      className={styles["CommentListItem"]}
+      onClick={onClick}
+    >
       <div className={styles["content"]}>
         {data.content}
-        <img src={ic_kebab} alt="케밥" />
+        <img className="feature" src={ic_kebab} alt="케밥" />
+        {isSelected && (
+          <div className={styles["select"]}>
+            <div className={styles["option"]} data-option="edit">
+              수정하기
+            </div>
+            <div className={styles["option"]} data-option="delete">
+              삭제하기
+            </div>
+          </div>
+        )}
       </div>
       <div className={styles["writer"]}>
         <img
@@ -68,6 +117,36 @@ function Comment({ data }) {
         </div>
       </div>
     </div>
+  );
+}
+
+function CommentEditForm({ data, onCancel }) {
+  const [content, setContent] = useState(data.content);
+
+  const handleInputChange = (e) => {
+    const next = e.target.value.trim();
+    setContent(next);
+  };
+
+  return (
+    <form data-id={data.id} className={styles["CommentEditForm"]}>
+      <textarea value={content} onChange={handleInputChange} />
+      <div className={styles["writer"]}>
+        <img
+          className={styles["profile"]}
+          src={data.writer.image || ic_profile}
+          alt="판매자 프로필"
+        />
+        <div className={styles["main"]}>
+          <div className={styles["name"]}>{data.writer.nickname}</div>
+          <div className={styles["date"]}>2024.01.02</div>
+        </div>
+      </div>
+      <button type="button" onClick={onCancel}>
+        취소
+      </button>
+      <button type="submit">수정 완료</button>
+    </form>
   );
 }
 
