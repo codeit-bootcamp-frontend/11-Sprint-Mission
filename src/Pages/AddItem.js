@@ -4,9 +4,9 @@ import { TITLE } from '../info';
 //
 import FileInput from '../Components/FileInput';
 import Tag from '../Components/Tag';
+import Meta from '../Components/Meta';
 //
 import styles from './AddItem.module.css';
-import { Helmet } from 'react-helmet';
 
 // form 초기값
 const INITIAL_VALUES = {
@@ -88,9 +88,11 @@ function AddItem() {
 
   return (
     <>
-      <Helmet>
-        <title>상품 등록하기 | {TITLE}</title>
-      </Helmet>
+      <Meta
+        title={`상품 등록하기 | ${TITLE}`}
+        description="판다마켓에 중고마켓 상품 등록 페이지 입니다."
+        url={window.location.href}
+      />
 
       <form className="mt-6 mb-16 flex flex-col gap-8" onSubmit={handleSubmit}>
         <div className="flex justify-between">

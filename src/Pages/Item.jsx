@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
 import dayjs from 'dayjs';
 import { getProduct } from '../api/api';
 import useAsync from '../hooks/useAsync';
@@ -11,6 +10,7 @@ import Tag from '../Components/Tag';
 import CommentWriteForm from '../Components/CommentWriteForm';
 import Comments from '../Components/Comments';
 import Img from '../Components/Img';
+import Meta from '../Components/Meta';
 //
 import baseAvatar from '../assets/base-avatar.svg';
 import styles from './Item.module.css';
@@ -44,11 +44,12 @@ function Item() {
       )}
       {product && (
         <>
-          <Helmet>
-            <title>
-              {product.name} | {TITLE}
-            </title>
-          </Helmet>
+          <Meta
+            title={`${product.name} | ${TITLE}`}
+            description={product.description}
+            url={window.location.href}
+            image={product.images[0]}
+          />
 
           <div className="flex flex-col md:flex-row gap-6 my-6">
             <figure className={styles.productImage}>
