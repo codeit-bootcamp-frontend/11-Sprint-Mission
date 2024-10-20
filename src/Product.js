@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { getDetailItems, getItemCommit } from './service/api.js';
 import { useParams, Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 import './css/style.css';
 
@@ -12,6 +12,16 @@ import editIcon from './assets/edit.png';
 import backArrow from './assets/backArrow.png';
 import emptyImage from './assets/Img_inquiry_empty.png';
 
+const DetailPage = createGlobalStyle`
+  html {
+    font-size: 16px;
+
+    @media (max-width: 1200px) {
+      font-size: 14px;
+    }
+  }
+`;
+
 const Container = styled.div`
   text-align: center;
   margin-top: 60px;
@@ -21,6 +31,15 @@ const ProductDiv = styled.div`
   max-width: 1200px;
   margin: 60px auto;
   position: relative;
+
+  @media (max-width: 1200px) {
+    max-width: 1000px;
+  }
+
+  @media (max-width: 768px) {
+    margin: 40px auto;
+    max-width: 340px;
+  }
 `;
 
 const ProductImage = styled.img`
@@ -30,6 +49,15 @@ const ProductImage = styled.img`
   float: left;
   margin-right: 36px;
   border: 1px solid #ddd;
+
+  @media (max-width: 1200px) {
+    width: 340px;
+    height: 340px;
+  }
+
+  @media (max-width: 768px) {
+    float: none;
+  }
 `;
 
 const ProductInfo = styled.div`
@@ -37,6 +65,15 @@ const ProductInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (max-width: 1200px) {
+    height: 340px;
+  }
+
+  @media (max-width: 768px) {
+    height: 360px;
+    margin-top: 2rem;
+  }
 `;
 
 const ProductEdit = styled.div`
@@ -69,6 +106,10 @@ const ProductLine = styled.div`
   width: 678px;
   float: right;
   border-bottom: 1px solid var(--gray-200);
+
+  @media (max-width: 1200px) {
+    width: 100%;
+  }
 `;
 
 const ProductSecondTitle = styled.h2`
@@ -92,6 +133,7 @@ const ProductTag = styled.span`
   border-radius: 26px;
   padding: 0.375rem 1rem;
   margin-right: 8px;
+  margin-bottom: 8px;
   display: inline-flex;
 `;
 
@@ -150,7 +192,7 @@ const ProductUtils = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  width: 678px;
+  width: inherit;
 `;
 
 const SectionLine = styled.div`
@@ -354,7 +396,7 @@ function Product() {
     };
 
     return (
-      <DropdownUl>
+      <DropdownUl ref={dropdownRef}>
         <DropdownLi onClick={() => handleSelect('수정하기')}>
           수정하기
         </DropdownLi>
@@ -384,6 +426,10 @@ function Product() {
       const updatedComments = comment.filter((_, i) => i !== index);
       setComment(updatedComments);
     }
+    setIsDropdownView((prev) => ({
+      ...prev,
+      comments: prev.comments.map(() => null),
+    }));
   };
 
   const handleClickOutside = (event) => {
@@ -439,6 +485,7 @@ function Product() {
 
   return (
     <div>
+      <DetailPage />
       {item && (
         <ProductDiv>
           <ProductImage
@@ -462,7 +509,13 @@ function Product() {
                   />
                   <DropdownDiv>
                     {isDropdownView.product && (
-                      <Dropdown onSelect={handleSelectMenu} />
+                      <Dropdown
+                        onSelect={() =>
+                          console.log(
+                            '게시글 수정 / 삭제 -> 로그인 기능 구현 후 작업'
+                          )
+                        }
+                      />
                     )}
                   </DropdownDiv>
                 </div>
@@ -507,7 +560,13 @@ function Product() {
               onChange={handleInputValue}
               placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
             />
-            <CommentButton type="submit" disabled={!commentValue}>
+            <CommentButton
+              type="submit"
+              onClick={() =>
+                console.log('댓글 등록 -> 로그인 기능 구현 후 작업')
+              }
+              disabled={!commentValue}
+            >
               등록
             </CommentButton>
           </CommentsContainer>
