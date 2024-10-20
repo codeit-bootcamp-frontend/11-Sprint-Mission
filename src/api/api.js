@@ -33,6 +33,12 @@ async function getProduct(id) {
   return response.json();
 }
 
+/**
+ * 상품 아이디 > 코멘트(문의) 목록 조회
+ * @param {number} id : 상품 아이디
+ * @param {number} limit : 댓글 갯수
+ * @return {object} : 댓글 목록 배열 및 갯수
+ */
 async function getComments(id, limit = 50) {
   const response = await fetch(`${BASE_URL}products/${id}/comments?limit=${limit}`);
 
