@@ -4,10 +4,12 @@ import dayjs from 'dayjs';
 import { getComments } from '../api/api';
 import useAsync from '../hooks/useAsync';
 //
-import styles from './Comments.module.css';
+import Loading from './Loading';
+import Dropdown from './Dropdown';
+//
 import emptyImage from '../assets/empty-placehoder.png';
 import baseAvatar from '../assets/base-avatar.svg';
-import Loading from './Loading';
+import styles from './Comments.module.css';
 
 /**
  * 코멘트(문의) 목록 컴포넌트
@@ -42,7 +44,20 @@ function Comments({ productId }) {
             <li className={styles.comment} key={id}>
               <div className="flex gap-6 justify-between items-start">
                 <p className={styles.content}>{content}</p>
-                <button type="button">...</button>
+                <Dropdown isRight>
+                  <ul className={styles.menus}>
+                    <li>
+                      <button className={styles.btn} onClick={() => console.log('수정하기')}>
+                        수정하기
+                      </button>
+                    </li>
+                    <li>
+                      <button className={styles.btn} onClick={() => console.log('삭제하기')}>
+                        삭제하기
+                      </button>
+                    </li>
+                  </ul>
+                </Dropdown>
               </div>
 
               <div className="flex gap-2 items-center">

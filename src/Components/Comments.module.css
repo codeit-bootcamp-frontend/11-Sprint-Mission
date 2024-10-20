@@ -13,6 +13,15 @@
     @apply text-xs;
     color: var(--gray-400);
   }
+  .menus {
+    @apply border rounded-lg bg-white;
+    width: 140px;
+    color: var(--gray-500);
+
+    .btn {
+      @apply w-full px-4 py-2;
+    }
+  }
 }
 
 .empty {
