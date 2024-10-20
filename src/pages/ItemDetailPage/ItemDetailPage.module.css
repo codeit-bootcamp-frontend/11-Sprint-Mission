@@ -30,6 +30,12 @@
   font-weight: 600;
   line-height: 26px;
 }
+.btn-back:hover {
+  background-color: var(--blue-hover);
+}
+.btn-back:active {
+  background-color: var(--blue-active);
+}
 .btn-back img {
   margin-top: 4px;
 }

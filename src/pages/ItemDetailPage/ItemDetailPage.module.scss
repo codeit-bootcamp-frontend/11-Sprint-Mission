@@ -31,6 +31,15 @@
   font-size: 18px;
   font-weight: 600;
   line-height: 26px;
+
+  &:hover {
+    background-color: var(--blue-hover);
+  }
+
+  &:active {
+    background-color: var(--blue-active);
+  }
+
   img {
     margin-top: 4px;
   }
