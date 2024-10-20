@@ -40,7 +40,7 @@ function Comments({ productId }) {
 
       {comments?.length > 0 ? (
         <ul className="my-6 flex flex-col gap-3">
-          {comments.map(({ writer: { nickname }, id, content, updatedAt }) => (
+          {comments.map(({ writer: { nickname, image }, id, content, updatedAt }) => (
             <li className={styles.comment} key={id}>
               <div className="flex gap-6 justify-between items-start">
                 <p className={styles.content}>{content}</p>
@@ -61,7 +61,7 @@ function Comments({ productId }) {
               </div>
 
               <div className="flex gap-2 items-center">
-                <img src={baseAvatar} alt="" width="32" height="32" />
+                <img src={image || baseAvatar} width="32" height="32" />
                 <div>
                   <div className={styles.user}>{nickname}</div>
                   <div className={styles.date}>{dayjs(updatedAt).fromNow()}</div>
