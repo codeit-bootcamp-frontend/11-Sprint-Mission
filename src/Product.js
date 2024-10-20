@@ -177,6 +177,8 @@ const CommentsContainer = styled.div`
 `;
 
 const CommentButton = styled.button`
+  font-size: 1rem;
+  font-weight: 600;
   width: 4.625rem;
   height: 2.625rem;
   background-color: var(--blue);
@@ -313,6 +315,8 @@ function Product() {
     comments: [],
   });
   const dropdownRef = useRef();
+  const [editingCommentIndex, setEditingCommentIndex] = useState(null);
+  const [editingCommentValue, setEditingCommentValue] = useState('');
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -345,10 +349,18 @@ function Product() {
   };
 
   function Dropdown({ onSelect }) {
+    const handleSelect = (option) => {
+      onSelect(option);
+    };
+
     return (
-      <DropdownUl ref={dropdownRef} onClick={onSelect}>
-        <DropdownLi>수정하기</DropdownLi>
-        <DropdownLi>삭제하기</DropdownLi>
+      <DropdownUl>
+        <DropdownLi onClick={() => handleSelect('수정하기')}>
+          수정하기
+        </DropdownLi>
+        <DropdownLi onClick={() => handleSelect('삭제하기')}>
+          삭제하기
+        </DropdownLi>
       </DropdownUl>
     );
   }
@@ -363,7 +375,13 @@ function Product() {
     }
   };
 
-  const handleSelectMenu = (onSelect) => {};
+  const handleSelectMenu = (option, index) => {
+    if (option === '수정하기') {
+      setEditingCommentIndex(index);
+      setEditingCommentValue(comment[index].content);
+      setIsDropdownView({ ...isDropdownView, comments: [] });
+    }
+  };
 
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -372,6 +390,22 @@ function Product() {
         comments: [],
       });
     }
+  };
+
+  const handleClickButton = () => {
+    const updatedComments = [...comment];
+    updatedComments[editingCommentIndex] = {
+      ...updatedComments[editingCommentIndex],
+      content: editingCommentValue,
+    };
+    setComment(updatedComments);
+    setEditingCommentIndex(null);
+    setEditingCommentValue('');
+  };
+
+  const handleClickCancelButton = () => {
+    setEditingCommentIndex(null);
+    setEditingCommentValue('');
   };
 
   useEffect(() => {
@@ -476,34 +510,89 @@ function Product() {
           </CommentsContainer>
           {comment.map((com, index) => (
             <div key={index}>
-              <CommentEdit>
-                <CommentContent>{com.content}</CommentContent>
-                <img
-                  src={editIcon}
-                  alt="댓글 수정"
-                  onClick={(e) => handleDropdownView(e, 'comment', index)} // index 전달
-                />
-                <DropdownDiv>
-                  {isDropdownView.comments[index] && (
-                    <Dropdown onSelect={handleSelectMenu} />
-                  )}
-                </DropdownDiv>
-              </CommentEdit>
-              <CommentWriter>
-                <img
-                  src={com.writer.image ? com.writer.image : profileIcon}
-                  alt="댓글 작성자 프로필"
-                />
-                <div>
-                  <CommentUserName>{com.writer.nickname}</CommentUserName>
-                  <CommentCreatedAt>
-                    {formatDate(com.createdAt)}
-                  </CommentCreatedAt>
-                </div>
-              </CommentWriter>
+              {editingCommentIndex === index ? (
+                <>
+                  <Comments
+                    value={editingCommentValue}
+                    onChange={(e) => setEditingCommentValue(e.target.value)}
+                    style={{ marginTop: '1.5rem' }}
+                  />
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      margin: '1rem 0 1.5rem',
+                    }}
+                  >
+                    <CommentWriter style={{ margin: 0 }}>
+                      <img
+                        src={com.writer.image ? com.writer.image : profileIcon}
+                        alt="댓글 작성자 프로필"
+                      />
+                      <div>
+                        <CommentUserName>{com.writer.nickname}</CommentUserName>
+                        <CommentCreatedAt>
+                          {formatDate(com.createdAt)}
+                        </CommentCreatedAt>
+                      </div>
+                    </CommentWriter>
+                    <div>
+                      <CommentButton
+                        style={{
+                          backgroundColor: '#fff',
+                          color: 'var(--gray-500)',
+                          margin: '0 1rem',
+                        }}
+                        onClick={handleClickCancelButton}
+                      >
+                        취소
+                      </CommentButton>
+                      <CommentButton
+                        style={{ width: '106px', margin: 0 }}
+                        type="button"
+                        onClick={handleClickButton}
+                      >
+                        수정 완료
+                      </CommentButton>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <CommentEdit>
+                    <CommentContent>{com.content}</CommentContent>
+                    <img
+                      src={editIcon}
+                      alt="댓글 수정"
+                      onClick={(e) => handleDropdownView(e, 'comment', index)}
+                    />
+                    <DropdownDiv style={{ marginTop: '1.5rem' }}>
+                      {isDropdownView.comments[index] && (
+                        <Dropdown
+                          onSelect={(option) => handleSelectMenu(option, index)}
+                        />
+                      )}
+                    </DropdownDiv>
+                  </CommentEdit>
+                  <CommentWriter>
+                    <img
+                      src={com.writer.image ? com.writer.image : profileIcon}
+                      alt="댓글 작성자 프로필"
+                    />
+                    <div>
+                      <CommentUserName>{com.writer.nickname}</CommentUserName>
+                      <CommentCreatedAt>
+                        {formatDate(com.createdAt)}
+                      </CommentCreatedAt>
+                    </div>
+                  </CommentWriter>
+                </>
+              )}
               <SectionLine style={{ margin: 0 }} />
             </div>
           ))}
+
           {comment && comment.length === 0 && (
             <CommentEmpty>
               <img src={emptyImage} alt="문의없음" /> 아직 문의가 없어요.
