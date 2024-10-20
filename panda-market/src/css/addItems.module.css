@@ -1,0 +1,140 @@
+.container {
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 24px auto 40px;
+}
+.title {
+  width: 100%;
+  margin: 8px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+  text-align: left;
+}
+.subTitle {
+  width: auto;
+  margin: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 32px;
+  text-align: left;
+}
+.titleHeader {
+  width: 100%;
+  height: 42px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.addItemsForm {
+  margin-top: 24px;
+  gap: 32px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.labelInputWrapper {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.inputField {
+  width: 100%;
+  padding: 0px 24px;
+  height: 56px;
+  gap: 10px;
+  border-radius: 12px;
+  background-color: #f3f4f6;
+  border: none;
+  box-sizing: border-box;
+}
+
+.largeTextareaField {
+  width: 100%;
+  padding: 0px 24px;
+  height: 282px;
+  gap: 10px;
+  border-radius: 12px;
+  background-color: #f3f4f6;
+  border: none;
+  box-sizing: border-box;
+}
+
+.inputField::placeholder {
+  color: #9ca3af;
+  font-size: 16px;
+}
+
+.largeTextareaField::placeholder {
+  color: #9ca3af;
+  font-size: 16px;
+}
+
+.largeTextareaField {
+  width: 100%;
+  padding: 16px 24px;
+  height: 282px;
+  gap: 10px;
+  height: 150px;
+  border-radius: 12px;
+  background-color: #f3f4f6;
+  border: none;
+  color: #9ca3af;
+  box-sizing: border-box;
+}
+.btnPrimary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  padding: 0px 23px;
+  gap: 10px;
+  border-radius: 8px;
+  background-color: #3692ff;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  border: none;
+}
+
+.tagContainer {
+  display: flex;
+  flex-direction: row;
+  row-gap: 10px;
+  margin-top: 12px;
+  gap: 10px;
+}
+.tagItem {
+  padding: 6px 12px;
+  border-radius: 26px;
+  background: #f3f4f6;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+
+.tagFont {
+  color: #1f2937;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.deleteIcon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.deleteButton {
+  all: unset;
+}
