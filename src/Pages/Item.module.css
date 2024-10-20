@@ -1,7 +1,6 @@
 .productImage {
-  @apply rounded-3xl overflow-hidden;
-  width: 486px;
-  height: 486px;
+  @apply flex-1 rounded-3xl overflow-hidden aspect-square;
+  max-width: 486px;
 
   img {
     @apply w-full h-full object-cover;

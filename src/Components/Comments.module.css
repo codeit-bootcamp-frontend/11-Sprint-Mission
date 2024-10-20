@@ -3,7 +3,7 @@
   border-color: var(--gray-200);
 
   .content {
-    @apply mb-6 text-sm;
+    @apply flex-1 mb-6 text-sm;
   }
   .user {
     @apply text-xs;

@@ -7,11 +7,11 @@ import dayjs from 'dayjs';
 import Loading from '../Components/Loading';
 import Tag from '../Components/Tag';
 import CommentWriteForm from '../Components/CommentWriteForm';
+import Comments from '../Components/Comments';
+import Img from '../Components/Img';
 //
 import baseAvatar from '../assets/base-avatar.svg';
 import styles from './Item.module.css';
-import Comments from '../Components/Comments';
-import Img from '../Components/Img';
 
 /**
  * 상품 상세 페이지
@@ -41,7 +41,7 @@ function Item() {
         <p className="error-message">{productLoadingError.message}</p>
       )}
       {product && (
-        <div className="flex gap-6 my-6">
+        <div className="flex flex-col md:flex-row gap-6 my-6">
           <figure className={styles.productImage}>
             <Img src={product.images[0]} alt={product.name} />
           </figure>
@@ -54,7 +54,7 @@ function Item() {
               <dt>상품 소개</dt>
               <dd>{product.description}</dd>
               <dt>상품 태그</dt>
-              <dd className="flex gap-2">
+              <dd className="flex flex-wrap gap-2">
                 {product.tags.length ? product.tags.map((tag) => <Tag key={tag}>{tag}</Tag>) : '-'}
               </dd>
             </dl>
