@@ -380,6 +380,9 @@ function Product() {
       setEditingCommentIndex(index);
       setEditingCommentValue(comment[index].content);
       setIsDropdownView({ ...isDropdownView, comments: [] });
+    } else if (option === '삭제하기') {
+      const updatedComments = comment.filter((_, i) => i !== index);
+      setComment(updatedComments);
     }
   };
 
