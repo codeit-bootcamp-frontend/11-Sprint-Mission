@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import FileInput from "../FileInput/FileInput";
 import "./AddItemForm.css";
 import ic_tag_x from "../../assets/images/ic_tag_x.svg";
+import { array, number, object, string } from "yup";
 
 const DEFAULT_FORM_VALUES = {
   images: [],
@@ -49,6 +50,17 @@ const checkValueFormat = {
     return { ok: true, msg: null };
   },
 };
+
+const formSchema = object({
+  title: string().required("상품명을 입력해주세요").trim(),
+  content: string().required("상품 소개를 입력해주세요").trim(),
+  price: number()
+    .required("판매 가격을 입력해주세요")
+    .positive("판매 가격은 양수만 사용할 수 있습니다.")
+    .integer("판매 가격은 정수만 사용할 수 있습니다.")
+    .typeError("판매 가격은 숫자만 사용할 수 있습니다."),
+  tags: array().of(string().trim()).min(1, "태그를 하나 이상 입력해주세요"),
+});
 
 function AddItemForm() {
   const [values, setValues] = useState(DEFAULT_FORM_VALUES);
@@ -127,13 +139,12 @@ function AddItemForm() {
   };
 
   useEffect(() => {
-    let flag = true;
-    for (const name in isValuesValid) {
-      const { ok } = isValuesValid[name];
-      if (!ok) flag = false;
-    }
-    setIsFromValid(flag);
-  }, [isValuesValid]);
+    const handleValidForm = async () => {
+      const result = await formSchema.isValidSync(values);
+      setIsFromValid(result);
+    };
+    handleValidForm();
+  }, [values]);
 
   return (
     <form id="form-item-add" onKeyDown={handlePreventEnterSubmit}>
