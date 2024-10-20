@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { getDetailItems, getItemCommit } from './service/api.js';
 import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -10,6 +10,7 @@ import favoriteIcon from './assets/detailfavoriteIcon.png';
 import noImage from './assets/noImage.jfif';
 import editIcon from './assets/edit.png';
 import backArrow from './assets/backArrow.png';
+import emptyImage from './assets/Img_inquiry_empty.png';
 
 const Container = styled.div`
   text-align: center;
@@ -19,6 +20,7 @@ const Container = styled.div`
 const ProductDiv = styled.div`
   max-width: 1200px;
   margin: 60px auto;
+  position: relative;
 `;
 
 const ProductImage = styled.img`
@@ -117,6 +119,17 @@ const ProfileUserInfo = styled.div`
   & span:last-child {
     color: var(--gray-400);
   }
+`;
+
+const ProductFavoriteDiv = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
+const ProductFavoriteLine = styled.div`
+  height: 30px;
+  border-left: 1px solid var(--gray-200);
 `;
 
 const ProductFavorite = styled.div`
@@ -252,11 +265,54 @@ const PrevPageButton = styled(Link)`
   }
 `;
 
+const CommentEmpty = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & img {
+    width: 196px;
+    height: 196px;
+  }
+`;
+
+const DropdownDiv = styled.div`
+  position: absolute;
+  right: 0;
+`;
+
+const DropdownUl = styled.ul`
+  width: 8.75rem;
+  height: 5.75rem;
+  border: 1px solid var(--gray-300);
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #fff;
+  padding: 0;
+`;
+
+const DropdownLi = styled.li`
+  width: inherit;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:first-child {
+    border-bottom: 1px solid var(--gray-300);
+  }
+`;
+
 function Product() {
   const [item, setItem] = useState(null);
   const [comment, setComment] = useState(null);
   const { id } = useParams();
   const [commentValue, setCommentValue] = useState('');
+  const [isDropdownView, setIsDropdownView] = useState({
+    product: null,
+    comments: [],
+  });
+  const dropdownRef = useRef();
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -287,6 +343,43 @@ function Product() {
   const handleInputValue = (e) => {
     setCommentValue(e.target.value.trim());
   };
+
+  function Dropdown({ onSelect }) {
+    return (
+      <DropdownUl ref={dropdownRef} onClick={onSelect}>
+        <DropdownLi>수정하기</DropdownLi>
+        <DropdownLi>삭제하기</DropdownLi>
+      </DropdownUl>
+    );
+  }
+
+  const handleDropdownView = (e, type, index = null) => {
+    if (type === 'product') {
+      setIsDropdownView({ ...isDropdownView, product: e.target });
+    } else if (type === 'comment') {
+      const newDropdownView = [...isDropdownView.comments];
+      newDropdownView[index] = e.target;
+      setIsDropdownView({ ...isDropdownView, comments: newDropdownView });
+    }
+  };
+
+  const handleSelectMenu = (onSelect) => {};
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsDropdownView({
+        product: null,
+        comments: [],
+      });
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isDropdownView]);
 
   useEffect(() => {
     const contentLoad = async () => {
@@ -324,7 +417,18 @@ function Product() {
             <div>
               <ProductEdit>
                 <ProductFirstTitle>{item.name}</ProductFirstTitle>
-                <img src={editIcon} alt="게시글 수정" />
+                <div>
+                  <img
+                    src={editIcon}
+                    alt="게시글 수정"
+                    onClick={(e) => handleDropdownView(e, 'product')}
+                  />
+                  <DropdownDiv>
+                    {isDropdownView.product && (
+                      <Dropdown onSelect={handleSelectMenu} />
+                    )}
+                  </DropdownDiv>
+                </div>
               </ProductEdit>
               <ProductPrice>{`${Number(
                 item.price
@@ -345,10 +449,13 @@ function Product() {
                   <span>{formatDate(item.createdAt)}</span>
                 </div>
               </ProfileUserInfo>
-              <ProductFavorite>
-                <img src={favoriteIcon} alt="좋아요" />
-                <span>{item.favoriteCount}</span>
-              </ProductFavorite>
+              <ProductFavoriteDiv>
+                <ProductFavoriteLine />
+                <ProductFavorite>
+                  <img src={favoriteIcon} alt="좋아요" />
+                  <span>{item.favoriteCount}</span>
+                </ProductFavorite>
+              </ProductFavoriteDiv>
             </ProductUtils>
           </ProductInfo>
         </ProductDiv>
@@ -371,7 +478,16 @@ function Product() {
             <div key={index}>
               <CommentEdit>
                 <CommentContent>{com.content}</CommentContent>
-                <img src={editIcon} alt="댓글 수정" />
+                <img
+                  src={editIcon}
+                  alt="댓글 수정"
+                  onClick={(e) => handleDropdownView(e, 'comment', index)} // index 전달
+                />
+                <DropdownDiv>
+                  {isDropdownView.comments[index] && (
+                    <Dropdown onSelect={handleSelectMenu} />
+                  )}
+                </DropdownDiv>
               </CommentEdit>
               <CommentWriter>
                 <img
@@ -388,6 +504,11 @@ function Product() {
               <SectionLine style={{ margin: 0 }} />
             </div>
           ))}
+          {comment && comment.length === 0 && (
+            <CommentEmpty>
+              <img src={emptyImage} alt="문의없음" /> 아직 문의가 없어요.
+            </CommentEmpty>
+          )}
           <PrevPageDiv>
             <PrevPageButton to="/Items">
               목록으로 돌아가기
@@ -396,7 +517,7 @@ function Product() {
           </PrevPageDiv>
         </ProductDiv>
       )}
-      {!comment && <Container>댓글이 없습니다.</Container>}
+      {!comment && <Container>댓글 로드 중입니다.</Container>}
     </div>
   );
 }
