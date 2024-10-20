@@ -62,4 +62,17 @@ function getDetailItems(id) {
     });
 }
 
-export { getItems, createItems, getDetailItems };
+function getItemCommit(id, limit = 100) {
+  const query = new URLSearchParams({
+    limit,
+  }).toString();
+  return instance
+    .get(`/products/${id}/comments?${query}`)
+    .then((response) => response.data)
+    .catch((error) => {
+      console.error('패칭 중 오류가 발생했습니다', error);
+      throw new Error('댓글을 불러오는데 실패했습니다.');
+    });
+}
+
+export { getItems, createItems, getDetailItems, getItemCommit };
