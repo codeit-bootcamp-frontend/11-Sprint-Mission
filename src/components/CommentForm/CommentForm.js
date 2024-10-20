@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ic_kebab from "../../assets/images/ic_kebab.svg";
 import ic_profile from "../../assets/images/profile.svg";
 import styles from "./CommentForm.module.css";
@@ -11,24 +11,14 @@ function CommentForm({ productId, className }) {
   const [comments, setComments] = useState();
   const [selectedComment, setSelectedComment] = useState(null);
   const [isEditing, setIsEditing] = useState(null);
+  const selectRef = useRef(null);
 
   const handleInputChange = useDebounce((e) => {
     const next = e.target.value.trim();
     setComment(next);
   }, 500);
 
-  const handleOptionClick = (e) => {
-    if (e.target.dataset.option === "edit") {
-      setIsEditing(e.currentTarget.dataset.id);
-      setSelectedComment(null);
-      return;
-    }
-
-    if (selectedComment) {
-      setSelectedComment(null);
-      return;
-    }
-
+  const handleFeatureClick = (e) => {
     if (e.target.classList.contains("feature")) {
       setSelectedComment(e.currentTarget.dataset.id);
       return;
@@ -51,6 +41,18 @@ function CommentForm({ productId, className }) {
   const handleEditCancel = () => {
     setIsEditing(null);
   };
+
+  useEffect(() => {
+    const handleClickSelectOutside = (e) => {
+      if (e.target.classList.contains("feature")) return;
+      if (selectRef.current && !e.target.dataset?.option) {
+        setSelectedComment(null);
+      }
+    };
+    document.addEventListener("click", handleClickSelectOutside);
+    return () =>
+      document.removeEventListener("click", handleClickSelectOutside);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -84,8 +86,10 @@ function CommentForm({ productId, className }) {
               ) : (
                 <CommentListItem
                   data={data}
+                  selectRef={selectRef}
                   isSelected={selectedComment === String(data.id)}
-                  onClick={handleOptionClick}
+                  onClick={handleFeatureClick}
+                  onSelect={handleSelectOption}
                 />
               )}
             </li>
@@ -102,7 +106,7 @@ function CommentForm({ productId, className }) {
   );
 }
 
-function CommentListItem({ data, isSelected, onClick }) {
+function CommentListItem({ data, selectRef, isSelected, onClick, onSelect }) {
   return (
     <div
       data-id={data.id}
@@ -111,16 +115,21 @@ function CommentListItem({ data, isSelected, onClick }) {
     >
       <div className={styles["content"]}>
         {data.content}
-        <img className="feature" src={ic_kebab} alt="케밥" />
+        <img className="feature" src={ic_kebab} alt="추가 기능" />
         {isSelected && (
-          <div className={styles["select"]}>
-            <div className={styles["option"]} data-option="edit">
+          <ul
+            ref={selectRef}
+            data-id={data.id}
+            className={styles["select"]}
+            onClick={onSelect}
+          >
+            <li className={styles["option"]} data-option="edit">
               수정하기
-            </div>
-            <div className={styles["option"]} data-option="delete">
+            </li>
+            <li className={styles["option"]} data-option="delete">
               삭제하기
-            </div>
-          </div>
+            </li>
+          </ul>
         )}
       </div>
       <div className={styles["writer"]}>
