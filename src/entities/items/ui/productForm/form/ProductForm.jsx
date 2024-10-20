@@ -1,4 +1,4 @@
-import InputField from "../../../shared/ui/inputFiled/InputFiled";
+import InputField from "../../../../../shared/ui/inputFiled/InputFiled";
 const ProductForm = ({
   name,
   description,

@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import heart from "../../../shared/assets/heart.svg";
+import heart from "../../../../shared/assets/heart.svg";
 const AllItem = ({ item }) => {
   return (
     <div key={item.id}>
       <div className="mb-1">
-        <Link to={`/products/${item.id}`} className="w-full">
+        <Link to={`/items/${item.id}`} className="w-full">
           <img
             className="w-full h-48 rounded-lg"
             src={item.images[0]}

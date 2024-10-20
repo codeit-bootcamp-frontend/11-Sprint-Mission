@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
-import ProductForm from "../../features/productForm/form/ProductForm";
+import React, { useState } from "react";
+import ProductForm from "../../entities/items/ui/productForm/form/ProductForm";
 
-import ProductTags from "../../features/productTag/ProductTags";
+import ItemTags from "../../entities/items/ui/itemTag/ItemTags";
 import ImageUploader from "../../features/imageUpload/imageUploader";
-import SubmitSection from "../../features/productForm/submitSection/SubmitSection";
-
+import SubmitSection from "../../entities/items/ui/productForm/submitSection/SubmitSection";
 const AddItem = () => {
   const [selectedPicture, setSelectedPicture] = useState(null);
   const [productName, setProductName] = useState("");
@@ -102,7 +101,7 @@ const AddItem = () => {
           onKeyDown={handleKeyDown}
         />
 
-        <ProductTags tags={productTagsArray} onDeleteTag={handleDeleteTag} />
+        <ItemTags tags={productTagsArray} onDeleteTag={handleDeleteTag} />
       </form>
     </div>
   );

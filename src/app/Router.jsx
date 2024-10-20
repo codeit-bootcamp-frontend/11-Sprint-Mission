@@ -5,7 +5,7 @@ import Home from "../pages/home/index";
 import AddItem from "../pages/addItem/index";
 import Layout from "../shared/ui/layout/Layout";
 
-import ProductDetail from "../pages/productDetail";
+import ItemDetail from "../pages/itemDetail";
 
 const Router = () => {
   return (
@@ -15,7 +15,7 @@ const Router = () => {
           <Route path="/" element={<Home />} />
           <Route path="/items" element={<Items />} />
           <Route path="/addItem" element={<AddItem />} />
-          <Route path="/products/:productId" element={<ProductDetail />} />
+          <Route path="/items/:itemId" element={<ItemDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>
