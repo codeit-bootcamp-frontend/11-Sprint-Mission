@@ -40,6 +40,7 @@
   cursor: pointer;
   border-radius: 8px;
   background-color: var(--gray-400);
+  transition: 0.7s;
 }
 
 .edited-btn {
@@ -56,6 +57,7 @@
 .edited-btn:hover {
   cursor: pointer;
   background-color: var(--primary-sub);
+  transition: 0.7s;
 }
 
 .cancel-btn-text {

@@ -50,10 +50,21 @@ function Comment({ comment, onDelete }) {
           {!isEditing && (
             <form>
               <label htmlFor="textOption"></label>
-              <select id="textOption" onChange={handleSelect} value={selected}>
-                <option value="">옵션</option>
-                <option value="edit">수정하기</option>
-                <option value="delete">삭제하기</option>
+              <select
+                id="textOption"
+                onChange={handleSelect}
+                value={selected}
+                className="select-text"
+              >
+                <option value="" className="select-option">
+                  옵션
+                </option>
+                <option value="edit" className="select-option">
+                  수정하기
+                </option>
+                <option value="delete" className="select-option">
+                  삭제하기
+                </option>
               </select>
             </form>
           )}

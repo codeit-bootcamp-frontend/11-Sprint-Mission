@@ -24,6 +24,14 @@
   gap: 24px;
 }
 
+.x-button {
+  display: none;
+}
+
+.single-tag {
+  padding: 6px 16px;
+}
+
 .detail-head {
   display: flex;
   padding-bottom: 16px;
@@ -39,6 +47,7 @@
 .seller-space {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .seller {
@@ -83,6 +92,7 @@
 
 .detail-tags {
   display: flex;
+  padding-bottom: 62px;
 }
 
 .item-detail-name {
@@ -148,4 +158,5 @@
   cursor: pointer;
   color: var(--gray-200);
   background-color: var(--primary);
+  transition: 0.7s;
 }

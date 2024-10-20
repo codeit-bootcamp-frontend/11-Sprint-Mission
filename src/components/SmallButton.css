@@ -11,6 +11,7 @@
 .small-button:hover {
   background-color: var(--primary);
   cursor: pointer;
+  transition: 0.7s;
   /*styled component로 바꿔보기!*/
 }
 

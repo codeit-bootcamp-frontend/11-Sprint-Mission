@@ -48,4 +48,5 @@
 .return-list-btn:hover {
   cursor: pointer;
   background-color: var(--primary-sub);
+  transition: 0.7s;
 }
