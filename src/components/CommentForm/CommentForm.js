@@ -36,7 +36,19 @@ function CommentForm({ productId, className }) {
     setSelectedComment(null);
   };
 
-  const handleEditCancel = (e) => {
+  const handleSelectOption = (e) => {
+    if (e.target.dataset.option === "edit") {
+      setIsEditing(e.currentTarget.dataset.id);
+      setSelectedComment(null);
+      return;
+    }
+
+    if (e.target.dataset.option === "delete") {
+      alert(`test : comment id ${e.currentTarget.dataset.id} 삭제 되었습니다`);
+    }
+  };
+
+  const handleEditCancel = () => {
     setIsEditing(null);
   };
 
@@ -136,7 +148,7 @@ function CommentEditForm({ data, onCancel }) {
 
   const handleEditSubmit = (e) => {
     e.preventDefault();
-    alert(`Edit "${content}" from "${data.content.trim()}"`);
+    alert(`test : Edit "${content}" from "${data.content.trim()}"`);
     onCancel();
   };
 
