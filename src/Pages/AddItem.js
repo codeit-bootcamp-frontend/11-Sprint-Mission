@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { switchGnbClass } from '../utils/utils';
+import { TITLE } from '../info';
 //
 import FileInput from '../Components/FileInput';
 import Tag from '../Components/Tag';
 //
 import styles from './AddItem.module.css';
+import { Helmet } from 'react-helmet';
 
 // form 초기값
 const INITIAL_VALUES = {
@@ -85,77 +87,83 @@ function AddItem() {
     !values.name || !values.description || !(values.price > 0) || !values.tags.length;
 
   return (
-    <form className="mt-6 mb-16 flex flex-col gap-8" onSubmit={handleSubmit}>
-      <div className="flex justify-between">
-        <h2 className={styles.title}>상품 등록하기</h2>
-        <button className="btn" type="submit" disabled={disabled}>
-          등록
-        </button>
-      </div>
+    <>
+      <Helmet>
+        <title>상품 등록하기 | {TITLE}</title>
+      </Helmet>
 
-      <div className={styles.formGroup}>
-        <label htmlFor="images">상품 이미지</label>
-        <FileInput name="images" value={values.images} onChange={handleChange} />
-      </div>
-
-      <div className={styles.formGroup}>
-        <label htmlFor="name">상품명</label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          value={values.name}
-          placeholder="상품명을 입력해주세요"
-          onChange={handleInputChange}
-          required
-        />
-      </div>
-
-      <div className={styles.formGroup}>
-        <label htmlFor="description">상품 소개</label>
-        <textarea
-          id="description"
-          name="description"
-          value={values.description}
-          placeholder="상품 소개를 입력해주세요"
-          rows="8"
-          onChange={handleInputChange}
-          required
-        />
-      </div>
-
-      <div className={styles.formGroup}>
-        <label htmlFor="price">판매 가격</label>
-        <input
-          id="price"
-          name="price"
-          min="0"
-          value={values.price}
-          type="number"
-          placeholder="판매 가격을 입력해주세요"
-          onChange={handleInputChange}
-          required
-        />
-      </div>
-
-      <div className={styles.formGroup}>
-        <label htmlFor="tags">태그</label>
-        <input
-          id="tags"
-          type="text"
-          name="tags"
-          placeholder="태그를 입력해주세요"
-          onKeyDown={handleTagsKeydown}
-        />
-        <div className="flex gap-3">
-          {values.tags.map((tag, index) => (
-            <Tag idx={index} onDelete={onTagDelete} key={tag}>
-              {tag}
-            </Tag>
-          ))}
+      <form className="mt-6 mb-16 flex flex-col gap-8" onSubmit={handleSubmit}>
+        <div className="flex justify-between">
+          <h2 className={styles.title}>상품 등록하기</h2>
+          <button className="btn" type="submit" disabled={disabled}>
+            등록
+          </button>
         </div>
-      </div>
-    </form>
+
+        <div className={styles.formGroup}>
+          <label htmlFor="images">상품 이미지</label>
+          <FileInput name="images" value={values.images} onChange={handleChange} />
+        </div>
+
+        <div className={styles.formGroup}>
+          <label htmlFor="name">상품명</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            value={values.name}
+            placeholder="상품명을 입력해주세요"
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+
+        <div className={styles.formGroup}>
+          <label htmlFor="description">상품 소개</label>
+          <textarea
+            id="description"
+            name="description"
+            value={values.description}
+            placeholder="상품 소개를 입력해주세요"
+            rows="8"
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+
+        <div className={styles.formGroup}>
+          <label htmlFor="price">판매 가격</label>
+          <input
+            id="price"
+            name="price"
+            min="0"
+            value={values.price}
+            type="number"
+            placeholder="판매 가격을 입력해주세요"
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+
+        <div className={styles.formGroup}>
+          <label htmlFor="tags">태그</label>
+          <input
+            id="tags"
+            type="text"
+            name="tags"
+            placeholder="태그를 입력해주세요"
+            onKeyDown={handleTagsKeydown}
+          />
+          <div className="flex gap-3">
+            {values.tags.map((tag, index) => (
+              <Tag idx={index} onDelete={onTagDelete} key={tag}>
+                {tag}
+              </Tag>
+            ))}
+          </div>
+        </div>
+      </form>
+    </>
   );
 }
 
