@@ -1,17 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
 
 function NoticeBoard(props) {
-  return (
-    <div>
-      
-    </div>
-  )
+  return <div></div>;
 }
 
-NoticeBoard.propTypes = {
+NoticeBoard.propTypes = {};
 
-}
-
-export default NoticeBoard
-
+export default NoticeBoard;
