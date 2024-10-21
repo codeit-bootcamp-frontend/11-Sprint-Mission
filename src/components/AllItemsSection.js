@@ -3,7 +3,7 @@ import { getProducts } from '../api';
 import ItemCard from './ItemCard';
 import '../style/Items.css';
 import { ReactComponent as SearchIcon } from '../images/ic_search.svg';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const getPageSize = () => {
   const width = window.innerWidth;
@@ -29,13 +29,13 @@ function AllItemsSection() {
   const navigate = useNavigate();
 
   const fetchSortedData = async ({ orderBy, page, pageSize }) => {
-    const products = await getProducts({ orderBy, page, pageSize });
-    setItemList(products.list);
-    setTotalPageNum(Math.ceil(products.totalCount / pageSize));
-  };
-
-  const handleRegisterbtnClick = () => {
-    navigate('/additem');
+    try {
+      const products = await getProducts({ orderBy, page, pageSize });
+      setItemList(products.list);
+      setTotalPageNum(Math.ceil(products.totalCount / pageSize));
+    } catch (error) {
+      throw new Error('정보를 불러오는데 실패했습니다.');
+    }
   };
 
   useEffect(() => {
@@ -65,9 +65,9 @@ function AllItemsSection() {
               placeholder="검색할 상품을 입력해 주세요"
             />
           </div>
-          <button className="itemRegisterbtn" onClick={handleRegisterbtnClick}>
+          <Link className="itemRegisterbtn" to={'/additem'}>
             상품 등록하기
-          </button>
+          </Link>
         </div>
       </div>
 
