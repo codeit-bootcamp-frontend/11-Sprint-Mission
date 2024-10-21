@@ -2,6 +2,7 @@ import favoriteIcon from "../assets/Icon.svg";
 import defaultImg from "../assets/-error-outline_90275.png";
 import "./AllItemCard.css";
 import "./common.css";
+import { Link } from "react-router-dom";
 
 function AllItemCard({ item }) {
   const handleNoneImg = (e) => {
@@ -10,14 +11,14 @@ function AllItemCard({ item }) {
 
   return (
     <div className="item-card">
-      <a href="/item-information">
+      <Link to={`/items/${item.id}`}>
         <img
           src={item.images[0]}
           alt={item.name}
           className="all-item-card-img"
           onError={handleNoneImg}
         />
-      </a>
+      </Link>
       <div className="item-description">
         <div className="item-name">{item.name}</div>
         <div className="item-price">{item.price.toLocaleString()}원</div>

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import favoriteIcon from "../assets/Icon.svg";
 import "./BestItemCard.css";
 import "./common.css";
@@ -5,9 +7,9 @@ import "./common.css";
 function BestItemCard({ item }) {
   return (
     <div className="item-card">
-      <a href="/item-information">
+      <Link to={`/items/${item.id}`}>
         <img src={item.images[0]} alt={item.name} className="item-card-img" />
-      </a>
+      </Link>
       <div className="item-description">
         <div className="item-name">{item.name}</div>
         <div className="item-price">{item.price.toLocaleString()}원</div>
