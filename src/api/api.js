@@ -29,15 +29,3 @@ export async function getComment({ productId = 1, limit = 3 }) {
   const body = await response.json();
   return body;
 }
-
-// export async function getMessage({ productId = 1 }, formData) {
-//   const response = await fetch(`${BASE_URL}/products/${productId}/comments`, {
-//     method: "POST",
-//     body: formData,
-//   });
-//   if (!response.ok) {
-//     throw new Error("문의사항을 수정하지 못했습니다.");
-//   }
-//   const body = await response.json();
-//   return body;
-// } 진행중...

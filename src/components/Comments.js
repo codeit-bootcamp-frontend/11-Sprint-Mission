@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SmallButton from "./SmallButton";
 import inquiry from "../assets/images/Img_inquiry_empty.svg";
 import EditMessage from "./EditMessage";
