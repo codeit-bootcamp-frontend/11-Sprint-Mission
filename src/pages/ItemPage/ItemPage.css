@@ -103,7 +103,8 @@
   font-weight: 600;
   font-size: 16px;
   border-radius: 8px;
-  width: 133px;
+  width: 100%;
+  padding: 10px 10px;
 }
 
 .sortWrapper {
@@ -114,10 +115,11 @@
 
 .sortButton {
   background-color: #ffffff;
-  width: 130px;
+  width: 100%;
   height: 42px;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
+  padding: 10px 10px;
 }
 
 .dropDown {
@@ -138,8 +140,12 @@
   border-bottom: 1px solid #e5e7eb;
 }
 
-.allProductCard {
-  grid-template-columns: repeat(2, 1fr);
+@media (min-width: 375px) {
+  .allProductCard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 10px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -147,10 +153,6 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-  }
-
-  .productContainer {
-    margin: 20px 20px;
   }
 
   .allProductCard {
@@ -164,11 +166,8 @@
     grid-template-rows: 1fr;
   }
 
-  .productContainer {
-    margin: 70px 200px 0;
-  }
-
   .allProductCard {
     grid-template-columns: repeat(5, 1fr);
+    gap: 36px 25px;
   }
 }

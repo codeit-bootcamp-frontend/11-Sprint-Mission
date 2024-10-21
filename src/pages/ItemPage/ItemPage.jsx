@@ -5,7 +5,7 @@ import BestProducts from "./components/BestProducts";
 
 function Items() {
   return (
-    <div className="Container">
+    <div className="container">
       <BestProducts />
       <AllProducts />
     </div>

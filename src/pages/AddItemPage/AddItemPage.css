@@ -1,0 +1,148 @@
+form {
+  color: #1f2937;
+}
+
+.submitSection {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.submitSection h1 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.submitButton {
+  display: flex;
+  align-items: center;
+  height: 42px;
+  color: #f3f4f6;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+  padding: 12px 23px;
+  border-radius: 8px;
+  border: none;
+}
+
+/*아래부터 input css */
+.imgContainer {
+  margin: 20px 0;
+}
+
+.prevImgLayout {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.prevImg {
+  border-radius: 12px;
+  margin-left: 15px;
+}
+
+.plusImg,
+.prevImg {
+  width: 168px;
+  height: 168px;
+}
+
+.imgContainergo {
+  position: relative;
+}
+.imgDeleteButtonContainer {
+  position: absolute;
+  top: 15px;
+  right: 16px;
+}
+
+.imgButton {
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.errorMsg {
+  color: red;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  margin-top: 10px;
+}
+
+.inputSection {
+  margin-top: 10px;
+}
+
+.inputField {
+  margin-bottom: 20px;
+}
+
+.inputLabel {
+  display: block;
+  margin-bottom: 18px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.inputText {
+  height: 56px;
+}
+
+.inputTextarea {
+  resize: none;
+  height: 282px;
+}
+
+.inputText,
+.inputTextarea {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  padding: 16px 24px;
+}
+
+.inputText::placeholder,
+.inputTextarea::placeholder {
+  color: #9ca3af;
+}
+
+.tagSection {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tagItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 36px;
+  background-color: #f3f4f6;
+  border-radius: 26px;
+  padding: 6px 12px;
+  position: relative;
+}
+
+.tagText {
+  font-size: 16px;
+  font-weight: 400;
+  color: #1f2937;
+}
+
+@media (min-width: 1200px) {
+  .plusImg,
+  .prevImg {
+    width: 282px;
+    height: 282px;
+  }
+}

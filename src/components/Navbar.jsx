@@ -1,14 +1,18 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import Logo from "../BeforeSprintReact/images/logos/panda.png";
 import Icon from "../images/icons/account.png";
 import "../BeforeSprintReact/style/global.css";
 import "./Navbar.css";
 
-function getNavStyle({ isTrue }) {
-  return { color: isTrue ? "#3692FF" : undefined };
+function getNavStyle({ isActive, currentPath }) {
+  return {
+    color: isActive || currentPath === "/additem" ? "#3692FF" : undefined,
+  };
 }
 
 function Navbar() {
+  const location = useLocation();
+
   return (
     <header>
       <div className="navLeft">
@@ -28,7 +32,12 @@ function Navbar() {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/items" style={getNavStyle}>
+              <NavLink
+                to="/items"
+                style={({ isActive }) =>
+                  getNavStyle({ isActive, currentPath: location.pathname })
+                }
+              >
                 중고마켓
               </NavLink>
             </li>

@@ -24,11 +24,15 @@ function AllProducts() {
   const [isDropDown, setIsDropDown] = useState(false);
 
   const fetchData = async ({ orderBy, pageSize }) => {
-    const products = await fetchProducts({ orderBy, pageSize });
-    setItemList(products.list);
+    try {
+      const products = await fetchProducts({ orderBy, pageSize });
+      setItemList(products.list);
+    } catch (error) {
+      console.error("Failed to fetch products:", error);
+    }
   };
 
-  const hadnleSortSelection = (option) => {
+  const handleSortSelection = (option) => {
     setOrderBy(option);
     setIsDropDown(false);
   };
@@ -39,11 +43,14 @@ function AllProducts() {
     };
 
     window.addEventListener("resize", handleUserWidth);
-    fetchData({ orderBy: "favorite", pageSize });
 
     return () => {
       window.removeEventListener("resize", handleUserWidth);
     };
+  }, []);
+
+  useEffect(() => {
+    fetchData({ orderBy, pageSize });
   }, [orderBy, pageSize]);
 
   const toggleDropDown = () => {
@@ -68,11 +75,11 @@ function AllProducts() {
             <button className="sortButton" onClick={toggleDropDown}>
               <SortIcon />
             </button>
-            {isDropDown && <DropDown onSortSelection={hadnleSortSelection} />}
+            {isDropDown && <DropDown onSortSelection={handleSortSelection} />}
           </div>
         </div>
       </div>
-      <div className="AllProductCard">
+      <div className="allProductCard">
         {itemList?.map((item) => (
           <ProductCard item={item} key={`best-product-${item.id}`} />
         ))}
