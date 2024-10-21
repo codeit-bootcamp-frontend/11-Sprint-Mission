@@ -1,17 +1,13 @@
-import { TITLE } from '../info';
 import AllProducts from '../Components/AllProducts';
 import BestProducts from '../Components/BestProducts';
-import './Items.css';
 import Meta from '../Components/Meta';
+//
+import './Items.css';
 
-export default function Items() {
+export default function Items({ title, desc }) {
   return (
     <>
-      <Meta
-        title={`중고마켓 | ${TITLE}`}
-        description="판다마켓 중고마켓 상품 목록 입니다."
-        url={window.location.href}
-      />
+      <Meta title={title} description={desc} url={window.location.href} />
 
       <BestProducts />
       <AllProducts />

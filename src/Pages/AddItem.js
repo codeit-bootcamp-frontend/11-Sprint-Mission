@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { switchGnbClass } from '../utils/utils';
-import { TITLE } from '../info';
 //
 import FileInput from '../Components/FileInput';
 import Tag from '../Components/Tag';
@@ -21,7 +20,7 @@ const INITIAL_VALUES = {
  * 상품 등록 페이지
  * @return {JSX}
  */
-function AddItem() {
+function AddItem({ title, desc }) {
   const [values, setValues] = useState(INITIAL_VALUES);
 
   // 값 변경에 따른 처리: 비제어
@@ -57,7 +56,7 @@ function AddItem() {
   const onTagDelete = (idx) => {
     handleChange(
       'tags',
-      values.tags.filter((item, index) => index !== idx)
+      values.tags.filter((item, index) => index !== idx),
     );
   };
 
@@ -88,11 +87,7 @@ function AddItem() {
 
   return (
     <>
-      <Meta
-        title={`상품 등록하기 | ${TITLE}`}
-        description="판다마켓에 중고마켓 상품 등록 페이지 입니다."
-        url={window.location.href}
-      />
+      <Meta title={title} description={desc} />
 
       <form className="mt-6 mb-16 flex flex-col gap-8" onSubmit={handleSubmit}>
         <div className="flex justify-between">
