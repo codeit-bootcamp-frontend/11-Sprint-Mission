@@ -49,6 +49,9 @@ const ContactTextarea = styled.textarea`
     font-size: 1rem;
     font-weight: 400;
     color: var(--gray400);
+    @media (min-width: 320px) and (max-width: 767px) {
+      font-size: 14px;
+    }
   }
 `;
 

@@ -21,6 +21,9 @@ const DetailTitle = styled.h1`
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--gray800);
+  @media (min-width: 320px) and (max-width: 767px) {
+    font-size: 1rem;
+  }
 `;
 const Dots = styled.div`
   width: 3px;

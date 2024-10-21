@@ -109,6 +109,9 @@ const DetailPrice = styled.p`
   color: var(--gray800);
   margin-top: 16px;
   margin-bottom: 16px;
+  @media (min-width: 320px) and (max-width: 767px) {
+    font-size: 1.5rem;
+  }
 `;
 const DetailTxtLine = styled.div`
   width: 100%;
@@ -130,6 +133,9 @@ const ItemsTags = styled.p`
   display: flex;
   gap: 8px;
   margin-bottom: 62px;
+  @media (min-width: 320px) and (max-width: 767px) {
+    flex-wrap: wrap;
+  }
 `;
 const TagObject = styled.span`
   font-size: 1rem;
