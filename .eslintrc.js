@@ -8,8 +8,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
-    // npm install --save-dev eslint-config-prettier
-    // 'prettier',
+    'prettier', // npm install --save-dev eslint-config-prettier
   ],
   overrides: [],
   parserOptions: {
