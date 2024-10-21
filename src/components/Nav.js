@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import myprofile from "../images/icon/myprofile.svg";
-import "./Nav.css";
+import "./css/Nav.css";
 
 const Nav = () => {
   return (

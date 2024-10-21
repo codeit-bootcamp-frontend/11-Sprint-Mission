@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./Pagenation.css";
+import "./css/Pagenation.css";
 
 const BUTTONS = [1, 2, 3, 4, 5];
 
-const Pagenation = ({ totalCount, onPage, onClickPage }) => {
+const Pagenation = ({ onClickPage }) => {
   const [button, setButton] = useState(BUTTONS);
 
   const onClickPageCursor = (e) => {
@@ -12,8 +12,13 @@ const Pagenation = ({ totalCount, onPage, onClickPage }) => {
     onClickPage(e);
   };
 
+  const handleClickPage = (e) => {
+    const pageNo = e.target.value;
+    onClickPage(pageNo);
+  };
+
   return (
-    <div className="button-Area">
+    <div className="pagination-area">
       <button
         className="button-left"
         onClick={onClickPageCursor}
@@ -24,7 +29,7 @@ const Pagenation = ({ totalCount, onPage, onClickPage }) => {
         <button
           key={button}
           className="button-num"
-          onClick={onClickPage}
+          onClick={handleClickPage}
           value={button}
         >
           {button}

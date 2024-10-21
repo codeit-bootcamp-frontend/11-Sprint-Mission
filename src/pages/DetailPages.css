@@ -1,0 +1,132 @@
+.main-content-dt {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 24px auto;
+  gap: 24px;
+  width: 100%;
+}
+
+.detail-box {
+  display: flex;
+  gap: 24px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.detail-box-image {
+  width: 486px;
+  height: 486px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.detail-box-content {
+  width: 100%;
+}
+
+.detail-box-title {
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.detail-box-title .name {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  padding-bottom: 16px;
+}
+
+.detail-box-title .price {
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 48px;
+  padding-bottom: 16px;
+}
+
+.detail-box-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 24px 0 62px;
+}
+
+.detail-box-info .info {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+  margin-bottom: 16px;
+}
+
+.detail-box-info .info-detail {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--gray-600);
+}
+
+.detail-box__profilebox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail-box__profile {
+  display: flex;
+  gap: 16px;
+}
+
+.detail-box__heartbox {
+  display: flex;
+  align-items: center;
+  border-radius: 35px;
+  border: 1px solid var(--gray-200);
+  padding: 4px 12px;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.detail-box__profile .name {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--gray-600);
+}
+.detail-box__profile .time {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--gray-400);
+}
+
+.detail-regist-box__btn {
+  margin-top: 16px;
+  float: right;
+}
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .main-content-dt {
+    padding: 24px 24px;
+  }
+
+  .detail-box-image {
+    width: 340px;
+    height: 340px;
+    object-fit: cover;
+  }
+}
+
+/* Mobile */
+@media (min-width: 365px) and (max-width: 767px) {
+  .main-content-dt {
+    padding: 16px 16px;
+  }
+
+  .detail-box-image {
+    width: 100%;
+    height: auto; /* 비율 유지 */
+  }
+
+  .detail-box {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,20 @@
+.textarea-label {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.textarea-box {
+  background-color: var(--gray-100);
+  padding: 16px 24px;
+  border-radius: 12px;
+  width: 100%;
+  border: none;
+}
+
+.textarea-box::placeholder {
+  color: var(--gray-400);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+}
