@@ -6,10 +6,12 @@ import DetailTop from "../components/DetailTop";
 import OwnerFlexBox from "../components/OwnerFlexBox";
 import DetailContact from "../components/DetailContact";
 import { Helmet } from "react-helmet";
+import ItemComments from "../components/ItemComments";
 
 function DetailItem() {
   const { productId } = useParams();
   const [itemDetail, setItemDetail] = useState(null);
+  const [colorChange, setColorChange] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,7 +58,13 @@ function DetailItem() {
           </DetailTxtWrap>
         </DetailFlexAll>
         <DetailBottomLine></DetailBottomLine>
-        <DetailContact />
+        <DetailContact onChange={setColorChange} />
+        <ButtonPosition>
+          <ColorButton type="submit" isActive={colorChange}>
+            등록
+          </ColorButton>
+        </ButtonPosition>
+        <ItemComments productId={productId} />
       </DetailCon>
     </>
   );
@@ -66,11 +74,19 @@ const DetailFlexAll = styled.div`
   margin-top: 100px;
   display: flex;
   gap: 20px;
+  @media (min-width: 320px) and (max-width: 767px) {
+    flex-direction: column;
+  }
 `;
 const DetailCon = styled.div`
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+  @media (min-width: 768px) and (max-width: 1279px) {
+    padding: 0px 24px;
+  }
+@media (min-width: 320px) and (max-width: 767px) {
+    padding: 0px 14px;
 `;
 const DetailImgWrap = styled.div`
   max-width: 486px;
@@ -130,5 +146,17 @@ const DetailBottomLine = styled.div`
   margin-top: 40px;
   margin-bottom: 40px;
 `;
-
+const ButtonPosition = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+const ColorButton = styled.button`
+  width: 74px;
+  height: 42px;
+  border-radius: 8px;
+  background-color: ${({ isActive }) =>
+    isActive ? "var(--skyblue)" : "var(--gray400)"};
+  color: var(--white);
+  margin-top: 15px;
+`;
 export default DetailItem;
