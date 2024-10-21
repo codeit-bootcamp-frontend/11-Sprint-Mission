@@ -1,5 +1,5 @@
-import AllItems from "../../features/allItem/AllItems";
-import BestItems from "../../features/bestItem/BestItems";
+import AllItems from "../../entities/items/ui/itemList/AllItems";
+import BestItems from "../../entities/items/ui/itemList/BestItems";
 
 const Items = () => {
   return (

@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import AllItem from "./AllItem";
 
-import selectButton from "../../shared/ui/assets/selectButton.svg";
-import glass from "../../shared/ui/assets/glass.svg";
+import selectButton from "../../../../shared/assets/selectButton.svg";
+import glass from "../../../../shared/assets/glass.svg";
 
-import SearchBar from "../search/SearchBar";
-import SortSelect from "../sorting/SortSelect";
-import SortDropDownList from "../sorting/SortDropDownList";
-import AddItemButton from "../addItem/AddItemButton";
-import { fetchItems } from "../../entities/items/fetchItems";
+import SearchBar from "../../../../features/search/SearchBar";
+import SortSelect from "../../../../features/sorting/SortSelect";
+import SortDropDownList from "../../../../features/sorting/SortDropDownList";
+import AddItemButton from "../../../../features/addItem/AddItemButton";
+import Pagination from "../../ui/pagination/Pagination";
+import { fetchItems } from "../../api/fetchItems";
 import { useQuery } from "@tanstack/react-query";
 
-import useResponsiveDisplayCount from "../../shared/hooks/useResponsiveDisplayCount";
-import Pagination from "../pagination/Pagination";
+import useResponsiveDisplayCount from "../../../../shared/hooks/useResponsiveDisplayCount";
+
 const AllItems = () => {
   const { allDisplayCount } = useResponsiveDisplayCount(); // 훅 사용
   const [isOpen, setIsOpen] = useState(false); // 드롭다운 열림/닫힘 상태
@@ -91,8 +92,8 @@ const AllItems = () => {
       </div>
       {/* 상품 목록을 표시하는 부분 */}
       <div className="mt-1 grid grid-cols-2 sm:mt-0 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-        {data?.list.map((product) => (
-          <AllItem product={product} key={product.id} />
+        {data?.list.map((item) => (
+          <AllItem item={item} key={item.id} />
         ))}
       </div>
       <Pagination

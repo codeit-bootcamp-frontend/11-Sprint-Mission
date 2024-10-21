@@ -1,4 +1,4 @@
-const ProductTag = ({ tag, onDelete }) => {
+const ItemTag = ({ tag, onDelete }) => {
   return (
     <div className="bg-slate-200 h-10 border rounded-xl flex p-4 items-center relative">
       <div>#{tag}</div>
@@ -13,4 +13,4 @@ const ProductTag = ({ tag, onDelete }) => {
   );
 };
 
-export default ProductTag;
+export default ItemTag;
