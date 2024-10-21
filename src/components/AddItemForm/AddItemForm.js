@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import FileInput from "../FileInput/FileInput";
 import "./AddItemForm.css";
 import ic_tag_x from "../../assets/images/ic_tag_x.svg";
+import { array, number, object, string } from "yup";
 
 const DEFAULT_FORM_VALUES = {
   images: [],
@@ -11,11 +12,11 @@ const DEFAULT_FORM_VALUES = {
   tags: [],
 };
 
-const DEFAULT_VALUES_VALID = {
-  title: { ok: false, msg: null },
-  content: { ok: false, msg: null },
-  price: { ok: false, msg: null },
-  tags: { ok: false, msg: null },
+const DEFAULT_VALIDATION_ERRORS = {
+  title: null,
+  content: null,
+  price: null,
+  tags: null,
 };
 
 const PLACEHOLDER = {
@@ -25,34 +26,29 @@ const PLACEHOLDER = {
   tags: "태그를 입력해주세요",
 };
 
-const checkValueFormat = {
-  title: (title) => {
-    if (title.length < 1) return { ok: false, msg: "상품명을 입력하세요" };
-    return { ok: true, msg: null };
-  },
-  content: (content) => {
-    if (content.length < 1) return { ok: false, msg: "상품 소개를 입력하세요" };
-    return { ok: true, msg: null };
-  },
-  price: (price) => {
-    if (price.length < 1) return { ok: false, msg: "상품 가격을 입력하세요" };
-    const _price = Number(price);
-    if (Number.isNaN(_price))
-      return { ok: false, msg: "상품 가격은 숫자만 입력할 수 있습니다." };
-    if (_price < 0)
-      return { ok: false, msg: "상품 가격은 음수가 될 수 없습니다." };
-    return { ok: true, msg: null };
-  },
-  tags: (tags) => {
-    if (tags.length < 1)
-      return { ok: false, msg: "태그를 하나 이상 입력하세요" };
-    return { ok: true, msg: null };
-  },
+const valueSchemas = {
+  title: string().required("상품명을 입력해주세요").trim(),
+  content: string().required("상품 소개를 입력해주세요").trim(),
+  price: number()
+    .required("판매 가격을 입력해주세요")
+    .positive("판매 가격은 양수만 사용할 수 있습니다.")
+    .integer("판매 가격은 정수만 사용할 수 있습니다.")
+    .typeError("판매 가격은 숫자만 사용할 수 있습니다."),
+  tags: array().of(string().trim()).min(1, "태그를 하나 이상 입력해주세요"),
 };
+
+const formSchema = object({
+  title: valueSchemas["title"],
+  content: valueSchemas["content"],
+  price: valueSchemas["price"],
+  tags: valueSchemas["tags"],
+});
 
 function AddItemForm() {
   const [values, setValues] = useState(DEFAULT_FORM_VALUES);
-  const [isValuesValid, setIsValuesValid] = useState(DEFAULT_VALUES_VALID);
+  const [validationErrors, setValidationErrors] = useState(
+    DEFAULT_VALIDATION_ERRORS
+  );
   const [isFormValid, setIsFromValid] = useState(false);
 
   /**
@@ -73,7 +69,7 @@ function AddItemForm() {
       const result = Array.isArray(prev[name])
         ? [...prev[name], _value]
         : _value;
-      handleInputValid(name, _value);
+      if (typeof prev[name] !== "object") handleInputValid(name, _value);
       return {
         ...prev,
         [name]: result,
@@ -112,14 +108,15 @@ function AddItemForm() {
     handleChange(name, value);
   };
 
-  const handleInputValid = (name, value) => {
-    const isValid = checkValueFormat[name];
-    if (!isValid) return;
-    const result = isValid(value);
-    setIsValuesValid((prev) => ({
-      ...prev,
-      [name]: result,
-    }));
+  const handleInputValid = async (name, value) => {
+    await valueSchemas[name]
+      .validate(value)
+      .then((result) => {
+        setValidationErrors((prev) => ({ ...prev, [name]: null }));
+      })
+      .catch((err) => {
+        setValidationErrors((prev) => ({ ...prev, [name]: err.message }));
+      });
   };
 
   const handlePreventEnterSubmit = (e) => {
@@ -127,13 +124,12 @@ function AddItemForm() {
   };
 
   useEffect(() => {
-    let flag = true;
-    for (const name in isValuesValid) {
-      const { ok } = isValuesValid[name];
-      if (!ok) flag = false;
-    }
-    setIsFromValid(flag);
-  }, [isValuesValid]);
+    const handleValidForm = () => {
+      const result = formSchema.isValidSync(values);
+      setIsFromValid(result);
+    };
+    handleValidForm();
+  }, [values]);
 
   return (
     <form id="form-item-add" onKeyDown={handlePreventEnterSubmit}>
@@ -152,26 +148,26 @@ function AddItemForm() {
       <InputField
         label="상품명"
         name="title"
-        valid={isValuesValid["title"]}
+        error={validationErrors["title"]}
         onChange={handleInputChange}
       />
       <InputField
         label="상품 소개"
         htmlTag="textarea"
         name="content"
-        valid={isValuesValid["content"]}
+        error={validationErrors["content"]}
         onChange={handleInputChange}
       />
       <InputField
         label="판매 가격"
         name="price"
-        valid={isValuesValid["price"]}
+        error={validationErrors["price"]}
         onChange={handleInputChange}
       />
       <TagInput
         name="tags"
         value={values.tags}
-        valid={isValuesValid["tags"]}
+        error={validationErrors["tags"]}
         onChange={handleChange}
         onDelete={handleDelete}
       />
@@ -188,19 +184,19 @@ function AddItemForm() {
  * @param {function} props.onChange inputChange 핸들러
  * @returns 입력 컴포넌트
  */
-function InputField({ label, htmlTag = "input", name, valid, onChange }) {
+function InputField({ label, htmlTag = "input", name, error, onChange }) {
   return (
     <fieldset>
       <label htmlFor={`input-${name}`}>
         {label}
-        {valid.msg && <span className="error">{valid.msg}</span>}
+        {error && <span className="error">{error}</span>}
       </label>
       {htmlTag === "textarea" ? (
         <textarea
           name={name}
           type="text"
           id={`input-${name}`}
-          className={valid.msg && "error"}
+          className={error && "error"}
           placeholder={PLACEHOLDER[name]}
           onChange={onChange}
         />
@@ -209,7 +205,7 @@ function InputField({ label, htmlTag = "input", name, valid, onChange }) {
           name={name}
           type="text"
           id={`input-${name}`}
-          className={valid.msg && "error"}
+          className={error && "error"}
           placeholder={PLACEHOLDER[name]}
           onChange={onChange}
         />
@@ -227,7 +223,7 @@ function InputField({ label, htmlTag = "input", name, valid, onChange }) {
  * @param {function} props.onDelete values 겂울 삭재헐 수 있는 핸들러
  * @returns 태그 컴포넌트
  */
-function TagInput({ name, value, valid, onChange, onDelete }) {
+function TagInput({ name, value, error, onChange, onDelete }) {
   /**
    * 태그 삽입 이벤트 핸들러. 엔터 키다운 시 동작함. 중복 입력은 허용하지 않는다.
    * @param {Event} event
@@ -251,13 +247,13 @@ function TagInput({ name, value, valid, onChange, onDelete }) {
     <fieldset>
       <label htmlFor="input-tags">
         태그
-        {valid?.msg && <span className="error">{valid?.msg}</span>}
+        {error && <span className="error">{error}</span>}
       </label>
       <input
         name="tags"
         type="text"
         id="input-tags"
-        className={valid.msg && "error"}
+        className={error && "error"}
         placeholder={PLACEHOLDER["tags"]}
         onKeyDown={handleEnter}
       />

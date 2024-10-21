@@ -6,49 +6,44 @@ import Pagination from "../Pagination/Pagination";
 import arrowDown from "../../assets/images/ic_arrow_down.svg";
 import ic_sort from "../../assets/images/ic_sort.svg";
 import ic_search from "../../assets/images/ic_search.svg";
+import { useDeviceType } from "../../contexts/DeviceTypeContext";
+import { Link } from "react-router-dom";
+
+const PAGE_SIZE = {
+  desktop: 12,
+  tablet: 6,
+  mobile: 4,
+};
 
 /**
  * 전체 상품 리스트 컴포넌트다.
  * 키워드 검색, 상품 등록, 조건 검색 기능을 제공한다.
  * @returns 리스트 컴포넌트
  */
-function ItemList({ view }) {
+function ItemList() {
   const [items, setItems] = useState([]);
   const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState();
   const [order, setOrder] = useState("recent");
   const [total, setTotal] = useState(0);
-
-  useEffect(() => {
-    switch (view) {
-      case "mobile":
-        setPageSize(4);
-        break;
-      case "tablet":
-        setPageSize(6);
-        break;
-      default:
-        setPageSize(12);
-    }
-  }, [view]);
+  const deviceType = useDeviceType();
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getProducts(page, pageSize, order);
+      const result = await getProducts(page, PAGE_SIZE[deviceType], order);
       setItems(result.list);
       setTotal(result.totalCount);
     };
     fetchData();
-  }, [page, pageSize, order]);
+  }, [deviceType, page, order]);
 
   return (
     <div className="ItemList">
-      <Header view={view} order={order} setOrder={setOrder} />
+      <Header deviceType={deviceType} order={order} setOrder={setOrder} />
       <Content items={items} />
       <Pagination
         page={page}
         setPage={setPage}
-        pageSize={pageSize}
+        pageSize={PAGE_SIZE[deviceType]}
         total={total}
       />
     </div>
@@ -61,21 +56,17 @@ function ItemList({ view }) {
  * @returns 헤더 컴포넌트
  * @description 여러 유틸 기능을 포함한 헤더. 키워드 검색, 상품 등록, 검색 조건 셀렉터를 포함하고 있다.
  */
-function Header({ view, order, setOrder }) {
-  const handleAddClick = () => {
-    window.location.href = window.location.origin + "/additem";
-  };
-
-  if (view !== "mobile") {
+function Header({ deviceType, order, setOrder }) {
+  if (deviceType !== "mobile") {
     return (
       <div className="ItemList-header">
         <h2 className="title">전체 상품</h2>
         <div className="utils">
           <Search />
-          <button className="btn-add" onClick={handleAddClick}>
-            상품 등록하기
-          </button>
-          <Select view={view} order={order} setOrder={setOrder} />
+          <Link className="btn-add" to="/additem">
+            <span>상품 등록하기</span>
+          </Link>
+          <Select deviceType={deviceType} order={order} setOrder={setOrder} />
         </div>
       </div>
     );
@@ -84,13 +75,13 @@ function Header({ view, order, setOrder }) {
       <div className="ItemList-header">
         <div className="mobile-wrap">
           <h2 className="title">전체 상품</h2>
-          <button className="btn-add" onClick={handleAddClick}>
-            상품 등록하기
-          </button>
+          <Link className="btn-add" to="/additem">
+            <span>상품 등록하기</span>
+          </Link>
         </div>
         <div className="mobile-wrap">
           <Search />
-          <Select view={view} order={order} setOrder={setOrder} />
+          <Select deviceType={deviceType} order={order} setOrder={setOrder} />
         </div>
       </div>
     );
@@ -106,7 +97,7 @@ function Search() {
   );
 }
 
-function Select({ view, order, setOrder }) {
+function Select({ deviceType, order, setOrder }) {
   const handleSelectClick = (e) => {
     e.currentTarget.querySelector(".option-wrap").classList.toggle("show");
   };
@@ -120,7 +111,7 @@ function Select({ view, order, setOrder }) {
 
   return (
     <div className="select-order" onClick={handleSelectClick}>
-      {view !== "mobile" ? (
+      {deviceType !== "mobile" ? (
         <>
           <p>{order === "recent" ? "최신순" : "좋아요순"}</p>
           <img src={arrowDown} alt="▼" />

@@ -57,7 +57,7 @@
 #form-item-add input[name="price"].error,
 #form-item-add input[name="tags"].error,
 #form-item-add textarea[name="content"].error {
-  outline: var(--warning) solid 3px;
+  outline: var(--error) solid 3px;
 }
 
 #form-item-add input::placeholder {
@@ -79,7 +79,7 @@
 #form-item-add input[name="price"].error,
 #form-item-add input[name="tags"].error,
 #form-item-add textarea[name="content"].error {
-  outline: var(--warning) solid 3px;
+  outline: var(--error) solid 3px;
 }
 
 #form-item-add textarea::placeholder {
@@ -105,7 +105,7 @@ label[for="input-tags"] {
 
 label span.error {
   margin-left: 8px;
-  color: var(--warning);
+  color: var(--error);
   font-size: 14px;
 }
 

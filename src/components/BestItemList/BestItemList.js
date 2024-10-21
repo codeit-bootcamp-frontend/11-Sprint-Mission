@@ -2,31 +2,25 @@ import { useEffect, useState } from "react";
 import { getProducts } from "../../api";
 import Item from "../Item/Item";
 import "./BestItemList.css";
+import { useDeviceType } from "../../contexts/DeviceTypeContext";
 
-function ItemList({ view }) {
+const PAGE_SIZE = {
+  desktop: 4,
+  tablet: 2,
+  mobile: 1,
+};
+
+function ItemList() {
   const [items, setItems] = useState([]);
-  const [pageSize, setPageSize] = useState(4);
-
-  useEffect(() => {
-    switch (view) {
-      case "mobile":
-        setPageSize(1);
-        break;
-      case "tablet":
-        setPageSize(2);
-        break;
-      default:
-        setPageSize(4);
-    }
-  }, [view]);
+  const deviceType = useDeviceType();
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getProducts(1, pageSize, "favorite");
+      const result = await getProducts(1, PAGE_SIZE[deviceType], "favorite");
       setItems(result.list);
     };
     fetchData();
-  }, [pageSize]);
+  }, [deviceType]);
 
   return (
     <div className="BestItemList">

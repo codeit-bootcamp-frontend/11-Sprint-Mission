@@ -7,7 +7,6 @@ const PREVIEWS_DEFAULT = [];
 
 function FileInput({ name, value, onChange, onDelete }) {
   const [previews, setPreviews] = useState(PREVIEWS_DEFAULT);
-  const [isLimit, setIsLimit] = useState(false);
 
   /**
    * 상품 이미지를 추가하기 위한 핸들러.
@@ -15,7 +14,7 @@ function FileInput({ name, value, onChange, onDelete }) {
    * @param {Event} e 이벤트 객체
    */
   const handleChange = (e) => {
-    if (isLimit) {
+    if (value.length < UPLOAD_LIMIT) {
       alert("상품 이미지는 최대 3개까지 업로드 할 수 있습니다.");
       return;
     }
@@ -42,8 +41,6 @@ function FileInput({ name, value, onChange, onDelete }) {
 
   useEffect(() => {
     if (!Array.isArray(value)) return;
-    if (value.length >= UPLOAD_LIMIT) setIsLimit(true);
-    else setIsLimit(false);
     const nextPreviews = [];
     value.forEach((el) => {
       nextPreviews.push({ id: el.id, src: URL.createObjectURL(el.image) });
