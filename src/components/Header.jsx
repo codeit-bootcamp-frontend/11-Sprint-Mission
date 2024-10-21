@@ -11,7 +11,7 @@ function Header() {
             판다마켓
           </a>
         </div>
-        <div className="flex justify-center items-center ml-2 gap-2 font-bold text-base md:text-lg text-[#4B5563]">
+        <div className="flex justify-center items-center ml-2 gap-2 font-bold text-base md:text-lg text-[#4B5563] ">
           <a>자유게시판</a>
           <a>중고마켓</a>
         </div>
