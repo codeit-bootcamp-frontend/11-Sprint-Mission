@@ -19,7 +19,11 @@ function Header() {
           </NavLink>
           <NavLink
             to="/Items"
-            className={({ isActive }) => (isActive ? 'active' : '')}
+            className={({ isActive }) =>
+              isActive || window.location.pathname === '/AddItem'
+                ? 'active'
+                : ''
+            }
           >
             중고마켓
           </NavLink>

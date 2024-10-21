@@ -21,6 +21,7 @@ function AddItem() {
 
   // 폼 제출 시 실행될 함수
   const handleSubmit = async (e) => {
+    setIsLoading(true);
     e.preventDefault();
     const formData = new FormData();
     formData.append('images[]', values.images);
@@ -31,14 +32,11 @@ function AddItem() {
       formData.append('tags[]', tag);
     });
 
-    console.log([...formData.entries()]);
-
     try {
       await createItems(formData);
-      setIsLoading(true);
       setErrorMessage(null);
     } catch (error) {
-      setErrorMessage(error);
+      setErrorMessage(error.message);
       return;
     } finally {
       setIsLoading(false);
@@ -86,18 +84,14 @@ function AddItem() {
     <div className="content">
       <h1>상품 등록하기</h1>
       <form onSubmit={handleSubmit}>
-        {!isLoading && buttonActive && (
-          <button className="buttonEnabled" type="submit">
-            등록
-          </button>
-        )}
-        {isLoading ||
-          (!buttonActive && (
-            <button className="buttonDisabled" type="submit" disabled>
-              등록
-            </button>
-          ))}
-        {errorMessage?.message && (
+        <button
+          className="button"
+          type="submit"
+          disabled={!buttonActive || isLoading}
+        >
+          등록
+        </button>
+        {errorMessage && (
           <div className="errorMessage">상품을 등록하는데 실패했습니다.</div>
         )}
         <span>상품 이미지</span>

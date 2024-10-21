@@ -25,12 +25,12 @@ form button {
   font-family: inherit;
 }
 
-.buttonEnabled {
+.button {
   background-color: var(--blue);
   cursor: pointer;
 }
 
-.buttonDisabled {
+.button:disabled {
   background-color: var(--gray-400);
   pointer-events: none;
 }
