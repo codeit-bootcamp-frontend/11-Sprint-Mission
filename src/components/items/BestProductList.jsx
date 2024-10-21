@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Product from "./Product";
-import fetchProducts from "utils/api";
+import { fetchProducts } from "utils/api";
 
 function BestProductList() {
   const [bestProducts, setBestProducts] = useState([]); // 서버에서 받아올 BestProudcts를 할당할 state

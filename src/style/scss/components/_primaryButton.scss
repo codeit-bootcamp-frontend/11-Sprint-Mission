@@ -11,4 +11,7 @@
     cursor: not-allowed;
     background-color: var(--gray400);
   }
+  &.hover {
+    box-shadow: 0.2rem 0.2rem 0.1rem #000;
+  }
 }

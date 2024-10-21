@@ -1,0 +1,123 @@
+.content-inquiry {
+  position: relative;
+  margin-top: 2.4rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 0.1rem solid var(--gray200);
+  &:last-child {
+    margin-bottom: 6.4rem;
+  }
+  .menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .inquiry-comment {
+    p {
+      margin-bottom: 2.4rem;
+      margin-right: 2.8rem;
+      font-size: 1.4rem;
+      line-height: 2.4rem;
+    }
+    textarea {
+      display: block;
+      width: 100%;
+      height: 8rem;
+      margin-bottom: 1.6rem;
+      padding: 1.6rem 2.4rem;
+      border: 0;
+      border-radius: 1.2rem;
+      background-color: var(--gray100);
+      font-size: 1.4rem;
+      line-height: 2.4rem;
+      color: var(--gray800);
+      resize: none;
+      &:focus {
+        border: 0.1rem solid var(--primary100);
+      }
+      &::placeholder {
+        color: var(--gray400);
+      }
+    }
+  }
+  .inquiry-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .user-area {
+      display: flex;
+      gap: 0.8rem;
+      .writer-icon {
+        width: 3.2rem;
+        height: 3.2rem;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .writer-name {
+        margin-bottom: 0.4rem;
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+        color: var(--gray600);
+      }
+      .date-update {
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+        color: var(--gray400);
+      }
+    }
+    .edit-area {
+      button {
+        border: 0;
+        font-size: 1.6rem;
+        font-weight: var(--semiBold);
+        line-height: 2.6rem;
+      }
+      .btn-cancel {
+        background-color: #fff;
+        padding: 1.4rem 2rem 0.7rem;
+        color: var(--gray500);
+      }
+      .btn-edit {
+        padding: 0.8rem 2.3rem;
+        border-radius: 0.8rem;
+        background-color: var(--primary100);
+        color: var(--gray100);
+      }
+    }
+  }
+}
+
+.inquiry-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  gap: 0.4rem;
+  margin: 2.4rem 0 4.8rem;
+  img {
+    width: 19.6rem;
+    height: 19.6rem;
+  }
+  span {
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    color: var(--gray400);
+  }
+}
+
+@media (max-width: 1199px) {
+  .content-inquiry {
+    &:last-child {
+      margin-bottom: 5.6rem;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .content-inquiry {
+    &:last-child {
+      margin-bottom: 4rem;
+    }
+  }
+}
