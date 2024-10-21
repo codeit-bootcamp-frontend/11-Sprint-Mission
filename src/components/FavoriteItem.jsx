@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getProducts } from "../api/api.js";
 import "../css/FavoriteItem.css";
 
@@ -69,27 +70,29 @@ const FavoriteItem = () => {
       <ul className="favorite-list-container">
         {products.length > 0 ? (
           products.map((product) => (
-            <li key={product.id} className="favorite-list">
-              {product.images.length > 0 && (
-                <div className="product-image-box">
+            <Link to={`${product.id}`} className="detail-link">
+              <li key={product.id} className="favorite-list">
+                {product.images.length > 0 && (
+                  <div className="product-image-box">
+                    <img
+                      className="product-image"
+                      src={product.images[0]}
+                      alt={product.name}
+                    />
+                  </div>
+                )}
+                <h3 className="product-name">{product.name}</h3>
+                <p className="product-price">{product.price}원</p>
+                <div className="favorite-count-box">
                   <img
-                    className="product-image"
-                    src={product.images[0]}
-                    alt={product.name}
-                  />
+                    className="favorite-count-image"
+                    src="/assets/Icon.png"
+                    alt="좋아요 하트 기호"
+                  ></img>
+                  <p className="favorite-count">{product.favoriteCount}</p>
                 </div>
-              )}
-              <h3 className="product-name">{product.name}</h3>
-              <p className="product-price">{product.price}원</p>
-              <div className="favorite-count-box">
-                <img
-                  className="favorite-count-image"
-                  src="/assets/Icon.png"
-                  alt="좋아요 하트 기호"
-                ></img>
-                <p className="favorite-count">{product.favoriteCount}</p>
-              </div>
-            </li>
+              </li>
+            </Link>
           ))
         ) : (
           <p>No products available</p>
