@@ -1,0 +1,54 @@
+.fileInput {
+  display: none;
+}
+
+.uploadButton {
+  width: 282px;
+  height: 282px;
+  border-radius: 12px;
+  background: #f3f4f6;
+  border: none;
+  margin-right: 24px;
+}
+
+.uploadIcon {
+  width: 74px;
+  height: 86px;
+}
+
+.previewImg {
+  width: 282px;
+  height: 282px;
+  border-radius: 12px;
+  object-fit: fill;
+  margin-top: 10px;
+  margin: 0px;
+}
+
+.fileInputSection {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.previewContainer {
+  position: relative;
+  width: 282px;
+  height: 282px;
+}
+
+.deleteIcon {
+  width: 22px;
+  height: 24px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 20px;
+}
+
+.previewDelete {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 20px;
+}

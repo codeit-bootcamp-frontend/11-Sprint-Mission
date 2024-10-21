@@ -1,0 +1,12 @@
+body {
+  font-family: "Pretendard", sans-serif;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
