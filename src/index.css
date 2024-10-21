@@ -41,11 +41,14 @@
     @apply mx-auto px-4;
     max-width: 1200px;
   }
+  .error-message {
+    @apply py-12 text-2xl text-center font-bold;
+  }
 }
 
 @layer utilities {
   .btn {
-    @apply py-2 px-6 font-semibold rounded-lg transition-all;
+    @apply px-6 py-2 flex gap-2 items-center font-semibold rounded-lg transition-all;
     color: var(--gray-100);
     background-color: var(--primary-100);
 
@@ -56,10 +59,28 @@
       background-color: var(--gray-400);
     }
   }
+  .btn-lg {
+    @apply px-10 py-[10px] text-lg;
+  }
+  .btn-rounded {
+    @apply rounded-full;
+  }
   .btn-default {
     background-color: var(--gray-400);
     &:hover {
       background-color: var(--gray-500);
     }
+  }
+  .input {
+    @apply w-full px-6 py-4 rounded-xl;
+    background-color: var(--gray-100);
+
+    &:placeholder {
+      color: var(--gray-400);
+    }
+  }
+  .v-bar {
+    @apply w-0 h-4/5 border-l;
+    border-color: var(--gray-200);
   }
 }

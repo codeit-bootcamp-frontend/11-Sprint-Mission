@@ -1,23 +1,16 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getProducts } from '../api/api';
 import useAsync from '../hooks/useAsync';
 import Product from './Product';
 import Loading from './Loading';
 
-export default function BestProducts() {
+/**
+ * 중고마켓 메인 페이지 - 베스트 상품 컴포넌트
+ * @returns {JSX} 베스트 상품 JSX
+ */
+function BestProducts() {
   const [products, setProducts] = useState([]);
   const [isLoading, loadingError, getProductsAsync] = useAsync(getProducts);
-
-  // 상품 가져오기
-  const handleLoad = useCallback(
-    async (options = {}) => {
-      const result = await getProductsAsync(options);
-      if (!result) return;
-
-      setProducts(result.list);
-    },
-    [getProductsAsync]
-  );
 
   useEffect(() => {
     // 좋아요순으로 4개 가져오기
@@ -25,8 +18,15 @@ export default function BestProducts() {
       pageSize: 4,
       orderBy: 'favorite',
     };
+    // 상품 가져오기
+    const handleLoad = async (options = {}) => {
+      const result = await getProductsAsync(options);
+      if (!result) return;
+
+      setProducts(result.list);
+    };
     handleLoad(options);
-  }, [handleLoad]);
+  }, []);
 
   return (
     <div className="products">
@@ -36,6 +36,7 @@ export default function BestProducts() {
         {products.map(({ id, images, name, price, favoriteCount }) => (
           <Product
             key={id}
+            id={id}
             image={images[0]}
             name={name}
             price={price}
@@ -48,3 +49,5 @@ export default function BestProducts() {
     </div>
   );
 }
+
+export default BestProducts;

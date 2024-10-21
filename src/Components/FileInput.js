@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './FileInput.module.css';
 
+/**
+ * 상품등록 > 이미지 파일 선택폼 컴포넌트
+ * @param {string} name : input file 의 name
+ * @param {object} value : input file 의 value
+ * @param {function} onChange : 받은 콜백 함수
+ * @return {JSX}
+ */
 function FileInput({ name, value, onChange }) {
   // 인풋 파일 요소
   const inputRef = useRef();
@@ -42,7 +49,8 @@ function FileInput({ name, value, onChange }) {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          className="size-12">
+          className="size-12"
+        >
           <path
             fillRule="evenodd"
             d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z"
@@ -68,19 +76,20 @@ function FileInput({ name, value, onChange }) {
               height="24"
               viewBox="0 0 22 24"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <circle cx="11" cy="12" r="10" fill="#9CA3AF" />
               <path
                 d="M7.08044 8L15.0804 16"
                 stroke="white"
-                stroke-width="1.8"
-                stroke-linecap="round"
+                strokeWidth="1.8"
+                strokeLinecap="round"
               />
               <path
                 d="M14.9999 8L6.99994 16"
                 stroke="white"
-                stroke-width="1.8"
-                stroke-linecap="round"
+                strokeWidth="1.8"
+                strokeLinecap="round"
               />
             </svg>
           </button>
