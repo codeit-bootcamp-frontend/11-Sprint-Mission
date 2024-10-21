@@ -14,3 +14,19 @@ export async function fetchProducts(params = {}) {
     throw error;
   }
 }
+
+export async function fetchProductDetail(productId) {
+  try {
+    const response = await fetch(
+      `https://panda-market-api.vercel.app/products/${productId}`
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    const body = await response.json();
+    return body;
+  } catch (error) {
+    console.error("Error fetching product details: ", error);
+    throw error;
+  }
+}
