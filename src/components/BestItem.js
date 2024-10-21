@@ -15,6 +15,16 @@ const getPageSize = () => {
   }
 };
 
+const debounce = (func, delay) => {
+  let timeoutId;
+  return (...args) => {
+    if (timeoutId) clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func(...args);
+    }, delay);
+  };
+};
+
 function BestItem() {
   const [items, setItems] = useState([]);
   const [pageSize, setPageSize] = useState(getPageSize);
@@ -25,9 +35,9 @@ function BestItem() {
   };
 
   useEffect(() => {
-    const handleFixSize = () => {
+    const handleFixSize = debounce(() => {
       setPageSize(getPageSize());
-    };
+    }, 300); // 300ms 딜레이로 debounce 적용
 
     window.addEventListener("resize", handleFixSize);
     fetchProducts({ orderBy: "favorite", pageSize });

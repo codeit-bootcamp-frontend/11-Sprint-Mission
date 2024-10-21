@@ -1,0 +1,144 @@
+.item-inquiry {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  width: 1200px;
+}
+
+.item-inquiry-input {
+  background-color: #f3f4f6;
+  border: 1px solid #f3f4f6;
+  border-radius: 12px;
+  padding: 16px 24px 70px 24px;
+}
+
+.item-inquiry-button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 7px;
+}
+
+.item-inquiry-button {
+  background-color: #9ca3af;
+  border-style: none;
+  border-radius: 8px;
+  padding: 8px 23px;
+  color: #f3f4f6;
+  font-size: 16px;
+  line-height: 26px;
+  cursor: not-allowed;
+}
+
+.item-inquiry-button:enabled {
+  background-color: #3692ff;
+  cursor: pointer;
+}
+
+.item-inquiry-button:enabled:hover {
+  background-color: #2e7ae4;
+}
+
+.item-comments-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 15px;
+}
+
+.comment-item {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 12px;
+}
+
+.comment-content-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-content-more {
+  position: relative;
+}
+
+.comment-content {
+  word-wrap: break-word;
+  font-size: 14px;
+  line-height: 24px;
+  color: #1f2937;
+}
+
+.comment-actions {
+  position: absolute;
+  top: 25px;
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  right: 0;
+  z-index: 1;
+}
+
+.comment-edit-button,
+.comment-delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 26px;
+  padding: 10px 41.5px;
+  color: #6b7280;
+}
+
+.item-detail-more {
+  cursor: pointer;
+}
+
+.comment-author-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.comment-author-image {
+  width: 32px;
+  height: 32px;
+}
+
+.comment-author-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.comment-author-nickname {
+  font-size: 12px;
+  line-height: 18px;
+  color: #4b5563;
+}
+
+.comment-updated-at {
+  font-size: 12px;
+  line-height: 18px;
+  color: #9ca3af;
+}
+
+@media (max-width: 1279px) {
+  .item-inquiry {
+    width: 90%;
+  }
+}
+
+@media (max-width: 767px) {
+  .item-comments-section {
+    padding-top: 30px;
+  }
+
+  .item-inquiry-input::placeholder {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
