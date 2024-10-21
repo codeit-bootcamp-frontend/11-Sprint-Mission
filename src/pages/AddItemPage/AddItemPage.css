@@ -45,7 +45,7 @@ form {
   margin-left: 15px;
 }
 
-.plusImg,
+.imgButton,
 .prevImg {
   width: 168px;
   height: 168px;
@@ -62,8 +62,16 @@ form {
 
 .imgButton {
   border: none;
+  background-color: #f3f4f6;
   border-radius: 12px;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  gap: 10px;
+  color: #9ca3af;
 }
 
 .errorMsg {
@@ -140,7 +148,7 @@ form {
 }
 
 @media (min-width: 1200px) {
-  .plusImg,
+  .imgButton,
   .prevImg {
     width: 282px;
     height: 282px;

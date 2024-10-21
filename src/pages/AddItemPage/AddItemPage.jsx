@@ -4,8 +4,6 @@ import InputField from "./components/InputField";
 import ImageUpload from "./components/ImageUpload";
 import InputTag from "./components/InputTag";
 
-/* 추가해야 할 것: 반응형 디자인 검토 */
-
 function AddItem() {
   const [productName, setProductName] = useState("");
   const [productIntroduction, setProductIntroduction] = useState("");
@@ -28,13 +26,6 @@ function AddItem() {
 
   useEffect(() => {
     setIsFormValid(
-      /* input에 모든 값을 입력하래서 일단 글자수가 0이 이상이면 
-      적용되도록 했는데 보통 조건을 어떻게 걸어야 하나요?
-
-      useEffect말고 const변수로 조건부 렌더링을 하려고 하니 렌더링이 한 번 바뀌면
-      이후 input 값을 지워도 다시 변경이 안 돼서
-      useEffect를 사용했는데 옳은 방법일까요?
-      */
       productName && productIntroduction && productPrice && tags.length > 0
     );
   }, [productName, productIntroduction, productPrice, tags]);
