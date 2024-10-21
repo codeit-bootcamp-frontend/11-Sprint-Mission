@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getAllItems } from "../../api";
 import Controls from "./Controls";
 import AllProductItem from "./AllProductItem";
@@ -92,9 +93,9 @@ function AllProduct() {
             <ul className="allProduct__list">
               {sortedItems.map((item) => (
                 <li key={item.id}>
-                  <a href="/item">
+                  <Link to={`/items/${item.id}`}>
                     <AllProductItem item={item} />
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

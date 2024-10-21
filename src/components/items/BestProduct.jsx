@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getBestItems } from "../../api";
 import BestProductItem from "./BestProductItem";
 import "./BestProduct.css";
@@ -46,9 +47,9 @@ function BestProduct() {
           {items.map((item) => {
             return (
               <li key={item.id}>
-                <a href="/item">
+                <Link to={`/items/${item.id}`}>
                   <BestProductItem item={item} />
-                </a>
+                </Link>
               </li>
             );
           })}

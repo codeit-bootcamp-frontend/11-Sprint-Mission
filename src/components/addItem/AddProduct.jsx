@@ -147,7 +147,7 @@ const AddProduct = () => {
           {tags.map((tag, idx) => {
             return (
               <li key={idx}>
-                {tag}
+                #{tag}
                 <button onClick={() => handleDeleteClick(idx)}></button>
               </li>
             );

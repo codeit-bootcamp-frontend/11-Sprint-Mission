@@ -18,3 +18,19 @@ export async function getAllItems({
   const data = await response.json();
   return data;
 }
+
+export async function getItem(id) {
+  const response = await fetch(
+    `https://panda-market-api.vercel.app/products/${id}`
+  );
+  const data = await response.json();
+  return data;
+}
+
+export async function getComment(id) {
+  const response = await fetch(
+    `https://panda-market-api.vercel.app/products/${id}/comments?limit=10`
+  );
+  const data = await response.json();
+  return data;
+}
