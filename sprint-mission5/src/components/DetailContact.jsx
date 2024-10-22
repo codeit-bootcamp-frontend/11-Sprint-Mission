@@ -43,6 +43,12 @@ const ContactTextarea = styled.textarea`
   background-color: var(--gray100);
   border-radius: 12px;
   border: none;
+  resize: none;
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
 
   &::placeholder {
     font-family: "Pretendard-Regular";
