@@ -14,6 +14,7 @@ function AddItemInfo({
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && inputValue.trim() !== '') {
+
       e.preventDefault();
       setData((prevTags) => [...prevTags, inputValue]);
       setInputValue('');
