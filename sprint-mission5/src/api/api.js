@@ -52,3 +52,28 @@ export async function getDetailComments(productId, limit = 10) {
   }
   return response.json();
 }
+
+export async function getDeleteComment(productId, commentId) {
+  const response = await fetch(
+    `${BASE_URL}/${productId}/comments/${commentId}`,
+    {
+      method: "DELETE",
+    }
+  );
+  return response.json();
+}
+
+export async function getUpdateComment(productId, commentId, content) {
+  const response = await fetch(
+    `${BASE_URL}/${productId}/comments/${commentId}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ content }),
+    }
+  );
+  console.log("Sending to API:", productId, commentId, content);
+  return response.json();
+}
