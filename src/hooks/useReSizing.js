@@ -1,31 +1,21 @@
 import { useState, useEffect, useCallback } from "react";
 
 const useReSizing = ({ mobileSize, tabletSize, pcSize }) => {
-  // 초기값을 계산하는 함수
-  const getInitialSize = () => {
+  // 현재 화면 크기에 맞는 페이지 크기 계산 함수
+  const calculatePageSize = useCallback(() => {
     if (window.innerWidth <= 767) {
       return mobileSize;
     } else if (window.innerWidth <= 1199) {
       return tabletSize;
     }
     return pcSize;
-  };
-
-  const [pageSize, setPageSize] = useState(getInitialSize);
-
-  // 화면 크기가 변경될 때 마다 실행되는 함수
-  const updateResponsiveSize = useCallback(() => {
-    if (window.matchMedia("(max-width: 767px)").matches) {
-      return mobileSize;
-    } else if (window.matchMedia("(max-width: 1199px)").matches) {
-      return tabletSize;
-    }
-    return pcSize;
   }, [mobileSize, tabletSize, pcSize]);
 
+  const [pageSize, setPageSize] = useState(calculatePageSize);
+
   const handleResize = useCallback(() => {
-    setPageSize(updateResponsiveSize());
-  }, [updateResponsiveSize]);
+    setPageSize(calculatePageSize());
+  }, [calculatePageSize]);
 
   useEffect(() => {
     handleResize();

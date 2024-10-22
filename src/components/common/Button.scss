@@ -11,6 +11,16 @@
     background: url(../../assets/ic_X.svg) no-repeat center/contain;
     font-size: 0;
   }
+
+  &return {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    img {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+  }
 }
 
 div[class^="btn-wrap"] {
@@ -48,10 +58,20 @@ div[class^="btn-wrap"] {
     border: 1px solid var(--blue-100);
   }
 
+  &.not {
+    border: none;
+    color: var(--gray-500);
+  }
+
   &.small_40 {
     font-size: 1.6rem;
     line-height: 2.6rem;
     padding: 0.8rem 2.3rem;
+  }
+  &.medium {
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+    padding: 1.1rem 3.95rem;
   }
 }
 

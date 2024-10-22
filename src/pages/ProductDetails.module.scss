@@ -1,0 +1,291 @@
+.product-detail {
+  &-container {
+    display: flex;
+    gap: 2.4rem;
+    padding: 0 0 4rem;
+    margin-bottom: 4rem;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  &-info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 69rem;
+    h2 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      line-height: 3.2rem;
+      margin-bottom: 1.6rem;
+    }
+
+    h3 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      line-height: 2.6rem;
+      margin-bottom: 1.6rem;
+      color: var(--gray-600);
+    }
+
+    p {
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 2.6rem;
+      &.price {
+        font-size: 4rem;
+        font-weight: 600;
+        line-height: 4.473rem;
+      }
+    }
+
+    .product-title {
+      padding-bottom: 1.6rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .product-desc,
+    .product-tag {
+      margin-top: 2.4rem;
+    }
+
+    .user-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+  }
+}
+
+.inquiry {
+  &-form {
+    h4 {
+      margin-bottom: 0.9rem;
+      font-size: 1.6rem;
+      font-weight: 600;
+      line-height: 2.6rem;
+      color: var(--gray-900);
+    }
+
+    form {
+      text-align: right;
+      margin-bottom: 2.4rem;
+    }
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+    margin-bottom: 6.4rem;
+    &-not {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 4.8rem;
+      img {
+        width: 19.6rem;
+        height: 19.6rem;
+        margin-bottom: 0.8rem;
+      }
+      p {
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+        color: var(--gray-400);
+      }
+    }
+  }
+
+  &-item {
+    position: relative;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--gray-200);
+    .comment {
+      padding-right: 2.8rem;
+      margin-bottom: 2.4rem;
+      font-size: 1.4rem;
+      line-height: 2.4rem;
+      font-weight: 400;
+    }
+  }
+}
+
+.inquiry-input {
+  height: 10.4rem;
+}
+.inquiry-edit-input {
+  height: 8rem;
+}
+.inquiry-input,
+.inquiry-edit-input {
+  margin-bottom: 1.6rem;
+}
+.userEditWrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.btn-heart {
+  position: relative;
+  &::before {
+    position: absolute;
+    content: "";
+    width: 1px;
+    height: 3.4rem;
+    background-color: var(--gray-200);
+    left: -2.4rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.btn-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.btnWrap {
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: 1199px) {
+  .inquiry {
+    &-list {
+      &-not {
+        img {
+          width: 14rem;
+          height: 14rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .product-detail {
+    &-container {
+      gap: 1.6rem;
+      padding: 0 0 3.2rem;
+    }
+
+    &-info {
+      width: 34rem;
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 0.8rem;
+      }
+
+      h3 {
+        font-size: 1.4rem;
+        line-height: 2.4rem;
+        margin-bottom: 0.8rem;
+      }
+
+      p {
+        &.price {
+          font-size: 3.2rem;
+          line-height: 4.2rem;
+        }
+      }
+      .product-desc {
+        margin-top: 1.6rem;
+      }
+      .product-tag {
+        margin-top: 2.4rem;
+      }
+      .user-info {
+        margin-top: 4rem;
+      }
+    }
+  }
+
+  .inquiry {
+    &-form {
+      form {
+        margin-bottom: 4rem;
+      }
+    }
+
+    &-list {
+      margin-bottom: 4.7rem;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .product-detail {
+    &-container {
+      flex-direction: column;
+      gap: 1.6rem;
+      padding: 0 0 2.4rem;
+      margin-bottom: 2.4rem;
+    }
+
+    &-info {
+      width: 100%;
+      h2 {
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+        margin-bottom: 0.8rem;
+      }
+
+      h3 {
+        font-size: 1.4rem;
+        line-height: 2.4rem;
+        margin-bottom: 0.8rem;
+      }
+
+      p {
+        &.price {
+          font-size: 2.4rem;
+          line-height: 3.2rem;
+        }
+      }
+
+      .product-desc {
+        margin-top: 1.6rem;
+      }
+      .product-tag {
+        margin-top: 2.4rem;
+      }
+
+      .user-info {
+        margin-top: 4rem;
+      }
+    }
+  }
+
+  .inquiry {
+    &-form {
+      h4 {
+        margin-bottom: 1.6rem;
+      }
+
+      form {
+        margin-bottom: 4rem;
+      }
+    }
+
+    &-list {
+      gap: 1.6rem;
+      margin-bottom: 4rem;
+    }
+
+    &-item {
+      .comment {
+        padding-right: 3rem;
+      }
+    }
+  }
+
+  .inquiry-input {
+    height: 12.9rem;
+  }
+}

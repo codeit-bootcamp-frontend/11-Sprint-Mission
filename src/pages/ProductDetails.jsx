@@ -1,14 +1,48 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import {
+  getProductsDetail,
+  getProductsDetailComments,
+} from "../services/products-api";
+import useAsyncRequest from "../hooks/useAsyncRequest";
+
 import HeartCountArea from "../components/common/HeartCountArea";
 import Images from "../components/common/Images";
 import TagsList from "../components/common/TagsList";
 import DropDownMenu from "../components/common/DropDownMenu";
 import Button from "../components/common/Button";
-import ProfileImage from "../components/common/ProfileImage";
+import UserInfo from "../components/common/UserInfo";
+
+import INQUIRY_IMAGE from "../assets/Img_inquiry_empty.svg";
+import RETURN_IMAGE from "../assets/ic_back.svg";
+import styled from "./ProductDetails.module.scss";
 
 function ProductDetails() {
-  const handleEditClick = () => console.log("수정하기 버튼 클릭");
-  const handleDeleteClick = () => console.log("삭제하기 버튼 클릭");
+  const [details, setDetails] = useState({});
+  const [commentsList, setCommentsList] = useState({});
+  const { execute, isLoading, error: fetchError } = useAsyncRequest();
+  const { productId } = useParams();
+  const [editingCommentId, setEditingCommentId] = useState(null);
+
+  useEffect(() => {
+    const handleProductsLoad = async () => {
+      const result = await execute(() => getProductsDetail(productId));
+      if (result) {
+        setDetails(result);
+      }
+    };
+
+    const handleCommentsListLoad = async () => {
+      const result = await execute(() => getProductsDetailComments(productId));
+      const { list } = result;
+      if (result) {
+        setCommentsList(list);
+      }
+    };
+
+    handleProductsLoad();
+    handleCommentsListLoad();
+  }, [productId, execute]);
 
   const [formValues, setFormValues] = useState("");
 
@@ -19,10 +53,117 @@ function ProductDetails() {
     setFormValues(value);
   };
 
+  if (isLoading) {
+    return <p>로딩 중 입니다...</p>;
+  }
+
+  if (fetchError) {
+    return <p>오류 발생: {fetchError.message}</p>;
+  }
+
+  if (!Object.keys(details).length) {
+    return <p>상품 정보를 불러올 수 없습니다.</p>;
+  }
+
+  const priceReplace = details.price
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+  // 날짜 변환 함수
+  const formatRegistrationDate = (isDate) => {
+    const registrationDate = new Date(isDate);
+    const currentDate = new Date();
+    const timeDifference = currentDate - registrationDate;
+    const hoursDifference = timeDifference / (1000 * 60 * 60);
+
+    if (hoursDifference < 24) {
+      const roundedHours = Math.floor(hoursDifference);
+      return roundedHours < 1 ? "방금 전" : `${roundedHours}시간 전`;
+    } else {
+      const year = registrationDate.getFullYear();
+      const month = String(registrationDate.getMonth() + 1).padStart(2, "0");
+      const day = String(registrationDate.getDate()).padStart(2, "0");
+      return `${year}.${month}.${day}`;
+    }
+  };
+
+  const handleEditClick = (commentId) => {
+    setEditingCommentId(commentId);
+  };
+
+  const handleCancelEdit = () => {
+    setEditingCommentId(null);
+  };
+
+  const handleEditSubmit = (item, updatedContent) => {
+    if (updatedContent.trim() !== "") {
+      setCommentsList((prevItems) =>
+        prevItems.map((comment) =>
+          comment.id === item.id
+            ? { ...comment, content: updatedContent }
+            : comment
+        )
+      );
+      setEditingCommentId(null);
+    }
+  };
+
+  const handleDeleteClick = (itemToDeleteId) => {
+    setCommentsList((prevItems) =>
+      prevItems.filter((item) => item.id !== itemToDeleteId)
+    );
+  };
+
+  function CommitEditForm({ item, onCancel, onSubmit }) {
+    const [editValue, setEditValue] = useState(item.content);
+    const isEditValid = editValue.trim() !== "";
+
+    const handleEditInput = (e) => {
+      const value = e.target.value;
+      setEditValue(value);
+    };
+
+    return (
+      <form className={styled.userEditForm}>
+        <textarea
+          className={`default ${styled["inquiry-edit-input"]}`}
+          value={editValue}
+          name="inquiry"
+          onChange={handleEditInput}
+        />
+        <div className={styled.userEditWrap}>
+          <UserInfo
+            size="small"
+            sort="column"
+            name={item.writer.nickname}
+            createdDate={formatRegistrationDate(item.createdAt)}
+          />
+          <div className={`btn-wrap ${styled.btnWrap}`}>
+            <Button
+              link={false}
+              className="cancel"
+              styleType={`square small_40 not`}
+              onClick={onCancel}>
+              취소
+            </Button>
+            <Button
+              link={false}
+              className="post"
+              styleType={`square small_40 ${!isEditValid ? "gray" : "blue"}`}
+              disabled={!isEditValid && Object.values(editValue).length > 0}
+              onClick={() => onSubmit(editValue)}>
+              수정 완료
+            </Button>
+          </div>
+        </div>
+      </form>
+    );
+  }
+
   return (
     <main className="page-productDetails">
       <div className="container">
-        <div className="product-detail-area">
+        <div className={styled["product-detail-container"]}>
           <Images
             imageSize={{
               pcSize: "big",
@@ -30,11 +171,36 @@ function ProductDetails() {
               mobileSize: "big-large",
             }}
             classNames="product-detail-images"
-            src="http://placehold.it/600x600"
-            alt="상품 이미지"
+            src={details.images}
+            alt={`${details.name} 이미지`}
           />
-          <div className="product-detail-text-area">
-            <DropDownMenu>
+          <div className={styled["product-detail-info"]}>
+            <div className={styled["product-title"]}>
+              <h2>{details.name}</h2>
+              <p className={styled["price"]}>{priceReplace}원</p>
+            </div>
+            <div className={styled["product-desc"]}>
+              <h3>상품 소개</h3>
+              <p>{details.description}</p>
+            </div>
+            <div className={styled["product-tag"]}>
+              <h3>상품 태그</h3>
+              <TagsList tags={details.tags} remove={false} />
+            </div>
+            <div className={styled["user-info"]}>
+              <UserInfo
+                size="big"
+                sort="column"
+                name={details.ownerNickname}
+                createdDate={formatRegistrationDate(details.createdAt)}
+              />
+              <HeartCountArea
+                count={details.favoriteCount}
+                styles="large border"
+                className={styled["btn-heart"]}
+              />
+            </div>
+            <DropDownMenu classNames={styled["dropdown"]}>
               <DropDownMenu.Item
                 onClick={handleEditClick}
                 className="btn-remove">
@@ -46,43 +212,13 @@ function ProductDetails() {
                 삭제하기
               </DropDownMenu.Item>
             </DropDownMenu>
-            <div className="product-detail-text">
-              <h2 className="product-detail-title">아이패드 미니 팔아요</h2>
-              <p className="product-detail-price">500,000원</p>
-            </div>
-            <div className="product-detail-text">
-              <h3 className="product-detail-title-sub">상품 소개</h3>
-              <p className="product-detail-text-p">
-                액정에 잔기스랑 주변부 스크래치있습니다만 예민하신분아니면 전혀
-                신경쓰이지않을정도입니다. 박스 보관중입니다. 메모용과
-                넷플릭스용으로만쓰던거라 뭘 해보질 않아 기능이나 문제점을
-                못느꼈네요 잘 안써서 싸게넘깁니다! 택배거래안합니다.
-              </p>
-            </div>
-            <div className="product-detail-text">
-              <h3 className="product-detail-title-sub">상품 태그</h3>
-              <TagsList
-                tags={["아이패드미니", "애플", "가성비"]}
-                remove={false}
-              />
-            </div>
-            <div>
-              <div className="user-information">
-                <ProfileImage />
-                <div className="user-information-details">
-                  <p className="user-nickName">총명한판다</p>
-                  <span className="date-creation">2024. 01. 02</span>
-                </div>
-              </div>
-              <HeartCountArea count="123" />
-            </div>
           </div>
         </div>
-        <div className="inquiry-form">
+        <div className={styled["inquiry-form"]}>
           <h4>문의하기</h4>
           <form>
             <textarea
-              className="default"
+              className={`default ${styled["inquiry-input"]}`}
               value={formValues}
               name="inquiry"
               placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
@@ -95,105 +231,62 @@ function ProductDetails() {
               disabled={!isFormValid && Object.values(formValues).length > 0}>
               등록
             </Button>
-            <button className="btn-inquiry">등록</button>
           </form>
         </div>
-        <ul className="inquiry-list">
-          <li className="inquiry-item">
-            <div className="inquiry-form">
-              <form>
-                {/* <textarea
-                  value={formValues}
-                  name="inquiry-remove"
-                  placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
-                  onChange={handleInputChange}
-                /> */}
-                <div>
-                  <div className="user-information">
-                    <ProfileImage imageSize="small" />
-                    <div className="user-information-details">
-                      <p className="user-nickName">똑똑한판다</p>
-                      <span className="date-creation">1시간 전</span>
-                    </div>
-                  </div>
-                  <button className="btn-cancel">취소</button>
-                  <button className="btn-remove-success">수정 완료</button>
-                </div>
-              </form>
-            </div>
-          </li>
-          <li className="inquiry-item">
-            <DropDownMenu>
-              <DropDownMenu.Item
-                onClick={handleEditClick}
-                className="btn-remove">
-                수정하기
-              </DropDownMenu.Item>
-              <DropDownMenu.Item
-                onClick={handleDeleteClick}
-                className="btn-delete">
-                삭제하기
-              </DropDownMenu.Item>
-            </DropDownMenu>
-            <p className="inquiries">혹시 사용기간이 어떻게 되실까요?</p>
-            <div className="user-information">
-              <ProfileImage imageSize="small" />
-              <div className="user-information-details">
-                <p className="user-nickName">똑똑한판다</p>
-                <span className="date-creation">1시간 전</span>
-              </div>
-            </div>
-          </li>
-          <li className="inquiry-item">
-            <DropDownMenu>
-              <DropDownMenu.Item
-                onClick={handleEditClick}
-                className="btn-remove">
-                수정하기
-              </DropDownMenu.Item>
-              <DropDownMenu.Item
-                onClick={handleDeleteClick}
-                className="btn-delete">
-                삭제하기
-              </DropDownMenu.Item>
-            </DropDownMenu>
-            <p className="inquiries">혹시 사용기간이 어떻게 되실까요?</p>
-            <div className="user-information">
-              <ProfileImage imageSize="small" />
-              <div className="user-information-details">
-                <p className="user-nickName">똑똑한판다</p>
-                <span className="date-creation">1시간 전</span>
-              </div>
-            </div>
-          </li>
-          <li className="inquiry-item">
-            <DropDownMenu>
-              <DropDownMenu.Item
-                onClick={handleEditClick}
-                className="btn-remove">
-                수정하기
-              </DropDownMenu.Item>
-              <DropDownMenu.Item
-                onClick={handleDeleteClick}
-                className="btn-delete">
-                삭제하기
-              </DropDownMenu.Item>
-            </DropDownMenu>
-            <p className="inquiries">혹시 사용기간이 어떻게 되실까요?</p>
-            <div className="user-information">
-              <ProfileImage imageSize="small" />
-              <div className="user-information-details">
-                <p className="user-nickName">똑똑한판다</p>
-                <span className="date-creation">1시간 전</span>
-              </div>
-            </div>
-          </li>
-        </ul>
-        <div className="inquiry-list-not">
-          <img src="" alt="" />
-          <p>아직 문의가 없어요</p>
+        {commentsList.length > 0 ? (
+          <ul className={styled["inquiry-list"]}>
+            {commentsList.map((item) => (
+              <li key={item.id} className={styled["inquiry-item"]}>
+                {editingCommentId === item.id ? (
+                  <CommitEditForm
+                    item={item}
+                    onCancel={handleCancelEdit}
+                    onSubmit={(updatedContent) =>
+                      handleEditSubmit(item, updatedContent)
+                    }
+                  />
+                ) : (
+                  <>
+                    <p className={styled.comment}>{item.content}</p>
+                    <UserInfo
+                      size="small"
+                      sort="column"
+                      name={item.writer.nickname}
+                      createdDate={formatRegistrationDate(item.createdAt)}
+                    />
+                    <DropDownMenu classNames={styled["dropdown"]}>
+                      <DropDownMenu.Item
+                        onClick={() => handleEditClick(item.id)}
+                        className="btn-remove">
+                        수정하기
+                      </DropDownMenu.Item>
+                      <DropDownMenu.Item
+                        onClick={() => handleDeleteClick(item.id)}
+                        className="btn-delete">
+                        삭제하기
+                      </DropDownMenu.Item>
+                    </DropDownMenu>
+                  </>
+                )}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className={styled["inquiry-list-not"]}>
+            <img src={INQUIRY_IMAGE} alt="문의 없을때 판다 이미지" />
+            <p>아직 문의가 없어요</p>
+          </div>
+        )}
+        <div className={styled["btn-wrap"]}>
+          <Button
+            link={true}
+            href={"/items"}
+            className="return"
+            styleType="round blue medium">
+            목록으로 돌아가기
+            <img src={RETURN_IMAGE} alt="" />
+          </Button>
         </div>
-        <button className="btn-return">목록으로 돌아가기</button>
       </div>
     </main>
   );

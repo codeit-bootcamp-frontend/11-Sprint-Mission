@@ -3,24 +3,52 @@
   align-items: center;
   gap: 0.3rem;
   .count {
-    font-size: 1.2rem;
     font-weight: 500;
-    line-height: 1.8rem;
-    color: var(--gray-600);
+    color: var(--gray-500);
   }
 
-  .small {
-    width: 1.6rem;
-    height: 1.6rem;
+  &.small {
+    .ico-heart {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+    .count {
+      font-size: 1.2rem;
+      line-height: 1.8rem;
+    }
   }
 
-  .middle {
-    width: 2.4rem;
-    height: 2.4rem;
+  &.middle {
+    .ico-heart {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
   }
 
-  .large {
-    width: 3.2rem;
-    height: 3.2rem;
+  &.large {
+    .ico-heart {
+      width: 3.2rem;
+      height: 3.2rem;
+    }
+
+    .count {
+      font-size: 1.6rem;
+      line-height: 2.6rem;
+    }
+  }
+
+  &.border {
+    border: 1px solid var(--gray-200);
+    border-radius: 3.5rem;
+    padding: 0 1.2rem;
+    height: 4rem;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .btn-heart {
+    &.border {
+      height: 3.2rem;
+    }
   }
 }

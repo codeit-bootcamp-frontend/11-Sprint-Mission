@@ -2,24 +2,20 @@ import "./Input.scss";
 
 function Input({
   type = "text",
-  placeholder = null,
-  styles = "default",
-  inputName = null,
+  placeholder = "",
+  className = "default",
+  name = "",
   value = "",
-  onChange = null,
+  ...rest
 }) {
-  const handleChange = (e) => {
-    const newValue = e.target.value;
-    onChange({ target: { name: inputName, value: newValue } });
-  };
   return (
     <input
       type={type}
       placeholder={placeholder}
-      className={styles}
-      name={inputName}
+      className={className}
+      name={name}
       value={value}
-      onChange={handleChange}
+      {...rest}
     />
   );
 }
