@@ -38,7 +38,7 @@ function FileInput({ name, value, onChange }) {
 
   return (
     <>
-      <div className="imageUpload" onClick={handleClick}>
+      <div className="imageUpload">
         <img src={preview} alt="이미지 미리보기" className="previewImage" />
         <div className="imageUploadText">
           <img src={plus} className="plus" alt="상품등록" />

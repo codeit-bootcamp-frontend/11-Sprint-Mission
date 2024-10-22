@@ -1,0 +1,24 @@
+.small-button {
+  display: flex;
+  align-items: center;
+  border: none;
+  height: 42px;
+  border-radius: 8px;
+  padding: 12px 23px;
+  background-color: var(--gray-400);
+}
+
+.small-button:hover {
+  background-color: var(--primary);
+  cursor: pointer;
+  transition: 0.7s;
+  /*styled component로 바꿔보기!*/
+}
+
+.small-btn-text {
+  font-family: "pretendard Variable", "Noto Sans Korean";
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 600;
+  color: var(--gray-100);
+}

@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import character from "../assets/images/character.svg";
 import "./Nav.css";
@@ -13,16 +14,20 @@ function Nav() {
           </a>
         </div>
         <ul className="tab">
-          <li className="tab-list">
-            <a id="board" href="./board">
-              자유게시판
-            </a>
-          </li>
-          <li className="tab-list">
-            <a id="fleaMarket" href="./items">
-              중고마켓
-            </a>
-          </li>
+          <NavLink to="/board">
+            <li className="tab-list">
+              <a id="board" href="./board">
+                자유게시판
+              </a>
+            </li>
+          </NavLink>
+          <NavLink to="/items">
+            <li className="tab-list">
+              <a id="fleaMarket" href="./items">
+                중고마켓
+              </a>
+            </li>
+          </NavLink>
         </ul>
       </nav>
       <img src={character} alt="캐릭터" />

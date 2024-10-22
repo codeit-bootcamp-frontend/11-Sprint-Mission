@@ -1,0 +1,138 @@
+.inquiry {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inquiry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.profile-img {
+  width: 32px;
+  height: 32px;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.entire-comments {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.comment-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-bottom {
+  display: flex;
+  gap: 8px;
+}
+
+.buyer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.inquiry-content {
+  width: 1200px;
+  height: 104px;
+  font-family: "pretendard Variable", "Noto Sans Korean";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--gray-400);
+  display: flex;
+  padding: 16px 24px;
+  gap: 10px;
+  border-radius: 12px;
+  border: none;
+  background-color: var(--gray-100);
+}
+
+.comment-submit-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.inquire-to {
+  font-family: "pretendard Variable", "Noto Sans Korean";
+  color: var(--black-900);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.question {
+  font-family: "pretendard Variable", "Noto Sans Korean";
+  color: var(--approx-midnight);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.buyer-nickname {
+  font-family: "pretendard Variable", "Noto Sans Korean";
+  color: var(--grayish-blue);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.comment-updatedAt {
+  font-family: "pretendard Variable", "Noto Sans Korean";
+  color: var(--gray-400);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.waiting-inquiry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.waiting-inquiry-img {
+  width: 196px;
+  height: 196px;
+}
+
+.waiting-inquiry-text {
+  font-family: "pretendard Variable", "Noto Sans Korean";
+  color: var(--gray-400);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.select-option {
+  width: 100%;
+  border-radius: 8px;
+  height: 46px;
+  gap: 10px;
+  padding: 12px 17px;
+  border: 1px solid var(--gray-300);
+  text-align: center;
+}
+
+.select-text {
+  font-family: "pretendard Variable", "Noto Sans Korean";
+  border-radius: 8px;
+  color: var(--slate-gray);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+}

@@ -1,26 +1,39 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Nav from "../components/Nav";
-import { getList } from "../api/ItemsPageApi";
+import { getList } from "../api/api";
 import BestProducts from "../components/BestProducts";
 import EntireProducts from "../components/EntireProducts";
-import Button from "../components/Button";
+import PageButton from "../components/PageButton";
 import "../utils/Style.css";
 import "./ItemsPage.css";
 import "../components/SearchBar.css";
-import magnifier from "../assets/icons/Vector.svg";
+import magnifier from "../assets/icons/ic_magnifier.svg";
 
 function ItemsPage() {
   const [items, setItems] = useState([]);
   const [orderBy, setOrderBy] = useState("recent");
   const [page, setPage] = useState(1);
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [loadingError, setLoadingError] = useState(null);
   const sortedItems = items.sort((a, b) => b[orderBy] - a[orderBy]);
 
   const handleChange = (e) => setOrderBy(e.target.value);
 
   const handleLoad = async (options) => {
-    const { list } = await getList(options);
+    let result;
+    try {
+      setIsLoading(true);
+      setLoadingError(null);
+      result = await getList(options);
+    } catch (error) {
+      setLoadingError(error);
+      return;
+    } finally {
+      setIsLoading(false);
+    }
+
+    const { list } = result;
     if (options.page === 0) {
       setItems(list);
     } else {
@@ -57,11 +70,11 @@ function ItemsPage() {
                     className="input-search"
                   />
                 </div>
-                <button className="small-button">
-                  <Link to="/additem">
-                    <p className="small-btn-text">상품 등록하기</p>
-                  </Link>
-                </button>
+                <Link to="/additem">
+                  <button className="medium-button">
+                    <p className="medium-btn-text">상품 등록하기</p>
+                  </button>
+                </Link>
               </div>
               <label htmlFor="order"></label>
               <select id="order" onChange={handleChange} className="drop-down">
@@ -79,27 +92,61 @@ function ItemsPage() {
       </main>
       <footer>
         <div className="pagination">
-          <Button type="button" clickBtn={handleLoadMore}>
+          <PageButton
+            type="button"
+            disabled={isLoading}
+            clickBtn={handleLoadMore}
+          >
             &lt;
-          </Button>
-          <Button type="button" value={1} clickBtn={handleLoadMore}>
+          </PageButton>
+          <PageButton
+            type="button"
+            disabled={isLoading}
+            value={1}
+            clickBtn={handleLoadMore}
+          >
             1
-          </Button>
-          <Button type="button" value={2} clickBtn={handleLoadMore}>
+          </PageButton>
+          <PageButton
+            type="button"
+            disabled={isLoading}
+            value={2}
+            clickBtn={handleLoadMore}
+          >
             2
-          </Button>
-          <Button type="button" value={3} clickBtn={handleLoadMore}>
+          </PageButton>
+          <PageButton
+            type="button"
+            disabled={isLoading}
+            value={3}
+            clickBtn={handleLoadMore}
+          >
             3
-          </Button>
-          <Button type="button" value={4} clickBtn={handleLoadMore}>
+          </PageButton>
+          <PageButton
+            type="button"
+            disabled={isLoading}
+            value={4}
+            clickBtn={handleLoadMore}
+          >
             4
-          </Button>
-          <Button type="button" value={5} clickBtn={handleLoadMore}>
+          </PageButton>
+          <PageButton
+            type="button"
+            disabled={isLoading}
+            value={5}
+            clickBtn={handleLoadMore}
+          >
             5
-          </Button>
-          <Button type="button" clickBtn={handleLoadMore}>
+          </PageButton>
+          <PageButton
+            type="button"
+            disabled={isLoading}
+            clickBtn={handleLoadMore}
+          >
             &gt;
-          </Button>
+          </PageButton>
+          {loadingError?.message && <span>{loadingError.message}</span>}
         </div>
       </footer>
     </>
