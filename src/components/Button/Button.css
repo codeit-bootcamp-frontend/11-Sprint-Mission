@@ -1,27 +1,25 @@
-a {
+.button:hover {
+  background-color: #1967d6;
+}
+
+.button:focus {
+  background-color: #1251aa;
+}
+
+.button:disabled {
+  background-color: #9ca3af;
+  cursor: default;
+  pointer-events: none;
+}
+
+.loginButton {
   background: none;
   border: none;
   outline: none;
   box-shadow: none;
   text-align: center;
   cursor: pointer;
-}
 
-a:hover {
-  background-color: #1967d6;
-}
-
-a:focus {
-  background-color: #1251aa;
-}
-
-a:disabled {
-  background-color: #9ca3af;
-  cursor: default;
-  pointer-events: none;
-}
-
-.LoginButton {
   width: 128px;
   height: 48px;
   border-radius: 8px;
@@ -33,7 +31,14 @@ a:disabled {
   line-height: 26px;
 }
 
-.PillButton {
+.pillButton {
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  text-align: center;
+  cursor: pointer;
+
   color: #f9fafb;
   background-color: #3692ff;
   font-size: 20px;
