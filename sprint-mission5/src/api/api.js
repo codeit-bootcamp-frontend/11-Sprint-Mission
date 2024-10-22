@@ -34,3 +34,46 @@ export async function getAllProducts({
     throw error;
   }
 }
+
+export async function getDetailProducts(productId) {
+  const response = await fetch(`${BASE_URL}/${productId}`);
+  if (!response.ok) {
+    throw new Error("상품 상세 정보를 불러오는데 실패했습니다.");
+  }
+  return response.json();
+}
+
+export async function getDetailComments(productId, limit = 10) {
+  const response = await fetch(
+    `${BASE_URL}/${productId}/comments?limit=${limit}`
+  );
+  if (!response.ok) {
+    throw new Error("상품 상세 정보를 불러오는데 실패했습니다.");
+  }
+  return response.json();
+}
+
+export async function getDeleteComment(productId, commentId) {
+  const response = await fetch(
+    `${BASE_URL}/${productId}/comments/${commentId}`,
+    {
+      method: "DELETE",
+    }
+  );
+  return response.json();
+}
+
+export async function getUpdateComment(productId, commentId, content) {
+  const response = await fetch(
+    `${BASE_URL}/${productId}/comments/${commentId}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ content }),
+    }
+  );
+  console.log("Sending to API:", productId, commentId, content);
+  return response.json();
+}

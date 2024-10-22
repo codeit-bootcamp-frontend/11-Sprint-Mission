@@ -7,8 +7,7 @@ function FreeBoard() {
       <Helmet>
         <title>자유게시판</title>
       </Helmet>
-      ;
-      <div className="FreeBoard-container">
+      <div className="freeBoard-container">
         <h1>자유게시판</h1>
       </div>
     </>
