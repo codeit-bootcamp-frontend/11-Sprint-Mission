@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import "../styles/style.css";
 import "../styles/home.css";
+import "../components/Header.css";
 import imgHomeTop from "../images/img_home_top.png";
 import imgHome01 from "../images/img_home_01.png";
 import imgHome02 from "../images/img_home_02.png";

@@ -1,6 +1,6 @@
 .product-card {
-  width: 282px;
-  height: 378px;
+  width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -8,8 +8,9 @@
 }
 
 .product-card > img {
-  width: 282px;
-  height: 282px;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
   border-radius: 16px;
 }
 

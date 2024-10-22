@@ -8,4 +8,46 @@
   align-items: center;
   background-color: #ffffff;
   padding: 0 200px;
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.nav > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.nav-menu {
+  display: flex;
+}
+
+.nav-menu p {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 21px 15px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--gray600);
+}
+
+.nav .logo {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.nav .logo img {
+  width: 153px;
+  height: 51px;
+}
+
+.nav .login {
+  padding: 11px 43px;
+  min-width: 128px;
+  background-color: var(--blue);
+  border-radius: 8px;
+  color: var(--gray100);
+  text-decoration: none;
+  font-size: 16px;
 }

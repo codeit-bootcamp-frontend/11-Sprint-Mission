@@ -1,8 +1,19 @@
-.products-container {
+.bestproducts-container {
+  margin: 94px auto 40px;
+  width: 1200px;
+}
+
+.bestproducts-title {
+  margin-bottom: 16px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  color: var(--gray900);
+}
+
+.bestcards-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-content: space-between;
-  margin-top: 94px;
-  padding: 0 360px;
   gap: 24px;
 }
