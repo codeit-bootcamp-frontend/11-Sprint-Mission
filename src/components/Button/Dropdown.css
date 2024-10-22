@@ -1,0 +1,55 @@
+/* IE */
+select::-ms-expand {
+  display: none;
+}
+
+.Dropdown__container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+
+  border-radius: 12px;
+  width: 130px;
+  padding: 10px 20px;
+
+  /*Mobile*/
+  @media (max-width: 767px) {
+    width: 42px;
+    position: relative;
+  }
+}
+
+.Dropdown__select {
+  -o-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border: none;
+  padding-right: 10px;
+
+  font-weight: 400;
+  font-size: 16px;
+  color: #1f2937;
+
+  /*Mobile*/
+  @media (max-width: 767px) {
+    width: 20px;
+    color: transparent;
+  }
+}
+
+.Dropdown__select:focus {
+  outline: none; /* 선택된 라인 없애기 */
+}
+
+.Dropdown_img {
+  /*Mobile*/
+  @media (max-width: 767px) {
+    position: absolute;
+    top: 50%;
+    right: 7px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+}

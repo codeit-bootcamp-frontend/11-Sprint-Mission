@@ -1,0 +1,51 @@
+.Btn {
+  display: inline-block;
+  height: 42px;
+  padding: 12px 23px;
+
+  border-radius: 8px;
+  border: none;
+  background-color: #9CA3AF;
+  color: #F3F4F6;
+
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.Btn.medium {
+  display: inline-block;
+  height: 48px;
+  padding: 12px 64px;
+
+  border-radius: 40px;
+  border: none;
+  background-color: #9CA3AF;
+  color: #F3F4F6;
+
+  font-weight: 600;
+  font-size: 16px;
+}
+
+
+.Btn.active {
+  background-color: #3692FF;
+  cursor: pointer;
+}
+
+.Btn.active:hover {
+  background-color: #1967D6;
+}
+
+.Btn.click {
+  background-color: #1251AA;
+}
+
+.Btn.inactive {
+  background-color: #9CA3AF;
+}
+
+
+
+
+
+

@@ -1,0 +1,34 @@
+.Search__form {
+  display: flex;
+  align-content: center;
+  gap: 4px;
+
+  padding: 9px 20px 9px 16px;
+  border-radius: 12px;
+
+  background-color: #f3f4f6;
+
+  width: 325px;
+  /*Tablet*/
+  @media (max-width: 1199px) {
+    width: 242px;
+  }
+
+  /*Mobile*/
+  @media (max-width: 767px) {
+    width: 288px;
+  }
+}
+
+.Search__input {
+  border: none;
+  background-color: #f3f4f6;
+
+  width: 90%;
+}
+
+.Search__input::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  color: #9ca3af;
+}

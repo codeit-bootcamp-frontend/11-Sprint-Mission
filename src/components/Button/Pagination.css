@@ -1,0 +1,29 @@
+.Pagination {
+  display: flex;
+  gap: 4px;
+
+  align-items: center;
+  justify-content: center
+}
+
+.Pagination__btn {
+  width: 40px;
+  height: 40px;
+
+  border: 1px solid #e5e7eb;
+  background-color: #fff;
+  border-radius: 20px;
+
+  font-weight: 600;
+  font-size: 16px;
+  color: #4b5563;
+}
+
+.Pagination__btn.disabled {
+  color: #9ca3af;
+}
+
+.Pagination__btn.active {
+  background-color: #2f80ed;
+  color: #ffffff;
+}

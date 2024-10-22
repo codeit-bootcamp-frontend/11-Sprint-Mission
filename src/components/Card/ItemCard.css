@@ -1,0 +1,57 @@
+.ItemCard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ItemCard__imgWrapper {
+  height: 221px;
+  width: 221px;
+
+  /*Mobile*/
+  @media (max-width: 767px) {
+    height: 168px;
+    width: 168px;
+  }
+}
+
+.ItemCard__img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+
+  border-radius: 16px;
+
+  /*Mobile*/
+  @media (max-width: 767px) {
+    border-radius: 12px;
+  }
+}
+
+.ItemCard__textSection {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ItemCard__name {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.ItemCard__price {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.ItemCard__favor {
+  width: 42px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ItemCard__favorCount {
+  font-weight: 500;
+  font-size: 12px;
+}
