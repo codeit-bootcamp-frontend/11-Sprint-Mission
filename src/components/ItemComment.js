@@ -5,6 +5,15 @@ import { useParams } from "react-router-dom";
 import defaultImage from "../assets/Frame 2609463.png";
 import moreIcon from "../assets/Group 33735.svg";
 
+const timeAgo = (dateString) => {
+  const now = new Date();
+  const past = new Date(dateString);
+  const diffInSeconds = Math.floor((now - past) / 1000);
+  const diffInDays = Math.floor(diffInSeconds / (60 * 60 * 24));
+
+  return `${diffInDays}일 전`;
+};
+
 function ItemComments() {
   const { productId } = useParams();
   const [comments, setComments] = useState([]);
@@ -24,15 +33,6 @@ function ItemComments() {
       setLoading(false);
     }
   }, [productId]);
-
-  const timeAgo = (dateString) => {
-    const now = new Date();
-    const past = new Date(dateString);
-    const diffInSeconds = Math.floor((now - past) / 1000);
-    const diffInDays = Math.floor(diffInSeconds / (60 * 60 * 24));
-
-    return `${diffInDays}일 전`;
-  };
 
   useEffect(() => {
     fetchComments();
