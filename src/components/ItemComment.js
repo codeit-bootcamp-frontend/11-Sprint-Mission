@@ -1,6 +1,6 @@
 import "./ItemComment.css";
 import { getProductComments } from "../api";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import defaultImage from "../assets/Frame 2609463.png";
 import moreIcon from "../assets/Group 33735.svg";

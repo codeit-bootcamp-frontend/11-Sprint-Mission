@@ -21,6 +21,7 @@ function ItemDetailForm() {
 
   useEffect(() => {
     const fetchProductDetail = async () => {
+      setLoading(true);
       try {
         const data = await getProductDetail(productId);
         setItem(data);
