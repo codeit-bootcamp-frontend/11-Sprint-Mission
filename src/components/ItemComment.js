@@ -22,21 +22,21 @@ function ItemComments() {
   const [error, setError] = useState("");
   const [showMore, setShowMore] = useState({});
 
-  const fetchComments = useCallback(async () => {
-    if (!productId) return;
-    try {
-      const data = await getProductComments(productId);
-      setComments(data.list);
-    } catch (err) {
-      setError("댓글을 불러오는 데 실패했습니다.");
-    } finally {
-      setLoading(false);
-    }
-  }, [productId]);
-
   useEffect(() => {
+    const fetchComments = async () => {
+      if (!productId) return;
+      try {
+        const data = await getProductComments(productId);
+        setComments(data.list);
+        setLoading(false);
+      } catch (err) {
+        setError("댓글을 불러오는 데 실패했습니다.");
+        setLoading(false);
+      }
+    };
+
     fetchComments();
-  }, [fetchComments]);
+  }, [productId]);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
