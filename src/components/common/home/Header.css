@@ -1,0 +1,13 @@
+/* tablet */
+@media (max-width: 1199px) {
+  .nav-bar {
+    padding: 10px 24px;
+  }
+}
+
+/* mobile */
+@media (max-width: 767px) {
+    .nav-bar {
+      padding: 10px 16px;
+    }
+  }

@@ -1,0 +1,148 @@
+.product-detail-container {
+  display: flex;
+  flex-direction: column;
+  gap: 62px;
+  margin: 24px 360px;
+  align-items: center;
+}
+
+.product-detail-content {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  gap: 40px;
+}
+
+.product-detail-image {
+  width: 100%;
+  height: auto;
+  max-width: 486px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
+}
+
+.product-detail-info-wrapper {
+  width: 100%;
+  max-width: 690px;
+  display: flex;
+  flex-direction: column;
+  gap: 62px;
+  /* white-space: nowrap; */
+}
+
+.product-detail-info {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-detail-info-title {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+.product-detail-info-name {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.product-detail-info-price {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.product-detail-info-kebab {
+  width: 24px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.product-detail-info-description-wrapper {
+  height: 248px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.product-detail-info-description {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.product-detail-info-caption {
+  font-size: 16px;
+  font-weight: 600;
+  columns: var(--gray-600);
+}
+
+.product-detail-info-description-text {
+  width: 100%;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.product-detail-info-tag {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.product-detail-seller {
+  display: flex;
+  justify-content: space-between;
+}
+
+.seller-info {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.seller-image {
+  display: block;
+}
+
+.seller-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.seller-nickname {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray-600);
+}
+
+.seller-updatedat {
+  font-size: 14px;
+  color: var(--gray-400);
+}
+
+.seller-favorite-wrapper {
+  height: 40px;
+  display: flex;
+  gap: 10px;
+  padding: 4px 12px;
+  border: 1px solid var(--gray-200);
+  border-radius: 36px;
+  align-items: center;
+}
+
+.seller-favorite-image {
+  width: 32px;
+}
+
+.seller-favorite-count {
+  font-weight: 500;
+  color: var(--gray-500);
+}

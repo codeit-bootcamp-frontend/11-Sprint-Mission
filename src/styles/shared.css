@@ -1,10 +1,11 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css');
 
 :root {
   --blue-500: #3692ff;
   --blue-400: #2f80ed;
   --blue-300: #e6f2ff;
   --blue-100: #cfe5ff;
+  --red-500: #f74747;
   --gray-900: #111827;
   --gray-800: #1f2937;
   --gray-700: #374151;
@@ -25,7 +26,7 @@
 }
 
 body {
-  font-family: "Pretendard Variable";
+  font-family: 'Pretendard Variable';
   white-space: nowrap;
 }
 
@@ -36,7 +37,6 @@ body {
   align-items: center;
   justify-content: space-between;
   height: 70px;
-  padding: 0 200px;
   margin: 0;
   background-color: var(--white);
 }
@@ -48,5 +48,4 @@ body {
   text-align: center;
   text-decoration: none;
   border: none;
-  border-radius: 8px;
 }

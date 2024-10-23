@@ -6,7 +6,7 @@ import AllProducts from "./AllProducts";
 import PageNavigation from "./PageNavigation.jsx";
 import { getAllProducts, getProducts } from "../../../api/items/productsApi.js";
 import { getPageLimit, useResize } from "../../../utills.js";
-import Header from "../../common/auth/home/Header.jsx";
+import Header from "../../common/home/Header.jsx";
 
 function ItemsPage() {
   const [products, setProducts] = useState([]);

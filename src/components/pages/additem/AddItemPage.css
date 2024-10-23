@@ -13,12 +13,34 @@
 }
 
 .add-item-register-btn {
-  width: 74px;
-  height: 42px;
+  width: fit-content;
+  height: fit-content;
   padding: 12px 24px;
   border-radius: 8px;
-  background-color: var(--gray-400);
+  background-color: var(--blue-400);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  color: white;
+  font-size: 16px;
   font-weight: 600;
   border: none;
+}
+
+.add-item-register-btn:disabled {
+  background-color: var(--gray-400);
   color: var(--gray-100);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* tablet */
+@media (max-width: 1199px) {
+  .add-item-container {
+    padding: 10px 24px;
+  }
+}
+
+/* mobile */
+@media (max-width: 767px) {
+  .add-item-container {
+    padding: 10px 16px;
+  }
 }

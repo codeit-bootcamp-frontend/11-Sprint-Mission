@@ -1,6 +1,6 @@
 .upload-item-image {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 16px;
 }
 
@@ -18,6 +18,11 @@
 }
 
 .upload-image-wrapper {
+  display: flex;
+  gap: 24px;
+}
+
+.upload-image-btn {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -41,6 +46,11 @@
   position: absolute;
   top: 12px;
   right: 12px;
+}
+
+.image-warning-message {
+  font-size: 16px;
+  color: var(--red-500);
 }
 
 #image-input {

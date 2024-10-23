@@ -1,26 +1,32 @@
-import { useState } from "react";
-import "./AddItemInfo.css";
+import { useState } from 'react';
+import './AddItemInfo.css';
 
 function AddItemInfo({
+  children,
   label,
   name,
   rows = 1,
   placeholder,
-  additional,
+  data,
   setData,
 }) {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter" && inputValue.trim() !== "") {
+    if (e.key === 'Enter' && inputValue.trim() !== '') {
+
       e.preventDefault();
       setData((prevTags) => [...prevTags, inputValue]);
-      setInputValue("");
+      setInputValue('');
     }
   };
 
   const handleInputChange = (e) => {
-    setInputValue(e.target.value);
+    if (name !== 'tag') {
+      setData(e.target.value);
+    } else {
+      setInputValue(e.target.value);
+    }
   };
 
   return (
@@ -29,8 +35,8 @@ function AddItemInfo({
         {label}
       </label>
 
-      {additional && name !== "tag" ? (
-        additional
+      {children && name !== 'tag' ? (
+        children
       ) : (
         <textarea
           className="add-item-description"
@@ -38,13 +44,13 @@ function AddItemInfo({
           id={name}
           rows={rows}
           placeholder={placeholder}
-          value={inputValue}
+          value={name === 'tag' ? inputValue : data}
           onChange={handleInputChange}
-          onKeyDown={name === "tag" ? handleKeyDown : null}
+          onKeyDown={name === 'tag' ? handleKeyDown : null}
         ></textarea>
       )}
 
-      {name === "tag" && additional}
+      {name === 'tag' && children}
     </section>
   );
 }
