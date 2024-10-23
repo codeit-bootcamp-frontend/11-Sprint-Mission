@@ -1,6 +1,6 @@
 import "./ItemComment.css";
 import { getProductComments } from "../api";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import defaultImage from "../assets/Frame 2609463.png";
 import moreIcon from "../assets/Group 33735.svg";
@@ -13,17 +13,17 @@ function ItemComments() {
   const [error, setError] = useState("");
   const [showMore, setShowMore] = useState({});
 
-  const fetchComments = async () => {
+  const fetchComments = useCallback(async () => {
     if (!productId) return;
     try {
       const data = await getProductComments(productId);
       setComments(data.list);
-      setLoading(false);
     } catch (err) {
       setError("댓글을 불러오는 데 실패했습니다.");
+    } finally {
       setLoading(false);
     }
-  };
+  }, [productId]);
 
   const timeAgo = (dateString) => {
     const now = new Date();
@@ -36,7 +36,7 @@ function ItemComments() {
 
   useEffect(() => {
     fetchComments();
-  }, [productId]);
+  }, [fetchComments]);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
