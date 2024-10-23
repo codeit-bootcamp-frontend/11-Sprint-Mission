@@ -1,0 +1,48 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #dfdfdf;
+}
+
+.headerSection {
+    display: flex;
+    align-items: center;
+}
+
+.homeLoge {
+    margin-right: 200px;
+}
+
+.logoImg {
+    width: 153px;
+    height: 51px;
+}
+
+.listSection {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #4b5563;
+    padding: 10px 20px;
+}
+
+.profileSection {
+    display: flex;
+    align-items: center;
+    margin-left: 200px;
+}
+
+.profileImg {
+    width: 40px;
+    height: 40px;
+}
+
+
+/* tabl */
+@media (min-width: 1280px) {}
+
+/* mobile */
+@media (min-width: 1280px) {}
