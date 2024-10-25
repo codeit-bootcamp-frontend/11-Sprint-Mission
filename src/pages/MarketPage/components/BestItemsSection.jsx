@@ -14,7 +14,7 @@ function BestItemsSection() {
 	const [itemList, setItemList] = useState([]);
 	const [pageSize, setPageSize] = useState(getPageSize());
 	
-	const fetchSortData = async({ orderBy, pageSize}) => {
+	const fetchSortData = async({ orderBy, pageSize }) => {
 		const products =await getProducts({ orderBy, pageSize });
 
 		setItemList(products.list);
