@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getProducts } from "../../../api/itemApi";
 import ItemCard from "./ItemCard";
-import { ReactComponent as SortIcon } from "../../../assets/images/icons/ic_sort.svg";
 import { ReactComponent as SearchIcon } from "../../../assets/images/icons/ic_search.svg";
 import { Link } from "react-router-dom";
 
@@ -38,19 +37,28 @@ function AllItemsSection() {
 
 	return (
 		<div>
-			<div>
-				<h1>전체 상품</h1>
-				<Link to="/additem">상품 등록하기</Link>
+			<div className="allItemsContainer">
+				<h1 className="itemTitle">전체 상품</h1>
+				<Link to="/additem" className="loginLink btn">상품 등록하기</Link>
 			</div>
 
-			<div>
-				<div>
+			<div className="allItemsContainer">
+				<div className="searchBar">
 					<SearchIcon />
-					<input placeholder="검색할 상품을 입력해주세요"/>
+					<input 
+						className="searchBarInput" 
+						placeholder="검색할 상품을 입력해주세요"
+					/>
+				</div>
+				<div className="sort">
+					<select class="sort-select">
+						<option value="latest">최신순</option>
+						<option value="popular">좋아요순</option>
+					</select>
 				</div>
 			</div>
 
-			<div>
+			<div className="allItemsCard">
         {itemList?.map((item) => (
           <ItemCard item={item} key={`market-item-${item.id}`} />
         ))}
