@@ -1,4 +1,5 @@
 import React from "react";
+import "./DropDownList.css";
 
 function DropDownList({ onSortCard}) {
   return (
@@ -7,7 +8,7 @@ function DropDownList({ onSortCard}) {
         최신순
       </div>
       <div className="dropdownItem" onClick={() => onSortCard("favorite")}>
-        인기순
+        좋아요순
       </div>
     </div>
   );
