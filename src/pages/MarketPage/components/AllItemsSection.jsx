@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { getProducts } from "../../../api/itemApi";
 import ItemCard from "./ItemCard";
+import { ReactComponent as SortIcon } from "../../../assets/images/icons/ic_sort.svg";
 import { ReactComponent as SearchIcon } from "../../../assets/images/icons/ic_search.svg";
 import { Link } from "react-router-dom";
+import DropDownList from "./DropDownList";
 
 const getPageSize = () => {
 	const width = window.innerWidth;
@@ -15,11 +17,22 @@ const getPageSize = () => {
 function AllItemsSection() {
 	const [pageSize, setPageSize] = useState(getPageSize());
 	const [itemList, setItemList] = useState([]);
+	const [orderBy, setOrderBy] = useState("recent");
+	const [isDropDown, setIsDropDown] = useState(false);
 
 	const fetchSortData = async() => {
-		const products =await getProducts({ pageSize });
+		const products =await getProducts({ orderBy });
 		setItemList(products.list);
 	};
+
+	const handleSortCard = (sortOption) => {
+		setOrderBy(sortOption);
+		setIsDropDown(false);
+	};
+
+	const toggleDropDown = () => {
+		setIsDropDown(!isDropDown);
+	}
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -33,7 +46,7 @@ function AllItemsSection() {
 		return () => {
 				window.removeEventListener("resize", handleResize);
 			};
-	}, [pageSize,]);
+	}, [pageSize, orderBy]);
 
 	return (
 		<div>
@@ -51,10 +64,12 @@ function AllItemsSection() {
 					/>
 				</div>
 				<div className="sort">
-					<select class="sort-select">
-						<option value="latest">최신순</option>
-						<option value="popular">좋아요순</option>
-					</select>
+					<button class="sortDropDownBtn" onClick={toggleDropDown}>
+						<SortIcon />
+					</button>
+					{isDropDown && (
+						<DropDownList onSortCard={handleSortCard} />
+					)}
 				</div>
 			</div>
 
