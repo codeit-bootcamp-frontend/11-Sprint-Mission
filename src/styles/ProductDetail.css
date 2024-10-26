@@ -1,0 +1,281 @@
+body {
+  background-color: #fcfcfc;
+  padding-bottom: 30px;
+}
+
+.productDetail {
+  width: 70%;
+  margin: 0 auto;
+  color: #1f2937;
+  display: flex;
+  flex-direction: column;
+}
+
+.productDetailContent {
+  width: 100%;
+  display: flex;
+  gap: 24px;
+  padding: 45px 0;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.PDProductImg {
+  height: 486px;
+  width: 486px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.productDetailtext {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.productDetailName {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.productDetailPrice {
+  font-size: 40px;
+  font-weight: 600;
+  margin: 0;
+  padding: 16px 0;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.pdSubTitle {
+  font-weight: 600;
+}
+
+.PDDivDescription {
+  padding: 24px 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.PDDivDescription p {
+  color: #4b5563;
+}
+
+.PDBottomSection {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.PDEditInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.productDetailDescription,
+.productDetailTags {
+  padding: 20px 0;
+  font-size: 16px;
+}
+
+.productDetailDescription {
+  font-weight: 400;
+}
+
+.productDetailTags {
+  display: flex;
+  gap: 10px;
+}
+
+.tagItem {
+  background-color: #f3f9f9;
+  padding: 5px 16px;
+  border-radius: 26px;
+}
+
+.productDetailIsFavorite {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 35px;
+  padding: 5px 12px;
+}
+
+.productDetailIsFavorite img {
+  width: 28px;
+  height: 28px;
+}
+
+.frameImg {
+  width: 40px;
+  height: 40px;
+}
+
+.pdSubfooter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.productDetailNickname {
+  font-size: 14px;
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.productDetailUpdateAt {
+  font-size: 14px;
+  font-weight: 400;
+  color: #9ca3af;
+}
+
+.inquiry {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inquiryTitle {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 0;
+}
+
+.inquiryInput {
+  width: 100%;
+  height: 104px;
+  padding: 10px;
+  border: none;
+  background-color: #f3f4f6;
+  resize: none;
+  border-radius: 15px;
+  box-sizing: border-box;
+}
+
+.inquiryButton {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 23px;
+  color: #f3f4f6;
+  border: none;
+  border-radius: 10px;
+  margin-left: auto;
+}
+
+.goTitle {
+  margin: 0 auto;
+}
+
+.goTitleButton {
+  background-color: #3692ff;
+  font-size: 18px;
+  font-weight: 500;
+  border: none;
+  color: #f3f4f6;
+  padding: 12px 64px;
+  border-radius: 40px;
+  margin-bottom: 50px;
+}
+
+.noComment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  padding: 40px 0;
+  gap: 40px;
+  color: #9ca3af;
+}
+
+.noComment img {
+  display: block;
+  width: 170px;
+}
+
+/* PC: 1200px 이상 */
+@media (min-width: 1200px) {
+}
+
+/* Tablet: 768px 이상 ~ 1199px 이하 */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .productDetail {
+    width: 90%;
+  }
+
+  .PDProductImg {
+    width: 340px;
+    height: 340px;
+  }
+
+  .productDetailContent {
+    gap: 16px;
+  }
+
+  .productDetailName {
+    font-size: 20px;
+  }
+
+  .productDetailPrice {
+    font-size: 32px;
+  }
+
+  .pdSubTitle {
+    font-size: 14px;
+  }
+
+  .tagItem {
+    font-size: 16px;
+  }
+}
+
+/* Mobile: 375px 이상 ~ 767px 이하 */
+@media (min-width: 375px) and (max-width: 767px) {
+  .productDetail {
+    width: 90%;
+  }
+
+  .productDetailContent {
+    flex-direction: column;
+  }
+
+  .productDetailName {
+    font-size: 16px;
+  }
+
+  .productDetailPrice {
+    font-size: 24px;
+  }
+
+  .pdSubTitle {
+    font-size: 14px;
+  }
+
+  .productDetailDescription {
+    font-size: 16px;
+  }
+
+  .productDetailIsFavorite img {
+    width: 20px;
+    margin-right: 5px;
+  }
+
+  .inquiryInput ::placeholder {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .PDProductImg {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .noComment img {
+    width: 124px;
+  }
+}

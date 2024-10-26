@@ -1,17 +1,20 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './components/Header';
+import Layout from './Layout';
 import Items from './pages/items';
 import Additem from './pages/additem';
+import ProductDetail from './pages/ProductDetail';
 import '../src/styles/App.css';
 
 function App() {
   return (
     <Router>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <Header />
       <Routes>
-        <Route path="/items" element={<Items />} />
-        <Route path="/additem" element={<Additem />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="items" element={<Items />} />
+          <Route path="additem" element={<Additem />} />
+          <Route path="items/:productId" element={<ProductDetail />} />
+        </Route>
+        {/* 헤더가필요하지않은부분 */}
       </Routes>
     </Router>
   );
