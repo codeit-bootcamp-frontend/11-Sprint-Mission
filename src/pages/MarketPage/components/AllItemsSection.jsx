@@ -5,6 +5,7 @@ import { ReactComponent as SortIcon } from "../../../assets/images/icons/ic_sort
 import { ReactComponent as SearchIcon } from "../../../assets/images/icons/ic_search.svg";
 import { Link } from "react-router-dom";
 import DropDownList from "./DropDownList";
+import Pagination from "./Pagination";
 
 const getPageSize = () => {
 	const width = window.innerWidth;
@@ -19,10 +20,13 @@ function AllItemsSection() {
 	const [itemList, setItemList] = useState([]);
 	const [orderBy, setOrderBy] = useState("recent");
 	const [isDropDown, setIsDropDown] = useState(false);
+	const [page, setPage] = useState(1);
+	const [totalPage, setTotalPage] = useState();
 
-	const fetchSortData = async() => {
-		const products =await getProducts({ orderBy });
+	const fetchSortData = async({ orderBy, page, pageSize }) => {
+		const products =await getProducts({ orderBy, page, pageSize });
 		setItemList(products.list);
+		setTotalPage(Math.ceil(products.totalCount / pageSize));
 	};
 
 	const handleSortCard = (sortOption) => {
@@ -34,19 +38,23 @@ function AllItemsSection() {
 		setIsDropDown(!isDropDown);
 	}
 
+	const pageChange = (pageNum) => {
+		setPage(pageNum);
+	}
+
 	useEffect(() => {
 		const handleResize = () => {
 				setPageSize(getPageSize());
 		};
 
 		window.addEventListener("resize", handleResize);
-		fetchSortData();
+		fetchSortData({ orderBy, page, pageSize });
 
 		// Cleanup function
 		return () => {
 				window.removeEventListener("resize", handleResize);
 			};
-	}, [pageSize, orderBy]);
+	}, [orderBy, page, pageSize]);
 
 	return (
 		<div>
@@ -77,6 +85,14 @@ function AllItemsSection() {
         {itemList?.map((item) => (
           <ItemCard item={item} key={`market-item-${item.id}`} />
         ))}
+			</div>
+
+			<div className="pagination">
+				<Pagination 
+					totalPage={totalPage}
+					currentPage={page}
+					pageChange={pageChange}
+				/>
 			</div>
 		</div>
 	)
