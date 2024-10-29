@@ -9,7 +9,6 @@
 	--gray-100: #e8ebed;
 	--gray-50: #f7f7f8;
 	--blue: #3692ff;
-
 }
 
 /* reset */
@@ -46,7 +45,8 @@ button {
 }
 
 /* 텍스트 라인 가장 아래쪽으로 맞춤 */
-img {
+img,
+svg {
 	vertical-align: bottom;
 }
 
@@ -64,4 +64,136 @@ header {
 	padding: 0 16px;
 	background-color: #ffffff;
 	border-bottom: 1px solid #dfdfdf;
+}
+
+h1 {
+	font-size: 40px;
+	font-weight: 700;
+	line-height: 56px;
+	letter-spacing: 0.02em;
+}
+
+/* header */
+
+/* main */
+
+.wrapper {
+	width: 100%;
+  padding: 0 16px;
+}
+
+/* footer */
+footer {
+	background-color: #111827;
+	color: #9ca3af;
+	font-size: 16px;
+	padding: 32px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 60px;
+}
+
+#copyright {
+	order: 3;
+	flex-basis: 100%;
+}
+
+#footer_menu {
+	display: flex;
+	gap: 30px;
+	color: var(--gray-200);
+}
+ 
+#social-media {
+	display: flex;
+	gap: 12px;
+}
+
+/* btn */
+.btn {
+	background-color: var(--blue);
+	color: #ffffff;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* 버튼 클릭시 색상 변경 시각화 */
+.btn:hover {
+	background-color: #1967d6;
+}
+  
+.btn:focus {
+	background-color: #1251aa;
+}
+  
+/* 질문 : disabled를 이용해서 했는데 적용이 안되는데 이유를 모르겠음 */
+.btn:disabled {
+	background-color: #9ca3af;
+	cursor: default;
+	pointer-events: none;
+}
+
+.watch-btn {
+	font-size: 16px;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 14.5px 33.5px;
+}
+
+.full-width-btn {
+  width: 100%;
+}
+
+/* Tablet(768px ~ 1199px) */
+@media (max-width: 1279px) and (min-width: 768px) {
+	header {
+		padding: 0 24px;
+	}
+	
+	.wrapper {
+		padding: 0 24px;
+	}
+	
+	.watch-btn {
+		font-size: 20px;
+    	font-weight: 700;
+		padding: 16px 126px;
+	}
+	
+	footer {
+		padding: 32px 104px 108px 104px;
+	}
+	
+	#copyright {
+		flex-basis: auto;
+		order: 0;
+	}
+}
+
+/* PC(1200px) */
+@media(min-width: 1200px) {
+	.banner h1 {
+		text-align: left;
+		padding: 24px;
+	}
+
+	.watch-btn {
+		margin: 0 0 0 40px;
+	}
+
+	header {
+		padding: 0 200px;
+	}
+	
+	.wrapper {
+		width: 1200px;
+		padding: 0 auto;
+	}
+	
+	footer {
+		padding: 32px 200px 108px 200px;
+	}
 }

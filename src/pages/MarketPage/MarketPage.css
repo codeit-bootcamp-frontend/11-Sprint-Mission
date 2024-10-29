@@ -1,0 +1,138 @@
+.itemCard {
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.itemCardImg {
+	width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 1; 
+  margin-bottom: 16px;
+}
+
+.itemInfo {
+	display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.itemName {
+	font-size: 16px;
+	font-weight: 400;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.itemPrice {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.itemFavoritCnt {
+	display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.bestItemsContainer {
+  padding: 80px 5px 24px 5px;
+}
+
+.itemsTitle {
+	font-size: 20px;
+	font-weight: bold;
+	line-height: normal;
+}
+
+.allItemsCard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 8px;
+}
+
+.allItemsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.searchBar {
+  display: flex;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  padding: 9px 16px;
+  flex: 1; 
+  align-items: center; 
+}
+
+.searchBarInput {
+  border: none;
+  flex: 1;
+  background-color: inherit;
+  margin-left: 4px;
+}
+
+.searchBarInput:focus {
+  outline: none;
+}
+
+.sort-select {
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 14px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  min-width: 120px;
+}
+
+@media(min-width: 768px){
+	.bestItemsContainer {
+		padding: 60px 5px 24px 5px;
+    margin-bottom: 40px;
+  }
+
+	.bestItemsCard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .allItemsContainer {
+    padding: 0 16px;
+    margin-bottom: 24px;
+    gap: 24px;
+  }
+  
+  .searchBar {
+    max-width: 400px;
+  }
+
+  .allItemsCard {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 16px;
+  }
+}
+
+@media(min-width: 1280px) {
+	.bestItemsContainer {
+		padding: 60px 10px 24px 10px;
+	}
+
+	.bestItemsCard {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .allItemsCard {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 40px 24px;
+  }
+}
