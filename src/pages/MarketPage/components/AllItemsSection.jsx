@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useCallback } from "react";
+import { debounce } from 'lodash';
 import { getProducts } from "../../../api/itemApi";
-import ItemCard from "./ItemCard";
-import { ReactComponent as SortIcon } from "../../../assets/images/icons/ic_sort.svg";
-import { ReactComponent as SearchIcon } from "../../../assets/images/icons/ic_search.svg";
 import { Link } from "react-router-dom";
+import ItemCard from "./ItemCard";
 import DropDownList from "./DropDownList";
 import Pagination from "./Pagination";
+import { ReactComponent as SortIcon } from "../../../assets/images/icons/ic_sort.svg";
+import { ReactComponent as SearchIcon } from "../../../assets/images/icons/ic_search.svg";
 
 const getPageSize = () => {
 	const width = window.innerWidth;
 
-	if(width < 768) return 1;
-	else if(width < 1280) return 2;
-	else return 4;
+	if(width < 768) return 4;
+	else if(width < 1280) return 6;
+	else return 12;
 };
 
 function AllItemsSection() {
@@ -23,11 +24,32 @@ function AllItemsSection() {
 	const [page, setPage] = useState(1);
 	const [totalPage, setTotalPage] = useState();
 
-	const fetchSortData = async({ orderBy, page, pageSize }) => {
-		const products =await getProducts({ orderBy, page, pageSize });
-		setItemList(products.list);
-		setTotalPage(Math.ceil(products.totalCount / pageSize));
-	};
+	const fetchSortData = useCallback(async() => {
+		try {
+			const products =await getProducts({ orderBy, page, pageSize });
+			setItemList(products.list);
+			setTotalPage(Math.ceil(products.totalCount / pageSize));
+		} catch (error) {
+			console.log('Error fetchingdata: ', error);
+		}
+	}, [orderBy, page, pageSize]);
+
+	useEffect(() => {
+    fetchSortData();
+  }, [fetchSortData]);
+
+	useEffect(() => {
+		const handleResize = () => {
+			setPageSize(getPageSize());
+		};
+
+		const debouncedHandleResize = debounce(handleResize, 250);
+		window.addEventListener("resize", debouncedHandleResize);
+
+		return () => {
+				window.removeEventListener("resize", debouncedHandleResize);
+			};
+	}, [itemList]);
 
 	const handleSortCard = (sortOption) => {
 		setOrderBy(sortOption);
@@ -41,20 +63,6 @@ function AllItemsSection() {
 	const pageChange = (pageNum) => {
 		setPage(pageNum);
 	}
-
-	useEffect(() => {
-		const handleResize = () => {
-				setPageSize(getPageSize());
-		};
-
-		window.addEventListener("resize", handleResize);
-		fetchSortData({ orderBy, page, pageSize });
-
-		// Cleanup function
-		return () => {
-				window.removeEventListener("resize", handleResize);
-			};
-	}, [orderBy, page, pageSize]);
 
 	return (
 		<div>
