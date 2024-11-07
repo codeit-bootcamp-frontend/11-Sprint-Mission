@@ -13,10 +13,10 @@ function App() {
       <div>
         <Routes>
           <Route index element={<HomePage />}/>
-          <Route path="login" element={<LoginPage />}/>
-          <Route path="items" element={<MarketPage />}/>
-          <Route path="additem" element={<AddItemPage />} />
-          <Route path="community" element={<CommunityPage />}/>
+          <Route path="/login" element={<LoginPage />}/>
+          <Route path="/items" element={<MarketPage />}/>
+          <Route path="/additem" element={<AddItemPage />} />
+          <Route path="/community" element={<CommunityPage />}/>
         </Routes>
       </div>
     </BrowserRouter>
