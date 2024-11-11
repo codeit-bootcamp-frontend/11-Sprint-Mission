@@ -1,14 +1,14 @@
 import debounce from "lodash/debounce";
 import { useEffect, useState } from "react";
 
-const getPageSize = (isBestItem) => {
+const getPageSize = (isBestItem: any) => {
   const width = window.innerWidth;
   if (width < 767) return isBestItem ? 1 : 4;
   if (width < 1279) return isBestItem ? 2 : 6;
   return isBestItem ? 4 : 10;
 };
 
-const useHandleResize = (isBestItem, delay = 250) => {
+const useHandleResize = (isBestItem: any, delay = 250) => {
   const [pageSize, setPageSize] = useState(getPageSize(isBestItem));
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
 

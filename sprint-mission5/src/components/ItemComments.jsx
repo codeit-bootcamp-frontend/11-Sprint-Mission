@@ -102,7 +102,7 @@ function ItemComments({ productId }) {
   };
 
   return (
-    <CommentCon>
+    <CommentContainer>
       {comments.map((comment) => (
         <CommentWrap key={comment.id}>
           <CommentTopBox>
@@ -163,7 +163,7 @@ function ItemComments({ productId }) {
         </CommentWrap>
       ))}
       <ReturnButton />
-    </CommentCon>
+    </CommentContainer>
   );
 }
 const ModiftWrap = styled.div`
@@ -173,15 +173,16 @@ const ModifyBtnWrap = styled.div`
   display: flex;
   justify-content: right;
 `;
-const ModifyCompleteBtn = styled.button`
+const Button = styled.button`
+  font-size: 1rem;
+`;
+const ModifyCompleteBtn = styled(Button)`
   padding: 12px 23px;
   background-color: var(--skyblue);
   color: var(--white);
   border-radius: 8px;
-  font-size: 1rem;
 `;
-const CancelBtn = styled.button`
-  font-size: 1rem;
+const CancelBtn = styled(Button)`
   background-color: var(--gray10);
   padding: 12px 20px;
 `;
@@ -192,15 +193,13 @@ const NotFoundWrap = styled.div`
   gap: 43px;
   align-items: center;
 `;
-const ModifyBtn = styled.button`
-  font-size: 1rem;
+const ModifyBtn = styled(Button)`
   padding: 12px 41.5px 8px;
 `;
-const DeleteBtn = styled.button`
-  font-size: 1rem;
+const DeleteBtn = styled(Button)`
   padding: 12px 41.5px 8px;
 `;
-const CommentCon = styled.section`
+const CommentContainer = styled.section`
   margin-bottom: 222px;
 `;
 const CommentWrap = styled.div`

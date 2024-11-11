@@ -74,6 +74,5 @@ export async function getUpdateComment(productId, commentId, content) {
       body: JSON.stringify({ content }),
     }
   );
-  console.log("Sending to API:", productId, commentId, content);
   return response.json();
 }

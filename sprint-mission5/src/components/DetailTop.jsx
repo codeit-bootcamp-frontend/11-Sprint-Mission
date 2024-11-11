@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-function DetailTop({ itemDetail }) {
+function DetailTop({ name }) {
   return (
     <DetailTopBox>
-      <DetailTitle>{itemDetail.name}</DetailTitle>
+      <DetailTitle>{name}</DetailTitle>
       <DetailDotsBox>
         <Dots></Dots>
         <Dots></Dots>

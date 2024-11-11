@@ -113,6 +113,7 @@ const DetailPrice = styled.p`
     font-size: 1.5rem;
   }
 `;
+
 const DetailTxtLine = styled.div`
   width: 100%;
   border: 1px solid var(--gray200);
@@ -165,4 +166,5 @@ const ColorButton = styled.button`
   color: var(--white);
   margin-top: 15px;
 `;
+
 export default DetailItem;
