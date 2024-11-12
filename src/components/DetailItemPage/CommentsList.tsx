@@ -22,10 +22,11 @@ const CommentsList = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [comments, setComments] = useState<CommentProps[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [limit, setLimit] = useState<number>(100);
+  // const [limit, setLimit] = useState<number>(100);
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
   const [editingCommentId, setEditingCommentId] = useState<number | null>(null); // 수정 중인 댓글 ID
 
+  const limit = 100;
   useEffect(() => {
     const fetchCommentsById = async () => {
       try {
