@@ -2,7 +2,7 @@ import React from "react";
 import "./ItemInfo.css";
 import { ReactComponent as HeartIcon } from "../../../images/icons/heart.svg";
 
-const ItemInfo = ({ product }) => {
+function ItemInfo({ product }) {
   return (
     <div className="itemInfo">
       <img className="itemImage" src={product.images[0]} alt={product.name} />
@@ -34,6 +34,6 @@ const ItemInfo = ({ product }) => {
       </div>
     </div>
   );
-};
+}
 
 export default ItemInfo;
