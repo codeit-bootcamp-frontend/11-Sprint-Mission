@@ -1,0 +1,58 @@
+@import "../../css/Palette.css";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.input-name {
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 700;
+  font-family: "Pretendard";
+  margin-bottom: 16px;
+}
+
+.input-pass-box {
+  position: relative;
+}
+
+.input-tag {
+  width: 100%;
+  height: 56px;
+  padding: 16px 24px;
+  background-color: var(--gray100);
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+  font-family: "Pretendard";
+  margin-bottom: 8px;
+}
+
+.input-tag:focus {
+  border: 1px solid var(--blue);
+}
+
+.input-tag.input-error {
+  border: 2px solid var(--red);
+}
+
+.password-icon {
+  position: absolute;
+  right: 16px;
+  top: 45%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.error {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Pretendard";
+  line-height: 24px;
+  color: var(--red);
+  margin-left: 16px;
+}

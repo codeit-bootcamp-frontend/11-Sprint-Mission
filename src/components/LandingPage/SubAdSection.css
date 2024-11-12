@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.sub-ad {
+  width: 100%;
+  height: 540px;
+  background-color: #cfe5ff;
+  position: relative;
+}
+
+.sub-ad-box {
+  width: 100vw;
+  gap: 7px;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  justify-content: center;
+}
+
+.sub-ad-content {
+  padding: 0px 0px 60px 0px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  white-space: nowrap;
+  margin-right: 69px;
+  margin-top: 112.5px;
+}
+
+.sub-ad-head {
+  font-family: "Pretendard";
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #374151;
+}
+
+.sub-ad-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.sub-ad-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 1199px) and (min-width: 768px) {
+  .sub-ad {
+    width: 100%;
+    height: 786px;
+    background-color: #cfe5ff;
+    position: relative;
+  }
+
+  .sub-ad-box {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sub-ad-content {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  .sub-ad-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .sub-ad-image img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* 반응형 - Mobile*/
+@media screen and (max-width: 767px) {
+  .sub-ad {
+    width: 100%;
+    height: 528px;
+    background-color: #cfe5ff;
+    position: relative;
+  }
+
+  .sub-ad-box {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .sub-ad-content {
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+    margin: 20px 0 0 0;
+    padding-bottom: 10px;
+  }
+
+  .sub-ad-head {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 36px;
+  }
+
+  .sub-ad-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .sub-ad-image img {
+    max-width: 100%;
+    height: auto;
+  }
+}
