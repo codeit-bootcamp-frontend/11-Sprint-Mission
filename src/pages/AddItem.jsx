@@ -62,10 +62,9 @@ function AddItem() {
           <HeadingTitleArea>
             <h2>상품 등록하기</h2>
             <Button
-              link={false}
               className='post'
-              styleType={`square small_40 ${!isFormValid ? 'gray' : 'blue'}`}
-              disabled={!isFormValid && Object.values(formValues).length > 0}>
+              color={!isFormValid ? 'gray' : 'blue'}
+              disabled={!isFormValid && formValues.length > 0}>
               등록
             </Button>
           </HeadingTitleArea>

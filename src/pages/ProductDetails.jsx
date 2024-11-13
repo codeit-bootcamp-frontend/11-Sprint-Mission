@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
+import styled from 'styled-components';
+import styles from './ProductDetails.module.scss';
+
 import {
   getProductsDetail,
   getProductsDetailComments,
@@ -15,7 +19,24 @@ import UserInfo from '../components/common/UserInfo';
 
 import INQUIRY_IMAGE from '../assets/Img_inquiry_empty.svg';
 import RETURN_IMAGE from '../assets/ic_back.svg';
-import styled from './ProductDetails.module.scss';
+
+const ButtonArea = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const IconReturn = styled.img`
+  width: 2.4rem;
+  height: 2.4rem;
+`;
+
+const CommonFlex = styled.div`
+  display: flex;
+`;
+
+const StyledFlex = styled(CommonFlex)`
+  justify-content: space-between;
+`;
 
 function ProductDetails() {
   const [details, setDetails] = useState({});
@@ -126,12 +147,12 @@ function ProductDetails() {
     return (
       <form className={styled.userEditForm}>
         <textarea
-          className={`default ${styled['inquiry-edit-input']}`}
+          className={`default ${styles['inquiry-edit-input']}`}
           value={editValue}
           name='inquiry'
           onChange={handleEditInput}
         />
-        <div className={styled.userEditWrap}>
+        <StyledFlex>
           <UserInfo
             size='small'
             sort='column'
@@ -139,23 +160,18 @@ function ProductDetails() {
             createdDate={formatRegistrationDate(item.createdAt)}
           />
           <div className={`btn-wrap ${styled.btnWrap}`}>
-            <Button
-              link={false}
-              className='cancel'
-              styleType={`square small_40 not`}
-              onClick={onCancel}>
+            <Button className='cancel' color='not' onClick={onCancel}>
               취소
             </Button>
             <Button
-              link={false}
               className='post'
-              styleType={`square small_40 ${!isEditValid ? 'gray' : 'blue'}`}
-              disabled={!isEditValid && Object.values(editValue).length > 0}
+              color={!isEditValid ? 'gray' : 'blue'}
+              disabled={!isEditValid && editValue.length > 0}
               onClick={() => onSubmit(editValue)}>
               수정 완료
             </Button>
           </div>
-        </div>
+        </StyledFlex>
       </form>
     );
   }
@@ -163,7 +179,7 @@ function ProductDetails() {
   return (
     <main className='page-productDetails'>
       <div className='container'>
-        <div className={styled['product-detail-container']}>
+        <div className={styles['product-detail-container']}>
           <Images
             imageSize={{
               pcSize: 'big',
@@ -174,20 +190,20 @@ function ProductDetails() {
             src={details.images}
             alt={`${details.name} 이미지`}
           />
-          <div className={styled['product-detail-info']}>
-            <div className={styled['product-title']}>
+          <div className={styles['product-detail-info']}>
+            <div className={styles['product-title']}>
               <h2>{details.name}</h2>
-              <p className={styled['price']}>{priceReplace}원</p>
+              <p className={styles['price']}>{priceReplace}원</p>
             </div>
-            <div className={styled['product-desc']}>
+            <div className={styles['product-desc']}>
               <h3>상품 소개</h3>
               <p>{details.description}</p>
             </div>
-            <div className={styled['product-tag']}>
+            <div className={styles['product-tag']}>
               <h3>상품 태그</h3>
               <TagsList tags={details.tags} remove={false} />
             </div>
-            <div className={styled['user-info']}>
+            <div className={styles['user-info']}>
               <UserInfo
                 size='big'
                 sort='column'
@@ -197,10 +213,10 @@ function ProductDetails() {
               <HeartCountArea
                 count={details.favoriteCount}
                 styles='large border'
-                className={styled['btn-heart']}
+                className={styles['btn-heart']}
               />
             </div>
-            <DropDownMenu classNames={styled['dropdown']}>
+            <DropDownMenu classNames={styles['dropdown']}>
               <DropDownMenu.Item
                 onClick={handleEditClick}
                 className='btn-remove'>
@@ -214,29 +230,28 @@ function ProductDetails() {
             </DropDownMenu>
           </div>
         </div>
-        <div className={styled['inquiry-form']}>
+        <div className={styles['inquiry-form']}>
           <h4>문의하기</h4>
           <form>
             <textarea
-              className={`default ${styled['inquiry-input']}`}
+              className={`default ${styles['inquiry-input']}`}
               value={formValues}
               name='inquiry'
               placeholder='개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다.'
               onChange={handleInputChange}
             />
             <Button
-              link={false}
               className='post'
-              styleType={`square small_40 ${!isFormValid ? 'gray' : 'blue'}`}
-              disabled={!isFormValid && Object.values(formValues).length > 0}>
+              color={!isFormValid ? 'gray' : 'blue'}
+              disabled={!isFormValid && formValues.length > 0}>
               등록
             </Button>
           </form>
         </div>
         {commentsList.length > 0 ? (
-          <ul className={styled['inquiry-list']}>
+          <ul className={styles['inquiry-list']}>
             {commentsList.map((item) => (
-              <li key={item.id} className={styled['inquiry-item']}>
+              <li key={item.id} className={styles['inquiry-item']}>
                 {editingCommentId === item.id ? (
                   <CommitEditForm
                     item={item}
@@ -254,7 +269,7 @@ function ProductDetails() {
                       name={item.writer.nickname}
                       createdDate={formatRegistrationDate(item.createdAt)}
                     />
-                    <DropDownMenu classNames={styled['dropdown']}>
+                    <DropDownMenu classNames={styles['dropdown']}>
                       <DropDownMenu.Item
                         onClick={() => handleEditClick(item.id)}
                         className='btn-remove'>
@@ -272,21 +287,17 @@ function ProductDetails() {
             ))}
           </ul>
         ) : (
-          <div className={styled['inquiry-list-not']}>
+          <div className={styles['inquiry-list-not']}>
             <img src={INQUIRY_IMAGE} alt='문의 없을때 판다 이미지' />
             <p>아직 문의가 없어요</p>
           </div>
         )}
-        <div className={styled['btn-wrap']}>
-          <Button
-            link={true}
-            href={'/items'}
-            className='return'
-            styleType='round blue medium'>
+        <ButtonArea>
+          <Button href='/items' size='medium' round>
             목록으로 돌아가기
-            <img src={RETURN_IMAGE} alt='' />
+            <IconReturn src={RETURN_IMAGE} alt='' />
           </Button>
-        </div>
+        </ButtonArea>
       </div>
     </main>
   );

@@ -3,10 +3,10 @@ import ProfileImage from './ProfileImage';
 
 function UserInfo({ size, sort, name = '유저이름', createdDate = '게시날짜' }) {
   return (
-    <Container size={size}>
+    <Container $size={size}>
       <ProfileImage imageSize={size} />
-      <Details sort={sort} size={size}>
-        <Name size={size}>{name}</Name>
+      <Details $sort={sort} $size={size}>
+        <Name $size={size}>{name}</Name>
         <Date>{createdDate}</Date>
       </Details>
     </Container>
@@ -32,8 +32,8 @@ const Container = styled.div`
 
 const Details = styled.div`
   display: flex;
-  flex-direction: ${({ sort }) => {
-    switch (sort) {
+  flex-direction: ${({ $sort }) => {
+    switch ($sort) {
       case 'column':
         return 'column';
       case 'row':
@@ -42,8 +42,8 @@ const Details = styled.div`
         return 'column';
     }
   }};
-  gap: ${({ sort }) => {
-    switch (sort) {
+  gap: ${({ $sort }) => {
+    switch ($sort) {
       case 'column':
         return '0';
       case 'row':
@@ -52,8 +52,8 @@ const Details = styled.div`
         return '0';
     }
   }};
-  font-size: ${({ size }) => {
-    switch (size) {
+  font-size: ${({ $size }) => {
+    switch ($size) {
       case 'big':
         return '1.4rem';
       case 'small':
@@ -62,8 +62,8 @@ const Details = styled.div`
         return '1.4rem';
     }
   }};
-  line-height: ${({ size }) => {
-    switch (size) {
+  line-height: ${({ $size }) => {
+    switch ($size) {
       case 'big':
         return '2.4rem';
       case 'small':
@@ -77,8 +77,8 @@ const Details = styled.div`
 const Name = styled.p`
   color: var(--gray-600);
   font-weight: 500;
-  margin-bottom: ${({ size }) => {
-    switch (size) {
+  margin-bottom: ${({ $size }) => {
+    switch ($size) {
       case 'big':
         return '0.2rem';
       case 'small':

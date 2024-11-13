@@ -1,13 +1,25 @@
 import './Items.scss';
 import { useState } from 'react';
+
+import styled from 'styled-components';
+
 import useProductsAll from '../hooks/useProductsAll';
 import useProductsFavorite from '../hooks/useProductsFavorite';
+
 import ProductsList from '../components/Items/ProductsList';
 import PageNation from '../components/common/PageNation';
 import SearchInput from '../components/common/SearchInput';
 import Button from '../components/common/Button';
 import DropDown from '../components/common/SelectMenu';
 import HeadingTitleArea from '../components/common/HeadingTitleArea';
+
+const StyledItemButton = styled(Button)`
+  && {
+    @media screen and (max-width: 767px) {
+      order: 2;
+    }
+  }
+`;
 
 function Items() {
   const [order, setOrder] = useState('recent');
@@ -62,13 +74,9 @@ function Items() {
           <HeadingTitleArea>
             <h2>전체 상품</h2>
             <SearchInput onSubmit={handleSearchSubmit} />
-            <Button
-              link={true}
-              href='/addItem'
-              className='addItem'
-              styleType='square blue small_40'>
+            <StyledItemButton href='/addItem' size='small'>
               상품 등록하기
-            </Button>
+            </StyledItemButton>
             <DropDown>
               <DropDown.Title>최신순</DropDown.Title>
               <DropDown.Option
