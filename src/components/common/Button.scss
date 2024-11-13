@@ -23,12 +23,12 @@
   }
 }
 
-div[class^="btn-wrap"] {
+div[class^='btn-wrap'] {
   display: flex;
   gap: 1.2rem;
   white-space: nowrap;
 }
-[class^="btn-"] {
+[class^='btn-'] {
   color: #fff;
   font-weight: 600;
   cursor: pointer;
@@ -85,7 +85,7 @@ div[class^="btn-wrap"] {
     }
   }
 
-  [class*="btn-"] {
+  [class*='btn-'] {
     &.round {
       border-radius: 8.2rem;
     }

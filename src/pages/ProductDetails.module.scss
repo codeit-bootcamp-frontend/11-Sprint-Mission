@@ -136,7 +136,7 @@
   position: relative;
   &::before {
     position: absolute;
-    content: "";
+    content: '';
     width: 1px;
     height: 3.4rem;
     background-color: var(--gray-200);

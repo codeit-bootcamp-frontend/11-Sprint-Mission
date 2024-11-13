@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback } from "react";
-import { getProductsList } from "../services/products-api";
-import useReSizing from "./useReSizing";
-import useAsyncRequest from "./useAsyncRequest";
+import { useState, useEffect, useCallback } from 'react';
+import { getProductsList } from '../services/products-api';
+import useReSizing from './useReSizing';
+import useAsyncRequest from './useAsyncRequest';
 
 const useProductsFavorite = () => {
   const [items, setItems] = useState([]);
@@ -13,7 +13,7 @@ const useProductsFavorite = () => {
     pcSize: 4,
   });
 
-  const order = "favorite";
+  const order = 'favorite';
 
   const handleLoad = useCallback(async () => {
     const queryParams = {

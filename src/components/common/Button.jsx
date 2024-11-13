@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./Button.scss";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Button.scss';
 
 const Button = ({
   link,
@@ -8,7 +8,7 @@ const Button = ({
   onClick,
   children,
   className,
-  styleType = "",
+  styleType = '',
   disabled,
 }) => {
   return link ? (

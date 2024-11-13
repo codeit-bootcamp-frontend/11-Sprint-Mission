@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback } from "react";
-import { getProductsList } from "../services/products-api";
-import useReSizing from "./useReSizing";
-import useAsyncRequest from "./useAsyncRequest";
+import { useState, useEffect, useCallback } from 'react';
+import { getProductsList } from '../services/products-api';
+import useReSizing from './useReSizing';
+import useAsyncRequest from './useAsyncRequest';
 
 const useProductsAll = ({ order, search }) => {
   const [items, setItems] = useState([]);

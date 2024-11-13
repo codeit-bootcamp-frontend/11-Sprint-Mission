@@ -1,5 +1,5 @@
-import styles from "./TagsList.module.scss";
-import Button from "./Button";
+import styles from './TagsList.module.scss';
+import Button from './Button';
 
 function TagsList({ tags = [], onRemove = null }) {
   return (
@@ -12,7 +12,7 @@ function TagsList({ tags = [], onRemove = null }) {
               {onRemove && (
                 <Button
                   link={false}
-                  className="clear"
+                  className='clear'
                   onClick={() => onRemove(tag)}>
                   삭제
                 </Button>

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import "./SelectMenu.scss";
+import { useState } from 'react';
+import './SelectMenu.scss';
 
 function SelectMenu({ children }) {
   const [isOptionVisible, setIsOptionVisible] = useState(false);
@@ -18,21 +18,21 @@ function SelectMenu({ children }) {
   };
 
   return (
-    <div className="select">
-      <button className="select-title" onClick={handleSelectClick}>
+    <div className='select'>
+      <button className='select-title' onClick={handleSelectClick}>
         {selectedLabel ||
-          children.find((child) => child.type.displayName === "Title")?.props
+          children.find((child) => child.type.displayName === 'Title')?.props
             .children ||
-          "옵션을 선택 해주세요"}
+          '옵션을 선택 해주세요'}
       </button>
       {isOptionVisible && (
-        <div className="select-option">
+        <div className='select-option'>
           {children
-            .filter((child) => child.type.displayName === "Option")
+            .filter((child) => child.type.displayName === 'Option')
             .map((child) => (
               <button
                 key={child.props.value}
-                className="select-option-list"
+                className='select-option-list'
                 onClick={() =>
                   handleOptionClick(child.props.label, child.props)
                 }>
@@ -49,13 +49,13 @@ const Title = ({ children }) => {
   return <>{children}</>;
 };
 
-Title.displayName = "Title";
+Title.displayName = 'Title';
 
 const Option = ({ children }) => {
   return <>{children}</>;
 };
 
-Option.displayName = "Option";
+Option.displayName = 'Option';
 
 SelectMenu.Title = Title;
 SelectMenu.Option = Option;

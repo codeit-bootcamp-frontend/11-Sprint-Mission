@@ -5,7 +5,7 @@
     #productFile {
       display: none;
     }
-    label[for="productFile"] {
+    label[for='productFile'] {
       cursor: pointer;
       display: flex;
       flex-direction: column;
@@ -46,7 +46,7 @@
   .productFile {
     &-area {
       gap: 1rem;
-      label[for="productFile"] {
+      label[for='productFile'] {
         width: 16.8rem;
         height: 16.8rem;
       }

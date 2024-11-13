@@ -1,0 +1,20 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // 모든 파일의 기본 포맷터를 Prettier로 지정
+  "editor.formatOnSave": true, // 저장 시 자동으로 포맷팅
+  "editor.formatOnSaveMode": "file", // 파일 전체를 포맷
+  "editor.tabSize": 2, // 들여쓰기 크기
+  "editor.insertSpaces": true, // 탭 대신 스페이스 사용
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "css",
+    "scss"
+  ],
+  "prettier.requireConfig": true,
+  "prettier.endOfLine": "lf", // Prettier 설정 파일 없이도 기본 설정 사용
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "javascript.validate.enable": false
+}

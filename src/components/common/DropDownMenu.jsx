@@ -1,8 +1,8 @@
-import { useState } from "react";
-import ICON_KEBAB from "../../assets/ic_kebab.svg";
-import styled from "styled-components";
+import { useState } from 'react';
+import ICON_KEBAB from '../../assets/ic_kebab.svg';
+import styled from 'styled-components';
 
-function DropDownMenu({ children, classNames = "" }) {
+function DropDownMenu({ children, classNames = '' }) {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   const handleMenuClick = () => {
@@ -10,8 +10,8 @@ function DropDownMenu({ children, classNames = "" }) {
   };
   return (
     <div className={`dropdown ${classNames}`}>
-      <ToggleButton className="dropdown-icon" onClick={handleMenuClick}>
-        <img src={ICON_KEBAB} alt="더보기" />
+      <ToggleButton className='dropdown-icon' onClick={handleMenuClick}>
+        <img src={ICON_KEBAB} alt='더보기' />
       </ToggleButton>
       {isMenuVisible && <MoreList>{children}</MoreList>}
     </div>

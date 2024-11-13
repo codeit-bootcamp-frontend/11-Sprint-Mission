@@ -1,4 +1,4 @@
-import "./SearchInput.scss";
+import './SearchInput.scss';
 
 const SearchInput = ({ onSubmit }) => {
   return (

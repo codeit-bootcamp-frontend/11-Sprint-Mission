@@ -1,4 +1,4 @@
-import ProductItem from "./ProductItem";
+import ProductItem from './ProductItem';
 
 const ProductsList = ({ list, imageSize }) => {
   return (

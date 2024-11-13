@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from 'react';
 
 const useReSizing = ({ mobileSize, tabletSize, pcSize }) => {
   // 현재 화면 크기에 맞는 페이지 크기 계산 함수
@@ -19,10 +19,10 @@ const useReSizing = ({ mobileSize, tabletSize, pcSize }) => {
 
   useEffect(() => {
     handleResize();
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, [handleResize]);
 

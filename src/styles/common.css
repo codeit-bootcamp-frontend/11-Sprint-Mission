@@ -4,45 +4,49 @@
 /* 페이지 css */
 
 @font-face {
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
-  src: url(../assets/fonts/Pretendard-Regular.ttf),
-    url(../assets/fonts/Pretendard-Regular.otf) format("otf"),
-    url(../assets/fonts/Pretendard-Regular.woff) format("woff"),
-    url(../assets/fonts/Pretendard-Regular.woff2) format("woff2");
+  src:
+    url(../assets/fonts/Pretendard-Regular.ttf),
+    url(../assets/fonts/Pretendard-Regular.otf) format('otf'),
+    url(../assets/fonts/Pretendard-Regular.woff) format('woff'),
+    url(../assets/fonts/Pretendard-Regular.woff2) format('woff2');
 }
 @font-face {
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 500;
-  src: url(../assets/fonts/Pretendard-Medium.ttf),
-    url(../assets/fonts/Pretendard-Medium.otf) format("otf"),
-    url(../assets/fonts/Pretendard-Medium.woff) format("woff"),
-    url(../assets/fonts/Pretendard-Medium.woff2) format("woff2");
+  src:
+    url(../assets/fonts/Pretendard-Medium.ttf),
+    url(../assets/fonts/Pretendard-Medium.otf) format('otf'),
+    url(../assets/fonts/Pretendard-Medium.woff) format('woff'),
+    url(../assets/fonts/Pretendard-Medium.woff2) format('woff2');
 }
 @font-face {
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 600;
-  src: url(../assets/fonts/Pretendard-SemiBold.ttf),
-    url(../assets/fonts/Pretendard-SemiBold.otf) format("otf"),
-    url(../assets/fonts/Pretendard-SemiBold.woff) format("woff"),
-    url(../assets/fonts/Pretendard-SemiBold.woff2) format("woff2");
+  src:
+    url(../assets/fonts/Pretendard-SemiBold.ttf),
+    url(../assets/fonts/Pretendard-SemiBold.otf) format('otf'),
+    url(../assets/fonts/Pretendard-SemiBold.woff) format('woff'),
+    url(../assets/fonts/Pretendard-SemiBold.woff2) format('woff2');
 }
 @font-face {
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 700;
-  src: url(../assets/fonts/Pretendard-Bold.ttf),
-    url(../assets/fonts/Pretendard-Bold.otf) format("otf"),
-    url(../assets/fonts/Pretendard-Bold.woff) format("woff"),
-    url(../assets/fonts/Pretendard-Bold.woff2) format("woff2");
+  src:
+    url(../assets/fonts/Pretendard-Bold.ttf),
+    url(../assets/fonts/Pretendard-Bold.otf) format('otf'),
+    url(../assets/fonts/Pretendard-Bold.woff) format('woff'),
+    url(../assets/fonts/Pretendard-Bold.woff2) format('woff2');
 }
 
 body > *,
 textarea {
-  font-family: "Pretendard", sans-serif;
+  font-family: 'Pretendard', sans-serif;
 }
 
 /* header */
@@ -82,10 +86,10 @@ textarea {
   color: var(--gray-600);
 }
 
-main[class^="page-"] {
+main[class^='page-'] {
   background-color: #fcfcfc;
 }
-main[class^="page-"]:not(.page-login, .page-signup, .page-error) {
+main[class^='page-']:not(.page-login, .page-signup, .page-error) {
   margin-top: 7rem;
 }
 
@@ -128,7 +132,7 @@ main[class^="page-"]:not(.page-login, .page-signup, .page-error) {
   display: flex;
   gap: 1.2rem;
 }
-#footer .footer-item.link-sns a[class^="icon-"] {
+#footer .footer-item.link-sns a[class^='icon-'] {
   display: inline-block;
   font-size: 0;
   line-height: 0;

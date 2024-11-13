@@ -1,11 +1,11 @@
-import "./Input.scss";
+import './Input.scss';
 
 function Input({
-  type = "text",
-  placeholder = "",
-  className = "default",
-  name = "",
-  value = "",
+  type = 'text',
+  placeholder = '',
+  className = 'default',
+  name = '',
+  value = '',
   ...rest
 }) {
   return (

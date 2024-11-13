@@ -1,12 +1,12 @@
-import styles from "./Images.module.scss";
-import useReSizing from "../../hooks/useReSizing";
+import styles from './Images.module.scss';
+import useReSizing from '../../hooks/useReSizing';
 
 function Images({
   imageSize: { pcSize, tabletSize, mobileSize },
   src,
   alt,
   children,
-  classNames = "",
+  classNames = '',
 }) {
   const imagesSize = useReSizing({ pcSize, tabletSize, mobileSize });
 
