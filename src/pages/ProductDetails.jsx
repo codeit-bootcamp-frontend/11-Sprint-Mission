@@ -40,7 +40,7 @@ const StyledFlex = styled(CommonFlex)`
 
 function ProductDetails() {
   const [details, setDetails] = useState({});
-  const [commentsList, setCommentsList] = useState({});
+  const [commentsList, setCommentsList] = useState([]);
   const { execute, isLoading, error: fetchError } = useAsyncRequest();
   const { productId } = useParams();
   const [editingCommentId, setEditingCommentId] = useState(null);
@@ -137,7 +137,7 @@ function ProductDetails() {
 
   function CommitEditForm({ item, onCancel, onSubmit }) {
     const [editValue, setEditValue] = useState(item.content);
-    const isEditValid = editValue.trim() !== '';
+    const hasEditValue = editValue.trim() !== '';
 
     const handleEditInput = (e) => {
       const value = e.target.value;
@@ -165,8 +165,8 @@ function ProductDetails() {
             </Button>
             <Button
               className='post'
-              color={!isEditValid ? 'gray' : 'blue'}
-              disabled={!isEditValid && editValue.length > 0}
+              color={!hasEditValue ? 'gray' : 'blue'}
+              disabled={!hasEditValue && editValue.length > 0}
               onClick={() => onSubmit(editValue)}>
               수정 완료
             </Button>
@@ -243,7 +243,7 @@ function ProductDetails() {
             <Button
               className='post'
               color={!isFormValid ? 'gray' : 'blue'}
-              disabled={!isFormValid && formValues.length > 0}>
+              disabled={!isFormValid}>
               등록
             </Button>
           </form>
