@@ -58,7 +58,7 @@ export async function getProductDetail(
  */
 export async function getProductComments(
   productId: string,
-  limit: number = 10,
+  limit: number = 9999,
   cursor: string | null = null
 ): Promise<GetCommentsResponse> {
   try {
