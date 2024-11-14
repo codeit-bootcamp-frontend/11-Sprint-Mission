@@ -1,3 +1,7 @@
+.product-card:hover {
+  cursor: pointer;
+}
+
 .product-list {
   display: grid;
   gap: 24px;

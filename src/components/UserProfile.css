@@ -1,0 +1,22 @@
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile-nickname {
+  font-size: 14px;
+  font-weight: 500;
+  color: #4b5563;
+}
