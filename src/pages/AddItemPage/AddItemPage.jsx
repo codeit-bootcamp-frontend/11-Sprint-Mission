@@ -1,6 +1,6 @@
-import './AddItemPage.css';
 import React from "react";
 import styled from "styled-components";
+import ImgUpload from "./components/ImgUpload";
 
 const Container = styled.div`
   padding: 70px;
@@ -22,6 +22,10 @@ const Title = styled.h1`
   font-size: 20px;
   font-weight: bold;
   color: black;
+
+  @media (min-width: 768px) {
+    font-size: 28px
+  }
 `;
 
 const Button = styled.button`
@@ -48,6 +52,15 @@ const Button = styled.button`
   }
 `;
 
+const InputSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media (min-width: 768px) {
+    gap: 24px;
+  }
+`;
 
 function AddItemPage() {
 	return (
@@ -57,6 +70,10 @@ function AddItemPage() {
 					<Title>상품 등록하기</Title>
 					<Button>등록</Button>
 				</TitleSection>
+
+				<InputSection>
+					<ImgUpload title="상품 이미지" />
+				</InputSection>
 			</form>
 		</Container>
 	);
