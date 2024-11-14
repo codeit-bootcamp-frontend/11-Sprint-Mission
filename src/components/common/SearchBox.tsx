@@ -1,7 +1,11 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 
-const SearchBox = ({ onChangeSort }) => {
+interface SearchBoxProps {
+  onChangeSort: (e: ChangeEvent) => void;
+}
+
+const SearchBox = ({ onChangeSort }: SearchBoxProps) => {
   return (
     <div>
       <div className="search-area">

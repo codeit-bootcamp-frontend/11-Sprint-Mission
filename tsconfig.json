@@ -9,7 +9,8 @@
     "allowJs": true, // JavaScript 파일 포함가능
     "moduleResolution": "node", //  Node.js의 모듈 해석 방식
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true // require로 변환되는것 막아줌
+    "esModuleInterop": true, // require로 변환되는것 막아줌
+    "noImplicitAny": true // 암묵적인 'any' 타입을 허용하지 않음
   },
-  "include": ["./src/"]
+  "include": ["src/**/*"]
 }

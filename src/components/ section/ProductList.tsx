@@ -4,36 +4,40 @@ import SearchBox from "../common/SearchBox";
 import heart from "../../images/icon/heart.svg";
 import "./../css/ProductList.css";
 import { Link } from "react-router-dom";
+import {
+  ProductBestListProps,
+  ProductListProps,
+  ProductProps,
+} from "../../types/MarketPage";
 
-const Product = ({ productLists }) => {
+const Product = ({ productLists }: ProductProps) => {
+  const { id, images, name, price, favoriteCount } = productLists;
+
   return (
     <>
-      {productLists?.map((data) => (
-        <div key={data.id} className="product-card">
-          <Link to={`${data.id}`}>
-            <img src={data.images[0]} className="card-img" alt="대표사진"></img>
-            <div className="product-card__cardinfo">
-              <div className="name">{data.name}</div>
-              <div className="price">{data.price}</div>
-              <div className="count">
-                <img
-                  className="product-card_image-logo"
-                  src={heart}
-                  alt="즐겨찾기"
-                />
-                {data.favoriteCount}
-              </div>
+      <div key={id} className="product-card">
+        <Link to={`${id}`}>
+          <img src={images[0]} className="card-img" alt="대표사진"></img>
+          <div className="product-card__cardinfo">
+            <div className="name">{name}</div>
+            <div className="price">{price}</div>
+            <div className="count">
+              <img
+                className="product-card_image-logo"
+                src={heart}
+                alt="즐겨찾기"
+              />
+              {favoriteCount}
             </div>
-          </Link>
-        </div>
-      ))}
+          </div>
+        </Link>
+      </div>
     </>
   );
 };
 
 const ProductList = ({
   sortedItems,
-  page,
   onChangeSort,
   onClickPage,
   gridRows,
@@ -41,7 +45,7 @@ const ProductList = ({
   isLoading,
   ispageNation, //페이지네이션 (true 일시 제공)
   issearch, //검색버튼 (true 일시 제공)
-}) => {
+}: ProductListProps) => {
   return (
     <div className="all-product">
       <section>
@@ -53,13 +57,17 @@ const ProductList = ({
           <div className="loading">Loading...</div> // 로딩 표시 (이주석을 풀면 전체페이지가 렌더링되네요.. 로딩처리를 어디에하면좋을가요?)
         ) : ( */}
         <div className={`product-cardlist__${gridRows}row`}>
-          <Product productLists={sortedItems} />
+          <>
+            {sortedItems.map((data: ProductBestListProps) => (
+              <Product productLists={data} />
+            ))}
+          </>
         </div>
         {/* )} */}
       </section>
       {ispageNation && (
         <div className="all-product__bottom">
-          <Pagenation onPage={page} onClickPage={onClickPage} />
+          <Pagenation onClickPage={(e, page) => onClickPage} />
         </div>
       )}
     </div>

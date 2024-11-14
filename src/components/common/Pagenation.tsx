@@ -1,20 +1,25 @@
-import React, { useState } from "react";
+import React, { MouseEvent, useState } from "react";
 import "../css/Pagenation.css";
 
 const BUTTONS = [1, 2, 3, 4, 5];
 
-const Pagenation = ({ onClickPage }) => {
+interface Props {
+  onClickPage: (e: MouseEvent, pageNo: number) => void;
+}
+
+const Pagenation = ({ onClickPage }: Props) => {
+  // eslint-disable-next-line
   const [button, setButton] = useState(BUTTONS);
 
-  const onClickPageCursor = (e) => {
-    const button = e.target.value;
-    setButton(button);
-    onClickPage(e);
+  const onClickPageCursor = (e: MouseEvent) => {
+    // const button = (e.target as HTMLButtonElement).value;
+    // setButton(button);
+    onClickPage(e, 1);
   };
 
-  const handleClickPage = (e) => {
-    const pageNo = e.target.value;
-    onClickPage(pageNo);
+  const handleClickPage = (e: MouseEvent) => {
+    const pageNo = (e.target as HTMLButtonElement).value;
+    onClickPage(e, Number(pageNo));
   };
 
   return (

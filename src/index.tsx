@@ -9,7 +9,7 @@ import DetailPages from "./pages/DetailPage.js";
 import HomePage from "./pages/HomePage.js";
 import LoginPage from "./pages/LoginPage.js";
 import AddItemPage from "./pages/AddItemPage.js";
-import MarketPage from "./pages/MarketPage.js";
+import MarketPage from "./pages/MarketPage";
 import SignupPage from "./pages/SignupPage.js";
 
 const root = ReactDOM.createRoot(

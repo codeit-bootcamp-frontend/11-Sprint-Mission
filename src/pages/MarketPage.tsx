@@ -1,18 +1,21 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { useEffect, useState } from "react";
 import { getProductList } from "../api/api.js";
 import "./MarketPage.css";
-import ProductList from "../components/ section/ProductList.js";
+import ProductList from "../components/ section/ProductList";
+import { ProductBestListProps } from "../types/MarketPage.js";
 
 const MarketPage = () => {
-  const [productBestList, setProductBestList] = useState();
+  const [productBestList, setProductBestList] = useState<
+    ProductBestListProps[]
+  >([]);
   const [productList, setProductList] = useState([]);
   const [page, setPage] = useState(1);
   const [orderBy, setOrderBy] = useState("recent");
-  const [loadingError, setLoadingError] = useState(null);
+  const [loadingError, setLoadingError] = useState(Boolean);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleLoadData = async (options) => {
+  const handleLoadData = async (options: { orderBy: string; page: number }) => {
     let result;
 
     try {
@@ -38,7 +41,7 @@ const MarketPage = () => {
     };
 
     try {
-      setLoadingError(null);
+      setLoadingError(false);
       setIsLoading(true);
       bestResult = await getProductList(bestParams);
     } catch (error) {
@@ -50,12 +53,14 @@ const MarketPage = () => {
     setProductBestList(bestResult.list);
   };
 
-  const handleChangeSort = async (e) => {
+  const handleChangeSort = async (e: ChangeEvent<HTMLInputElement>) => {
     const category = e.target.value;
     setOrderBy(category === "recent" ? "recent" : "favorite");
   };
 
-  const sortedItems = productList.sort((a, b) => b[orderBy] - a[orderBy]);
+  const sortedItems: ProductBestListProps[] = productList.sort(
+    (a, b) => b[orderBy] - a[orderBy]
+  );
 
   // 아래영역
   useEffect(() => {
@@ -80,6 +85,7 @@ const MarketPage = () => {
           ispageNation={false}
           sortedItems={productBestList}
           onChangeSort={handleChangeSort}
+          onClickPage={(e, page) => setPage(page)}
         />
         <ProductList
           label={"전체상품"}
@@ -90,7 +96,7 @@ const MarketPage = () => {
           isLoading={isLoading}
           sortedItems={sortedItems}
           onChangeSort={handleChangeSort}
-          onClickPage={(page) => setPage(page)}
+          onClickPage={(e, page) => setPage(page)}
         />
       </div>
     </>
