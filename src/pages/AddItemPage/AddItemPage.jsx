@@ -28,7 +28,7 @@ const Title = styled.h1`
   }
 `;
 
-const Button = styled.button`
+const Btn = styled.button`
   background-color: blue;
   color: white;
   padding: 11.5px 23px;
@@ -68,7 +68,7 @@ function AddItemPage() {
 			<form>
 				<TitleSection>
 					<Title>상품 등록하기</Title>
-					<Button>등록</Button>
+					<Btn type="submit">등록</Btn>
 				</TitleSection>
 
 				<InputSection>
