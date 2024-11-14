@@ -107,7 +107,7 @@ function ImgUpload({ title }) {
         {imgPreviewUrl && (
           <ImgPreview src={imgPreviewUrl}>
             <DeleteBtnSection>
-              <DeleteBtn onClick={handleDelete} label="이미지 파일">
+              <DeleteBtn onClick={handleDelete}>
                 <DelIcon />
               </DeleteBtn>
             </DeleteBtnSection>

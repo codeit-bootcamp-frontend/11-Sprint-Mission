@@ -68,6 +68,15 @@ function AddItemPage() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
+  const [tags, setTags] = useState([]);
+
+  const addTag = (tag) => {
+    if (!tags.includes(tag)) setTags([...tags, tag]);
+  };
+
+  const removeTag = (tagToRemove) => {
+    setTags(tags.filter((tag) => tag !== tagToRemove));
+  };
 
 	return (
 		<Container>
@@ -105,7 +114,7 @@ function AddItemPage() {
             placeholder="판매 가격을 입력해 주세요"
           />
 
-          <InputTag />
+          <InputTag tags={tags} onAddTag={addTag} onRemoveTag={removeTag} />
 				</InputSection>
 			</form>
 		</Container>
