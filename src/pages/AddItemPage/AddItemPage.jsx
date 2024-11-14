@@ -31,7 +31,7 @@ const Title = styled.h1`
 `;
 
 const Btn = styled.button`
-  background-color: blue;
+  background-color: #3692FF;
   color: white;
   padding: 11.5px 23px;
   border-radius: 8px;
@@ -48,7 +48,7 @@ const Btn = styled.button`
   }
 
   &:disabled {
-    background-color: #3692FF;
+    background-color: #9CA3AF;
     cursor: default;
     pointer-events: none;
   }
@@ -78,12 +78,16 @@ function AddItemPage() {
     setTags(tags.filter((tag) => tag !== tagToRemove));
   };
 
+  const isSubmitDisabled = !name || !description || !price || !tags.length;
+
 	return (
 		<Container>
 			<form>
 				<TitleSection>
 					<Title>상품 등록하기</Title>
-					<Btn type="submit">등록</Btn>
+					<Btn type="submit" disabled={isSubmitDisabled}>
+            등록
+          </Btn>
 				</TitleSection>
 
 				<InputSection>
