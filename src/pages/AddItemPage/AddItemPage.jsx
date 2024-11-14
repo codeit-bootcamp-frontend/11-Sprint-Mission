@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import ImgUpload from "./components/ImgUpload";
+import InputItem from "./components/InputItem";
 
 const Container = styled.div`
   padding: 70px;
@@ -63,6 +64,10 @@ const InputSection = styled.div`
 `;
 
 function AddItemPage() {
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+
 	return (
 		<Container>
 			<form>
@@ -73,6 +78,31 @@ function AddItemPage() {
 
 				<InputSection>
 					<ImgUpload title="상품 이미지" />
+
+          <InputItem
+            id="name"
+            label="상품명"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="상품명을 입력해 주세요"
+          />
+
+          <InputItem
+            id="description"
+            label="상품 소개"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="상품 소개를 입력해 주세요"
+            isTextArea
+          />
+
+          <InputItem
+            id="price"
+            label="판매 가격"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            placeholder="판매 가격을 입력해 주세요"
+          />
 				</InputSection>
 			</form>
 		</Container>
