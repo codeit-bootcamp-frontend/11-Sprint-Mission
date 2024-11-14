@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./components/common/App.js";
+import App from "./components/common/App";
 import "./css/reset.css";
 import "./css/button.css";
 import "./css/color.css";
@@ -12,7 +12,9 @@ import AddItemPage from "./pages/AddItemPage.js";
 import MarketPage from "./pages/MarketPage.js";
 import SignupPage from "./pages/SignupPage.js";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
 root.render(
   <BrowserRouter>
     <App>

@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/", // 컴파일된 JavaScript 파일이 저장될 디렉토리
+    "sourceMap": true, // .map 파일을 생성
+    "strictNullChecks": true, // null 및 undefined 값에 대한 엄격한 검사를 활성화
+    "module": "ESNext", // import/export같은 ES6 모듈
+    "jsx": "react", // use typescript to transpile jsx to js
+    "target": "ESNext", // var변환, 및 구형브라우저에서 호환가능
+    "allowJs": true, // JavaScript 파일 포함가능
+    "moduleResolution": "node", //  Node.js의 모듈 해석 방식
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true // require로 변환되는것 막아줌
+  },
+  "include": ["./src/"]
+}

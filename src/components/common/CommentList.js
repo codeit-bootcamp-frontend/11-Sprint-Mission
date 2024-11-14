@@ -6,6 +6,7 @@ import Textarea from "./TextArea";
 import Button from "./Button";
 import icback from "../../images/icon/ic_back.svg";
 import { Link } from "react-router-dom";
+import inquiryEmpty from "../../images/Img_inquiry_empty.png";
 
 const Comment = ({ comment, onClickOption, edit = false }) => {
   const { id, content, writer, createdAt } = comment;
@@ -87,11 +88,7 @@ const CommentList = ({ commentList, onClickOption, editingId }) => {
         ))
       ) : (
         <div className="comment-list__empty">
-          <img
-            className="image-logo"
-            src={require("../../images/Img_inquiry_empty.png")}
-            alt="판다마켓로고"
-          />
+          <img className="image-logo" src={inquiryEmpty} alt="판다마켓로고" />
           <p className="comment-list__text">아직 문의가 없어요</p>
         </div>
       )}

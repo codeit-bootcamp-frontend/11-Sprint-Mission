@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./LoginPage.css";
+import logoImage from "./../images/logo_image.png";
+import eyeImage from "./../images/icon/icon_eyes_close.png";
+import googleIcon from "./../images/icon/ic_google.png";
+import kakaoIcon from "./../images/icon/ic_kakao.png";
 
 const LoginPage = () => {
   return (
@@ -9,7 +13,7 @@ const LoginPage = () => {
         <h1>
           <Link to="/">
             <img
-              src={require("./../images/logo_image.png")}
+              src={logoImage}
               width="396px"
               height="132px"
               alt="메인화면이동"
@@ -33,7 +37,7 @@ const LoginPage = () => {
                 data-valid="false"
               />
               <img
-                src={require("./../images/icon/icon_eyes_close.png")}
+                src={eyeImage}
                 className="eyes-close"
                 alt="비밀번호보이기"
               ></img>
@@ -54,7 +58,7 @@ const LoginPage = () => {
                 data-valid="false"
               />
               <img
-                src={require("./../images/icon/icon_eyes_close.png")}
+                src={eyeImage}
                 className="eyes-close"
                 alt="비밀번호보이기"
               ></img>
@@ -76,16 +80,10 @@ const LoginPage = () => {
           </Link>
           <div className="auth-snsbox">
             <Link target="_self" to="https://www.google.com/">
-              <img
-                src={require("./../images/icon/ic_google.png")}
-                alt="구글로그인아이콘"
-              />
+              <img src={googleIcon} alt="구글로그인아이콘" />
             </Link>
             <Link target="_self" to="https://www.kakaocorp.com/page/">
-              <img
-                src={require("./../images/icon/ic_kakao.png")}
-                alt="카카오로그인아이콘"
-              />
+              <img src={kakaoIcon} alt="카카오로그인아이콘" />
             </Link>
           </div>
         </div>

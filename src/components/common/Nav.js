@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import myprofile from "../../images/icon/myprofile.svg";
+import logoImage from "../../images/logo_image.png";
 import "../css/Nav.css";
 
 const Nav = () => {
@@ -9,11 +10,7 @@ const Nav = () => {
       <div className="main-header">
         <div className="main-header-left">
           <Link to="">
-            <img
-              className="image-logo"
-              src={require("../../images/logo_image.png")}
-              alt="판다마켓로고"
-            />
+            <img className="image-logo" src={logoImage} alt="판다마켓로고" />
           </Link>
           <div className="main-nav">
             <nav>
