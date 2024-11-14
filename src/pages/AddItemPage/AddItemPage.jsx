@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import ImgUpload from "./components/ImgUpload";
 import InputItem from "./components/InputItem";
+import InputTag from "./components/InputTag";
 
 const Container = styled.div`
   padding: 70px;
@@ -103,6 +104,8 @@ function AddItemPage() {
             onChange={(e) => setPrice(e.target.value)}
             placeholder="판매 가격을 입력해 주세요"
           />
+
+          <InputTag />
 				</InputSection>
 			</form>
 		</Container>
