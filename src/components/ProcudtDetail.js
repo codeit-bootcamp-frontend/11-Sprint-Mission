@@ -5,7 +5,7 @@ import "./ProductDetail.css";
 import UserProfile from "./UserProfile";
 import heartImg from "../image/heart-img.png";
 
-function ItemDetail() {
+function ProductDetail() {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
@@ -75,4 +75,4 @@ function ItemDetail() {
   );
 }
 
-export default ItemDetail;
+export default ProductDetail;

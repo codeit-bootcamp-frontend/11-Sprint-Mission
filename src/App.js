@@ -3,7 +3,7 @@ import GlobalStyle from "./styles/GlobalStyles";
 import Navbar from "./components/Navbar";
 import Freeboard from "./pages/Freeboard";
 import Items from "./pages/Items";
-import ProductDetail from "./components/ProcudtDetail";
+import ItemDetail from "./pages/ItemDetail";
 import AddItem from "./pages/Additem";
 import "./styles/Reset.css";
 
@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path="/freeboard" element={<Freeboard />} />
         <Route path="/items" element={<Items />} />
-        <Route path="/items/:productId" element={<ProductDetail />} />
+        <Route path="/items/:productId" element={<ItemDetail />} />
         <Route path="/additem" element={<AddItem />} />
       </Routes>
     </Router>
