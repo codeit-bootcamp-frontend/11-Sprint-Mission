@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
-
 import favoriteIcon from "../assets/Icon.svg";
 import "./BestItemCard.css";
 import "./common.css";
+import { Product } from "../types";
 
-function BestItemCard({ item }) {
+interface BestItemCardProps {
+  item: Product;
+}
+
+function BestItemCard({ item }: BestItemCardProps) {
   return (
     <div className="item-card">
       <Link to={`/items/${item.id}`}>

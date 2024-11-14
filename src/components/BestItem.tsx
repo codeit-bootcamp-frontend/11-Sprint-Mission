@@ -3,6 +3,7 @@ import { getProducts } from "../api";
 import BestItemCard from "./BestItemCard";
 import "./BestItem.css";
 import "./common.css";
+import { Product, GetProductsResponse } from "../types";
 
 const getPageSize = () => {
   const width = window.innerWidth;
@@ -15,9 +16,9 @@ const getPageSize = () => {
   }
 };
 
-const debounce = (func, delay) => {
-  let timeoutId;
-  return (...args) => {
+const debounce = (func: (...args: any[]) => void, delay: number) => {
+  let timeoutId: NodeJS.Timeout;
+  return (...args: any[]) => {
     if (timeoutId) clearTimeout(timeoutId);
     timeoutId = setTimeout(() => {
       func(...args);
@@ -26,11 +27,20 @@ const debounce = (func, delay) => {
 };
 
 function BestItem() {
-  const [items, setItems] = useState([]);
-  const [pageSize, setPageSize] = useState(getPageSize);
+  const [items, setItems] = useState<Product[]>([]);
+  const [pageSize, setPageSize] = useState<number>(getPageSize);
 
-  const fetchProducts = async ({ orderBy, pageSize }) => {
-    const products = await getProducts({ orderBy, pageSize });
+  const fetchProducts = async ({
+    orderBy,
+    pageSize,
+  }: {
+    orderBy: string;
+    pageSize: number;
+  }) => {
+    const products: GetProductsResponse = await getProducts({
+      orderBy,
+      pageSize,
+    });
     setItems(products.list);
   };
 

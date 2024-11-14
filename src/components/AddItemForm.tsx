@@ -5,6 +5,21 @@ import "./AddItemForm.css";
 import resetImg from "../assets/ic_X.svg";
 import { useNavigate } from "react-router-dom";
 
+interface AddItemFormProps {
+  className?: string;
+  initialValues?: {
+    name: string;
+    favorite: number;
+    content: string;
+    price: string;
+    imgFile: File | null;
+    tags: string[];
+  };
+  initialPreview?: string;
+  onSubmit: (formData: FormData) => Promise<{ review: any } | null>;
+  onSubmitSuccess: (review: any) => void;
+}
+
 const INITIAL_VALUE = {
   name: "",
   favorite: 0,
@@ -20,33 +35,39 @@ function AddItemForm({
   initialPreview,
   onSubmit,
   onSubmitSuccess,
-}) {
+}: AddItemFormProps) {
   const navigate = useNavigate();
   const [values, setValues] = useState(initialValues);
-  const [isSubmitting, submittingError, onSubmitAsync] = useAsync(onSubmit);
+  const [isSubmitting, submittingError, onSubmitAsync] = useAsync(onSubmit) as [
+    boolean,
+    Error | null,
+    (formData: FormData) => Promise<{ review: any } | null>
+  ];
   const [tagInput, setTagInput] = useState("");
 
   // 유효성 검사
   const isValidForm =
     values.name && values.content && values.price && values.tags.length > 0;
 
-  const handleChange = (name, value) => {
+  const handleChange = (name: string, value: any) => {
     setValues((prevValues) => ({
       ...prevValues,
       [name]: value,
     }));
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     handleChange(name, value);
   };
 
-  const handleFileChange = (name, file) => {
+  const handleFileChange = (name: string, file: File | null) => {
     handleChange(name, file);
   };
 
-  const handleTagInputChange = (e) => {
+  const handleTagInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTagInput(e.target.value);
   };
 
@@ -57,28 +78,28 @@ function AddItemForm({
     }
   };
 
-  const handleTagKeyDown = (e) => {
+  const handleTagKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
       handleTagAdd();
     }
   };
 
-  const handleTagRemove = (tagToRemove) => {
+  const handleTagRemove = (tagToRemove: string) => {
     handleChange(
       "tags",
       values.tags.filter((tag) => tag !== tagToRemove)
     );
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("name", values.name);
-    formData.append("favorite", values.favorite);
+    formData.append("favorite", values.favorite.toString());
     formData.append("content", values.content);
     formData.append("price", values.price);
-    formData.append("imgFile", values.imgFile);
+    if (values.imgFile) formData.append("imgFile", values.imgFile);
     formData.append("tags", JSON.stringify(values.tags));
 
     const result = await onSubmitAsync(formData);

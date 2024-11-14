@@ -1,4 +1,11 @@
 import instance from "./axiosInstance";
+import {
+  GetProductCommentsParams,
+  GetProductsParams,
+  GetProductsResponse,
+  ProductDetail,
+  GetCommentsResponse,
+} from "./types";
 
 /**
  * 상품 목록을 가져옵니다.
@@ -9,9 +16,11 @@ import instance from "./axiosInstance";
  * @returns {Promise<Object>} 상품 목록 데이터를 반환합니다.
  * @throws {Error} 정보 불러오기 실패 시 에러를 발생시킵니다.
  */
-export async function getProducts(params = {}) {
+export async function getProducts(
+  params: GetProductsParams = {}
+): Promise<GetProductsResponse> {
   try {
-    const { data } = await instance.get("/products", {
+    const { data } = await instance.get<GetProductsResponse>("/products", {
       params,
     });
     return data;
@@ -26,9 +35,13 @@ export async function getProducts(params = {}) {
  * @returns {Promise<Object>} 상품 상세 정보를 반환합니다.
  * @throws {Error} 상품 상세 정보 불러오기 실패 시 에러를 발생시킵니다.
  */
-export async function getProductDetail(productId) {
+export async function getProductDetail(
+  productId: string
+): Promise<ProductDetail> {
   try {
-    const { data } = await instance.get(`/products/${productId}`);
+    const { data } = await instance.get<ProductDetail>(
+      `/products/${productId}`
+    );
     return data;
   } catch (error) {
     throw new Error("상품 상세 정보를 불러오는데 실패했습니다.");
@@ -43,18 +56,24 @@ export async function getProductDetail(productId) {
  * @returns {Promise<Object>} 댓글 데이터를 반환합니다.
  * @throws {Error} 댓글 정보 불러오기 실패 시 에러를 발생시킵니다.
  */
-export async function getProductComments(productId, limit = 10, cursor = null) {
+export async function getProductComments(
+  productId: string,
+  limit: number = 10,
+  cursor: string | null = null
+): Promise<GetCommentsResponse> {
   try {
-    const params = { limit };
+    const params: GetProductCommentsParams = { limit };
 
     if (cursor) {
       params.cursor = cursor;
     }
 
-    const { data } = await instance.get(`/products/${productId}/comments`, {
-      params,
-    });
-
+    const { data } = await instance.get<GetCommentsResponse>(
+      `/products/${productId}/comments`,
+      {
+        params,
+      }
+    );
     return data;
   } catch (error) {
     throw new Error("댓글 정보를 불러오는데 실패했습니다.");

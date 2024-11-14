@@ -5,22 +5,34 @@ import { useParams } from "react-router-dom";
 import defaultImage from "../assets/Frame 2609463.png";
 import moreIcon from "../assets/Group 33735.svg";
 
-const timeAgo = (dateString) => {
+interface Comment {
+  id: number;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+  writer: {
+    id: number;
+    image: string;
+    nickname: string;
+  };
+}
+
+const timeAgo = (dateString: string) => {
   const now = new Date();
   const past = new Date(dateString);
-  const diffInSeconds = Math.floor((now - past) / 1000);
+  const diffInSeconds = Math.floor((now.getTime() - past.getTime()) / 1000);
   const diffInDays = Math.floor(diffInSeconds / (60 * 60 * 24));
 
   return `${diffInDays}일 전`;
 };
 
 function ItemComments() {
-  const { productId } = useParams();
-  const [comments, setComments] = useState([]);
-  const [inputValue, setInputValue] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [showMore, setShowMore] = useState({});
+  const { productId } = useParams<{ productId: string }>();
+  const [comments, setComments] = useState<Comment[]>([]);
+  const [inputValue, setInputValue] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string>("");
+  const [showMore, setShowMore] = useState<Record<number, boolean>>({});
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -38,11 +50,11 @@ function ItemComments() {
     fetchComments();
   }, [productId]);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputValue(e.target.value);
   };
 
-  const handleMoreClick = (commentId) => {
+  const handleMoreClick = (commentId: number) => {
     setShowMore((prevState) => ({
       ...prevState,
       [commentId]: !prevState[commentId],

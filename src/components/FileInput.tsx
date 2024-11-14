@@ -3,13 +3,27 @@ import resetImg from "../assets/ic_X.svg";
 import "./FileInput.css";
 import plusIcon from "../assets/ic_plus.svg";
 
-function FileInput({ className = "", name, value, initialPreview, onChange }) {
-  const [preview, setPreview] = useState(initialPreview);
-  const [errorMessage, setErrorMessage] = useState("");
-  const inputRef = useRef();
+interface FileInputProps {
+  className?: string;
+  name: string;
+  value: File | null;
+  initialPreview?: string | null;
+  onChange: (name: string, file: File | null) => void;
+}
 
-  const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0];
+function FileInput({
+  className = "",
+  name,
+  value,
+  initialPreview = null,
+  onChange,
+}: FileInputProps) {
+  const [preview, setPreview] = useState<string | null>(initialPreview);
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
     if (selectedFile) {
       if (value) {
         setErrorMessage("*이미지 등록은 최대 1개까지 가능합니다.");
@@ -31,7 +45,7 @@ function FileInput({ className = "", name, value, initialPreview, onChange }) {
     }
   };
 
-  const handleUploadClick = (e) => {
+  const handleUploadClick = (e: React.MouseEvent<HTMLInputElement>) => {
     if (value) {
       e.preventDefault(); // 파일 선택 창이 열리지 않도록 방지
       setErrorMessage("*이미지 등록은 최대 1개까지 가능합니다.");
@@ -73,7 +87,7 @@ function FileInput({ className = "", name, value, initialPreview, onChange }) {
           <div className="file-input-preview-selected">
             <img
               className="file-input-preview"
-              src={preview}
+              src={preview || ""}
               alt="이미지 미리보기"
             />
             <button

@@ -8,12 +8,25 @@ import moreIcon from "../assets/Group 33735.svg";
 import backIcon from "../assets/ic_back.svg";
 import "./ItemDetailForm.css";
 
+interface ProductDetail {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  createdAt: string;
+  favoriteCount: number;
+  ownerNickname: string;
+  ownerId: number;
+  images: string[];
+  tags: string[];
+}
+
 function ItemDetailForm() {
-  const { productId } = useParams();
+  const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();
-  const [item, setItem] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [item, setItem] = useState<ProductDetail | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
   const dateOnly =
     item && item.createdAt
       ? item.createdAt.split("T")[0].replace(/-/g, ".")
@@ -21,13 +34,17 @@ function ItemDetailForm() {
 
   useEffect(() => {
     const fetchProductDetail = async () => {
+      if (!productId) {
+        setError("상품 ID가 없습니다.");
+        return;
+      }
       setLoading(true);
       try {
         const data = await getProductDetail(productId);
         setItem(data);
-        setLoading(false);
       } catch (error) {
         setError("상품 정보를 불러오는데 실패했습니다.");
+      } finally {
         setLoading(false);
       }
     };

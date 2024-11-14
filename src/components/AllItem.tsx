@@ -5,6 +5,7 @@ import Pagination from "./Pagination";
 import "./common.css";
 import "./AllItem.css";
 import searchIcon from "../assets/ic_search.svg";
+import { Product } from "../types";
 
 const getPageSize = () => {
   const width = window.innerWidth;
@@ -18,19 +19,27 @@ const getPageSize = () => {
 };
 
 function AllItems() {
-  const [orderBy, setOrderBy] = useState("recent");
-  const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(getPageSize());
-  const [items, setItems] = useState([]);
-  const [isDropdown, setIsDropdown] = useState(false);
-  const [totalPageNum, setTotalPageNum] = useState();
+  const [orderBy, setOrderBy] = useState<string>("recent");
+  const [page, setPage] = useState<number>(1);
+  const [pageSize, setPageSize] = useState<number>(getPageSize());
+  const [items, setItems] = useState<Product[]>([]);
+  const [isDropdown, setIsDropdown] = useState<boolean>(false);
+  const [totalPageNum, setTotalPageNum] = useState<number>(0);
 
   useEffect(() => {
     const handleFixSize = () => {
       setPageSize(getPageSize());
     };
 
-    const fetchProducts = async ({ orderBy, page, pageSize }) => {
+    const fetchProducts = async ({
+      orderBy,
+      page,
+      pageSize,
+    }: {
+      orderBy: string;
+      page: number;
+      pageSize: number;
+    }) => {
       const products = await getProducts({ orderBy, page, pageSize });
       setItems(products.list);
       setTotalPageNum(Math.ceil(products.totalCount / pageSize));
@@ -44,7 +53,7 @@ function AllItems() {
     };
   }, [orderBy, page, pageSize]);
 
-  const handleNextPage = (newPage) => {
+  const handleNextPage = (newPage: number) => {
     setPage(newPage);
   };
 
@@ -52,7 +61,7 @@ function AllItems() {
     setIsDropdown(!isDropdown);
   };
 
-  const handleOrderByChange = (newOrderBy) => {
+  const handleOrderByChange = (newOrderBy: string) => {
     setOrderBy(newOrderBy);
     setPage(1);
     setIsDropdown(false);

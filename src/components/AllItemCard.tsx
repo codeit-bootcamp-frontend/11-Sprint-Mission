@@ -3,10 +3,15 @@ import defaultImg from "../assets/-error-outline_90275.png";
 import "./AllItemCard.css";
 import "./common.css";
 import { Link } from "react-router-dom";
+import { Product } from "../types";
 
-function AllItemCard({ item }) {
-  const handleNoneImg = (e) => {
-    e.target.src = defaultImg;
+interface AllItemCardProps {
+  item: Product;
+}
+
+function AllItemCard({ item }: AllItemCardProps) {
+  const handleNoneImg = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    e.currentTarget.src = defaultImg;
   };
 
   return (

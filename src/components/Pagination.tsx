@@ -3,7 +3,17 @@ import "./pagination.css";
 import prevIcon from "../assets/arrow_left.svg";
 import nextIcon from "../assets/arrow_right.svg";
 
-function Pagination({ currentPage, totalPageNum, onPageChange }) {
+interface PaginationProps {
+  currentPage: number;
+  totalPageNum: number;
+  onPageChange: (page: number) => void;
+}
+
+function Pagination({
+  currentPage,
+  totalPageNum,
+  onPageChange,
+}: PaginationProps) {
   const pageNumbers = [];
   const maxVisiblePages = 5; // 한 번에 표시할 최대 페이지 수
 
