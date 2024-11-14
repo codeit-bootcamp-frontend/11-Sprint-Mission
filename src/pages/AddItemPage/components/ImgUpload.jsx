@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { ReactComponent as AddIcon } from "../../../assets/images/icons/ic_add.svg";
+import { ReactComponent as DelIcon } from "../../../assets/images/icons/ic_del.svg";
+
 
 const Label = styled.label`
   display: block;
@@ -54,6 +56,22 @@ const ImgPreview = styled.div`
   border-radius: 12px;
 `;
 
+const DeleteBtnSection = styled.div`
+  position: absolute;
+  top: 12px;
+  right: 12px;
+`
+
+const DeleteBtn = styled.button`
+  background-color: #9CA3AF;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 function ImgUpload({ title }) {
   const [imgPreviewUrl, setImgPreviewUrl] = useState("");
 
@@ -65,6 +83,10 @@ function ImgUpload({ title }) {
       setImgPreviewUrl(imgUrl);
     }
   }
+
+  const handleDelete = () => {
+    setImgPreviewUrl(""); // 미리보기 URL 리셋
+  };
 
 	return (
 		<div>
@@ -84,6 +106,11 @@ function ImgUpload({ title }) {
 
         {imgPreviewUrl && (
           <ImgPreview src={imgPreviewUrl}>
+            <DeleteBtnSection>
+              <DeleteBtn onClick={handleDelete} label="이미지 파일">
+                <DelIcon />
+              </DeleteBtn>
+            </DeleteBtnSection>
           </ImgPreview>
         )}
       </ImgUploadContainer>
