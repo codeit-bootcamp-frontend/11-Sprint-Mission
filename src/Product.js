@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { getDetailItems, getItemCommit } from './service/api.js';
+import { getDetailItems, getItemComment } from './service/api.js';
 import { useParams, Link } from 'react-router-dom';
 import styles from './css/product.module.css';
 
@@ -112,7 +112,7 @@ function Product() {
     }
   };
 
-  const handleClickButton = () => {
+  const handleClickEditButton = () => {
     const updatedComments = [...comment];
     updatedComments[editingCommentIndex] = {
       ...updatedComments[editingCommentIndex],
@@ -136,7 +136,7 @@ function Product() {
   }, [isDropdownView]);
 
   useEffect(() => {
-    const contentLoad = async () => {
+    const loadContent = async () => {
       try {
         setItem(await getDetailItems(id));
       } catch (error) {
@@ -144,14 +144,14 @@ function Product() {
         throw new Error('상품 목록을 로드하는데 실패했습니다.');
       }
       try {
-        const { list } = await getItemCommit(id);
+        const { list } = await getItemComment(id);
         setComment(list);
       } catch (error) {
         console.error('댓글 목록 로드 중 오류 발생', error);
         throw new Error('댓글 목록을 로드하는데 실패했습니다.');
       }
     };
-    contentLoad();
+    loadContent();
   }, [id]);
 
   return (
@@ -298,7 +298,7 @@ function Product() {
                         className={styles.comment__button}
                         style={{ width: '106px', margin: 0 }}
                         type="button"
-                        onClick={handleClickButton}
+                        onClick={handleClickEditButton}
                       >
                         수정 완료
                       </button>
