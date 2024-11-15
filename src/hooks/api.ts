@@ -75,29 +75,47 @@ export async function getProductDetail(productId: number): Promise<Product> {
   }
 }
 
-// 상품 댓글 API
-export async function getProductDetailComment(
-  productId: number,
-  limit: number | null = null,
-  cursor: string | null = null
-): Promise<CommentResponse> {
-  let commentApiUrl = `${baseUrl}/products/${productId}/comments`;
+export interface Comment {
+  id: number;
+  content: string;
+  writer: {
+    nickname: string;
+  };
+}
 
-  if (limit !== null && cursor !== null) {
-    commentApiUrl += `?limit=${limit}&cursor=${cursor}`;
+export interface CommentResponse {
+  nextCursor: string | null;
+  list: Comment[];
+}
+
+// 상품 댓글 API 호출 함수
+export async function getComments(
+  productId: number,
+  limit: number = 100,
+  cursor?: string
+): Promise<CommentResponse> {
+  let url = `${baseUrl}/products/${productId}/comments?limit=${limit}`;
+  if (cursor) {
+    url += `&cursor=${cursor}`;
   }
 
   try {
-    const response = await fetch(commentApiUrl);
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
     if (!response.ok) {
-      console.error(`Error: ${response.statusText}`);
+      console.error(`API Error: ${response.status} - ${response.statusText}`);
       throw new Error('댓글 정보를 불러오는 데 실패했습니다.');
     }
 
     const data: CommentResponse = await response.json();
     return data;
   } catch (error) {
-    console.error('API 호출 중 오류 발생:', error);
+    console.error('Fetch Error:', error);
     throw error;
   }
 }
