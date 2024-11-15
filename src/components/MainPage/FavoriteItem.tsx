@@ -74,11 +74,11 @@ const FavoriteItem = () => {
   }, [pageSize]);
 
   if (loading) {
-    return <p>Loading...</p>; // 로딩 중일 때 표시할 내용
+    return <p>Loading...</p>;
   }
 
   if (error) {
-    return <p>Error: {error}</p>; // 에러 발생 시 표시할 내용
+    return <p>Error: {error}</p>;
   }
 
   return (
