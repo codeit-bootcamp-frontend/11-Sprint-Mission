@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './AddItem.module.scss';
 import HeadingTitleArea from '../components/common/HeadingTitleArea';
-import Button from '../components/common/Button';
+import Button from '../components//Button/Button';
 import Input from '../components/common/Input';
 import InputFile from '../components/common/InputFile';
 import TagsList from '../components/common/TagsList';
