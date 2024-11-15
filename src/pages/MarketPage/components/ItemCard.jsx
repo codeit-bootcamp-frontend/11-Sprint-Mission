@@ -1,9 +1,10 @@
 import React from "react";
 import { ReactComponent as HeartIcon } from "../../../assets/images/icons/ic_heart.svg";
+import { Link } from "react-router-dom";
 
 function ItemCard({ item }) {
   return (
-    <div className="itemCard">
+    <Link to={`/items/${item.id}`} className="itemCard">
       <img className="itemCardImg" src={item.images[0]} alt="이미지 미리보기" />
       <div className="itemInfo">
         <h2 className="itemName">{item.name}</h2>
@@ -13,7 +14,7 @@ function ItemCard({ item }) {
           {item.favoriteCount}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
