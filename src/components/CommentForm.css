@@ -1,16 +1,7 @@
-.product-inquiry {
+.comment-form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin: 20px auto;
-  width: 100%;
-  max-width: 1200px;
-}
-
-.product-inquiry h2 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 9px;
+  align-items: flex-end;
 }
 
 .inquiry-input {
@@ -29,7 +20,6 @@
 .submit-button {
   width: 74px;
   height: 42px;
-  align-self: flex-end;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;

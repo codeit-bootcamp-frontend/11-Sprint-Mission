@@ -15,6 +15,21 @@
   object-fit: cover;
 }
 
+.product-image-placeholder {
+  width: 486px;
+  height: 486px;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  background-color: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+
 .item-info {
   width: 100%;
   display: flex;
@@ -93,7 +108,7 @@
 .post-info {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   margin-top: 62px;
 }
 

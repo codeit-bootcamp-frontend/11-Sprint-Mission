@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import '../styles/AddItem.css';
-import PlusIcon from '../image/plus-icon.png';
-import RemoveButton from '../components/RemoveButton';
+import React, { useState } from "react";
+import "../styles/AddItem.css";
+import PlusIcon from "../image/plus-icon.png";
+import RemoveButton from "../components/RemoveButton";
 
 function AddItem() {
   const [image, setImage] = useState(null);
-  const [itemName, setItemName] = useState('');
-  const [itemIntro, setItemIntro] = useState('');
-  const [itemPrice, setItemPrice] = useState('');
+  const [itemName, setItemName] = useState("");
+  const [itemIntro, setItemIntro] = useState("");
+  const [itemPrice, setItemPrice] = useState("");
   const [itemTags, setItemTags] = useState([]);
 
   const isFormValid = itemName && itemIntro && itemPrice && itemTags;
@@ -28,10 +28,10 @@ function AddItem() {
   // 태그 추가 핸들러
   const handleTagAdd = (e) => {
     const tagValue = e.target.value.trim();
-    if (e.key === 'Enter' && tagValue && !itemTags.includes(tagValue)) {
+    if (e.key === "Enter" && tagValue && !itemTags.includes(tagValue)) {
       e.preventDefault();
       setItemTags([...itemTags, tagValue]);
-      e.target.value = '';
+      e.target.value = "";
     }
   };
 

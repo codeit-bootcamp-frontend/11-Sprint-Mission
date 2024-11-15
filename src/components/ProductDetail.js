@@ -29,14 +29,18 @@ function ProductDetail() {
   return (
     <div className="item-detail">
       <div className="item-images">
-        {product.images.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt={product.name}
-            className="product-image"
-          />
-        ))}
+        {product.images && product.images.length > 0 ? (
+          product.images.map((image, index) => (
+            <img
+              key={index}
+              src={image}
+              alt={product.name}
+              className="product-image"
+            />
+          ))
+        ) : (
+          <div className="product-image-placeholder">이미지가 없습니다</div>
+        )}
       </div>
 
       <div className="item-info">
