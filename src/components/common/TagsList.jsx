@@ -1,5 +1,5 @@
 import styles from './TagsList.module.scss';
-import Button from './Button';
+import Button from '../Button/Button';
 
 function TagsList({ tags = [], onRemove = null }) {
   return (

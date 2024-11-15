@@ -9,7 +9,7 @@ import useProductsFavorite from '../hooks/useProductsFavorite';
 import ProductsList from '../components/Items/ProductsList';
 import PageNation from '../components/common/PageNation';
 import SearchInput from '../components/common/SearchInput';
-import Button from '../components/common/Button';
+import Button from '../components/Button/Button';
 import DropDown from '../components/common/SelectMenu';
 import HeadingTitleArea from '../components/common/HeadingTitleArea';
 
@@ -74,7 +74,7 @@ function Items() {
           <HeadingTitleArea>
             <h2>전체 상품</h2>
             <SearchInput onSubmit={handleSearchSubmit} />
-            <StyledItemButton href='/addItem' size='small'>
+            <StyledItemButton href='/addItem' color='blue'>
               상품 등록하기
             </StyledItemButton>
             <DropDown>

@@ -1,7 +1,7 @@
 import './InputFile.scss';
 import IC_PLUS from '../../assets/ic_plus.svg';
 import { useEffect, useRef, useState } from 'react';
-import Button from './Button';
+import Button from '../Button/Button';
 import Images from './Images';
 
 function InputFile() {
