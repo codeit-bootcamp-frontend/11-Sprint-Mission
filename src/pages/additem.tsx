@@ -4,10 +4,10 @@ import React, { useState } from 'react';
 import ImageUpload from '../components/additem/ImageUpload';
 import '../styles/additem/additem.css';
 
-interface ProductTag {
-  id: number;
-  name: string;
-}
+// interface ProductTag {
+//   id: number;
+//   name: string;
+// }
 
 function Additem() {
   const [productName, setProductName] = useState<string>('');

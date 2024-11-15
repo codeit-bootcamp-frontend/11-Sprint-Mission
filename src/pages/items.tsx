@@ -93,6 +93,7 @@ function Items() {
   // 페이지나 정렬 기준 변경 시 상품 로드
   useEffect(() => {
     loadProductsForPage(); // 페이지 전환 또는 정렬 기준 변경 시 상품 로드
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage, order, allItems]);
 
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);

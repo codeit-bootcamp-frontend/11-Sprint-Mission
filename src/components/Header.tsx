@@ -37,7 +37,7 @@ function Header() {
             </NavLink>
           </nav>
         </div>
-        <a href="#">
+        <a href="/">
           <img src={loginImg} alt="loginImgBtn" />
         </a>
       </div>

@@ -9,7 +9,7 @@ interface ProductListProps {
 
 interface ProductListItem {
   id: number;
-  images: string;
+  images: any;
   name: string;
   price: number;
   favoriteCount: number;
