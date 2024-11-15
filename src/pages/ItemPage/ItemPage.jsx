@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { getProductDetail } from "../../api/itemApi";
 import { useParams } from "react-router-dom";
 import ItemProfile from "./component/ItemProfile";
+import ItemComment from "./component/ItemComment";
 
 const Container = styled.div`
   display: flex;
@@ -18,6 +19,15 @@ const Container = styled.div`
     padding: 24px 0;
     margin: 0 auto;
   }
+`;
+
+const Line = styled.div`
+  width: 100%;
+  border: none;
+  height: 1px;
+  background-color: #E5E7EB;
+  margin: ${(props) =>
+    props.$margin || "16px 0"};
 `;
 
 function ItemPage() {
@@ -54,6 +64,10 @@ function ItemPage() {
 	return (
 		<Container>
 			<ItemProfile product={product} />
+
+			<Line />
+
+			<ItemComment productId={productId} />
 		</Container>
 	)
 }
