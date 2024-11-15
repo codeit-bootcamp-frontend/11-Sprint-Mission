@@ -68,3 +68,17 @@
 .dropdown-menu button:hover {
   background-color: #f5f5f5;
 }
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .inquiry-item {
+    width: 100%;
+    padding: 16px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .inquiry-item {
+    width: 100%;
+    padding: 24px;
+  }
+}

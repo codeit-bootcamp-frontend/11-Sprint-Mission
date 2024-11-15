@@ -4,6 +4,13 @@
   align-items: flex-end;
 }
 
+.comment-form h2 {
+  align-self: flex-start;
+  margin-bottom: 9px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
 .inquiry-input {
   max-width: 1200px;
   width: 100%;
@@ -41,4 +48,16 @@
 .submit-button.active {
   background-color: #3692ff;
   cursor: pointer;
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .comment-form {
+    padding: 16px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .comment-form {
+    padding: 24px;
+  }
 }

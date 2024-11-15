@@ -12,6 +12,7 @@ function CommentForm({ onSubmit }) {
 
   return (
     <div className="comment-form">
+      <h2>문의하기</h2>
       <textarea
         className="inquiry-input"
         value={content}

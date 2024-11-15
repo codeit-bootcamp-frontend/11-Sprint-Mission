@@ -67,7 +67,6 @@ function ProductComment() {
 
   return (
     <div className="product-inquiry">
-      <h2 className="inquiry-title">문의하기</h2>
       <CommentForm onSubmit={handleAddComment} />
       <div className="inquiry-list">
         {comments.map((comment) => (
