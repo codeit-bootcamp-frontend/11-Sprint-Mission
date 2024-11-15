@@ -14,7 +14,7 @@ import HeartCountArea from '../components/common/HeartCountArea';
 import Images from '../components/common/Images';
 import TagsList from '../components/common/TagsList';
 import DropDownMenu from '../components/common/DropDownMenu';
-import Button from '../components/common/Button';
+import Button from '../components/Button/Button';
 import UserInfo from '../components/common/UserInfo';
 
 import INQUIRY_IMAGE from '../assets/Img_inquiry_empty.svg';

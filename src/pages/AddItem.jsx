@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './AddItem.module.scss';
 import HeadingTitleArea from '../components/common/HeadingTitleArea';
-import Button from '../components/Button/Button';
+import Button from '../components/common/Button';
 import Input from '../components/common/Input';
 import InputFile from '../components/common/InputFile';
 import TagsList from '../components/common/TagsList';
@@ -61,7 +61,10 @@ function AddItem() {
         <form>
           <HeadingTitleArea>
             <h2>상품 등록하기</h2>
-            <Button color='blue' disabled={!isFormValid}>
+            <Button
+              className='post'
+              color={!isFormValid ? 'gray' : 'blue'}
+              disabled={!isFormValid && formValues.length > 0}>
               등록
             </Button>
           </HeadingTitleArea>
