@@ -1,7 +1,5 @@
 {
-
   "compilerOptions": {
-
     "baseUrl": "src",
 
     "target": "es5",
@@ -32,10 +30,8 @@
 
     "jsx": "react", // or "react-jsx" for React 17+
 
-    "forceConsistentCasingInFileNames": true,
-
+    "forceConsistentCasingInFileNames": true
   },
 
-  "include": ["src"]
-
+  "include": ["src", "src/custom.d.ts"]
 }

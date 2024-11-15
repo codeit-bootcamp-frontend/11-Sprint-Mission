@@ -1,13 +1,22 @@
-import { Link, useNavigate } from "react-router-dom";
-import "./BestProducts.css";
-import heart from "../assets/icons/ic_heart.svg";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import './BestProducts.css';
+import heart from '../assets/icons/ic_heart.svg';
 
-function Product({ item }) {
+interface ProductItem {
+  id?: string;
+  images?: string;
+  name?: string;
+  price?: number;
+  favoriteCount?: number;
+}
+
+function Product({ item }: { item: ProductItem }) {
   const { images, name, price, favoriteCount } = item;
   const navigate = useNavigate();
 
   const handleDetailClick = () => {
-    navigate("/:productId");
+    navigate('/:productId');
   };
 
   return (
@@ -15,7 +24,7 @@ function Product({ item }) {
       <img src={images} alt={name} className="best-product-img" />
       <div className="text-box">
         <h3 className="product-name">{name}</h3>
-        <p className="product-price">{price + "원"}</p>
+        <p className="product-price">{price + '원'}</p>
         <div className="heart">
           <img src={heart} alt="좋아요" />
           <p className="like-it">{favoriteCount}</p>
@@ -25,11 +34,11 @@ function Product({ item }) {
   );
 }
 
-function BestProducts({ items }) {
+function BestProducts({ items }: { items: ProductItem[] }) {
   return (
     <div className="best-products-container">
       {items && items.length > 0 ? (
-        items.map((item) => (
+        items.map(item => (
           <div key={item.id}>
             <Link to={`/items/${item.id}`}>
               <Product item={item} />

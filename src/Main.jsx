@@ -1,9 +1,9 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import App from "./components/App";
-import HomePage from "./pages/HomePage";
-import ItemsPage from "./pages/ItemsPage";
-import AddItemPage from "./pages/AddItemPage";
-import ItemDetailPage from "./pages/ItemDetailPage";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import App from 'components/App';
+import HomePage from './pages/HomePage';
+import ItemsPage from './pages/ItemsPage';
+import AddItemPage from './pages/AddItemPage';
+import ItemDetailPage from './pages/ItemDetailPage';
 
 function Main() {
   return (

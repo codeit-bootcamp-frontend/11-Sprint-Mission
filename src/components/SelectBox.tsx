@@ -1,4 +1,4 @@
-import "./SelectBox.css";
+import React from "react";
 
 function SelectBox() {
   return (

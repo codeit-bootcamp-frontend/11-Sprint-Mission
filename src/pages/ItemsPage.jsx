@@ -7,7 +7,6 @@ import EntireProducts from "../components/EntireProducts";
 import PageButton from "../components/PageButton";
 import "../utils/Style.css";
 import "./ItemsPage.css";
-import "../components/SearchBar.css";
 import magnifier from "../assets/icons/ic_magnifier.svg";
 
 function ItemsPage() {

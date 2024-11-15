@@ -1,6 +1,11 @@
+import React, {ReactNode} from "react";
 import "./SmallButton.css"
 
-function SmallButton({ children }) {
+interface ButtonProp {
+  children: ReactNode;
+}
+
+function SmallButton({ children }: ButtonProp) {
   return (
     <>
       <button className="small-button">

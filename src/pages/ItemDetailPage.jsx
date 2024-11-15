@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getComment } from "../api/api";
 import Nav from "../components/Nav";
-import ItemDetail from "../components/ItemDetail";
+import ItemDetail from "../components/ItemDetail.jsx";
 import Comments from "../components/Comments";
 import BackIcon from "../assets/icons/ic_back.svg";
 import "./ItemDetailPage.css";

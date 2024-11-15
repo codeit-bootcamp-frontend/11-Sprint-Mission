@@ -1,14 +1,23 @@
-import { Link, useNavigate } from "react-router-dom";
-import "./EntireProducts.css";
-import heart from "../assets/icons/ic_heart.svg";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import heart from '../assets/icons/ic_heart.svg';
+import './EntireProducts.css';
 
-function Product({ item }) {
+interface ProductItem {
+  id?: string;
+  images?: string;
+  name?: string;
+  price?: number;
+  favoriteCount?: number;
+}
+
+function Product({ item }: { item: ProductItem }) {
   const { images, name, price, favoriteCount } = item;
 
   const navigate = useNavigate();
 
   const handleDetailClick = () => {
-    navigate("/:productId");
+    navigate('/:productId');
   };
 
   return (
@@ -16,7 +25,7 @@ function Product({ item }) {
       <img src={images} alt={name} className="entire-product-img" />
       <div className="text-box">
         <h3 className="product-name">{item.name}</h3>
-        <p className="product-price">{price + "원"}</p>
+        <p className="product-price">{price + '원'}</p>
         <div className="heart">
           <img src={heart} className="heart-img" alt="좋아요" />
           <p className="like-it">{favoriteCount}</p>
@@ -26,11 +35,11 @@ function Product({ item }) {
   );
 }
 
-function EntireProducts({ items }) {
+function EntireProducts({ items }: { items: ProductItem[] }) {
   return (
     <div className="entire-products-container">
       {items && items.length > 0 ? (
-        items.map((item) => (
+        items.map(item => (
           <div key={item.id}>
             <Link to={`/items/${item.id}`}>
               <Product item={item} />
