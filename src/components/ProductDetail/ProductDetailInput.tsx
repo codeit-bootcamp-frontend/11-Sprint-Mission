@@ -1,10 +1,14 @@
-import { getProductDetailComment } from '../../hooks/api';
-import { useState } from 'react';
+// import { getProductDetailComment } from '../../hooks/api';
+import React, { useState } from 'react';
 
-function ProductDetailInput() {
-  const [inputValue, setInputValue] = useState('');
+interface ProductDetailInputProps {
+  productId: number;
+}
 
-  const handleInputChange = (e) => {
+function ProductDetailInput({ productId }: ProductDetailInputProps) {
+  const [inputValue, setInputValue] = useState<string>('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputValue(e.target.value);
   };
 

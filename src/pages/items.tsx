@@ -2,22 +2,30 @@ import ProductList from '../components/ProductList';
 import BestProduct from '../components/BestProduct';
 import Pagination from '../components/Pagination';
 import '../styles/items.css';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getProducts } from '../hooks/api';
 import { Link } from 'react-router-dom';
 
 const LIMIT = 6; // 한 페이지에 보여줄 아이템 수
 
+interface Product {
+  id: number;
+  images: any;
+  name: string;
+  price: number;
+  favoriteCount: number;
+}
+
 function Items() {
-  const [order, setOrder] = useState('recent'); // 정렬 기준
-  const [items, setItems] = useState([]); // 현재 페이지 상품 목록
-  const [bestItems, setBestItems] = useState([]); // 베스트 상품 목록
-  const [allItems, setAllItems] = useState([]); // 전체 상품 목록
-  const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
-  const [totalItems, setTotalItems] = useState(0); // 전체 아이템 수
-  const [dropdownOpen, setDropdownOpen] = useState(false); // 드롭다운 열림 상태
-  const [loading, setLoading] = useState(true); // 로딩 상태
-  const [error, setError] = useState(null); // 에러 상태
+  const [order, setOrder] = useState<'recent' | 'favoriteCount'>('recent'); // 정렬 기준
+  const [items, setItems] = useState<Product[]>([]); // 현재 페이지 상품 목록
+  const [bestItems, setBestItems] = useState<Product[]>([]); // 베스트 상품 목록
+  const [allItems, setAllItems] = useState<Product[]>([]); // 전체 상품 목록
+  const [currentPage, setCurrentPage] = useState<number>(1); // 현재 페이지
+  const [totalItems, setTotalItems] = useState<number>(0); // 전체 아이템 수
+  const [dropdownOpen, setDropdownOpen] = useState<boolean>(false); // 드롭다운 열림 상태
+  const [loading, setLoading] = useState<boolean>(true); // 로딩 상태
+  const [error, setError] = useState<string | null>(null); // 에러 상태
 
   // 전체 상품을 불러오는 함수
   const loadAllProducts = async () => {
@@ -88,7 +96,7 @@ function Items() {
   }, [currentPage, order, allItems]);
 
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
-  const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
+  const handlePageChange = (pageNumber: number) => setCurrentPage(pageNumber);
 
   if (loading) {
     return <div>상품 정보를 불러오는 중입니다...</div>;

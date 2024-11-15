@@ -1,4 +1,14 @@
-function AdditemButton({ onSubmit, disabled }) {
+import React from 'react';
+
+interface AdditemButtonProps {
+  onSubmit: () => void;
+  disabled?: boolean;
+}
+
+const AdditemButton: React.FC<AdditemButtonProps> = ({
+  onSubmit,
+  disabled,
+}) => {
   return (
     <button
       className={`upButton ${disabled ? 'disabled' : 'active'}`}
@@ -8,6 +18,6 @@ function AdditemButton({ onSubmit, disabled }) {
       등록
     </button>
   );
-}
+};
 
 export default AdditemButton;

@@ -1,12 +1,18 @@
-import { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
-function ImageUpload({ name, value, onChange }) {
-  const [preview, setPreview] = useState();
-  const [message, setMessage] = useState(''); // 메시지 상태 관리
-  const inputRef = useRef(null);
+interface ImageUploadProps {
+  name: string;
+  value: File | null;
+  onChange: (name: string, file: File | null) => void;
+}
 
-  const handleChange = (e) => {
-    const nextValue = e.target.files[0];
+const ImageUpload: React.FC<ImageUploadProps> = ({ name, value, onChange }) => {
+  const [preview, setPreview] = useState<string | undefined>();
+  const [message, setMessage] = useState<string>(''); // 메시지 상태 관리
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const nextValue = e.target.files ? e.target.files[0] : null;
     onChange(name, nextValue);
   };
 
@@ -26,12 +32,12 @@ function ImageUpload({ name, value, onChange }) {
     setPreview(nextPreview);
 
     return () => {
-      setPreview();
+      setPreview(undefined);
       URL.revokeObjectURL(nextPreview);
     };
   }, [value]);
 
-  const handleLabelClick = (e) => {
+  const handleLabelClick = (e: React.MouseEvent<HTMLLabelElement>) => {
     if (preview) {
       e.preventDefault();
       setMessage('*이미지 등록은 최대 1개까지 가능합니다.');
@@ -77,6 +83,6 @@ function ImageUpload({ name, value, onChange }) {
       {message && <p className="errorMessage">{message}</p>}
     </div>
   );
-}
+};
 
 export default ImageUpload;

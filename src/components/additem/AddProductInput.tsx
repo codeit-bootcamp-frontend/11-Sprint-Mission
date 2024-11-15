@@ -1,6 +1,18 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-function AddProductInput({
+interface AddProductInputProps {
+  productName: string;
+  productContent: string;
+  productPrice: string;
+  productTag: string;
+  onNameChange: (value: string) => void;
+  onContentChange: (value: string) => void;
+  onPriceChange: (value: string) => void;
+  onTagChange: (value: string) => void;
+  onTagsUpdate: (tags: string[]) => void;
+}
+
+const AddProductInput: React.FC<AddProductInputProps> = ({
   productName,
   productContent,
   productPrice,
@@ -10,8 +22,8 @@ function AddProductInput({
   onPriceChange,
   onTagChange,
   onTagsUpdate,
-}) {
-  const [tags, setTags] = useState([]);
+}) => {
+  const [tags, setTags] = useState<string[]>([]);
 
   const handleTagSubmit = () => {
     if (productTag.trim() !== '') {
@@ -22,14 +34,14 @@ function AddProductInput({
     }
   };
 
-  const handleKeyPress = (e) => {
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === ' ' || e.key === ',' || e.key === 'Enter') {
       e.preventDefault();
       handleTagSubmit();
     }
   };
 
-  const handleTagDelete = (indexToDelete) => {
+  const handleTagDelete = (indexToDelete: number) => {
     setTags(tags.filter((_, index) => index !== indexToDelete));
   };
 
@@ -78,6 +90,6 @@ function AddProductInput({
       </div>
     </form>
   );
-}
+};
 
 export default AddProductInput;

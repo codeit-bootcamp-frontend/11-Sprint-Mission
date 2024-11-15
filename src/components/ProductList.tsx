@@ -1,8 +1,21 @@
 import '../styles/ProductList.css';
 import icHeart from '../assets/ic_heart.svg';
 import { NavLink } from 'react-router-dom';
+import React from 'react';
 
-function ProductList({ items }) {
+interface ProductListProps {
+  items: ProductListItem[];
+}
+
+interface ProductListItem {
+  id: number;
+  images: string;
+  name: string;
+  price: number;
+  favoriteCount: number;
+}
+
+function ProductList({ items }: ProductListProps) {
   if (!items || !Array.isArray(items)) {
     return <div>상품 목록이 없습니다.</div>;
   }
