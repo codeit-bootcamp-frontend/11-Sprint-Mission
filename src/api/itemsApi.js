@@ -1,9 +1,9 @@
+const BASE_URL = "https://panda-market-api.vercel.app/";
+
 export async function fetchProducts(params = {}) {
   const query = new URLSearchParams(params).toString();
   try {
-    const response = await fetch(
-      `https://panda-market-api.vercel.app/products?${query}`
-    );
+    const response = await fetch(`${BASE_URL}products?${query}`);
     if (!response.ok) {
       throw new Error(`HTTP error: ${response.status}`);
     }
@@ -17,9 +17,7 @@ export async function fetchProducts(params = {}) {
 
 export async function fetchProductDetail(productId) {
   try {
-    const response = await fetch(
-      `https://panda-market-api.vercel.app/products/${productId}`
-    );
+    const response = await fetch(`${BASE_URL}products/${productId}`);
     if (!response.ok) {
       throw new Error(`HTTP error: ${response.status}`);
     }
@@ -31,16 +29,17 @@ export async function fetchProductDetail(productId) {
   }
 }
 
-export async function fetchComments(productId, params) {
+export async function fetchComments(productId, params = {}) {
   try {
     const query = new URLSearchParams(params).toString();
     const response = await fetch(
-      `https://panda-market-api.vercel.app/products/${productId}/comments?${query}`
+      `${BASE_URL}products/${productId}/comments?${query}`
     );
     if (!response.ok) {
       throw new Error(`HTTP error: ${response.status}`);
     }
     const data = await response.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.error("Error fetching comments:", error);

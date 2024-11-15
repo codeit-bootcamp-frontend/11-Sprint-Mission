@@ -3,6 +3,7 @@ import { fetchProductDetail } from "../../api/itemsApi";
 import { useParams } from "react-router-dom";
 import ItemInfo from "./components/ItemInfo";
 import CommentForm from "./components/ItemCommentForm";
+import CommentList from "./components/ItemCommentList";
 
 function ItemDetail() {
   const { productId } = useParams();
@@ -26,6 +27,7 @@ function ItemDetail() {
     <div className="container">
       <ItemInfo product={product} />
       <CommentForm />
+      <CommentList />
     </div>
   );
 }
