@@ -1,14 +1,27 @@
-import { useEffect, useState } from 'react';
-import { switchGnbClass } from '../utils/utils';
+import { ChangeEvent, FormEvent, KeyboardEvent, useRef, useState } from 'react';
 //
-import FileInput from '../Components/FileInput';
-import Tag from '../Components/Tag';
-import Meta from '../Components/Meta';
+import FileInput from '../components/FileInput';
+import Tag from '../components/Tag';
+import Meta from '../components/Meta';
 //
 import styles from './AddItem.module.css';
 
+interface Props {
+  title: string;
+  desc: string;
+}
+
+interface ValuesType {
+  // [key: string]: any
+  images: File | null;
+  name: string;
+  description: string;
+  price: number;
+  tags: string[];
+}
+
 // form 초기값
-const INITIAL_VALUES = {
+const INITIAL_VALUES: ValuesType = {
   images: null,
   name: '',
   description: '',
@@ -20,11 +33,12 @@ const INITIAL_VALUES = {
  * 상품 등록 페이지
  * @return {JSX}
  */
-function AddItem({ title, desc }) {
-  const [values, setValues] = useState(INITIAL_VALUES);
+function AddItem({ title, desc }: Props) {
+  const [values, setValues] = useState<ValuesType>(INITIAL_VALUES);
+  // const tagsInput = useRef<HTMLInputElement | null>(null);
 
   // 값 변경에 따른 처리: 비제어
-  const handleChange = (name, value) => {
+  const handleChange = (name: string, value: any) => {
     setValues((prevValues) => ({
       ...prevValues,
       [name]: value,
@@ -32,17 +46,17 @@ function AddItem({ title, desc }) {
   };
 
   // 인풋 값 변경에 따른 처리: 제어
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     handleChange(name, value);
   };
 
   // tag 값 입력
-  const handleTagsKeydown = (e) => {
+  const handleTagsKeydown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key !== 'Enter') return;
     e.preventDefault();
 
-    const el = e.target;
+    const el = e.currentTarget;
     const value = el.value.trim();
     const hasValue = values.tags.includes(value);
 
@@ -53,7 +67,7 @@ function AddItem({ title, desc }) {
     el.value = '';
   };
   // tag 값 삭제
-  const onTagDelete = (idx) => {
+  const onTagDelete = (idx: number) => {
     handleChange(
       'tags',
       values.tags.filter((item, index) => index !== idx),
@@ -61,25 +75,15 @@ function AddItem({ title, desc }) {
   };
 
   // 폼 서브밋 처리
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formData = new FormData();
-    for (const key in values) {
-      formData.append(key, values[key]);
+    for (const [key, value] of Object.entries(values)) {
+      formData.append(key, value);
     }
     console.log('폼데이터 完:', formData.get('name'));
   };
-
-  useEffect(() => {
-    // 상단 네비 '중고마켓' 활성화
-    switchGnbClass('market');
-
-    return () => {
-      // gnb 클래스 삭제
-      switchGnbClass();
-    };
-  }, []);
 
   // 등록 버튼 활성화 여부
   const disabled =
@@ -89,7 +93,7 @@ function AddItem({ title, desc }) {
     <>
       <Meta title={title} description={desc} />
 
-      <form className="mt-6 mb-16 flex flex-col gap-8" onSubmit={handleSubmit}>
+      <form className="mb-16 mt-6 flex flex-col gap-8" onSubmit={handleSubmit}>
         <div className="flex justify-between">
           <h2 className={styles.title}>상품 등록하기</h2>
           <button className="btn" type="submit" disabled={disabled}>
@@ -122,7 +126,7 @@ function AddItem({ title, desc }) {
             name="description"
             value={values.description}
             placeholder="상품 소개를 입력해주세요"
-            rows="8"
+            rows={8}
             onChange={handleInputChange}
             required
           />
