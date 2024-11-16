@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
-import InputFile from '../../components/common/InputFile';
-import TagsList from '../../components/common/TagsList';
+import TagsList from '../../components/Tags/TagsList';
 import { Container, Page } from '../../styles/Common.styles';
+import InputFile from '../../components/InputFile/InputFile';
+import { AddProdForm, AddProdTitle } from './AddProd.styles';
 
 function AddProd() {
   const [formValues, setFormValues] = useState({
@@ -58,68 +59,56 @@ function AddProd() {
   return (
     <Page>
       <Container>
-        <form>
-          <h2>상품 등록하기</h2>
-          <Button
-            className='post'
-            color={!isFormValid ? 'gray' : 'blue'}
-            disabled={!isFormValid && formValues.length > 0}>
-            등록
-          </Button>
-          <div>
-            <div>
-              <h3>상품이미지</h3>
-              <InputFile />
-            </div>
-            <div>
-              <h3>상품명</h3>
+        <AddProdForm>
+          <AddProdTitle>
+            <h2>상품 등록하기</h2>
+            <Button color='blue' disabled={!isFormValid}>
+              등록
+            </Button>
+          </AddProdTitle>
+          <div className='input-list'>
+            <InputFile title='상품등록' />
+            <Input
+              title='상품명'
+              placeholder='상품명을 입력해주세요'
+              name='productName'
+              value={formValues.productName}
+              onChange={handleInputChange}
+            />
+            <Input
+              title='상품소개'
+              as='textarea'
+              placeholder='상품 소개를 입력해주세요'
+              name='productDescription'
+              value={formValues.productDescription}
+              onChange={handleInputChange}
+            />
+            <Input
+              type='number'
+              title='판매가격'
+              placeholder='판매 가격을 입력해주세요'
+              name='productPrice'
+              value={formValues.productPrice}
+              onChange={handleInputChange}
+            />
+            <div className='input-tag'>
               <Input
-                placeholder='상품명을 입력해주세요'
-                name='productName'
-                value={formValues.productName}
+                title='태그'
+                placeholder='태그를 입력해주세요'
+                name='productTags'
+                value={tagInputValue}
                 onChange={handleInputChange}
+                onKeyDown={handleAddTagInput}
               />
-            </div>
-            <div>
-              <h3>상품소개</h3>
-              <textarea
-                className='default'
-                name='productDescription'
-                placeholder='상품 소개를 입력해주세요'
-                value={formValues.productDescription}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div>
-              <h3>판매가격</h3>
-              <Input
-                type='number'
-                placeholder='판매 가격을 입력해주세요'
-                name='productPrice'
-                value={formValues.productPrice}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div>
-              <h3>태그</h3>
-              <div>
-                <Input
-                  placeholder='태그를 입력해주세요'
-                  name='productTags'
-                  value={tagInputValue}
-                  onChange={handleInputChange}
-                  onKeyDown={handleAddTagInput}
+              {formValues.productTags.length && (
+                <TagsList
+                  tags={formValues.productTags}
+                  onRemove={handleRemoveTag}
                 />
-                {!formValues.productTags.length && (
-                  <TagsList
-                    tags={formValues.productTags}
-                    onRemove={handleRemoveTag}
-                  />
-                )}
-              </div>
+              )}
             </div>
           </div>
-        </form>
+        </AddProdForm>
       </Container>
     </Page>
   );

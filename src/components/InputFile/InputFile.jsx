@@ -1,10 +1,16 @@
-import './InputFile.scss';
-import IC_PLUS from '../../assets/ic_plus.svg';
 import { useEffect, useRef, useState } from 'react';
-import Button from '../Button/Button';
-import Images from './Images';
+import IC_PLUS from '../../assets/ic_plus.svg';
 
-function InputFile() {
+import {
+  FileContainer,
+  FileArea,
+  FileInput,
+  FileInputError,
+  PreviewContainer,
+  PreviewButton,
+} from './InputFile.styles';
+
+function InputFile({ title }) {
   const [preview, setPreview] = useState(null);
   const [error, setError] = useState('');
   const fileInputRef = useRef(null);
@@ -42,13 +48,14 @@ function InputFile() {
   }, [preview]);
 
   return (
-    <>
-      <div className='productFile-area'>
+    <FileContainer>
+      {title && <h3>{title}</h3>}
+      <FileArea>
         <label htmlFor='productFile'>
-          <img src={IC_PLUS} alt='플러스 아이콘' className='icon-plus' />
-          <div className='input-file'>이미지 등록</div>
+          <img src={IC_PLUS} alt='플러스 아이콘' />
+          <span>이미지 등록</span>
         </label>
-        <input
+        <FileInput
           type='file'
           name='file'
           id='productFile'
@@ -56,23 +63,14 @@ function InputFile() {
           ref={fileInputRef}
         />
         {preview && (
-          <Images
-            classNames='productFile-preview'
-            imageSize={{
-              pcSize: 'large',
-              tabletSize: 'big-small',
-              mobileSize: 'big-small',
-            }}
-            src={preview}
-            alt='이미지 프리뷰'>
-            <Button link={false} className='clear' onClick={handleClearClick}>
-              삭제
-            </Button>
-          </Images>
+          <PreviewContainer>
+            <img src={preview} alt='이미지 프리뷰' />
+            <PreviewButton onClick={handleClearClick} />
+          </PreviewContainer>
         )}
-      </div>
-      {error && <p className='productFile-error'>{error}</p>}
-    </>
+      </FileArea>
+      {error && <FileInputError>{error}</FileInputError>}
+    </FileContainer>
   );
 }
 

@@ -1,12 +1,14 @@
 import Button from '../../components/Button/Button';
 import Heart from '../../components/HeartButton/HeartButton';
 import ProdCard from '../../components/ProdCard/ProdCard';
-import InputAddFile from '../../components/InputFile/InputAddFile';
+import InputFile from '../../components/InputFile/InputFile';
 import { TestContainer, Table, Th, Td, TdContainer } from './Test.styles';
 import NotResult from '../../components/NotResult/NotResult';
 import UserInfo from '../../components/UserInfo/UserInfo';
 import Input from '../../components/Input/Input';
 import ComentPost from '../../components/Coment/ComentPost';
+import BtnClose from '../../components/Shared/BtnClose/BtnClose';
+import Tag from '../../components/Tags/Tag';
 
 function Test() {
   return (
@@ -39,6 +41,25 @@ function Test() {
             </tr>
 
             <tr>
+              <Td>BtnClose</Td>
+              <Td>
+                <TdContainer>
+                  <BtnClose onClick={() => {}} />
+                </TdContainer>
+              </Td>
+            </tr>
+
+            <tr>
+              <Td>Tag</Td>
+              <Td>
+                <TdContainer>
+                  <Tag tag='태그 삭제 없음' />
+                  <Tag tag='태그 삭제 있음' onRemove={() => {}} />
+                </TdContainer>
+              </Td>
+            </tr>
+
+            <tr>
               <Td>Heart</Td>
               <Td>
                 <TdContainer>
@@ -66,7 +87,8 @@ function Test() {
               <Td>InputAddFile</Td>
               <Td>
                 <TdContainer>
-                  <InputAddFile />
+                  <InputFile />
+                  <InputFile title='상품등록' />
                 </TdContainer>
               </Td>
             </tr>
@@ -126,6 +148,7 @@ function Test() {
               <Td>
                 <TdContainer>
                   <Input placeholder='플레이스 홀더 입니다.' />
+                  <Input type='number' placeholder='number 타입' />
                   <Input as='textarea' placeholder='플레이스 홀더 입니다.' />
                   <Input
                     title='일반 인풋'

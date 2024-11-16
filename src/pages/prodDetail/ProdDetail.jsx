@@ -2,7 +2,7 @@ import { formatPrice } from '../../utils/format';
 
 import { StyledProdContainer } from './ProdDetail.styles';
 
-import TagsList from '../../components/common/TagsList';
+import TagsList from '../../components/Tags/TagsList';
 import DropDownMenu from '../../components/DropDownMenu/DropDownMenu';
 import UserInfo from '../../components/UserInfo/UserInfo';
 import Line from '../../components/Line/Line';
