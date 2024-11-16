@@ -1,11 +1,11 @@
 import USER_PROFILE from '../../assets/ic-profile-default.png';
-import styles from './ProfileImage.module.scss';
+import StyledProfileContainer from './ProfileImage.styles';
 
 const ProfileImage = ({ imageSize = 'big' }) => {
   return (
-    <div className={`${styles['user-profile']} ${styles[imageSize]}`}>
+    <StyledProfileContainer imageSize={imageSize}>
       <img src={USER_PROFILE} alt='유저 프로필' />
-    </div>
+    </StyledProfileContainer>
   );
 };
 

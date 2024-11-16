@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import './SelectMenu.scss';
+
+import StyledSelectContainer from './SelectMenu.styles';
 
 function SelectMenu({ children }) {
   const [isOptionVisible, setIsOptionVisible] = useState(false);
@@ -18,7 +19,7 @@ function SelectMenu({ children }) {
   };
 
   return (
-    <div className='select'>
+    <StyledSelectContainer>
       <button className='select-title' onClick={handleSelectClick}>
         {selectedLabel ||
           children.find((child) => child.type.displayName === 'Title')?.props
@@ -41,7 +42,7 @@ function SelectMenu({ children }) {
             ))}
         </div>
       )}
-    </div>
+    </StyledSelectContainer>
   );
 }
 

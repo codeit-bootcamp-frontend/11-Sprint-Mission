@@ -9,7 +9,7 @@ import Login from '../pages/Login';
 import ProdDetailPage from '../pages/ProdDetail/ProdDetailPage';
 import Test from '../pages/Test/Test';
 
-export default function AppRoutes() {
+const AppRoutes: React.FC = () => {
   return (
     <Routes>
       <Route path='/' element={<Main />} />
@@ -24,4 +24,6 @@ export default function AppRoutes() {
       <Route path='*' element={<Notfound />} />
     </Routes>
   );
-}
+};
+
+export default AppRoutes;

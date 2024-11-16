@@ -1,4 +1,4 @@
-import './PageNation.scss';
+import StyledPagination from './PageNation.styles';
 
 const PageNation = ({ total, pageSize, setCurrentPage, currentPage }) => {
   const totalPageNum = Math.ceil(total / pageSize);
@@ -39,7 +39,7 @@ const PageNation = ({ total, pageSize, setCurrentPage, currentPage }) => {
   const pages = getPageNumbers();
 
   return (
-    <ul className='pagination'>
+    <StyledPagination>
       <li
         className='pagination-item arrow-prev'
         onClick={handleArrowPrevClick}></li>
@@ -54,7 +54,7 @@ const PageNation = ({ total, pageSize, setCurrentPage, currentPage }) => {
       <li
         className='pagination-item arrow-next'
         onClick={handleArrowNextClick}></li>
-    </ul>
+    </StyledPagination>
   );
 };
 

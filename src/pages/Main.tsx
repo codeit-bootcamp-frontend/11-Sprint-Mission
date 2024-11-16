@@ -1,4 +1,4 @@
-const Main = (props) => {
+function Main() {
   return (
     <>
       <main className='page-main'>
@@ -6,6 +6,6 @@ const Main = (props) => {
       </main>
     </>
   );
-};
+}
 
 export default Main;

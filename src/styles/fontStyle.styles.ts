@@ -1,6 +1,17 @@
 import { css } from 'styled-components';
 
-const baseFont = {
+type BaseFont = {
+  [key: number]: {
+    fontSize: string;
+    lineHeight: string;
+  };
+};
+
+type FontWeights = {
+  [key: string]: number;
+};
+
+const baseFont: BaseFont = {
   12: { fontSize: '1.2rem', lineHeight: '1.8rem' },
   13: { fontSize: '1.3rem', lineHeight: '2.2rem' },
   14: { fontSize: '1.4rem', lineHeight: '2.4rem' },
@@ -12,16 +23,23 @@ const baseFont = {
   40: { fontSize: '4rem', lineHeight: '4.8rem' },
 };
 
-const fontWeights = {
+const fontWeights: FontWeights = {
   r: 400,
   m: 500,
   sb: 600,
   b: 700,
 };
 
-// 기본 fontWeight를 400으로 설정하고, 키에 따라 가변적으로 폰트를 가져올 수 있도록 수정
-const font = (size) => {
-  const [fontSize, weight = 'r'] = size.match(/\d+|[a-z]+/g); // 숫자와 문자를 분리하여 배열로 반환
+const font = (size: string): ReturnType<typeof css> => {
+  const matches = size.match(/\d+|[a-z]+/g);
+
+  if (!matches) {
+    console.warn(`Invalid font size format: ${size}`);
+    return css``; // 빈 스타일 반환
+  }
+
+  const [fontSizeStr, weight = 'r'] = matches;
+  const fontSize = parseInt(fontSizeStr, 10);
   const base = baseFont[fontSize];
 
   if (!base) {

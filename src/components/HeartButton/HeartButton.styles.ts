@@ -1,31 +1,6 @@
 import styled from 'styled-components';
-import { ReactComponent as HeartSvg } from '../../assets/ic_heart.svg';
 import font from '../../styles/fontStyle.styles';
 import { media } from '../../styles/media.styles';
-
-export const StyledHeartIcon = styled(HeartSvg).withConfig({
-  shouldForwardProp: (prop) =>
-    !['size', 'borderType', 'isActive'].includes(prop),
-})`
-  fill: ${({ isActive }) => (isActive ? '#FF68CC' : '#fff')};
-  width: ${({ borderType, size }) => {
-    if (borderType) return '3.2rem';
-    return size === 'sm' ? '1.6rem' : '2.4rem';
-  }};
-  height: ${({ borderType, size }) => {
-    if (borderType) return '3.2rem';
-    return size === 'sm' ? '1.6rem' : '2.4rem';
-  }};
-
-  > path {
-    stroke: ${({ isActive }) => (isActive ? '#FF68CC' : 'var(--gray-500)')};
-  }
-
-  ${media.tamo`
-    width: ${({ borderType }) => (borderType ? '2.4rem' : 'auto')};
-    height: ${({ borderType }) => (borderType ? '2.4rem' : 'auto')};
-  `}
-`;
 
 export const HeartButton = styled.button.withConfig({
   shouldForwardProp: (prop) => !['size', 'borderType', 'wide'].includes(prop),

@@ -1,6 +1,6 @@
 import { media } from './media.styles';
 
-const { styled } = require('styled-components');
+import styled from 'styled-components';
 
 export const Page = styled.main`
   padding: 9.4rem 0;

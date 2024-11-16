@@ -100,7 +100,7 @@ function AddProd() {
                 onChange={handleInputChange}
                 onKeyDown={handleAddTagInput}
               />
-              {formValues.productTags.length && (
+              {formValues.productTags.length > 0 && (
                 <TagsList
                   tags={formValues.productTags}
                   onRemove={handleRemoveTag}
