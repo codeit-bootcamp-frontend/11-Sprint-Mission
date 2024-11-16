@@ -6,6 +6,7 @@ import {
   getProductsDetailComments,
 } from '../../services/products-api';
 import useAsyncRequest from '../../hooks/useAsyncRequest';
+import useComments from '../../hooks/useComments';
 
 import { Page, Container } from '../../styles/Common.styles';
 import { StyledLine, StyledComentContainer } from './ProdDetailPage.styles';
@@ -15,9 +16,16 @@ import ComentList from '../../components/Coment/ComentList';
 import ProdDetail from './ProdDetail';
 
 function ProdDetailPage() {
-  const [commentsList, setCommentsList] = useState([]);
   const [details, setDetails] = useState({});
   const { execute, isLoading, error: fetchError } = useAsyncRequest();
+  const {
+    commentsList,
+    isLoading: commentLoding,
+    error: commentFetchError,
+    handleEditSubmit,
+    handleDeleteClick,
+  } = useComments(getProductsDetailComments);
+
   const { productId } = useParams();
 
   useEffect(() => {
@@ -27,40 +35,15 @@ function ProdDetailPage() {
         setDetails(result);
       }
     };
-
-    const handleCommentsListLoad = async () => {
-      const result = await execute(() => getProductsDetailComments(productId));
-      const { list } = result;
-      if (result) {
-        setCommentsList(list);
-      }
-    };
-
-    handleCommentsListLoad();
     handleProductsLoad();
   }, [productId, execute]);
-
-  const handleEditSubmit = (item, updatedContent) => {
-    setCommentsList((prevItems) =>
-      prevItems.map((comment) =>
-        comment.id === item.id
-          ? { ...comment, content: updatedContent }
-          : comment,
-      ),
-    );
-  };
-
-  const handleDeleteClick = (itemToDeleteId) => {
-    setCommentsList((prevItems) =>
-      prevItems.filter((item) => item.id !== itemToDeleteId),
-    );
-  };
 
   if (details?.length) {
     return <p>상품 정보를 불러올 수 없습니다.</p>;
   }
-  if (isLoading) return <p>로딩 중 입니다...</p>;
-  if (fetchError) return <p>오류 발생: {fetchError.message}</p>;
+  if (isLoading && commentLoding) return <p>로딩 중 입니다...</p>;
+  if (fetchError && commentFetchError)
+    return <p>오류 발생: {fetchError.message && commentFetchError.message}</p>;
   return (
     <Page>
       <Container>
