@@ -10,7 +10,7 @@ import {
 } from '../services/products-api';
 import useAsyncRequest from '../hooks/useAsyncRequest';
 
-import HeartCountArea from '../components/common/HeartCountArea';
+import Heart from '../components/HeartButton/HeartButton';
 import Images from '../components/common/Images';
 import TagsList from '../components/common/TagsList';
 import DropDownMenu from '../components/common/DropDownMenu';
@@ -210,11 +210,7 @@ function ProductDetails() {
                 name={details.ownerNickname}
                 createdDate={formatRegistrationDate(details.createdAt)}
               />
-              <HeartCountArea
-                count={details.favoriteCount}
-                styles='large border'
-                className={styles['btn-heart']}
-              />
+              <Heart count={details.favoriteCount} borderType />
             </div>
             <DropDownMenu classNames={styles['dropdown']}>
               <DropDownMenu.Item

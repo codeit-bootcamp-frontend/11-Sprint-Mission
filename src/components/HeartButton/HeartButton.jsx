@@ -1,11 +1,15 @@
 import { HeartButton, StyledHeartIcon } from './HeartButton.styles';
 
-function Heart({ size, border, isActive = false, count = 0 }) {
+function Heart({ size, borderType, isActive = false, count = 0, ...rest }) {
   const formattedCount = count >= 9999 ? '9999+' : count;
 
   return (
-    <HeartButton size={size} border={border}>
-      <StyledHeartIcon size={size} isActive={isActive} border={border} />
+    <HeartButton size={size} borderType={borderType} {...rest}>
+      <StyledHeartIcon
+        size={size}
+        isActive={isActive}
+        borderType={borderType}
+      />
       {formattedCount}
     </HeartButton>
   );
