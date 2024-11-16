@@ -4,7 +4,11 @@ import IMAGES_PROD from '../../assets/Img_prod_empty.svg';
 import IMAGES_INQUIRY from '../../assets/Img_inquiry_empty.svg';
 import IMAGES_COMMENTS from '../../assets/Img_reply_empty.svg';
 
-const typeImages = (type) => {
+export interface NotResultProps {
+  type: 'search' | 'inquiry' | 'comments';
+}
+
+const typeImages = (type: 'search' | 'inquiry' | 'comments') => {
   switch (type) {
     case 'search':
       return IMAGES_PROD;
@@ -17,9 +21,9 @@ const typeImages = (type) => {
   }
 };
 
-function NotResult({ type = 'inquiry' }) {
+function NotResult({ type = 'inquiry' }: NotResultProps) {
   return (
-    <StyledNotResult>
+    <StyledNotResult type={type}>
       <StyledImages type={type} src={typeImages(type)} alt='not result' />
       {type === 'search' && <p>검색어와 일치하는 상품이 없어요</p>}
       {type === 'inquiry' && <p>아직 문의가 없어요</p>}
