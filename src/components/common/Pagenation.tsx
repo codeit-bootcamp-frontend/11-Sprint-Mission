@@ -8,15 +8,6 @@ interface Props {
 }
 
 const Pagenation = ({ onClickPage }: Props) => {
-  // eslint-disable-next-line
-  const [button, setButton] = useState(BUTTONS);
-
-  const onClickPageCursor = (e: MouseEvent) => {
-    // const button = (e.target as HTMLButtonElement).value;
-    // setButton(button);
-    onClickPage(e, 1);
-  };
-
   const handleClickPage = (e: MouseEvent) => {
     const pageNo = (e.target as HTMLButtonElement).value;
     onClickPage(e, Number(pageNo));
@@ -24,13 +15,7 @@ const Pagenation = ({ onClickPage }: Props) => {
 
   return (
     <div className="pagination-area">
-      <button
-        className="button-left"
-        onClick={onClickPageCursor}
-        value={button[0] - 1}
-        disabled
-      />
-      {button.map((button) => (
+      {BUTTONS.map((button) => (
         <button
           key={button}
           className="button-num"
@@ -40,12 +25,6 @@ const Pagenation = ({ onClickPage }: Props) => {
           {button}
         </button>
       ))}
-      <button
-        className="button-right"
-        onClick={onClickPageCursor}
-        value={button[4] + 1}
-        disabled
-      />
     </div>
   );
 };

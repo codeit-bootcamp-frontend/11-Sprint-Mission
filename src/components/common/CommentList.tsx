@@ -1,14 +1,32 @@
 import "../css/CommentList.css";
 import kebab from "../../images/icon/ic_kebab.svg";
 import myprofile from "../../images/icon/myprofile.svg";
-import { useState } from "react";
+import React, { MouseEvent, useState } from "react";
 import Textarea from "./TextArea";
 import Button from "./Button";
 import icback from "../../images/icon/ic_back.svg";
 import { Link } from "react-router-dom";
 import inquiryEmpty from "../../images/Img_inquiry_empty.png";
 
-const Comment = ({ comment, onClickOption, edit = false }) => {
+interface CommentProps {
+  comment: CommentPr;
+  onClickOption: (e: MouseEvent, id: number | null) => void;
+  edit: boolean;
+}
+
+export interface CommentPr {
+  writer: {
+    image: string | null;
+    nickname: string;
+    id: number;
+  };
+  updatedAt: string;
+  createdAt: string;
+  content: string;
+  id: number;
+}
+
+const Comment = ({ comment, onClickOption, edit = false }: CommentProps) => {
   const { id, content, writer, createdAt } = comment;
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
 
@@ -16,12 +34,12 @@ const Comment = ({ comment, onClickOption, edit = false }) => {
     setIsOpenDropdown((prev) => !prev);
   };
 
-  const handleClickOption = (e, id) => {
+  const handleClickOption = (e: MouseEvent<HTMLDivElement>, id: number) => {
     setIsOpenDropdown((prev) => !prev);
     onClickOption(e, id);
   };
 
-  const handleClickModify = (e) => {
+  const handleClickModify = (e: MouseEvent<HTMLDivElement>) => {
     onClickOption(e, null);
   };
 
@@ -31,7 +49,7 @@ const Comment = ({ comment, onClickOption, edit = false }) => {
         <div className="comment-area">
           <div className="comment-area__content">
             {edit ? (
-              <Textarea value={content}>{content}</Textarea>
+              <Textarea value={content}></Textarea>
             ) : (
               <>
                 <div>{content}</div>
@@ -74,7 +92,16 @@ const Comment = ({ comment, onClickOption, edit = false }) => {
   );
 };
 
-const CommentList = ({ commentList, onClickOption, editingId }) => {
+interface CommentListProps {
+  commentList: CommentPr[];
+  onClickOption: (e: React.MouseEvent, id: number | null) => void;
+  editingId?: number;
+}
+const CommentList = ({
+  commentList,
+  onClickOption,
+  editingId,
+}: CommentListProps) => {
   return (
     <div className="comment-list">
       {commentList.length > 0 ? (

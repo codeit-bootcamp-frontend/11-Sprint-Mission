@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./DetailPage.css";
 import Category from "../components/common/Category";
@@ -8,24 +8,25 @@ import heart from "../images/icon/heart.svg";
 import CommentList from "../components/common/CommentList";
 import TextArea from "../components/common/TextArea";
 import Button from "../components/common/Button";
+import { DetailDataProps } from "../types/DetailPage";
 
 const DetailPage = () => {
   const data = useParams();
 
-  const [detailData, setDetailData] = useState();
+  const [detailData, setDetailData] = useState<DetailDataProps>();
   const [commentList, setCommentList] = useState([]);
-  const [editingId, setEditingId] = useState(null);
+  const [editingId, setEditingId] = useState(0);
   const [comment, setComment] = useState("");
 
   const handleLoadData = useCallback(async () => {
     let result, result2;
 
     const params = {
-      productId: data.id,
+      productId: Number(data.id),
     };
 
     const params2 = {
-      productId: data.id,
+      productId: Number(data.id),
       limit: 3,
     };
     result = await getProductDetail(params);
@@ -34,11 +35,14 @@ const DetailPage = () => {
     setCommentList(result2.list);
   }, [data.id]);
 
-  const handleClickOption = (e, editId) => {
-    setEditingId(editId);
+  const handleClickOption = (
+    e: React.MouseEvent<Element, MouseEvent>,
+    editId: number | null
+  ) => {
+    if (editId) setEditingId(editId);
   };
 
-  const handleCommentChange = (e) => {
+  const handleCommentChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setComment(e.target.value); // 입력값 상태 업데이트
   };
 
@@ -112,7 +116,7 @@ const DetailPage = () => {
         </div>
         <CommentList
           commentList={commentList}
-          onClickOption={handleClickOption}
+          onClickOption={(e, id) => handleClickOption(e, id)}
           editingId={editingId}
         />
       </div>

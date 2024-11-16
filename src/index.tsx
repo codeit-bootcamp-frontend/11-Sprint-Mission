@@ -5,7 +5,7 @@ import "./css/reset.css";
 import "./css/button.css";
 import "./css/color.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import DetailPages from "./pages/DetailPage.js";
+import DetailPages from "./pages/DetailPage";
 import HomePage from "./pages/HomePage.js";
 import LoginPage from "./pages/LoginPage.js";
 import AddItemPage from "./pages/AddItemPage.js";
