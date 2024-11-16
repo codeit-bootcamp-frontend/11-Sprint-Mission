@@ -13,16 +13,18 @@ function ItemInfo({ product }) {
             <h1 className="itemPrice">{product.price.toLocaleString()}원</h1>
           </div>
           <div className="descriptionContainer">
-            <h3>상품 소개</h3>
+            <h3 className="itemSectionTitle">상품 소개</h3>
             <p className="itemDescription">{product.description}</p>
           </div>
           <div className="itemTags">
-            <h3 className="tagTitle">상품 태그</h3>
-            {product.tags.map((tag) => (
-              <span key={tag} className="tag">
-                #{tag}
-              </span>
-            ))}
+            <h3 className="itemSectionTitle">상품 태그</h3>
+            <div className="itemTag">
+              {product.tags.map((tag) => (
+                <span key={tag} className="tag">
+                  #{tag}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
         <div className="heartButtonContainer">

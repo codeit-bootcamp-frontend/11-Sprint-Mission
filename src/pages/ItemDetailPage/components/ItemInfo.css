@@ -39,7 +39,7 @@
   line-height: 32px;
 }
 
-h3 {
+.itemSectionTitle {
   margin-top: 23px;
   font-size: 14px;
   font-weight: 600;
@@ -55,6 +55,11 @@ h3 {
   font-weight: 400;
 }
 
+.itemTag {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .tagTitle {
   margin-bottom: 12px;
 }
@@ -66,6 +71,10 @@ h3 {
   padding: 6px 16px;
   margin-top: 12px;
   margin-right: 6px;
+}
+
+.heartButtonContainer {
+  margin-top: 10px;
 }
 
 .heartButton {
@@ -85,6 +94,12 @@ h3 {
   width: 24px;
   height: 24px;
   margin-right: 5px;
+}
+
+@media (max-width: 767px) {
+  .itemInfo {
+    flex-direction: column;
+  }
 }
 
 @media (min-width: 768px) {
@@ -117,7 +132,7 @@ h3 {
     line-height: 48px;
   }
 
-  h3 {
+  .itemDescriptionTitle {
     font-size: 16px;
   }
 }

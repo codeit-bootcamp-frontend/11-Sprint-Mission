@@ -37,3 +37,15 @@
   background: none;
   cursor: pointer;
 }
+
+@media (min-width: 768px) {
+  .commnetContent {
+    max-width: 750px;
+  }
+}
+
+@media (min-width: 328px) {
+  .commnetContent {
+    max-width: 300px;
+  }
+}
