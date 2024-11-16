@@ -10,10 +10,14 @@ import {
   PreviewButton,
 } from './InputFile.styles';
 
-function InputFile({ title }) {
-  const [preview, setPreview] = useState(null);
-  const [error, setError] = useState('');
-  const fileInputRef = useRef(null);
+interface InputFileProps {
+  title: string;
+}
+
+function InputFile({ title }: InputFileProps) {
+  const [preview, setPreview] = useState<string | null>(null);
+  const [error, setError] = useState<string>('');
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleFileChange = () => {
     if (preview) {
@@ -21,7 +25,7 @@ function InputFile({ title }) {
       return;
     }
     setError('');
-    const file = fileInputRef.current.files[0];
+    const file = fileInputRef.current?.files?.[0];
     if (file) {
       const previewUrl = URL.createObjectURL(file);
       setPreview(previewUrl);
