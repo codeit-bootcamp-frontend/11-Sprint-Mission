@@ -1,13 +1,86 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --base-font: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+    Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  --primary-100: #3692ff;
+  --primary-200: #1967d6;
+  --primary-300: #1251aa;
+  --error: #f74747;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer base {
+  html {
+    font-family: var(--base-font);
+    font-size: 16px;
+  }
+  body {
+    background-color: #fcfcfc;
+  }
+  input,
+  button,
+  select {
+    font-family: var(--base-font);
+  }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto px-4;
+    max-width: 1200px;
+  }
+  .error-message {
+    @apply py-12 text-center text-2xl font-bold;
+  }
+}
+
+@layer utilities {
+  .btn {
+    @apply flex items-center gap-2 rounded-lg px-6 py-2 font-semibold transition-all;
+    color: var(--gray-100);
+    background-color: var(--primary-100);
+
+    &:hover {
+      background-color: var(--primary-200);
+    }
+    &:disabled {
+      background-color: var(--gray-400);
+    }
+  }
+  .btn-lg {
+    @apply px-10 py-[10px] text-lg;
+  }
+  .btn-rounded {
+    @apply rounded-full;
+  }
+  .btn-default {
+    background-color: var(--gray-400);
+    &:hover {
+      background-color: var(--gray-500);
+    }
+  }
+  .input {
+    @apply w-full rounded-xl px-6 py-4;
+    background-color: var(--gray-100);
+
+    &:placeholder {
+      color: var(--gray-400);
+    }
+  }
+  .v-bar {
+    @apply h-4/5 w-0 border-l;
+    border-color: var(--gray-200);
+  }
 }
