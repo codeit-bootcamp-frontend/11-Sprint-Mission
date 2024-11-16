@@ -3,10 +3,20 @@ import ic_favorite from "../../assets/images/ic_heart.svg";
 import ic_kebab from "../../assets/images/ic_kebab.svg";
 import styles from "./ItemDetail.module.css";
 import img_default from "../../assets/images/thumbnail-placeholder.png";
+import { ProductExtended } from "../../types/Product";
 
-function ItemDetail({ className, item }) {
-  const handleErrorLoadingImg = (e) => {
-    e.target.src = img_default;
+function ItemDetail({
+  className,
+  item,
+}: {
+  className: string;
+  item: ProductExtended;
+}) {
+  const handleErrorLoadingImg = (
+    event: React.SyntheticEvent<HTMLImageElement, Event>
+  ) => {
+    const img = event.target as HTMLImageElement;
+    img.src = img_default;
   };
 
   return (
