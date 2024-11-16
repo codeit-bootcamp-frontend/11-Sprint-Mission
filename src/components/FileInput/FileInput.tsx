@@ -30,7 +30,7 @@ function FileInput({
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!(event.target instanceof HTMLElement)) return;
-    if (value.length < UPLOAD_LIMIT) {
+    if (value.length >= UPLOAD_LIMIT) {
       alert("상품 이미지는 최대 3개까지 업로드 할 수 있습니다.");
       return;
     }
