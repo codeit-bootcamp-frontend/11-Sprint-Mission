@@ -6,7 +6,7 @@ import AddItem from '../pages/AddItem';
 import Notfound from '../pages/Notfound';
 import Boards from '../pages/Boards';
 import Login from '../pages/Login';
-import ProdDetailPage from '../pages/prodDetails/ProdDetailPage';
+import ProdDetailPage from '../pages/prodDetail/ProdDetailPage';
 import Test from '../pages/Test/Test';
 
 export default function AppRoutes() {
