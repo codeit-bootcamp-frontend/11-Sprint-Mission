@@ -9,6 +9,7 @@ interface ButtonProps {
   children: ReactNode;
   href?: string;
   disabled?: boolean;
+  onClick?: () => void;
 }
 
 function Button({
@@ -19,6 +20,7 @@ function Button({
   round,
   wide,
   children,
+  onClick,
   ...rest
 }: ButtonProps) {
   return (
@@ -30,6 +32,7 @@ function Button({
       as={href ? 'a' : 'button'}
       href={href}
       disabled={disabled}
+      onClick={onClick}
       {...rest}>
       {children}
     </StyledButton>

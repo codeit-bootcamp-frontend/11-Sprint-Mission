@@ -1,15 +1,29 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 import UserInfo from '../UserInfo/UserInfo';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import { StyledEditForm } from './ComentEdit.styles';
 
-function ComentEdit({ item, onCancel, onSubmit }) {
+interface ComentItem {
+  content: string;
+  writer: {
+    nickname: string;
+  };
+  createdAt: string;
+}
+
+interface ComentEditProps {
+  item: ComentItem;
+  onCancel: () => void;
+  onSubmit: (editValue: string) => void;
+}
+
+function ComentEdit({ item, onCancel, onSubmit }: ComentEditProps) {
   const [editValue, setEditValue] = useState(item.content);
   const hasEditValue = editValue.trim() !== '';
 
-  const handleEditInput = (e) => {
+  const handleEditInput = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value;
     setEditValue(value);
   };
@@ -28,11 +42,10 @@ function ComentEdit({ item, onCancel, onSubmit }) {
           />
         </UserInfo>
         <div className='coment-btnArea'>
-          <Button className='cancel' color='not' onClick={onCancel}>
+          <Button color='none' onClick={onCancel}>
             취소
           </Button>
           <Button
-            className='post'
             color={!hasEditValue ? 'gray' : 'blue'}
             disabled={!hasEditValue && editValue.length > 0}
             onClick={() => onSubmit(editValue)}>
