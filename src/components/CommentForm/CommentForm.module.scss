@@ -1,0 +1,224 @@
+.comment-input-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-bottom: 24px;
+
+  label {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: 8px;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 104px;
+    resize: none;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--gray-200);
+    margin-bottom: 16px;
+
+    &::placeholder {
+      color: var(--gray-400);
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--blue);
+    }
+  }
+
+  button {
+    background-color: var(--blue);
+    padding: 12px 23px;
+    border: none;
+    border-radius: 8px;
+    color: var(--gray-100);
+    font-size: 16px;
+    font-weight: 600;
+
+    &:hover {
+      background-color: var(--blue-hover);
+    }
+
+    &:active {
+      background-color: var(--blue-active);
+    }
+
+    &:disabled {
+      background-color: var(--inactive);
+    }
+  }
+}
+
+.Comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.CommentListItem {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--secondary-200);
+
+  .content {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--gray-800);
+    margin-bottom: 24px;
+    position: relative;
+
+    .select {
+      position: absolute;
+      top: 32px;
+      right: 0;
+
+      .option {
+        padding: 12px 17px;
+        background-color: white;
+        border: 1px solid var(--cool-gray-300);
+        color: var(--gray-500);
+        font-size: 16px;
+        font-weight: 400;
+      }
+
+      .option:first-child {
+        border-bottom: none;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+      }
+
+      .option:last-child {
+        border-top: none;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+    }
+  }
+
+  .writer {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+
+    .name {
+      color: var(--gray-600);
+      margin-bottom: 2px;
+    }
+
+    .date {
+      color: var(--gray-400);
+    }
+
+    .profile {
+      margin-right: 8px;
+    }
+  }
+}
+
+.CommentEditForm {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--secondary-200);
+
+  textarea {
+    flex: 0 0 100%;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--gray-200);
+    margin-bottom: 16px;
+    color: var(--gray-800);
+    resize: none;
+    min-height: 80px;
+
+    &::placeholder {
+      color: var(--gray-400);
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--blue);
+    }
+  }
+
+  .writer {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+
+    .name {
+      color: var(--gray-600);
+      margin-bottom: 2px;
+    }
+
+    .date {
+      color: var(--gray-400);
+    }
+
+    .profile {
+      margin-right: 8px;
+    }
+  }
+
+  button[type="button"] {
+    color: var(--gray-500);
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 18px;
+    border: none;
+    background-color: inherit;
+  }
+
+  button[type="submit"] {
+    color: var(--gray-100);
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 23px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--blue);
+    margin-left: 4px;
+
+    &:hover {
+      background-color: var(--blue-hover);
+    }
+
+    &:active {
+      background-color: var(--blue-active);
+    }
+
+    &:disabled {
+      background-color: var(--inactive);
+    }
+  }
+}
+
+.no-comment {
+  display: block;
+  margin: 48px auto;
+}
+
+@media screen and (max-width: 767px) {
+  .comment-input-form {
+    textarea {
+      min-height: 139px;
+    }
+  }
+}

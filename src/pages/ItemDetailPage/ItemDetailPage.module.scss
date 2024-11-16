@@ -1,0 +1,58 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 200px;
+}
+
+.ItemDetail {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.CommentForm {
+  width: 100%;
+  margin-bottom: 64px;
+}
+
+.btn-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  background-color: var(--blue);
+  padding: 12px 64px;
+  border-radius: 40px;
+
+  color: var(--gray-200);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
+
+  &:hover {
+    background-color: var(--blue-hover);
+  }
+
+  &:active {
+    background-color: var(--blue-active);
+  }
+
+  img {
+    margin-top: 4px;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .container {
+    width: 696px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    width: 344px;
+  }
+}

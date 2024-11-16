@@ -1,0 +1,33 @@
+.Pagination {
+  display: flex;
+  gap: 4px;
+}
+
+.Pagination button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--gray-200);
+  border-radius: 40px;
+  background-color: #ffffff;
+
+  color: var(--gray-500);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.Pagination button.current {
+  background-color: #2f80ed;
+  border: none;
+  color: var(--gray-100);
+}
+
+@media screen and (max-width: 767px) {
+  .page-btn-first,
+  .page-btn-last {
+    display: none;
+  }
+}
