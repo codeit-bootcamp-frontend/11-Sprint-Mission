@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-function ProductName({ value, onChange }) {
-  const [productname, setProductname] = useState("");
+interface ProductNameProps {
+  value: string;
+  onChange: (value: string) => void;
+}
 
-  const handleChange = (e) => {
+function ProductName({ value, onChange }: ProductNameProps) {
+  const [productname, setProductname] = useState<string>("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setProductname(e.target.value);
     onChange(e.target.value);
   };

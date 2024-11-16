@@ -1,5 +1,11 @@
 {
   "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"],
+      "@hooks/*": ["hooks/*"],
+      "@components/*": ["components/*"]
+    },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -15,12 +21,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "incremental": true,
-    "baseUrl": "src",
-    "paths": {
-      "@hooks/*": ["hooks/*"],
-      "@components/*": ["components/*"]
-    }
+    "incremental": true
   },
   "include": ["src"]
 }

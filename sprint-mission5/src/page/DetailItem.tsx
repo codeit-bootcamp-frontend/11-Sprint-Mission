@@ -7,16 +7,19 @@ import OwnerFlexBox from "../components/OwnerFlexBox";
 import DetailContact from "../components/DetailContact";
 import { Helmet } from "react-helmet";
 import ItemComments from "../components/ItemComments";
+import { ItemDetail } from "../types/type";
 
 function DetailItem() {
-  const { productId } = useParams();
-  const [itemDetail, setItemDetail] = useState(null);
-  const [colorChange, setColorChange] = useState("");
+  const { productId: productIdParam } = useParams<{ productId: string }>();
+  const productId = productIdParam ? parseInt(productIdParam, 10) : undefined;
+  const [itemDetail, setItemDetail] = useState<ItemDetail | null>(null);
+  const [colorChange, setColorChange] = useState<string>("");
 
   useEffect(() => {
     const fetchData = async () => {
+      if (productId === undefined) return;
       try {
-        const data = await getDetailProducts(productId);
+        const data = (await getDetailProducts(productId)) as ItemDetail;
         setItemDetail(data);
       } catch (error) {
         console.error("상품 상세 데이터 로딩 실패:", error);
@@ -29,6 +32,7 @@ function DetailItem() {
   if (!itemDetail) {
     return <div>로딩 중...</div>;
   }
+
   return (
     <>
       <Helmet>
@@ -37,10 +41,7 @@ function DetailItem() {
       <DetailCon>
         <DetailFlexAll>
           <DetailImgWrap>
-            <DetailImg
-              src={itemDetail.images[0]}
-              alt={itemDetail.name}
-            ></DetailImg>
+            <DetailImg src={itemDetail.images[0]} alt={itemDetail.name} />
           </DetailImgWrap>
           <DetailTxtWrap>
             <DetailTop itemDetail={itemDetail} />
@@ -60,15 +61,16 @@ function DetailItem() {
         <DetailBottomLine></DetailBottomLine>
         <DetailContact onChange={setColorChange} />
         <ButtonPosition>
-          <ColorButton type="submit" isActive={colorChange}>
+          <ColorButton type="submit" isActive={!!colorChange}>
             등록
           </ColorButton>
         </ButtonPosition>
-        <ItemComments productId={productId} />
+        {productId !== undefined && <ItemComments productId={productId} />}
       </DetailCon>
     </>
   );
 }
+
 const DetailFlexAll = styled.div`
   width: 100%;
   margin-top: 100px;
@@ -85,8 +87,9 @@ const DetailCon = styled.div`
   @media (min-width: 768px) and (max-width: 1279px) {
     padding: 0px 24px;
   }
-@media (min-width: 320px) and (max-width: 767px) {
+  @media (min-width: 320px) and (max-width: 767px) {
     padding: 0px 14px;
+  }
 `;
 const DetailImgWrap = styled.div`
   max-width: 486px;
@@ -113,7 +116,6 @@ const DetailPrice = styled.p`
     font-size: 1.5rem;
   }
 `;
-
 const DetailTxtLine = styled.div`
   width: 100%;
   border: 1px solid var(--gray200);
@@ -157,7 +159,11 @@ const ButtonPosition = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
-const ColorButton = styled.button`
+
+interface ActiveProps {
+  isActive?: boolean;
+}
+const ColorButton = styled.button<ActiveProps>`
   width: 74px;
   height: 42px;
   border-radius: 8px;

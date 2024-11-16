@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import uploadClose from "../images/uploadImg/upload_close.png";
+interface TagInputProps {
+  value: string[];
+  onChange: (tags: string[]) => void;
+}
+function TagInput({ value, onChange }: TagInputProps) {
+  const [inputValue, setInputValue] = useState<string>("");
+  const [tags, setTags] = useState<string[]>([]);
 
-function TagInput({ value, onChange }) {
-  const [inputValue, setInputValue] = useState("");
-  const [tags, setTags] = useState([]);
-
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setInputValue(value);
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && inputValue.trim() !== "") {
       const newTag = inputValue.startsWith("#") ? inputValue : `#${inputValue}`;
       const updatedTags = [...tags, newTag];
@@ -21,14 +24,18 @@ function TagInput({ value, onChange }) {
     }
   };
 
-  const handleTagRemove = (indexToRemove) => {
+  const handleTagRemove = (indexToRemove: number) => {
     const updatedTags = tags.filter((_, index) => index !== indexToRemove);
     setTags(updatedTags);
     onChange(updatedTags);
   };
 
   useEffect(() => {
-    setInputValue(value);
+    if (value.length > 0) {
+      setInputValue(value[value.length - 1]);
+    } else {
+      setInputValue("");
+    }
   }, [value]);
 
   useEffect(() => {

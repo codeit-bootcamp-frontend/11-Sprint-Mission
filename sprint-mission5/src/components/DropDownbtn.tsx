@@ -1,13 +1,18 @@
 import "./DropDownbtn.css";
 import downIcon from "../images/dropdown/downicon.png";
 import Mobiledowniocn from "../images/dropdown/m_downicon.png";
-
+interface DropDownbtn {
+  orderBy: string;
+  isOpen: boolean;
+  toggleDropdown: () => void;
+  handleOrderChange: (order: string) => void;
+}
 const DropDownbtn = ({
   orderBy,
   isOpen,
   toggleDropdown,
   handleOrderChange,
-}) => {
+}: DropDownbtn) => {
   return (
     <div className="dd-con">
       <div className="dd-box" onClick={toggleDropdown}>

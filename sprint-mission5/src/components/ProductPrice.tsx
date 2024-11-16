@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-
-function ProductPrice({ value, onChange }) {
+interface ProductPriceProps {
+  value: string;
+  onChange: (value: string) => void;
+}
+function ProductPrice({ value, onChange }: ProductPriceProps) {
   const [price, setPrice] = useState("");
 
-  const formatPrice = (value) => {
+  const formatPrice = (value: string) => {
     const numericValue = value.replace(/[^0-9]/g, "");
     return numericValue.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     const formattedValue = formatPrice(inputValue);
     setPrice(formattedValue);

@@ -1,10 +1,12 @@
 import { useState } from "react";
 import styled from "styled-components";
-
-function DetailContact({ onChange }) {
+interface DetailContactProps {
+  onChange: (value: string) => void;
+}
+function DetailContact({ onChange }: DetailContactProps) {
   const [texton, setTexton] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value;
     setTexton(value);
     onChange(value);

@@ -1,9 +1,15 @@
 import styled from "styled-components";
-
-function DetailTop({ name }) {
+import { ItemDetail } from "../types/type";
+interface DetailTopBox {
+  name: string;
+}
+interface DetailTopProps {
+  itemDetail: ItemDetail;
+}
+function DetailTop({ itemDetail }: DetailTopProps) {
   return (
     <DetailTopBox>
-      <DetailTitle>{name}</DetailTitle>
+      <DetailTitle>{itemDetail.name}</DetailTitle>
       <DetailDotsBox>
         <Dots></Dots>
         <Dots></Dots>

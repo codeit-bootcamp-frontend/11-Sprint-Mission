@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-function ProductDescription({ value, onChange }) {
+interface ProductDescriptionProps {
+  value: string;
+  onChange: (value: string) => void;
+}
+
+function ProductDescription({ value, onChange }: ProductDescriptionProps) {
   const [text, setText] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
     onChange(e.target.value);
   };

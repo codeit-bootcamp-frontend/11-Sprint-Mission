@@ -4,7 +4,7 @@ import myPageIcon from "../images/head/myPageIcon.png";
 import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 
-function getLinkStyle({ isActive }) {
+function getLinkStyle({ isActive }: { isActive: boolean }) {
   return { color: isActive ? "var(--pgnibtn)" : undefined };
 }
 

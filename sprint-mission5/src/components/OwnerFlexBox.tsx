@@ -1,7 +1,18 @@
 import styled from "styled-components";
 import loveIcon from "../images/itemIcon/love_Icon.png";
 import myPageIcon from "../images/head/myPageIcon.png";
-function OwnerFlexBox({ itemDetail }) {
+
+interface ItemDetail {
+  ownerId: number;
+  ownerNickname: string;
+  createdAt: string;
+  favoriteCount: number;
+}
+
+interface OwnerFlexBoxProps {
+  itemDetail: ItemDetail;
+}
+function OwnerFlexBox({ itemDetail }: OwnerFlexBoxProps) {
   return (
     <OwnerFlexbox>
       <OwenerId key={itemDetail.ownerId}>
