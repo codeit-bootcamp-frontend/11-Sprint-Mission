@@ -27,7 +27,7 @@ export const StyledHeartIcon = styled(HeartSvg).withConfig({
 `;
 
 export const HeartButton = styled.button.withConfig({
-  shouldForwardProp: (prop) => !['size', 'borderType'].includes(prop),
+  shouldForwardProp: (prop) => !['size', 'borderType', 'wide'].includes(prop),
 })`
   display: flex;
   align-items: center;
@@ -43,6 +43,7 @@ export const HeartButton = styled.button.withConfig({
     if (borderType) return '0.4rem';
     return size === 'sm' ? '0.4rem' : '0.8rem';
   }};
+  flex: ${({ wide }) => wide && '1'};
 
   ${({ borderType, size }) => {
     if (borderType) return font('16m');

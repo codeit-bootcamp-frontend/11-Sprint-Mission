@@ -6,7 +6,7 @@ import AddItem from '../pages/AddItem';
 import Notfound from '../pages/Notfound';
 import Boards from '../pages/Boards';
 import Login from '../pages/Login';
-import ProductDetails from '../pages/ProductDetails';
+import ProdDetailPage from '../pages/prodDetails/ProdDetailPage';
 import Test from '../pages/Test/Test';
 
 export default function AppRoutes() {
@@ -17,7 +17,7 @@ export default function AppRoutes() {
       <Route path='boards' element={<Boards />} />
       <Route path='items'>
         <Route index element={<ItemsPage />} />
-        <Route path=':productId' element={<ProductDetails />} />
+        <Route path=':productId' element={<ProdDetailPage />} />
       </Route>
       <Route path='addItem' element={<AddItem />} />
       <Route path='login' element={<Login />} />

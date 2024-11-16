@@ -1,0 +1,63 @@
+import { formatPrice } from '../../utils/format';
+
+import { StyledProdContainer } from './ProdDetail.styles';
+
+import TagsList from '../../components/common/TagsList';
+import DropDownMenu from '../../components/DropDownMenu/DropDownMenu';
+import UserInfo from '../../components/UserInfo/UserInfo';
+import Line from '../../components/Line/Line';
+import ProdDefaultImages from '../../components/ProdCard/ProdDefaultImages';
+
+function ProdDetail({
+  images,
+  prodName,
+  price,
+  desc,
+  tags,
+  userName,
+  createdAt,
+  favoriteCount,
+}) {
+  const hasImage = images && images.length > 0;
+
+  return (
+    <StyledProdContainer>
+      <div className='prod-images'>
+        {hasImage ? (
+          <img src={images} alt={`${prodName} 이미지`} />
+        ) : (
+          <ProdDefaultImages />
+        )}
+      </div>
+      <div className='prod-info'>
+        <DropDownMenu>
+          <DropDownMenu.Item onClick={() => {}}>수정하기</DropDownMenu.Item>
+          <DropDownMenu.Item onClick={() => {}}>삭제하기</DropDownMenu.Item>
+        </DropDownMenu>
+        <div className='prod-title'>
+          <h2>{prodName}</h2>
+          <p>{formatPrice(price)}원</p>
+          <Line />
+        </div>
+        <div className='prod-text'>
+          <h3>상품 소개</h3>
+          <p>{desc}</p>
+        </div>
+        <div className='prod-text'>
+          <h3>상품 태그</h3>
+          <TagsList tags={tags} remove={false} />
+        </div>
+        <div className='prod-userInfo'>
+          <UserInfo wide>
+            <UserInfo.ProfileImage imageSize='big' />
+            <UserInfo.Text userName={userName} date={createdAt} column wide />
+            <UserInfo.Line column />
+            <UserInfo.Heart borderType count={favoriteCount} />
+          </UserInfo>
+        </div>
+      </div>
+    </StyledProdContainer>
+  );
+}
+
+export default ProdDetail;

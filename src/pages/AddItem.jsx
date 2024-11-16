@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styles from './AddItem.module.scss';
-import HeadingTitleArea from '../components/common/HeadingTitleArea';
+// import HeadingTitleArea from '../components/common/HeadingTitleArea';
 import Button from '../components//Button/Button';
-import Input from '../components/common/Input';
+import Input from '../components/Input/Input';
 import InputFile from '../components/common/InputFile';
 import TagsList from '../components/common/TagsList';
 
@@ -59,26 +59,20 @@ function AddItem() {
     <main className='page-addItem'>
       <div className='container'>
         <form>
-          <HeadingTitleArea>
-            <h2>상품 등록하기</h2>
-            <Button
-              className='post'
-              color={!isFormValid ? 'gray' : 'blue'}
-              disabled={!isFormValid && formValues.length > 0}>
-              등록
-            </Button>
-          </HeadingTitleArea>
+          <h2>상품 등록하기</h2>
+          <Button
+            className='post'
+            color={!isFormValid ? 'gray' : 'blue'}
+            disabled={!isFormValid && formValues.length > 0}>
+            등록
+          </Button>
           <div className={styles['input-text-area']}>
             <div>
-              <HeadingTitleArea>
-                <h3>상품이미지</h3>
-              </HeadingTitleArea>
+              <h3>상품이미지</h3>
               <InputFile />
             </div>
             <div>
-              <HeadingTitleArea>
-                <h3>상품명</h3>
-              </HeadingTitleArea>
+              <h3>상품명</h3>
               <Input
                 placeholder='상품명을 입력해주세요'
                 name='productName'
@@ -87,9 +81,7 @@ function AddItem() {
               />
             </div>
             <div>
-              <HeadingTitleArea>
-                <h3>상품소개</h3>
-              </HeadingTitleArea>
+              <h3>상품소개</h3>
               <textarea
                 className='default'
                 name='productDescription'
@@ -99,9 +91,7 @@ function AddItem() {
               />
             </div>
             <div>
-              <HeadingTitleArea>
-                <h3>판매가격</h3>
-              </HeadingTitleArea>
+              <h3>판매가격</h3>
               <Input
                 type='number'
                 placeholder='판매 가격을 입력해주세요'
@@ -111,9 +101,7 @@ function AddItem() {
               />
             </div>
             <div>
-              <HeadingTitleArea>
-                <h3>태그</h3>
-              </HeadingTitleArea>
+              <h3>태그</h3>
               <div className={styles['input-tag-area']}>
                 <Input
                   placeholder='태그를 입력해주세요'

@@ -9,6 +9,7 @@ const baseFont = {
   20: { fontSize: '2rem', lineHeight: '3.2rem' },
   24: { fontSize: '2.4rem', lineHeight: '3.2rem' },
   32: { fontSize: '3.2rem', lineHeight: '4.2rem' },
+  40: { fontSize: '4rem', lineHeight: '4.8rem' },
 };
 
 const fontWeights = {
