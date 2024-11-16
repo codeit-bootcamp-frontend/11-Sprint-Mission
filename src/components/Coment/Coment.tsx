@@ -25,12 +25,8 @@ function Coment({
         <UserInfo.Text userName={name} date={date} column wide />
       </UserInfo>
       <ComentDropDown>
-        <DropDownMenu.Item onClick={onClickEdit} className='btn-remove'>
-          수정하기
-        </DropDownMenu.Item>
-        <DropDownMenu.Item onClick={onClickDelete} className='btn-delete'>
-          삭제하기
-        </DropDownMenu.Item>
+        <DropDownMenu.Item onClick={onClickEdit}>수정하기</DropDownMenu.Item>
+        <DropDownMenu.Item onClick={onClickDelete}>삭제하기</DropDownMenu.Item>
       </ComentDropDown>
     </ComentContainer>
   );
