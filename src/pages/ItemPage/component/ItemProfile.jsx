@@ -109,10 +109,18 @@ const Tag = styled.div`
   }
 `;
 
-const UserProfile = styled.div`
+const ButtomSection = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
 	margin-top: 12px;
+`;
+
+const UserProfile = styled.div`
 	display: flex;
   align-items: center;
+  margin-top: 12px;
 	font-weight: 500;
 	font-size: 14px;
 	line-height: 24px;
@@ -125,12 +133,14 @@ const UserInfo = styled.div`
   flex-direction: column;
 `;
 
-const ButtomSection = styled.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-	margin-top: 12px;
+const Username = styled.span`
+  color: #4B5563;
+  font-size: 14px;
+`;
+
+const Timestamp = styled.span`
+  color: #9CA3AF;
+  font-size: 12px;
 `;
 
 function ItemProfile({ product }) {
@@ -160,8 +170,8 @@ function ItemProfile({ product }) {
 					<UserProfile>
 						<UserProfileIcon />
 						<UserInfo>
-            	<span>{product.ownerNickname}</span>
-            	<span>{product.updatedAt.split("T")[0]}</span>
+            	<Username>{product.ownerNickname}</Username>
+            	<Timestamp>{product.updatedAt.split("T")[0]}</Timestamp>
           	</UserInfo>
 					</UserProfile>
 				
