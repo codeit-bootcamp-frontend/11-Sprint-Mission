@@ -2,7 +2,21 @@ import UserInfo from '../UserInfo/UserInfo';
 import { ComentContainer, ComentDropDown, ComentText } from './Coment.styles';
 import DropDownMenu from '../DropDownMenu/DropDownMenu';
 
-function Coment({ name, date, content, onClickEdit, onClickDelete }) {
+interface ComentProps {
+  name: string;
+  date: string;
+  content: string;
+  onClickEdit: () => void;
+  onClickDelete: () => void;
+}
+
+function Coment({
+  name,
+  date,
+  content,
+  onClickEdit,
+  onClickDelete,
+}: ComentProps) {
   return (
     <ComentContainer>
       <ComentText>{content}</ComentText>
