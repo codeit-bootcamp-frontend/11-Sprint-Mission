@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { Container, Page } from '../../styles/Common.styles';
-import font from '../../styles/fontStyle.styled';
+import font from '../../styles/fontStyle.styles';
 import Button from '../../components/Button/Button';
 import { media } from '../../styles/media.styles';
+import { flexColumn } from '../../styles/layout.styles';
 
 const StyledPageItem = styled(Page)`
   h2 {
@@ -32,8 +33,7 @@ const StyledPageItem = styled(Page)`
 `;
 
 const StyledContainer = styled(Container)`
-  display: flex;
-  flex-direction: column;
+  ${flexColumn}
   gap: 4rem;
 `;
 

@@ -1,12 +1,23 @@
 import styled from 'styled-components';
 
 import { media } from '../../styles/media.styles';
-import font from '../../styles/fontStyle.styled';
+import { flexColumn } from '../../styles/layout.styles';
+import font from '../../styles/fontStyle.styles';
 
 const StyledProdContainer = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 2.4rem;
+  ${media.mo`
+  flex-direction: column;
+  `}
+
+  h2, h3 {
+    margin-bottom: 1.6rem;
+    ${media.tamo`
+      margin-bottom: .8rem;
+    `}
+  }
 
   .prod {
     &-images {
@@ -23,49 +34,60 @@ const StyledProdContainer = styled.div`
     }
     &-info {
       position: relative;
-      display: flex;
-      flex-direction: column;
-      gap: 2.4rem;
+      ${flexColumn}
+      justify-content: space-between;
       width: 69rem;
-      ${media.ta`
+      ${media.tamo`
         width: 34rem;
+        gap: 4rem;
       `}
+
+      &-area {
+        ${flexColumn}
+        gap: 2.4rem;
+        ${media.tamo`
+          gap: 1.6rem;
+        `}
+      }
     }
 
     &-title {
-      display: flex;
-      flex-direction: column;
-      h2 {
-        ${font('24sb')}
-        margin-bottom: 1.6rem;
-        ${media.tamo`
-          margin-bottom: .8rem;
-        `}
-        ${media.ta`
-          ${font('20sb')}
-        `}
-        ${media.mo`
-          ${font('16sb')}
-        `}
+      &-area {
+        ${flexColumn}
+        gap: 1.6rem;
       }
-      p {
-        margin-bottom: 1.6rem;
-        ${font('40sb')}
-        ${media.ta`
-          ${font('32sb')}
-        `}
-        ${media.mo`
+      &-text {
+        position: relative;
+        h2 {
           ${font('24sb')}
-        `}
+          ${media.ta`
+            ${font('20sb')}
+          `}
+          ${media.mo`
+            ${font('16sb')}
+          `}
+        }
+        p {
+          ${font('40sb')}
+          ${media.ta`
+            ${font('32sb')}
+          `}
+          ${media.mo`
+            ${font('24sb')}
+          `}
+        }
       }
     }
 
     &-text {
+      &-area {
+        ${flexColumn}
+        gap: 2.4rem;
+      }
       > * {
         color: var(--gray-600);
       }
       h3 {
-        margin-bottom: 1.6rem;
         ${font('16sb')}
         ${media.ta`
           ${font('14sb')}
@@ -77,7 +99,6 @@ const StyledProdContainer = styled.div`
     }
 
     &-userInfo {
-      margin-top: auto;
       ${media.ta`
         margin-top: 1.6rem;
       `}

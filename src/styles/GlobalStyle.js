@@ -195,7 +195,7 @@ const GlobalStyle = createGlobalStyle`
 /* 모바일 */
 @media screen and (max-width: 767px) {
   html {
-    font-size: 2.7778vw;
+    font-size: 2.66667vw;
   }
 }
 `;

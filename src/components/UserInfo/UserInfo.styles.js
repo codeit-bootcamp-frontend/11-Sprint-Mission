@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import font from '../../styles/fontStyle.styled';
+import font from '../../styles/fontStyle.styles';
 
 const UserInfoText = styled.div.withConfig({
   shouldForwardProp: (prop) => !['column', 'wide'].includes(prop),

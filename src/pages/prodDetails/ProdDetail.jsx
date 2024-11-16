@@ -30,22 +30,32 @@ function ProdDetail({
         )}
       </div>
       <div className='prod-info'>
-        <DropDownMenu>
-          <DropDownMenu.Item onClick={() => {}}>수정하기</DropDownMenu.Item>
-          <DropDownMenu.Item onClick={() => {}}>삭제하기</DropDownMenu.Item>
-        </DropDownMenu>
-        <div className='prod-title'>
-          <h2>{prodName}</h2>
-          <p>{formatPrice(price)}원</p>
-          <Line />
-        </div>
-        <div className='prod-text'>
-          <h3>상품 소개</h3>
-          <p>{desc}</p>
-        </div>
-        <div className='prod-text'>
-          <h3>상품 태그</h3>
-          <TagsList tags={tags} remove={false} />
+        <div className='prod-info-area'>
+          <div className='prod-title-area'>
+            <div className='prod-title-text'>
+              <h2>{prodName}</h2>
+              <p>{formatPrice(price)}원</p>
+              <DropDownMenu>
+                <DropDownMenu.Item onClick={() => {}}>
+                  수정하기
+                </DropDownMenu.Item>
+                <DropDownMenu.Item onClick={() => {}}>
+                  삭제하기
+                </DropDownMenu.Item>
+              </DropDownMenu>
+            </div>
+            <Line />
+          </div>
+          <div className='prod-text-area'>
+            <div className='prod-text'>
+              <h3>상품 소개</h3>
+              <p>{desc}</p>
+            </div>
+            <div className='prod-text'>
+              <h3>상품 태그</h3>
+              <TagsList tags={tags} remove={false} />
+            </div>
+          </div>
         </div>
         <div className='prod-userInfo'>
           <UserInfo wide>

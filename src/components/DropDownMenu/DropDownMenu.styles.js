@@ -9,6 +9,7 @@ const DropDownContainer = styled.div`
 const MoreList = styled.ul`
   position: absolute;
   right: 0;
+  bottom: -10rem;
   border: 1px solid var(--gray-300);
   border-radius: 0.8rem;
   background-color: #fff;

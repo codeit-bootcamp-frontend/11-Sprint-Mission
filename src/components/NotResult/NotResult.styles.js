@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
-import font from '../../styles/fontStyle.styled';
+import font from '../../styles/fontStyle.styles';
+import { flexColumn } from '../../styles/layout.styles';
 
 const StyledNotResult = styled.div`
-  display: flex;
-  flex-direction: column;
+  ${flexColumn}
   justify-content: center;
   align-items: center;
   gap: ${({ type }) => {

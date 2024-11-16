@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
-import Input from '../Input/Input';
+// import Input from '../Input/Input';
 
 import {
   ComentPostForm,
   ComentPostTitle,
+  StyledPostInputContainer,
   ComentButton,
 } from './ComentPost.styles';
 
@@ -21,7 +22,7 @@ function ComentPost({ title = '문의하기', placeholder = '댓글달기' }) {
   return (
     <ComentPostForm>
       <ComentPostTitle>{title}</ComentPostTitle>
-      <Input
+      <StyledPostInputContainer
         as='textarea'
         placeholder={placeholder}
         onChange={handleInputChange}

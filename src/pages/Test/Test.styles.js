@@ -1,11 +1,11 @@
 import { styled } from 'styled-components';
+import { flexColumn } from '../../styles/layout.styles';
 
 export const TestContainer = styled.div`
   width: 100%;
   height: auto;
   padding: 10rem 4rem;
-  display: flex;
-  flex-direction: column;
+  ${flexColumn}
   gap: 1.2rem;
 `;
 export const Table = styled.table`

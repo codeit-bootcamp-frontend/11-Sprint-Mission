@@ -44,7 +44,7 @@ const StyledButton = styled.button`
   background-color: ${({ $color, disabled }) =>
     disabled ? 'var(--gray-400)' : colorStyles[$color]?.default};
   color: ${({ $color, disabled }) =>
-    disabled ? '#fff' : colorStyles[$color]?.textColor || '#333'};
+    disabled ? '#fff' : colorStyles[$color]?.textColor || 'var(--gray-500)'};
   border: ${({ $color }) => colorStyles[$color]?.border || 'none'};
 
   font-size: ${({ $size }) => sizeStyles[$size]?.fontSize || '1.6rem'};

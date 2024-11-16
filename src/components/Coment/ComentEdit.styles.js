@@ -1,8 +1,8 @@
 import { styled } from 'styled-components';
+import { flexColumn } from '../../styles/layout.styles';
 
 const StyledEditForm = styled.form`
-  display: flex;
-  flex-direction: column;
+  ${flexColumn}
   gap: 1.6rem;
 
   .coment {

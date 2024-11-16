@@ -1,11 +1,11 @@
 import { styled } from 'styled-components';
 
 import IC_X from '../../assets/ic_X.svg';
-import font from '../../styles/fontStyle.styled';
+import font from '../../styles/fontStyle.styles';
+import { flexColumn } from '../../styles/layout.styles';
 
 export const FileContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  ${flexColumn}
   gap: 1.6rem;
 `;
 

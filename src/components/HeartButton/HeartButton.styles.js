@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { ReactComponent as HeartSvg } from '../../assets/ic_heart.svg';
-import font from '../../styles/fontStyle.styled';
+import font from '../../styles/fontStyle.styles';
+import { media } from '../../styles/media.styles';
 
 export const StyledHeartIcon = styled(HeartSvg).withConfig({
   shouldForwardProp: (prop) =>
@@ -20,10 +21,10 @@ export const StyledHeartIcon = styled(HeartSvg).withConfig({
     stroke: ${({ isActive }) => (isActive ? '#FF68CC' : 'var(--gray-500)')};
   }
 
-  @media screen and (max-width: 767px) {
+  ${media.tamo`
     width: ${({ borderType }) => (borderType ? '2.4rem' : 'auto')};
     height: ${({ borderType }) => (borderType ? '2.4rem' : 'auto')};
-  }
+  `}
 `;
 
 export const HeartButton = styled.button.withConfig({
@@ -50,7 +51,7 @@ export const HeartButton = styled.button.withConfig({
     return size === 'sm' ? font('14') : font('16');
   }}
 
-  @media screen and (max-width: 767px) {
+  ${media.tamo`
     height: ${({ borderType }) => (borderType ? '3.2rem' : 'auto')};
-  }
+  `}
 `;

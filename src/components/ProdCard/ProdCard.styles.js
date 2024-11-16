@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
 
-import font from '../../styles/fontStyle.styled';
+import font from '../../styles/fontStyle.styles';
 import { media } from '../../styles/media.styles';
+import { flexColumn } from '../../styles/layout.styles';
 
 const sizeStyles = {
   md: css`
@@ -29,8 +30,7 @@ const sizeStyles = {
 };
 
 const ProdContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  ${flexColumn}
   gap: 1.6rem;
 `;
 
@@ -40,8 +40,7 @@ const ProdImages = styled.div`
 `;
 
 const PordDesc = styled.div`
-  display: flex;
-  flex-direction: column;
+  ${flexColumn}
   gap: 0.6rem;
 
   h3 {

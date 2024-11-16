@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { Container } from '../../styles/Common.styles';
 import { media } from '../../styles/media.styles';
-import font from '../../styles/fontStyle.styled';
+import font from '../../styles/fontStyle.styles';
 
 const HeaderContainer = styled.div`
   position: fixed;
