@@ -1,20 +1,5 @@
-import { styled } from 'styled-components';
 import ProdCard from '../../components/ProdCard/ProdCard';
-import { media } from '../../styles/media.styles';
-
-const ProdList = styled.div`
-  display: flex;
-  gap: 2.4rem;
-  flex-wrap: wrap;
-
-  ${media.ta`
-    gap : ${({ size }) => (size ? '1.6rem' : '1rem')};
-  `}
-
-  ${media.mo`
-    gap : 0.8rem;
-  `}
-`;
+import ProdList from './ProductsList.styles';
 
 function ProductsList({ list, size }) {
   return (
