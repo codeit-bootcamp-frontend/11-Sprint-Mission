@@ -1,15 +1,14 @@
-import './SearchInput.scss';
+import StyledForm from './SearchInput.styles';
 
 const SearchInput = ({ onSubmit }) => {
   return (
-    <form onSubmit={onSubmit} className='input-search-wrap'>
+    <StyledForm onSubmit={onSubmit}>
       <input
-        className='input-search'
         name='search'
         placeholder='검색할 상품을 입력해주세요'
         autoComplete='off'
       />
-    </form>
+    </StyledForm>
   );
 };
 
