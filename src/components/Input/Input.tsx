@@ -1,33 +1,59 @@
-// import './Input.scss';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
+
 import {
   StyledInputContainer,
   StyledInput,
   StyledErrorText,
 } from './Input.styles';
 
-function Input(
-  {
-    as = 'input',
-    type = 'text',
-    placeholder = '',
-    name = '',
-    title,
-    isError = false,
-    errorMessage = '에러가 발생 했습니다.',
-    onChange,
-    ...rest
-  },
-  ref,
-) {
-  const [value, setValue] = useState('');
+interface InputPropsBase {
+  title?: string;
+  isError?: boolean;
+  errorMessage: string;
+}
 
-  const handleChange = (e) => {
+// input용 props
+interface InputPropsInput
+  extends InputPropsBase,
+    React.InputHTMLAttributes<HTMLInputElement> {
+  as?: 'input';
+  type?: string;
+}
+
+// textarea용 props
+interface InputPropsTextarea
+  extends InputPropsBase,
+    React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  as: 'textarea';
+}
+
+// 구분 유니온 타입
+type InputProps = InputPropsInput | InputPropsTextarea;
+
+function Input({
+  as = 'input',
+  placeholder = '',
+  name = '',
+  title,
+  isError = false,
+  errorMessage = '에러가 발생 했습니다.',
+  onChange,
+  ...rest
+}: InputProps) {
+  const [value, setValue] = useState<string>('');
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setValue(e.target.value);
     if (onChange) {
       onChange(e);
     }
   };
+
+  // `type` prop은 `as`가 'input'일 때만 전달
+  const inputProps =
+    as === 'input' ? { type: (rest as InputPropsInput).type } : {};
 
   return (
     <StyledInputContainer>
@@ -35,12 +61,12 @@ function Input(
       <div>
         <StyledInput
           as={as}
-          type={type}
           placeholder={placeholder}
           name={name}
           value={value}
-          isError={isError}
-          onChange={onChange ? onChange : handleChange}
+          $isError={isError}
+          onChange={handleChange}
+          {...inputProps}
           {...rest}
         />
         {isError && <StyledErrorText>{errorMessage}</StyledErrorText>}
