@@ -3,14 +3,14 @@ import { useParams } from 'react-router-dom';
 import dayjs from 'dayjs';
 import { getProduct } from '../api/api';
 import useAsync from '../hooks/useAsync';
-import { DATE_FORMAT, TITLE } from '../info';
+import { HookReturnType, ProductType } from '../types';
 //
-import Loading from '../Components/Loading';
-import Tag from '../Components/Tag';
-import CommentWriteForm from '../Components/CommentWriteForm';
-import Comments from '../Components/Comments';
-import Img from '../Components/Img';
-import Meta from '../Components/Meta';
+import Loading from '../components/Loading';
+import Tag from '../components/Tag';
+import CommentWriteForm from '../components/CommentWriteForm';
+import Comments from '../components/Comments';
+import Img from '../components/Img';
+import Meta from '../components/Meta';
 //
 import baseAvatar from '../assets/base-avatar.svg';
 import styles from './Item.module.css';
@@ -21,8 +21,9 @@ import styles from './Item.module.css';
  */
 function Item() {
   const { productId } = useParams();
-  const [product, setProduct] = useState(null);
-  const [isProductLoading, productLoadingError, getProductAsync] = useAsync(getProduct);
+  const [product, setProduct] = useState<ProductType | null>(null);
+  const [isProductLoading, productLoadingError, getProductAsync] =
+    useAsync<HookReturnType<ProductType>>(getProduct);
 
   useEffect(() => {
     const handleLoad = async () => {
@@ -45,18 +46,18 @@ function Item() {
       {product && (
         <>
           <Meta
-            title={`${product.name} | ${TITLE}`}
+            title={`${product.name}`}
             description={product.description}
             url={window.location.href}
             image={product.images[0]}
           />
 
-          <div className="flex flex-col md:flex-row gap-6 my-6">
+          <div className="my-6 flex flex-col gap-6 md:flex-row">
             <figure className={styles.productImage}>
               <Img src={product.images[0]} alt={product.name} />
             </figure>
 
-            <div className="flex flex-col gap-4 flex-1">
+            <div className="flex flex-1 flex-col gap-4">
               <h1 className={styles.name}>{product.name}</h1>
               <div className={styles.price}>{product.price.toLocaleString()}원</div>
               <hr />
@@ -66,13 +67,17 @@ function Item() {
                 <dt>상품 태그</dt>
                 <dd className="flex flex-wrap gap-2">
                   {product.tags.length
-                    ? product.tags.map((tag) => <Tag key={tag}>{tag}</Tag>)
+                    ? product.tags.map((tag: string, idx: number) => (
+                        <Tag idx={idx} key={tag}>
+                          {tag}
+                        </Tag>
+                      ))
                     : '-'}
                 </dd>
               </dl>
 
-              <div className="flex gap-6 items-center">
-                <div className="flex gap-4 items-center mr-auto">
+              <div className="flex items-center gap-6">
+                <div className="mr-auto flex items-center gap-4">
                   <img
                     src={baseAvatar}
                     alt={`${product.ownerNickname} 썸네일`}
@@ -82,7 +87,7 @@ function Item() {
                   <div>
                     <div className={styles.user}>{product.ownerNickname}</div>
                     <div className={styles.date}>
-                      {dayjs(product.createdAt).format(DATE_FORMAT)}
+                      {dayjs(product.createdAt).format('YYYY. MM. DD')}
                     </div>
                   </div>
                 </div>
@@ -112,7 +117,7 @@ function Item() {
 
       <CommentWriteForm />
 
-      <Comments productId={productId} />
+      <Comments productId={Number(productId)} />
     </>
   );
 }

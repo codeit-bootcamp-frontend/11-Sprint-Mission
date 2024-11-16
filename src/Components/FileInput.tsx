@@ -1,5 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import styles from './FileInput.module.css';
+
+interface Props {
+  name: string;
+  value: File | null;
+  onChange: (name: string, file: File | null) => void;
+}
 
 /**
  * 상품등록 > 이미지 파일 선택폼 컴포넌트
@@ -8,15 +14,18 @@ import styles from './FileInput.module.css';
  * @param {function} onChange : 받은 콜백 함수
  * @return {JSX}
  */
-function FileInput({ name, value, onChange }) {
+function FileInput({ name, value, onChange }: Props) {
   // 인풋 파일 요소
-  const inputRef = useRef();
+  const inputRef = useRef<HTMLInputElement | null>(null);
   // 미리보기
-  const [preview, setPreview] = useState(null);
+  const [preview, setPreview] = useState<string | null>(null);
 
   // 파일 값 변경 처리
-  const handleChange = (e) => {
-    onChange(name, e.target.files[0]);
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const fileList = e.target.files;
+    if (!fileList || fileList.length === 0) return;
+
+    onChange(name, fileList[0]);
   };
   // 선택한 이미지 파일 삭제
   const handleClearClick = () => {

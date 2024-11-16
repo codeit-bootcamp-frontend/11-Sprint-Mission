@@ -1,4 +1,3 @@
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 import './Pagination.css';
 
 // 전체 페이지네이션 배열 생성
@@ -50,8 +49,18 @@ export default function Pagination({
           className="btn-pn"
           type="button"
           onClick={handleClick(page - 1)}
-          disabled={page === 1}>
-          <ChevronLeftIcon className="size-4 mx-auto" />
+          disabled={page === 1}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="mx-auto size-4"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
         </button>
       </li>
       {showPages.map((pageNum) => (
@@ -59,7 +68,8 @@ export default function Pagination({
           <button
             className={`btn-pn ${page === pageNum ? 'active' : ''}`}
             type="button"
-            onClick={handleClick(pageNum)}>
+            onClick={handleClick(pageNum)}
+          >
             {pageNum}
           </button>
         </li>
@@ -69,8 +79,18 @@ export default function Pagination({
           className="btn-pn"
           type="button"
           onClick={handleClick(page + 1)}
-          disabled={page === pages.length}>
-          <ChevronRightIcon className="size-4 mx-auto" />
+          disabled={page === pages.length}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="mx-auto size-4"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
         </button>
       </li>
     </ul>
