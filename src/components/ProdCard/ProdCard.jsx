@@ -1,59 +1,38 @@
-import styled from 'styled-components';
 import { formatPrice } from '../../utils/format';
 
-import font from '../../styles/fontStyle.styled';
-import { sizeStyles } from './ProdCard.styles';
+import { ProdContainer, ProdImages, PordDesc } from './ProdCard.styles';
 
 import ProdDefaultImages from './ProdDefaultImages';
 import Heart from '../HeartButton/HeartButton';
-
-const ProdContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
-`;
-
-const ProdImages = styled.div`
-  overflow: hidden;
-  ${({ $size }) => sizeStyles[$size] || ''}
-`;
-
-const PordDesc = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-
-  h2 {
-    ${font('14m')}
-  }
-
-  p {
-    ${font('16b')}
-  }
-`;
+import { Link } from 'react-router-dom';
 
 function ProdCard({
   size = 'md',
-  src,
+  src = [],
   title = '상품 타이틀',
   price = 0,
   count = 0,
+  id = null,
+  ...rest
 }) {
   const formattedPrice = formatPrice(price);
+  const hasImage = src && src.length > 0;
 
   return (
     <ProdContainer>
-      <ProdImages $size={size}>
-        {src ? (
-          <img src={src} alt={title} />
-        ) : (
-          <ProdDefaultImages size={size} />
-        )}
-      </ProdImages>
+      <Link to={`/items/${id}`}>
+        <ProdImages $size={size}>
+          {hasImage ? (
+            <img src={src} alt={title} />
+          ) : (
+            <ProdDefaultImages size={size} />
+          )}
+        </ProdImages>
+      </Link>
       <PordDesc>
-        <h2>{title}</h2>
+        <h3>{title}</h3>
         <p>{formattedPrice}원</p>
-        <Heart size='sm' count={count} />
+        <Heart size='sm' count={count} {...rest} />
       </PordDesc>
     </ProdContainer>
   );
