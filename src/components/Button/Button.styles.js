@@ -40,7 +40,7 @@ const StyledButton = styled.button`
   white-space: nowrap;
   width: ${({ $wide }) => ($wide ? '100%' : 'auto')};
 
-  border-radius: ${({ $round }) => ($round ? '4rem' : '0.8rem')};
+  border-radius: ${({ $round }) => ($round ? '4rem' : '1.2rem')};
   background-color: ${({ $color, disabled }) =>
     disabled ? 'var(--gray-400)' : colorStyles[$color]?.default};
   color: ${({ $color, disabled }) =>
