@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 import { Container } from '../../styles/Common.styles';
 import { media } from '../../styles/media.styles';
-import font from '../../styles/fontStyle.styles';
 
 const HeaderContainer = styled.div`
   position: fixed;
@@ -13,34 +12,6 @@ const HeaderContainer = styled.div`
   border-bottom: 1px solid #dfdfdf;
   background-color: #fff;
   z-index: 999;
-
-  .logo {
-    width: 15.3rem;
-    height: 5.1rem;
-  }
-
-  .gnb {
-    display: flex;
-    flex: 1;
-
-    a {
-      padding: 2.1rem 1.5rem;
-      ${font('18b')}
-      text-align: center;
-    }
-  }
-
-  ${media.mo`
-    .logo{
-      width: 8.1rem;
-      height: 2.7rem;
-    }
-
-    .gnb a{
-      padding: 2.1rem 0.4rem;
-      ${font('16b')}
-    }
-  `}
 `;
 
 const StlyedContainer = styled(Container)`

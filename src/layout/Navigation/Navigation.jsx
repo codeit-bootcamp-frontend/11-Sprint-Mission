@@ -1,4 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom';
+import { StyledGnb } from './Navigation.styles';
 
 function Navigation() {
   // 현재 주소 가져오기
@@ -20,7 +21,7 @@ function Navigation() {
   ];
 
   return (
-    <ul className='gnb'>
+    <StyledGnb>
       {navLinks.map((link) => (
         <li key={link.name}>
           <NavLink to={link.path} style={() => getNavLinkStyle(link.path)}>
@@ -28,7 +29,7 @@ function Navigation() {
           </NavLink>
         </li>
       ))}
-    </ul>
+    </StyledGnb>
   );
 }
 
