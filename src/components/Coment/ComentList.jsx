@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { getProductsDetailComments } from '../../services/products-api';
-import useAsyncRequest from '../../hooks/useAsyncRequest';
-
 import RETURN_IMAGE from '../../assets/ic_back.svg';
 import { StyledComentListContainer, IconReturn } from './ComentList.styles';
 
@@ -13,23 +10,8 @@ import NotResult from '../NotResult/NotResult';
 import Button from '../Button/Button';
 import Line from '../Line/Line';
 
-function ComentList({ type }) {
-  const [commentsList, setCommentsList] = useState([]);
-  const { execute } = useAsyncRequest();
-  const { productId } = useParams();
+function ComentList({ commentsList, onEditSubmit, onDeleteClick, type }) {
   const [editingCommentId, setEditingCommentId] = useState(null);
-
-  useEffect(() => {
-    const handleCommentsListLoad = async () => {
-      const result = await execute(() => getProductsDetailComments(productId));
-      const { list } = result;
-      if (result) {
-        setCommentsList(list);
-      }
-    };
-
-    handleCommentsListLoad();
-  }, [productId, execute]);
 
   const handleEditClick = (commentId) => {
     setEditingCommentId(commentId);
@@ -41,21 +23,9 @@ function ComentList({ type }) {
 
   const handleEditSubmit = (item, updatedContent) => {
     if (updatedContent.trim() !== '') {
-      setCommentsList((prevItems) =>
-        prevItems.map((comment) =>
-          comment.id === item.id
-            ? { ...comment, content: updatedContent }
-            : comment,
-        ),
-      );
+      onEditSubmit(item, updatedContent);
       setEditingCommentId(null);
     }
-  };
-
-  const handleDeleteClick = (itemToDeleteId) => {
-    setCommentsList((prevItems) =>
-      prevItems.filter((item) => item.id !== itemToDeleteId),
-    );
   };
 
   return (
@@ -78,7 +48,7 @@ function ComentList({ type }) {
                   date={item.createdAt}
                   content={item.content}
                   onClickEdit={() => handleEditClick(item.id)}
-                  onClickDelete={() => handleDeleteClick(item.id)}
+                  onClickDelete={() => onDeleteClick(item.id)}
                 />
               )}
               <Line />

@@ -17,7 +17,6 @@ function ComentEdit({ item, onCancel, onSubmit }) {
   return (
     <StyledEditForm>
       <Input as='textarea' value={editValue} onChange={handleEditInput} />
-      {/* <textarea value={editValue} name='inquiry' onChange={handleEditInput} /> */}
       <div className='coment-edit'>
         <UserInfo wide>
           <UserInfo.ProfileImage imageSize='small' />

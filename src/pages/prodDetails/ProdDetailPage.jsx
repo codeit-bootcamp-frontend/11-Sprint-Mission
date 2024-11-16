@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { getProductsDetail } from '../../services/products-api';
+import {
+  getProductsDetail,
+  getProductsDetailComments,
+} from '../../services/products-api';
 import useAsyncRequest from '../../hooks/useAsyncRequest';
 
 import { Page, Container } from '../../styles/Common.styles';
@@ -12,6 +15,7 @@ import ComentList from '../../components/Coment/ComentList';
 import ProdDetail from './ProdDetail';
 
 function ProdDetailPage() {
+  const [commentsList, setCommentsList] = useState([]);
   const [details, setDetails] = useState({});
   const { execute, isLoading, error: fetchError } = useAsyncRequest();
   const { productId } = useParams();
@@ -24,8 +28,33 @@ function ProdDetailPage() {
       }
     };
 
+    const handleCommentsListLoad = async () => {
+      const result = await execute(() => getProductsDetailComments(productId));
+      const { list } = result;
+      if (result) {
+        setCommentsList(list);
+      }
+    };
+
+    handleCommentsListLoad();
     handleProductsLoad();
   }, [productId, execute]);
+
+  const handleEditSubmit = (item, updatedContent) => {
+    setCommentsList((prevItems) =>
+      prevItems.map((comment) =>
+        comment.id === item.id
+          ? { ...comment, content: updatedContent }
+          : comment,
+      ),
+    );
+  };
+
+  const handleDeleteClick = (itemToDeleteId) => {
+    setCommentsList((prevItems) =>
+      prevItems.filter((item) => item.id !== itemToDeleteId),
+    );
+  };
 
   if (details?.length) {
     return <p>상품 정보를 불러올 수 없습니다.</p>;
@@ -52,7 +81,12 @@ function ProdDetailPage() {
             placeholder='개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다.'
           />
 
-          <ComentList type='inquiry' />
+          <ComentList
+            commentsList={commentsList}
+            onEditSubmit={handleEditSubmit}
+            onDeleteClick={handleDeleteClick}
+            type='inquiry'
+          />
         </StyledComentContainer>
       </Container>
     </Page>
