@@ -127,6 +127,7 @@ function CommentList({ productId }) {
 	if (error) alert(`${error}`);
 
 	if (comments && !comments.length) return <EmptyState />;
+  
 	else {
 		return (
 			<ListSection>
