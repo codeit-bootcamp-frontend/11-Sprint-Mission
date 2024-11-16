@@ -3,6 +3,7 @@ import Heart from '../../components/HeartButton/HeartButton';
 import ProdCard from '../../components/ProdCard/ProdCard';
 import InputAddFile from '../../components/InputFile/InputAddFile';
 import { TestContainer, Table, Th, Td, TdContainer } from './Test.styles';
+import NotResult from '../../components/NotResult/NotResult';
 
 function Test() {
   return (
@@ -38,8 +39,8 @@ function Test() {
               <Td>Heart</Td>
               <Td>
                 <TdContainer>
-                  <Heart border count={12} />
-                  <Heart border count={12} isActive={true} />
+                  <Heart borderType count={12} />
+                  <Heart borderType count={12} isActive={true} />
                   <Heart count={10000} />
                   <Heart count={100} isActive={true} />
                   <Heart size='sm' count={100} />
@@ -63,6 +64,17 @@ function Test() {
               <Td>
                 <TdContainer>
                   <InputAddFile />
+                </TdContainer>
+              </Td>
+            </tr>
+
+            <tr>
+              <Td>NotResult</Td>
+              <Td>
+                <TdContainer>
+                  <NotResult />
+                  <NotResult type='search' />
+                  <NotResult type='comments' />
                 </TdContainer>
               </Td>
             </tr>
