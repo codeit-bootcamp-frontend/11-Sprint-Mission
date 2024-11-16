@@ -1,0 +1,30 @@
+.comment {
+  @apply py-3 border-b;
+  border-color: var(--gray-200);
+
+  .content {
+    @apply flex-1 mb-6 text-sm;
+  }
+  .user {
+    @apply text-xs;
+    color: var(--gray-600);
+  }
+  .date {
+    @apply text-xs;
+    color: var(--gray-400);
+  }
+  .menus {
+    @apply border rounded-lg bg-white;
+    width: 140px;
+    color: var(--gray-500);
+
+    .btn {
+      @apply w-full px-4 py-2;
+    }
+  }
+}
+
+.empty {
+  @apply my-6 flex flex-col items-center justify-center text-center;
+  color: var(--gray-400);
+}

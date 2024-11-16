@@ -1,0 +1,15 @@
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.loading {
+  @apply absolute inset-0 bg-gray-100 z-30 flex items-center justify-center;
+  pointer-events: none;
+
+  &::after {
+    @apply w-7 h-7 rounded-full border-4 border-gray-600 border-x-white animate-spin shadow;
+    content: '';
+  }
+}

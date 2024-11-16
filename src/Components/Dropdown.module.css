@@ -1,0 +1,17 @@
+.dropdown {
+  @apply relative;
+
+  .more {
+    @apply absolute h-0 left-0 top-full invisible opacity-0 transition-all;
+  }
+  &.right .more {
+    @apply left-auto right-0;
+  }
+
+  .btn {
+    & + .more:focus-within,
+    &:focus + .more {
+      @apply h-auto visible opacity-100;
+    }
+  }
+}
