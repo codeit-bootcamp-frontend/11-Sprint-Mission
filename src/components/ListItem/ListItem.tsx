@@ -9,7 +9,7 @@ function ListItem({
   type = null,
 }: {
   item: Product;
-  type: string | null;
+  type?: string | null;
 }) {
   const classNames = `Item ${type ? type : ""}`;
 

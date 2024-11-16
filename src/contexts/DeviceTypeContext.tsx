@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import useDebounce from "../hooks/useDebounce";
 
-type DeviceType = "desktop" | "tablet" | "mobile";
+export type DeviceType = "desktop" | "tablet" | "mobile";
 
 const DeviceTypeContext = createContext<DeviceType>("desktop");
 
