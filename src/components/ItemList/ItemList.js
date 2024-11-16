@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getProductList } from "../../api";
-import Item from "../Item/Item";
+import ListItem from "../ListItem/ListItem";
 import "./ItemList.css";
 import Pagination from "../Pagination/Pagination";
 import arrowDown from "../../assets/images/ic_arrow_down.svg";
@@ -147,7 +147,7 @@ function Content({ items }) {
     <ul className="ItemList-content">
       {items.map((item) => (
         <li key={item.id}>
-          <Item item={item} />
+          <ListItem item={item} />
         </li>
       ))}
     </ul>

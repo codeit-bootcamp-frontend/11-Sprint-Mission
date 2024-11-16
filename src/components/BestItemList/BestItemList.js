@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getProductList } from "../../api";
-import Item from "../Item/Item";
+import ListItem from "../ListItem/ListItem";
 import "./BestItemList.css";
 import { useDeviceType } from "../../contexts/DeviceTypeContext";
 
@@ -43,7 +43,7 @@ function Content({ items }) {
     <ul className="BestItemList-content">
       {items.map((item) => (
         <li key={item.id}>
-          <Item item={item} type="best" />
+          <ListItem item={item} type="best" />
         </li>
       ))}
     </ul>
