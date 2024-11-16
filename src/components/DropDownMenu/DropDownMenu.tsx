@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import ICON_KEBAB from '../../assets/ic_kebab.svg';
 import {
   DropDownContainer,
@@ -7,7 +7,11 @@ import {
   ToggleButton,
 } from './DropDownMenu.styles';
 
-function DropDownMenu({ children, classNames = '' }) {
+interface DropDownProps {
+  children: ReactNode;
+}
+
+function DropDownMenu({ children }: DropDownProps) {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   const handleMenuClick = () => {
@@ -24,7 +28,10 @@ function DropDownMenu({ children, classNames = '' }) {
   );
 }
 
-function DropDownItem({ children, onClick, className }) {
+interface DropDownItemProps extends DropDownProps {
+  onClick: () => void;
+}
+function DropDownItem({ children, onClick }: DropDownItemProps) {
   return (
     <li>
       <ItemButton onClick={onClick}>{children}</ItemButton>
