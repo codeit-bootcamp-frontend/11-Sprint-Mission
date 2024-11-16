@@ -3,15 +3,16 @@ import { getProductList } from "../../api";
 import ListItem from "../ListItem/ListItem";
 import "./BestItemList.css";
 import { useDeviceType } from "../../contexts/DeviceTypeContext";
+import { Product } from "../../types/Product";
 
 const PAGE_SIZE = {
   desktop: 4,
   tablet: 2,
   mobile: 1,
-};
+} as const;
 
 function ItemList() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState<Product[]>([]);
   const deviceType = useDeviceType();
 
   useEffect(() => {
@@ -38,7 +39,7 @@ function Header() {
   );
 }
 
-function Content({ items }) {
+function Content({ items }: { items: Product[] }) {
   return (
     <ul className="BestItemList-content">
       {items.map((item) => (
