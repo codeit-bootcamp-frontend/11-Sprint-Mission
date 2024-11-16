@@ -4,13 +4,7 @@ import arrowRight from "../../assets/images/arrow_right.svg";
 import arrowLeftDouble from "../../assets/images/arrow_left_double.svg";
 import arrowRightDouble from "../../assets/images/arrow_right_double.svg";
 
-/**
- * 렌더링할 페이지 번호 배열을 반환하는 함수
- * @param {Number} page 현재 페이지 번호
- * @param {Number} lastPage 마지막 페이지 번호
- * @return {Object} 버튼 번호 배열
- */
-function getPageButtonRange(page, lastPage) {
+function getPageButtonRange(page: number, lastPage: number) {
   // 표시할 최대 버튼 수
   const RANGE_WIDTH = 5;
   const RANGE_WIDTH_HALF = 2;
@@ -40,30 +34,32 @@ function getPageButtonRange(page, lastPage) {
   return range;
 }
 
-/**
- *페이지네이션 컴포넌트
- * @param {Number} page 현재 페이지 번호
- * @param {Function} setPage 페이지 세터 함수
- * @param {Number} pageSize 페이지당 상품 수
- * @param {Number} total 총 상품 수
- * @returns 페이지네이션 컴포넌트 반환
- */
-function Pagination({ page, setPage, pageSize, total }) {
+function Pagination({
+  page,
+  setPage,
+  pageSize,
+  total,
+}: {
+  page: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+  pageSize: number;
+  total: number;
+}) {
   // 마지막 페이지 번호
-  const lastPage = Math.round(total / pageSize) + (total % pageSize > 0);
+  const lastPage = Math.ceil(total / pageSize);
   const prev = page - 1;
   const next = page + 1;
   // 표시할 버튼 번호 배열
   const range = getPageButtonRange(page, lastPage);
 
-  /**
-   * 페이지네이션 버튼 클릭 이벤트핸들러
-   * @param {Event} e 이벤트 객체
-   * @description 클릭한 버튼의 value 속성에 해당하는 페이지로 이동
-   */
-  const handlePageClick = (e) => {
-    const data = e.target.dataset.page;
-    console.log(data);
+  const handlePageClick = (event: React.MouseEvent<HTMLUListElement>) => {
+    if (!(event.target instanceof HTMLElement)) {
+      alert("페이지 선택 중 오류가 발생했습니다!");
+      return;
+    }
+
+    const data = event.target.dataset.page;
+
     const targetPage = Number(data);
     if (!targetPage) {
       console.log("paginattion err 1");
@@ -105,14 +101,7 @@ function Pagination({ page, setPage, pageSize, total }) {
   );
 }
 
-/**
- * 페이지를 이동할 수 있는 버튼 컴포넌트
- * @param {Number} page 이 버튼에 해당하는 페이지
- * @param {Number} current 현재 사용자가 보고 있는 페이지
- * @returns 버튼 컴포넌트
- * @description 현재 페이지와 컴포넌트가 가리키는 페이지가 일치할 경우 강조된 버튼 반환
- */
-function PageButton({ page, current }) {
+function PageButton({ page, current }: { page: number; current: number }) {
   const isCurrent = page === current ? "current" : "";
   return (
     <button className={isCurrent} data-page={String(page)}>
