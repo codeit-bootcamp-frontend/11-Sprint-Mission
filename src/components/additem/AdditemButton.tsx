@@ -5,10 +5,7 @@ interface AdditemButtonProps {
   disabled?: boolean;
 }
 
-const AdditemButton: React.FC<AdditemButtonProps> = ({
-  onSubmit,
-  disabled,
-}) => {
+const AdditemButton = ({ onSubmit, disabled }: AdditemButtonProps) => {
   return (
     <button
       className={`upButton ${disabled ? 'disabled' : 'active'}`}

@@ -6,7 +6,7 @@ interface ImageUploadProps {
   onChange: (name: string, file: File | null) => void;
 }
 
-const ImageUpload: React.FC<ImageUploadProps> = ({ name, value, onChange }) => {
+const ImageUpload = ({ name, value, onChange }: ImageUploadProps) => {
   const [preview, setPreview] = useState<string | undefined>();
   const [message, setMessage] = useState<string>(''); // 메시지 상태 관리
   const inputRef = useRef<HTMLInputElement | null>(null);

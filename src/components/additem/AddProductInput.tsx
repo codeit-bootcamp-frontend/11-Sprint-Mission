@@ -12,7 +12,7 @@ interface AddProductInputProps {
   onTagsUpdate: (tags: string[]) => void;
 }
 
-const AddProductInput: React.FC<AddProductInputProps> = ({
+const AddProductInput = ({
   productName,
   productContent,
   productPrice,
@@ -22,15 +22,15 @@ const AddProductInput: React.FC<AddProductInputProps> = ({
   onPriceChange,
   onTagChange,
   onTagsUpdate,
-}) => {
+}: AddProductInputProps) => {
   const [tags, setTags] = useState<string[]>([]);
 
   const handleTagSubmit = () => {
     if (productTag.trim() !== '') {
       const updatedTags = [...tags, productTag.trim()];
       setTags(updatedTags);
-      onTagChange(''); // Clear input
-      onTagsUpdate(updatedTags); // 부모 컴포넌트로 태그 배열 전달
+      onTagChange('');
+      onTagsUpdate(updatedTags);
     }
   };
 
