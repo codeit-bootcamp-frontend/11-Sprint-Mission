@@ -5,7 +5,7 @@ const useReSizing = ({ mobileSize, tabletSize, pcSize }) => {
   const calculatePageSize = useCallback(() => {
     if (window.innerWidth <= 767) {
       return mobileSize;
-    } else if (window.innerWidth <= 1199) {
+    } else if (window.innerWidth <= 1248) {
       return tabletSize;
     }
     return pcSize;
