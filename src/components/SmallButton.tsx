@@ -1,14 +1,14 @@
-import React, {ReactNode} from "react";
-import "./SmallButton.css"
+import React, { ButtonHTMLAttributes, ReactNode } from 'react';
+import './SmallButton.css';
 
-interface ButtonProp {
+interface ButtonProp extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
 }
 
-function SmallButton({ children }: ButtonProp) {
+function SmallButton({ children, ...rest }: ButtonProp) {
   return (
     <>
-      <button className="small-button">
+      <button className="small-button" {...rest}>
         <div className="small-btn-text">{children}</div>
       </button>
     </>

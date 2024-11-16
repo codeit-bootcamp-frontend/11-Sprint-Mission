@@ -1,15 +1,15 @@
-import React, {ReactNode} from 'react';
+import React, {ButtonHTMLAttributes} from 'react';
 import './PageButton.css';
 
-interface PageButtonProps {
-  children ?: ReactNode;
-  clickBtn:() => void;
+interface PageButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  value: number;
+  clickBtn: () => void;
 }
 
-function PageButton({ children, clickBtn }: PageButtonProps) {
+function PageButton({ value, clickBtn, ...rest }: PageButtonProps) {
   return (
-    <button onClick={clickBtn} className="page-button">
-      <div>{children}</div>
+    <button {...rest} onClick={clickBtn} className="page-button">
+      {value}
     </button>
   );
 }

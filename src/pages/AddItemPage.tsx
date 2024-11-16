@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import Nav from "../components/Nav";
 import SmallButton from "../components/SmallButton";
 import FileInput from "../components/FileInput";
@@ -14,16 +14,16 @@ function AddItemPage() {
     imgFile: null,
   });
 
-  const handleChange = (name, value) => {
+  const handleChange = (name: string, value: string | File | null) => {
     setValues((preValues) => ({ ...preValues, [name]: value }));
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     handleChange(name, value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(values);
   };
