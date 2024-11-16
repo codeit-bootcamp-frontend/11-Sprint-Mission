@@ -1,11 +1,12 @@
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import './styles/loading.css';
+import GlobalStyle from './styles/GlobalStyle';
 
 const RootComponent = () => {
   return (
     <BrowserRouter>
+      <GlobalStyle />
       <App />
     </BrowserRouter>
   );

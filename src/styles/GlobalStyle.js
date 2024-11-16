@@ -19,7 +19,159 @@ const GlobalStyle = createGlobalStyle`
 
     --red: #f74747;
   }
-  
+
+
+  html,
+  body,
+  div,
+  span,
+  applet,
+  object,
+  iframe,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  blockquote,
+  pre,
+  a,
+  abbr,
+  acronym,
+  address,
+  big,
+  cite,
+  code,
+  del,
+  dfn,
+  em,
+  img,
+  ins,
+  kbd,
+  q,
+  s,
+  samp,
+  small,
+  strike,
+  strong,
+  sub,
+  sup,
+  tt,
+  var,
+  b,
+  u,
+  i,
+  center,
+  dl,
+  dt,
+  dd,
+  ol,
+  ul,
+  li,
+  fieldset,
+  form,
+  label,
+  legend,
+  input,
+  table,
+  caption,
+  tbody,
+  tfoot,
+  thead,
+  tr,
+  th,
+  td,
+  article,
+  aside,
+  canvas,
+  details,
+  embed,
+  figure,
+  figcaption,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  output,
+  ruby,
+  section,
+  summary,
+  time,
+  mark,
+  audio,
+  video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+  }
+
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  section {
+    display: block;
+  }
+
+  html {
+    font-size: 10px;
+  }
+
+  body {
+    line-height: 1;
+  }
+  body > * {
+    color: var(--gray-700);
+  }
+  ol,
+  ul, li {
+    list-style: none;
+  }
+  blockquote,
+  q {
+    quotes: none;
+  }
+  blockquote:before,
+  blockquote:after,
+  q:before,
+  q:after {
+    content: '';
+    content: none;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+  }
+  a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--gray-800);
+  }
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+    
   *, *::before, *::after {
     box-sizing: border-box;
   }
@@ -29,9 +181,23 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Pretendard', sans-serif;
   }
 
-  h1, h2, h3, h4, h5, p {
+  h1, h2, h3, h4, h5, p{
     color: var(--gray-800);
   }
+
+/* 태블릿 */
+@media screen and (min-width: 768px) and (max-width: 1248px) {
+  html {
+    font-size: 1.3021vw;
+  }
+}
+
+/* 모바일 */
+@media screen and (max-width: 767px) {
+  html {
+    font-size: 2.7778vw;
+  }
+}
 `;
 
 export default GlobalStyle;
