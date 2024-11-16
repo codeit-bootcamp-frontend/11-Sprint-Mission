@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import styles from './AddItem.module.scss';
-// import HeadingTitleArea from '../components/common/HeadingTitleArea';
-import Button from '../components//Button/Button';
-import Input from '../components/Input/Input';
-import InputFile from '../components/common/InputFile';
-import TagsList from '../components/common/TagsList';
 
-function AddItem() {
+import Button from '../../components/Button/Button';
+import Input from '../../components/Input/Input';
+import InputFile from '../../components/common/InputFile';
+import TagsList from '../../components/common/TagsList';
+import { Container, Page } from '../../styles/Common.styles';
+
+function AddProd() {
   const [formValues, setFormValues] = useState({
     productName: '',
     productDescription: '',
@@ -56,8 +56,8 @@ function AddItem() {
   };
 
   return (
-    <main className='page-addItem'>
-      <div className='container'>
+    <Page>
+      <Container>
         <form>
           <h2>상품 등록하기</h2>
           <Button
@@ -66,7 +66,7 @@ function AddItem() {
             disabled={!isFormValid && formValues.length > 0}>
             등록
           </Button>
-          <div className={styles['input-text-area']}>
+          <div>
             <div>
               <h3>상품이미지</h3>
               <InputFile />
@@ -102,7 +102,7 @@ function AddItem() {
             </div>
             <div>
               <h3>태그</h3>
-              <div className={styles['input-tag-area']}>
+              <div>
                 <Input
                   placeholder='태그를 입력해주세요'
                   name='productTags'
@@ -120,9 +120,9 @@ function AddItem() {
             </div>
           </div>
         </form>
-      </div>
-    </main>
+      </Container>
+    </Page>
   );
 }
 
-export default AddItem;
+export default AddProd;

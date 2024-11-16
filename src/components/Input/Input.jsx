@@ -12,6 +12,7 @@ function Input(
     type = 'text',
     placeholder = '',
     name = '',
+    title,
     isError = false,
     errorMessage = '에러가 발생 했습니다.',
     onChange,
@@ -30,17 +31,20 @@ function Input(
 
   return (
     <StyledInputContainer>
-      <StyledInput
-        as={as}
-        type={type}
-        placeholder={placeholder}
-        name={name}
-        value={value}
-        isError={isError}
-        onChange={onChange ? onChange : handleChange}
-        {...rest}
-      />
-      {isError && <StyledErrorText>{errorMessage}</StyledErrorText>}
+      {title && <h3>{title}</h3>}
+      <div>
+        <StyledInput
+          as={as}
+          type={type}
+          placeholder={placeholder}
+          name={name}
+          value={value}
+          isError={isError}
+          onChange={onChange ? onChange : handleChange}
+          {...rest}
+        />
+        {isError && <StyledErrorText>{errorMessage}</StyledErrorText>}
+      </div>
     </StyledInputContainer>
   );
 }

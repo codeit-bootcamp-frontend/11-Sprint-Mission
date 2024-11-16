@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import React from 'react';
 import Main from '../pages/Main';
 import ItemsPage from '../pages/Items/ItemsPage';
-import AddItem from '../pages/AddItem';
+import AddProd from '../pages/addProd/AddProd';
 import Notfound from '../pages/Notfound';
 import Boards from '../pages/Boards';
 import Login from '../pages/Login';
@@ -19,7 +19,7 @@ export default function AppRoutes() {
         <Route index element={<ItemsPage />} />
         <Route path=':productId' element={<ProdDetailPage />} />
       </Route>
-      <Route path='addItem' element={<AddItem />} />
+      <Route path='addItem' element={<AddProd />} />
       <Route path='login' element={<Login />} />
       <Route path='*' element={<Notfound />} />
     </Routes>

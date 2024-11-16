@@ -1,8 +1,14 @@
 import styled from 'styled-components';
 import font from '../../styles/fontStyle.styles';
+import { flexColumn } from '../../styles/layout.styles';
 
 const StyledInputContainer = styled.div`
+  ${flexColumn}
+  gap: 1.6rem;
   width: 100%;
+  h3 {
+    ${font('18b')}
+  }
 `;
 
 const StyledInput = styled.input.withConfig({

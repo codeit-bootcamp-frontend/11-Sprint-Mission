@@ -127,7 +127,15 @@ function Test() {
                 <TdContainer>
                   <Input placeholder='플레이스 홀더 입니다.' />
                   <Input as='textarea' placeholder='플레이스 홀더 입니다.' />
-                  <Input placeholder='플레이스 홀더 입니다.' />
+                  <Input
+                    title='일반 인풋'
+                    placeholder='플레이스 홀더 입니다.'
+                  />
+                  <Input
+                    title='장문 인풋'
+                    as='textarea'
+                    placeholder='플레이스 홀더 입니다.'
+                  />
                   <Input
                     placeholder='플레이스 홀더 입니다.'
                     isError={true}
