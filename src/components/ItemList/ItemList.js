@@ -8,6 +8,7 @@ import ic_sort from "../../assets/images/ic_sort.svg";
 import ic_search from "../../assets/images/ic_search.svg";
 import { useDeviceType } from "../../contexts/DeviceTypeContext";
 import { Link } from "react-router-dom";
+import useAsync from "../../hooks/useAsync";
 
 const PAGE_SIZE = {
   desktop: 12,
@@ -25,16 +26,17 @@ function ItemList() {
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState("recent");
   const [total, setTotal] = useState(0);
+  const { loading, error, execute: getProductsAsync } = useAsync(getProducts);
   const deviceType = useDeviceType();
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getProducts(page, PAGE_SIZE[deviceType], order);
+      const result = await getProductsAsync(page, PAGE_SIZE[deviceType], order);
       setItems(result.list);
       setTotal(result.totalCount);
     };
     fetchData();
-  }, [deviceType, page, order]);
+  }, [deviceType, page, order, getProductsAsync]);
 
   return (
     <div className="ItemList">
@@ -53,7 +55,7 @@ function ItemList() {
 /**
  * 전체 상품 페이지의 헤더 컴포넌트
  * @param {Function} setOrder 정렬 조건 세터 함수
- * @returns 헤더 컴포넌트
+ * @returns {React.JSX} 헤더 컴포넌트
  * @description 여러 유틸 기능을 포함한 헤더. 키워드 검색, 상품 등록, 검색 조건 셀렉터를 포함하고 있다.
  */
 function Header({ deviceType, order, setOrder }) {

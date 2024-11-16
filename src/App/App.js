@@ -1,10 +1,10 @@
 import "./App.css";
-import Navigation from "../Navigation/Navigation";
+import Navigation from "../components/Navigation/Navigation";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
-import AddItemPage from "../../pages/AddItemPage/AddItemPage";
-import ItemListPage from "../../pages/ItemListPage/ItemListPage";
-import { DeviceTypeProvider } from "../../contexts/DeviceTypeContext";
-import ItemDetailPage from "../../pages/ItemDetailPage/ItemDetailPage";
+import AddItemPage from "../pages/AddItemPage/AddItemPage";
+import ItemListPage from "../pages/ItemListPage/ItemListPage";
+import { DeviceTypeProvider } from "../contexts/DeviceTypeContext";
+import ItemDetailPage from "../pages/ItemDetailPage/ItemDetailPage";
 
 function App() {
   return (

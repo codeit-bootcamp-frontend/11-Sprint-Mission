@@ -7,7 +7,7 @@ const BASE_URL = "https://panda-market-api.vercel.app";
  * @param {number} page 페이지 번호 (기본 : 1)
  * @param {number} pageSize 페이지당 상품 수 (기본 : 12)
  * @param {string} orderBy recent 최신순(기본) / favorite 좋아요순
- * @param {string} keyword 검색 키워드
+ * @param {string} [keyword] 검색 키워드
  * @returns {object} 상품 목록 객체
  */
 export async function getProducts(
