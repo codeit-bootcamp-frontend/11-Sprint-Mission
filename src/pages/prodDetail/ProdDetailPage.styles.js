@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Line from '../../components/Line/Line';
+import Line from '../../components/Shared/Line/Line';
 import { media } from '../../styles/media.styles';
 import { flexColumn } from '../../styles/layout.styles';
 

@@ -5,7 +5,7 @@ import { StyledProdContainer } from './ProdDetail.styles';
 import TagsList from '../../components/Tags/TagsList';
 import DropDownMenu from '../../components/DropDownMenu/DropDownMenu';
 import UserInfo from '../../components/UserInfo/UserInfo';
-import Line from '../../components/Line/Line';
+import Line from '../../components/Shared/Line/Line';
 import ProdDefaultImages from '../../components/ProdCard/ProdDefaultImages';
 
 function ProdDetail({

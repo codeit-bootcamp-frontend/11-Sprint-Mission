@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 
 import RETURN_IMAGE from '../../assets/ic_back.svg';
 import { StyledComentListContainer, IconReturn } from './ComentList.styles';
@@ -8,7 +7,7 @@ import Coment from './Coment';
 import ComentEdit from './ComentEdit';
 import NotResult from '../NotResult/NotResult';
 import Button from '../Button/Button';
-import Line from '../Line/Line';
+import Line from '../Shared/Line/Line';
 
 function ComentList({ commentsList, onEditSubmit, onDeleteClick, type }) {
   const [editingCommentId, setEditingCommentId] = useState(null);

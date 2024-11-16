@@ -1,4 +1,4 @@
-import Line from '../Line/Line';
+import Line from '../Shared/Line/Line';
 import ProfileImage from '../ProfileImages/ProfileImage';
 import {
   UserInfoText,
