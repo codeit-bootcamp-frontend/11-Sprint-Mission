@@ -1,5 +1,5 @@
-import ProfileImage from '../../components/common/ProfileImage';
-import Logo from '../../components/common/Logo';
+import ProfileImage from '../../components/ProfileImages/ProfileImage';
+import Logo from '../../components/Shared/Logo/Logo';
 import Navigation from '../Navigation';
 import { HeaderContainer, StlyedContainer } from './Headers.styles';
 

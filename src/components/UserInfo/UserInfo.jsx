@@ -1,5 +1,5 @@
 import Line from '../Line/Line';
-import ProfileImage from '../common/ProfileImage';
+import ProfileImage from '../ProfileImages/ProfileImage';
 import {
   UserInfoText,
   UserInfoWrapper,

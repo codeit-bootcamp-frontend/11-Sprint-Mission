@@ -11,9 +11,9 @@ import {
 } from './ItemsPage.styles';
 
 import ProductsList from './ProductsList';
-import PageNation from '../../components/common/PageNation';
+import PageNation from '../../components/PageNation/PageNation';
 import SearchInput from '../../components/SearchInput/SearchInput';
-import DropDown from '../../components/common/SelectMenu';
+import DropDown from '../../components/Select/SelectMenu';
 import NotResult from '../../components/NotResult/NotResult';
 
 function ItemsPage() {
