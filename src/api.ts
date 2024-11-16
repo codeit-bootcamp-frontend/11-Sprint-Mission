@@ -1,6 +1,4 @@
-// import dotenv from "dotenv";
-// dotenv.config();
-const BASE_URL = "https://panda-market-api.vercel.app";
+const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 interface Product {
   createdAt: string;
@@ -41,15 +39,7 @@ interface CommentList {
   list: Comment[];
 }
 
-/**
- * 상품 목록 조회 API
- * @param {number} page 페이지 번호 (기본 : 1)
- * @param {number} pageSize 페이지당 상품 수 (기본 : 12)
- * @param {string} orderBy recent 최신순(기본) / favorite 좋아요순
- * @param {string} [keyword] 검색 키워드
- * @returns {Promise<ProductList>} 상품 목록 객체
- */
-export async function getProducts(
+export async function getProductList(
   page: number = 1,
   pageSize: number = 12,
   orderBy: string = "recent",
@@ -66,11 +56,6 @@ export async function getProducts(
   return res.json();
 }
 
-/**
- * 상품 상세 조회 API
- * @param {string} id
- * @returns {object} 상품 상세 정보 객체
- */
 export async function getProductById(id: string): Promise<ProductExtended> {
   if (!BASE_URL) throw new Error("요청을 보낼 수 없습니다.");
   const url = new URL(BASE_URL + "/products/" + id);
@@ -78,7 +63,7 @@ export async function getProductById(id: string): Promise<ProductExtended> {
   return res.json();
 }
 
-export async function getCommentById(
+export async function getCommentListByProductId(
   type: string,
   id: string,
   limit: number,

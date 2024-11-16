@@ -3,7 +3,7 @@ import ic_kebab from "../../assets/images/ic_kebab.svg";
 import ic_profile from "../../assets/images/profile.svg";
 import styles from "./CommentForm.module.css";
 import useDebounce from "../../hooks/useDebounce";
-import { getCommentById } from "../../api";
+import { getCommentListByProductId } from "../../api";
 import no_comment from "../../assets/images/no_comment.svg";
 
 function CommentForm({ productId, className }) {
@@ -56,7 +56,7 @@ function CommentForm({ productId, className }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getCommentById("products", productId, 10);
+      const result = await getCommentListByProductId("products", productId, 10);
       setComments(result);
     };
     fetchData();

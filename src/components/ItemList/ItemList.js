@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getProducts } from "../../api";
+import { getProductList } from "../../api";
 import Item from "../Item/Item";
 import "./ItemList.css";
 import Pagination from "../Pagination/Pagination";
@@ -26,7 +26,11 @@ function ItemList() {
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState("recent");
   const [total, setTotal] = useState(0);
-  const { loading, error, execute: getProductsAsync } = useAsync(getProducts);
+  const {
+    loading,
+    error,
+    execute: getProductsAsync,
+  } = useAsync(getProductList);
   const deviceType = useDeviceType();
 
   useEffect(() => {

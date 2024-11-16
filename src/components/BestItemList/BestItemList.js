@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getProducts } from "../../api";
+import { getProductList } from "../../api";
 import Item from "../Item/Item";
 import "./BestItemList.css";
 import { useDeviceType } from "../../contexts/DeviceTypeContext";
@@ -16,7 +16,7 @@ function ItemList() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getProducts(1, PAGE_SIZE[deviceType], "favorite");
+      const result = await getProductList(1, PAGE_SIZE[deviceType], "favorite");
       setItems(result.list);
     };
     fetchData();
