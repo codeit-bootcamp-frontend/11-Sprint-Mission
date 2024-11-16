@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import React from 'react';
 import Main from '../pages/Main';
-import Items from '../pages/Items';
+import ItemsPage from '../pages/Items/ItemsPage';
 import AddItem from '../pages/AddItem';
 import Notfound from '../pages/Notfound';
 import Boards from '../pages/Boards';
@@ -16,7 +16,7 @@ export default function AppRoutes() {
       <Route path='test' element={<Test />} />
       <Route path='boards' element={<Boards />} />
       <Route path='items'>
-        <Route index element={<Items />} />
+        <Route index element={<ItemsPage />} />
         <Route path=':productId' element={<ProductDetails />} />
       </Route>
       <Route path='addItem' element={<AddItem />} />
