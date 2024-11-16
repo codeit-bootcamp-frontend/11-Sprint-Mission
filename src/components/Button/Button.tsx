@@ -1,7 +1,18 @@
+import { ReactNode } from 'react';
 import StyledButton from './Button.styles';
 
+interface ButtonProps {
+  color: 'blue' | 'gray' | 'white' | 'none';
+  size?: 'small' | 'medium';
+  round?: boolean;
+  wide?: boolean;
+  children: ReactNode;
+  href?: string;
+  disabled?: boolean;
+}
+
 function Button({
-  href = undefined,
+  href,
   color,
   size = 'small',
   disabled = false,
@@ -9,7 +20,7 @@ function Button({
   wide,
   children,
   ...rest
-}) {
+}: ButtonProps) {
   return (
     <StyledButton
       $color={color}

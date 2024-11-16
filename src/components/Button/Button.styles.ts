@@ -1,41 +1,47 @@
 import styled from 'styled-components';
+import font from '../../styles/fontStyle.styles';
 
 const colorStyles = {
   blue: {
     default: 'var(--blue-100)',
     hover: 'var(--blue-300)',
     textColor: '#fff',
+    border: 'none',
   },
   gray: {
     default: 'var(--gray-400)',
+    hover: '',
     textColor: '#fff',
+    border: 'none',
   },
   white: {
     default: 'var(--gray-50)',
+    hover: '',
     textColor: 'var(--blue-100)',
     border: '1px solid var(--blue-100)',
   },
-};
-
-const sizeStyles = {
-  small: {
-    fontSize: '1.6rem',
-    lineHeight: '2.6rem',
-    padding: '0.8rem 2.3rem',
+  none: {
+    default: '',
+    hover: '',
+    textColor: 'var(--gray-500)',
+    border: 'none',
   },
-  medium: {
-    fontSize: '1.8rem',
-    lineHeight: '2.6rem',
-    padding: '1.1rem 3.95rem',
-  },
-};
+} as const;
 
-const StyledButton = styled.button`
+type ColorType = keyof typeof colorStyles;
+
+interface StyledButtonProps {
+  $color: ColorType;
+  $size?: 'small' | 'medium';
+  $round?: boolean;
+  $wide?: boolean;
+}
+
+const StyledButton = styled.button<StyledButtonProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
-  font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
   width: ${({ $wide }) => ($wide ? '100%' : 'auto')};
@@ -47,9 +53,10 @@ const StyledButton = styled.button`
     disabled ? '#fff' : colorStyles[$color]?.textColor || 'var(--gray-500)'};
   border: ${({ $color }) => colorStyles[$color]?.border || 'none'};
 
-  font-size: ${({ $size }) => sizeStyles[$size]?.fontSize || '1.6rem'};
-  line-height: ${({ $size }) => sizeStyles[$size]?.lineHeight || '2.6rem'};
-  padding: ${({ $size }) => sizeStyles[$size]?.padding || '0.8rem 2.3rem'};
+  ${({ $size }) => $size === 'small' && font('16sb')}
+  ${({ $size }) => $size === 'medium' && font('18sb')}
+  padding: ${({ $size }) =>
+    $size === 'small' ? '0.8rem 2.3rem' : '1.1rem 3.95rem'};
 
   &:hover {
     background-color: ${({ $color }) =>

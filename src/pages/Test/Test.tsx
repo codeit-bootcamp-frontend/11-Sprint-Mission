@@ -27,12 +27,14 @@ function Test() {
               <Td>
                 <TdContainer>
                   <Button color='blue'>버튼</Button>
-                  <Button disabled={true}>버튼</Button>
+                  <Button color='blue' disabled={true}>
+                    버튼
+                  </Button>
                   <Button color='white'>버튼</Button>
                   <Button color='blue' round>
                     버튼
                   </Button>
-                  <Button>버튼</Button>
+                  <Button color='none'>버튼</Button>
                   <Button color='blue' wide>
                     버튼
                   </Button>
