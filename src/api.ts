@@ -1,43 +1,7 @@
+import { CommentList } from "./types/Comment";
+import { ProductExtended, ProductList } from "./types/Product";
+
 const BASE_URL = process.env.REACT_APP_API_BASE_URL;
-
-interface Product {
-  createdAt: string;
-  favoriteCount: number;
-  ownerNickname: string;
-  ownerId: number;
-  images: string[];
-  tags: string[];
-  price: number;
-  description: number;
-  name: string;
-  id: number;
-}
-
-interface ProductExtended extends Product {
-  isFavorite: boolean;
-}
-
-interface ProductList {
-  totalCount: number;
-  list: Product[];
-}
-
-interface Comment {
-  writer: {
-    image: string;
-    nickname: string;
-    id: number;
-  };
-  updatedAt: string;
-  createdAt: string;
-  content: string;
-  id: number;
-}
-
-interface CommentList {
-  nextCursor: number;
-  list: Comment[];
-}
 
 export async function getProductList(
   page: number = 1,
