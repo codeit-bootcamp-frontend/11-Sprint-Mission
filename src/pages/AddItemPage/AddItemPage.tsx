@@ -1,10 +1,31 @@
-import { useEffect, useState } from "react";
+import {
+  ChangeEvent,
+  KeyboardEvent,
+  MouseEvent,
+  useEffect,
+  useState,
+} from "react";
 import FileInput from "../../components/FileInput/FileInput";
 import "./AddItemPage.css";
 import ic_tag_x from "../../assets/images/ic_tag_x.svg";
 import { array, number, object, string } from "yup";
 
-const DEFAULT_FORM_VALUES = {
+interface ImageInterface {
+  id: string;
+  image: File;
+}
+
+type ValueInterface = ImageInterface | string | number | null;
+
+interface ValueListInterface {
+  images: ImageInterface[];
+  title: string | null;
+  content: string | null;
+  price: number | null;
+  tags: string[];
+}
+
+const DEFAULT_FORM_VALUES: ValueListInterface = {
   images: [],
   title: null,
   content: null,
@@ -63,13 +84,26 @@ function AddItemForm() {
    * values[name] : [ ...prev ] -> [ ...prev, value ]
    * ```
    */
-  const handleChange = (name, value) => {
+  const handleChange = (
+    name: keyof ValueListInterface,
+    value: ValueInterface
+  ) => {
     setValues((prev) => {
       const _value = typeof value === "string" ? value.trim() : value;
-      const result = Array.isArray(prev[name])
-        ? [...prev[name], _value]
-        : _value;
-      if (typeof prev[name] !== "object") handleInputValid(name, _value);
+      let result;
+
+      if (Array.isArray(prev[name])) {
+        result = [...(prev[name] as any[]), _value] as
+          | ImageInterface[]
+          | string[];
+      } else {
+        result = _value;
+      }
+
+      if (typeof prev[name] !== "object") {
+        handleInputValid(name as keyof typeof valueSchemas, _value);
+      }
+
       return {
         ...prev,
         [name]: result,
@@ -90,12 +124,16 @@ function AddItemForm() {
    * values[name] : { key : prev } -> { key : value }
    * ```
    */
-  const handleDelete = (name, value, key) => {
+  const handleDelete = (
+    name: keyof ValueListInterface,
+    value: ValueInterface,
+    key: string
+  ) => {
     setValues((prev) => {
       const result = key
-        ? prev[name].filter((e) => e[key] !== value)
-        : prev[name].filter((e) => e !== value);
-      handleInputValid(name, result);
+        ? (prev[name] as any).filter((e: any) => e[key] !== value)
+        : (prev[name] as any).filter((e: any) => e !== value);
+      handleInputValid(name as keyof typeof valueSchemas, result);
       return {
         ...prev,
         [name]: result,
@@ -103,12 +141,15 @@ function AddItemForm() {
     });
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    handleChange(name, value);
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value }: { name: string; value: string } = e.target;
+    handleChange(name as keyof ValueListInterface, value);
   };
 
-  const handleInputValid = async (name, value) => {
+  const handleInputValid = async (
+    name: keyof typeof valueSchemas,
+    value: ValueInterface
+  ) => {
     await valueSchemas[name]
       .validate(value)
       .then((result) => {
@@ -119,7 +160,7 @@ function AddItemForm() {
       });
   };
 
-  const handlePreventEnterSubmit = (e) => {
+  const handlePreventEnterSubmit = (e: KeyboardEvent<HTMLFormElement>) => {
     if (e.key === "Enter") e.preventDefault();
   };
 
@@ -175,16 +216,21 @@ function AddItemForm() {
   );
 }
 
-/**
- * values의 값을 입력하기 위한 컴포넌트
- * @param {object} props
- * @param {string} [props.htmlTag] 입력 요소의 태그명. input의 기본
- * @param {string} props.name values의 _key_
- * @param {object} props.valid value의 유효성
- * @param {function} props.onChange inputChange 핸들러
- * @returns 입력 컴포넌트
- */
-function InputField({ label, htmlTag = "input", name, error, onChange }) {
+interface InputFieldInterface {
+  label: string;
+  htmlTag?: string;
+  name: string;
+  error: string | null;
+  onChange: any;
+}
+
+function InputField({
+  label,
+  htmlTag = "input",
+  name,
+  error,
+  onChange,
+}: InputFieldInterface) {
   return (
     <fieldset>
       <label htmlFor={`input-${name}`}>
@@ -194,10 +240,9 @@ function InputField({ label, htmlTag = "input", name, error, onChange }) {
       {htmlTag === "textarea" ? (
         <textarea
           name={name}
-          type="text"
           id={`input-${name}`}
-          className={error && "error"}
-          placeholder={PLACEHOLDER[name]}
+          className={(error && "error") as string}
+          placeholder={PLACEHOLDER[name as keyof typeof PLACEHOLDER]}
           onChange={onChange}
         />
       ) : (
@@ -205,8 +250,8 @@ function InputField({ label, htmlTag = "input", name, error, onChange }) {
           name={name}
           type="text"
           id={`input-${name}`}
-          className={error && "error"}
-          placeholder={PLACEHOLDER[name]}
+          className={(error && "error") as string}
+          placeholder={PLACEHOLDER[name as keyof typeof PLACEHOLDER]}
           onChange={onChange}
         />
       )}
@@ -214,32 +259,37 @@ function InputField({ label, htmlTag = "input", name, error, onChange }) {
   );
 }
 
-/**
- * 태그를 추가하거나 삭제할 수 있는 컴포넌트
- * @param {object} props
- * @param {string} props.name values의 _key_
- * @param {*} props.value - values[name] 상태 값
- * @param {function} props.onChange values 갑을 변경 혹은 삽입할 수 이는 핸들러
- * @param {function} props.onDelete values 겂울 삭재헐 수 있는 핸들러
- * @returns 태그 컴포넌트
- */
-function TagInput({ name, value, error, onChange, onDelete }) {
+interface TagInputInterface {
+  name: string;
+  value: string[];
+  error: string | null;
+  onChange: any;
+  onDelete: any;
+}
+function TagInput({
+  name,
+  value,
+  error,
+  onChange,
+  onDelete,
+}: TagInputInterface) {
   /**
    * 태그 삽입 이벤트 핸들러. 엔터 키다운 시 동작함. 중복 입력은 허용하지 않는다.
    * @param {Event} event
    */
-  const handleEnter = (event) => {
+  const handleEnter = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
-      const tag = event.target.value.trim();
+      const input = event.target as HTMLInputElement;
+      const tag = input.value.trim();
       let flag = true;
       value.every((e) => (flag = e !== tag));
       flag && onChange(name, tag);
-      event.target.value = "";
+      input.value = "";
     }
   };
 
-  const handleDelete = (e) => {
-    const tag = e.currentTarget.dataset.tag;
+  const handleDelete = (event: MouseEvent<HTMLImageElement>) => {
+    const tag = event.currentTarget.dataset.tag;
     onDelete(name, tag);
   };
 
@@ -253,7 +303,7 @@ function TagInput({ name, value, error, onChange, onDelete }) {
         name="tags"
         type="text"
         id="input-tags"
-        className={error && "error"}
+        className={(error && "error") as string}
         placeholder={PLACEHOLDER["tags"]}
         onKeyDown={handleEnter}
       />
@@ -268,7 +318,7 @@ function TagInput({ name, value, error, onChange, onDelete }) {
   );
 }
 
-function Tag({ tag, onDelete }) {
+function Tag({ tag, onDelete }: { tag: string; onDelete: any }) {
   return (
     <div className="tag">
       <div>{`#${tag}`}</div>
