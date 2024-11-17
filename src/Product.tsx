@@ -1,21 +1,41 @@
-import { useEffect, useState, useRef } from 'react';
-import { getDetailItems, getItemComment } from './service/api.js';
+import { useEffect, useState, useRef, ChangeEvent } from 'react';
+import { getDetailItems, getItemComment } from './service/api';
 import { useParams, Link } from 'react-router-dom';
-import styles from './css/product.module.css';
+import styles from '@/css/product.module.css';
 
-import './css/style.css';
+import '@/css/style.css';
 
-import profileIcon from './assets/profile.png';
-import favoriteIcon from './assets/detailfavoriteIcon.png';
-import noImage from './assets/noImage.jfif';
-import editIcon from './assets/edit.png';
-import backArrow from './assets/backArrow.png';
-import emptyImage from './assets/Img_inquiry_empty.png';
+import profileIcon from '@/assets/profile.png';
+import favoriteIcon from '@/assets/detailfavoriteIcon.png';
+import noImage from '@/assets/noImage.jfif';
+import editIcon from '@/assets/edit.png';
+import backArrow from '@/assets/backArrow.png';
+import emptyImage from '@/assets/Img_inquiry_empty.png';
 
-const formatDate = (dateString) => {
+interface Comment {
+  content: string;
+  writer: {
+    image?: string;
+    nickname: string;
+  };
+  createdAt: string;
+}
+
+interface Item {
+  name: string;
+  price: number;
+  description: string;
+  tags: string[];
+  ownerNickname: string;
+  createdAt: string;
+  favoriteCount: number;
+  images: string[];
+}
+
+const formatDate = (dateString: string): string => {
   const date = new Date(dateString);
   const now = new Date();
-  const timeDiff = now - date; // 시간 차이 (밀리초 단위)
+  const timeDiff = now.getTime() - date.getTime(); // 시간 차이 (밀리초 단위)
 
   const secondsDiff = Math.floor(timeDiff / 1000); // 초 단위 차이
   const minutesDiff = Math.floor(secondsDiff / 60); // 분 단위 차이
@@ -31,7 +51,11 @@ const formatDate = (dateString) => {
     return `${dayDiff}일 전`; // 일주일 안이면 ~일 전으로 리턴
   }
 
-  const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+  const options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  };
   const formattedDate = date.toLocaleDateString('ko-KR', options);
   return formattedDate.endsWith('.')
     ? formattedDate.slice(0, -1)
@@ -39,24 +63,29 @@ const formatDate = (dateString) => {
 };
 
 function Product() {
-  const [item, setItem] = useState(null);
-  const [comment, setComment] = useState(null);
-  const { id } = useParams();
-  const [commentValue, setCommentValue] = useState('');
-  const [isDropdownView, setIsDropdownView] = useState({
+  const [item, setItem] = useState<Item | null>(null);
+  const [comment, setComment] = useState<Comment[] | null>(null);
+  const { id } = useParams<{ id: string }>();
+  const [commentValue, setCommentValue] = useState<string>('');
+  const [isDropdownView, setIsDropdownView] = useState<{
+    product: HTMLElement | null;
+    comments: (HTMLElement | null)[];
+  }>({
     product: null,
     comments: [],
   });
-  const dropdownRef = useRef();
-  const [editingCommentIndex, setEditingCommentIndex] = useState(null);
-  const [editingCommentValue, setEditingCommentValue] = useState('');
+  const dropdownRef = useRef<HTMLUListElement | null>(null);
+  const [editingCommentIndex, setEditingCommentIndex] = useState<number | null>(
+    null
+  );
+  const [editingCommentValue, setEditingCommentValue] = useState<string>('');
 
-  const handleInputValue = (e) => {
+  const handleInputValue = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setCommentValue(e.target.value.trim());
   };
 
-  function Dropdown({ onSelect }) {
-    const handleSelect = (option) => {
+  function Dropdown({ onSelect }: { onSelect: (option: string) => void }) {
+    const handleSelect = (option: string) => {
       onSelect(option);
     };
 
@@ -78,23 +107,32 @@ function Product() {
     );
   }
 
-  const handleDropdownView = (e, type, index = null) => {
+  const handleDropdownView = (
+    e: React.MouseEvent<HTMLElement>,
+    type: 'product' | 'comment',
+    index: number | null = null
+  ) => {
     if (type === 'product') {
-      setIsDropdownView({ ...isDropdownView, product: e.target });
+      setIsDropdownView({
+        ...isDropdownView,
+        product: e.target as HTMLElement,
+      });
     } else if (type === 'comment') {
       const newDropdownView = [...isDropdownView.comments];
-      newDropdownView[index] = e.target;
+      if (index !== null) {
+        newDropdownView[index] = e.target as HTMLElement;
+      }
       setIsDropdownView({ ...isDropdownView, comments: newDropdownView });
     }
   };
 
-  const handleSelectMenu = (option, index) => {
+  const handleSelectMenu = (option: string, index: number) => {
     if (option === '수정하기') {
       setEditingCommentIndex(index);
-      setEditingCommentValue(comment[index].content);
+      setEditingCommentValue(comment![index].content);
       setIsDropdownView({ ...isDropdownView, comments: [] });
     } else if (option === '삭제하기') {
-      const updatedComments = comment.filter((_, i) => i !== index);
+      const updatedComments = comment!.filter((_, i) => i !== index);
       setComment(updatedComments);
     }
     setIsDropdownView((prev) => ({
@@ -103,8 +141,11 @@ function Product() {
     }));
   };
 
-  const handleClickOutside = (event) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target as Node)
+    ) {
       setIsDropdownView({
         product: null,
         comments: [],
@@ -113,9 +154,9 @@ function Product() {
   };
 
   const handleClickEditButton = () => {
-    const updatedComments = [...comment];
-    updatedComments[editingCommentIndex] = {
-      ...updatedComments[editingCommentIndex],
+    const updatedComments = [...comment!];
+    updatedComments[editingCommentIndex!] = {
+      ...updatedComments[editingCommentIndex!],
       content: editingCommentValue,
     };
     setComment(updatedComments);
@@ -347,7 +388,7 @@ function Product() {
             </div>
           ))}
 
-          {comment && comment.length === 0 && (
+          {comment.length === 0 && (
             <div className={styles.comment__empty}>
               <img src={emptyImage} alt="문의없음" /> 아직 문의가 없어요.
             </div>

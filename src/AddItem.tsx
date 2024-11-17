@@ -1,17 +1,23 @@
-// css
-import './css/AddItem.css';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
+import '@/css/AddItem.css';
 
 // 사용한 컴포넌트
-import { createItems } from './service/api.js';
-import FileInput from './library/AddItem/FileInput.js';
+import { createItems } from '@/service/api';
+import FileInput from '@/library/AddItem/FileInput';
 
-// react hook
-import { useState } from 'react';
+// 타입 정의
+interface Values {
+  images: File | null;
+  name: string;
+  description: string;
+  price: string;
+  tags: string[];
+}
 
 function AddItem() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [values, setValues] = useState({
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [values, setValues] = useState<Values>({
     images: null,
     name: '',
     description: '',
@@ -20,11 +26,13 @@ function AddItem() {
   });
 
   // 폼 제출 시 실행될 함수
-  const handleSubmit = async (e) => {
-    setIsLoading(true);
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     const formData = new FormData();
-    formData.append('images[]', values.images);
+    if (values.images) {
+      formData.append('images[]', values.images);
+    }
     formData.append('name', values.name);
     formData.append('description', values.description);
     formData.append('price', values.price);
@@ -35,7 +43,7 @@ function AddItem() {
     try {
       await createItems(formData);
       setErrorMessage(null);
-    } catch (error) {
+    } catch (error: any) {
       setErrorMessage(error.message);
       return;
     } finally {
@@ -51,7 +59,10 @@ function AddItem() {
   };
 
   // input 값 입력 시 value에 반영
-  const handleChange = (name, value) => {
+  const handleChange = (
+    name: string,
+    value: File | null | string | string[]
+  ) => {
     setValues((prevValues) => ({
       ...prevValues,
       [name]: value,
@@ -59,7 +70,9 @@ function AddItem() {
   };
 
   // title, name에 공백만 입력 금지, tags는 split으로 문자열 -> 배열로 변환
-  const handleInputChange = (e) => {
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     if ((name === 'name' || name === 'description') && value.trim() === '') {
       return;

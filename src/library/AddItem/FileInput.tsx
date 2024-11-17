@@ -1,12 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 
-function FileInput({ name, value, onChange }) {
-  const [preview, setPreview] = useState();
-  const inputRef = useRef();
+// Props 타입 정의
+interface FileInputProps {
+  name: string;
+  value: File | null; // value는 File 객체이거나 null일 수 있음
+  onChange: (name: string, value: File | null) => void; // onChange는 name과 File을 받아야 함
+}
+
+function FileInput({ name, value, onChange }: FileInputProps) {
+  const [preview, setPreview] = useState<string | undefined>(undefined);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   // 파일 삽입
-  const handleChange = (e) => {
-    const nextValue = e.target.files[0];
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const nextValue = e.target.files ? e.target.files[0] : null;
     onChange(name, nextValue);
   };
 
@@ -26,7 +33,7 @@ function FileInput({ name, value, onChange }) {
     setPreview(nextPreview);
 
     return () => {
-      setPreview();
+      setPreview(undefined);
       URL.revokeObjectURL(nextPreview);
     };
   }, [value]);
