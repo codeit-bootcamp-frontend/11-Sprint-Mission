@@ -1,31 +1,36 @@
-import { useEffect, useRef, useState } from "react";
-import "./FileInput.css";
-import plus from "../assets/icons/ic_plus.svg";
-const style = { display: "none" };
+import { useEffect, useRef, useState } from 'react';
+import plus from '../assets/icons/ic_plus.svg';
+import './FileInput.css';
+const style = { display: 'none' };
 
 function FileInput({ name, value, onChange }) {
-  const [preview, setPreview] = useState();
+  const [preview, setPreview] = useState(null);
   const inputRef = useRef();
+  const inputNode = inputRef.current;
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const nextValue = e.target.files[0];
     onChange(name, nextValue);
   };
 
   const handleDeleteClick = () => {
-    const inputNode = inputRef.current;
     if (!inputNode) return;
 
-    inputNode.value = "";
+    inputNode.value = '';
     onChange(name, null);
   };
 
   const handleClick = () => {
-    inputRef.current.click();
+    if (inputNode) {
+      inputNode.click();
+    }
   };
 
   useEffect(() => {
-    if (!value) return;
+    if (!value) {
+      setPreview(null);
+      return;
+    }
 
     const nextPreview = URL.createObjectURL(value);
     setPreview(nextPreview);
@@ -37,32 +42,24 @@ function FileInput({ name, value, onChange }) {
   }, [value]);
 
   return (
-    <>
+    <div>
+      {value && (
+        <button className="xButton" onClick={handleDeleteClick}>
+          x
+        </button>
+      )}  
       <div className="imageUpload">
-        <img src={preview} alt="이미지 미리보기" className="previewImage" />
-        <div className="imageUploadText">
-          <img src={plus} className="plus" alt="상품등록" />
-          <label htmlFor="fileInput" className="inputFile">
-            이미지 등록
-          </label>
-        </div>
-        {value && (
-          <button className="xButton" onClick={handleDeleteClick}>
-            x
+        {preview ? (
+          <img src={preview} alt="이미지 미리보기" className="previewImage" />
+        ) : (
+          <button className="imageUploadButton" onClick={handleClick}>
+            <img src={plus} className="plus" alt="이미지 등록 아이콘" />
+            <span className="imageUploadText">이미지 등록</span>
           </button>
         )}
+        <input type="file" id="fileInput" accept="image/jpeg, image/png" onChange={handleChange} ref={inputRef} style={style} />
       </div>
-      <div>
-        <input
-          type="file"
-          id="fileInput"
-          accept="img/jpg img/jpeg"
-          onChange={handleChange}
-          ref={inputRef}
-          style={style}
-        />
-      </div>
-    </>
+    </div>
   );
 }
 export default FileInput;
