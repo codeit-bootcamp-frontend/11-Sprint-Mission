@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Logo from "../images/logo.png";
 import Profile from "../images/profile.png";
 import "./Header.css";
@@ -8,9 +8,9 @@ const Header = () => {
   return (
     <header className="header">
       <div className="headerSection">
-        <Link to="/" className="homeLogo">
+        <NavLink to="/" className="homeLogo">
           <img src={Logo} alt="판다마켓 로고" className="logoImg" />
-        </Link>
+        </NavLink>
 
         <nav>
           <div className="listSection">
@@ -24,9 +24,9 @@ const Header = () => {
         </nav>
       </div>
 
-      <div className="progileSection">
+      <NavLink to="/login" className="progileSection">
         <img src={Profile} alt="프로필" className="profileImg" />
-      </div>
+      </NavLink>
     </header>
   );
 };

@@ -1,11 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./component/Header";
-import HomePage from "./pages/HomPage";
-import LoginPage from "./pages/LoginPage";
-import MarketPage from "./pages/MarketPage";
-import AddItemPage from "./pages/AddItemPage";
-import ProductDetailPage from "./pages/ProductDetailPage";
-import CommunityPage from "./pages/CommunityPage";
+import HomePage from "./pages/HomePage/HomPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import MarketPage from "./pages/MarketPage/MarketPage";
+import AddItemPage from "./pages/AddItemPage/AddItemPage";
+import ProductDetailPage from "./pages/ProductDetailPage/ProductDetailPage";
+import CommunityPage from "./pages/CommunityPage/CommunityPage";
+import SignupPage from "./pages/LoginPage/SignupPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route index element={<HomePage />} />
           <Route path="login" element={<LoginPage />} />
+          <Route path="signup" element={<SignupPage />} />
           <Route path="items" element={<MarketPage />} />
           <Route path="additem" element={<AddItemPage />} />
           <Route path="items/:productId" element={<ProductDetailPage />} />

@@ -1,0 +1,157 @@
+/* 전체 컨테이너 */
+.allItemsContainer {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 20px 0;
+  font-family: "Arial", sans-serif;
+}
+
+/* 제목 스타일 */
+.allItemsContainer h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+/* 상품 등록 버튼 */
+.addBtn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+/* 검색 창 컨테이너 */
+.search {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* 상품 목록 컨테이너 */
+.allItemsContainer > div:nth-of-type(2) {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+.productHeader {
+  /* display: inline-block; */
+  display: flex;
+  justify-content: center;
+}
+
+/* 상품 카드 */
+.itemCard {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.itemCard:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.itemCard img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.itemCard .itemInfo {
+  padding: 10px;
+}
+
+.itemCard .itemInfo h2 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin: 0 0 10px;
+}
+
+.itemCard .itemInfo .price {
+  font-size: 18px;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.itemCard .itemInfo .likes {
+  font-size: 14px;
+  color: #888;
+  display: flex;
+  align-items: center;
+}
+
+.itemCard .itemInfo .likes svg {
+  margin-right: 5px;
+  width: 14px;
+  height: 14px;
+}
+
+/* 페이지네이션 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 8px 12px;
+  margin: 0 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #f0f0f0;
+}
+
+.pagination button.active {
+  color: #ffffff;
+  background-color: #007bff;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .allItemsContainer h1 {
+    font-size: 20px;
+  }
+
+  .searchInput {
+    font-size: 14px;
+  }
+
+  .itemCard .itemInfo h2 {
+    font-size: 14px;
+  }
+
+  .itemCard .itemInfo .price {
+    font-size: 16px;
+  }
+}

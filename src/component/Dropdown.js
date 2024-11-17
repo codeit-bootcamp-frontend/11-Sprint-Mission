@@ -19,7 +19,7 @@ function Dropdown({ onSortSelection }) {
         <div>
           <div
             onClick={() => {
-              onSortSelection("createdAt");
+              onSortSelection("resent");
               setIsDropdownView(false);
             }}
           >

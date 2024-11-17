@@ -1,6 +1,6 @@
 import React from "react";
-import AllProduct from "../component/AllProduct";
-import BestProduct from "../component/BestProduct";
+import AllProduct from "./component/AllProduct";
+import BestProduct from "./component/BestProduct";
 
 function MarketPage() {
   return (
