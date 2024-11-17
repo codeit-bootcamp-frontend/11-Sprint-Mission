@@ -1,40 +1,64 @@
-import { useEffect, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  FormEvent,
+  MouseEvent,
+  MutableRefObject,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import ic_kebab from "../../assets/images/ic_kebab.svg";
 import ic_profile from "../../assets/images/profile.svg";
 import styles from "./CommentForm.module.css";
 import useDebounce from "../../hooks/useDebounce";
 import { getCommentListByProductId } from "../../api";
 import no_comment from "../../assets/images/no_comment.svg";
+import { Comment, CommentList } from "../../types/Comment";
 
-function CommentForm({ productId, className }) {
+function CommentForm({
+  productId,
+  className,
+}: {
+  productId: string | undefined;
+  className: string;
+}) {
   const [comment, setComment] = useState("");
-  const [comments, setComments] = useState();
-  const [selectedComment, setSelectedComment] = useState(null);
-  const [isEditing, setIsEditing] = useState(null);
-  const selectRef = useRef(null);
+  const [comments, setComments] = useState<CommentList | undefined>();
+  const [selectedComment, setSelectedComment] = useState<string | null>(null);
+  const [isEditing, setIsEditing] = useState<string | null>(null);
+  const selectRef = useRef<HTMLUListElement | null>(null);
 
-  const handleInputChange = useDebounce((e) => {
-    const next = e.target.value.trim();
-    setComment(next);
-  }, 500);
+  const handleInputChange = useDebounce(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const next = event.target.value.trim();
+      setComment(next);
+    },
+    500
+  );
 
-  const handleFeatureClick = (e) => {
-    if (e.target.classList.contains("feature")) {
-      setSelectedComment(e.currentTarget.dataset.id);
+  const handleFeatureClick = (event: MouseEvent<HTMLDivElement>) => {
+    if (!(event.target instanceof HTMLElement)) return;
+    if (event.target.classList.contains("feature")) {
+      const id = event.currentTarget.dataset.id;
+      setSelectedComment(id || null);
       return;
     }
     setSelectedComment(null);
   };
 
-  const handleSelectOption = (e) => {
-    if (e.target.dataset.option === "edit") {
-      setIsEditing(e.currentTarget.dataset.id);
+  const handleSelectOption = (event: MouseEvent<HTMLUListElement>) => {
+    if (!(event.target instanceof HTMLElement)) return;
+    if (event.target.dataset.option === "edit") {
+      const id = event.currentTarget.dataset.id;
+      setIsEditing(id || null);
       setSelectedComment(null);
       return;
     }
 
-    if (e.target.dataset.option === "delete") {
-      alert(`test : comment id ${e.currentTarget.dataset.id} 삭제 되었습니다`);
+    if (event.target.dataset.option === "delete") {
+      alert(
+        `test : comment id ${event.currentTarget.dataset.id} 삭제 되었습니다`
+      );
     }
   };
 
@@ -43,9 +67,10 @@ function CommentForm({ productId, className }) {
   };
 
   useEffect(() => {
-    const handleClickSelectOutside = (e) => {
-      if (e.target.classList.contains("feature")) return;
-      if (selectRef.current && !e.target.dataset?.option) {
+    const handleClickSelectOutside = (event: Event) => {
+      const target = event.target as HTMLElement;
+      if (target.classList.contains("feature")) return;
+      if (selectRef.current && !target.dataset?.option) {
         setSelectedComment(null);
       }
     };
@@ -56,7 +81,11 @@ function CommentForm({ productId, className }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getCommentListByProductId("products", productId, 10);
+      const result = await getCommentListByProductId(
+        "products",
+        productId as string,
+        10
+      );
       setComments(result);
     };
     fetchData();
@@ -106,7 +135,21 @@ function CommentForm({ productId, className }) {
   );
 }
 
-function CommentListItem({ data, selectRef, isSelected, onClick, onSelect }) {
+interface CommentListItemInterface {
+  data: Comment;
+  selectRef: MutableRefObject<HTMLUListElement | null>;
+  isSelected: any;
+  onClick: any;
+  onSelect: any;
+}
+
+function CommentListItem({
+  data,
+  selectRef,
+  isSelected,
+  onClick,
+  onSelect,
+}: CommentListItemInterface) {
   return (
     <div
       data-id={data.id}
@@ -147,16 +190,16 @@ function CommentListItem({ data, selectRef, isSelected, onClick, onSelect }) {
   );
 }
 
-function CommentEditForm({ data, onCancel }) {
+function CommentEditForm({ data, onCancel }: { data: Comment; onCancel: any }) {
   const [content, setContent] = useState(data.content);
 
-  const handleInputChange = (e) => {
-    const next = e.target.value.trim();
+  const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const next = event.target.value.trim();
     setContent(next);
   };
 
-  const handleEditSubmit = (e) => {
-    e.preventDefault();
+  const handleEditSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     alert(`test : Edit "${content}" from "${data.content.trim()}"`);
     onCancel();
   };

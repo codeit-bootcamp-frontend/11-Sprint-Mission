@@ -31,7 +31,7 @@ export async function getCommentListByProductId(
   type: string,
   id: string,
   limit: number,
-  cursor: number
+  cursor?: number | undefined
 ): Promise<CommentList> {
   if (!BASE_URL) throw new Error("요청을 보낼 수 없습니다.");
   const url = new URL(BASE_URL + `/${type}/${id}/comments`);
