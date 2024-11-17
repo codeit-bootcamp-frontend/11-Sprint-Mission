@@ -33,5 +33,5 @@
     "forceConsistentCasingInFileNames": true
   },
 
-  "include": ["src", "src/custom.d.ts"]
+  "include": ["src", "src/utils/custom.d.ts"]
 }

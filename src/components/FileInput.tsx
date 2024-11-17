@@ -1,15 +1,21 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { ChangeEvent, FC, useEffect, useRef, useState } from 'react';
 import plus from '../assets/icons/ic_plus.svg';
 import './FileInput.css';
 const style = { display: 'none' };
 
-function FileInput({ name, value, onChange }) {
-  const [preview, setPreview] = useState(null);
-  const inputRef = useRef();
+interface FileInputProps {
+  name: string;
+  value: File | null;
+  onChange: (name: string, value: File | null) => void;
+}
+
+const FileInput: FC<FileInputProps> = ({ name, value, onChange }) => {
+  const [preview, setPreview] = useState<string | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const inputNode = inputRef.current;
 
-  const handleChange = e => {
-    const nextValue = e.target.files[0];
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const nextValue = e.target.files ? e.target.files[0] : null;
     onChange(name, nextValue);
   };
 
@@ -36,7 +42,7 @@ function FileInput({ name, value, onChange }) {
     setPreview(nextPreview);
 
     return () => {
-      setPreview();
+      setPreview(null);
       URL.revokeObjectURL(nextPreview);
     };
   }, [value]);
@@ -47,7 +53,7 @@ function FileInput({ name, value, onChange }) {
         <button className="xButton" onClick={handleDeleteClick}>
           x
         </button>
-      )}  
+      )}
       <div className="imageUpload">
         {preview ? (
           <img src={preview} alt="이미지 미리보기" className="previewImage" />
@@ -61,5 +67,5 @@ function FileInput({ name, value, onChange }) {
       </div>
     </div>
   );
-}
+};
 export default FileInput;

@@ -16,7 +16,7 @@ function Product({ item }: { item: ProductItem }) {
   const navigate = useNavigate();
 
   const handleDetailClick = () => {
-    navigate('/:productId');
+    navigate('/items');
   };
 
   return (
