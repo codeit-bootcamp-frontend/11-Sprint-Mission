@@ -12,7 +12,7 @@ function ProductDetail() {
   // const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   const { productId } = useParams();
 

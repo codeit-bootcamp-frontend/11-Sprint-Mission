@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { ReactComponent as Heart } from "../../../images/ic_heart.svg";
 
-function LikeButton({ isFavorite, favoriteCount }) {
+interface LikeButtonProps {
+  productId: string;
+  isFavorite: boolean;
+  favoriteCount: number;
+}
+
+function LikeButton({ productId, isFavorite, favoriteCount }: LikeButtonProps) {
   const [isLiked, setIsLiked] = useState(isFavorite);
   const [count, setCount] = useState(favoriteCount);
 

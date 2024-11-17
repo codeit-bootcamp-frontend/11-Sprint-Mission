@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import InputItem from "./InputItem";
 import DeleteButton from "./DeleteButton";
 
@@ -26,6 +26,7 @@ function Tag({ tags, onAddTag, onRemoveTag }) {
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={onPressEnter}
         placeholder="태그를 입력해 주세요"
+        isTextArea={undefined}
       />
 
       {tags.length > 0 && (

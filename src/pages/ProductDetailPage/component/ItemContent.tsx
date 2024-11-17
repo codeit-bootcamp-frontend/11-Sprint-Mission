@@ -3,7 +3,22 @@ import TagList from "./TagList";
 import LikeButton from "./LikeButton";
 import { ReactComponent as Kebab } from "../../../images/ic_kebab.svg";
 
-function ItemContent({ product }) {
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  tags: string[];
+  images: string[];
+  isFavorite: boolean;
+  favoriteCount: number;
+}
+
+interface ItemContentProps {
+  product: Product;
+}
+
+function ItemContent({ product }: ItemContentProps) {
   return (
     // <div>
     //   <img src={product.images[0]} alt={`${product.name} 상품 대표 사진`} />

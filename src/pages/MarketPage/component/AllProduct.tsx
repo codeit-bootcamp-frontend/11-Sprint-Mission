@@ -25,7 +25,7 @@ const getPageSize = () => {
 };
 
 function AllProduct() {
-  const [orderBy, setOrderBy] = useState("createdAt");
+  const [orderBy, setOrderBy] = useState("recent");
   const [itemList, setItemList] = useState([]);
   // const pageSize = 4;
   const [page, setPage] = useState(1);

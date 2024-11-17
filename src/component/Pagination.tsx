@@ -1,3 +1,4 @@
+import React from "react";
 import { ReactComponent as Left } from "../images/left.svg";
 import { ReactComponent as Right } from "../images/right.svg";
 import "./Pagination.css";

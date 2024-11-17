@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import DeleteButton from "./DeleteButton";
 
 function AddInputItem({
@@ -12,7 +12,7 @@ function AddInputItem({
   onTagChange,
   onTagsUpdate,
 }) {
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState<any[]>([]); // 제네릭, 함수에서 인자를 받는 것처럼 타입도 인자로 받기
 
   const handleTagSubmit = () => {
     if (productTag.trim() !== "") {
@@ -21,6 +21,12 @@ function AddInputItem({
       onTagChange(""); // Clear input
       onTagsUpdate(updatedTags); // 부모 컴포넌트로 태그 배열 전달
     }
+  };
+
+  const handleTagDelete = (index: number) => {
+    const updatedTags = tags.filter((_, i) => i !== index);
+    setTags(updatedTags);
+    onTagsUpdate(updatedTags); // 변경된 태그 배열을 부모 컴포넌트에 전달
   };
 
   const handleKeyPress = (e) => {
@@ -62,7 +68,11 @@ function AddInputItem({
       <div>
         {tags.map((tag, index) => (
           <p className="tagOutput" key={index}>
-            #{tag} <DeleteButton />
+            #{tag}{" "}
+            <DeleteButton
+              label="삭제"
+              onClick={() => handleTagDelete(index)} /*삭제 핸들러 전달*/
+            />
           </p>
         ))}
       </div>

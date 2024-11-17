@@ -11,7 +11,7 @@ function AddItem() {
   // const [image, setImage] = useState(null);
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState<string[]>([]);
   //   const [productName, setProductName] = useState("");
   //   const [productContent, setProductContent] = useState("");
   //   const [productPrice, setProductPrice] = useState();
@@ -44,7 +44,7 @@ function AddItem() {
   // };
 
   // 중복 등록 막기 위해 tags 배열에 없는 것 확인하고 삽입
-  const addTag = (tag) => {
+  const addTag = (tag: string) => {
     if (!tags.includes(tag)) {
       setTags([...tags, tag]);
     }

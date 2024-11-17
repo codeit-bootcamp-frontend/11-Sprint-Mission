@@ -85,23 +85,64 @@ export async function getDetailComments(productId) {
 //     throw error;
 //   }
 // };
-export async function getProductComments({ productId }) {
+
+type Comment = {
+  id: string;
+  content: string;
+  writer: {
+    id: string;
+    nickname: string;
+    image?: string; // Optional: 일부 사용자에게 이미지가 없을 수도 있음
+  };
+  createdAt: string; // 문자열 형식의 날짜
+  updatedAt: string; // 문자열 형식의 날짜
+};
+
+type GetProductCommentsResponse = Comment[];
+
+export async function getProductComments(
+  productId: string
+): Promise<GetProductCommentsResponse> {
   if (!productId) {
     throw new Error("Invalid product ID");
   }
 
   try {
-    const query = new URLSearchParams.toString();
+    // 올바르게 URLSearchParams 생성
+    const query = new URLSearchParams().toString(); // 빈 쿼리 문자열을 생성
     const response = await fetch(
       `https://panda-market-api.vercel.app/products/${productId}/comments?${query}`
-    );
+    ); // api 호출
+
     if (!response.ok) {
       throw new Error(`HTTP error: ${response.status}`);
     }
-    const body = await response.json();
+
+    const body: GetProductCommentsResponse = await response.json();
     return body;
   } catch (error) {
-    console.error("실패:", error);
+    console.error("패치 실패", error);
     throw error;
   }
 }
+
+// export async function getProductComments({ productId }) {
+//   if (!productId) {
+//     throw new Error("Invalid product ID");
+//   }
+
+//   try {
+//     const query = new URLSearchParams.toString();
+//     const response = await fetch(
+//       `https://panda-market-api.vercel.app/products/${productId}/comments?${query}`
+//     );
+//     if (!response.ok) {
+//       throw new Error(`HTTP error: ${response.status}`);
+//     }
+//     const body = await response.json();
+//     return body;
+//   } catch (error) {
+//     console.error("실패:", error);
+//     throw error;
+//   }
+// }

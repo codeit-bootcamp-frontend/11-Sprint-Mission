@@ -4,10 +4,30 @@ import { ReactComponent as InquiryEmpty } from "../../../images/inquiry_empty.sv
 import ProfileImg from "../../../images/profile.png";
 import { ReactComponent as Kebab } from "../../../images/ic_kebab.svg";
 
-function formatUpdatedAt(updatedAt) {
+// 댓글 데이터 타입 정의
+interface Comment {
+  id: string;
+  content: string;
+  updatedAt: Date;
+  createdAt: Date;
+  writer: {
+    image: string | null;
+    nickname: string;
+    id: string;
+  };
+}
+
+// CommentItem 컴포넌트
+type CommentItemProps = {
+  item: Comment;
+};
+
+function formatUpdatedAt(updatedAt: string | Date): string {
   const updatedDate = new Date(updatedAt);
   const now = new Date();
-  const diffInSeconds = Math.floor((now - updatedDate) / 1000);
+  const diffInSeconds = Math.floor(
+    (now.getTime() - updatedDate.getTime()) / 1000
+  );
 
   // 초 단위로 차이를 비교하여 적절한 포맷 반환
   if (diffInSeconds < 60) {
@@ -43,7 +63,7 @@ function formatUpdatedAt(updatedAt) {
   return `${diffInYears}년 전`;
 }
 
-const CommentItem = ({ item }) => {
+function CommentItem({ item }: CommentItemProps) {
   const authorInfo = item.writer;
   const formattedTimestamp = formatUpdatedAt(item.updatedAt);
 
@@ -72,7 +92,7 @@ const CommentItem = ({ item }) => {
       </div>
     </div>
   );
-};
+}
 
 const EmptyState = () => {
   return (
@@ -83,10 +103,20 @@ const EmptyState = () => {
   );
 };
 
-function DetailComment({ productId }) {
-  const [comments, setComments] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+// DetailComment 컴포넌트
+type DetailCommentProps = {
+  productId: string;
+};
+
+interface ProductCommentList {
+  nextCursor: number;
+  list: Comment[];
+}
+
+function DetailComment({ productId }: DetailCommentProps) {
+  const [comments, setComments] = useState<Comment[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!productId) return;
@@ -95,11 +125,13 @@ function DetailComment({ productId }) {
       setIsLoading(true);
 
       try {
-        const data = await getProductComments({ productId });
-        setComments(data.list);
+        const response: ProductCommentList = await getProductComments(
+          productId
+        );
+        setComments(response.list);
         setError(null);
       } catch (error) {
-        console.error("Error fetching comments:", error);
+        console.error("에러 발생:", error);
         setError("상품의 댓글을 불러오지 못했어요.");
       } finally {
         setIsLoading(false);

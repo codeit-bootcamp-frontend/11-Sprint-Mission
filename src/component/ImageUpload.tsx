@@ -1,9 +1,14 @@
-import { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
+// import { useEffect } from "react";
 import { ReactComponent as PlusIcon } from "../images/ic_plus.svg";
 import DeleteButton from "./DeleteButton";
 
-function ImageUpload({ name, value, onChange }) {
-  const [preview, setPreview] = useState();
+interface ImageUploadProps {
+  title: string; // 'title' Prop이 필수
+}
+
+const ImageUpload = ({ title }: ImageUploadProps) => {
+  const [preview, setPreview] = useState<string | undefined>(undefined);
   // const [message, setMessage] = useState("");
   const inputRef = useRef(null);
 
@@ -81,6 +86,6 @@ function ImageUpload({ name, value, onChange }) {
       {/* {message && <p className="errorMessage">{message}</p>} */}
     </div>
   );
-}
+};
 
 export default ImageUpload;
