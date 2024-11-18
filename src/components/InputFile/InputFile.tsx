@@ -11,7 +11,7 @@ import {
 } from './InputFile.styles';
 
 interface InputFileProps {
-  title: string;
+  title?: string;
 }
 
 function InputFile({ title }: InputFileProps) {

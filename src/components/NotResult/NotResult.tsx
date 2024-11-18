@@ -5,7 +5,7 @@ import IMAGES_INQUIRY from '../../assets/Img_inquiry_empty.svg';
 import IMAGES_COMMENTS from '../../assets/Img_reply_empty.svg';
 
 export interface NotResultProps {
-  type: 'search' | 'inquiry' | 'comments';
+  type?: 'search' | 'inquiry' | 'comments';
 }
 
 const typeImages = (type: 'search' | 'inquiry' | 'comments') => {

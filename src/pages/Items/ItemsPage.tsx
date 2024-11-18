@@ -1,5 +1,4 @@
-// import './Items.scss';
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 
 import useProductsAll from '../../hooks/useProductsAll';
 import useProductsFavorite from '../../hooks/useProductsFavorite';
@@ -34,11 +33,11 @@ function ItemsPage() {
     isLoading: favoriteIsLoading,
   } = useProductsFavorite();
 
-  const handleSelect = (value) => setOrder(value);
+  const handleSelect = (value: string) => setOrder(value);
 
-  const handleSearchSubmit = (e) => {
+  const handleSearchSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const searchValue = e.target['search'].value.trim();
+    const searchValue = (e.target as HTMLFormElement)['search'].value.trim();
     setSearch(searchValue);
   };
 

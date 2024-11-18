@@ -8,6 +8,17 @@ import UserInfo from '../../components/UserInfo/UserInfo';
 import Line from '../../components/Shared/Line/Line';
 import ProdDefaultImages from '../../components/ProdCard/ProdDefaultImages';
 
+interface ProdDetailProps {
+  images?: string;
+  prodName: string;
+  price: number;
+  desc: string;
+  tags: string[];
+  userName: string;
+  createdAt: string;
+  favoriteCount: number;
+}
+
 function ProdDetail({
   images,
   prodName,
@@ -17,7 +28,7 @@ function ProdDetail({
   userName,
   createdAt,
   favoriteCount,
-}) {
+}: ProdDetailProps) {
   const hasImage = images && images.length > 0;
 
   return (
@@ -53,7 +64,7 @@ function ProdDetail({
             </div>
             <div className='prod-text'>
               <h3>상품 태그</h3>
-              <TagsList tags={tags} remove={false} />
+              <TagsList tags={tags} onRemove={() => {}} />
             </div>
           </div>
         </div>

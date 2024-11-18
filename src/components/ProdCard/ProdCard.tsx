@@ -7,12 +7,12 @@ import Heart from '../HeartButton/Heart';
 import { Link } from 'react-router-dom';
 
 interface ProdCardProps {
-  size: 'md' | 'sm';
-  src: string;
+  size?: 'md' | 'sm';
+  src?: string;
   title: string;
-  price: number;
+  price?: number;
   count: number;
-  id: number | null;
+  id?: number | null;
 }
 
 function ProdCard({

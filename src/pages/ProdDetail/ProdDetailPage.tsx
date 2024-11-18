@@ -15,8 +15,19 @@ import ComentPost from '../../components/Coment/ComentPost';
 import ComentList from '../../components/Coment/ComentList';
 import ProdDetail from './ProdDetail';
 
+interface ProductDetail {
+  images: string;
+  name: string;
+  price: number;
+  description: string;
+  tags: string[];
+  ownerNickname: string;
+  createdAt: string;
+  favoriteCount: number;
+}
+
 function ProdDetailPage() {
-  const [details, setDetails] = useState({});
+  const [details, setDetails] = useState<ProductDetail | null>(null);
   const { execute, isLoading, error: fetchError } = useAsyncRequest();
   const {
     commentsList,
@@ -38,7 +49,7 @@ function ProdDetailPage() {
     handleProductsLoad();
   }, [productId, execute]);
 
-  if (details?.length) {
+  if (!details) {
     return <p>상품 정보를 불러올 수 없습니다.</p>;
   }
   if (isLoading && commentLoding) return <p>로딩 중 입니다...</p>;

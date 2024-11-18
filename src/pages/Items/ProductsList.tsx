@@ -1,7 +1,22 @@
 import ProdCard from '../../components/ProdCard/ProdCard';
 import ProdList from './ProductsList.styles';
 
-function ProductsList({ list, size }) {
+// ProductItem 타입 정의
+interface ProductItem {
+  id: number;
+  name: string;
+  price: number;
+  favoriteCount: number;
+  images: string;
+}
+
+// ProductsList의 prop 타입 정의
+interface ProductsListProps {
+  list: ProductItem[];
+  size?: 'sm' | 'md';
+}
+
+function ProductsList({ list, size }: ProductsListProps) {
   return (
     <ProdList size={size}>
       {list.map((item) => (

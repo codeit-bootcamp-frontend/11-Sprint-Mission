@@ -2,7 +2,7 @@ import PROD_DEFAULT from '../../assets/img_prod-default.svg';
 import ProdDefaultContainer from './ProdDefaultImages.styles';
 
 export interface ProdDefaultImagesProps {
-  size: 'sm' | 'md';
+  size?: 'sm' | 'md';
 }
 
 function ProdDefaultImages({ size }: ProdDefaultImagesProps) {
