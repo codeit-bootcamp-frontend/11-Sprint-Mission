@@ -2,11 +2,18 @@ import { StyledTagsList } from './TagsList.styles';
 
 import Tag from './Tag';
 
-function TagsList({ tags = [], onRemove = null }) {
+export interface TagsListProps {
+  tags?: string[];
+  onRemove: (tag: string) => void;
+}
+
+function TagsList({ tags = [], onRemove }: TagsListProps) {
+  const hasOnRemove = !!onRemove;
+
   return (
     <>
       {tags.length > 0 && (
-        <StyledTagsList>
+        <StyledTagsList hasOnRemove={hasOnRemove}>
           {tags.map((tag, index) => (
             <li key={`${tag}-${index}`}>
               <Tag tag={tag} onRemove={onRemove} />

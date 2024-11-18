@@ -5,7 +5,7 @@ import { StyledLogo } from './Logo.styles';
 import LOGO_PC from '../../../assets/logo.png';
 import LOGO_MO from '../../../assets/mobiles/logo.png';
 
-const Logo = (props) => {
+const Logo = () => {
   return (
     <StyledLogo>
       <Link to={'/'}>

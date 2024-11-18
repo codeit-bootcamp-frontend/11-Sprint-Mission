@@ -1,6 +1,10 @@
 import ButtonDelete from './BtnClose.styles';
 
-function BtnClose({ onClick }) {
+interface BtnClose {
+  onClick: () => void;
+}
+
+function BtnClose({ onClick }: BtnClose) {
   return <ButtonDelete onClick={onClick}>삭제</ButtonDelete>;
 }
 

@@ -1,6 +1,10 @@
 import StyledForm from './SearchInput.styles';
 
-const SearchInput = ({ onSubmit }) => {
+interface SearchInputProps {
+  onSubmit: () => void;
+}
+
+const SearchInput = ({ onSubmit }: SearchInputProps) => {
   return (
     <StyledForm onSubmit={onSubmit}>
       <input

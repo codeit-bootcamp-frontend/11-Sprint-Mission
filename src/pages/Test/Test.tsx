@@ -55,7 +55,7 @@ function Test() {
               <Td>Tag</Td>
               <Td>
                 <TdContainer>
-                  <Tag tag='태그 삭제 없음' />
+                  <Tag tag='태그 삭제 없음' onRemove={() => {}} />
                   <Tag tag='태그 삭제 있음' onRemove={() => {}} />
                 </TdContainer>
               </Td>

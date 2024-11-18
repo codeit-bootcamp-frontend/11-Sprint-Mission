@@ -1,7 +1,11 @@
 import USER_PROFILE from '../../assets/ic-profile-default.png';
 import StyledProfileContainer from './ProfileImage.styles';
 
-const ProfileImage = ({ imageSize = 'big' }) => {
+export interface ProfileImageProps {
+  imageSize?: 'small' | 'big';
+}
+
+const ProfileImage = ({ imageSize = 'big' }: ProfileImageProps) => {
   return (
     <StyledProfileContainer imageSize={imageSize}>
       <img src={USER_PROFILE} alt='유저 프로필' />
