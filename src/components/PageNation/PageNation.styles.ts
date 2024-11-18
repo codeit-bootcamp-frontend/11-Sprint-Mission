@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import ICON_ARROW from '@assets/ic-arrow.svg';
+
 const StyledPagination = styled.div`
   display: flex;
   gap: 0.4rem;
@@ -28,7 +30,7 @@ const StyledPagination = styled.div`
   }
 
   [class*='arrow-'] {
-    background-image: url(/src/assets/ic-arrow.svg);
+    background-image: url(${ICON_ARROW});
     background-repeat: no-repeat;
     background-size: 1.6rem;
     background-position: center;

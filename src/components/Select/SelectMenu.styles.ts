@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { media } from '../../styles/media.styles';
 
+import ICON_ARROW from '../../assets/ic_arrow_down.svg?url';
+import ICON_SORT from '../../assets/ic_sort.svg';
 import font from '../../styles/fontStyle.styles';
 
 const StyledSelectContainer = styled.div`
@@ -17,14 +19,14 @@ const StyledSelectContainer = styled.div`
       border: 1px solid var(--gray-200);
       border-radius: 1.2rem;
       background-color: #fff;
-      background-image: url(/src/assets/ic_arrow_down.svg);
+      background-image: url(${ICON_ARROW});
       background-size: 2.4rem;
       background-repeat: no-repeat;
       background-position: 8.6rem center;
 
       ${media.mo`
         width: 4.2rem;
-        background-image: url(/src/assets/ic_sort.svg);
+        background-image: url(${ICON_SORT});
         font-size: 0;
         background-position: 0.9rem center;
       `}

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { media } from '../../styles/media.styles';
+import ICON_SEARCH from '../../assets/ic_search.svg';
 
 const StyledForm = styled.form`
   width: 32.5rem;
@@ -12,7 +13,7 @@ const StyledForm = styled.form`
     padding: 0.9rem 1.6rem 0.9rem 4.4rem;
     background-color: var(--gray-100);
     border-radius: 1.2rem;
-    background-image: url(/src/assets/ic_search.svg);
+    background-image: url(${ICON_SEARCH});
     background-size: 2.4rem;
     background-repeat: no-repeat;
     background-position: 1.6rem center;
