@@ -1,7 +1,8 @@
+import { FormEvent } from 'react';
 import StyledForm from './SearchInput.styles';
 
 interface SearchInputProps {
-  onSubmit: () => void;
+  onSubmit: (e: FormEvent<HTMLFormElement>) => void;
 }
 
 const SearchInput = ({ onSubmit }: SearchInputProps) => {
