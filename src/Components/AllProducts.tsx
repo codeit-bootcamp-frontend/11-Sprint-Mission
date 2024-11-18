@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getProducts } from '../api/api';
 import useAsync from '../hooks/useAsync';
@@ -23,18 +23,19 @@ function AllProducts() {
   const [orderBy, setOrderBy] = useState('recent');
   const [totalCount, setTotalCount] = useState(0);
   const [isLoading, loadingError, getProductsAsync] = useAsync(getProducts);
-  const inSearchRef = useRef();
+  const inSearchRef = useRef<HTMLInputElement | null>(null);
 
   // 정렬 변경
-  const handleOrder = (e) => {
+  const handleOrder = (e: ChangeEvent<HTMLSelectElement>) => {
     setOrderBy(e.target.value);
   };
 
   // 검색어 필터링
-  const handleKeywordSubmit = (e) => {
+  const handleKeywordSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const inputSearch = inSearchRef.current;
+    if (!inputSearch) return;
     setKeyword(inputSearch.value);
   };
   const handleKeywordReset = () => {
@@ -42,7 +43,7 @@ function AllProducts() {
   };
 
   // 페이지네이션 처리
-  const handlePaginationClick = (pageNum) => {
+  const handlePaginationClick = (pageNum: number) => {
     setPage(pageNum);
   };
 

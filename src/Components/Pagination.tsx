@@ -1,7 +1,15 @@
 import './Pagination.css';
 
+interface Props {
+  page: number;
+  pageSize: number;
+  totalCount: number;
+  className?: string;
+  onClick: (page: number) => void;
+}
+
 // 전체 페이지네이션 배열 생성
-function getPages(size, total) {
+function getPages(size: number, total: number): number[] {
   let count = 1;
   const pageCount = total ? Math.ceil(total / size) : 1;
   return Array(pageCount)
@@ -10,7 +18,7 @@ function getPages(size, total) {
 }
 
 // 보여줄 페이지네이션 - 5개 배열 생성
-function getShowPages(page, pages) {
+function getShowPages(page: number, pages: number[]) {
   const prevPageCount = 3;
   const nextPageCount = 2;
   let indexStart = page - prevPageCount;
@@ -33,12 +41,12 @@ export default function Pagination({
   totalCount = 0,
   onClick,
   className = '',
-}) {
+}: Props) {
   const pages = getPages(pageSize, totalCount);
   const showPages = getShowPages(page, pages);
 
   // 페이지네이션 버튼 클릭
-  const handleClick = (nextPage) => {
+  const handleClick = (nextPage: number) => {
     return () => onClick(nextPage);
   };
 
