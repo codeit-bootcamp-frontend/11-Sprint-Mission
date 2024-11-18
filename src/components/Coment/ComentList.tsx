@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Comment } from '../../types';
 
 import RETURN_IMAGE from '../../assets/ic_back.svg';
 import { StyledComentListContainer, IconReturn } from './ComentList.styles';
@@ -9,10 +10,22 @@ import NotResult from '../NotResult/NotResult';
 import Button from '../Button/Button';
 import Line from '../Shared/Line/Line';
 
-function ComentList({ commentsList, onEditSubmit, onDeleteClick, type }) {
-  const [editingCommentId, setEditingCommentId] = useState(null);
+interface ComentListProps {
+  commentsList: Comment[];
+  onEditSubmit: (item: Comment, updatedContent: string) => void;
+  onDeleteClick: (commentId: string) => void;
+  type: 'search' | 'inquiry' | 'comments';
+}
 
-  const handleEditClick = (commentId) => {
+function ComentList({
+  commentsList,
+  onEditSubmit,
+  onDeleteClick,
+  type,
+}: ComentListProps) {
+  const [editingCommentId, setEditingCommentId] = useState<string | null>(null);
+
+  const handleEditClick = (commentId: string) => {
     setEditingCommentId(commentId);
   };
 
@@ -20,7 +33,7 @@ function ComentList({ commentsList, onEditSubmit, onDeleteClick, type }) {
     setEditingCommentId(null);
   };
 
-  const handleEditSubmit = (item, updatedContent) => {
+  const handleEditSubmit = (item: Comment, updatedContent: string) => {
     if (updatedContent.trim() !== '') {
       onEditSubmit(item, updatedContent);
       setEditingCommentId(null);
