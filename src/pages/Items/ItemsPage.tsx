@@ -53,7 +53,7 @@ function ItemsPage() {
           </div>
           <ProductsList list={favoriteItems} />
           {favoriteIsLoading && <p>로딩 중 입니다...</p>}
-          {favoriteFetchError && <span>{favoriteFetchError}</span>}
+          {favoriteFetchError && <span>에러가 발생했습니다</span>}
         </div>
 
         <div>
@@ -90,7 +90,7 @@ function ItemsPage() {
             </>
           )}
           {productIsLoading && <p>로딩 중 입니다...</p>}
-          {productFetchError && <span>{productFetchError}</span>}
+          {productFetchError && <span>에러가 발생했습니다</span>}
         </div>
       </StyledContainer>
     </StyledPageItem>

@@ -2,13 +2,36 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import useAsyncRequest from './useAsyncRequest';
 
-const useComments = (fetchCommentsFunction) => {
-  const [commentsList, setCommentsList] = useState([]);
+interface Comment {
+  id: string;
+  productId: string;
+  userId: string;
+  content: string;
+  createdAt: string;
+}
+
+type FetchCommentsFunction = (
+  productId: string,
+) => Promise<{ list: Comment[] }>;
+
+interface UseCommentsReturn {
+  commentsList: Comment[];
+  isLoading: boolean;
+  error: Error | null;
+  handleEditSubmit: (item: Comment, updatedContent: string) => void;
+  handleDeleteClick: (itemToDeleteId: string) => void;
+}
+
+const useComments = (
+  fetchCommentsFunction: FetchCommentsFunction,
+): UseCommentsReturn => {
+  const [commentsList, setCommentsList] = useState<Comment[]>([]);
   const { execute, isLoading, error } = useAsyncRequest();
-  const { productId } = useParams();
+  const { productId } = useParams<{ productId: string }>();
 
   useEffect(() => {
     const handleCommentsListLoad = async () => {
+      if (!productId) return;
       const result = await execute(() => fetchCommentsFunction(productId));
       if (result) {
         const { list } = result;
@@ -19,7 +42,7 @@ const useComments = (fetchCommentsFunction) => {
     handleCommentsListLoad();
   }, [productId, execute, fetchCommentsFunction]);
 
-  const handleEditSubmit = (item, updatedContent) => {
+  const handleEditSubmit = (item: Comment, updatedContent: string) => {
     setCommentsList((prevItems) =>
       prevItems.map((comment) =>
         comment.id === item.id
@@ -29,7 +52,7 @@ const useComments = (fetchCommentsFunction) => {
     );
   };
 
-  const handleDeleteClick = (itemToDeleteId) => {
+  const handleDeleteClick = (itemToDeleteId: string) => {
     setCommentsList((prevItems) =>
       prevItems.filter((item) => item.id !== itemToDeleteId),
     );

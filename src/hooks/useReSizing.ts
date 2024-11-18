@@ -1,6 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
 
-const useReSizing = ({ mobileSize, tabletSize, pcSize }) => {
+interface useReSizingProps {
+  mobileSize: number;
+  tabletSize: number;
+  pcSize: number;
+}
+
+const useReSizing = ({ mobileSize, tabletSize, pcSize }: useReSizingProps) => {
   // 현재 화면 크기에 맞는 페이지 크기 계산 함수
   const calculatePageSize = useCallback(() => {
     if (window.innerWidth <= 767) {

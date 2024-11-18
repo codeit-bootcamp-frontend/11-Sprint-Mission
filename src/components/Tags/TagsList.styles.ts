@@ -4,7 +4,9 @@ interface StyledTagsListProps {
   hasOnRemove: boolean;
 }
 
-const StyledTagsList = styled.ul<StyledTagsListProps>`
+const StyledTagsList = styled.ul.withConfig({
+  shouldForwardProp: (prop) => !['hasOnRemove'].includes(prop),
+})<StyledTagsListProps>`
   display: flex;
   flex-wrap: wrap;
   gap: ${({ hasOnRemove }) => (hasOnRemove ? '0.8rem' : '1.2rem')};

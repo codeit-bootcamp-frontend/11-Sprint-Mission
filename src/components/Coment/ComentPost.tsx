@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 // import Input from '../Input/Input';
 
@@ -14,7 +14,9 @@ function ComentPost({ title = '문의하기', placeholder = '댓글달기' }) {
 
   const isFormValid = formValues.trim() !== '';
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (
+    e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+  ) => {
     const value = e.target.value;
     setFormValues(value);
   };

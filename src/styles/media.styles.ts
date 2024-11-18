@@ -17,24 +17,6 @@ export const responsiveGridColumns = {
   `,
 };
 
-// export const media = {
-//   ta: (...args: Interpolation<DefaultTheme>[]) => css`
-//     @media screen and (min-width: 768px) and (max-width: 1248px) {
-//       ${args}
-//     }
-//   `,
-//   mo: (...args: Interpolation<DefaultTheme>[]) => css`
-//     @media screen and (max-width: 767px) {
-//       ${args}
-//     }
-//   `,
-//   tamo: (...args: Interpolation<DefaultTheme>[]) => css`
-//     @media screen and (max-width: 1248px) {
-//       ${args}
-//     }
-//   `,
-// };
-
 export const media = {
   ta: (
     strings: TemplateStringsArray,
