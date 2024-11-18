@@ -1,7 +1,5 @@
-import { FormEvent, useState } from 'react';
-
-import useProductsAll from '../../hooks/useProductsAll';
-import useProductsFavorite from '../../hooks/useProductsFavorite';
+import { FormEvent, useState, useEffect, useCallback } from 'react';
+import { getProductsList } from '../../services/products-api';
 
 import {
   StyledPageItem,
@@ -12,28 +10,78 @@ import {
 import ProductsList from './ProductsList';
 import PageNation from '../../components/PageNation/PageNation';
 import SearchInput from '../../components/SearchInput/SearchInput';
-import SeletMenu from '../../components/Select/SelectMenu';
+import SelectMenu from '../../components/Select/SelectMenu';
 import NotResult from '../../components/NotResult/NotResult';
+import useReSizing from '../../hooks/useReSizing';
 
 function ItemsPage() {
-  const [order, setOrder] = useState('recent');
+  const [order, setOrder] = useState<'recent' | 'favorite'>('recent');
   const [search, setSearch] = useState('');
-  const {
-    items: allItems,
-    isLoading: productIsLoading,
-    fetchError: productFetchError,
-    total,
-    currentPage,
-    setCurrentPage,
-    pageSize,
-  } = useProductsAll({ order, search });
-  const {
-    items: favoriteItems,
-    fetchError: favoriteFetchError,
-    isLoading: favoriteIsLoading,
-  } = useProductsFavorite();
+  const [allItems, setAllItems] = useState([]);
+  const [favoriteItems, setFavoriteItems] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [fetchError, setFetchError] = useState<Error | null>(null);
 
-  const handleSelect = (value: string) => setOrder(value);
+  const pageSize = useReSizing({
+    mobileSize: 4,
+    tabletSize: 6,
+    pcSize: 10,
+  });
+
+  // 전체 상품 목록 API 요청
+  const fetchAllItems = useCallback(async () => {
+    setIsLoading(true);
+    setFetchError(null);
+    try {
+      const result = await getProductsList({
+        pageSize,
+        keyword: search,
+        orderBy: order,
+        page: currentPage,
+      });
+      if (result) {
+        setAllItems(result.list);
+        setTotal(result.totalCount);
+      }
+    } catch (error) {
+      setFetchError(error as Error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [order, search, pageSize, currentPage]);
+
+  // 좋아요 순 상품 목록 API 요청
+  const fetchFavoriteItems = useCallback(async () => {
+    setIsLoading(true);
+    setFetchError(null);
+    try {
+      const result = await getProductsList({
+        pageSize: 4,
+        orderBy: 'favorite',
+      });
+      if (result) {
+        setFavoriteItems(result.list);
+      }
+    } catch (error) {
+      setFetchError(error as Error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  // API 요청 실행
+  useEffect(() => {
+    fetchAllItems();
+  }, [fetchAllItems]);
+
+  useEffect(() => {
+    fetchFavoriteItems();
+  }, [fetchFavoriteItems]);
+
+  const handleSelect = (value: string) =>
+    setOrder(value as 'recent' | 'favorite');
 
   const handleSearchSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -41,8 +89,7 @@ function ItemsPage() {
     setSearch(searchValue);
   };
 
-  const isEmpty =
-    allItems.length === 0 && !productFetchError && !productIsLoading;
+  const isEmpty = allItems.length === 0 && !fetchError && !isLoading;
 
   return (
     <StyledPageItem>
@@ -52,8 +99,8 @@ function ItemsPage() {
             <h2>베스트 상품</h2>
           </div>
           <ProductsList list={favoriteItems} />
-          {favoriteIsLoading && <p>로딩 중 입니다...</p>}
-          {favoriteFetchError && <span>에러가 발생했습니다</span>}
+          {isLoading && <p>로딩 중 입니다...</p>}
+          {fetchError && <span>에러가 발생했습니다</span>}
         </div>
 
         <div>
@@ -64,7 +111,7 @@ function ItemsPage() {
               상품 등록하기
             </StyledItemButton>
 
-            <SeletMenu
+            <SelectMenu
               title='최신순'
               option={[
                 { label: '최신순', value: 'recent', onSelect: handleSelect },
@@ -89,8 +136,8 @@ function ItemsPage() {
               />
             </>
           )}
-          {productIsLoading && <p>로딩 중 입니다...</p>}
-          {productFetchError && <span>에러가 발생했습니다</span>}
+          {isLoading && <p>로딩 중 입니다...</p>}
+          {fetchError && <span>에러가 발생했습니다</span>}
         </div>
       </StyledContainer>
     </StyledPageItem>
