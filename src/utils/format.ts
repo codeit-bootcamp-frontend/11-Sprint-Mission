@@ -1,14 +1,22 @@
-export const formatPrice = (price) => {
-  if (price == null) {
+// 가격을 포맷팅하는 함수
+export const formatPrice = (price?: number | null): string => {
+  if (price == null || isNaN(price)) {
     return '0';
   }
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
-export const formatRegistrationDate = (isDate) => {
-  const registrationDate = new Date(isDate);
+// 등록 날짜를 포맷팅하는 함수
+export const formatRegistrationDate = (dateString: string): string => {
+  const registrationDate = new Date(dateString);
   const currentDate = new Date();
-  const timeDifference = currentDate - registrationDate;
+
+  // 날짜가 유효한지 체크
+  if (isNaN(registrationDate.getTime())) {
+    return '날짜 정보 없음';
+  }
+
+  const timeDifference = currentDate.getTime() - registrationDate.getTime();
   const hoursDifference = timeDifference / (1000 * 60 * 60);
 
   if (hoursDifference < 24) {

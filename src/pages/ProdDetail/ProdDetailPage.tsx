@@ -54,7 +54,7 @@ function ProdDetailPage() {
   }
   if (isLoading && commentLoding) return <p>로딩 중 입니다...</p>;
   if (fetchError && commentFetchError)
-    return <p>오류 발생: {fetchError.message && commentFetchError.message}</p>;
+    return <p>데이터를 불러올 수 없습니다.</p>;
   return (
     <Page>
       <Container>
