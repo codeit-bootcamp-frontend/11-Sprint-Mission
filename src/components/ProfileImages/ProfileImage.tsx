@@ -1,4 +1,4 @@
-import USER_PROFILE from '../../assets/ic-profile-default.png';
+import USER_PROFILE from '/ic-profile-default.png';
 import StyledProfileContainer from './ProfileImage.styles';
 
 export interface ProfileImageProps {

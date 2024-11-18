@@ -1,4 +1,4 @@
-import PROD_DEFAULT from '../../assets/img_prod-default.svg';
+import PROD_DEFAULT from '/img_prod-default.svg';
 import ProdDefaultContainer from './ProdDefaultImages.styles';
 
 export interface ProdDefaultImagesProps {

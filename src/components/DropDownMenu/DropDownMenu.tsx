@@ -1,5 +1,5 @@
 import { ReactNode, useState } from 'react';
-import ICON_KEBAB from '../../assets/ic_kebab.svg';
+import ICON_KEBAB from '/ic_kebab.svg';
 import {
   DropDownContainer,
   MoreList,

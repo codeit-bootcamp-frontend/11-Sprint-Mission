@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { media } from '../../styles/media.styles';
 
-import ICON_ARROW from '../../assets/ic_arrow_down.svg?url';
-import ICON_SORT from '../../assets/ic_sort.svg';
+import ICON_ARROW from '/ic_arrow_down.svg?url';
+import ICON_SORT from '/ic_sort.svg';
 import font from '../../styles/fontStyle.styles';
 
 const StyledSelectContainer = styled.div`

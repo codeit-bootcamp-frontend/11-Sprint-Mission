@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { media } from '../../styles/media.styles';
-import ICON_SEARCH from '../../assets/ic_search.svg';
+import ICON_SEARCH from '/ic_search.svg';
 
 const StyledForm = styled.form`
   width: 32.5rem;

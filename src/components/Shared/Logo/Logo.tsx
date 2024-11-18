@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 
 import { StyledLogo } from './Logo.styles';
 
-import LOGO_PC from '../../../assets/logo.png';
-import LOGO_MO from '../../../assets/mobiles/logo.png';
+import LOGO_PC from '/logo.png';
+import LOGO_MO from '/logo_mo.png';
 
 const Logo = () => {
   return (

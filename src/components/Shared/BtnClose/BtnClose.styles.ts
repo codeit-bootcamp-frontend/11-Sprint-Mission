@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import IC_X from '../../../assets/ic_X.svg';
+import IC_X from '/ic_X.svg';
 
 const ButtonDelete = styled.button`
   cursor: pointer;

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import IC_PLUS from '../../assets/ic_plus.svg';
+import IC_PLUS from '/ic_plus.svg';
 
 import {
   FileContainer,

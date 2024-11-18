@@ -1,8 +1,8 @@
 import StyledNotResult, { StyledImages } from './NotResult.styles';
 
-import IMAGES_PROD from '../../assets/Img_prod_empty.svg';
-import IMAGES_INQUIRY from '../../assets/Img_inquiry_empty.svg';
-import IMAGES_COMMENTS from '../../assets/Img_reply_empty.svg';
+import IMAGES_PROD from '/Img_prod_empty.svg';
+import IMAGES_INQUIRY from '/Img_inquiry_empty.svg';
+import IMAGES_COMMENTS from '/Img_reply_empty.svg';
 
 export interface NotResultProps {
   type?: 'search' | 'inquiry' | 'comments';

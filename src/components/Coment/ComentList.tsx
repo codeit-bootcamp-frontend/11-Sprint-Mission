@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Comment } from '../../types';
 
-import RETURN_IMAGE from '../../assets/ic_back.svg';
+import RETURN_IMAGE from '/ic_back.svg';
 import { StyledComentListContainer, IconReturn } from './ComentList.styles';
 
 import Coment from './Coment';

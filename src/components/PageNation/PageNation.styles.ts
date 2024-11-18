@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import ICON_ARROW from '@assets/ic-arrow.svg';
+import ICON_ARROW from '/ic-arrow.svg';
 
 const StyledPagination = styled.div`
   display: flex;
