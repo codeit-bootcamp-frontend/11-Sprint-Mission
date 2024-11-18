@@ -1,64 +1,60 @@
 import { useState } from 'react';
-
 import StyledSelectContainer from './SelectMenu.styles';
 
-function SelectMenu({ children }) {
-  const [isOptionVisible, setIsOptionVisible] = useState(false);
-  const [selectedLabel, setSelectedLabel] = useState(null);
+// Option 타입 정의
+interface Option {
+  label: string;
+  value: string;
+  onSelect?: (value: string) => void;
+}
 
+// DropDown 컴포넌트의 prop 타입 정의
+interface DropDownProps {
+  title: string;
+  option: Option[];
+}
+
+function SeletMenu({ title, option }: DropDownProps) {
+  const [isOptionVisible, setIsOptionVisible] = useState(false);
+  const [selectedLabel, setSelectedLabel] = useState<string>(title);
+
+  // 셀렉트 버튼 클릭 핸들러
   const handleSelectClick = () => {
-    setIsOptionVisible(!isOptionVisible);
+    setIsOptionVisible((prev) => !prev);
   };
 
-  const handleOptionClick = (label, value) => {
+  // 옵션 클릭 핸들러
+  const handleOptionClick = (
+    label: string,
+    value: string,
+    onSelect?: (value: string) => void,
+  ) => {
     setSelectedLabel(label);
     setIsOptionVisible(false);
-    if (value?.onSelect) {
-      value.onSelect(value.value);
+    if (onSelect) {
+      onSelect(value);
     }
   };
 
   return (
     <StyledSelectContainer>
       <button className='select-title' onClick={handleSelectClick}>
-        {selectedLabel ||
-          children.find((child) => child.type.displayName === 'Title')?.props
-            .children ||
-          '옵션을 선택 해주세요'}
+        {selectedLabel}
       </button>
       {isOptionVisible && (
         <div className='select-option'>
-          {children
-            .filter((child) => child.type.displayName === 'Option')
-            .map((child) => (
-              <button
-                key={child.props.value}
-                className='select-option-list'
-                onClick={() =>
-                  handleOptionClick(child.props.label, child.props)
-                }>
-                {child.props.label}
-              </button>
-            ))}
+          {option.map(({ label, value, onSelect }) => (
+            <button
+              key={value}
+              className='select-option-list'
+              onClick={() => handleOptionClick(label, value, onSelect)}>
+              {label}
+            </button>
+          ))}
         </div>
       )}
     </StyledSelectContainer>
   );
 }
 
-const Title = ({ children }) => {
-  return <>{children}</>;
-};
-
-Title.displayName = 'Title';
-
-const Option = ({ children }) => {
-  return <>{children}</>;
-};
-
-Option.displayName = 'Option';
-
-SelectMenu.Title = Title;
-SelectMenu.Option = Option;
-
-export default SelectMenu;
+export default SeletMenu;

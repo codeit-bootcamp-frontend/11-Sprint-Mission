@@ -12,7 +12,7 @@ import {
 import ProductsList from './ProductsList';
 import PageNation from '../../components/PageNation/PageNation';
 import SearchInput from '../../components/SearchInput/SearchInput';
-import DropDown from '../../components/Select/SelectMenu';
+import SeletMenu from '../../components/Select/SelectMenu';
 import NotResult from '../../components/NotResult/NotResult';
 
 function ItemsPage() {
@@ -63,19 +63,18 @@ function ItemsPage() {
             <StyledItemButton href='/addItem' color='blue'>
               상품 등록하기
             </StyledItemButton>
-            <DropDown>
-              <DropDown.Title>최신순</DropDown.Title>
-              <DropDown.Option
-                label='최신순'
-                value='recent'
-                onSelect={handleSelect}
-              />
-              <DropDown.Option
-                label='좋아요순'
-                value='favorite'
-                onSelect={handleSelect}
-              />
-            </DropDown>
+
+            <SeletMenu
+              title='최신순'
+              option={[
+                { label: '최신순', value: 'recent', onSelect: handleSelect },
+                {
+                  label: '좋아요순',
+                  value: 'favorite',
+                  onSelect: handleSelect,
+                },
+              ]}
+            />
           </div>
           {isEmpty ? (
             <NotResult type='search' />
