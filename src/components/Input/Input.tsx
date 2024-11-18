@@ -1,5 +1,3 @@
-import { ChangeEvent, useState } from 'react';
-
 import {
   StyledInputContainer,
   StyledInput,
@@ -35,22 +33,12 @@ function Input({
   placeholder = '',
   name = '',
   title,
+  value,
   isError = false,
   errorMessage = '에러가 발생 했습니다.',
   onChange,
   ...rest
 }: InputProps) {
-  const [value, setValue] = useState<string>('');
-
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    setValue(e.target.value);
-    if (onChange) {
-      onChange(e);
-    }
-  };
-
   // `type` prop은 `as`가 'input'일 때만 전달
   const inputProps =
     as === 'input' ? { type: (rest as InputPropsInput).type } : {};
@@ -60,12 +48,12 @@ function Input({
       {title && <h3>{title}</h3>}
       <div>
         <StyledInput
-          as={as}
+          as={as as React.ElementType}
           placeholder={placeholder}
           name={name}
           value={value}
           $isError={isError}
-          onChange={handleChange}
+          onChange={onChange}
           {...inputProps}
           {...rest}
         />

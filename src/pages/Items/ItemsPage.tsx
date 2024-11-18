@@ -53,9 +53,7 @@ function ItemsPage() {
           </div>
           <ProductsList list={favoriteItems} />
           {favoriteIsLoading && <p>로딩 중 입니다...</p>}
-          {favoriteFetchError?.message && (
-            <span>{favoriteFetchError.message}</span>
-          )}
+          {favoriteFetchError && <span>{favoriteFetchError}</span>}
         </div>
 
         <div>
@@ -93,9 +91,7 @@ function ItemsPage() {
             </>
           )}
           {productIsLoading && <p>로딩 중 입니다...</p>}
-          {productFetchError?.message && (
-            <span>{productFetchError.message}</span>
-          )}
+          {productFetchError && <span>{productFetchError}</span>}
         </div>
       </StyledContainer>
     </StyledPageItem>
