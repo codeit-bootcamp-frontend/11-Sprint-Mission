@@ -5,7 +5,7 @@ function Navigation() {
   // 현재 주소 가져오기
   const location = useLocation();
 
-  const getNavLinkStyle = (to) => {
+  const getNavLinkStyle = (to: string) => {
     const isActive =
       to === location.pathname ||
       (to === '/items' && location.pathname === '/addItem');

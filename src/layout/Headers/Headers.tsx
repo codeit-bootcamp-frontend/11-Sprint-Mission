@@ -3,7 +3,7 @@ import Logo from '../../components/Shared/Logo/Logo';
 import Navigation from '../Navigation/Navigation';
 import { HeaderContainer, StlyedContainer } from './Headers.styles';
 
-const Headers = (props) => {
+const Headers = () => {
   return (
     <HeaderContainer>
       <StlyedContainer>
