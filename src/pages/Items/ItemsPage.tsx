@@ -30,6 +30,12 @@ function ItemsPage() {
     pcSize: 10,
   });
 
+  const favoritePageSize = useReSizing({
+    mobileSize: 1,
+    tabletSize: 2,
+    pcSize: 4,
+  });
+
   // 전체 상품 목록 API 요청
   const fetchAllItems = useCallback(async () => {
     setIsLoading(true);
@@ -58,7 +64,7 @@ function ItemsPage() {
     setFetchError(null);
     try {
       const result = await getProductsList({
-        pageSize: 4,
+        pageSize: favoritePageSize,
         orderBy: 'favorite',
       });
       if (result) {
@@ -69,7 +75,7 @@ function ItemsPage() {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [favoritePageSize]);
 
   // API 요청 실행
   useEffect(() => {
