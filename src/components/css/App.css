@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: var(--white-color);
+  background-color: white;
   font-family: "Pretendard";
 }
 
@@ -13,7 +13,3 @@ body {
   font-weight: normal;
   font-style: normal;
 } */
-
-.container {
-  background-color: var(--white-color);
-}

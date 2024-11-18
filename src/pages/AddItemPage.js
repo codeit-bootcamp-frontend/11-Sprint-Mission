@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "./AddItemPages.css";
-import Input from "../components/Input";
-import FileInput from "../components/FileInput";
+import "./AddItemPage.css";
+import Input from "../components/common/Input";
+import FileInput from "../components/common/FileInput";
 import icPlus from "../images/icon/ic_plus.svg";
-import Category from "../components/Category";
-import Textarea from "../components/TextArea";
+import Category from "../components/common/Category";
+import Textarea from "../components/common/TextArea";
 
 const INITIAL_DATA = {
   productName: "",
@@ -16,7 +16,7 @@ const INITIAL_DATA = {
 
 const categoryData = ["티셔츠", "티셔츠"];
 
-const AddItemPages = () => {
+const AddItemPage = () => {
   const [productData, setProductData] = useState(INITIAL_DATA);
 
   const handleChange = (name, value) => {
@@ -99,4 +99,4 @@ const AddItemPages = () => {
   );
 };
 
-export default AddItemPages;
+export default AddItemPage;

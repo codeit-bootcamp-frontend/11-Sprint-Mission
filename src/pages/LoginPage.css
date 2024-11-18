@@ -1,0 +1,163 @@
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 640px;
+  margin: 190px auto;
+}
+
+.auth-signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 640px;
+  margin: 60px auto;
+}
+
+.auth-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.auth-main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.auth-field {
+  margin-bottom: 24px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-label {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  margin-bottom: 16px;
+}
+
+.input-email.warning {
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: var(--red);
+}
+
+.wrong-txt {
+  display: inline-block;
+  color: var(--red);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  padding-left: 16px;
+  margin-top: 8px;
+}
+
+#submitBtn.active,
+#signupSubmitBtn.active {
+  background-color: var(--Primary-100);
+}
+
+.auth-div {
+  position: relative;
+}
+
+.eyes-close {
+  position: absolute;
+  cursor: pointer;
+  right: 24px;
+  top: 16px;
+}
+
+.auth-input-group {
+  position: relative;
+  display: inline-block;
+}
+
+.input-icon {
+  background-image: url("../images/icon/icon_eyes_close.png");
+}
+
+.auth-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 74px;
+  border-radius: 8px;
+  padding: 16px 23px 16px 23px;
+  background-color: #e6f2ff;
+}
+
+.auth-box a:visited {
+  color: var(--gray-800);
+}
+
+.auth-gopage {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  color: var(--gray-800);
+}
+
+.auth-snsbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.auth-snsbox img {
+  width: 42px;
+  height: 42px;
+}
+
+.auth-register {
+  margin: 24px auto 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--gray-800);
+}
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .auth-container {
+    margin: 190px auto;
+  }
+}
+
+/* Mobile */
+@media (min-width: 365px) and (max-width: 767px) {
+  .auth-container {
+    max-width: 400px;
+    margin: 80px auto 0;
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .auth-header img {
+    width: 198px;
+    height: 66px;
+  }
+
+  .auth-label {
+    margin-bottom: 8px;
+  }
+
+  .auth-form {
+    gap: 16px;
+  }
+
+  .auth-signup-container {
+    max-width: 640px;
+    margin: 80px auto 0;
+    padding: 0 16px;
+  }
+}

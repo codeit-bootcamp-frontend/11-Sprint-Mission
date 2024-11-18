@@ -1,0 +1,127 @@
+.card-section {
+  display: flex;
+  padding: 138px 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-section__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 988px;
+  gap: 64px;
+  border-radius: 12px;
+  padding: 0 23.5px;
+  white-space: nowrap;
+  background-color: var(--white-color);
+}
+
+.card-section__container .img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-area {
+  width: 588px;
+  height: 444px;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.card-section__container .desc {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.textright {
+  text-align: right;
+  padding: 0 64px 0 0;
+}
+
+.section-label {
+  color: var(--Primary-100);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  padding-bottom: 12px;
+}
+
+.section-text {
+  color: var(--gray-700);
+  font-size: 24px;
+  font-weight: 500;
+  padding-top: 24px;
+  line-height: 32px;
+}
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .card-section {
+    display: block;
+    margin: 24px 24px;
+  }
+
+  .section-label .br-class {
+    display: none;
+  }
+
+  .card-section__container {
+    display: block;
+    padding: 0;
+    max-width: 696px;
+    margin: 0 auto;
+  }
+
+  .card-section__container .img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .img-area {
+    width: 100%;
+  }
+
+  .card-section__container .desc {
+    padding-top: 24px;
+  }
+}
+
+/* Mobile */
+@media (min-width: 365px) and (max-width: 767px) {
+  .card-section {
+    display: block;
+    margin: 52px 15px;
+    padding: 0;
+  }
+
+  .section-label .br-class {
+    display: none;
+  }
+
+  .card-section__container {
+    display: block;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 375px;
+  }
+
+  .card-section__container .img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .img-area {
+    width: 100%;
+  }
+
+  .card-section__container .desc {
+    padding-top: 24px;
+  }
+}

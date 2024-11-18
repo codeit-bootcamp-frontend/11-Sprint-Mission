@@ -6,6 +6,7 @@
   border: 1px solid #dfdfdf;
   white-space: nowrap;
   padding: 0 200px;
+  z-index: 999;
 }
 
 .main-header-left {

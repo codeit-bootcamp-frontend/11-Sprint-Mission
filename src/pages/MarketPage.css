@@ -1,0 +1,97 @@
+.main-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 20px auto 43px;
+}
+
+.search-area {
+  display: flex;
+  gap: 12px;
+}
+
+.search-input {
+  background-color: var(--gray-100);
+  border-radius: 12px;
+  padding: 9px 44px;
+  width: 325px;
+  height: 42px;
+  border: none;
+}
+
+.search-input::placeholder {
+  color: var(--gray-400);
+  font-weight: 400;
+  size: 16px;
+  line-height: 26px;
+}
+
+.search-box {
+  position: relative;
+}
+
+.searchGlass {
+  background-image: url("../images/icon/searchIcon.svg");
+  background-repeat: no-repeat;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 13px;
+  left: 20px;
+}
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .product-cardlist__4row {
+    max-width: 695px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .product-cardlist__5row {
+    max-width: 695px;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile */
+@media (min-width: 365px) and (max-width: 767px) {
+  .product-cardlist__4row {
+    max-width: 344px;
+    grid-template-columns: 1fr;
+  }
+
+  .product-cardlist__5row {
+    max-width: 344px;
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 수정 */
+a {
+  text-decoration: none;
+  text-decoration-line: none;
+  color: black;
+}
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+a:focus {
+  text-decoration: none;
+}
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
+@media screen {
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import "./css/Category.css";
+import "../css/Category.css";
 
 const Category = ({ categoryData, isShowCancleBtn }) => {
   return (

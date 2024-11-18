@@ -1,7 +1,9 @@
-import "./css/App.css";
+import React from "react";
+import "../css/App.css";
 import Nav from "./Nav";
+import { AppProps } from "../../types";
 
-const App = ({ children }) => {
+const App = ({ children }: AppProps) => {
   return (
     <>
       <Nav></Nav>
