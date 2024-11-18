@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
 
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
@@ -7,14 +7,21 @@ import { Container, Page } from '../../styles/Common.styles';
 import InputFile from '../../components/InputFile/InputFile';
 import { AddProdForm, AddProdTitle } from './AddProd.styles';
 
+interface FormValues {
+  productName: string;
+  productDescription: string;
+  productPrice: string;
+  productTags: string[];
+}
+
 function AddProd() {
-  const [formValues, setFormValues] = useState({
+  const [formValues, setFormValues] = useState<FormValues>({
     productName: '',
     productDescription: '',
     productPrice: '',
     productTags: [],
   });
-  const [tagInputValue, setTagInputValue] = useState('');
+  const [tagInputValue, setTagInputValue] = useState<string>('');
 
   const isFormValid =
     formValues.productName.trim() !== '' &&
@@ -22,7 +29,9 @@ function AddProd() {
     formValues.productPrice.trim() !== '' &&
     formValues.productTags.length > 0;
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
 
     if (name === 'productTags') {
@@ -32,7 +41,7 @@ function AddProd() {
     }
   };
 
-  const handleAddTagInput = (e) => {
+  const handleAddTagInput = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && e.nativeEvent.isComposing === false) {
       e.preventDefault();
       if (
@@ -49,7 +58,7 @@ function AddProd() {
     }
   };
 
-  const handleRemoveTag = (tagRemove) => {
+  const handleRemoveTag = (tagRemove: string) => {
     setFormValues((prevValues) => ({
       ...prevValues,
       productTags: prevValues.productTags.filter((tag) => tag !== tagRemove),

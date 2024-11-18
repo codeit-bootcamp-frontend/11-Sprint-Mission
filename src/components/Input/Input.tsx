@@ -9,7 +9,7 @@ import {
 interface InputPropsBase {
   title?: string;
   isError?: boolean;
-  errorMessage: string;
+  errorMessage?: string;
 }
 
 // input용 props
