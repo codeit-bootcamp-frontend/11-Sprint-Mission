@@ -4,7 +4,7 @@ import Tag from './Tag';
 
 export interface TagsListProps {
   tags?: string[];
-  onRemove: (tag: string) => void;
+  onRemove?: (tag: string) => void;
 }
 
 function TagsList({ tags = [], onRemove }: TagsListProps) {

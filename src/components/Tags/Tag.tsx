@@ -3,7 +3,7 @@ import StyledTagContainer from './Tag.styles';
 
 interface TagProps {
   tag: string;
-  onRemove: (tag: string) => void;
+  onRemove?: (tag: string) => void;
 }
 
 function Tag({ tag, onRemove }: TagProps) {

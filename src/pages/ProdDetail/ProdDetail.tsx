@@ -64,7 +64,7 @@ function ProdDetail({
             </div>
             <div className='prod-text'>
               <h3>상품 태그</h3>
-              <TagsList tags={tags} onRemove={() => {}} />
+              <TagsList tags={tags} />
             </div>
           </div>
         </div>
