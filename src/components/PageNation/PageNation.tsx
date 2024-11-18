@@ -1,25 +1,42 @@
 import StyledPagination from './PageNation.styles';
 
-const PageNation = ({ total, pageSize, setCurrentPage, currentPage }) => {
+interface PageNationProps {
+  total: number;
+  pageSize: number;
+  setCurrentPage: (page: number) => void;
+  currentPage: number;
+}
+
+function PageNation({
+  total,
+  pageSize,
+  setCurrentPage,
+  currentPage,
+}: PageNationProps) {
   const totalPageNum = Math.ceil(total / pageSize);
   const maxVisiblePages = 5;
 
-  const handlePageClick = (page) => {
+  const handlePageClick = (page: number) => {
     setCurrentPage(page);
   };
 
   const handleArrowNextClick = () => {
-    currentPage < totalPageNum
-      ? setCurrentPage(currentPage + 1)
-      : alert('마지막 페이지 입니다.');
-  };
-  const handleArrowPrevClick = () => {
-    currentPage > 1
-      ? setCurrentPage(currentPage - 1)
-      : alert('처음 페이지 입니다.');
+    if (currentPage < totalPageNum) {
+      setCurrentPage(currentPage + 1);
+    } else {
+      alert('마지막 페이지 입니다.');
+    }
   };
 
-  const getPageNumbers = () => {
+  const handleArrowPrevClick = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    } else {
+      alert('처음 페이지 입니다.');
+    }
+  };
+
+  const getPageNumbers = (): number[] => {
     let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
     let endPage = startPage + maxVisiblePages - 1;
 
@@ -28,7 +45,7 @@ const PageNation = ({ total, pageSize, setCurrentPage, currentPage }) => {
       startPage = Math.max(1, endPage - maxVisiblePages + 1);
     }
 
-    const pages = [];
+    const pages: number[] = [];
     for (let i = startPage; i <= endPage; i++) {
       pages.push(i);
     }
@@ -42,20 +59,25 @@ const PageNation = ({ total, pageSize, setCurrentPage, currentPage }) => {
     <StyledPagination>
       <li
         className='pagination-item arrow-prev'
-        onClick={handleArrowPrevClick}></li>
+        onClick={handleArrowPrevClick}
+        aria-label='Previous Page'
+      />
       {pages.map((page) => (
         <li
           key={page}
           onClick={() => handlePageClick(page)}
-          className={`pagination-item ${page === currentPage ? 'active' : ''}`}>
+          className={`pagination-item ${page === currentPage ? 'active' : ''}`}
+          aria-label={`Page ${page}`}>
           {page}
         </li>
       ))}
       <li
         className='pagination-item arrow-next'
-        onClick={handleArrowNextClick}></li>
+        onClick={handleArrowNextClick}
+        aria-label='Next Page'
+      />
     </StyledPagination>
   );
-};
+}
 
 export default PageNation;

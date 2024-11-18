@@ -2,9 +2,15 @@ import styled from 'styled-components';
 import font from '../../styles/fontStyle.styles';
 import { media } from '../../styles/media.styles';
 
+interface HeartButtonProps {
+  borderType?: boolean;
+  size?: 'sm' | 'md';
+  wide?: boolean;
+}
+
 export const HeartButton = styled.button.withConfig({
   shouldForwardProp: (prop) => !['size', 'borderType', 'wide'].includes(prop),
-})`
+})<HeartButtonProps>`
   display: flex;
   align-items: center;
   color: var(--gray-500);

@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
-
 import font from '../../styles/fontStyle.styles';
 import { media } from '../../styles/media.styles';
 import { flexColumn } from '../../styles/layout.styles';
 
+// 사이즈 스타일 정의
 const sizeStyles = {
   md: css`
     width: 28.2rem;
@@ -29,17 +29,23 @@ const sizeStyles = {
   `,
 };
 
+type SizeType = keyof typeof sizeStyles;
+
+interface ProdImagesProps {
+  $size: SizeType;
+}
+
 const ProdContainer = styled.div`
   ${flexColumn}
   gap: 1.6rem;
 `;
 
-const ProdImages = styled.div`
+const ProdImages = styled.div<ProdImagesProps>`
   overflow: hidden;
   ${({ $size }) => sizeStyles[$size] || ''}
 `;
 
-const PordDesc = styled.div`
+const ProdDesc = styled.div`
   ${flexColumn}
   gap: 0.6rem;
 
@@ -52,4 +58,4 @@ const PordDesc = styled.div`
   }
 `;
 
-export { ProdContainer, ProdImages, PordDesc };
+export { ProdContainer, ProdImages, ProdDesc };

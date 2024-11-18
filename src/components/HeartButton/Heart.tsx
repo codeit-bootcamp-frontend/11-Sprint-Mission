@@ -1,5 +1,13 @@
-import { HeartButton } from './HeartButton.styles';
+import { HeartButton } from './Heart.styles';
 import HeartIcon from './HeartIcon';
+
+interface HeartProps {
+  size?: 'sm' | 'md';
+  borderType?: boolean;
+  isActive?: boolean;
+  count: number;
+  wide?: boolean;
+}
 
 function Heart({
   size,
@@ -8,7 +16,7 @@ function Heart({
   count = 0,
   wide,
   ...rest
-}) {
+}: HeartProps) {
   const formattedCount = count >= 9999 ? '9999+' : count;
 
   return (

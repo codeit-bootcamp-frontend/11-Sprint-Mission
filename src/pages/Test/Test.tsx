@@ -1,5 +1,5 @@
 import Button from '../../components/Button/Button';
-import Heart from '../../components/HeartButton/HeartButton';
+import Heart from '../../components/HeartButton/Heart';
 import ProdCard from '../../components/ProdCard/ProdCard';
 import InputFile from '../../components/InputFile/InputFile';
 import { TestContainer, Table, Th, Td, TdContainer } from './Test.styles';

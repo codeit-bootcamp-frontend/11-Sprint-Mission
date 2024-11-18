@@ -6,7 +6,7 @@ import {
   UserInfoName,
   UserInfoDate,
 } from './UserInfo.styles';
-import Heart from '../HeartButton/HeartButton';
+import Heart from '../HeartButton/Heart';
 import { formatRegistrationDate } from '../../utils/format';
 
 function UserInfo({ children, wide }) {
