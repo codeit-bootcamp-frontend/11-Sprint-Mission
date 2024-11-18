@@ -1,10 +1,16 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import useDebounce from "../hooks/useDebounce";
 
-const DeviceTypeContext = createContext();
+export type DeviceType = "desktop" | "tablet" | "mobile";
 
-export function DeviceTypeProvider({ children }) {
-  const [deviceType, setDeviceType] = useState("desktop");
+const DeviceTypeContext = createContext<DeviceType>("desktop");
+
+export function DeviceTypeProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [deviceType, setDeviceType] = useState<DeviceType>("desktop");
 
   const handleResize = useDebounce(() => {
     if (window.innerWidth < 768) {

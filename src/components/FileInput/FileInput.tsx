@@ -2,35 +2,51 @@ import { useEffect, useState } from "react";
 import "./FileInput.css";
 import ic_upload from "../../assets/images/ic_plus.svg";
 
+interface Image {
+  id: string;
+  image: File;
+}
+
+interface ImagePriview {
+  id: string;
+  src: string;
+}
+
 const UPLOAD_LIMIT = 3;
-const PREVIEWS_DEFAULT = [];
+const PREVIEWS_DEFAULT: ImagePriview[] = [];
 
-function FileInput({ name, value, onChange, onDelete }) {
-  const [previews, setPreviews] = useState(PREVIEWS_DEFAULT);
+function FileInput({
+  name,
+  value,
+  onChange,
+  onDelete,
+}: {
+  name: string;
+  value: Image[];
+  onChange: Function;
+  onDelete: Function;
+}) {
+  const [previews, setPreviews] = useState<ImagePriview[]>(PREVIEWS_DEFAULT);
 
-  /**
-   * 상품 이미지를 추가하기 위한 핸들러.
-   * 파일이 업로드될 시 호출된다.
-   * @param {Event} e 이벤트 객체
-   */
-  const handleChange = (e) => {
-    if (value.length < UPLOAD_LIMIT) {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!(event.target instanceof HTMLElement)) return;
+    if (value.length >= UPLOAD_LIMIT) {
       alert("상품 이미지는 최대 3개까지 업로드 할 수 있습니다.");
       return;
     }
-    const image = e.target.files[0];
+    const image = event.target.files?.[0];
     image && onChange(name, { id: Date.now().toString(), image: image });
   };
 
-  const handleDelete = (e) => {
-    const id = e.currentTarget.dataset.id;
+  const handleDelete = (event: React.MouseEvent<HTMLDivElement>) => {
+    const id = event.currentTarget.dataset.id;
     onDelete(name, id, "id");
   };
 
   /**
    * 미이보기 이미지의 주소를 저장한 배열을 초기화 한다.
    */
-  const handlePreviewsClear = () => {
+  const handlePreviewsClear = (): void => {
     setPreviews((prev) => {
       prev.forEach((img) => {
         URL.revokeObjectURL(img.src);
@@ -39,14 +55,14 @@ function FileInput({ name, value, onChange, onDelete }) {
     });
   };
 
-  useEffect(() => {
+  useEffect((): (() => void) | void => {
     if (!Array.isArray(value)) return;
-    const nextPreviews = [];
+    const nextPreviews: ImagePriview[] = [];
     value.forEach((el) => {
       nextPreviews.push({ id: el.id, src: URL.createObjectURL(el.image) });
     });
     setPreviews(nextPreviews);
-    return () => handlePreviewsClear;
+    return () => handlePreviewsClear();
   }, [value]);
 
   return (

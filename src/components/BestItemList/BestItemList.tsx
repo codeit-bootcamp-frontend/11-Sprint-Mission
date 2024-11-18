@@ -1,22 +1,23 @@
 import { useEffect, useState } from "react";
-import { getProducts } from "../../api";
-import Item from "../Item/Item";
+import { getProductList } from "../../api";
+import ListItem from "../ListItem/ListItem";
 import "./BestItemList.css";
 import { useDeviceType } from "../../contexts/DeviceTypeContext";
+import { Product } from "../../types/Product";
 
 const PAGE_SIZE = {
   desktop: 4,
   tablet: 2,
   mobile: 1,
-};
+} as const;
 
 function ItemList() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState<Product[]>([]);
   const deviceType = useDeviceType();
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getProducts(1, PAGE_SIZE[deviceType], "favorite");
+      const result = await getProductList(1, PAGE_SIZE[deviceType], "favorite");
       setItems(result.list);
     };
     fetchData();
@@ -38,12 +39,12 @@ function Header() {
   );
 }
 
-function Content({ items }) {
+function Content({ items }: { items: Product[] }) {
   return (
     <ul className="BestItemList-content">
       {items.map((item) => (
         <li key={item.id}>
-          <Item item={item} type="best" />
+          <ListItem item={item} type="best" />
         </li>
       ))}
     </ul>

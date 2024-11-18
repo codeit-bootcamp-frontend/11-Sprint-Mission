@@ -2,6 +2,11 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=react,nextjs,sass
 
 ### NextJS ###
+<<<<<<< HEAD
+=======
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+>>>>>>> cde515c40685c7ea849fcafc91354005f21c13fd
 # dependencies
 /node_modules
 /.pnp
@@ -59,4 +64,16 @@ sketch
 *.sass.map
 *.scss.map
 
+<<<<<<< HEAD
 # End of https://www.toptal.com/developers/gitignore/api/react,nextjs,sass
+=======
+# End of https://www.toptal.com/developers/gitignore/api/react,nextjs,sass
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+>>>>>>> cde515c40685c7ea849fcafc91354005f21c13fd

@@ -5,13 +5,15 @@ import styles from "./ItemDetailPage.module.css";
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
 import CommentForm from "../../components/CommentForm/CommentForm";
 import ic_back from "../../assets/images/ic_back.svg";
+import { ProductExtended } from "../../types/Product";
 
 function ItemDetailPage() {
-  const [item, setItem] = useState();
-  const { id } = useParams();
+  const [item, setItem] = useState<ProductExtended>();
+  const { id } = useParams<{ id: string }>();
 
-  useEffect(() => {
+  useEffect((): void => {
     const fetchDate = async () => {
+      if (!id) return;
       const result = await getProductById(id);
       setItem(result);
     };
@@ -20,7 +22,7 @@ function ItemDetailPage() {
 
   return (
     <div className={`${styles["container"]}`}>
-      <ItemDetail className={styles["ItemDetail"]} item={item} />
+      {item && <ItemDetail className={styles["ItemDetail"]} item={item} />}
       <CommentForm className={styles["CommentForm"]} productId={id} />
       <Link className={styles["btn-back"]} to="/items">
         목록으로 돌아가기

@@ -1,10 +1,10 @@
 import "./App.css";
-import Navigation from "../Navigation/Navigation";
+import Navigation from "../components/Navigation/Navigation";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
-import AddItemForm from "../AddItemForm/AddItemForm";
-import ItemListPage from "../../pages/ItemListPage/ItemListPage";
-import { DeviceTypeProvider } from "../../contexts/DeviceTypeContext";
-import ItemDetailPage from "../../pages/ItemDetailPage/ItemDetailPage";
+import AddItemPage from "../pages/AddItemPage/AddItemPage";
+import ItemListPage from "../pages/ItemListPage/ItemListPage";
+import { DeviceTypeProvider } from "../contexts/DeviceTypeContext";
+import ItemDetailPage from "../pages/ItemDetailPage/ItemDetailPage";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
               <Route index element={<ItemListPage />} />
               <Route path=":id" element={<ItemDetailPage />} />
             </Route>
-            <Route path="additem" element={<AddItemForm />} />
+            <Route path="additem" element={<AddItemPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
