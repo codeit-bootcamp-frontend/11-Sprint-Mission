@@ -4,9 +4,9 @@ import Icon from "../images/icons/account.png";
 import "../BeforeSprintReact/style/global.css";
 import "./Navbar.css";
 
-function getNavStyle({ isActive, currentPath }) {
+function getNavStyle({ isActive }) {
   return {
-    color: isActive || currentPath === "/additem" ? "#3692FF" : undefined,
+    color: isActive ? "#3692FF" : undefined,
   };
 }
 
@@ -35,7 +35,9 @@ function Navbar() {
               <NavLink
                 to="/items"
                 style={({ isActive }) =>
-                  getNavStyle({ isActive, currentPath: location.pathname })
+                  getNavStyle({
+                    isActive: location.pathname === "/additem" || isActive,
+                  })
                 }
               >
                 중고마켓

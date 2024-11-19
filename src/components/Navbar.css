@@ -40,4 +40,19 @@ header {
   header {
     padding: 0 16px;
   }
+  .haderLogo {
+    margin-right: 20px;
+  }
+  #navUl {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  .haderLogo {
+    margin-right: 5px;
+  }
+  #navUl {
+    gap: 5px;
+  }
 }

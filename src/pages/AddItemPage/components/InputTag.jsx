@@ -26,9 +26,6 @@ function InputTag({ tags, addTag, deleteTag }) {
       />
       <div className="tagSection">
         {tags.map((tag) => (
-          /* 처음엔 key 값으로 map((tag,index) 형식으로 인덱스를 주려다가 인덱스 값을 주는 것은 
-          좋지 않다고 했던게 기억나서 그냥 tag값 자체를 key로 줬는데 상관없을까요? 
-          더 좋은 방법이 있을까요? */
           <div key={tag} className="tagItem">
             <span className="tagText">{`#${tag}`}</span>
             <DeleteButton onClick={() => deleteTag(tag)} />

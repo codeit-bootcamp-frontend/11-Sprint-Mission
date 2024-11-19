@@ -43,7 +43,8 @@ function ImageUpload({ title }) {
       )}
       <div className="prevImgLayout">
         <button className="imgButton" onClick={handleButtonClick}>
-          <PlusImg className="plusImg" />
+          <PlusImg />
+          이미지등록
         </button>
         <input
           type="file"
