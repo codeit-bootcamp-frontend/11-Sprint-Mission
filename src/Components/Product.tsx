@@ -3,6 +3,14 @@ import Img from './Img';
 import iconHeart from '../assets/icon-heart.svg';
 import styles from './Product.module.css';
 
+interface Props {
+  id: number;
+  image: string;
+  name: string;
+  price: number;
+  favoriteCount: number;
+}
+
 /**
  * 상품 목록에 상품 컴포넌트
  * @param {number} id : 상품 아이디
@@ -12,7 +20,7 @@ import styles from './Product.module.css';
  * @param {number} favoriteCount : 좋아요 갯수
  * @return {JSX}
  */
-function Product({ id, image, name, price = 0, favoriteCount = 0 }) {
+function Product({ id, image, name, price = 0, favoriteCount = 0 }: Props) {
   return (
     <div className={styles.product}>
       <Link to={`/items/${id}`} className={styles.wrap}>

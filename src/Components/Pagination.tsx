@@ -1,8 +1,15 @@
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 import './Pagination.css';
 
+interface Props {
+  page: number;
+  pageSize: number;
+  totalCount: number;
+  className?: string;
+  onClick: (page: number) => void;
+}
+
 // 전체 페이지네이션 배열 생성
-function getPages(size, total) {
+function getPages(size: number, total: number): number[] {
   let count = 1;
   const pageCount = total ? Math.ceil(total / size) : 1;
   return Array(pageCount)
@@ -11,7 +18,7 @@ function getPages(size, total) {
 }
 
 // 보여줄 페이지네이션 - 5개 배열 생성
-function getShowPages(page, pages) {
+function getShowPages(page: number, pages: number[]) {
   const prevPageCount = 3;
   const nextPageCount = 2;
   let indexStart = page - prevPageCount;
@@ -34,12 +41,12 @@ export default function Pagination({
   totalCount = 0,
   onClick,
   className = '',
-}) {
+}: Props) {
   const pages = getPages(pageSize, totalCount);
   const showPages = getShowPages(page, pages);
 
   // 페이지네이션 버튼 클릭
-  const handleClick = (nextPage) => {
+  const handleClick = (nextPage: number) => {
     return () => onClick(nextPage);
   };
 
@@ -50,8 +57,18 @@ export default function Pagination({
           className="btn-pn"
           type="button"
           onClick={handleClick(page - 1)}
-          disabled={page === 1}>
-          <ChevronLeftIcon className="size-4 mx-auto" />
+          disabled={page === 1}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="mx-auto size-4"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
         </button>
       </li>
       {showPages.map((pageNum) => (
@@ -59,7 +76,8 @@ export default function Pagination({
           <button
             className={`btn-pn ${page === pageNum ? 'active' : ''}`}
             type="button"
-            onClick={handleClick(pageNum)}>
+            onClick={handleClick(pageNum)}
+          >
             {pageNum}
           </button>
         </li>
@@ -69,8 +87,18 @@ export default function Pagination({
           className="btn-pn"
           type="button"
           onClick={handleClick(page + 1)}
-          disabled={page === pages.length}>
-          <ChevronRightIcon className="size-4 mx-auto" />
+          disabled={page === pages.length}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="mx-auto size-4"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
         </button>
       </li>
     </ul>

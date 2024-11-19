@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getProducts } from '../api/api';
 import useAsync from '../hooks/useAsync';
@@ -7,7 +7,6 @@ import Product from './Product';
 import Pagination from './Pagination';
 import Loading from './Loading';
 //
-import { ArrowPathIcon } from '@heroicons/react/24/solid';
 import IconSearch from '../assets/icon-search.svg';
 
 // 기본 페이지 사이즈
@@ -24,18 +23,19 @@ function AllProducts() {
   const [orderBy, setOrderBy] = useState('recent');
   const [totalCount, setTotalCount] = useState(0);
   const [isLoading, loadingError, getProductsAsync] = useAsync(getProducts);
-  const inSearchRef = useRef();
+  const inSearchRef = useRef<HTMLInputElement | null>(null);
 
   // 정렬 변경
-  const handleOrder = (e) => {
+  const handleOrder = (e: ChangeEvent<HTMLSelectElement>) => {
     setOrderBy(e.target.value);
   };
 
   // 검색어 필터링
-  const handleKeywordSubmit = (e) => {
+  const handleKeywordSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const inputSearch = inSearchRef.current;
+    if (!inputSearch) return;
     setKeyword(inputSearch.value);
   };
   const handleKeywordReset = () => {
@@ -43,7 +43,7 @@ function AllProducts() {
   };
 
   // 페이지네이션 처리
-  const handlePaginationClick = (pageNum) => {
+  const handlePaginationClick = (pageNum: number) => {
     setPage(pageNum);
   };
 
@@ -62,11 +62,11 @@ function AllProducts() {
 
   return (
     <div className="products">
-      <div className="flex items-center gap-3 flex-wrap my-4 justify-end">
+      <div className="my-4 flex flex-wrap items-center justify-end gap-3">
         <h2 className="products-title mr-auto">전체 상품</h2>
 
         <form
-          className="flex gap-1 relative"
+          className="relative flex gap-1"
           onSubmit={handleKeywordSubmit}
           onReset={handleKeywordReset}
         >
@@ -76,9 +76,23 @@ function AllProducts() {
             ref={inSearchRef}
             placeholder="검색할 상품을 입력해 주세요"
           />
-          <img className="absolute top-2 left-3" src={IconSearch} alt="" />
+          <img className="absolute left-3 top-2" src={IconSearch} alt="" />
+
           <button className="btn-reset" type="reset" title="검색 초기화">
-            <ArrowPathIcon className="size-4 mx-auto" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="mx-auto size-4"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+              />
+            </svg>
           </button>
         </form>
 
@@ -110,7 +124,7 @@ function AllProducts() {
       </div>
 
       <Pagination
-        className="my-10 mx-auto justify-center"
+        className="mx-auto my-10 justify-center"
         page={page}
         pageSize={PAGE_SIZE}
         totalCount={totalCount}

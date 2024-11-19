@@ -1,13 +1,20 @@
+import { ReactNode } from 'react';
 import styles from './Tag.module.css';
+
+interface Props {
+  idx: number;
+  children: ReactNode;
+  onDelete?: (idx: number) => void;
+}
 
 /**
  * 태그 컴포넌트
  * @param {number} idx : index number
- * @param {*} children : 내부 요소
+ * @param {ReactNode} children : 내부 요소
  * @param {function} onDelete : 삭제 함수
- * @return {JSX}
+ * @return {React.JSX}
  */
-function Tag({ idx, children, onDelete }) {
+function Tag({ idx, children, onDelete }: Props) {
   // tag 삭제
   const handleDeleteClick = () => {
     if (onDelete) onDelete(idx);

@@ -1,7 +1,14 @@
+import { SyntheticEvent } from 'react';
 import noImage from '../assets/no-image.svg';
 
-const handleError = (e) => {
-  e.target.src = noImage;
+interface Props {
+  src: string;
+  alt: string;
+  props?: any[];
+}
+
+const handleError = (e: SyntheticEvent<HTMLImageElement>) => {
+  e.currentTarget.src = noImage;
 };
 
 /**
@@ -11,7 +18,7 @@ const handleError = (e) => {
  * @param {object} props : 나머지 속성들
  * @return {JSX}
  */
-function Img({ src = noImage, alt = '', ...props }) {
+function Img({ src = noImage, alt = '', ...props }: Props) {
   return <img src={src} alt={alt} {...props} onError={handleError} />;
 }
 

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 import { getComments } from '../api/api';
 import useAsync from '../hooks/useAsync';
+
 //
 import Loading from './Loading';
 import Dropdown from './Dropdown';
@@ -10,15 +11,21 @@ import Dropdown from './Dropdown';
 import emptyImage from '../assets/empty-placehoder.png';
 import baseAvatar from '../assets/base-avatar.svg';
 import styles from './Comments.module.css';
+import { HookReturnType, CommentType, CommentsType } from '../types';
+
+interface Props {
+  productId: number;
+}
 
 /**
  * 코멘트(문의) 목록 컴포넌트
  * @param {number} productId : 상품 아이디
  * @return {JSX}
  */
-function Comments({ productId }) {
-  const [comments, setComments] = useState(null);
-  const [isLoading, loadingError, getCommentsAsync] = useAsync(getComments);
+function Comments({ productId }: Props) {
+  const [comments, setComments] = useState<CommentType[]>([]);
+  const [isLoading, loadingError, getCommentsAsync] =
+    useAsync<HookReturnType<CommentsType>>(getComments);
 
   useEffect(() => {
     if (!productId) return;
@@ -38,11 +45,11 @@ function Comments({ productId }) {
       <Loading visible={isLoading} />
       {loadingError && <p className="error-message">{loadingError.message}</p>}
 
-      {comments?.length > 0 ? (
+      {comments.length > 0 ? (
         <ul className="my-6 flex flex-col gap-3">
           {comments.map(({ writer: { nickname, image }, id, content, updatedAt }) => (
             <li className={styles.comment} key={id}>
-              <div className="flex gap-6 justify-between items-start">
+              <div className="flex items-start justify-between gap-6">
                 <p className={styles.content}>{content}</p>
                 <Dropdown isRight>
                   <ul className={styles.menus}>
@@ -60,7 +67,7 @@ function Comments({ productId }) {
                 </Dropdown>
               </div>
 
-              <div className="flex gap-2 items-center">
+              <div className="flex items-center gap-2">
                 <img src={image || baseAvatar} width="32" height="32" />
                 <div>
                   <div className={styles.user}>{nickname}</div>

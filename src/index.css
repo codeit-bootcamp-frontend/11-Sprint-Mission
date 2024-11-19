@@ -42,13 +42,13 @@
     max-width: 1200px;
   }
   .error-message {
-    @apply py-12 text-2xl text-center font-bold;
+    @apply py-12 text-center text-2xl font-bold;
   }
 }
 
 @layer utilities {
   .btn {
-    @apply px-6 py-2 flex gap-2 items-center font-semibold rounded-lg transition-all;
+    @apply flex items-center gap-2 rounded-lg px-6 py-2 font-semibold transition-all;
     color: var(--gray-100);
     background-color: var(--primary-100);
 
@@ -72,7 +72,7 @@
     }
   }
   .input {
-    @apply w-full px-6 py-4 rounded-xl;
+    @apply w-full rounded-xl px-6 py-4;
     background-color: var(--gray-100);
 
     &:placeholder {
@@ -80,7 +80,7 @@
     }
   }
   .v-bar {
-    @apply w-0 h-4/5 border-l;
+    @apply h-4/5 w-0 border-l;
     border-color: var(--gray-200);
   }
 }

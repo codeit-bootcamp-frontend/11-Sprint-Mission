@@ -1,12 +1,18 @@
 import { Helmet } from 'react-helmet-async';
-import { TITLE } from '../info';
 
-function Meta({
-  title = TITLE,
-  description = `${TITLE}에 오신걸 환영합니다.`,
+interface Props {
+  title: string;
+  description: string;
+  url?: string;
+  image?: string;
+}
+
+export default function Meta({
+  title = '판다마켓',
+  description = '판다마켓에 오신걸 환영합니다.',
   url = window.location.href,
   image = window.location.origin + '/favicon.svg',
-}) {
+}: Props) {
   return (
     <Helmet>
       <title>{title}</title>
@@ -19,5 +25,3 @@ function Meta({
     </Helmet>
   );
 }
-
-export default Meta;
