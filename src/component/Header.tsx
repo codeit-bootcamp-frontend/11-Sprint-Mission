@@ -3,7 +3,7 @@ import '../css/header.css';
 import logo from '../assets/logo.png';
 import profile from '../assets/profile.png';
 
-function Header() {
+const Header: React.FC = () => {
   return (
     <header>
       <div className="header__content">
@@ -34,6 +34,6 @@ function Header() {
       </a>
     </header>
   );
-}
+};
 
 export default Header;

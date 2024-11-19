@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './Header.js';
-import Board from '../Board.js';
-import Items from '../Items.js';
-import AddItem from '../AddItem.js';
-import Product from '../Product.js';
+import Header from '@/component/Header.js';
+import Board from '@/Board.js';
+import Items from '@/Items.js';
+import AddItem from '@/AddItem.js';
+import Product from '@/Product.js';
 
 function App() {
   return (

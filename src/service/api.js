@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://panda-market-api.vercel.app',
+  baseURL: process.env.REACT_APP_API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -62,7 +62,7 @@ function getDetailItems(id) {
     });
 }
 
-function getItemCommit(id, limit = 100) {
+function getItemComment(id, limit = 100) {
   const query = new URLSearchParams({
     limit,
   }).toString();
@@ -75,4 +75,4 @@ function getItemCommit(id, limit = 100) {
     });
 }
 
-export { getItems, createItems, getDetailItems, getItemCommit };
+export { getItems, createItems, getDetailItems, getItemComment };
