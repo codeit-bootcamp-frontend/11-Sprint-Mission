@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getComment } from "../api/api";
 import Nav from "../components/Nav";
@@ -7,24 +7,37 @@ import Comments from "../components/Comments";
 import BackIcon from "../assets/icons/ic_back.svg";
 import "./ItemDetailPage.css";
 
+interface CommentData {
+  id: string;
+  content: string;
+  writer: { nickname: string; image: string };
+  updatedAt: string;
+}
+
+type Params = Record<string, string | undefined>;
+
 function ItemDetailPage() {
-  const itemId = useParams();
-  console.log(itemId);
-  const [data, setData] = useState([]); //댓글 데이터
+  const { productId } = useParams<Params>();
+  const [data, setData] = useState<CommentData[]>([]);
 
   const handleLoadData = async () => {
-    const params = {
-      productId: itemId.productId,
-    };
-    let result;
-    result = await getComment(params);
-    // console.log(result.list);
+    if (!productId) return;
+
+    // 문자열 `productId`를 숫자로 변환
+    const numericProductId = Number(productId);
+    if (isNaN(numericProductId)) {
+      console.error("유효하지 않은 상품Id:", productId);
+      return;
+    }
+
+    const params = { productId: numericProductId };
+    const result = await getComment(params);
     setData(result.list);
   };
 
   useEffect(() => {
     handleLoadData();
-  }, []);
+  }, [productId]);
 
   return (
     <>
@@ -35,7 +48,7 @@ function ItemDetailPage() {
             <ItemDetail />
           </article>
           <section className="item-comments-container">
-            <Comments commentList={data} /* 외우기!!! */ />
+            <Comments commentList={data} />
           </section>
         </div>
         <Link to="/items">
