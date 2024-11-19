@@ -1,0 +1,29 @@
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.profile-nickname {
+  font-size: 12px;
+  font-weight: 400;
+  color: #4b5563;
+  line-height: 18px;
+}
+
+.profile-timestamp {
+  color: #9ca3af;
+  font-size: 12px;
+}

@@ -1,0 +1,83 @@
+.inquiry-item {
+  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-input {
+  width: 100%;
+  height: 80px;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-size: 14px;
+  resize: none;
+  background-color: #f3f4f6;
+}
+
+.edit-input:focus {
+  border-color: #3692ff;
+  outline: none;
+}
+
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  color: #9ca3af;
+}
+
+.dropdown-menu button {
+  width: 100%;
+  height: 46px;
+  background-color: #ffffff;
+  border: none;
+  padding: 10px 16px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.edit-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f5f5f5;
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .inquiry-item {
+    width: 100%;
+    padding: 16px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .inquiry-item {
+    width: 100%;
+    padding: 24px;
+  }
+}

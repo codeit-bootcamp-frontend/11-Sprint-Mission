@@ -1,0 +1,27 @@
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin: 64px;
+}
+
+.back-to-list {
+  width: 240px;
+  height: 48px;
+  border-radius: 40px;
+  background-color: #3692ff;
+  color: #f3f4f6;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .button-container {
+    margin: 40px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .button-container {
+    margin: 56px;
+  }
+}

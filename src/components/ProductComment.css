@@ -1,0 +1,8 @@
+.product-inquiry {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px auto;
+  width: 100%;
+  max-width: 1200px;
+}
