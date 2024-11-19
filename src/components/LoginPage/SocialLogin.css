@@ -1,0 +1,30 @@
+@import "../../css/Palette.css";
+
+.comport-login {
+  width: 100%;
+  height: 74px;
+  border-radius: 8px;
+  padding: 16px 24px;
+  background-color: #e6f2ff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.comport-login-link {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 26px;
+  font-family: "Pretendard";
+  color: var(--gray800);
+}
+
+.login-image {
+  width: 42px;
+  height: 42px;
+}
+
+.google {
+  margin-right: 16px;
+}

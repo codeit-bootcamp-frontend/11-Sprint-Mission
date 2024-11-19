@@ -1,0 +1,162 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.main-ad {
+  width: 100%;
+  height: 540px;
+  background-color: #cfe5ff;
+  position: relative;
+}
+
+.main-ad-box {
+  width: 100vw;
+  gap: 7px;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  justify-content: center;
+}
+
+.main-ad-content {
+  gap: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-ad-link {
+  text-decoration: none;
+}
+
+.main-ad-head {
+  font-family: "Pretendard";
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #374151;
+}
+
+.main-link {
+  text-decoration: none;
+}
+
+.button.main-ad-button {
+  border-radius: 40px;
+  text-align: center;
+  font-family: "Pretendard";
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  height: 56px;
+  padding: 16px 124px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.main-ad-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.main-ad-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 1199px) and (min-width: 768px) {
+  .main-ad {
+    width: 100%;
+    height: 786px;
+    background-color: #cfe5ff;
+    position: relative;
+  }
+
+  .main-ad-box {
+    gap: 80px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .main-ad-head {
+    text-align: center;
+  }
+
+  .main-ad-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .main-ad-image img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* 반응형 - Mobile*/
+@media screen and (max-width: 767px) {
+  .main-ad {
+    width: 100%;
+    height: 528px;
+    background-color: #cfe5ff;
+    position: relative;
+  }
+
+  .main-ad-box {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .main-ad-head {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 36px;
+  }
+
+  .main-ad-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .main-ad-image img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .main-ad-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button.main-ad-button {
+    text-align: center;
+    font-size: 16px;
+    height: 56px;
+    padding: 16px;
+    width: 200px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+}
