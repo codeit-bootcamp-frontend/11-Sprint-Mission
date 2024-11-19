@@ -13,11 +13,11 @@
     font-size: 1.6rem;
     line-height: 2.6rem;
     color: var(--gray500);
-    &[active] {
+    &.active {
       background-color: #2f80ed;
       color: #fff;
     }
-    &:not([active]) {
+    &:not(.active) {
       &:hover {
         opacity: 0.5;
       }

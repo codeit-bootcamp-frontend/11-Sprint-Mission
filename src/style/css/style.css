@@ -836,11 +836,11 @@ footer .footer-wrap .sns a img {
   line-height: 2.6rem;
   color: var(--gray500);
 }
-.pagination .btn-pagination[active] {
+.pagination .btn-pagination.active {
   background-color: #2f80ed;
   color: #fff;
 }
-.pagination .btn-pagination:not([active]):hover {
+.pagination .btn-pagination:not(.active):hover {
   opacity: 0.5;
 }
 .pagination .btn-pagination.btn-prev, .pagination .btn-pagination.btn-next {
