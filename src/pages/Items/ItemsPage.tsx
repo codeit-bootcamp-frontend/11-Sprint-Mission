@@ -1,0 +1,153 @@
+import { FormEvent, useState, useEffect, useCallback } from 'react';
+import { getProductsList } from '../../services/products-api';
+
+import {
+  StyledPageItem,
+  StyledContainer,
+  StyledItemButton,
+} from './ItemsPage.styles';
+
+import ProductsList from './ProductsList';
+import PageNation from '../../components/PageNation/PageNation';
+import SearchInput from '../../components/SearchInput/SearchInput';
+import SelectMenu from '../../components/Select/SelectMenu';
+import NotResult from '../../components/NotResult/NotResult';
+import useReSizing from '../../hooks/useReSizing';
+
+function ItemsPage() {
+  const [order, setOrder] = useState<'recent' | 'favorite'>('recent');
+  const [search, setSearch] = useState('');
+  const [allItems, setAllItems] = useState([]);
+  const [favoriteItems, setFavoriteItems] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [fetchError, setFetchError] = useState<Error | null>(null);
+
+  const pageSize = useReSizing({
+    mobileSize: 4,
+    tabletSize: 6,
+    pcSize: 10,
+  });
+
+  const favoritePageSize = useReSizing({
+    mobileSize: 1,
+    tabletSize: 2,
+    pcSize: 4,
+  });
+
+  // 전체 상품 목록 API 요청
+  const fetchAllItems = useCallback(async () => {
+    setIsLoading(true);
+    setFetchError(null);
+    try {
+      const result = await getProductsList({
+        pageSize,
+        keyword: search,
+        orderBy: order,
+        page: currentPage,
+      });
+      if (result) {
+        setAllItems(result.list);
+        setTotal(result.totalCount);
+      }
+    } catch (error) {
+      setFetchError(error as Error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [order, search, pageSize, currentPage]);
+
+  // 좋아요 순 상품 목록 API 요청
+  const fetchFavoriteItems = useCallback(async () => {
+    setIsLoading(true);
+    setFetchError(null);
+    try {
+      const result = await getProductsList({
+        pageSize: favoritePageSize,
+        orderBy: 'favorite',
+      });
+      if (result) {
+        setFavoriteItems(result.list);
+      }
+    } catch (error) {
+      setFetchError(error as Error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [favoritePageSize]);
+
+  // API 요청 실행
+  useEffect(() => {
+    fetchAllItems();
+  }, [fetchAllItems]);
+
+  useEffect(() => {
+    fetchFavoriteItems();
+  }, [fetchFavoriteItems]);
+
+  const handleSelect = (value: string) =>
+    setOrder(value as 'recent' | 'favorite');
+
+  const handleSearchSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const searchValue = (e.target as HTMLFormElement)['search'].value.trim();
+    setSearch(searchValue);
+  };
+
+  const isEmpty = allItems.length === 0 && !fetchError && !isLoading;
+
+  return (
+    <StyledPageItem>
+      <StyledContainer>
+        <div>
+          <div className='prod-title'>
+            <h2>베스트 상품</h2>
+          </div>
+          <ProductsList list={favoriteItems} />
+          {isLoading && <p>로딩 중 입니다...</p>}
+          {fetchError && <span>에러가 발생했습니다</span>}
+        </div>
+
+        <div>
+          <div className='prod-title toolbar'>
+            <h2>전체 상품</h2>
+            <SearchInput onSubmit={handleSearchSubmit} />
+            <StyledItemButton href='/addItem' color='blue'>
+              상품 등록하기
+            </StyledItemButton>
+
+            <SelectMenu
+              title='최신순'
+              option={[
+                { label: '최신순', value: 'recent', onSelect: handleSelect },
+                {
+                  label: '좋아요순',
+                  value: 'favorite',
+                  onSelect: handleSelect,
+                },
+              ]}
+            />
+          </div>
+          {isEmpty ? (
+            <NotResult type='search' />
+          ) : (
+            <>
+              <ProductsList list={allItems} size='sm' />
+              <PageNation
+                total={total}
+                pageSize={pageSize}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+              />
+            </>
+          )}
+          {isLoading && <p>로딩 중 입니다...</p>}
+          {fetchError && <span>에러가 발생했습니다</span>}
+        </div>
+      </StyledContainer>
+    </StyledPageItem>
+  );
+}
+
+export default ItemsPage;
