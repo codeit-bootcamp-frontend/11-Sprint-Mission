@@ -2,6 +2,8 @@ import { useState } from "react";
 import GetArticle from "@/components/getArticles";
 import { Article } from "@/types/commontypes";
 import Image from "next/image";
+import styles from "@/styles/board.module.css";
+import defaultImage from "@/public/pngs/noImage.png";
 
 export default function Board() {
   const [articles, setArticles] = useState<Article[]>([]);
@@ -24,69 +26,65 @@ export default function Board() {
   const bestArticles = getBestArticles(articles);
 
   return (
-    <div className="board-container">
+    <div className={styles.board_container}>
       <GetArticle onDataFetch={handleDataFetch} />
-      <div>
-        <h1>베스트 게시글</h1>
-        <div>
+      <div className={styles.best_article_container}>
+        <h1 className={styles.best_article_title}>베스트 게시글</h1>
+        <article className={styles.best_article}>
           {bestArticles.map((article) => (
             <div key={article.id}>
-              <h3>🏆 Best</h3>
-              <h2>{article.title}</h2>
-              <p>
-                <strong>작성자:</strong> {article.writer.nickname}
-              </p>
-              <p>
-                <strong>작성일:</strong>{" "}
-                {new Date(article.createdAt).toLocaleDateString()}
-              </p>
-              <p>
-                <strong>좋아요:</strong> {article.likeCount}
-              </p>
-              {article.image && (
+              <div>🏆 Best</div>
+              <div className={styles.best_article_middle}>
+                <div className={styles.best_article_title}>{article.title}</div>
                 <Image
-                  src={article.image}
+                  className={styles.best_article_img}
+                  src={article.image || defaultImage}
                   alt={article.title}
                   width={50}
                   height={50}
                 />
-              )}
+              </div>
+              <div className={styles.best_article_author}>
+                {article.writer.nickname}
+              </div>
+              <div className={styles.best_article_date}>
+                {new Date(article.createdAt).toLocaleDateString()}
+              </div>
+              <div className={styles.best_article_like}>
+                {article.likeCount}
+              </div>
             </div>
           ))}
-        </div>
+        </article>
       </div>
 
-      <div>
-        <h3>게시글</h3>
-        <div>
+      <div className={styles.article_container}>
+        <h2>게시글</h2>
+        <article className={styles.article}>
           {articles.length > 0 ? (
             articles.map((article) => (
               <div key={article.id}>
-                <h2>{article.title}</h2>
-                <p>
-                  <strong>작성자:</strong> {article.writer.nickname}
-                </p>
-                <p>
-                  <strong>작성일:</strong>{" "}
+                <div className={styles.article_title}>{article.title}</div>
+                <div className={styles.article_author}>
+                  {article.writer.nickname}
+                </div>
+                <div className={styles.article_date}>
                   {new Date(article.createdAt).toLocaleDateString()}
-                </p>
-                <p>
-                  <strong>좋아요:</strong> {article.likeCount}
-                </p>
-                {article.image && (
-                  <Image
-                    src={article.image}
-                    alt={article.title}
-                    width={50}
-                    height={50}
-                  />
-                )}
+                </div>
+                <div className={styles.article_like}>{article.likeCount}</div>
+                <Image
+                  className={styles.article_img}
+                  src={article.image || defaultImage}
+                  alt={article.title}
+                  width={50}
+                  height={50}
+                />
               </div>
             ))
           ) : (
             <p>게시글이 없습니다.</p>
           )}
-        </div>
+        </article>
       </div>
     </div>
   );
