@@ -2,6 +2,7 @@ import logoImg from '../assets/Group 19.svg';
 import loginImg from '../assets/Frame.svg';
 import '../styles/Header.css';
 import { NavLink } from 'react-router-dom';
+import React from 'react';
 
 function Header() {
   return (
@@ -14,8 +15,10 @@ function Header() {
           <nav>
             <NavLink
               to=""
-              className={({ isActive }) => (isActive ? 'active' : '')}
-              style={({ isActive }) => ({
+              className={({ isActive }: { isActive: boolean }) =>
+                isActive ? 'active' : ''
+              }
+              style={({ isActive }: { isActive: boolean }) => ({
                 backgroundColor: isActive ? '#3692FF' : '',
               })}
             >
@@ -23,8 +26,10 @@ function Header() {
             </NavLink>
             <NavLink
               to="/items"
-              className={({ isActive }) => (isActive ? 'active' : '')}
-              style={({ isActive }) => ({
+              className={({ isActive }: { isActive: boolean }) =>
+                isActive ? 'active' : ''
+              }
+              style={({ isActive }: { isActive: boolean }) => ({
                 backgroundColor: isActive ? '#3692FF' : '',
               })}
             >
@@ -32,7 +37,7 @@ function Header() {
             </NavLink>
           </nav>
         </div>
-        <a>
+        <a href="/">
           <img src={loginImg} alt="loginImgBtn" />
         </a>
       </div>

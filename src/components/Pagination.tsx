@@ -1,7 +1,17 @@
 import React from 'react';
 import '../styles/Pagination.css';
 
-function Pagination({ currentPage, totalPages, onPageChange }) {
+interface PaginationProps {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: any;
+}
+
+function Pagination({
+  currentPage,
+  totalPages,
+  onPageChange,
+}: PaginationProps) {
   const pageNumbers = [];
   const maxPageNumbers = 5; // 한 번에 보여줄 최대 페이지 번호 수
   const startPage =

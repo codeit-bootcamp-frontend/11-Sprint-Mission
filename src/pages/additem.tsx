@@ -1,21 +1,27 @@
 import AddProductInput from '../components/additem/AddProductInput';
 import AdditemButton from '../components/additem/AdditemButton';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import ImageUpload from '../components/additem/ImageUpload';
 import '../styles/additem/additem.css';
 
+// interface ProductTag {
+//   id: number;
+//   name: string;
+// }
+
 function Additem() {
-  const [productName, setProductName] = useState('');
-  const [productContent, setProductContent] = useState('');
-  const [productPrice, setProductPrice] = useState();
-  const [productTag, setProductTag] = useState([]);
-  const [productImage, setProductImage] = useState(null);
-  const [tags, setTags] = useState([]);
+  const [productName, setProductName] = useState<string>('');
+  const [productContent, setProductContent] = useState<string>('');
+  const [productPrice, setProductPrice] = useState<any>();
+  const [productTag, setProductTag] = useState<any>([]);
+  const [productImage, setProductImage] = useState<File | null>(null);
+  const [tags, setTags] = useState<string[]>([]);
 
   const isFormValid = () => {
     return (
       productName.trim() !== '' &&
       productContent.trim() !== '' &&
+      productPrice !== undefined &&
       productPrice > 0 &&
       productImage !== null
     );
@@ -32,7 +38,7 @@ function Additem() {
     console.log('상품 등록 데이터:', productData);
   };
 
-  const handleImageChange = (name, file) => {
+  const handleImageChange = (name: string, file: File | null) => {
     setProductImage(file);
   };
 
@@ -45,7 +51,7 @@ function Additem() {
         </div>
         <p className="cantainerImageTitle">상품 이미지</p>
         <ImageUpload
-          name={productImage}
+          name={productImage ? productImage.name : ''}
           value={productImage}
           onChange={handleImageChange}
         />

@@ -4,6 +4,7 @@ import Items from './pages/items';
 import Additem from './pages/additem';
 import ProductDetail from './pages/ProductDetail';
 import '../src/styles/App.css';
+import React from 'react';
 
 function App() {
   return (
