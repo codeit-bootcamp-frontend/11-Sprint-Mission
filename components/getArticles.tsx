@@ -15,10 +15,14 @@ export default function GetArticle({ onDataFetch }: GetArticleProps) {
     const fetchArticles = async () => {
       try {
         setIsFetching(true);
+
+        const pageSize = window.innerWidth < 768 ? 2 : 3;
+
         const res = await axiosInstance.get("/articles", {
-          params: { page, limit: 10 },
+          params: { page, limit: pageSize },
         });
         const data = res.data.list;
+
         setArticles((prev) => [...prev, ...data]);
         onDataFetch([...articles, ...data]);
         setIsFetching(false);

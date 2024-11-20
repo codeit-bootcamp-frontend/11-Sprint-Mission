@@ -6,7 +6,7 @@ export default function Nav() {
     <nav className="nav-container">
       <div className="nav-bar">
         <div className="nav-front">
-          <Link href="/index" className="nav-logo">
+          <Link href="/" className="nav-logo">
             <Image
               src="/svgs/판다 얼굴.svg"
               alt="판다얼굴"
