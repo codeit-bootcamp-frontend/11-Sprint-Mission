@@ -8,17 +8,14 @@ import defaultImage from "@/public/pngs/noImage.png";
 import searchIcon from "@/public/svgs/ic_search.svg";
 import { getArticles } from "@/lib/api";
 
-interface AllArticlesProps {
-  onDataFetch: (data: Article[]) => void;
-}
-
-export default function AllArticles({ onDataFetch }: AllArticlesProps) {
+export default function AllArticles() {
   const [articles, setArticles] = useState<Article[]>([]);
   const [page, setPage] = useState(1);
   const [isFetching, setIsFetching] = useState(false);
   const [sortOrder, setSortOrder] = useState("recent");
   const [hasMore, setHasMore] = useState(true);
   const [isDropdown, setIsDropdown] = useState<boolean>(false);
+  const [keyword, setKeyword] = useState<string>("");
 
   const fetchArticles = async (reset: boolean = false) => {
     try {
@@ -31,16 +28,15 @@ export default function AllArticles({ onDataFetch }: AllArticlesProps) {
         orderBy: sortOrder,
         page: currentPage,
         pageSize: 10,
+        keyword: keyword,
       });
 
       if (reset) {
         setArticles(data.list);
-        onDataFetch(data.list);
       } else {
         if (currentPage === page) {
           const updatedArticles = [...articles, ...data.list];
           setArticles(updatedArticles);
-          onDataFetch(updatedArticles);
         }
       }
 
@@ -52,7 +48,6 @@ export default function AllArticles({ onDataFetch }: AllArticlesProps) {
 
       setIsFetching(false);
     } catch (error) {
-      console.error("게시글 데이터를 가져오는 중 오류가 발생했습니다:", error);
       setIsFetching(false);
     }
   };
@@ -99,6 +94,21 @@ export default function AllArticles({ onDataFetch }: AllArticlesProps) {
     }
   };
 
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setKeyword(event.target.value);
+  };
+
+  const handleSearchSubmit = () => {
+    setPage(1);
+    fetchArticles(true);
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleSearchSubmit();
+    }
+  };
+
   return (
     <div className={styles.article_container}>
       <div className={styles.article_top}>
@@ -108,9 +118,14 @@ export default function AllArticles({ onDataFetch }: AllArticlesProps) {
 
       <div className={styles.article_controls}>
         <div className={styles.article_search}>
-          <Image src={searchIcon} alt="검색아이콘" width={24} height={24} />
+          <button onClick={handleSearchSubmit} className={styles.search_button}>
+            <Image src={searchIcon} alt="검색아이콘" width={24} height={24} />
+          </button>
           <input
             type="text"
+            value={keyword}
+            onChange={handleSearchChange}
+            onKeyDown={handleKeyDown}
             className={styles.search_input}
             placeholder="검색할 상품을 입력해주세요"
           />

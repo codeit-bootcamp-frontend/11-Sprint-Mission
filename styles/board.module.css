@@ -139,6 +139,20 @@
   gap: 4px;
 }
 
+.search_button {
+  border: none;
+  background-color: #f3f4f6;
+  padding: 0;
+}
+
+.search_button:hover {
+  cursor: pointer;
+}
+
+.search_button > img {
+  display: flex;
+}
+
 .search_input {
   border: none;
   background-color: #f3f4f6;

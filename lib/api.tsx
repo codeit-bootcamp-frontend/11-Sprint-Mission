@@ -5,10 +5,10 @@ export async function getArticles(
   params: GetArticlesParams = {}
 ): Promise<GetArticlesResponse> {
   try {
-    const { orderBy = "recent", pageSize, page } = params;
+    const { orderBy = "recent", pageSize, page, keyword } = params;
 
     const { data } = await axiosInstance.get<GetArticlesResponse>("/articles", {
-      params: { orderBy, pageSize, page },
+      params: { orderBy, pageSize, page, keyword },
     });
 
     return data;
