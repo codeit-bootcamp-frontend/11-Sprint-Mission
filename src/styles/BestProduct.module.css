@@ -1,39 +1,37 @@
-.AllProductList {
-  margin-top: 40px;
-}
-
-.ProductListItem {
-  width: 221px;
+.BestProductItem {
+  width: 282px;
   overflow: hidden;
 }
 
-.ProductListItem-img {
-  height: 221px;
+.BestProductItemImg {
+  height: 282px;
   width: 100%;
   object-fit: cover;
   border-radius: 1rem;
 }
 
-.ProductList {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  column-gap: 1rem;
+.BestProductList {
+  width: 100%;
+  display: flex;
   list-style-type: none;
   padding: 0;
-  row-gap: 40px;
+  justify-content: space-between;
+  gap: 24px;
 }
 
-.productName {
+.BestProductName {
   font-size: 14px;
   font-weight: 500;
+  margin-top: 16px;
 }
 
-.productPrice {
+.BestProductPrice {
   font-size: 16px;
   font-weight: 700;
+  margin: 16px 0;
 }
 
-.productFavoriteCount {
+.BestProductFavoriteCount {
   display: flex;
   align-items: center;
   gap: 3px;

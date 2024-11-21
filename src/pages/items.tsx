@@ -1,7 +1,7 @@
 import ProductList from '../components/ProductList';
 import BestProduct from '../components/BestProduct';
 import Pagination from '../components/Pagination';
-import '../styles/items.css';
+import styles from '../styles/items.module.css';
 import React, { useEffect, useState } from 'react';
 import { getProducts } from '../hooks/api';
 import { Link } from 'react-router-dom';
@@ -108,29 +108,29 @@ function Items() {
   }
 
   return (
-    <div className="pandaMarket">
-      <div className="page">
-        {/* 베스트 상품 섹션 */}
-        <div className="bestProduct">
-          <p className="subTitle">베스트 상품</p>
+    <div className={styles.pandaMarket}>
+      <div className={styles.page}>
+        <div className={styles.bestProduct}>
+          <p className={styles.subTitle}>베스트 상품</p>
           <BestProduct items={bestItems} />
         </div>
-
-        {/* 전체 상품 섹션 */}
-        <div className="AllProductList">
-          <div className="subHeader">
-            <p className="subTitle">전체 상품</p>
-            <div className="sub">
+        <div className={styles.AllProductList}>
+          <div className={styles.subHeader}>
+            <p className={styles.subTitle}>전체 상품</p>
+            <div className={styles.sub}>
               <input placeholder="검색어를 입력하세요" />
               <Link to="/additem">
-                <button className="productUp">상품 등록하기</button>
+                <button className={styles.productUp}>상품 등록하기</button>
               </Link>
-              <div className="dropdown">
-                <button className="dropdown-button" onClick={toggleDropdown}>
+              <div className={styles.dropdown}>
+                <button
+                  className={styles.dropdownButton}
+                  onClick={toggleDropdown}
+                >
                   {order === 'recent' ? '최신순' : '베스트순'} ▼
                 </button>
                 {dropdownOpen && (
-                  <ul className="dropdown-menu">
+                  <ul className={styles.dropdownMenu}>
                     <li
                       onClick={() => {
                         setOrder('recent');
@@ -152,11 +152,7 @@ function Items() {
               </div>
             </div>
           </div>
-
-          {/* 현재 페이지에 해당하는 상품 목록 */}
           <ProductList items={items} />
-
-          {/* 페이지네이션 컴포넌트 */}
           <Pagination
             currentPage={currentPage}
             totalPages={Math.ceil(totalItems / LIMIT)}

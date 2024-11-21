@@ -2,7 +2,7 @@ import AddProductInput from '../components/additem/AddProductInput';
 import AdditemButton from '../components/additem/AdditemButton';
 import React, { useState } from 'react';
 import ImageUpload from '../components/additem/ImageUpload';
-import '../styles/additem/additem.css';
+import styles from '../styles/additem/additem.module.css';
 
 // interface ProductTag {
 //   id: number;
@@ -44,12 +44,12 @@ function Additem() {
 
   return (
     <>
-      <div className="container">
-        <div className="subHeader">
-          <p className="subTitle">상품 등록하기</p>
+      <div className={styles.container}>
+        <div className={styles.subHeader}>
+          <p className={styles.subTitle}>상품 등록하기</p>
           <AdditemButton onSubmit={handleSubmit} disabled={!isFormValid()} />
         </div>
-        <p className="cantainerImageTitle">상품 이미지</p>
+        <p className={styles.containerImageTitle}>상품 이미지</p>
         <ImageUpload
           name={productImage ? productImage.name : ''}
           value={productImage}

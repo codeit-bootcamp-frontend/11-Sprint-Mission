@@ -4,7 +4,7 @@ import { getProductDetail } from '../hooks/api';
 import iconHeart from '../assets/ic_heart.svg';
 import defaultImg from '../assets/img_default.svg';
 import frame from '../assets/Frame.svg';
-import '../styles/ProductDetail.css';
+import styles from '../styles/ProductDetail.module.css';
 import ProductDetailComment from '../components/ProductDetail/ProductDetailComment';
 import ProductDetailInput from '../components/ProductDetail/ProductDetailInput';
 
@@ -61,43 +61,51 @@ function ProductDetail() {
       : defaultImg;
 
   return (
-    <div className="productDetail">
-      <div className="productDetailContent">
-        <img src={imageSrc} alt={product.name} className="PDProductImg" />
-        <div className="productDetailtext">
+    <div className={styles.productDetail}>
+      <div className={styles.productDetailContent}>
+        <img
+          src={imageSrc}
+          alt={product.name}
+          className={styles.PDProductImg}
+        />
+        <div className={styles.productDetailText}>
           <div>
-            <p className="productDetailName">{product.name}</p>
-            <p className="productDetailPrice">
+            <p className={styles.productDetailName}>{product.name}</p>
+            <p className={styles.productDetailPrice}>
               {product.price.toLocaleString()}원
             </p>
           </div>
-          <div className="PDDivDescription">
+          <div className={styles.PDDivDescription}>
             <div>
-              <p className="pdSubTitle">상품 소개</p>
-              <p className="productDetailDescription">{product.description}</p>
+              <p className={styles.pdSubTitle}>상품 소개</p>
+              <p className={styles.productDetailDescription}>
+                {product.description}
+              </p>
             </div>
             <div>
-              <p className="pdSubTitle">상품 태그</p>
-              <div className="productDetailTags">
+              <p className={styles.pdSubTitle}>상품 태그</p>
+              <div className={styles.productDetailTags}>
                 {product.tags.map((tag, index) => (
-                  <p key={index} className="tagItem">
+                  <p key={index} className={styles.tagItem}>
                     #{tag}
                   </p>
                 ))}
               </div>
             </div>
           </div>
-          <div className="PDBottomSection">
-            <div className="pdSubfooter">
-              <img src={frame} className="frameImg" alt="owner frame" />
-              <div className="PDEditInfo">
-                <p className="productDetailNickname">{product.ownerNickname}</p>
-                <p className="productDetailUpdateAt">
+          <div className={styles.PDBottomSection}>
+            <div className={styles.pdSubfooter}>
+              <img src={frame} className={styles.frameImg} alt="owner frame" />
+              <div className={styles.PDEditInfo}>
+                <p className={styles.productDetailNickname}>
+                  {product.ownerNickname}
+                </p>
+                <p className={styles.productDetailUpdateAt}>
                   {formatDate(product.updatedAt)} {/* 날짜 형식 변환 */}
                 </p>
               </div>
             </div>
-            <p className="productDetailIsFavorite">
+            <p className={styles.productDetailIsFavorite}>
               <img src={iconHeart} alt="favorite icon" />
               {product.favoriteCount}
             </p>
@@ -106,8 +114,8 @@ function ProductDetail() {
       </div>
       <ProductDetailInput productId={Number(productId)} />
       <ProductDetailComment productId={Number(productId)} />
-      <NavLink to="/items" className="goTitle">
-        <button className="goTitleButton">목록으로 돌아가기</button>
+      <NavLink to="/items" className={styles.goTitle}>
+        <button className={styles.goTitleButton}>목록으로 돌아가기</button>
       </NavLink>
     </div>
   );

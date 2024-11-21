@@ -1,22 +1,22 @@
 import logoImg from '../assets/Group 19.svg';
 import loginImg from '../assets/Frame.svg';
-import '../styles/Header.css';
+import styles from '../styles/Header.module.css';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
 
 function Header() {
   return (
-    <header>
-      <div className="headerBody">
-        <div className="header-left">
-          <div className="imgContainer">
-            <img className="logoImg" src={logoImg} alt="logoImg" />
+    <div className={styles.header}>
+      <div className={styles.headerBody}>
+        <div className={styles.headerLeft}>
+          <div className={styles.imgContainer}>
+            <img className={styles.logoImg} src={logoImg} alt="logoImg" />
           </div>
-          <nav>
+          <nav className={styles.nav}>
             <NavLink
               to=""
               className={({ isActive }: { isActive: boolean }) =>
-                isActive ? 'active' : ''
+                isActive ? styles.active : ''
               }
               style={({ isActive }: { isActive: boolean }) => ({
                 backgroundColor: isActive ? '#3692FF' : '',
@@ -27,7 +27,7 @@ function Header() {
             <NavLink
               to="/items"
               className={({ isActive }: { isActive: boolean }) =>
-                isActive ? 'active' : ''
+                isActive ? styles.active : ''
               }
               style={({ isActive }: { isActive: boolean }) => ({
                 backgroundColor: isActive ? '#3692FF' : '',
@@ -41,7 +41,7 @@ function Header() {
           <img src={loginImg} alt="loginImgBtn" />
         </a>
       </div>
-    </header>
+    </div>
   );
 }
 

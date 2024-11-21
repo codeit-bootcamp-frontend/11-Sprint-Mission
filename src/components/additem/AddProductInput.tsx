@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from '../../styles/additem/additem.module.css';
 
 interface AddProductInputProps {
   productName: string;
@@ -47,31 +48,31 @@ const AddProductInput = ({
 
   return (
     <form>
-      <p className="cantainerTitle">상품명</p>
+      <p className={styles.containerTitle}>상품명</p>
       <input
-        className="addProductInput"
+        className={styles.addProductInput}
         value={productName}
         onChange={(e) => onNameChange(e.target.value)}
         placeholder="상품명을 입력해주세요"
       />
-      <p className="cantainerTitle">상품 소개</p>
+      <p className={styles.containerTitle}>상품 소개</p>
       <textarea
-        className="productContentInput"
+        className={styles.productContentInput}
         value={productContent}
         onChange={(e) => onContentChange(e.target.value)}
         placeholder="상품 소개를 입력해주세요"
       />
-      <p className="cantainerTitle">판매가격</p>
+      <p className={styles.containerTitle}>판매가격</p>
       <input
-        className="addProductInput"
+        className={styles.addProductInput}
         type="number"
         value={productPrice}
         onChange={(e) => onPriceChange(e.target.value)}
         placeholder="판매 가격을 입력해주세요"
       />
-      <p className="cantainerTitle">태그</p>
+      <p className={styles.containerTitle}>태그</p>
       <input
-        className="addProductInput"
+        className={styles.addProductInput}
         value={productTag}
         onChange={(e) => onTagChange(e.target.value)}
         onKeyDown={handleKeyPress}
@@ -80,7 +81,7 @@ const AddProductInput = ({
 
       <div>
         {tags.map((tag, index) => (
-          <p className="tagOutput" key={index}>
+          <p className={styles.tagOutput} key={index}>
             #{tag}{' '}
             <button type="button" onClick={() => handleTagDelete(index)}>
               X

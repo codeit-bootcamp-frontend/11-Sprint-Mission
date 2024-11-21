@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import styles from '../../styles/additem/additem.module.css';
 
 interface ImageUploadProps {
   name: string;
@@ -46,23 +47,23 @@ const ImageUpload = ({ name, value, onChange }: ImageUploadProps) => {
 
   return (
     <div>
-      <div className="imageUploadContainer">
-        <div className="customFileInput">
+      <div className={styles.imageUploadContainer}>
+        <div className={styles.customFileInput}>
           <label
             htmlFor="fileUpload"
-            className="uploadBox"
+            className={styles.uploadBox}
             onClick={handleLabelClick} // 라벨 클릭 이벤트 추가
           >
-            <div className="uploadBoxContent">
-              <p className="textArea">
-                <span className="plus">+</span>
+            <div className={styles.uploadBoxContent}>
+              <p className={styles.textArea}>
+                <span className={styles.plus}>+</span>
                 <br /> 이미지 등록
               </p>
             </div>
           </label>
           <input
             id="fileUpload"
-            className="imageUploadInput"
+            className={styles.imageUploadInput}
             type="file"
             accept="image/png, image/jpeg"
             ref={inputRef}
@@ -72,15 +73,19 @@ const ImageUpload = ({ name, value, onChange }: ImageUploadProps) => {
         </div>
 
         {preview && (
-          <div className="imagePreviewContainer">
-            <img src={preview} alt="미리보기 이미지" className="imagePreview" />
-            <button className="clearButton" onClick={handleClearClick}>
+          <div className={styles.imagePreviewContainer}>
+            <img
+              src={preview}
+              alt="미리보기 이미지"
+              className={styles.imagePreview}
+            />
+            <button className={styles.clearButton} onClick={handleClearClick}>
               X
             </button>
           </div>
         )}
       </div>
-      {message && <p className="errorMessage">{message}</p>}
+      {message && <p className={styles.errorMessage}>{message}</p>}
     </div>
   );
 };

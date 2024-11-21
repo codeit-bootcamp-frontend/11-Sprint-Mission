@@ -1,4 +1,4 @@
-import '../styles/BestProduct.css';
+import styles from '../styles/BestProduct.module.css';
 import icHeart from '../assets/ic_heart.svg';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
@@ -17,21 +17,21 @@ interface BestProductProps {
 
 function BestProduct({ items }: BestProductProps) {
   return (
-    <ul className="BestProductList">
+    <ul className={styles.BestProductList}>
       {items.map((item) => (
         <li key={item.id}>
           <NavLink to={`/items/${item.id}`}>
-            <div className="BestProductItem">
+            <div className={styles.BestProductItem}>
               <img
-                className="BestProductItem-img"
+                className={styles.BestProductItemImg}
                 src={item.images}
                 alt={item.name}
               />
               <div>
-                <p className="BestProductName">{item.name}</p>
-                <p className="BestProductPrice">{item.price}원</p>
-                <p className="BestProductFavoriteCount">
-                  <img src={icHeart} alt="iconHert" />
+                <p className={styles.BestProductName}>{item.name}</p>
+                <p className={styles.BestProductPrice}>{item.price}원</p>
+                <p className={styles.BestProductFavoriteCount}>
+                  <img src={icHeart} alt="iconHeart" />
                   {item.favoriteCount}
                 </p>
               </div>

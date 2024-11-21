@@ -1,37 +1,39 @@
-.BestProductItem {
-  width: 282px;
+.AllProductList {
+  margin-top: 40px;
+}
+
+.ProductListItem {
+  width: 221px;
   overflow: hidden;
 }
 
-.BestProductItem-img {
-  height: 282px;
+.ProductListItemImg {
+  height: 221px;
   width: 100%;
   object-fit: cover;
   border-radius: 1rem;
 }
 
-.BestProductList {
-  width: 100%;
-  display: flex;
+.ProductList {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 1rem;
   list-style-type: none;
   padding: 0;
-  justify-content: space-between;
-  gap: 24px;
+  row-gap: 40px;
 }
 
-.BestProductName {
+.productName {
   font-size: 14px;
   font-weight: 500;
-  margin-top: 16px;
 }
 
-.BestProductPrice {
+.productPrice {
   font-size: 16px;
   font-weight: 700;
-  margin: 16px 0;
 }
 
-.BestProductFavoriteCount {
+.productFavoriteCount {
   display: flex;
   align-items: center;
   gap: 3px;

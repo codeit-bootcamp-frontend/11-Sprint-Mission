@@ -121,3 +121,20 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+    format('woff');
+}
+
+* {
+  font-family: 'Pretendard-Regular', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  color: #4b5563;
+}

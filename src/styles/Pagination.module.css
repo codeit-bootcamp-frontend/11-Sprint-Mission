@@ -1,4 +1,4 @@
-.pagination-container {
+.paginationContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,7 +6,7 @@
   margin-top: 50px;
 }
 
-.pagination-button {
+.paginationButton {
   background-color: #f0f0f0;
   border: none;
   padding: 10px 15px;
@@ -16,12 +16,12 @@
   transition: background-color;
 }
 
-.pagination-button:disabled {
+.paginationButton:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.pagination-number {
+.paginationNumber {
   background-color: #f0f0f0;
   border: none;
   padding: 10px 15px;
@@ -31,12 +31,12 @@
   transition: background-color;
 }
 
-.pagination-number.active {
+.paginationNumber.active {
   background-color: #3692ff;
   color: white;
   font-weight: bold;
 }
 
-.pagination-number:hover {
+.paginationNumber:hover {
   background-color: #d0d0d0;
 }

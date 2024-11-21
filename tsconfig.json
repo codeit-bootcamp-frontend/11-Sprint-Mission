@@ -10,5 +10,5 @@
     "forceConsistentCasingInFileNames": true
   },
 
-  "include": ["src", "svg.d.ts"]
+  "include": ["src", "svg.d.ts", "global.d.ts", "src/App.tsxs", "App.tsx"]
 }
