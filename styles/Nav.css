@@ -58,7 +58,7 @@
   }
 
   .nav-front {
-    gap: 8px;
+    gap: 12px;
   }
 
   .nav-logo {
@@ -69,5 +69,9 @@
   .nav-board {
     gap: 8px;
     font-size: 16px;
+  }
+
+  .nav-logo img:first-child {
+    display: none;
   }
 }

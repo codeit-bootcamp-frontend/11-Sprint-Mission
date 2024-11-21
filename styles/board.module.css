@@ -223,3 +223,13 @@
   color: #6b7280;
   font-weight: 400;
 }
+
+@media (max-width: 1279px) {
+  .article_container {
+    width: 90%;
+  }
+
+  .best_article_middle {
+    width: 300px;
+  }
+}
