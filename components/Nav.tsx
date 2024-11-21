@@ -22,7 +22,7 @@ export default function Nav() {
           </Link>
 
           <div className="nav-board">
-            <Link href="/board" className="nav-board-free-board">
+            <Link href="/boards" className="nav-board-free-board">
               자유게시판
             </Link>
             <Link href="/items" className="nav-board-used-market">
