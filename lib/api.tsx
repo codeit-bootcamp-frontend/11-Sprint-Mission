@@ -1,5 +1,9 @@
 import axiosInstance from "@/lib/axiosInstance";
-import { GetArticlesResponse, GetArticlesParams } from "@/types/commontypes";
+import {
+  GetArticlesResponse,
+  GetArticlesParams,
+  Article,
+} from "@/types/commontypes";
 
 export async function getArticles(
   params: GetArticlesParams = {}
@@ -15,4 +19,9 @@ export async function getArticles(
   } catch (error) {
     throw new Error("게시물을 불러오는데 실패했습니다.");
   }
+}
+
+export async function getArticleById(id: string): Promise<Article> {
+  const response = await axiosInstance.get(`/articles/${id}`);
+  return response.data;
 }

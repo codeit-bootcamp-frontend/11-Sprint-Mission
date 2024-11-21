@@ -1,3 +1,8 @@
+.best_article_link {
+  display: flex;
+  gap: 24px;
+}
+
 .board_container {
   padding-top: 24px;
   display: flex;
@@ -9,6 +14,7 @@
 .best_article_container {
   display: flex;
   flex-direction: column;
+  width: 1200px;
 }
 
 .best_article {
@@ -39,7 +45,7 @@
   margin-bottom: 18px;
   display: flex;
   justify-content: space-between;
-  width: 340px;
+  width: 336px;
 }
 
 .image_container {
@@ -224,12 +230,18 @@
   font-weight: 400;
 }
 
+.best_article_link,
+.article_link {
+  text-decoration: none;
+  color: inherit;
+}
+
 @media (max-width: 1279px) {
   .article_container {
     width: 90%;
   }
 
-  .best_article_middle {
-    width: 300px;
+  .best_article_container {
+    width: 90%;
   }
 }

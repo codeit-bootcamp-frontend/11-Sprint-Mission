@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { Article } from "@/types/commontypes";
 import styles from "@/styles/board.module.css";
@@ -145,39 +146,47 @@ export default function AllArticles() {
 
       <article className={styles.article}>
         {articles.map((article) => (
-          <div key={article.id}>
-            <div className={styles.article_content}>
-              <div className={styles.article_title}>{article.title}</div>
-              <div className={styles.image_container}>
-                <Image
-                  src={article.image || defaultImage}
-                  alt={article.title}
-                  width={72}
-                  height={72}
-                />
-              </div>
-            </div>
-            <div className={styles.article_bottom}>
-              <div className={styles.article_bottom_front}>
-                <Image
-                  src={profileImg}
-                  alt="프로필이미지"
-                  width={24}
-                  height={24}
-                />
-                <div className={styles.article_author}>
-                  {article.writer.nickname}
-                </div>
-                <div className={styles.article_date}>
-                  {new Date(article.createdAt).toLocaleDateString()}
+          <Link
+            key={article.id}
+            href={`/articles/${article.id}`}
+            className={styles.article_link}
+            passHref
+          >
+            <div>
+              {" "}
+              <div className={styles.article_content}>
+                <div className={styles.article_title}>{article.title}</div>
+                <div className={styles.image_container}>
+                  <Image
+                    src={article.image || defaultImage}
+                    alt={article.title}
+                    width={72}
+                    height={72}
+                  />
                 </div>
               </div>
-              <div className={styles.article_like}>
-                <Image src={heart} alt="하트" width={24} height={24} />
-                {article.likeCount}
+              <div className={styles.article_bottom}>
+                <div className={styles.article_bottom_front}>
+                  <Image
+                    src={profileImg}
+                    alt="프로필이미지"
+                    width={24}
+                    height={24}
+                  />
+                  <div className={styles.article_author}>
+                    {article.writer.nickname}
+                  </div>
+                  <div className={styles.article_date}>
+                    {new Date(article.createdAt).toLocaleDateString()}
+                  </div>
+                </div>
+                <div className={styles.article_like}>
+                  <Image src={heart} alt="하트" width={24} height={24} />
+                  {article.likeCount}
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </article>
       {isFetching && <p>로딩 중...</p>}
