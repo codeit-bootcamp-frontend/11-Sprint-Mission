@@ -18,6 +18,7 @@ export default function AllArticles({ onDataFetch }: AllArticlesProps) {
   const [isFetching, setIsFetching] = useState(false);
   const [sortOrder, setSortOrder] = useState("recent");
   const [hasMore, setHasMore] = useState(true);
+  const [isDropdown, setIsDropdown] = useState<boolean>(false);
 
   const fetchArticles = async (reset: boolean = false) => {
     try {
@@ -86,7 +87,11 @@ export default function AllArticles({ onDataFetch }: AllArticlesProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isFetching, hasMore]);
 
-  const handleSortOrderChange = (orderBy: "recent" | "like") => {
+  const toggleDropdown = () => {
+    setIsDropdown(!isDropdown);
+  };
+
+  const handleOrderByChange = (orderBy: "recent" | "like") => {
     if (sortOrder !== orderBy) {
       setSortOrder(orderBy);
       setPage(1);
@@ -111,21 +116,15 @@ export default function AllArticles({ onDataFetch }: AllArticlesProps) {
           />
         </div>
         <div className={styles.dropdown}>
-          <div className={styles.dropdown_button}>{sortOrder} ▼</div>
-          <div className={styles.dropdown_menu}>
-            <button
-              className={styles.dropdown_item}
-              onClick={() => handleSortOrderChange("recent")}
-            >
-              최신순
-            </button>
-            <button
-              className={styles.dropdown_item}
-              onClick={() => handleSortOrderChange("like")}
-            >
-              인기순
-            </button>
-          </div>
+          <button className={styles.dropdown_button} onClick={toggleDropdown}>
+            {sortOrder === "recent" ? "최신순" : "좋아요순"} ▼
+          </button>
+          {isDropdown && (
+            <div className={styles.dropdown_options}>
+              <div onClick={() => handleOrderByChange("recent")}>최신순</div>
+              <div onClick={() => handleOrderByChange("like")}>좋아요순</div>
+            </div>
+          )}
         </div>
       </div>
 
