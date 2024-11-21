@@ -1,14 +1,11 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Article } from "@/types/commontypes";
+import { Article, GetArticlesResponse } from "@/types/commontypes";
 import styles from "@/styles/board.module.css";
 import medal from "@/public/svgs/ic_medal.svg";
 import heart from "@/public/svgs/ic_heart (1).svg";
 import defaultImage from "@/public/pngs/noImage.png";
-
-interface BestArticlesProps {
-  articles: Article[];
-}
+import { getArticles } from "@/lib/api";
 
 const getPageSize = () => {
   if (typeof window === "undefined") return 3;
@@ -18,24 +15,47 @@ const getPageSize = () => {
   return 3;
 };
 
-export default function BestArticles({ articles }: BestArticlesProps) {
-  const [pageSize, setPageSize] = useState(getPageSize);
+export default function BestArticles() {
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [pageSize, setPageSize] = useState<number>(getPageSize);
 
   useEffect(() => {
-    const handleResize = () => setPageSize(getPageSize());
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    const fetchArticles = async ({
+      orderBy = "like",
+      pageSize,
+    }: {
+      orderBy?: string;
+      pageSize: number;
+    }) => {
+      try {
+        const response: GetArticlesResponse = await getArticles({
+          orderBy,
+          pageSize,
+        });
+        setArticles(response.list);
+      } catch (error) {
+        console.error("게시물을 가져오는 중 오류 발생:", error);
+      }
+    };
 
-  const bestArticles = [...articles]
-    .sort((a, b) => b.likeCount - a.likeCount)
-    .slice(0, pageSize);
+    const handleResize = () => {
+      setPageSize(getPageSize());
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    fetchArticles({ orderBy: "like", pageSize });
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [pageSize]);
 
   return (
     <div className={styles.best_article_container}>
       <h1 className={styles.h1}>베스트 게시글</h1>
       <article className={styles.best_article}>
-        {bestArticles.map((article) => (
+        {articles.map((article) => (
           <div key={article.id} className={styles.container}>
             <div className={styles.clip}>
               <Image

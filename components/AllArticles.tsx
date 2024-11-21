@@ -6,7 +6,7 @@ import profileImg from "@/public/svgs/Frame 2609463.svg";
 import heart from "@/public/svgs/ic_heart (1).svg";
 import defaultImage from "@/public/pngs/noImage.png";
 import searchIcon from "@/public/svgs/ic_search.svg";
-import axiosInstance from "@/lib/axiosInstance";
+import { getArticles } from "@/lib/api";
 
 interface AllArticlesProps {
   onDataFetch: (data: Article[]) => void;
@@ -16,31 +16,34 @@ export default function AllArticles({ onDataFetch }: AllArticlesProps) {
   const [articles, setArticles] = useState<Article[]>([]);
   const [page, setPage] = useState(1);
   const [isFetching, setIsFetching] = useState(false);
-  const [sortOrder, setSortOrder] = useState<"최신순" | "인기순">("최신순");
+  const [sortOrder, setSortOrder] = useState("recent");
   const [hasMore, setHasMore] = useState(true);
-
-  const PAGE_SIZE = 10;
 
   const fetchArticles = async (reset: boolean = false) => {
     try {
+      if (isFetching) return;
       setIsFetching(true);
 
-      const res = await axiosInstance.get("/articles", {
-        params: { page: reset ? 1 : page, limit: PAGE_SIZE, sort: sortOrder },
+      const currentPage = reset ? 1 : page;
+
+      const data = await getArticles({
+        orderBy: sortOrder,
+        page: currentPage,
+        pageSize: 10,
       });
 
-      const data = res.data.list;
-
       if (reset) {
-        setArticles(data);
-        onDataFetch(data); // 상태 초기화 시 Board에 업데이트
+        setArticles(data.list);
+        onDataFetch(data.list);
       } else {
-        const updatedArticles = [...articles, ...data];
-        setArticles(updatedArticles);
-        onDataFetch(updatedArticles); // 추가된 데이터도 Board에 업데이트
+        if (currentPage === page) {
+          const updatedArticles = [...articles, ...data.list];
+          setArticles(updatedArticles);
+          onDataFetch(updatedArticles);
+        }
       }
 
-      if (data.length < PAGE_SIZE) {
+      if (data.list.length < 10) {
         setHasMore(false);
       } else {
         setHasMore(true);
@@ -54,33 +57,41 @@ export default function AllArticles({ onDataFetch }: AllArticlesProps) {
   };
 
   useEffect(() => {
+    fetchArticles(true);
+  }, [sortOrder]);
+
+  useEffect(() => {
     if (page === 1) return;
     fetchArticles();
   }, [page]);
 
   useEffect(() => {
-    setPage(1);
-    fetchArticles(true);
-  }, [sortOrder]);
+    let debounceTimer: NodeJS.Timeout;
 
-  useEffect(() => {
     const handleScroll = () => {
-      if (
-        window.innerHeight + document.documentElement.scrollTop >=
-          document.documentElement.offsetHeight - 50 &&
-        !isFetching &&
-        hasMore
-      ) {
-        setPage((prev) => prev + 1);
-      }
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        if (
+          window.innerHeight + document.documentElement.scrollTop >=
+            document.documentElement.offsetHeight - 50 &&
+          !isFetching &&
+          hasMore
+        ) {
+          setPage((prev) => prev + 1);
+        }
+      }, 200);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isFetching, hasMore]);
 
-  const handleSortOrderChange = (newOrder: "최신순" | "인기순") => {
-    setSortOrder(newOrder);
+  const handleSortOrderChange = (orderBy: "recent" | "like") => {
+    if (sortOrder !== orderBy) {
+      setSortOrder(orderBy);
+      setPage(1);
+      setHasMore(true);
+    }
   };
 
   return (
@@ -104,13 +115,13 @@ export default function AllArticles({ onDataFetch }: AllArticlesProps) {
           <div className={styles.dropdown_menu}>
             <button
               className={styles.dropdown_item}
-              onClick={() => handleSortOrderChange("최신순")}
+              onClick={() => handleSortOrderChange("recent")}
             >
               최신순
             </button>
             <button
               className={styles.dropdown_item}
-              onClick={() => handleSortOrderChange("인기순")}
+              onClick={() => handleSortOrderChange("like")}
             >
               인기순
             </button>
