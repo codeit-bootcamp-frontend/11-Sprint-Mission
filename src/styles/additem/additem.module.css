@@ -75,7 +75,7 @@
   padding-top: 20px;
 }
 
-input::placeholder {
+.addProductInput::placeholder {
   color: #9ca3af;
   font-size: 16px;
   font-weight: 100;
@@ -95,7 +95,7 @@ input::placeholder {
   resize: none;
 }
 
-textarea::placeholder {
+.productContentInput::placeholder {
   color: #9ca3af;
   font-size: 16px;
   font-weight: 100;

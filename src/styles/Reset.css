@@ -138,3 +138,11 @@ a {
   font-weight: 600;
   color: #4b5563;
 }
+
+input {
+  width: 325px;
+  height: 42px;
+  border-radius: 1rem;
+  background-color: #f3f4f6;
+  border: none;
+}

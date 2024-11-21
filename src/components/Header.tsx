@@ -1,10 +1,15 @@
+'use client';
+
 import logoImg from '../assets/Group 19.svg';
 import loginImg from '../assets/Frame.svg';
 import styles from '../styles/Header.module.css';
-import { NavLink } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 function Header() {
+  const router = useRouter();
+
   return (
     <div className={styles.header}>
       <div className={styles.headerBody}>
@@ -13,33 +18,19 @@ function Header() {
             <img className={styles.logoImg} src={logoImg} alt="logoImg" />
           </div>
           <nav className={styles.nav}>
-            <NavLink
-              to=""
-              className={({ isActive }: { isActive: boolean }) =>
-                isActive ? styles.active : ''
-              }
-              style={({ isActive }: { isActive: boolean }) => ({
-                backgroundColor: isActive ? '#3692FF' : '',
-              })}
-            >
-              자유게시판
-            </NavLink>
-            <NavLink
-              to="/items"
-              className={({ isActive }: { isActive: boolean }) =>
-                isActive ? styles.active : ''
-              }
-              style={({ isActive }: { isActive: boolean }) => ({
-                backgroundColor: isActive ? '#3692FF' : '',
-              })}
-            >
-              중고마켓
-            </NavLink>
+            <Link href="/">
+              <div>자유게시판</div>
+            </Link>
+            <Link href="/items">
+              <div>중고마켓</div>
+            </Link>
           </nav>
         </div>
-        <a href="/">
-          <img src={loginImg} alt="loginImgBtn" />
-        </a>
+        <Link href="/">
+          <div>
+            <img src={loginImg} alt="loginImgBtn" />
+          </div>
+        </Link>
       </div>
     </div>
   );

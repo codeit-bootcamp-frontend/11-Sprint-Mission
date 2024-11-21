@@ -1,6 +1,6 @@
 import styles from '../styles/ProductList.module.css';
 import icHeart from '../assets/ic_heart.svg';
-import { NavLink } from 'react-router-dom';
+import Link from 'next/link';
 import React from 'react';
 
 interface ProductListProps {
@@ -24,7 +24,7 @@ function ProductList({ items }: ProductListProps) {
     <ul className={styles.ProductList}>
       {items.map((item) => (
         <li key={item.id}>
-          <NavLink to={`/items/${item.id}`}>
+          <Link href={`/items/${item.id}`} passHref>
             <div className={styles.ProductListItem}>
               <img
                 className={styles.ProductListItemImg}
@@ -33,14 +33,16 @@ function ProductList({ items }: ProductListProps) {
               />
               <div>
                 <p className={styles.productName}>{item.name}</p>
-                <p className={styles.productPrice}>{item.price}원</p>
+                <p className={styles.productPrice}>
+                  {item.price.toLocaleString()}원
+                </p>
                 <p className={styles.productFavoriteCount}>
                   <img src={icHeart} alt="iconHeart" />
                   {item.favoriteCount}
                 </p>
               </div>
             </div>
-          </NavLink>
+          </Link>
         </li>
       ))}
     </ul>

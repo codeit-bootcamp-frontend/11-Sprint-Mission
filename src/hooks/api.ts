@@ -1,4 +1,4 @@
-const baseUrl = process.env.REACT_APP_API_BASE_URL as string;
+const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL as string;
 
 // 상품 데이터 타입
 export interface Product {

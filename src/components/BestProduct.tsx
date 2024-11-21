@@ -1,9 +1,9 @@
 import styles from '../styles/BestProduct.module.css';
 import icHeart from '../assets/ic_heart.svg';
-import { NavLink } from 'react-router-dom';
+import Link from 'next/link';
 import React from 'react';
 
-interface BestProdectItem {
+interface BestProductItem {
   id: number;
   images: any;
   name: string;
@@ -12,7 +12,7 @@ interface BestProdectItem {
 }
 
 interface BestProductProps {
-  items: BestProdectItem[];
+  items: BestProductItem[];
 }
 
 function BestProduct({ items }: BestProductProps) {
@@ -20,7 +20,7 @@ function BestProduct({ items }: BestProductProps) {
     <ul className={styles.BestProductList}>
       {items.map((item) => (
         <li key={item.id}>
-          <NavLink to={`/items/${item.id}`}>
+          <Link href={`/items/${item.id}`} passHref>
             <div className={styles.BestProductItem}>
               <img
                 className={styles.BestProductItemImg}
@@ -29,14 +29,16 @@ function BestProduct({ items }: BestProductProps) {
               />
               <div>
                 <p className={styles.BestProductName}>{item.name}</p>
-                <p className={styles.BestProductPrice}>{item.price}원</p>
+                <p className={styles.BestProductPrice}>
+                  {item.price.toLocaleString()}원
+                </p>
                 <p className={styles.BestProductFavoriteCount}>
                   <img src={icHeart} alt="iconHeart" />
                   {item.favoriteCount}
                 </p>
               </div>
             </div>
-          </NavLink>
+          </Link>
         </li>
       ))}
     </ul>

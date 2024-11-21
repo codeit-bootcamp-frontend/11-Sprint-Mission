@@ -2,13 +2,38 @@
   "compilerOptions": {
     "target": "ES6",
     "module": "ESNext",
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "noEmit": true,
+    "incremental": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-
-  "include": ["src", "svg.d.ts", "global.d.ts", "src/App.tsxs", "App.tsx"]
+  "include": [
+    "App.tsx",
+    "global.d.ts",
+    "src",
+    "src/App.tsxs",
+    "svg.d.ts",
+    "true/types/**/*.ts",
+    "dist/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
