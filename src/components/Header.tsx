@@ -6,6 +6,7 @@ import styles from '../styles/Header.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import Image from 'next/image';
 
 function Header() {
   const router = useRouter();
@@ -15,7 +16,7 @@ function Header() {
       <div className={styles.headerBody}>
         <div className={styles.headerLeft}>
           <div className={styles.imgContainer}>
-            <img className={styles.logoImg} src={logoImg} alt="logoImg" />
+            <Image className={styles.logoimage} src={logoImg} alt="logoImg" />
           </div>
           <nav className={styles.nav}>
             <Link href="/">
@@ -28,7 +29,7 @@ function Header() {
         </div>
         <Link href="/">
           <div>
-            <img src={loginImg} alt="loginImgBtn" />
+            <Image src={loginImg} alt="loginImgBtn" />
           </div>
         </Link>
       </div>

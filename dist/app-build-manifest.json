@@ -22,17 +22,22 @@
       "static/css/app/items/page.css",
       "static/chunks/app/items/page.js"
     ],
+    "/boards/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/boards/page.js"
+    ],
+    "/boards/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/boards/layout.css",
+      "static/chunks/app/boards/layout.js"
+    ],
     "/items/[productId]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/items/[productId]/page.css",
       "static/chunks/app/items/[productId]/page.js"
-    ],
-    "/additem/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/additem/page.css",
-      "static/chunks/app/additem/page.js"
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",

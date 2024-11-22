@@ -33,6 +33,28 @@ export interface CommentResponse {
   nextCursor: string | null;
 }
 
+//브로드 데이터
+export interface Writer {
+  nickname: string;
+  id: number;
+}
+
+export interface Article {
+  id: number;
+  title: string;
+  content: string;
+  likeCount: number;
+  writer: Writer;
+  image: string;
+  updatedAt: string;
+  createdAt: string;
+}
+
+export interface ArticlesResponse {
+  totalCount: number;
+  list: Article[];
+}
+
 // 상품 목록 API
 export async function getProducts(
   page: number = 1,
@@ -116,6 +138,28 @@ export async function getComments(
     return data;
   } catch (error) {
     console.error('Fetch Error:', error);
+    throw error;
+  }
+}
+
+//자유게시판 게시글 불러오는 api
+export async function getBoardsList(
+  page: number = 1,
+  pageSize: number = 10,
+  orderBy: string = 'like'
+): Promise<Article[]> {
+  const apiUrl = `${baseUrl}/articles?page=${page}&pageSize=${pageSize}&orderBy=${orderBy}`;
+
+  try {
+    const response = await fetch(apiUrl);
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status} - ${response.statusText}`);
+    }
+
+    const data: ArticlesResponse = await response.json();
+    return data.list;
+  } catch (error) {
     throw error;
   }
 }
