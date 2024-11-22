@@ -46,7 +46,7 @@ function CommentList() {
     setIsMoreDropDown(null);
   };
 
-  if (comments.length === 0) return <div>댓글이 없습니다.</div>;
+  if (!comments.length) return <div>댓글이 없습니다.</div>;
 
   return (
     <div className="commentList">
