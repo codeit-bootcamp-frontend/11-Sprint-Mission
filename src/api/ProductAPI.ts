@@ -10,7 +10,9 @@ export const getProducts = async () => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('제품 데이터를 불러올 수 없습니다:', error.message);
+    if (error instanceof Error) {
+      console.error('제품 데이터를 불러올 수 없습니다:', error.message);
+    }
   }
 };
 
@@ -27,11 +29,13 @@ export async function getBestProducts() {
     const body = await response.json();
     return body;
   } catch (error) {
-    console.error('베스트 제품 데이터를 불러올 수 없습니다:', error.message);
+    if (error instanceof Error) {
+      console.error('베스트 제품 데이터를 불러올 수 없습니다:', error.message);
+    }
   }
 }
 
-export const getProductDetails = async (productId) => {
+export const getProductDetails = async (productId: number) => {
   try {
     const response = await fetch(`${API_BASE_URL}/products/${productId}`);
 
@@ -42,12 +46,14 @@ export const getProductDetails = async (productId) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('상품 상세 데이터를 가져올 수 없습니다:', error.message);
-    throw error;
+    if (error instanceof Error) {
+      console.error('상품 상세 데이터를 가져올 수 없습니다:', error.message);
+      throw error;
+    }
   }
 };
 
-export const getComments = async (productId) => {
+export const getComments = async (productId: number) => {
   try {
     const response = await fetch(
       `${API_BASE_URL}/products/${productId}/comments?limit=5`
@@ -58,12 +64,14 @@ export const getComments = async (productId) => {
     const data = await response.json();
     return data.list || [];
   } catch (error) {
-    console.error('댓글 데이터를 가져올 수 없습니다:', error.message);
-    return [];
+    if (error instanceof Error) {
+      console.error('댓글 데이터를 가져올 수 없습니다:', error.message);
+      return [];
+    }
   }
 };
 
-export const addComment = async (productId, content) => {
+export const addComment = async (productId: number, content: string) => {
   try {
     const response = await fetch(
       `${API_BASE_URL}/products/${productId}/comments`,
@@ -82,12 +90,17 @@ export const addComment = async (productId, content) => {
 
     return await response.json();
   } catch (error) {
-    console.error('댓글 추가 오류:', error.message);
-    throw error;
+    if (error instanceof Error) {
+      console.error('댓글 추가 오류:', error.message);
+      throw error;
+    }
   }
 };
 
-export const editComment = async (commentId, updatedContent) => {
+export const editComment = async (
+  commentId: number,
+  updatedContent: string
+) => {
   try {
     const response = await fetch(`${API_BASE_URL}/comments/${commentId}`, {
       method: 'PATCH',
@@ -102,12 +115,14 @@ export const editComment = async (commentId, updatedContent) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('댓글 수정 오류:', error.message);
-    throw error;
+    if (error instanceof Error) {
+      console.error('댓글 수정 오류:', error.message);
+      throw error;
+    }
   }
 };
 
-export const deleteComment = async (commentId) => {
+export const deleteComment = async (commentId: number) => {
   try {
     const response = await fetch(`${API_BASE_URL}/comments/${commentId}`, {
       method: 'DELETE',
@@ -117,7 +132,9 @@ export const deleteComment = async (commentId) => {
     }
     console.log('댓글이 성공적으로 삭제되었습니다.');
   } catch (error) {
-    console.error('댓글 삭제 오류:', error.message);
-    throw error;
+    if (error instanceof Error) {
+      console.error('댓글 삭제 오류:', error.message);
+      throw error;
+    }
   }
 };
