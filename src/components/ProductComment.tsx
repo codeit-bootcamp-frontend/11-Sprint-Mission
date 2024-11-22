@@ -6,14 +6,16 @@ import {
   editComment,
   deleteComment,
 } from '../api/ProductAPI';
-import { useParams } from 'react-router-dom';
 import CommentForm from './CommentForm';
 import CommentList from './CommentList';
 import { Comment } from '../types/Comment';
 
-function ProductComment() {
+type ProductCommentProps = {
+  productId: string;
+};
+
+function ProductComment({ productId }: ProductCommentProps) {
   const [comments, setComments] = useState<Comment[]>([]);
-  const { productId } = useParams();
   const productIdNumber = Number(productId);
 
   useEffect(() => {

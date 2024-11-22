@@ -9,7 +9,7 @@ import '../styles/Items.css';
 function Items() {
   const [allProducts, setAllProducts] = useState([]);
   const [bestProducts, setBestProducts] = useState([]);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,7 +18,9 @@ function Items() {
         const data = await getProducts();
         setAllProducts(data.list || []);
       } catch (error) {
-        setError(error.message);
+        if (error instanceof Error) {
+          setError(error.message);
+        }
       }
     };
 
@@ -29,7 +31,9 @@ function Items() {
           setBestProducts(data.list);
         }
       } catch (error) {
-        setError(error.message);
+        if (error instanceof Error) {
+          setError(error.message);
+        }
       }
     };
 

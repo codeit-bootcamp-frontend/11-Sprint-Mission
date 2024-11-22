@@ -1,20 +1,20 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import '../styles/AddItem.css';
 import PlusIcon from '../image/plus-icon.png';
 import RemoveButton from '../components/RemoveButton';
 
 function AddItem() {
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState<string | null>(null);
   const [itemName, setItemName] = useState('');
   const [itemIntro, setItemIntro] = useState('');
   const [itemPrice, setItemPrice] = useState('');
-  const [itemTags, setItemTags] = useState([]);
+  const [itemTags, setItemTags] = useState<string[]>([]);
 
   const isFormValid = itemName && itemIntro && itemPrice && itemTags;
 
   // 이미지 업로드 핸들러
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
+  const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
     if (file) {
       setImage(URL.createObjectURL(file));
     }
@@ -26,17 +26,17 @@ function AddItem() {
   };
 
   // 태그 추가 핸들러
-  const handleTagAdd = (e) => {
-    const tagValue = e.target.value.trim();
+  const handleTagAdd = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const tagValue = e.currentTarget.value.trim();
     if (e.key === 'Enter' && tagValue && !itemTags.includes(tagValue)) {
       e.preventDefault();
       setItemTags([...itemTags, tagValue]);
-      e.target.value = '';
+      e.currentTarget.value = '';
     }
   };
 
   // 태그 삭제 핸들러
-  const handleTagRemove = (tagToRemove) => {
+  const handleTagRemove = (tagToRemove: string) => {
     setItemTags(itemTags.filter((tag) => tag !== tagToRemove));
   };
 

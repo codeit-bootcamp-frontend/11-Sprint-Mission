@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { getProductDetails } from '../api/ProductAPI';
 import { Product } from '../types/Product';
 import './ProductDetail.css';
 import UserProfile from './UserProfile';
 import heartImg from '../image/heart-img.png';
 
-function ProductDetail() {
-  const { productId } = useParams();
+interface ProductDetailProps {
+  productId: string;
+}
+
+function ProductDetail({ productId }: ProductDetailProps) {
   const [product, setProduct] = useState<Product | null>(null);
   const [error, setError] = useState<string | null>(null);
   const productIdNumber = Number(productId);
