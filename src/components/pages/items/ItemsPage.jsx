@@ -4,7 +4,7 @@ import "../../../styles/items.css";
 import BestProducts from "./BestProducts";
 import AllProducts from "./AllProducts";
 import PageNavigation from "./PageNavigation.jsx";
-import { getAllProducts, getProducts } from "../../../api/items/productsApi.js";
+import { getAllProducts, getProducts } from "../../../api/productsApi.js";
 import { getPageLimit, useResize } from "../../../utills.js";
 import Header from "../../common/home/Header.jsx";
 

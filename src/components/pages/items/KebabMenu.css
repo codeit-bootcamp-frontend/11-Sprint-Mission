@@ -1,0 +1,79 @@
+.comment-kebab-container {
+  position: relative;
+}
+
+.kebab-btn {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: white;
+  border: none;
+  color: var(--gray-400);
+  cursor: pointer;
+  transform: scale(1);
+  transition: color 0.2s ease, transform 0.15s ease;
+}
+
+.kebab-btn:hover {
+  color: var(--blue-500);
+  transform: scale(1.3);
+}
+
+.kebab-dropdown {
+  background-color: white;
+  position: absolute;
+  border: 1px solid var(--gray-300);
+  border-radius: 8px;
+  top: 32px;
+  left: -114px;
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.kebab-dropdown.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.kebab-dropdown-option {
+  font-size: 16px;
+  color: var(--gray-500);
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.15s ease;
+  transform: scale(1);
+}
+
+.kebab-dropdown-option:hover {
+  color: var(--blue-500);
+  transform: scale(1.1);
+}
+
+.option-top {
+  padding: 20px 40px 12px;
+}
+
+.option-bottom {
+  padding: 12px 40px 20px;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .kebab-dropdown {
+    left: -84px;
+  }
+
+  .kebab-dropdown-option {
+    font-size: 14px;
+  }
+
+  .option-top {
+    padding: 16px 28px 12px;
+  }
+
+  .option-bottom {
+    padding: 12px 28px 16px;
+  }
+}
