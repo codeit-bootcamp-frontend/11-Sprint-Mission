@@ -2,6 +2,28 @@ import { useState } from "react";
 import "./CommentList.css";
 import UserProfile from "./UserProfile";
 
+function EditButtons({ onCancel, onSave }) {
+  return (
+    <>
+      <button className="cancel-button" onClick={onCancel}>
+        취소
+      </button>
+      <button className="save-button" onClick={onSave}>
+        수정 완료
+      </button>
+    </>
+  );
+}
+
+function DropdownMenu({ onEdit, onDelete }) {
+  return (
+    <div className="dropdown-menu">
+      <button onClick={onEdit}>수정하기</button>
+      <button onClick={onDelete}>삭제하기</button>
+    </div>
+  );
+}
+
 function CommentList({ comment, onEdit, onDelete }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(comment.content);
@@ -9,6 +31,11 @@ function CommentList({ comment, onEdit, onDelete }) {
 
   const handleSaveEdit = () => {
     onEdit(comment.id, editedContent);
+    setIsEditing(false);
+    setDropdownVisible(false);
+  };
+
+  const handleCancelEdit = () => {
     setIsEditing(false);
     setDropdownVisible(false);
   };
@@ -37,20 +64,7 @@ function CommentList({ comment, onEdit, onDelete }) {
 
         <div className="edit-buttons">
           {isEditing ? (
-            <>
-              <button
-                className="cancel-button"
-                onClick={() => {
-                  setIsEditing(false);
-                  setDropdownVisible(false);
-                }}
-              >
-                취소
-              </button>
-              <button className="save-button" onClick={handleSaveEdit}>
-                수정 완료
-              </button>
-            </>
+            <EditButtons onCancel={handleCancelEdit} onSave={handleSaveEdit} />
           ) : (
             <div className="dropdown-container">
               <button
@@ -60,10 +74,10 @@ function CommentList({ comment, onEdit, onDelete }) {
                 ⋮
               </button>
               {dropdownVisible && (
-                <div className="dropdown-menu">
-                  <button onClick={() => setIsEditing(true)}>수정하기</button>
-                  <button onClick={() => onDelete(comment.id)}>삭제하기</button>
-                </div>
+                <DropdownMenu
+                  onEdit={() => setIsEditing(true)}
+                  onDelete={() => onDelete(comment.id)}
+                />
               )}
             </div>
           )}

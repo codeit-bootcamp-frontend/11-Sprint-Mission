@@ -3,9 +3,10 @@ import "./CommentForm.css";
 
 function CommentForm({ onSubmit }) {
   const [content, setContent] = useState("");
+  const isValidContent = content.trim();
 
   const handleSubmit = () => {
-    if (!content.trim()) return;
+    if (!isValidContent) return;
     onSubmit(content);
     setContent("");
   };
@@ -22,9 +23,9 @@ function CommentForm({ onSubmit }) {
 "
       ></textarea>
       <button
-        className={`submit-button ${content.trim() ? "active" : ""}`}
+        className={`submit-button ${isValidContent ? "active" : ""}`}
         onClick={handleSubmit}
-        disabled={!content.trim()}
+        disabled={!isValidContent}
       >
         등록
       </button>

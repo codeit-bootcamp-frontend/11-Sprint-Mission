@@ -15,6 +15,12 @@ function ProductComment() {
   const { productId } = useParams();
 
   useEffect(() => {
+    if (!productId) {
+      console.log(
+        "유효하지 않은 상품ID입니다. 댓글 데이터를 가져올 수 없습니다."
+      );
+      return;
+    }
     const fetchComments = async () => {
       try {
         const data = await getComments(productId);
