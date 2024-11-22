@@ -1,8 +1,13 @@
-import React from "react";
 import styled from "styled-components";
 import { ReactComponent as HeartIcon } from "../../../assets/images/icons/ic_heart.svg";
 
-const IconSection = styled.div`
+interface IconSectionProps {
+  $size?: number;
+  $fillColor?: string;
+  $outlineColor?: string;
+}
+
+const IconSection = styled.div<IconSectionProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -17,8 +22,15 @@ const IconSection = styled.div`
   }
 `;
 
+interface IconProps {
+  iconComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  size?: number;
+  fillColor?: string;
+  outlineColor?: string;
+}
+
 // iconComponent: IconComponent 이름을 강제로 바꿈. 왜냐하면, 이름의 통일성을 주기 위해서
-const Icon = ({ iconComponent: IconComponent, size, fillColor, outlineColor }) => (
+const Icon: React.FC<IconProps> = ({ iconComponent: IconComponent, size, fillColor, outlineColor }) => (
   <IconSection $size={size} $fillColor={fillColor} $outlineColor={outlineColor}>
     <IconComponent />
   </IconSection>
@@ -44,7 +56,13 @@ const BtnSection = styled.div`
   gap: 4px;
 `;
 
-function LikeButton({ productId, isFavorite, favoriteCount }) {
+interface LikeBtnProps {
+  productId: number;
+  isFavorite: boolean;
+  favoriteCount: number;
+}
+
+const LikeBtn: React.FC<LikeBtnProps> = ({ productId, isFavorite, favoriteCount }) => {
   return (
     <HeartBtn>
       <BtnSection>
@@ -59,4 +77,4 @@ function LikeButton({ productId, isFavorite, favoriteCount }) {
   );
 }
 
-export default LikeButton;
+export default LikeBtn;

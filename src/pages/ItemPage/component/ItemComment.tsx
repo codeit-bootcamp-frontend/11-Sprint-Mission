@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
 import CommentList from "./CommentList";
 
@@ -57,10 +57,14 @@ const PostCommentBtn = styled.button`
   }
 `;
 
-function ItemComment({ productId }) {
+interface ItemCommentProps {
+	productId: number;
+}
+
+const ItemComment: React.FC<ItemCommentProps> = ({ productId, }) => {
 	const [comment, setComment] = useState("");
 
-	const handleInputChange = (e) => {
+	const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
 		setComment(e.target.value);
 	};
 

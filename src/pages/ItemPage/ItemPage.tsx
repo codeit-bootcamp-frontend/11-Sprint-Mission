@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { getProductDetail } from "../../api/itemApi";
@@ -21,7 +21,7 @@ const Container = styled.div`
   }
 `;
 
-const Line = styled.div`
+const Line = styled.div<{$margin?: string}>`
   width: 100%;
   border: none;
   height: 1px;
@@ -55,34 +55,51 @@ const BackToMarketPageLink = styled(Link)`
   margin: 0 auto;
 `;
 
-function ItemPage() {
-	const [product, setProduct] = useState(null);
-	const [error, setError] = useState(null);
+interface Product {
+  createdAt: Date;
+  updatedAt: string;
+  favoriteCount: number;
+  ownerId: number;
+  ownerNickname: string; 
+  images: string[];
+  tags: string[];
+  price: number;
+  description: string;
+  name: string;
+  id: number;
+  isFavorite: boolean;
+}
+
+const ItemPage: React.FC = () => {
+	const [product, setProduct] = useState<Product | null>(null);
+	const [error, setError] = useState<string | null>(null);
 
 	const { productId } = useParams();
 
+	const productIdNumber = Number(productId);
+
 	useEffect(() => {
 		async function fetchProduct() {
-			if(!productId) {
+			if(!productIdNumber) {
 				setError("아이디없음");
 				return;
 			}
 
 			try {
-				const data = await getProductDetail(productId);
+				const data: Product = await getProductDetail(productIdNumber);
 
 				if(!data) throw new Error("데이터 못참음");
 
 				setProduct(data);
-			}
-			catch (error) {
-				setError(error.message);
+			} catch (error) {
+				if (error instanceof Error) setError(error.message);
+        else setError("오류 발생.");
 			}
 		}
 		fetchProduct();
-	}, [productId]);
+	}, [productIdNumber]);
 
-	if (error) alert(`${error}`);
+	if (error) console.log(`${error}`);
 
 	if (!productId || !product) return null;
 
@@ -92,7 +109,7 @@ function ItemPage() {
 
 			<Line />
 
-			<ItemComment productId={productId} />
+			<ItemComment productId={productIdNumber} />
 
 			<BackToMarketPageLink to="/items">
           목록으로 돌아가기

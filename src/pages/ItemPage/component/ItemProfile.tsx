@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import LikeBtn from "./LikeBtn";
 import { ReactComponent as UserProfileIcon } from "../../../assets/images/icons/ic_profile.svg";
@@ -66,7 +65,7 @@ const Price = styled.h2`
   }
 `;
 
-const Line = styled.div`
+const Line = styled.div<{$margin?: string}>`
   width: 100%;
   border: none;
   height: 1px;
@@ -132,7 +131,26 @@ const Timestamp = styled.span`
   font-size: 12px;
 `;
 
-function ItemProfile({ product }) {
+interface Product {
+  createdAt: Date;
+  updatedAt: string;
+  favoriteCount: number;
+  ownerId: number;
+  ownerNickname: string; 
+  images: string[];
+  tags: string[];
+  price: number;
+  description: string;
+  name: string;
+  id: number;
+  isFavorite: boolean;
+}
+
+interface ItemProfileProps {
+  product: Product;
+}
+
+const ItemProfile: React.FC<ItemProfileProps> = ({ product }) => {
 	return (
 		<Container>
 			<ItemImgSection>

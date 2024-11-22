@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getProductComments } from "../../../api/itemApi";
 import { TimestampCal } from "../../../components/TimestampCal";
@@ -66,7 +66,7 @@ const Timestamp = styled.span`
   font-size: 12px;
 `;
 
-const Line = styled.div`
+const Line = styled.div<{$margin?: string}>`
   width: 100%;
   border: none;
   height: 1px;
@@ -75,7 +75,24 @@ const Line = styled.div`
     props.$margin || "16px 0"};
 `;
 
-const CommentItem = ({ item }) => {
+interface ProductComment {
+  writer: {
+    image: string;
+    nickname: string;
+    id: number;
+  };
+  updatedAt: Date;
+  createdAt: Date;
+  content: string;
+  id: number;
+}
+
+
+interface CommentItemProps {
+  item: ProductComment;
+}
+
+const CommentItem: React.FC<CommentItemProps> = ({ item }) => {
 	const writerInfo = item.writer;
 	const formatTimestamp = TimestampCal(item.updatedAt);
 
@@ -98,9 +115,18 @@ const CommentItem = ({ item }) => {
 	)
 };
 
-function CommentList({ productId }) {
-	const [comments, setComments] = useState([]);
-  const [error, setError] = useState(null);
+interface ProductCommentListData {
+  nextCursor: number;
+  list: ProductComment[];
+}
+
+interface CommentListProps {
+  productId: number;
+}
+
+const CommentList: React.FC<CommentListProps> = ({ productId }) => {
+	const [comments, setComments] = useState<ProductComment[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
 	useEffect(() => {
     if (!productId) return;
@@ -111,11 +137,10 @@ function CommentList({ productId }) {
       };
 
       try {
-        const data = await getProductComments({ productId, params });
+        const data: ProductCommentListData = await getProductComments({ productId, params });
         setComments(data.list);
         setError(null);
-      } 
-			catch (error) {
+      } catch (error) {
         console.error("Error fetching comments:", error);
         setError("댓글못불러옴");
       }
@@ -124,7 +149,7 @@ function CommentList({ productId }) {
     fetchComments();
   }, [productId]);
 
-	if (error) alert(`${error}`);
+	if (error) console.log(`${error}`);
 
 	if (comments && !comments.length) return <EmptyState />;
 
