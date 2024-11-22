@@ -6,10 +6,34 @@ export interface Product {
   price: number;
   description: string;
   image: string;
+  images?: string[];
+  tags?: string[];
+  favoriteCount?: number;
 }
 
-export async function fetchProducts(params = {}) {
-  const query = new URLSearchParams(params).toString();
+export interface Comment {
+  id: number;
+  content: string;
+  writer: {
+    nickname: string;
+    image: string | null;
+  };
+  updatedAt: string;
+}
+
+export interface PaginatedResponse<T> {
+  list: T[];
+  total: number;
+  page: number;
+  limit: number;
+}
+
+export async function fetchProducts(
+  params: Record<string, string | number> = {}
+): Promise<PaginatedResponse<Product>> {
+  const query = new URLSearchParams(
+    params as Record<string, string>
+  ).toString();
   try {
     const response = await fetch(`${BASE_URL}products?${query}`);
     if (!response.ok) {
@@ -23,7 +47,7 @@ export async function fetchProducts(params = {}) {
   }
 }
 
-export async function fetchProductDetail(productId: number) {
+export async function fetchProductDetail(productId: number): Promise<Product> {
   try {
     const response = await fetch(`${BASE_URL}products/${productId}`);
     if (!response.ok) {
@@ -37,9 +61,14 @@ export async function fetchProductDetail(productId: number) {
   }
 }
 
-export async function fetchComments(productId: number, params = {}) {
+export async function fetchComments(
+  productId: number,
+  params: Record<string, string | number> = {}
+): Promise<PaginatedResponse<Comment>> {
   try {
-    const query = new URLSearchParams(params).toString();
+    const query = new URLSearchParams(
+      params as Record<string, string>
+    ).toString();
     const response = await fetch(
       `${BASE_URL}products/${productId}/comments?${query}`
     );

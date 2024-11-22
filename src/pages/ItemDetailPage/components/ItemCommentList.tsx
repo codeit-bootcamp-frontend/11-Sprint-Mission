@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchComments } from "../../../api/itemsApi";
+import { fetchComments, Comment } from "../../../api/itemsApi";
 import { useParams } from "react-router-dom";
 import MoreDropDown from "./MoreDropDown";
 import commentDefault from "../../../images/icons/commentDefault.svg";
@@ -13,23 +13,20 @@ function CommentList() {
 
   useEffect(() => {
     const loadComments = async () => {
+      if (!productId) return;
       try {
-        const response = await fetchComments(productId, { page: 1, limit: 10 });
-        if (response && Array.isArray(response.list)) {
-          setComments(response.list);
-        } else {
-          console.error("댓글 데이터가 올바르지 않습니다:", response);
-          setComments([]);
-        }
+        const response = await fetchComments(Number(productId), {
+          page: 1,
+          limit: 10,
+        });
+        setComments(response.list);
       } catch (error) {
         console.error("Error fetching comments:", error);
         setComments([]);
       }
     };
 
-    if (productId) {
-      loadComments();
-    }
+    loadComments();
   }, [productId]);
 
   const toggleDropdown = (id: number) => {

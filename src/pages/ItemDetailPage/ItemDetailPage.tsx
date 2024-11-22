@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchProductDetail } from "../../api/itemsApi";
+import { fetchProductDetail, Product } from "../../api/itemsApi";
 import { useParams, useNavigate } from "react-router-dom";
 import ItemInfo from "./components/ItemInfo";
 import CommentForm from "./components/ItemCommentForm";
@@ -8,9 +8,9 @@ import icBack from "../../images/icons/ic_back.svg";
 import "./ItemDetailPage.css";
 
 function ItemDetail() {
-  const { productId } = useParams();
+  const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState<Product | null>(null);
 
   useEffect(() => {
     if (!productId) {
@@ -20,7 +20,7 @@ function ItemDetail() {
 
     const fetchProduct = async () => {
       try {
-        const productData = await fetchProductDetail(productId);
+        const productData = await fetchProductDetail(Number(productId));
         setProduct(productData);
       } catch (error) {
         console.error("Error fetching product data:", error);
@@ -38,7 +38,7 @@ function ItemDetail() {
   return (
     <div className="container">
       <ItemInfo product={product} />
-      <CommentForm />
+      <CommentForm productId={Number(productId)} />
       <CommentList />
       <div className="toListButtonContainer">
         <button onClick={handleToList} className="toListButton">

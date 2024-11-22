@@ -1,11 +1,16 @@
 import React from "react";
 import "./ItemInfo.css";
 import { ReactComponent as HeartIcon } from "../../../images/icons/heart.svg";
+import { Product } from "../../../api/itemsApi";
 
-function ItemInfo({ product }) {
+interface ItemInfoProps {
+  product: Product;
+}
+
+function ItemInfo({ product }: ItemInfoProps) {
   return (
     <div className="itemInfo">
-      <img className="itemImage" src={product.images[0]} alt={product.name} />
+      <img className="itemImage" src={product.images?.[0]} alt={product.name} />
       <div className="itemDetailContainer">
         <div className="itemDetailContentContainer">
           <div className="itemTitle">
@@ -19,7 +24,7 @@ function ItemInfo({ product }) {
           <div className="itemTags">
             <h3 className="itemSectionTitle">상품 태그</h3>
             <div className="itemTag">
-              {product.tags.map((tag) => (
+              {product.tags?.map((tag) => (
                 <span key={tag} className="tag">
                   #{tag}
                 </span>

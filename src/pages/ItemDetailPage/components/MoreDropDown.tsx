@@ -1,9 +1,12 @@
-// 기존 DropDown 컴포넌트랑 겹치는 부분이 많긴한데 그 때 재사용을 고려 안 해서 일단 새로 만들겠습니다 ㅜㅜ...
-
 import React from "react";
 import "./MoreDropDown.css";
 
-function MoreDropDown({ onEdit, onDelete }) {
+interface MoreDropDownProps {
+  onEdit: () => void;
+  onDelete: () => void;
+}
+
+function MoreDropDown({ onEdit, onDelete }: MoreDropDownProps) {
   return (
     <div className="moreDropDown">
       <div className="moreDropDownMenu" onClick={onEdit}>
