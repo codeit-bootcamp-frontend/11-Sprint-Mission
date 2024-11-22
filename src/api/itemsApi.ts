@@ -1,5 +1,13 @@
 const BASE_URL = "https://panda-market-api.vercel.app/";
 
+export interface Product {
+  id: number;
+  name: string;
+  price: number;
+  description: string;
+  image: string;
+}
+
 export async function fetchProducts(params = {}) {
   const query = new URLSearchParams(params).toString();
   try {
@@ -15,7 +23,7 @@ export async function fetchProducts(params = {}) {
   }
 }
 
-export async function fetchProductDetail(productId) {
+export async function fetchProductDetail(productId: number) {
   try {
     const response = await fetch(`${BASE_URL}products/${productId}`);
     if (!response.ok) {
@@ -29,7 +37,7 @@ export async function fetchProductDetail(productId) {
   }
 }
 
-export async function fetchComments(productId, params = {}) {
+export async function fetchComments(productId: number, params = {}) {
   try {
     const query = new URLSearchParams(params).toString();
     const response = await fetch(

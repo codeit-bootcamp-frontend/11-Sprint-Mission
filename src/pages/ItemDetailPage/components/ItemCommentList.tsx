@@ -7,9 +7,9 @@ import more from "../../../images/icons/more.svg";
 import "./ItemCommentList.css";
 
 function CommentList() {
-  const { productId } = useParams();
-  const [comments, setComments] = useState([]);
-  const [isMoreDropDown, setIsMoreDropDown] = useState(null);
+  const { productId } = useParams<{ productId: string }>();
+  const [comments, setComments] = useState<Comment[]>([]);
+  const [isMoreDropDown, setIsMoreDropDown] = useState<number | null>(null);
 
   useEffect(() => {
     const loadComments = async () => {
@@ -32,16 +32,16 @@ function CommentList() {
     }
   }, [productId]);
 
-  const toggleDropdown = (id) => {
+  const toggleDropdown = (id: number) => {
     setIsMoreDropDown((prev) => (prev === id ? null : id));
   };
 
-  const handleEdit = (commentId) => {
+  const handleEdit = (commentId: number) => {
     alert(`${commentId} 댓글 수정`);
     setIsMoreDropDown(null);
   };
 
-  const handleDelete = (commentId) => {
+  const handleDelete = (commentId: number) => {
     alert(`${commentId} 댓글 삭제`);
     setIsMoreDropDown(null);
   };
