@@ -14,6 +14,6 @@ export type CommentListProps = {
   comment: Comment;
   onEdit: (id: number, content: string) => void;
   onDelete: (id: number) => void;
-  onCancel: () => void;
-  onSave: () => void;
+  onCancel?: () => void;
+  onSave?: () => void;
 };

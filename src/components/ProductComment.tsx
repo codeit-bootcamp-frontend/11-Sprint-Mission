@@ -1,50 +1,59 @@
-import { useState, useEffect } from "react";
-import "./ProductComment.css";
+import { useState, useEffect } from 'react';
+import './ProductComment.css';
 import {
   getComments,
   addComment,
   editComment,
   deleteComment,
-} from "../api/ProductAPI";
-import { useParams } from "react-router-dom";
-import CommentForm from "./CommentForm";
-import CommentList from "./CommentList";
+} from '../api/ProductAPI';
+import { useParams } from 'react-router-dom';
+import CommentForm from './CommentForm';
+import CommentList from './CommentList';
+import { Comment } from '../types/Comment';
 
 function ProductComment() {
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState<Comment[]>([]);
   const { productId } = useParams();
+  const numericProductId = Number(productId);
 
   useEffect(() => {
-    if (!productId) {
+    if (!numericProductId) {
       console.log(
-        "유효하지 않은 상품ID입니다. 댓글 데이터를 가져올 수 없습니다."
+        '유효하지 않은 상품ID입니다. 댓글 데이터를 가져올 수 없습니다.'
       );
       return;
     }
     const fetchComments = async () => {
       try {
-        const data = await getComments(productId);
+        const data: Comment[] = await getComments(numericProductId);
         setComments(data);
       } catch (err) {
-        console.log(err.message);
+        if (err instanceof Error) {
+          console.log(err.message);
+        }
       }
     };
 
     fetchComments();
-  }, [productId]);
+  }, [numericProductId]);
 
   // 댓글 추가
-  const handleAddComment = async (newContent) => {
+  const handleAddComment = async (newContent: string) => {
     try {
-      const newComment = await addComment(productId, newContent);
+      const newComment = await addComment(numericProductId, newContent);
       setComments([newComment, ...comments]);
     } catch (err) {
-      console.error("댓글 추가 실패:", err.message);
+      if (err instanceof Error) {
+        console.error('댓글 추가 실패:', err.message);
+      }
     }
   };
 
   // 댓글 수정
-  const handleEditComment = async (commentId, updatedContent) => {
+  const handleEditComment = async (
+    commentId: number,
+    updatedContent: string
+  ) => {
     try {
       await editComment(commentId, updatedContent);
       setComments((prevComments) =>
@@ -55,19 +64,23 @@ function ProductComment() {
         )
       );
     } catch (err) {
-      console.error("댓글 수정 실패:", err.message);
+      if (err instanceof Error) {
+        console.error('댓글 수정 실패:', err.message);
+      }
     }
   };
 
   // 댓글 삭제
-  const handleDeleteComment = async (commentId) => {
+  const handleDeleteComment = async (commentId: number) => {
     try {
       await deleteComment(commentId);
       setComments((prevComments) =>
         prevComments.filter((comment) => comment.id !== commentId)
       );
     } catch (err) {
-      console.error("댓글 삭제 실패:", err.message);
+      if (err instanceof Error) {
+        console.error('댓글 삭제 실패:', err.message);
+      }
     }
   };
 
