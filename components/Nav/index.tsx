@@ -2,8 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 //
 import styles from './Nav.module.css';
-import LogoImg from './logo.svg?url';
-import LogoTextImg from './txt-panda.svg?url';
+import LogoImg from './logo.svg';
+import LogoTextImg from './txt-panda.svg';
 
 export default function Nav() {
   return (
@@ -11,20 +11,8 @@ export default function Nav() {
       <div className={styles.container}>
         <nav className={styles.gnb} aria-label="Global">
           <Link href="/" className="flex items-center gap-2">
-            <Image
-              src={LogoImg}
-              className="hidden sm:block"
-              width={40}
-              height={40}
-              alt="판다마켓 로고"
-            />
-            <Image
-              src={LogoTextImg}
-              className="w-20 sm:w-auto"
-              width={100}
-              height={25}
-              alt="판다마켓"
-            />
+            <LogoImg className="hidden sm:block" />
+            <LogoTextImg className="w-20 sm:w-auto" />
           </Link>
 
           <ul className={styles.links}>
