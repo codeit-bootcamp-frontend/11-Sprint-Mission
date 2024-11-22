@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-import { Container, Page } from '../styles/Common.styles';
-import font from '../styles/fontStyle.styles';
-import { media } from '../styles/media.styles';
-import { flexColumn } from '../styles/layout.styles';
+import { Container, Page } from '@/styles/Common.styles';
+import font from '@/styles/fontStyle.styles';
+import { media } from '@/styles/media.styles';
+import { flexColumn } from '@/styles/layout.styles';
 
 const IMG_HOME_TOP = '/img_home_top.png';
 const IMG_HOME_BOTTOM = '/img_home_bottom.png';
@@ -14,9 +14,9 @@ const IMG_HOME_02_TA = '/Img_home_02_ta.png';
 const IMG_HOME_03 = '/Img_home_03.png';
 const IMG_HOME_03_TA = '/Img_home_03_ta.png';
 
-import Button from '../components/shared/Button';
-import Feature from '../components/pageComponents/main/Feature';
-import Footer from '../components/layout/Footer';
+import Button from '@/components/shared/Button';
+import Feature from '@/components/pages/main/Feature';
+import Footer from '@/components/layout/Footer';
 
 const features = [
   {

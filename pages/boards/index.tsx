@@ -9,9 +9,9 @@ import font from '@/styles/fontStyle.styles';
 import { media } from '@/styles/media.styles';
 
 import Button from '@/components/shared/Button';
-import BoardCardList from '@/components/pageComponents/boards/BoardCardList';
+import BoardCardList from '@/components/pages/boards/BoardCardList';
 import SearchInput from '@/components/shared/SearchInput';
-import BoardList from '@/components/pageComponents/boards/BoardList';
+import BoardList from '@/components/pages/boards/BoardList';
 import SelectMenu from '@/components/shared/SelectMenu';
 
 function BoardsPage() {

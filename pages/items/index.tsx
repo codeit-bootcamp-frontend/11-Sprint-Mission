@@ -10,7 +10,7 @@ import { media } from '@/styles/media.styles';
 import { flexColumn } from '@/styles/layout.styles';
 
 import Button from '@/components/shared/Button';
-import ProductsList from '@/components/pageComponents/items/ProductsList';
+import ProductsList from '@/components/pages/items/ProductsList';
 import SearchInput from '@/components/shared/SearchInput';
 import SelectMenu from '@/components/shared/SelectMenu';
 import NotResult from '@/components/shared/NotResult';

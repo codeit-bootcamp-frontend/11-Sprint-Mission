@@ -9,8 +9,8 @@ import { flexColumn } from '@/styles/layout.styles';
 import { media } from '@/styles/media.styles';
 
 import Button from '@/components/shared/Button';
-import Alternative from '@/components/pageComponents/login/Alternative';
-import SignupPrompt from '@/components/pageComponents/login/SignupPrompt';
+import Alternative from '@/components/pages/login/Alternative';
+import SignupPrompt from '@/components/pages/login/SignupPrompt';
 import Logo from '@/components/shared/Logo';
 import Input from '@/components/shared/Input';
 

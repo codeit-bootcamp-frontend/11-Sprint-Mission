@@ -15,7 +15,7 @@ import { media } from '@/styles/media.styles';
 import { flexColumn } from '@/styles/layout.styles';
 
 import Line from '@/components/shared/Line';
-import ProdDetail from '@/components/pageComponents/items/ProdDetail';
+import ProdDetail from '@/components/pages/items/ProdDetail';
 import ComentPost from '@/components/shared/Coment/ComentPost';
 import ComentList from '@/components/shared/Coment/ComentList';
 
