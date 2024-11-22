@@ -2,8 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 //
 import styles from './Nav.module.css';
-import LogoImg from './logo.svg';
-import LogoTextImg from './txt-panda.svg';
+import LogoImg from './logo.svg?url';
+import LogoTextImg from './txt-panda.svg?url';
 
 export default function Nav() {
   return (
