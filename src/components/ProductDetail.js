@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getProductDetails } from "../api/ProductAPI";
-import "./ProductDetail.css";
-import UserProfile from "./UserProfile";
-import heartImg from "../image/heart-img.png";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getProductDetails } from '../api/ProductAPI';
+import './ProductDetail.css';
+import UserProfile from './UserProfile';
+import heartImg from '../image/heart-img.png';
 
 function ProductDetail() {
   const { productId } = useParams();

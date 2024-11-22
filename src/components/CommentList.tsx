@@ -1,8 +1,15 @@
-import { useState } from "react";
-import "./CommentList.css";
-import UserProfile from "./UserProfile";
+import { useState } from 'react';
+import { CommentListProps } from '../types/Comment';
+import './CommentList.css';
+import UserProfile from './UserProfile';
 
-function EditButtons({ onCancel, onSave }) {
+function EditButtons({
+  onCancel,
+  onSave,
+}: {
+  onCancel: () => void;
+  onSave: () => void;
+}) {
   return (
     <>
       <button className="cancel-button" onClick={onCancel}>
@@ -15,7 +22,13 @@ function EditButtons({ onCancel, onSave }) {
   );
 }
 
-function DropdownMenu({ onEdit, onDelete }) {
+function DropdownMenu({
+  onEdit,
+  onDelete,
+}: {
+  onEdit: () => void;
+  onDelete: () => void;
+}) {
   return (
     <div className="dropdown-menu">
       <button onClick={onEdit}>수정하기</button>
@@ -24,7 +37,7 @@ function DropdownMenu({ onEdit, onDelete }) {
   );
 }
 
-function CommentList({ comment, onEdit, onDelete }) {
+function CommentList({ comment, onEdit, onDelete }: CommentListProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(comment.content);
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -55,10 +68,10 @@ function CommentList({ comment, onEdit, onDelete }) {
       <div className="comment-footer">
         <UserProfile
           nickname={comment.writer.nickname}
-          timestamp={new Date(comment.updatedAt).toLocaleDateString("ko-KR", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
+          timestamp={new Date(comment.updatedAt).toLocaleDateString('ko-KR', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
           })}
         />
 

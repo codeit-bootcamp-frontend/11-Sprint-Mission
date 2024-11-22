@@ -1,14 +1,18 @@
-import { useState } from "react";
-import "./CommentForm.css";
+import { useState } from 'react';
+import './CommentForm.css';
 
-function CommentForm({ onSubmit }) {
-  const [content, setContent] = useState("");
+type CommentFormProps = {
+  onSubmit: (content: string) => void;
+};
+
+function CommentForm({ onSubmit }: CommentFormProps) {
+  const [content, setContent] = useState('');
   const isValidContent = content.trim();
 
   const handleSubmit = () => {
     if (!isValidContent) return;
     onSubmit(content);
-    setContent("");
+    setContent('');
   };
 
   return (
@@ -23,7 +27,7 @@ function CommentForm({ onSubmit }) {
 "
       ></textarea>
       <button
-        className={`submit-button ${isValidContent ? "active" : ""}`}
+        className={`submit-button ${isValidContent ? 'active' : ''}`}
         onClick={handleSubmit}
         disabled={!isValidContent}
       >
