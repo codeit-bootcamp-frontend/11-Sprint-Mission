@@ -1,13 +1,6 @@
 import ProductCard from './ProductCard';
+import { Product } from '../types/Product';
 import './ProductCard.css';
-
-type Product = {
-  id: number;
-  name: string;
-  price: number;
-  images: string[];
-  favoriteCount: number;
-};
 
 type BestProductsProps = {
   products: Product[];

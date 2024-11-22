@@ -1,15 +1,8 @@
 import { useNavigate } from 'react-router-dom';
+import { Product } from '../types/Product';
 import './ProductCard.css';
 import '../styles/Reset.css';
 import HeartIcon from '../image/heart-icon.png';
-
-type Product = {
-  id: number;
-  name: string;
-  price: number;
-  images: string[];
-  favoriteCount: number;
-};
 
 type ProductCardProps = {
   product: Product;
