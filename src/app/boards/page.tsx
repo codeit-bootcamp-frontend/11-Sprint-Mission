@@ -1,5 +1,7 @@
 'use client';
 
+import styles from '../../styles/boards.module.css';
+
 import React, { useEffect, useState } from 'react';
 import { getBoardsList, Article } from '../../hooks/api';
 
@@ -58,19 +60,24 @@ const BoardsPage: React.FunctionComponent<BoardsPageProps> = () => {
     <div>
       {/* 베스트 게시글 */}
       <div style={{ marginBottom: '40px' }}>
-        <h2>베스트 게시글</h2>
+        <h2 className={styles.subTitle}>베스트 게시글</h2>
         <ul>
           {bestArticles.map((article) => (
             <li key={article.id}>
-              <h3>{article.title}</h3>
-              <p>{article.content}</p>
-              <p>Likes: {article.likeCount}</p>
-              <p>Writer: {article.writer.nickname}</p>
-              <img
-                src={article.image}
-                alt={article.title}
-                style={{ width: '200px' }}
-              />
+              <div>
+                <h3>{article.title}</h3>
+                <img
+                  src={article.image}
+                  alt={article.title}
+                  style={{ width: '200px' }}
+                />
+              </div>
+              {/* <p>{article.content}</p> */}
+              <div>
+                <p>{article.writer.nickname}</p>
+                <p>{article.likeCount}</p>
+                <p>{article.updatedAt}</p>
+              </div>
             </li>
           ))}
         </ul>
@@ -97,19 +104,24 @@ const BoardsPage: React.FunctionComponent<BoardsPageProps> = () => {
       </div>
 
       {/* 일반 게시글 리스트 */}
-      <h2>게시글</h2>
+      <h2 className={styles.subTitle}>게시글</h2>
       <ul>
         {sortedArticles.map((article) => (
           <li key={article.id}>
-            <h3>{article.title}</h3>
-            <p>{article.content}</p>
-            <p>Likes: {article.likeCount}</p>
-            <p>Writer: {article.writer.nickname}</p>
-            <img
-              src={article.image}
-              alt={article.title}
-              style={{ width: '200px' }}
-            />
+            <div>
+              <h3>{article.title}</h3>
+              <img
+                src={article.image}
+                alt={article.title}
+                style={{ width: '200px' }}
+              />
+            </div>
+            <div>
+              {/* <p>{article.content}</p> */}
+              <p>{article.writer.nickname}</p>
+              <p>{article.updatedAt}</p>
+              <p>{article.likeCount}</p>
+            </div>
           </li>
         ))}
       </ul>

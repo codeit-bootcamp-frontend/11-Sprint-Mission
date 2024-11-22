@@ -25,6 +25,7 @@
     "/boards/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
+      "static/css/app/boards/page.css",
       "static/chunks/app/boards/page.js"
     ],
     "/boards/layout": [
