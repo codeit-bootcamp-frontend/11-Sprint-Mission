@@ -19,6 +19,8 @@
   --gray-700: #374151;
   --gray-800: #1f2937;
   --gray-900: #111827;
+
+  --container-width: 1200px;
 }
 
 @layer base {
@@ -38,7 +40,7 @@
 
 @layer components {
   .container {
-    max-width: 1200px;
+    max-width: var(--container-width);
   }
   .error-message {
     @apply py-12 text-center text-2xl font-bold;
@@ -47,7 +49,7 @@
 
 @layer utilities {
   .btn {
-    @apply flex items-center gap-2 rounded-lg px-6 py-2 font-semibold transition-all;
+    @apply flex items-center justify-center gap-2 rounded-lg px-6 py-2 font-semibold transition-colors;
     color: var(--gray-100);
     background-color: var(--primary-100);
 
