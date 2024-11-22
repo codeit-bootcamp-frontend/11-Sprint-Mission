@@ -1,5 +1,11 @@
+import BestBoard from '../components/BestBoard';
+import EntierBoard from '../components/EntireBoard';
+
 export default function Boards() {
   return (
-  <>
-  <div>Boards 페이지</div></>)
+    <div className='boards-page'>
+      <BestBoard />
+      <EntierBoard />
+    </div>
+  );
 }

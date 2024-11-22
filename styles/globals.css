@@ -12,9 +12,12 @@ body {
 }
 
 :root {
+  /*color palette*/
   --primary: #3692ff;
   --cyan-blue: #cfe5ff;
   --white: #ffffff;
+  --grayish-blue: #4b5563;
+  --gray-500: #6b7280;
   --gray-400: #9ca3af;
   --light-gray: #dfdfdf;
   --gray-200: #e5e7eb;
@@ -24,7 +27,21 @@ body {
   --black-900: #111827;
   --approx-midnight: #1f2937;
   --black-700: #374151;
-  --grayish-blue: #4b5563;
+
+  /*font-weight*/
+  --regular: 400;
+  --medium: 600;
+  --bold: 700;
+}
+
+html {
+  /* 브라우저 폰트 사이즈 16px * 0.625 = 10px */
+  font-size: 62.5%;
+}
+
+body {
+  /* 1rem = html의 폰트 사이즈, 10px = 1rem */
+  font-size: 1rem;
 }
 
 button {
