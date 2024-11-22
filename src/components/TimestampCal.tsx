@@ -1,6 +1,6 @@
 import { format, differenceInDays, differenceInHours, differenceInMinutes, differenceInSeconds, } from "date-fns";
 
-export const TimestampCal = (dateString) => {
+export const TimestampCal = (dateString: Date) => {
   const date = new Date(dateString);
   const now = new Date();
 
