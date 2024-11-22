@@ -7,13 +7,21 @@ const HomePage: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [sortOrder, setSortOrder] = useState<string>('latest'); // 정렬 기준 상태
+  const [sortOrder, setSortOrder] = useState<string>('latest');
+  const [bestArticles, setBestArticles] = useState<Article[]>([]);
 
   useEffect(() => {
     const fetchArticles = async () => {
       try {
         setLoading(true);
         const data = await getBoardsList();
+
+        // 좋아요 순 베스트 3개
+        const sortedByLikes = [...data].sort(
+          (a, b) => b.likeCount - a.likeCount
+        );
+        setBestArticles(sortedByLikes.slice(0, 3));
+
         setArticles(data);
       } catch (err) {
         setError((err as Error).message);
@@ -40,8 +48,29 @@ const HomePage: React.FC = () => {
 
   return (
     <div>
-      {/* 드롭다운 */}
+      {/* 베스트 게시글 */}
+      <div style={{ marginBottom: '40px' }}>
+        <h2>베스트 게시글</h2>
+        <ul>
+          {bestArticles.map((article) => (
+            <li key={article.id}>
+              <h3>{article.title}</h3>
+              <p>{article.content}</p>
+              <p>Likes: {article.likeCount}</p>
+              <p>Writer: {article.writer.nickname}</p>
+              <img
+                src={article.image}
+                alt={article.title}
+                style={{ width: '200px' }}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* 정렬 기준 드롭다운 */}
       <div style={{ marginBottom: '20px' }}>
+        <label htmlFor="sortOrder">정렬 기준: </label>
         <select
           id="sortOrder"
           value={sortOrder}
@@ -52,11 +81,12 @@ const HomePage: React.FC = () => {
         </select>
       </div>
 
-      {/* 게시글 */}
+      {/* 일반 게시글 리스트 */}
+      <h2>게시글</h2>
       <ul>
         {sortedArticles.map((article) => (
           <li key={article.id}>
-            <h2>{article.title}</h2>
+            <h3>{article.title}</h3>
             <p>{article.content}</p>
             <p>Likes: {article.likeCount}</p>
             <p>Writer: {article.writer.nickname}</p>
