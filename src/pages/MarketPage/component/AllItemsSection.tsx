@@ -87,19 +87,39 @@ const AllItemsCard = styled.div`
   }
 `;
 
-function AllItemsSection() {
+interface Product {
+  createdAt: Date;
+  favoriteCount: number;
+  ownerId: number;
+  images: string[];
+  tags: string[];
+  price: number;
+  description: string;
+  name: string;
+  id: number;
+  isFavorite: boolean;
+}
+
+interface ProductListData {
+  totalCount: number;
+  list: Product[];
+}
+
+type ProductSortOption = "recent" | "favorite";
+
+const AllItemsSection: React.FC = () => {
 	const [pageSize, setPageSize] = useState(getPageSize());
-	const [itemList, setItemList] = useState([]);
-	const [orderBy, setOrderBy] = useState("recent");
+	const [itemList, setItemList] = useState<Product[]>([]);
+	const [orderBy, setOrderBy] = useState<ProductSortOption>("recent");
 	const [isDropDown, setIsDropDown] = useState(false);
 	const [page, setPage] = useState(1);
-	const [totalPage, setTotalPage] = useState();
+	const [totalPage, setTotalPage] = useState<number>(1);
 
 	const fetchSortData = useCallback(async() => {
 		try {
-			const products =await getProducts({ orderBy, page, pageSize });
-			setItemList(products.list);
-			setTotalPage(Math.ceil(products.totalCount / pageSize));
+			const data: ProductListData = await getProducts({ orderBy, page, pageSize });
+			setItemList(data.list);
+			setTotalPage(Math.ceil(data.totalCount / pageSize));
 		} catch (error) {
 			console.log('Error fetchingdata: ', error);
 		}
@@ -122,7 +142,7 @@ function AllItemsSection() {
 			};
 	}, [itemList]);
 
-	const handleSortCard = (sortOption) => {
+	const handleSortCard = (sortOption: ProductSortOption) => {
 		setOrderBy(sortOption);
 		setIsDropDown(false);
 	};
@@ -131,7 +151,7 @@ function AllItemsSection() {
 		setIsDropDown(!isDropDown);
 	}
 
-	const pageChange = (pageNum) => {
+	const pageChange = (pageNum: number) => {
 		setPage(pageNum);
 	}
 

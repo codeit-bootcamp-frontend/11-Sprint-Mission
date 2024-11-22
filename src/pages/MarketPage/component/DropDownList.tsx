@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+ 
 const DropdownList = styled.div`
   position: absolute;
   right: 0;
@@ -16,7 +16,13 @@ const DropdownItem = styled.div`
   cursor: pointer;
 `;
 
-function DropDownList({ onSortCard}) {
+type ProductSortOption = "recent" | "favorite";
+
+interface DropDownListProps {
+  onSortCard: (sortOption: ProductSortOption) => void;
+}
+
+const DropDownList: React.FC<DropDownListProps> = ({ onSortCard}) => {
   return (
     <DropdownList>
       <DropdownItem onClick={() => onSortCard("recent")}>

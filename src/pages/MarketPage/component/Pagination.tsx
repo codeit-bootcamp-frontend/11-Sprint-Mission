@@ -34,10 +34,15 @@ const PaginationButton = styled.button`
   }
 `;
 
+interface PaginationProps {
+  totalPage: number;
+  currentPage: number;
+  pageChange: (pageNumber: number) => void;
+}
 
-const Pagination = ({ totalPage, currentPage, pageChange }) => {
+const Pagination: React.FC<PaginationProps> = ({ totalPage, currentPage, pageChange }) => {
 	const maxPage = 5;	
-	let startPage;
+	let startPage: number;
 
 	if(totalPage <= maxPage) {
 		startPage = 1;
@@ -57,7 +62,6 @@ const Pagination = ({ totalPage, currentPage, pageChange }) => {
 			<PaginationButton
 				disabled={currentPage === 1}
 				onClick={() => pageChange(currentPage - 1)}
-				alt="왼쪽화살표"
 			>
 				<LeftArrow />
 			</PaginationButton>
@@ -73,7 +77,6 @@ const Pagination = ({ totalPage, currentPage, pageChange }) => {
 			<PaginationButton
 				disabled={currentPage === totalPage}
 				onClick={() => pageChange(currentPage + 1)}
-				alt="오른쪽화살표"
 			>
 				<RightArrow />
 			</PaginationButton>

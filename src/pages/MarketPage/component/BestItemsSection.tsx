@@ -2,6 +2,26 @@ import { useEffect, useState } from "react";
 import ItemCard from "./ItemCard";
 import { getProducts } from "../../../api/itemApi";
 import styled from "styled-components";
+ 
+interface Product {
+  createdAt: Date;
+  favoriteCount: number;
+  ownerId: number;
+  images: string[];
+  tags: string[];
+  price: number;
+  description: string;
+  name: string;
+  id: number;
+  isFavorite: boolean;
+}
+
+interface ProductListData {
+  totalCount: number;
+  list: Product[];
+}
+
+type ProductSortOption = "recent" | "favorite";
 
 const getPageSize = () => {
 	const width = window.innerWidth;
@@ -45,14 +65,14 @@ const BestItemsCard = styled.div`
 	}
 `;
 
-function BestItemsSection() {
-	const [itemList, setItemList] = useState([]);
+const BestItemsSection: React.FC = () => {
+	const [itemList, setItemList] = useState<Product[]>([]);
 	const [pageSize, setPageSize] = useState(getPageSize());
 
-	const fetchSortData = async({ orderBy, pageSize }) => {
-		const products =await getProducts({ orderBy, pageSize });
+	const fetchSortData = async({ orderBy, pageSize } : { orderBy: ProductSortOption; pageSize: number }) => {
+		const data: ProductListData = await getProducts({ orderBy, pageSize });
 
-		setItemList(products.list);
+		setItemList(data.list);
 	};
 
 	useEffect(() => {

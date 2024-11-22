@@ -1,4 +1,3 @@
-import React from "react";
 import { ReactComponent as HeartIcon } from "../../../assets/images/icons/ic_heart.svg";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -46,7 +45,24 @@ const ItemFavoritCnt = styled.div`
   font-size: 12px;
 `;
 
-function ItemCard({ item }) {
+interface Product {
+  createdAt: Date;
+  favoriteCount: number;
+  ownerId: number;
+  images: string[];
+  tags: string[];
+  price: number;
+  description: string;
+  name: string;
+  id: number;
+  isFavorite: boolean;
+}
+
+interface ItemCardProps {
+  item: Product;
+}
+
+const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
   return (
     <ItemCardWrapper to={`/items/${item.id}`}>
       <ItemCardImg src={item.images[0]} alt="이미지 미리보기" />

@@ -1,8 +1,7 @@
-import React from "react";
 import BestItemsSection from "./component/BestItemsSection";
 import AllItemsSection from "./component/AllItemsSection";
 
-/* 어디서 쓰는 코드지?
+/* 어디서 쓰는 코드인지 모르겠음
 const SortSelect = styled.div`
   padding: 8px 12px;
   border: 1px solid #e5e7eb;
