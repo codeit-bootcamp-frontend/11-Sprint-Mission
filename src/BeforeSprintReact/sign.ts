@@ -1,122 +1,141 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // 유효성 검사 상태
   let emailValid = false;
   let usernameValid = false;
   let passwordValid = false;
   let passwordRepeatValid = false;
 
-  // 요소 접근
-  const loginForm = document.getElementById("loginGeneral");
-  const signupForm = document.getElementById("signupGeneral");
-  const emailInput = document.getElementById("email");
-  const usernameInput = document.getElementById("username");
-  const passwordInput = document.getElementById("password");
-  const passwordRepeatInput = document.getElementById("password_repeat");
-  const submitButton = document.getElementById("login_button");
+  const loginForm = document.getElementById(
+    "loginGeneral"
+  ) as HTMLFormElement | null;
+  const signupForm = document.getElementById(
+    "signupGeneral"
+  ) as HTMLFormElement | null;
+  const emailInput = document.getElementById(
+    "email"
+  ) as HTMLInputElement | null;
+  const usernameInput = document.getElementById(
+    "username"
+  ) as HTMLInputElement | null;
+  const passwordInput = document.getElementById(
+    "password"
+  ) as HTMLInputElement | null;
+  const passwordRepeatInput = document.getElementById(
+    "password_repeat"
+  ) as HTMLInputElement | null;
+  const submitButton = document.getElementById(
+    "login_button"
+  ) as HTMLButtonElement | null;
 
-  // 오류 메시지 보여주기
-  function showErrorMessage(input, errorId) {
+  function showErrorMessage(input: HTMLElement, errorId: string) {
     if (!errorId) return;
-    const errorElement = document.getElementById(errorId);
-    errorElement.style.display = "block";
-    input.style.border = "1px solid #f74747";
+    const errorElement = document.getElementById(errorId) as HTMLElement | null;
+    if (errorElement) {
+      errorElement.style.display = "block";
+      input.style.border = "1px solid #f74747";
+    }
   }
 
-  // 오류 메시지 가리기
-  function hideErrorMessage(input, errorId) {
+  function hideErrorMessage(input: HTMLElement, errorId: string) {
     if (!errorId) return;
-    const errorElement = document.getElementById(errorId);
-    errorElement.style.display = "none";
-    input.style.border = "none";
+    const errorElement = document.getElementById(errorId) as HTMLElement | null;
+    if (errorElement) {
+      errorElement.style.display = "none";
+      input.style.border = "none";
+    }
   }
 
-  // 공통 오류 처리 함수
   function handleValidation(
-    inputElement,
-    value,
-    emptyErrorId,
-    invalidErrorId,
-    validationFn
+    inputElement: HTMLInputElement,
+    value: string,
+    emptyErrorId: string | null,
+    invalidErrorId: string | null,
+    validationFn?: (value: string) => boolean
   ) {
-    hideErrorMessage(inputElement, emptyErrorId);
-    hideErrorMessage(inputElement, invalidErrorId);
+    hideErrorMessage(inputElement, emptyErrorId || "");
+    hideErrorMessage(inputElement, invalidErrorId || "");
 
     if (!value) {
-      showErrorMessage(inputElement, emptyErrorId);
+      if (emptyErrorId) showErrorMessage(inputElement, emptyErrorId);
       return false;
     } else if (validationFn && !validationFn(value)) {
-      showErrorMessage(inputElement, invalidErrorId);
+      if (invalidErrorId) showErrorMessage(inputElement, invalidErrorId);
       return false;
     }
     return true;
   }
 
-  // 이메일 유효성 검사
   function validateEmailInput() {
-    const value = emailInput.value.trim();
-    const validationFn = (value) =>
-      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
-    emailValid = handleValidation(
-      emailInput,
-      value,
-      "emailEmptyError",
-      "emailInvalidError",
-      validationFn
-    );
-    updateSubmitBtnState();
-  }
-
-  // 닉네임 유효성 검사
-  function validateUsernameInput() {
-    const value = usernameInput.value.trim();
-    usernameValid = handleValidation(
-      usernameInput,
-      value,
-      "usernameEmptyError",
-      null,
-      null
-    );
-    updateSubmitBtnState();
-  }
-
-  // 비밀번호 유효성 검사
-  function validatePasswordInput() {
-    const value = passwordInput.value.trim();
-    const validationFn = (value) => value.length >= 8;
-    passwordValid = handleValidation(
-      passwordInput,
-      value,
-      "passwordEmptyError",
-      "passwordInvalidError",
-      validationFn
-    );
-    updateSubmitBtnState();
-  }
-
-  // 비밀번호 확인 유효성 검사
-  function validatePasswordRepeatInput() {
-    const passwordRepeatValue = passwordRepeatInput.value.trim();
-    passwordRepeatValid =
-      passwordRepeatValue && passwordRepeatValue === passwordInput.value.trim();
-    if (!passwordRepeatValid) {
-      showErrorMessage(passwordRepeatInput, "passwordRepeatInvalidError");
-    } else {
-      hideErrorMessage(passwordRepeatInput, "passwordRepeatInvalidError");
+    if (emailInput) {
+      const value = emailInput.value.trim();
+      const validationFn = (value: string) =>
+        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
+      emailValid = handleValidation(
+        emailInput,
+        value,
+        "emailEmptyError",
+        "emailInvalidError",
+        validationFn
+      );
+      updateSubmitBtnState();
     }
-    updateSubmitBtnState();
   }
 
-  // 제출 버튼 상태 업데이트
+  function validateUsernameInput() {
+    if (usernameInput) {
+      const value = usernameInput.value.trim();
+      usernameValid = handleValidation(
+        usernameInput,
+        value,
+        "usernameEmptyError",
+        null,
+        undefined
+      );
+      updateSubmitBtnState();
+    }
+  }
+
+  function validatePasswordInput() {
+    if (passwordInput) {
+      const value = passwordInput.value.trim();
+      const validationFn = (value: string) => value.length >= 8;
+      passwordValid = handleValidation(
+        passwordInput,
+        value,
+        "passwordEmptyError",
+        "passwordInvalidError",
+        validationFn
+      );
+      updateSubmitBtnState();
+    }
+  }
+
+  function validatePasswordRepeatInput() {
+    if (passwordRepeatInput && passwordInput) {
+      const passwordRepeatValue = passwordRepeatInput.value.trim();
+      passwordRepeatValid = Boolean(
+        passwordRepeatValue &&
+          passwordRepeatValue === passwordInput.value.trim()
+      );
+      if (!passwordRepeatValid) {
+        showErrorMessage(passwordRepeatInput, "passwordRepeatInvalidError");
+      } else {
+        hideErrorMessage(passwordRepeatInput, "passwordRepeatInvalidError");
+      }
+      updateSubmitBtnState();
+    }
+  }
+
   function updateSubmitBtnState() {
     const isAllInputValid =
       emailValid && usernameValid && passwordValid && passwordRepeatValid;
     const valueValid = signupForm
       ? isAllInputValid
       : emailValid && passwordValid;
-    submitButton.disabled = !valueValid;
+    if (submitButton) {
+      submitButton.disabled = !valueValid;
+    }
   }
 
-  // 이벤트 리스너 추가
   const inputEvents = [
     { element: emailInput, handler: validateEmailInput },
     { element: passwordInput, handler: validatePasswordInput },
@@ -130,22 +149,23 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   inputEvents.forEach(({ element, handler }) => {
-    element.addEventListener("input", handler);
-    element.addEventListener("focusout", handler);
+    if (element) {
+      element.addEventListener("input", handler);
+      element.addEventListener("focusout", handler);
+    }
   });
 
-  // 폼 제출
   if (loginForm) {
     loginForm.addEventListener("submit", function (event) {
       event.preventDefault();
-      location.href = "items.html";
+      window.location.href = "items.html";
     });
   }
 
   if (signupForm) {
     signupForm.addEventListener("submit", function (event) {
       event.preventDefault();
-      location.href = "signup.html";
+      window.location.href = "signup.html";
     });
   }
 });
