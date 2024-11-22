@@ -1,10 +1,8 @@
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import ItemPage from "./pages/ItemPage/ItemPage";
 import AddItemPage from "./pages/AddItemPage/AddItemPage";
 import ItemDetailPage from "./pages/ItemDetailPage/ItemDetailPage";
-
-const { BrowserRouter } = require("react-router-dom");
 
 function App() {
   return (
