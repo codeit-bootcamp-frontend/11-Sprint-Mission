@@ -1,5 +1,5 @@
-import React from "react";
 import styled from "styled-components";
+import { ChangeEvent, KeyboardEvent } from "react";
 
 const Label = styled.label`
   display: block;
@@ -46,10 +46,32 @@ const TextSection = styled.textarea`
   }
 `;
 
-function InputItem({ id, label, value, onChange, placeholder, onKeyDown, isTextArea, }) {
+interface InputItemProps {
+  id: string;
+  label: string;
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  placeholder: string;
+  onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void;
+  isTextArea?: boolean;
+  errorMessage?: string;
+  type?: string;
+}
+
+const InputItem: React.FC<InputItemProps> = ({ 
+  id,
+  label,
+  value,
+  onChange,
+  placeholder,
+  onKeyDown,
+  isTextArea,
+  type = "text", 
+}) => {
 	return (
 		<div>
 			{label && <Label htmlFor={id}>{label}</Label>}
+
 			{isTextArea ? (
 				<TextSection 
 					id={id}
@@ -64,6 +86,7 @@ function InputItem({ id, label, value, onChange, placeholder, onKeyDown, isTextA
 				onChange={onChange}
 				onKeyDown={onKeyDown}
 				placeholder={placeholder}
+        type={type}
 				/>
 			)}
 		</div>

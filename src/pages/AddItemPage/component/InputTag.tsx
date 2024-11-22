@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { KeyboardEvent,useState } from "react";
 import styled from "styled-components";
 import InputItem from "./InputItem";
 import { ReactComponent as DelIcon } from "../../../assets/images/icons/ic_del.svg";
@@ -38,10 +38,16 @@ const DeleteBtn = styled.button`
   align-items: center;
 `;
 
-function InputTag({ tags, onAddTag, onRemoveTag }) {
+interface InputTagProps {
+  tags: string[];
+  onAddTag: (tag: string) => void;
+  onRemoveTag: (tag: string) => void;
+}
+
+const InputTag: React.FC<InputTagProps> = ({ tags, onAddTag, onRemoveTag }) => {
 	const [input, setInput] = useState("");
 
-	const handlePressEnter = (e) => {
+	const handlePressEnter = (e: KeyboardEvent<HTMLInputElement>) => {
 		const inputValue = input.trim();
 		if(e.key === "Enter" && inputValue) {
 			e.preventDefault();
@@ -50,7 +56,7 @@ function InputTag({ tags, onAddTag, onRemoveTag }) {
 		}
 	};
 
-	const handleDeleteTag = (tag) => {
+	const handleDeleteTag = (tag: string) => {
     onRemoveTag(tag);
   };
 

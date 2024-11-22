@@ -13,10 +13,10 @@ const Container = styled.div`
 `;
 
 const TitleSection = styled.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
 `;
 
 const Title = styled.h1`
@@ -24,12 +24,12 @@ const Title = styled.h1`
   font-weight: bold;
   color: black;
   @media (min-width: 768px) {
-    font-size: 28px
+    font-size: 28px;
   }
-`;
+`; 
 
 const Btn = styled.button`
-  background-color: #3692FF;
+  background-color: #3692ff;
   color: white;
   padding: 11.5px 23px;
   border-radius: 8px;
@@ -37,13 +37,13 @@ const Btn = styled.button`
   font-weight: bold;
   cursor: pointer;
   &:hover {
-    background-color: #1967D6;
+    background-color: #1967d6;
   }
   &:focus {
-    background-color: #1251AA;
+    background-color: #1251aa;
   }
   &:disabled {
-    background-color: #9CA3AF;
+    background-color: #9ca3af;
     cursor: default;
     pointer-events: none;
   }
@@ -58,34 +58,33 @@ const InputSection = styled.div`
   }
 `;
 
-function AddItemPage() {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
-  const [tags, setTags] = useState([]);
+const AddItemPage: React.FC = () => {
+  const [name, setName] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [price, setPrice] = useState<string>("");
+  const [tags, setTags] = useState<string[]>([]);
 
-  const addTag = (tag) => {
+  const addTag = (tag: string) => {
     if (!tags.includes(tag)) setTags([...tags, tag]);
   };
 
-  const removeTag = (tagToRemove) => {
+  const removeTag = (tagToRemove: string) => {
     setTags(tags.filter((tag) => tag !== tagToRemove));
   };
 
   const isSubmitDisabled = !name || !description || !price || !tags.length;
 
-	return (
-		<Container>
-			<form>
-				<TitleSection>
-					<Title>상품 등록하기</Title>
-					<Btn type="submit" disabled={isSubmitDisabled}>
+  return (
+    <Container>
+      <form>
+        <TitleSection>
+          <Title>상품 등록하기</Title>
+          <Btn type="submit" disabled={isSubmitDisabled}>
             등록
           </Btn>
-				</TitleSection>
-
-				<InputSection>
-					<ImgUpload title="상품 이미지" />
+        </TitleSection>
+        <InputSection>
+          <ImgUpload title="상품 이미지" />
 
           <InputItem
             id="name"
@@ -108,15 +107,15 @@ function AddItemPage() {
             id="price"
             label="판매 가격"
             value={price}
-            onChange={(e) => setPrice(e.target.value)}
+            onChange={(e) =>setPrice(e.target.value)}
             placeholder="판매 가격을 입력해 주세요"
           />
 
           <InputTag tags={tags} onAddTag={addTag} onRemoveTag={removeTag} />
-				</InputSection>
-			</form>
-		</Container>
-	);
-}
+        </InputSection>
+      </form>
+    </Container>
+  );
+};
 
 export default AddItemPage;

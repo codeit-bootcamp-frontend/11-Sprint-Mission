@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
 import { ReactComponent as AddIcon } from "../../../assets/images/icons/ic_add.svg";
 import { ReactComponent as DelIcon } from "../../../assets/images/icons/ic_del.svg";
-
 
 const Label = styled.label`
   display: block;
@@ -42,8 +41,8 @@ const UploadLabel = styled.label`
 const HiddenFileInput = styled.input`
   display: none;
 `
-
-const ImgPreview = styled.div`
+// src를 props로 전달받아 background 처리
+const ImgPreview = styled.div<{ src: string }>`
   background-image: url(${({ src }) => src});
   background-size: cover;
   background-position: center;
@@ -69,11 +68,15 @@ const DeleteBtn = styled.button`
   align-items: center;
 `;
 
-function ImgUpload({ title }) {
+interface ImgUploadProps {
+  title: string;
+}
+
+const ImgUpload: React.FC<ImgUploadProps> = ({ title }) => {
   const [imgPreviewUrl, setImgPreviewUrl] = useState("");
 
-  const handleImgChange = (e) => {
-    const file= e.target.files[0];
+  const handleImgChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file= e.target.files?.[0];
 
     if(file) {
       const imgUrl = URL.createObjectURL(file);
