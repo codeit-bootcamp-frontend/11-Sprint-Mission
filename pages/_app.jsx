@@ -2,7 +2,8 @@
 import Header from '../components/Header';
 import '@/styles/globals.css';
 import '@/styles/header.css';
-import '@/styles/bestBoards.css';
+import '@/styles/bestBoard.css';
+import '@/styles/entireBoard.css';
 
 export default function App({ Component, pageProps }) {
   return (

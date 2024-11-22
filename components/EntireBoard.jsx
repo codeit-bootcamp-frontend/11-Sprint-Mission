@@ -15,11 +15,11 @@ export default function EntierBoard() {
       </div>
       <div className="entire-board-body">
         <div className="user-select-section">
-          <div className="search-bar">
+          <div className='search-bar'>
             <Image src={search} alt="검색" />
-            <input placeholder="검색할 상품을 입력해주세요" />
+            <input placeholder="검색할 상품을 입력해주세요" className="search-bar-input" />
           </div>
-          <select>
+          <select >
             <option value="latest">최신순</option>
             <option value="favorite">좋아요순</option>
           </select>
@@ -34,14 +34,14 @@ export default function EntierBoard() {
             </div>
             <div className="list-info">
               <div className="list-info-ahead">
+              <div className="board-user-info">
                 <Image src={profile} alt="프로필" />
-                <div className="board-user-info">
                   <div className="board-user-id">총명한 판다</div>
                   <div className="upload-date">2024. 04. 16</div>
                 </div>
-                <div className="like-it">
+                <div className="liked-it">
                   <Image src={heart} alt="좋아요" />
-                  <div className="like-count">9999+</div>
+                  <div className="liked-count">9999+</div>
                 </div>
               </div>
             </div>
