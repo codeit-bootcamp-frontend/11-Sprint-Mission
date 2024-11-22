@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import { ReactComponent as Searchcon } from "../../../images/icons/searchicon.svg";
 import { ReactComponent as SortIcon } from "../../../images/icons/arrowdown.svg";
-import { fetchProducts } from "../../../api/itemsApi";
+import { fetchProducts, Product } from "../../../api/itemsApi";
 import DropDown from "./DropDown";
 
 const getUserWidth = () => {
@@ -18,21 +18,21 @@ const getUserWidth = () => {
 };
 
 function AllProducts() {
-  const [orderBy, setOrderBy] = useState("recent");
-  const [itemList, setItemList] = useState([]);
-  const [pageSize, setPageSize] = useState(getUserWidth());
-  const [isDropDown, setIsDropDown] = useState(false);
+  const [orderBy, setOrderBy] = useState<string>("recent");
+  const [itemList, setItemList] = useState<Product[]>([]);
+  const [pageSize, setPageSize] = useState<number>(getUserWidth());
+  const [isDropDown, setIsDropDown] = useState<boolean>(false);
 
-  const fetchData = async ({ orderBy, pageSize }) => {
+  const fetchData = useCallback(async () => {
     try {
       const products = await fetchProducts({ orderBy, pageSize });
       setItemList(products.list);
     } catch (error) {
       console.error("Failed to fetch products:", error);
     }
-  };
+  }, [orderBy, pageSize]);
 
-  const handleSortSelection = (option) => {
+  const handleSortSelection = (option: string) => {
     setOrderBy(option);
     setIsDropDown(false);
   };
@@ -50,12 +50,13 @@ function AllProducts() {
   }, []);
 
   useEffect(() => {
-    fetchData({ orderBy, pageSize });
-  }, [orderBy, pageSize]);
+    fetchData();
+  }, [fetchData]);
 
   const toggleDropDown = () => {
     setIsDropDown(!isDropDown);
   };
+
   return (
     <div className="productContainer">
       <div className="allProductsHeader">
