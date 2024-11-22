@@ -3,10 +3,22 @@ import LeftArrow from "../images/pagination/left_arrow.png";
 import RightArrow from "../images/pagination/right_arrow.png";
 import classNames from "classnames";
 
-const Pagination = ({ totalPageNum, activePageNum, onPageChange }) => {
-  const maxVisiblePages = 5;
-  let startPage;
+// PaginationProps로 인터페이스 이름 수정 (명확히 타입 지정)
+interface PaginationProps {
+  totalPageNum: number;
+  activePageNum: number;
+  onPageChange: (page: number) => void;
+}
 
+const Pagination = ({
+  totalPageNum,
+  activePageNum,
+  onPageChange,
+}: PaginationProps) => {
+  const maxVisiblePages = 5;
+  let startPage: number;
+
+  // 페이지 계산 로직
   if (totalPageNum <= maxVisiblePages) {
     startPage = 1;
   } else {
@@ -14,6 +26,7 @@ const Pagination = ({ totalPageNum, activePageNum, onPageChange }) => {
     startPage = Math.min(startPage, totalPageNum - maxVisiblePages + 1);
   }
 
+  // 페이지 배열 생성
   const pages = Array.from(
     { length: Math.min(maxVisiblePages, totalPageNum - startPage + 1) },
     (_, i) => startPage + i
@@ -49,4 +62,5 @@ const Pagination = ({ totalPageNum, activePageNum, onPageChange }) => {
     </nav>
   );
 };
+
 export default Pagination;

@@ -2,13 +2,18 @@ import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import uploadIocn from "../images/uploadImg/upload_icon.png";
 import uploadClose from "../images/uploadImg/upload_close.png";
+import { device } from "styles/device";
+interface ImageUploadProps {
+  name: string;
+  value: string | Blob | null;
+  onChange: (name: string, value: string | Blob | null) => void;
+}
+function ImageUpload({ name, value, onChange }: ImageUploadProps) {
+  const [preview, setPreview] = useState<string | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
-function ImageUpload({ name, value, onChange }) {
-  const [preview, setPreview] = useState(null);
-  const inputRef = useRef();
-
-  const handleChange = (e) => {
-    const nextValue = e.target.files[0];
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const nextValue = e.target.files ? e.target.files[0] : null;
     if (!nextValue) return;
     onChange(name, nextValue);
   };
@@ -45,7 +50,7 @@ function ImageUpload({ name, value, onChange }) {
         ref={inputRef}
       />
       <PreviewFlexWrap>
-        <CustomButton onClick={() => inputRef.current.click()}>
+        <CustomButton onClick={() => inputRef.current?.click()}>
           <img src={uploadIocn} alt="업로드 아이콘" />
           <span>이미지 등록</span>
         </CustomButton>
@@ -94,7 +99,7 @@ const CustomButton = styled.button`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  @media (max-width: 1279px) {
+  @media (${device.tablet}) {
     width: 168px;
     height: 168px;
   }
@@ -128,7 +133,7 @@ const PrviewWrap = styled.div`
   width: 282px;
   height: 282px;
   position: relative;
-  @media (max-width: 1279px) {
+  @media (${device.tablet}) {
     width: 168px;
     height: 168px;
   }

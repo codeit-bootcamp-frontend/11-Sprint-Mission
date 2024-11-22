@@ -1,7 +1,17 @@
+import {
+  ProductListResponse,
+  FetchProductsParams,
+  ItemDetail,
+  UpdateComment,
+} from "../types/type";
 const BASE_URL = "https://panda-market-api.vercel.app/products";
 
-async function fetchProducts(params) {
-  const query = new URLSearchParams(params).toString();
+async function fetchProducts(
+  params: FetchProductsParams
+): Promise<ProductListResponse> {
+  const query = new URLSearchParams(
+    Object.entries(params).map(([key, value]) => [key, String(value)])
+  ).toString();
   const response = await fetch(`${BASE_URL}?${query}`);
 
   if (!response.ok) {
@@ -13,7 +23,15 @@ async function fetchProducts(params) {
   return response.json();
 }
 
-export async function getBestProducts({ pageSize = 4 } = {}) {
+interface GetBestProductsParams {
+  pageSize?: number;
+  orderBy?: string;
+  page?: number;
+}
+
+export async function getBestProducts({
+  pageSize = 4,
+}: GetBestProductsParams = {}): Promise<ProductListResponse> {
   try {
     return await fetchProducts({ page: 1, pageSize, orderBy: "favorite" });
   } catch (error) {
@@ -21,12 +39,16 @@ export async function getBestProducts({ pageSize = 4 } = {}) {
     throw error;
   }
 }
-
+interface GetAllProductsParams {
+  page?: number;
+  pageSize?: number;
+  orderBy?: string;
+}
 export async function getAllProducts({
   page = 1,
   pageSize = 10,
   orderBy = "recent",
-} = {}) {
+}: GetAllProductsParams = {}): Promise<ProductListResponse> {
   try {
     return await fetchProducts({ page, pageSize, orderBy });
   } catch (error) {
@@ -35,7 +57,9 @@ export async function getAllProducts({
   }
 }
 
-export async function getDetailProducts(productId) {
+export async function getDetailProducts(
+  productId: number
+): Promise<ItemDetail> {
   const response = await fetch(`${BASE_URL}/${productId}`);
   if (!response.ok) {
     throw new Error("상품 상세 정보를 불러오는데 실패했습니다.");
@@ -43,7 +67,10 @@ export async function getDetailProducts(productId) {
   return response.json();
 }
 
-export async function getDetailComments(productId, limit = 10) {
+export async function getDetailComments(
+  productId: number,
+  limit: number = 10
+): Promise<UpdateComment[]> {
   const response = await fetch(
     `${BASE_URL}/${productId}/comments?limit=${limit}`
   );
@@ -53,7 +80,10 @@ export async function getDetailComments(productId, limit = 10) {
   return response.json();
 }
 
-export async function getDeleteComment(productId, commentId) {
+export async function getDeleteComment(
+  productId: number,
+  commentId: number
+): Promise<void> {
   const response = await fetch(
     `${BASE_URL}/${productId}/comments/${commentId}`,
     {
@@ -63,7 +93,11 @@ export async function getDeleteComment(productId, commentId) {
   return response.json();
 }
 
-export async function getUpdateComment(productId, commentId, content) {
+export async function getUpdateComment(
+  productId: number,
+  commentId: number,
+  content: string
+): Promise<UpdateComment> {
   const response = await fetch(
     `${BASE_URL}/${productId}/comments/${commentId}`,
     {
@@ -74,6 +108,5 @@ export async function getUpdateComment(productId, commentId, content) {
       body: JSON.stringify({ content }),
     }
   );
-  console.log("Sending to API:", productId, commentId, content);
   return response.json();
 }

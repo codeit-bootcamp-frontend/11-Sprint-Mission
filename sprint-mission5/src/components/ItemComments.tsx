@@ -6,41 +6,48 @@ import myPageIcon from "../images/head/myPageIcon.png";
 import styled from "styled-components";
 import notFoundIcon from "../images/notFoundIcon/notFound_icon.png";
 import { getUpdateComment } from "../api/api";
+import { UpdateComment } from "../types/type";
+interface ItemCommentsProps {
+  productId: number;
+}
+function ItemComments({ productId }: ItemCommentsProps) {
+  const [comments, setComments] = useState<UpdateComment["list"] | null>(null);
+  const [openDropdowns, setOpenDropdowns] = useState<Record<number, boolean>>(
+    {}
+  );
+  const [editingCommentId, setEditingCommentId] = useState<number | null>(null);
+  const [editingContent, setEditingContent] = useState<string>("");
 
-function ItemComments({ productId }) {
-  const [comments, setComments] = useState(null);
-  const [openDropdowns, setOpenDropdowns] = useState({});
-  const [editingCommentId, setEditingCommentId] = useState(null);
-  const [editingContent, setEditingContent] = useState("");
-
-  const handleEditClick = (comment) => {
+  const handleEditClick = (comment: UpdateComment["list"][0]) => {
     setEditingCommentId(comment.id);
     setEditingContent(comment.content);
   };
 
-  const handleSaveClick = async (commentId) => {
+  const handleSaveClick = async (commentId: number) => {
     if (!editingContent.trim()) {
       console.error("댓글 내용이 비어 있습니다.");
       return;
     }
 
     try {
-      const updatedComment = await getUpdateComment(
+      const updatedComment: any = await getUpdateComment(
         productId,
         commentId,
         editingContent
       );
       console.log("Updated Comment:", updatedComment);
       setComments((prevComments) =>
-        prevComments.map((comment) =>
-          comment.id === commentId
-            ? {
-                ...comment,
-                content: updatedComment.content,
-                updatedAt: updatedComment.updatedAt,
-              }
-            : comment
-        )
+        prevComments
+          ? prevComments.map((comment) =>
+              comment.id === commentId
+                ? {
+                    ...comment,
+                    content: updatedComment.content,
+                    updatedAt: updatedComment.updatedAt,
+                  }
+                : comment
+            )
+          : []
       );
       setEditingCommentId(null);
     } catch (error) {
@@ -55,7 +62,7 @@ function ItemComments({ productId }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getDetailComments(productId, 3);
+        const data: any = await getDetailComments(productId, 3);
         console.log("댓글 데이터:", data);
         setComments(data.list);
       } catch (error) {
@@ -66,7 +73,7 @@ function ItemComments({ productId }) {
     fetchData();
   }, [productId]);
 
-  const toggleDropdown = (commentId) => {
+  const toggleDropdown = (commentId: any) => {
     setOpenDropdowns((prevState) => ({
       ...prevState,
       [commentId]: !prevState[commentId],
@@ -85,7 +92,7 @@ function ItemComments({ productId }) {
     );
   }
 
-  const handleDeleteComment = async (commentId) => {
+  const handleDeleteComment = async (commentId: number) => {
     if (!commentId) {
       console.error("유효하지 않은 댓글 ID입니다.");
       return;
@@ -93,23 +100,24 @@ function ItemComments({ productId }) {
     try {
       await getDeleteComment(productId, commentId);
       setComments((prevComments) =>
-        prevComments.filter((comment) => comment.id !== commentId)
+        prevComments
+          ? prevComments.filter((comment) => comment.id !== commentId)
+          : null
       );
       console.log("댓글이 삭제되었습니다.");
     } catch (error) {
-      console.error("댓글 삭제 중 오류 발생:", error.message);
+      console.error("댓글 삭제 중 오류 발생:", error);
     }
   };
 
   return (
-    <CommentCon>
+    <CommentContainer>
       {comments.map((comment) => (
         <CommentWrap key={comment.id}>
           <CommentTopBox>
             {editingCommentId === comment.id ? (
               <ModiftWrap>
                 <ModiFYCommentContent
-                  type="text"
                   value={editingContent}
                   onChange={(e) => setEditingContent(e.target.value)}
                   editing={true}
@@ -125,7 +133,7 @@ function ItemComments({ productId }) {
               </ModiftWrap>
             ) : (
               <>
-                <CommentContent type="text" value={comment.content} readOnly />
+                <CommentContent value={comment.content} readOnly />
                 <CommentDotsBox onClick={() => toggleDropdown(comment.id)}>
                   <Dots></Dots>
                   <Dots></Dots>
@@ -163,7 +171,7 @@ function ItemComments({ productId }) {
         </CommentWrap>
       ))}
       <ReturnButton />
-    </CommentCon>
+    </CommentContainer>
   );
 }
 const ModiftWrap = styled.div`
@@ -173,15 +181,16 @@ const ModifyBtnWrap = styled.div`
   display: flex;
   justify-content: right;
 `;
-const ModifyCompleteBtn = styled.button`
+const Button = styled.button`
+  font-size: 1rem;
+`;
+const ModifyCompleteBtn = styled(Button)`
   padding: 12px 23px;
   background-color: var(--skyblue);
   color: var(--white);
   border-radius: 8px;
-  font-size: 1rem;
 `;
-const CancelBtn = styled.button`
-  font-size: 1rem;
+const CancelBtn = styled(Button)`
   background-color: var(--gray10);
   padding: 12px 20px;
 `;
@@ -192,15 +201,13 @@ const NotFoundWrap = styled.div`
   gap: 43px;
   align-items: center;
 `;
-const ModifyBtn = styled.button`
-  font-size: 1rem;
+const ModifyBtn = styled(Button)`
   padding: 12px 41.5px 8px;
 `;
-const DeleteBtn = styled.button`
-  font-size: 1rem;
+const DeleteBtn = styled(Button)`
   padding: 12px 41.5px 8px;
 `;
-const CommentCon = styled.section`
+const CommentContainer = styled.section`
   margin-bottom: 222px;
 `;
 const CommentWrap = styled.div`
@@ -246,7 +253,10 @@ const UpdatedAt = styled.p`
   font-size: 14px;
   color: var(--gray400);
 `;
-const CommentContent = styled.textarea`
+interface TextareaProps {
+  editing?: boolean;
+}
+const CommentContent = styled.textarea<TextareaProps>`
   font-size: 14px;
   width: 100%;
   border: none;
@@ -260,7 +270,7 @@ const CommentContent = styled.textarea`
     border: none;
   }
 `;
-const ModiFYCommentContent = styled.textarea`
+const ModiFYCommentContent = styled.textarea<TextareaProps>`
   padding-top: 16px;
   padding-left: 24px;
   font-size: 14px;
