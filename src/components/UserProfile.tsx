@@ -1,7 +1,12 @@
-import "./UserProfile.css";
-import avatar from "../image/user-avatar.png";
+import './UserProfile.css';
+import avatar from '../image/user-avatar.png';
 
-function UserProfile({ nickname, timestamp }) {
+type UserProfileProps = {
+  nickname: string;
+  timestamp: string;
+};
+
+function UserProfile({ nickname, timestamp }: UserProfileProps) {
   return (
     <div className="profile">
       <img
