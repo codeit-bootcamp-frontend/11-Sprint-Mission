@@ -1,0 +1,26 @@
+.boardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.boardBox {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.buttonMiddle {
+  padding: 1.1rem 2.3rem;
+}
+
+.titles {
+  display: flex;
+  justify-content: space-between;
+}
+
+.boardSearch {
+  width: 28.8rem;
+  height: 4.2rem;
+  border-radius: 1.2rem;
+}

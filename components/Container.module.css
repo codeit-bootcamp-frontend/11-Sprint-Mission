@@ -1,0 +1,14 @@
+/* .container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 950px;
+} */
+
+.page.container {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.container {
+  padding: 1.6rem 1.6rem;
+}

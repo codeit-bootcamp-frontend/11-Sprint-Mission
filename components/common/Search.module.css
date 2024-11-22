@@ -1,0 +1,37 @@
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0.9rem 2rem;
+  background-color: #f3f4f6;
+  border-radius: 1.2rem;
+}
+
+/* 검색 아이콘 스타일 */
+.search-icon {
+  position: absolute;
+  left: 2rem;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 80%;
+  font-size: 1.4rem;
+  border: none;
+  outline: none;
+  background-color: #f3f4f6;
+}
+
+.search-input::placeholder {
+  color: #9ca3af;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.6rem;
+}
+
+.search-input:focus::placeholder {
+  color: transparent; /* 포커스 시 placeholder 텍스트 숨기기 */
+}

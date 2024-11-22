@@ -1,0 +1,41 @@
+.header {
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 1.6rem;
+}
+
+.logoText {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2.7rem;
+  color: #3692ff;
+  font-family: 'ROKAF Sans', sans-serif;
+  /* TODO 폰트 잘안먹힘 */
+}
+
+.logoLink {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.headerLeft {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.headerLink {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.headerFont {
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 2.6rem;
+  color: #4b5563;
+}
