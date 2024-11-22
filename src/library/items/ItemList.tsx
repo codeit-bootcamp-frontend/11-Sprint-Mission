@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import noImage from '../../assets/noImage.jfif';
 import favoriteIcon from '../../assets/favoriteIcon.png';
-import './css/Items.css';
+import '@/css/Items.css';
 
 // Product 타입 정의
 interface Product {
@@ -25,15 +25,7 @@ const ItemList: React.FC<ItemListProps> = ({ className, item }) => {
   return (
     <div className={className}>
       <Link to={`/items/${item.id}`}>
-        <img
-          className="thumbnail"
-          src={images[0]}
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.src = noImage;
-          }}
-          alt={name}
-        />
+        <img className="thumbnail" src={images[0] || noImage} alt={name} />
         <h2>{name}</h2>
         <p className="price">{`${Number(price).toLocaleString()}원`}</p>
       </Link>

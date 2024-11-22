@@ -1,6 +1,6 @@
 @import url(style.css);
 
-h1 {
+.content h1 {
   color: var(--gray-900);
   font-size: 1.75rem;
   margin-bottom: 2rem;

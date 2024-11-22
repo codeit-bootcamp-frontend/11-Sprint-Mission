@@ -1,5 +1,5 @@
 // css
-import './css/Items.css';
+import '@/css/Items.css';
 
 // 사용된 컴포넌트
 import { getItems } from '@/service/api';
@@ -18,6 +18,7 @@ import Pagination from 'react-js-pagination';
 import { useEffect, useState, useRef, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { throttle } from 'lodash';
 
 // 페이지 크기를 주어진 타입에 맞게 반환하는 함수
 const getPageSize = (type: 'normal' | 'favorite' = 'normal'): number => {
@@ -47,7 +48,6 @@ function Items({ children }: { children: ReactNode }) {
   const [bestProducts, setBestProducts] = useState<Product[]>([]);
   const [isDropdownView, setDropdownView] = useState<boolean>(false);
   const [orderBy, setOrderBy] = useState<string>('recent');
-  const [selectMenu, setSelectMenu] = useState<string>('최신순');
   const [keyword, setKeyword] = useState<string>('');
   const [page, setPage] = useState<number>(1);
   const [total, setTotal] = useState<number>(0);
@@ -88,7 +88,6 @@ function Items({ children }: { children: ReactNode }) {
 
   // 드롭다운 메뉴에서 선택한 값에 따라 정렬 조건 변경
   const handleSelectMenu = (onSelect: string) => {
-    setSelectMenu(onSelect);
     setOrderBy(onSelect === '최신순' ? 'recent' : 'favorite');
     setDropdownView(false);
   };
@@ -120,15 +119,16 @@ function Items({ children }: { children: ReactNode }) {
 
   // 화면 크기 변경 시 페이지 크기 업데이트
   useEffect(() => {
-    const handleResize = () => {
+    const handleResize = throttle(() => {
       setPageSize(getPageSize());
       setPage(1);
-    };
+    }, 100); // 100ms 간격으로 실행
 
     window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      handleResize.cancel(); // 컴포넌트 언마운트 시 쓰로틀 취소
     };
   }, []);
 
@@ -173,7 +173,7 @@ function Items({ children }: { children: ReactNode }) {
               <div className="selectAlignMenu">
                 <label onClick={handleDropdownView}>
                   <button>
-                    <span>{selectMenu}</span>
+                    <span> {orderBy === 'recent' ? '최신순' : '좋아요순'}</span>
                     {isDropdownView ? (
                       <img src={polygonoff} alt="메뉴 닫힘" />
                     ) : (

@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import App from '@/component/App.jsx';
+import App from '@/component/App';
 
 const rootElement = document.getElementById('root');
 

@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, ChangeEvent } from 'react';
-import { getDetailItems, getItemComment } from './service/api';
+import { getDetailItems, getItemComment } from '@/service/api';
 import { useParams, Link } from 'react-router-dom';
 import styles from '@/css/product.module.css';
 

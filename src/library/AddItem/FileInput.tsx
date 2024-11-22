@@ -8,7 +8,7 @@ interface FileInputProps {
 }
 
 function FileInput({ name, value, onChange }: FileInputProps) {
-  const [preview, setPreview] = useState<string | undefined>(undefined);
+  const [preview, setPreview] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   // 파일 삽입
@@ -33,7 +33,7 @@ function FileInput({ name, value, onChange }: FileInputProps) {
     setPreview(nextPreview);
 
     return () => {
-      setPreview(undefined);
+      setPreview(null);
       URL.revokeObjectURL(nextPreview);
     };
   }, [value]);

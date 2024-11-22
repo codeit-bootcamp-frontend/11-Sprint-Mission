@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": "src",
     "paths": {
       "@/*": ["*"]
     },
@@ -25,5 +25,5 @@
     "src/**/*", // src 폴더 내 모든 파일 포함
     "types/**/*" // types 폴더도 포함
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "build"]
 }
