@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ItemCard from "./ItemCard";
 import { getProducts } from "../../../api/itemApi";
+import styled from "styled-components";
 
 const getPageSize = () => {
 	const width = window.innerWidth;
@@ -9,6 +10,40 @@ const getPageSize = () => {
 	else if(width < 1280) return 2;
 	else return 4;
 };
+
+const BestItemsContainer = styled.div`
+  padding: 80px 5px 24px 5px;
+
+	@media (min-width: 768px) {
+		padding: 60px 5px 24px 5px;
+    margin-bottom: 40px;
+	}
+
+	@media (min-width: 1200px) {
+		padding: 60px 10px 24px 10px;
+	}
+`;
+
+const ItemsTitle = styled.h1`
+  font-size: 20px;
+  font-weight: bold;
+  line-height: normal;
+`;
+
+const BestItemsCard = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+	@media (min-width: 768px) {
+		display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+	}
+
+	@media (min-width: 1200px) {
+		grid-template-columns: repeat(4, 1fr);
+	}
+`;
 
 function BestItemsSection() {
 	const [itemList, setItemList] = useState([]);
@@ -34,16 +69,16 @@ function BestItemsSection() {
 	}, [pageSize]);
 
 	return (
-		<div className="bestItemsContainer">
-			<h1 className="itemsTitle">베스트 상품</h1>
+		<BestItemsContainer>
+			<ItemsTitle>베스트 상품</ItemsTitle>
 
-			<div className="bestItemsCard">
+			<BestItemsCard>
 				{itemList?.map((item) => (
 					<ItemCard item={item} key={`best-item-${item.id}`} />
 				))}
-			</div>
-		</div>
+			</BestItemsCard>
+		</BestItemsContainer>
 	);
 }
 
-export default BestItemsSection;
+export default BestItemsSection; 

@@ -1,4 +1,5 @@
-import React, { useEffect, useState,useCallback } from "react";
+import { useEffect, useState,useCallback } from "react";
+import styled from "styled-components";
 import { debounce } from 'lodash';
 import { getProducts } from "../../../api/itemApi";
 import { Link } from "react-router-dom";
@@ -15,6 +16,76 @@ const getPageSize = () => {
 	else if(width < 1280) return 6;
 	else return 12;
 };
+
+const AllItemsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  margin-bottom: 24px;
+  gap: 24px;
+	
+	@media (min-width: 768px) {
+		padding: 0 16px;
+    margin-bottom: 24px;
+    gap: 24px;
+	}
+`;
+
+const ItemsTitle = styled.h1`
+  font-size: 20px;
+  font-weight: bold;
+  line-height: normal;
+`;
+
+const SearchBar = styled.div`
+  display: flex;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  padding: 9px 16px;
+  flex: 1;
+  align-items: center;
+  max-width: 400px;
+
+  input {
+    border: none;
+    flex: 1;
+    background-color: inherit;
+    margin-left: 4px;
+    &:focus {
+      outline: none;
+    }
+  }
+
+	@media (min-width: 768px) {
+		max-width: 400px;
+	}
+`;
+
+const SortButton = styled.button`
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 14px;
+  cursor: pointer;
+`;
+
+const AllItemsCard = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 8px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 16px;
+  }
+
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 40px 24px;
+  }
+`;
 
 function AllItemsSection() {
 	const [pageSize, setPageSize] = useState(getPageSize());
@@ -66,34 +137,34 @@ function AllItemsSection() {
 
 	return (
 		<div>
-			<div className="allItemsContainer">
-				<h1 className="itemTitle">전체 상품</h1>
+			<AllItemsContainer>
+				<ItemsTitle>전체 상품</ItemsTitle>
 				<Link to="/additem" className="loginLink btn">상품 등록하기</Link>
-			</div>
+			</AllItemsContainer>
 
-			<div className="allItemsContainer">
-				<div className="searchBar">
+			<AllItemsContainer>
+				<SearchBar>
 					<SearchIcon />
 					<input 
 						className="searchBarInput" 
 						placeholder="검색할 상품을 입력해주세요"
 					/>
-				</div>
+				</SearchBar>
 				<div className="sort">
-					<button class="sortDropDownBtn" onClick={toggleDropDown}>
+					<SortButton onClick={toggleDropDown}>
 						<SortIcon />
-					</button>
+					</SortButton>
 					{isDropDown && (
 						<DropDownList onSortCard={handleSortCard} />
 					)}
 				</div>
-			</div>
+			</AllItemsContainer>
 
-			<div className="allItemsCard">
+			<AllItemsCard>
         {itemList?.map((item) => (
           <ItemCard item={item} key={`market-item-${item.id}`} />
         ))}
-			</div>
+			</AllItemsCard>
 
 			<div className="pagination">
 				<Pagination 
