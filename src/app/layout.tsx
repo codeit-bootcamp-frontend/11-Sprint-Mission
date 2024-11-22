@@ -1,3 +1,5 @@
+import '../styles/Reset.css';
+
 export default function RootLayout({
   children,
 }: {
