@@ -13,6 +13,11 @@ function ItemDetail() {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
+    if (!productId) {
+      console.error("Invalid product ID");
+      return;
+    }
+
     const fetchProduct = async () => {
       try {
         const productData = await fetchProductDetail(productId);
