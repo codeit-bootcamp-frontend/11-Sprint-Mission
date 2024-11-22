@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { getBoardsList, Article } from '../../hooks/api'; // API 가져오기
+import { getBoardsList, Article } from '../../hooks/api';
 
-const HomePage: React.FC = () => {
+interface BoardsPageProps {}
+
+const BoardsPage: React.FunctionComponent<BoardsPageProps> = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -115,4 +117,4 @@ const HomePage: React.FC = () => {
   );
 };
 
-export default HomePage;
+export default BoardsPage;
