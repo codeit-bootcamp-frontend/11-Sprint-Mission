@@ -2,10 +2,18 @@ import React, { useState } from "react";
 import InputField from "./InputField";
 import DeleteButton from "../../../components/DeleteButton";
 
-function InputTag({ tags, addTag, deleteTag }) {
-  const [tag, setTag] = useState("");
+interface InputTagProps {
+  tags: string[];
+  addTag: (tag: string) => void;
+  deleteTag: (tag: string) => void;
+}
 
-  const pressEnter = (e) => {
+function InputTag({ tags, addTag, deleteTag }: InputTagProps) {
+  const [tag, setTag] = useState<string>("");
+
+  const pressEnter = (
+    e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const tagText = tag.trim();
     if (e.key === "Enter" && tagText) {
       e.preventDefault();
@@ -13,6 +21,7 @@ function InputTag({ tags, addTag, deleteTag }) {
       setTag("");
     }
   };
+
   return (
     <div>
       <InputField

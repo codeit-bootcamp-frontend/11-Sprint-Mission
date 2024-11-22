@@ -1,32 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 import "./AddItemPage.css";
 import InputField from "./components/InputField";
 import ImageUpload from "./components/ImageUpload";
 import InputTag from "./components/InputTag";
 
 function AddItem() {
-  const [productName, setProductName] = useState("");
-  const [productIntroduction, setProductIntroduction] = useState("");
-  const [productPrice, setProductPrice] = useState("");
-  const [tags, setTags] = useState([]);
-  const [isFormValid, setIsFormValid] = useState(false);
+  const [productName, setProductName] = useState<string>("");
+  const [productIntroduction, setProductIntroduction] = useState<string>("");
+  const [productPrice, setProductPrice] = useState<string>("");
+  const [tags, setTags] = useState<string[]>([]);
+  const [isFormValid, setIsFormValid] = useState<boolean>(false);
 
-  const addTag = (newTag) => {
+  const addTag = (newTag: string) => {
     setTags([...tags, newTag]);
   };
 
-  const deleteTag = (deleteTag) => {
+  const deleteTag = (deleteTag: string) => {
     setTags(tags.filter((tag) => tag !== deleteTag));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent) => {
     // 임시 제출 기능
     e.preventDefault();
   };
 
   useEffect(() => {
     setIsFormValid(
-      productName && productIntroduction && productPrice && tags.length > 0
+      Boolean(
+        productName && productIntroduction && productPrice && tags.length > 0
+      )
     );
   }, [productName, productIntroduction, productPrice, tags]);
 

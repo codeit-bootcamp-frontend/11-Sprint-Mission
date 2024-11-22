@@ -1,24 +1,28 @@
-import React, { useRef, useState } from "react";
+import React, { ChangeEvent, useRef, useState } from "react";
 import { ReactComponent as PlusImg } from "../../../images/icons/plusimg.svg";
 import DeleteButton from "../../../components/DeleteButton";
 
-function ImageUpload({ title }) {
-  const [preview, setPreview] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const fileInput = useRef(null);
+interface ImageUploadProps {
+  title: string;
+}
+
+function ImageUpload({ title }: ImageUploadProps) {
+  const [preview, setPreview] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  const fileInput = useRef<HTMLInputElement | null>(null);
   const inputId = "image-upload";
 
-  const handleButtonClick = (e) => {
+  const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (preview) {
       setErrorMessage("*이미지 등록은 최대 1개까지 가능합니다.");
-    } else {
+    } else if (fileInput.current) {
       fileInput.current.click();
     }
   };
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
+  const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
     if (file && file.type.startsWith("image/")) {
       const prevUrl = URL.createObjectURL(file);
       setPreview(prevUrl);
@@ -31,7 +35,9 @@ function ImageUpload({ title }) {
   const handleImageDelete = () => {
     setPreview("");
     setErrorMessage("");
-    fileInput.current.value = "";
+    if (fileInput.current) {
+      fileInput.current.value = "";
+    }
   };
 
   return (
