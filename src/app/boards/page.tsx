@@ -9,6 +9,7 @@ const HomePage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [sortOrder, setSortOrder] = useState<string>('latest');
   const [bestArticles, setBestArticles] = useState<Article[]>([]);
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -33,16 +34,21 @@ const HomePage: React.FC = () => {
     fetchArticles();
   }, []);
 
-  // 드롭다운 정렬
-  const sortedArticles = articles.sort((a, b) => {
-    if (sortOrder === 'latest') {
-      return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
-    }
-    if (sortOrder === 'likes') {
-      return b.likeCount - a.likeCount;
-    }
-    return 0;
-  });
+  // 검색 및 드롭다운 정렬
+  const sortedArticles = articles
+    .filter((article) => article.title.includes(searchQuery)) //검색기능
+    //정렬
+    .sort((a, b) => {
+      if (sortOrder === 'latest') {
+        return (
+          new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
+        );
+      }
+      if (sortOrder === 'likes') {
+        return b.likeCount - a.likeCount;
+      }
+      return 0;
+    });
 
   if (loading) return <p>데이터 로딩중.......</p>;
 
@@ -68,7 +74,14 @@ const HomePage: React.FC = () => {
         </ul>
       </div>
 
-      {/* 정렬 기준 드롭다운 */}
+      {/* 상품 검색 */}
+      <input
+        placeholder="검색할 상품을 입력해주세요"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+
+      {/* 드롭다운 */}
       <div style={{ marginBottom: '20px' }}>
         <label htmlFor="sortOrder">정렬 기준: </label>
         <select
