@@ -14,10 +14,10 @@ import { Comment } from '../types/Comment';
 function ProductComment() {
   const [comments, setComments] = useState<Comment[]>([]);
   const { productId } = useParams();
-  const numericProductId = Number(productId);
+  const productIdNumber = Number(productId);
 
   useEffect(() => {
-    if (!numericProductId) {
+    if (!productIdNumber) {
       console.log(
         '유효하지 않은 상품ID입니다. 댓글 데이터를 가져올 수 없습니다.'
       );
@@ -25,7 +25,7 @@ function ProductComment() {
     }
     const fetchComments = async () => {
       try {
-        const data: Comment[] = await getComments(numericProductId);
+        const data: Comment[] = await getComments(productIdNumber);
         setComments(data);
       } catch (err) {
         if (err instanceof Error) {
@@ -35,12 +35,12 @@ function ProductComment() {
     };
 
     fetchComments();
-  }, [numericProductId]);
+  }, [productIdNumber]);
 
   // 댓글 추가
   const handleAddComment = async (newContent: string) => {
     try {
-      const newComment = await addComment(numericProductId, newContent);
+      const newComment = await addComment(productIdNumber, newContent);
       setComments([newComment, ...comments]);
     } catch (err) {
       if (err instanceof Error) {

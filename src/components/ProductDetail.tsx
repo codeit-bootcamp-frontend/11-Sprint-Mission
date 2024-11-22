@@ -1,27 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProductDetails } from '../api/ProductAPI';
+import { Product } from '../types/Product';
 import './ProductDetail.css';
 import UserProfile from './UserProfile';
 import heartImg from '../image/heart-img.png';
 
 function ProductDetail() {
   const { productId } = useParams();
-  const [product, setProduct] = useState(null);
-  const [error, setError] = useState(null);
+  const [product, setProduct] = useState<Product | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const productIdNumber = Number(productId);
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const data = await getProductDetails(productId);
+        const data = await getProductDetails(productIdNumber);
         setProduct(data);
       } catch (err) {
-        setError(err.message);
+        if (err instanceof Error) {
+          setError(err.message);
+        }
       }
     };
 
     fetchProduct();
-  }, [productId]);
+  }, [productIdNumber]);
 
   if (error) return <div>Error: {error}</div>;
   if (!product) return <div>Loading...</div>;
