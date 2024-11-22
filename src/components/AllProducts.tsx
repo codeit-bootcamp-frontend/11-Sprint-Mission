@@ -1,7 +1,19 @@
 import ProductCard from './ProductCard';
 import './ProductCard.css';
 
-function AllProducts({ products }) {
+type Product = {
+  id: number;
+  name: string;
+  price: number;
+  images: string[];
+  favoriteCount: number;
+};
+
+type AllProductsProps = {
+  products: Product[];
+};
+
+function AllProducts({ products }: AllProductsProps) {
   return (
     <div className="product-list all-products">
       {products.map((product) => (
