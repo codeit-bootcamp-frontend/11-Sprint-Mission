@@ -19,7 +19,7 @@ function Header() {
             <Image className={styles.logoimage} src={logoImg} alt="logoImg" />
           </div>
           <nav className={styles.nav}>
-            <Link href="/">
+            <Link href="/boards">
               <div>자유게시판</div>
             </Link>
             <Link href="/items">

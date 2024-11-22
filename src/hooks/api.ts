@@ -145,7 +145,7 @@ export async function getComments(
 //자유게시판 게시글 불러오는 api
 export async function getBoardsList(
   page: number = 1,
-  pageSize: number = 10,
+  pageSize: number = 100,
   orderBy: string = 'like'
 ): Promise<Article[]> {
   const apiUrl = `${baseUrl}/articles?page=${page}&pageSize=${pageSize}&orderBy=${orderBy}`;

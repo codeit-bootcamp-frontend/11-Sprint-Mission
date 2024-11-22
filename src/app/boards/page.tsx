@@ -7,6 +7,7 @@ const HomePage: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [sortOrder, setSortOrder] = useState<string>('latest'); // 정렬 기준 상태
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -24,12 +25,36 @@ const HomePage: React.FC = () => {
     fetchArticles();
   }, []);
 
+  // 드롭다운 정렬
+  const sortedArticles = articles.sort((a, b) => {
+    if (sortOrder === 'latest') {
+      return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
+    }
+    if (sortOrder === 'likes') {
+      return b.likeCount - a.likeCount;
+    }
+    return 0;
+  });
+
   if (loading) return <p>데이터 로딩중.......</p>;
 
   return (
     <div>
+      {/* 드롭다운 */}
+      <div style={{ marginBottom: '20px' }}>
+        <select
+          id="sortOrder"
+          value={sortOrder}
+          onChange={(e) => setSortOrder(e.target.value)}
+        >
+          <option value="latest">최신순</option>
+          <option value="likes">좋아요순</option>
+        </select>
+      </div>
+
+      {/* 게시글 */}
       <ul>
-        {articles.map((article) => (
+        {sortedArticles.map((article) => (
           <li key={article.id}>
             <h2>{article.title}</h2>
             <p>{article.content}</p>

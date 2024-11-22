@@ -38,11 +38,6 @@
       "static/chunks/main-app.js",
       "static/css/app/items/[productId]/page.css",
       "static/chunks/app/items/[productId]/page.js"
-    ],
-    "/_not-found/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
     ]
   }
 }
