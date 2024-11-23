@@ -71,6 +71,10 @@
   border: none;
 }
 
+.PostSearchField input::placeholder {
+  color: var(--gray-400);
+}
+
 .PostSearchField input:focus-visible {
   outline: none;
 }
@@ -79,11 +83,12 @@
   outline: 2px solid var(--blue);
 }
 
-.PostOrderBySelect {
+.OrderByDropdown {
   position: relative;
+  user-select: none;
 }
 
-.PostOrderBySelect .body {
+.OrderByDropdown .select {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -96,33 +101,32 @@
   line-height: 26px;
 }
 
-.PostOrderBySelect .image {
+.OrderByDropdown .image {
   position: relative;
   width: 24px;
   height: 24px;
 }
 
-.PostOrderBySelect .wrap {
-  display: none;
+.OrderByDropdown .wrap {
   position: absolute;
   left: 0;
   bottom: -92px;
   z-index: 10;
 }
 
-.PostOrderBySelect .option {
+.OrderByDropdown .option {
   padding: 10px 42px;
   border: 1px solid var(--gray-300);
   background-color: #ffffff;
 }
 
-.PostOrderBySelect .option:first-of-type {
+.OrderByDropdown .option:first-of-type {
   border-bottom: none;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
 
-.PostOrderBySelect .option:last-of-type {
+.OrderByDropdown .option:last-of-type {
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
 }

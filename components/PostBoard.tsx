@@ -1,8 +1,27 @@
 import { Article, ArticleList } from "@/types/Article";
 import Image from "next/image";
 import styles from "./PostBoard.module.css";
+import { useEffect, useRef, useState } from "react";
 
 export default function PostBoard({ articles }: { articles: ArticleList }) {
+  const [selectedDropdown, setSelecedDropdown] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const handleClickDropdown = () => setSelecedDropdown((prev) => !prev);
+
+  useEffect(() => {
+    const handleClickDropdownOutside = (event: MouseEvent) => {
+      if (!dropdownRef.current) return;
+      if (dropdownRef.current.contains(event.target as Node)) return;
+      setSelecedDropdown(false);
+    };
+
+    document.addEventListener("click", handleClickDropdownOutside);
+
+    return () =>
+      document.removeEventListener("click", handleClickDropdownOutside);
+  }, []);
+
   return (
     <div className={styles.Board}>
       <header className={styles.BoardHeader}>
@@ -13,11 +32,7 @@ export default function PostBoard({ articles }: { articles: ArticleList }) {
         <form className={styles.PostSearchFrom}>
           <fieldset className={styles.PostSearchField}>
             <label htmlFor="search">
-              <Image
-                fill
-                src="/images/ic_search.svg"
-                alt="겅색할 상품을 입력해주세요"
-              />
+              <Image fill src="/images/ic_search.svg" alt="겅색" />
             </label>
             <input
               id="search"
@@ -26,21 +41,27 @@ export default function PostBoard({ articles }: { articles: ArticleList }) {
             />
           </fieldset>
         </form>
-        <div className={styles.PostOrderBySelect}>
-          <div className={styles.body}>
+        <div
+          className={styles.OrderByDropdown}
+          onClick={handleClickDropdown}
+          ref={dropdownRef}
+        >
+          <div className={styles.select}>
             <span>최신순</span>
             <div className={styles.image}>
               <Image fill src="/images/ic_arrow_down.svg" alt="정렬" />
             </div>
           </div>
-          <div className={styles.wrap}>
-            <div className={styles.option} data-option="recent">
-              최신순
+          {selectedDropdown && (
+            <div className={styles.wrap}>
+              <div className={styles.option} data-option="recent">
+                최신순
+              </div>
+              <div className={styles.option} data-option="like">
+                인기순
+              </div>
             </div>
-            <div className={styles.option} data-option="like">
-              인기순
-            </div>
-          </div>
+          )}
         </div>
       </div>
       <div className={styles.BoardItemList}>
