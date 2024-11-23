@@ -17,21 +17,8 @@ const PAGE_SIZE = {
   mobile: 1,
 };
 
-export default function BestPostBoard({
-  articles: initArticles,
-}: {
-  articles: ArticleList;
-}) {
-  const [articles, setArticles] = useState(initArticles);
+export default function BestPostBoard({ articles }: { articles: ArticleList }) {
   const deviceType = useDeviceType();
-
-  useEffect(() => {
-    const fetchArticles = async () => {
-      const data = await getArticleList(DEFAULT_PARAMS);
-      setArticles(data);
-    };
-    fetchArticles();
-  }, []);
 
   return (
     <div className={styles.Board}>
