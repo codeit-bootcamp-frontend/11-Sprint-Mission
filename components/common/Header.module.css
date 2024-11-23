@@ -70,6 +70,7 @@
     display: block;
     width: 81px;
     height: 40px;
+    object-fit: contain;
   }
 
   .textBox {

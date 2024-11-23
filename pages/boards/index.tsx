@@ -7,9 +7,9 @@ const Article = () => {
   const [bestArticles, setBestArticles] = useState([]);
   const [articles, setArticles] = useState([]);
   const [orderBy, setOrderBy] = useState("recent");
-  const [pageSize, setPageSize] = useState(getPageSize(window.innerWidth));
+  const [pageSize, setPageSize] = useState<number | null>(null);
 
-  function getPageSize(width: number) {
+  function getPageSize(width: number): number {
     // 윈도우 크기에 따라 pageSize 계산하는 함수
     if (width > 744) {
       return 3;
@@ -25,7 +25,7 @@ const Article = () => {
     const handleResize = () => {
       setPageSize(getPageSize(window.innerWidth));
     };
-
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -33,6 +33,12 @@ const Article = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    if (pageSize !== null) {
+      getBestArticles();
+    }
+  }, [pageSize]);
 
   async function getBestArticles() {
     try {
@@ -45,10 +51,6 @@ const Article = () => {
       console.error("데이터를 불러오는데 실패했습니다:", error);
     }
   }
-
-  useEffect(() => {
-    getBestArticles();
-  }, [pageSize]);
 
   useEffect(() => {
     getArticles();
@@ -68,8 +70,8 @@ const Article = () => {
 
   return (
     <div>
-      <BestBoardList />
-      <BoardList />
+      <BestBoardList bestArticles={bestArticles} />
+      <BoardList articles={articles} />
     </div>
   );
 };

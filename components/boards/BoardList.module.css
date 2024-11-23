@@ -1,0 +1,222 @@
+.boardListContainer {
+  width: 62%;
+  margin: 0 auto;
+}
+
+.titleBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  color: #1f2937;
+}
+
+.writeButton {
+  border-radius: 8px;
+  padding: 12px 23px;
+  background-color: #3692ff;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+}
+
+.searchBox {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.searchBar {
+  flex-grow: 1;
+  flex-shrink: 1;
+  height: 42px;
+  border: none;
+  border-radius: 12px;
+  padding: 9px 20px 9px 44px;
+  background-color: #f3f4f6;
+  background-image: url("/images/searchIcon.png");
+  background-repeat: no-repeat;
+  background-position: left 16px center;
+  background-size: 20px;
+}
+
+.orderBySelect {
+  flex-shrink: 0;
+  width: 130px;
+  height: 42px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 10px 20px;
+  gap: 10px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #1f2937;
+}
+
+.option {
+  font-weight: 400;
+  font-size: 16px;
+  color: #1f2937;
+}
+
+.sortIcon {
+  display: none;
+}
+
+.articleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.articleBox {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #e5e7eb;
+  height: 138px;
+  background-color: #fcfcfc;
+}
+
+.articleTitleBox {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.articleTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 32px;
+  color: #1f2937;
+  margin: 0;
+}
+
+.productImg {
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+  border: 1px solid #f3f4f6;
+  object-fit: contain;
+}
+
+.infoBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.userInfoBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.userProfile {
+  width: 24px;
+  height: 24px;
+}
+
+.userNickname {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #4b5563;
+}
+
+.date {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #9ca3af;
+}
+
+.likeCountBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.heart {
+  width: 24px;
+  height: 24px;
+}
+
+.likeCount {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: #6b7280;
+}
+
+/* 반응형 - Tablet */
+@media screen and (max-width: 744px) {
+  .boardListContainer {
+    width: 100%;
+    padding: 0 24px;
+  }
+
+  .titleBox {
+    margin-bottom: 48px;
+  }
+
+  .searchBox {
+    gap: 6px;
+    margin-bottom: 40px;
+  }
+}
+
+/* 반응형 - Mobile */
+@media screen and (max-width: 376px) {
+  .boardListContainer {
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .titleBox {
+    margin-bottom: 16px;
+  }
+
+  .title {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .searchBox {
+    gap: 13px;
+    margin-bottom: 16px;
+  }
+
+  .orderBySelect {
+    display: none;
+  }
+
+  .option {
+    font-weight: 400;
+    font-size: 16px;
+    color: #1f2937;
+  }
+
+  .sortIcon {
+    display: block;
+  }
+
+  .articleBox {
+    height: 136px;
+  }
+
+  .articleTitle {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
