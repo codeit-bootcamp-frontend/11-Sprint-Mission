@@ -1,26 +1,58 @@
-import { Article, ArticleList } from "@/types/Article";
+import { Article, ArticleList } from "@/types/Article.type";
 import Image from "next/image";
 import styles from "./PostBoard.module.css";
 import { useEffect, useRef, useState } from "react";
+import { getArticleList, GetArticleListParams } from "@/lib/article.api";
 
-export default function PostBoard({ articles }: { articles: ArticleList }) {
+const DEFAULT_ARTICLE_LIST: ArticleList = {
+  totalCount: 0,
+  list: [],
+};
+
+const DEFAULT_PARAMS: GetArticleListParams = {
+  page: 1,
+  pageSize: 10,
+  orderBy: "recent",
+};
+
+export default function PostBoard() {
+  const [articles, setArticles] = useState(DEFAULT_ARTICLE_LIST);
+  const [params, setParams] = useState(DEFAULT_PARAMS);
   const [selectedDropdown, setSelecedDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleClickDropdown = () => setSelecedDropdown((prev) => !prev);
 
+  const handleClickOption = (event: MouseEvent) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+    if (!target.dataset.option) return;
+    setParams((prev) => {
+      return {
+        ...prev,
+        orderBy: target.dataset.option as "recent" | "like",
+      };
+    });
+  };
+
+  const handleClickDropdownOutside = (event: MouseEvent) => {
+    if (!dropdownRef.current) return;
+    if (dropdownRef.current.contains(event.target as Node)) return;
+    setSelecedDropdown(false);
+  };
+
   useEffect(() => {
-    const handleClickDropdownOutside = (event: MouseEvent) => {
-      if (!dropdownRef.current) return;
-      if (dropdownRef.current.contains(event.target as Node)) return;
-      setSelecedDropdown(false);
+    const fetchArticles = async () => {
+      const data = await getArticleList(params);
+      setArticles(data);
     };
+    fetchArticles();
 
     document.addEventListener("click", handleClickDropdownOutside);
 
     return () =>
       document.removeEventListener("click", handleClickDropdownOutside);
-  }, []);
+  }, [params]);
 
   return (
     <div className={styles.Board}>
@@ -32,7 +64,7 @@ export default function PostBoard({ articles }: { articles: ArticleList }) {
         <form className={styles.PostSearchFrom}>
           <fieldset className={styles.PostSearchField}>
             <label htmlFor="search">
-              <Image fill src="/images/ic_search.svg" alt="겅색" />
+              <Image fill src="/images/ic_search.svg" alt="검색" />
             </label>
             <input
               id="search"
@@ -53,7 +85,7 @@ export default function PostBoard({ articles }: { articles: ArticleList }) {
             </div>
           </div>
           {selectedDropdown && (
-            <div className={styles.wrap}>
+            <div className={styles.wrap} onClick={handleClickOption}>
               <div className={styles.option} data-option="recent">
                 최신순
               </div>

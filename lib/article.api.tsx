@@ -1,4 +1,4 @@
-import { ArticleList } from "@/types/Article";
+import { ArticleList } from "@/types/Article.type";
 import axios from "./axios";
 
 interface GetArticleListParams {
@@ -26,3 +26,4 @@ async function getArticleList({
 }
 
 export { getArticleList };
+export type { GetArticleListParams };
