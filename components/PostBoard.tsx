@@ -19,6 +19,7 @@ const DEFAULT_PARAMS: GetArticleListParams = {
 export default function PostBoard() {
   const [articles, setArticles] = useState(DEFAULT_ARTICLE_LIST);
   const [params, setParams] = useState(DEFAULT_PARAMS);
+  const [keyword, setKeyword] = useState("");
   const [selectedDropdown, setSelecedDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -42,6 +43,22 @@ export default function PostBoard() {
     setSelecedDropdown(false);
   };
 
+  const handleChangeKeyword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!(event.target instanceof HTMLElement)) return;
+    setKeyword(event.target.value.trim());
+  };
+
+  const handleSubmitSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!(event.target instanceof HTMLElement)) return;
+    setParams((prev) => {
+      return {
+        ...prev,
+        keyword: keyword,
+      };
+    });
+  };
+
   useEffect(() => {
     const fetchArticles = async () => {
       const data = await getArticleList(params);
@@ -62,7 +79,7 @@ export default function PostBoard() {
         <button className={styles.BoardBlueButton}>글쓰기</button>
       </header>
       <div className={styles.BoardUtil}>
-        <form className={styles.PostSearchFrom}>
+        <form className={styles.PostSearchFrom} onSubmit={handleSubmitSearch}>
           <fieldset className={styles.PostSearchField}>
             <label htmlFor="search">
               <Image fill src="/images/ic_search.svg" alt="검색" />
@@ -71,6 +88,7 @@ export default function PostBoard() {
               id="search"
               type="text"
               placeholder="검색할 상품을 입력해주세요"
+              onChange={handleChangeKeyword}
             />
           </fieldset>
         </form>
