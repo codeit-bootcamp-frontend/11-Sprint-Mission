@@ -1,0 +1,188 @@
+.Board {
+  width: 1200px;
+  margin: auto;
+}
+
+.BoardHeader {
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.BoardTitle {
+  flex-grow: 1;
+  font-size: 20px;
+  line-height: 32px;
+  color: var(--gray-800);
+}
+
+.BoardItemList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.BoardBlueButton {
+  padding: 12px 23px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--blue);
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.BoardBlueButton:hover {
+  background-color: var(--blue-hover);
+}
+
+.BoardBlueButton:active {
+  background-color: var(--blue-active);
+}
+
+.BoardUtil {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.PostSearchFrom {
+  flex-grow: 1;
+}
+
+.PostSearchField {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 9px 20px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--gray-200);
+}
+
+.PostSearchField label {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.PostSearchField input {
+  flex-grow: 1;
+  background-color: inherit;
+  border: none;
+}
+
+.PostSearchField input:focus-visible {
+  outline: none;
+}
+
+.PostSearchField:focus-within {
+  outline: 2px solid var(--blue);
+}
+
+.PostOrderBySelect {
+  position: relative;
+}
+
+.PostOrderBySelect .body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 130px;
+  height: 42px;
+  border: 1px solid var(--gray-300);
+  border-radius: 12px;
+  color: var(--gray-800);
+  line-height: 26px;
+}
+
+.PostOrderBySelect .image {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.PostOrderBySelect .wrap {
+  display: none;
+  position: absolute;
+  left: 0;
+  bottom: -92px;
+  z-index: 10;
+}
+
+.PostOrderBySelect .option {
+  padding: 10px 42px;
+  border: 1px solid var(--gray-300);
+  background-color: #ffffff;
+}
+
+.PostOrderBySelect .option:first-of-type {
+  border-bottom: none;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.PostOrderBySelect .option:last-of-type {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.Item {
+  background-color: #fcfcfc;
+  padding-bottom: 24px;
+  border-bottom: 2px solid #e8eaed;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ItemContent {
+  display: flex;
+}
+
+.ItemTitle {
+  flex-grow: 1;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  color: var(--gray-800);
+}
+
+.ItemPreview {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border: 1px solid var(--gray-100);
+  border-radius: 8px;
+}
+
+.ItemInfo {
+  display: flex;
+}
+
+.ItemInfo .wrap {
+  display: flex;
+  gap: 8px;
+}
+
+.ItemInfo .wrap:first-of-type {
+  display: flex;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.ItemInfo .image {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.ItemWriter {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.ItemLikeCount {
+  width: 50px;
+  text-align: end;
+}
