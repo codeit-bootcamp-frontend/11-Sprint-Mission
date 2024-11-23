@@ -2,6 +2,68 @@ import styled from "styled-components";
 import LikeBtn from "./LikeBtn";
 import { ReactComponent as UserProfileIcon } from "../../../assets/images/icons/ic_profile.svg";
 
+interface Product {
+  createdAt: Date;
+  updatedAt: string;
+  favoriteCount: number;
+  ownerId: number;
+  ownerNickname: string; 
+  images: string[];
+  tags: string[];
+  price: number;
+  description: string;
+  name: string;
+  id: number;
+  isFavorite: boolean;
+}
+
+interface ItemProfileProps {
+  product: Product;
+}
+
+const ItemProfile: React.FC<ItemProfileProps> = ({ product }) => {
+	return (
+		<Container>
+			<ItemImgSection>
+				<img src={product.images[0]} alt={`${product.name}`} />
+			</ItemImgSection>
+
+			<ItemDetailSection>
+				<Title>{product.name}</Title>
+				<Price>{product.price.toLocaleString()}원</Price>
+
+				<Line />
+
+				<SubHeadding>상품 소개</SubHeadding>
+				<Description>{product.description}</Description>
+
+				<SubHeadding>상품 태그</SubHeadding>
+				<Tag>
+          {product.tags.map((tag, index) => (
+            <span key={`tag-display-${index}`}>#{tag}</span>
+          ))}
+        </Tag>
+
+				<ButtomSection>
+					<UserProfile>
+						<UserProfileIcon />
+						<UserInfo>
+            	<Username>{product.ownerNickname}</Username>
+            	<Timestamp>{product.updatedAt.split("T")[0]}</Timestamp>
+          	</UserInfo>
+					</UserProfile>
+
+					<LikeBtn
+						productId={product.id}
+						isFavorite={product.isFavorite}
+						favoriteCount={product.favoriteCount}
+					/>
+				</ButtomSection>
+			</ItemDetailSection>
+		</Container>
+	)
+}
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -130,67 +192,5 @@ const Timestamp = styled.span`
   color: #9CA3AF;
   font-size: 12px;
 `;
-
-interface Product {
-  createdAt: Date;
-  updatedAt: string;
-  favoriteCount: number;
-  ownerId: number;
-  ownerNickname: string; 
-  images: string[];
-  tags: string[];
-  price: number;
-  description: string;
-  name: string;
-  id: number;
-  isFavorite: boolean;
-}
-
-interface ItemProfileProps {
-  product: Product;
-}
-
-const ItemProfile: React.FC<ItemProfileProps> = ({ product }) => {
-	return (
-		<Container>
-			<ItemImgSection>
-				<img src={product.images[0]} alt={`${product.name}`} />
-			</ItemImgSection>
-
-			<ItemDetailSection>
-				<Title>{product.name}</Title>
-				<Price>{product.price.toLocaleString()}원</Price>
-
-				<Line />
-
-				<SubHeadding>상품 소개</SubHeadding>
-				<Description>{product.description}</Description>
-
-				<SubHeadding>상품 태그</SubHeadding>
-				<Tag>
-          {product.tags.map((tag, index) => (
-            <span key={`tag-display-${index}`}>#{tag}</span>
-          ))}
-        </Tag>
-
-				<ButtomSection>
-					<UserProfile>
-						<UserProfileIcon />
-						<UserInfo>
-            	<Username>{product.ownerNickname}</Username>
-            	<Timestamp>{product.updatedAt.split("T")[0]}</Timestamp>
-          	</UserInfo>
-					</UserProfile>
-
-					<LikeBtn
-						productId={product.id}
-						isFavorite={product.isFavorite}
-						favoriteCount={product.favoriteCount}
-					/>
-				</ButtomSection>
-			</ItemDetailSection>
-		</Container>
-	)
-}
 
 export default ItemProfile;

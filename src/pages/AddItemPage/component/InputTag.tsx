@@ -3,41 +3,6 @@ import styled from "styled-components";
 import InputItem from "./InputItem";
 import { ReactComponent as DelIcon } from "../../../assets/images/icons/ic_del.svg";
 
-const TagSection = styled.div`
-  display: flex;
-  gap: 12px;
-  margin-top: 12px;
-`;
-
-const Tag = styled.div`
-	display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #F9FAFB;
-  color: #1F2937;
-  padding: 14px 14px 14px 16px;
-  border-radius: 999px;
-  min-width: 100px;
-`;
-
-const TagText = styled.span`
-  font-size: 16px;
-  line-height: 24px;
-  margin-right: 8px;
-  overflow: hidden;
-  white-space: nowrap;
-`;
-
-const DeleteBtn = styled.button`
-  background-color: #9CA3AF;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 interface InputTagProps {
   tags: string[];
   onAddTag: (tag: string) => void;
@@ -86,5 +51,40 @@ const InputTag: React.FC<InputTagProps> = ({ tags, onAddTag, onRemoveTag }) => {
 		</div>
 	)
 }
+
+const TagSection = styled.div`
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+`;
+
+const Tag = styled.div`
+	display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F9FAFB;
+  color: #1F2937;
+  padding: 14px 14px 14px 16px;
+  border-radius: 999px;
+  min-width: 100px;
+`;
+
+const TagText = styled.span`
+  font-size: 16px;
+  line-height: 24px;
+  margin-right: 8px;
+  overflow: hidden;
+  white-space: nowrap;
+`;
+
+const DeleteBtn = styled.button`
+  background-color: #9CA3AF;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default InputTag;

@@ -3,6 +3,58 @@ import styled from "styled-components";
 import { ReactComponent as AddIcon } from "../../../assets/images/icons/ic_add.svg";
 import { ReactComponent as DelIcon } from "../../../assets/images/icons/ic_del.svg";
 
+interface ImgUploadProps {
+  title: string;
+}
+
+const ImgUpload: React.FC<ImgUploadProps> = ({ title }) => {
+  const [imgPreviewUrl, setImgPreviewUrl] = useState("");
+
+  const handleImgChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file= e.target.files?.[0];
+
+    if(file) {
+      const imgUrl = URL.createObjectURL(file);
+      setImgPreviewUrl(imgUrl);
+    }
+  }
+
+  const handleDelete = () => {
+    setImgPreviewUrl(""); // 미리보기 URL 리셋
+  };
+
+	return (
+		<div>
+			{title && <Label>{title}</Label>}
+      <ImgUploadContainer>
+        <UploadLabel htmlFor="img-upload">
+          <AddIcon />
+          이미지 등록
+        </UploadLabel>
+
+        <HiddenFileInput
+          id="img-upload"
+          type="file"
+          onChange={handleImgChange}
+          accept="image/*"
+        />
+
+        {imgPreviewUrl && (
+          <ImgPreview src={imgPreviewUrl}>
+            <DeleteBtnSection>
+              <DeleteBtn onClick={handleDelete}>
+                <DelIcon />
+              </DeleteBtn>
+            </DeleteBtnSection>
+          </ImgPreview>
+        )}
+      </ImgUploadContainer>
+
+
+		</div>
+	);
+}
+
 const Label = styled.label`
   display: block;
   font-size: 14px;
@@ -67,57 +119,5 @@ const DeleteBtn = styled.button`
   justify-content: center;
   align-items: center;
 `;
-
-interface ImgUploadProps {
-  title: string;
-}
-
-const ImgUpload: React.FC<ImgUploadProps> = ({ title }) => {
-  const [imgPreviewUrl, setImgPreviewUrl] = useState("");
-
-  const handleImgChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const file= e.target.files?.[0];
-
-    if(file) {
-      const imgUrl = URL.createObjectURL(file);
-      setImgPreviewUrl(imgUrl);
-    }
-  }
-
-  const handleDelete = () => {
-    setImgPreviewUrl(""); // 미리보기 URL 리셋
-  };
-
-	return (
-		<div>
-			{title && <Label>{title}</Label>}
-      <ImgUploadContainer>
-        <UploadLabel htmlFor="img-upload">
-          <AddIcon />
-          이미지 등록
-        </UploadLabel>
-
-        <HiddenFileInput
-          id="img-upload"
-          type="file"
-          onChange={handleImgChange}
-          accept="image/*"
-        />
-
-        {imgPreviewUrl && (
-          <ImgPreview src={imgPreviewUrl}>
-            <DeleteBtnSection>
-              <DeleteBtn onClick={handleDelete}>
-                <DelIcon />
-              </DeleteBtn>
-            </DeleteBtnSection>
-          </ImgPreview>
-        )}
-      </ImgUploadContainer>
-
-
-		</div>
-	);
-}
 
 export default ImgUpload;

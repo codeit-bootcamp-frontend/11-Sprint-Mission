@@ -4,60 +4,6 @@ import ImgUpload from "./component/ImgUpload";
 import InputItem from "./component/InputItem";
 import InputTag from "./component/InputTag";
 
-const Container = styled.div`
-  padding: 70px;
-  @media (min-width: 1200px) {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-`;
-
-const TitleSection = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-`;
-
-const Title = styled.h1`
-  font-size: 20px;
-  font-weight: bold;
-  color: black;
-  @media (min-width: 768px) {
-    font-size: 28px;
-  }
-`; 
-
-const Btn = styled.button`
-  background-color: #3692ff;
-  color: white;
-  padding: 11.5px 23px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  &:hover {
-    background-color: #1967d6;
-  }
-  &:focus {
-    background-color: #1251aa;
-  }
-  &:disabled {
-    background-color: #9ca3af;
-    cursor: default;
-    pointer-events: none;
-  }
-`;
-
-const InputSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  @media (min-width: 768px) {
-    gap: 24px;
-  }
-`;
-
 const AddItemPage: React.FC = () => {
   const [name, setName] = useState<string>("");
   const [description, setDescription] = useState<string>("");
@@ -117,5 +63,59 @@ const AddItemPage: React.FC = () => {
     </Container>
   );
 };
+
+const Container = styled.div`
+  padding: 70px;
+  @media (min-width: 1200px) {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+`;
+
+const TitleSection = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+`;
+
+const Title = styled.h1`
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  @media (min-width: 768px) {
+    font-size: 28px;
+  }
+`; 
+
+const Btn = styled.button`
+  background-color: #3692ff;
+  color: white;
+  padding: 11.5px 23px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  &:hover {
+    background-color: #1967d6;
+  }
+  &:focus {
+    background-color: #1251aa;
+  }
+  &:disabled {
+    background-color: #9ca3af;
+    cursor: default;
+    pointer-events: none;
+  }
+`;
+
+const InputSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  @media (min-width: 768px) {
+    gap: 24px;
+  }
+`;
 
 export default AddItemPage;

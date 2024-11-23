@@ -8,15 +8,12 @@ export async function getProducts(params = {}) {
       `${API_BASE_URL}/products?${query}`
     );
 
-    if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
-    }
-
+    if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+    
     const body = await response.json();
 
     return body;
-  } 
-	catch (error) {
+  } catch (error) {
     console.error("Failed to fetch products:", error);
     throw error;
   }
@@ -28,15 +25,12 @@ export async function getProductDetail(productId) {
       `${API_BASE_URL}/products/${productId}`
     );
 
-    if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
-    }
+    if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
 
     const body = await response.json();
 
     return body;
-  } 
-  catch (error) {
+  } catch (error) {
     console.error("Failed to fetch product detail:", error);
     throw error;
   }
@@ -48,9 +42,8 @@ export async function getProductComments({ productId, params }) {
     const response = await fetch(
       `${API_BASE_URL}/products/${productId}/comments?${query}`
     );
-    if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
-    }
+
+    if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
     const body = await response.json();
     return body;
   } catch (error) {

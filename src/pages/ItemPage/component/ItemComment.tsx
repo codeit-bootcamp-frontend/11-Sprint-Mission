@@ -2,6 +2,36 @@ import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
 import CommentList from "./CommentList";
 
+interface ItemCommentProps {
+	productId: number;
+}
+
+const ItemComment: React.FC<ItemCommentProps> = ({ productId, }) => {
+	const [comment, setComment] = useState("");
+
+	const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+		setComment(e.target.value);
+	};
+
+	return (
+		<>
+			<CommentInputSection>
+				<Title>문의하기</Title>
+
+				<TextSection 
+					placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
+					value={comment}
+					onChange={handleInputChange}
+				/>
+
+				<PostCommentBtn disabled={!comment.trim()}>등록</PostCommentBtn>
+			</CommentInputSection>
+
+			<CommentList productId={productId}/>
+		</>
+	)
+}
+
 const CommentInputSection = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -56,35 +86,5 @@ const PostCommentBtn = styled.button`
     font-size: 16px;
   }
 `;
-
-interface ItemCommentProps {
-	productId: number;
-}
-
-const ItemComment: React.FC<ItemCommentProps> = ({ productId, }) => {
-	const [comment, setComment] = useState("");
-
-	const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-		setComment(e.target.value);
-	};
-
-	return (
-		<>
-			<CommentInputSection>
-				<Title>문의하기</Title>
-
-				<TextSection 
-					placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
-					value={comment}
-					onChange={handleInputChange}
-				/>
-
-				<PostCommentBtn disabled={!comment.trim()}>등록</PostCommentBtn>
-			</CommentInputSection>
-
-			<CommentList productId={productId}/>
-		</>
-	)
-}
 
 export default ItemComment;

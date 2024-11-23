@@ -2,38 +2,6 @@ import styled from "styled-components";
 import { ReactComponent as LeftArrow } from "../../../assets/images/icons/arrow_left.svg";
 import { ReactComponent as RightArrow } from "../../../assets/images/icons/arrow_right.svg";
 
-const PaginationBar = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-`;
-
-const PaginationButton = styled.button`
-  border: 1px solid #e5e7eb;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  color: #6b7280;
-  font-weight: 600;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  cursor: pointer;
-
-  &:disabled {
-    cursor: default;
-    opacity: 0.5;
-  }
-
-  &.active {
-    background-color: var(--blue);
-    color: #fff;
-  }
-`;
-
 interface PaginationProps {
   totalPage: number;
   currentPage: number;
@@ -83,5 +51,37 @@ const Pagination: React.FC<PaginationProps> = ({ totalPage, currentPage, pageCha
 		</PaginationBar>
 	)
 }
+
+const PaginationBar = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+`;
+
+const PaginationButton = styled.button`
+  border: 1px solid #e5e7eb;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: #6b7280;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+
+  &.active {
+    background-color: var(--blue);
+    color: #fff;
+  }
+`;
 
 export default Pagination;

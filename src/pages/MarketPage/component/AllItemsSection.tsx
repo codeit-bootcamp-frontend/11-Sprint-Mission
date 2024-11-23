@@ -17,76 +17,6 @@ const getPageSize = () => {
 	else return 12;
 };
 
-const AllItemsContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 16px;
-  margin-bottom: 24px;
-  gap: 24px;
-	
-	@media (min-width: 768px) {
-		padding: 0 16px;
-    margin-bottom: 24px;
-    gap: 24px;
-	}
-`;
-
-const ItemsTitle = styled.h1`
-  font-size: 20px;
-  font-weight: bold;
-  line-height: normal;
-`;
-
-const SearchBar = styled.div`
-  display: flex;
-  background-color: #f3f4f6;
-  border-radius: 12px;
-  padding: 9px 16px;
-  flex: 1;
-  align-items: center;
-  max-width: 400px;
-
-  input {
-    border: none;
-    flex: 1;
-    background-color: inherit;
-    margin-left: 4px;
-    &:focus {
-      outline: none;
-    }
-  }
-
-	@media (min-width: 768px) {
-		max-width: 400px;
-	}
-`;
-
-const SortButton = styled.button`
-  padding: 8px 12px;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  background-color: white;
-  font-size: 14px;
-  cursor: pointer;
-`;
-
-const AllItemsCard = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px 8px;
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px 16px;
-  }
-
-  @media (min-width: 1280px) {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 40px 24px;
-  }
-`;
-
 interface Product {
   createdAt: Date;
   favoriteCount: number;
@@ -196,5 +126,75 @@ const AllItemsSection: React.FC = () => {
 		</div>
 	)
 }
+
+const AllItemsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  margin-bottom: 24px;
+  gap: 24px;
+	
+	@media (min-width: 768px) {
+		padding: 0 16px;
+    margin-bottom: 24px;
+    gap: 24px;
+	}
+`;
+
+const ItemsTitle = styled.h1`
+  font-size: 20px;
+  font-weight: bold;
+  line-height: normal;
+`;
+
+const SearchBar = styled.div`
+  display: flex;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  padding: 9px 16px;
+  flex: 1;
+  align-items: center;
+  max-width: 400px;
+
+  input {
+    border: none;
+    flex: 1;
+    background-color: inherit;
+    margin-left: 4px;
+    &:focus {
+      outline: none;
+    }
+  }
+
+	@media (min-width: 768px) {
+		max-width: 400px;
+	}
+`;
+
+const SortButton = styled.button`
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 14px;
+  cursor: pointer;
+`;
+
+const AllItemsCard = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 8px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 16px;
+  }
+
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 40px 24px;
+  }
+`;
 
 export default AllItemsSection;

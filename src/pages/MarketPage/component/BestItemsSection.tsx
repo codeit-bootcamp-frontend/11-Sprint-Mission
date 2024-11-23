@@ -3,6 +3,14 @@ import ItemCard from "./ItemCard";
 import { getProducts } from "../../../api/itemApi";
 import styled from "styled-components";
  
+const getPageSize = () => {
+	const width = window.innerWidth;
+
+	if(width < 768) return 1;
+	else if(width < 1280) return 2;
+	else return 4;
+};
+
 interface Product {
   createdAt: Date;
   favoriteCount: number;
@@ -22,48 +30,6 @@ interface ProductListData {
 }
 
 type ProductSortOption = "recent" | "favorite";
-
-const getPageSize = () => {
-	const width = window.innerWidth;
-
-	if(width < 768) return 1;
-	else if(width < 1280) return 2;
-	else return 4;
-};
-
-const BestItemsContainer = styled.div`
-  padding: 80px 5px 24px 5px;
-
-	@media (min-width: 768px) {
-		padding: 60px 5px 24px 5px;
-    margin-bottom: 40px;
-	}
-
-	@media (min-width: 1200px) {
-		padding: 60px 10px 24px 10px;
-	}
-`;
-
-const ItemsTitle = styled.h1`
-  font-size: 20px;
-  font-weight: bold;
-  line-height: normal;
-`;
-
-const BestItemsCard = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-	@media (min-width: 768px) {
-		display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-	}
-
-	@media (min-width: 1200px) {
-		grid-template-columns: repeat(4, 1fr);
-	}
-`;
 
 const BestItemsSection: React.FC = () => {
 	const [itemList, setItemList] = useState<Product[]>([]);
@@ -102,3 +68,37 @@ const BestItemsSection: React.FC = () => {
 }
 
 export default BestItemsSection; 
+
+const BestItemsContainer = styled.div`
+  padding: 80px 5px 24px 5px;
+
+	@media (min-width: 768px) {
+		padding: 60px 5px 24px 5px;
+    margin-bottom: 40px;
+	}
+
+	@media (min-width: 1200px) {
+		padding: 60px 10px 24px 10px;
+	}
+`;
+
+const ItemsTitle = styled.h1`
+  font-size: 20px;
+  font-weight: bold;
+  line-height: normal;
+`;
+
+const BestItemsCard = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+	@media (min-width: 768px) {
+		display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+	}
+
+	@media (min-width: 1200px) {
+		grid-template-columns: repeat(4, 1fr);
+	}
+`;

@@ -1,21 +1,5 @@
 import styled from "styled-components";
  
-const DropdownList = styled.div`
-  position: absolute;
-  right: 0;
-  background: #fff;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
-  z-index: 10;
-`;
-
-const DropdownItem = styled.div`
-  padding: 12px 44px;
-  border-bottom: 1px solid #e5e7eb;
-  font-size: 16px;
-  cursor: pointer;
-`;
-
 type ProductSortOption = "recent" | "favorite";
 
 interface DropDownListProps {
@@ -34,4 +18,22 @@ const DropDownList: React.FC<DropDownListProps> = ({ onSortCard}) => {
     </DropdownList>
   );
 }
+
+const DropdownList = styled.div`
+  position: absolute;
+  right: 0;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  z-index: 10;
+`;
+
+const DropdownItem = styled.div`
+  padding: 12px 44px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 16px;
+  cursor: pointer;
+`;
+
+
 export default DropDownList;

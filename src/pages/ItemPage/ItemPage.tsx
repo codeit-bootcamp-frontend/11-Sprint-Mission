@@ -7,54 +7,6 @@ import ItemProfile from "./component/ItemProfile";
 import ItemComment from "./component/ItemComment";
 import { ReactComponent as BackIcon } from "../../assets/images/icons/ic_back.svg";
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-  @media (min-width: 768px) {
-    padding: 16px 24px;
-  }
-  @media (min-width: 1200px) {
-    max-width: 1200px;
-    padding: 24px 0;
-    margin: 0 auto;
-  }
-`;
-
-const Line = styled.div<{$margin?: string}>`
-  width: 100%;
-  border: none;
-  height: 1px;
-  background-color: #E5E7EB;
-  margin: ${(props) =>
-    props.$margin || "16px 0"};
-`;
-
-const BackToMarketPageLink = styled(Link)`
-	background-color: #3692FF;
-	color: #fff;
-	padding: 11.5px 23px;
-	border-radius: 999px;
-	font-size: 16px;
-	font-weight: bold;
-	cursor: pointer;
-
-	&:hover {
-		background-color: #3692FF;
-	}
-
-	&:focus {
-		background-color: #3692FF;
-	}
-
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 18px;
-  font-weight: 600;
-  margin: 0 auto;
-`;
-
 interface Product {
   createdAt: Date;
   updatedAt: string;
@@ -118,5 +70,53 @@ const ItemPage: React.FC = () => {
 		</Container>
 	)
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  @media (min-width: 768px) {
+    padding: 16px 24px;
+  }
+  @media (min-width: 1200px) {
+    max-width: 1200px;
+    padding: 24px 0;
+    margin: 0 auto;
+  }
+`;
+
+const Line = styled.div<{$margin?: string}>`
+  width: 100%;
+  border: none;
+  height: 1px;
+  background-color: #E5E7EB;
+  margin: ${(props) =>
+    props.$margin || "16px 0"};
+`;
+
+const BackToMarketPageLink = styled(Link)`
+	background-color: #3692FF;
+	color: #fff;
+	padding: 11.5px 23px;
+	border-radius: 999px;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+
+	&:hover {
+		background-color: #3692FF;
+	}
+
+	&:focus {
+		background-color: #3692FF;
+	}
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 auto;
+`;
 
 export default ItemPage;

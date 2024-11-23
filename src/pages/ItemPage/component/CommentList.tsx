@@ -1,79 +1,9 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getProductComments } from "../../../api/itemApi";
-import { TimestampCal } from "../../../components/TimestampCal";
+import { TimestampCal } from "../../../utils/TimestampCal";
 import { ReactComponent as EmptyStateImage } from "../../../assets/images/icons/Img_inquiry_empty.svg";
 import { ReactComponent as UserProfileIcon } from "../../../assets/images/icons/ic_profile.svg";
-
-const EmptyStateSection = styled.div`
-  margin: 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-`;
-
-const EmptyStateText = styled.p`
-  color: #9CA3AF;
-  font-size: 16px;
-  line-height: 26px;
-`;
-
-const EmptyState = () => {
-  return (
-    <EmptyStateSection>
-      <EmptyStateImage />
-      <EmptyStateText>아직 문의가 없습니다.</EmptyStateText>
-    </EmptyStateSection>
-  );
-};
-
-const ListSection = styled.div`
-  margin-bottom: 40px;
-`;
-
-const CommentSection = styled.div`
-  padding: 24px 0;
-  position: relative;
-`;
-
-const CommentContent = styled.p`
-  font-size: 16px;
-  line-height: 140%;
-  margin-bottom: 24px;
-`;
-
-const UserProfile = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-`;
-
-const UserInfo = styled.div`
-  display: flex;
-	margin-left: 8px;
-  flex-direction: column;
-`;
-
-const Username = styled.span`
-  color: #4B5563;
-  font-size: 12px;
-  margin-bottom: 4px;
-`;
-
-const Timestamp = styled.span`
-  color: #9CA3AF;
-  font-size: 12px;
-`;
-
-const Line = styled.div<{$margin?: string}>`
-  width: 100%;
-  border: none;
-  height: 1px;
-  background-color: #E5E7EB;
-  margin: ${(props) =>
-    props.$margin || "16px 0"};
-`;
 
 interface ProductComment {
   writer: {
@@ -163,5 +93,75 @@ const CommentList: React.FC<CommentListProps> = ({ productId }) => {
 		);
 	}
 }
+
+const EmptyStateSection = styled.div`
+  margin: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+`;
+
+const EmptyStateText = styled.p`
+  color: #9CA3AF;
+  font-size: 16px;
+  line-height: 26px;
+`;
+
+const EmptyState = () => {
+  return (
+    <EmptyStateSection>
+      <EmptyStateImage />
+      <EmptyStateText>아직 문의가 없습니다.</EmptyStateText>
+    </EmptyStateSection>
+  );
+};
+
+const ListSection = styled.div`
+  margin-bottom: 40px;
+`;
+
+const CommentSection = styled.div`
+  padding: 24px 0;
+  position: relative;
+`;
+
+const CommentContent = styled.p`
+  font-size: 16px;
+  line-height: 140%;
+  margin-bottom: 24px;
+`;
+
+const UserProfile = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+const UserInfo = styled.div`
+  display: flex;
+	margin-left: 8px;
+  flex-direction: column;
+`;
+
+const Username = styled.span`
+  color: #4B5563;
+  font-size: 12px;
+  margin-bottom: 4px;
+`;
+
+const Timestamp = styled.span`
+  color: #9CA3AF;
+  font-size: 12px;
+`;
+
+const Line = styled.div<{$margin?: string}>`
+  width: 100%;
+  border: none;
+  height: 1px;
+  background-color: #E5E7EB;
+  margin: ${(props) =>
+    props.$margin || "16px 0"};
+`;
 
 export default CommentList;

@@ -2,6 +2,39 @@ import { ReactComponent as HeartIcon } from "../../../assets/images/icons/ic_hea
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+interface Product {
+  createdAt: Date;
+  favoriteCount: number;
+  ownerId: number;
+  images: string[];
+  tags: string[];
+  price: number;
+  description: string;
+  name: string;
+  id: number;
+  isFavorite: boolean;
+}
+
+interface ItemCardProps {
+  item: Product;
+}
+
+const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
+  return (
+    <ItemCardWrapper to={`/items/${item.id}`}>
+      <ItemCardImg src={item.images[0]} alt="이미지 미리보기" />
+      <ItemInfo>
+        <ItemName>{item.name}</ItemName>
+        <ItemPrice>{item.price.toLocaleString()}원</ItemPrice>
+        <ItemFavoritCnt>
+          <HeartIcon />
+          {item.favoriteCount}
+        </ItemFavoritCnt>
+      </ItemInfo>
+    </ItemCardWrapper>
+  );
+}
+
 const ItemCardWrapper = styled(Link)`
   overflow: hidden;
   cursor: pointer;
@@ -44,38 +77,5 @@ const ItemFavoritCnt = styled.div`
   gap: 4px;
   font-size: 12px;
 `;
-
-interface Product {
-  createdAt: Date;
-  favoriteCount: number;
-  ownerId: number;
-  images: string[];
-  tags: string[];
-  price: number;
-  description: string;
-  name: string;
-  id: number;
-  isFavorite: boolean;
-}
-
-interface ItemCardProps {
-  item: Product;
-}
-
-const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
-  return (
-    <ItemCardWrapper to={`/items/${item.id}`}>
-      <ItemCardImg src={item.images[0]} alt="이미지 미리보기" />
-      <ItemInfo>
-        <ItemName>{item.name}</ItemName>
-        <ItemPrice>{item.price.toLocaleString()}원</ItemPrice>
-        <ItemFavoritCnt>
-          <HeartIcon />
-          {item.favoriteCount}
-        </ItemFavoritCnt>
-      </ItemInfo>
-    </ItemCardWrapper>
-  );
-}
 
 export default ItemCard;

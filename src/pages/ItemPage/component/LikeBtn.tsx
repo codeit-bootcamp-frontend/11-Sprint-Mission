@@ -7,6 +7,13 @@ interface IconSectionProps {
   $outlineColor?: string;
 }
 
+interface IconProps {
+  iconComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  size?: number;
+  fillColor?: string;
+  outlineColor?: string;
+}
+
 const IconSection = styled.div<IconSectionProps>`
   display: inline-flex;
   align-items: center;
@@ -22,39 +29,12 @@ const IconSection = styled.div<IconSectionProps>`
   }
 `;
 
-interface IconProps {
-  iconComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
-  size?: number;
-  fillColor?: string;
-  outlineColor?: string;
-}
-
 // iconComponent: IconComponent 이름을 강제로 바꿈. 왜냐하면, 이름의 통일성을 주기 위해서
 const Icon: React.FC<IconProps> = ({ iconComponent: IconComponent, size, fillColor, outlineColor }) => (
   <IconSection $size={size} $fillColor={fillColor} $outlineColor={outlineColor}>
     <IconComponent />
   </IconSection>
 );
-
-// 좋아요 버튼 스타일
-const HeartBtn = styled.button`
-  color: #6B7280;
-  font-size: 16px;
-  padding: 4px 12px;
-  border-radius: 999px;
-  border: 2px solid #E5E7EB;
-  &:hover svg path {
-    fill: red;
-    stroke: red;
-  }
-`;
-
-const BtnSection = styled.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-  gap: 4px;
-`;
 
 interface LikeBtnProps {
   productId: number;
@@ -76,5 +56,24 @@ const LikeBtn: React.FC<LikeBtnProps> = ({ productId, isFavorite, favoriteCount 
     </HeartBtn>
   );
 }
+
+const HeartBtn = styled.button`
+  color: #6B7280;
+  font-size: 16px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 2px solid #E5E7EB;
+  &:hover svg path {
+    fill: red;
+    stroke: red;
+  }
+`;
+
+const BtnSection = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+  gap: 4px;
+`;
 
 export default LikeBtn;
