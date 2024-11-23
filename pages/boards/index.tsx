@@ -1,7 +1,6 @@
 import { FormEvent, useCallback, useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import useReSizing from '@/hooks/useReSizing';
-import { getBoardList } from '@/services/boards-api';
 
 import { Page, Container } from '@/styles/Common.styles';
 import { flexColumn } from '@/styles/layout.styles';
@@ -13,6 +12,7 @@ import BoardCardList from '@/components/pages/boards/BoardCardList';
 import SearchInput from '@/components/shared/SearchInput';
 import BoardList from '@/components/pages/boards/BoardList';
 import SelectMenu from '@/components/shared/SelectMenu';
+import { getBoardList } from '@/services/api';
 
 function BoardsPage() {
   const [order, setOrder] = useState<'recent' | 'like'>('recent');

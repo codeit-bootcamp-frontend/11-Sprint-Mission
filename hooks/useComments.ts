@@ -1,44 +1,45 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import useAsyncRequest from './useAsyncRequest';
+import axios from 'axios';
 import { CommentType } from '@/types/types';
 
-type FetchCommentsFunction = (
-  productId: string
-) => Promise<{ list: Comment[] }>;
-
-const useComments = (fetchCommentsFunction: FetchCommentsFunction) => {
+const useComments = () => {
   const [commentsList, setCommentsList] = useState<CommentType[]>([]);
-  const { execute, isLoading, error } = useAsyncRequest();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
   const { productId } = router.query as { productId?: string };
 
   useEffect(() => {
     const loadComments = async () => {
       if (!productId) return;
-      const result = await execute(() => fetchCommentsFunction(productId));
-      if (result) {
-        setCommentsList(result.list);
+      setIsLoading(true);
+      setError(null);
+      try {
+        const response = await axios.get<{ list: CommentType[] }>(
+          `/api/comments?productId=${productId}`
+        );
+        setCommentsList(response.data.list);
+      } catch (err) {
+        setError((err as any).message);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     loadComments();
-  }, [productId, execute, fetchCommentsFunction]);
+  }, [productId]);
 
   const handleEditSubmit = (item: CommentType, updatedContent: string) => {
     setCommentsList((prevItems) =>
       prevItems.map((comment) =>
-        comment.id === item.id
-          ? { ...comment, content: updatedContent }
-          : comment
+        comment.id === item.id ? { ...comment, content: updatedContent } : comment
       )
     );
   };
 
   const handleDeleteClick = (commentId: string) => {
-    setCommentsList((prevItems) =>
-      prevItems.filter((item) => item.id !== commentId)
-    );
+    setCommentsList((prevItems) => prevItems.filter((item) => item.id !== commentId));
   };
 
   return {

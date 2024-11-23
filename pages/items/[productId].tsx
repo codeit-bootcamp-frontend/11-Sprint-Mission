@@ -2,10 +2,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
-import {
-  getProductsDetail,
-  getProductsDetailComments,
-} from '@/services/products-api';
+import { getProductsDetail, getProductsDetailComments } from '@/services/api';
 import useAsyncRequest from '@/hooks/useAsyncRequest';
 import useComments from '@/hooks/useComments';
 import { ProductDetailType } from '@/types/types';
@@ -28,7 +25,7 @@ function ProdDetailPage() {
     error: commentFetchError,
     handleEditSubmit,
     handleDeleteClick,
-  } = useComments(getProductsDetailComments);
+  } = useComments();
 
   const router = useRouter();
 
@@ -46,8 +43,7 @@ function ProdDetailPage() {
 
   if (!details) return <p>상품 정보를 불러올 수 없습니다.</p>;
   if (isLoading || commentLoading) return <p>로딩 중 입니다...</p>;
-  if (fetchError || commentFetchError)
-    return <p>데이터를 불러올 수 없습니다.</p>;
+  if (fetchError || commentFetchError) return <p>데이터를 불러올 수 없습니다.</p>;
 
   return (
     <Page>

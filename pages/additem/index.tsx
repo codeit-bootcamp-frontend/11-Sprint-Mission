@@ -1,12 +1,12 @@
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
-
 import styled from 'styled-components';
+
 import { flexColumn } from '@/styles/layout.styles';
 import font from '@/styles/fontStyle.styles';
 
-import Button from '../../components/shared/Button';
-import TagsList from '../../components/shared/Tags/TagsList';
-import { Container, Page } from '../../styles/Common.styles';
+import Button from '@/components/shared/Button';
+import TagsList from '@/components/shared/Tags/TagsList';
+import { Container, Page } from '@/styles/Common.styles';
 import InputFile from '@/components/shared/InputFile';
 import Input from '@/components/shared/Input';
 
@@ -32,9 +32,7 @@ function AddProd() {
     formValues.productPrice.trim() !== '' &&
     formValues.productTags.length > 0;
 
-  const handleInputChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
 
     if (name === 'productTags') {
@@ -74,9 +72,7 @@ function AddProd() {
         <AddProdForm>
           <AddProdTitle>
             <h2>상품 등록하기</h2>
-            <Button
-              color={isFormValid ? 'blue' : 'gray'}
-              disabled={!isFormValid}>
+            <Button color={isFormValid ? 'blue' : 'gray'} disabled={!isFormValid}>
               등록
             </Button>
           </AddProdTitle>
@@ -115,10 +111,7 @@ function AddProd() {
                 onKeyDown={handleAddTagInput}
               />
               {formValues.productTags.length > 0 && (
-                <TagsList
-                  tags={formValues.productTags}
-                  onRemove={handleRemoveTag}
-                />
+                <TagsList tags={formValues.productTags} onRemove={handleRemoveTag} />
               )}
             </div>
           </div>

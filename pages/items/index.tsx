@@ -1,7 +1,7 @@
 import { FormEvent, useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 
-import { getProductsList } from '@/services/products-api';
+import { getProductsList } from '@/services/api';
 import useReSizing from '@/hooks/useReSizing';
 
 import { Container, Page } from '@/styles/Common.styles';
@@ -88,8 +88,7 @@ function ItemsPage() {
     fetchFavoriteItems();
   }, [fetchFavoriteItems]);
 
-  const handleSelect = (value: string) =>
-    setOrder(value as 'recent' | 'favorite');
+  const handleSelect = (value: string) => setOrder(value as 'recent' | 'favorite');
 
   const handleSearchSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -115,7 +114,7 @@ function ItemsPage() {
           <div className='prod-title toolbar'>
             <h2>전체 상품</h2>
             <SearchInput onSubmit={handleSearchSubmit} />
-            <StyledItemButton href='/addItem' color='blue'>
+            <StyledItemButton href='/additem' color='blue'>
               상품 등록하기
             </StyledItemButton>
 
