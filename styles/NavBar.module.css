@@ -1,0 +1,59 @@
+.navBar {
+    width: 100%;
+    border-bottom: 1px solid #eaeaea;
+    background-color: white;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navArea {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.nav {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.navList {
+    padding: 0.5rem 0;
+}
+
+.boards, .market {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.boards:hover, .market:hover {
+    color: #666;
+}
+
+.profileLink {
+    display: flex;
+    align-items: center;
+}
+
+.logoImage, .titleImage, .profileImage {
+    object-fit: contain;
+}
