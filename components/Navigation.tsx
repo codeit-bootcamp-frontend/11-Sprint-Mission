@@ -8,7 +8,7 @@ interface TabData {
 }
 
 const TAB_DATAS = [
-  { id: 0, name: "자유게시판", path: "/borad" },
+  { id: 0, name: "자유게시판", path: "/board" },
   { id: 1, name: "중고마켓", path: "/items" },
 ];
 
