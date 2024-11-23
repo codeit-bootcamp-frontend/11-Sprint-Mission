@@ -98,14 +98,14 @@ export default function PostBoard() {
       </div>
       <div className={styles.BoardItemList}>
         {articles.list.map((article) => (
-          <PostBoardItem key={article.id} article={article} />
+          <PostItem key={article.id} article={article} />
         ))}
       </div>
     </div>
   );
 }
 
-function PostBoardItem({ article }: { article: Article }) {
+function PostItem({ article }: { article: Article }) {
   return (
     <div className={styles.Item}>
       <div className={styles.ItemContent}>
