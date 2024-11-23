@@ -67,7 +67,7 @@
 }
 
 @media screen and (max-width: 1199px) {
-  .Navigation-wrap {
+  .wrap {
     padding: 14px 24px;
   }
 }

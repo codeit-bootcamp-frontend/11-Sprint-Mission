@@ -8,6 +8,7 @@ import {
   OrderBy,
 } from "@/api/article.api";
 import formatDate from "../lib/formatDate";
+import { useDeviceType } from "@/contexts/DeviceTypeContext";
 
 const DEFAULT_PARAMS: GetArticleListParams = {
   page: 1,
@@ -25,6 +26,7 @@ export default function PostBoard({
   const [keyword, setKeyword] = useState("");
   const [selectedDropdown, setSelecedDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const deviceType = useDeviceType();
 
   const handleClickDropdown = () => setSelecedDropdown((prev) => !prev);
 
@@ -101,9 +103,19 @@ export default function PostBoard({
           ref={dropdownRef}
         >
           <div className={styles.select}>
-            <span>최신순</span>
+            {deviceType !== "mobile" && (
+              <span>{params.orderBy === "recent" ? "최신순" : "인기순"}</span>
+            )}
             <div className={styles.image}>
-              <Image fill src="/images/ic_arrow_down.svg" alt="정렬" />
+              <Image
+                fill
+                src={
+                  deviceType !== "mobile"
+                    ? "/images/ic_arrow_down.svg"
+                    : "/images/ic_sort.svg"
+                }
+                alt="정렬"
+              />
             </div>
           </div>
           {selectedDropdown && (

@@ -1,14 +1,8 @@
-import { GetArticleListParams } from "@/api/article.api";
 import { Article, ArticleList } from "@/types/Article.type";
 import styles from "./BestPostBoard.module.css";
 import Image from "next/image";
 import formatDate from "../lib/formatDate";
 import { useDeviceType } from "@/contexts/DeviceTypeContext";
-
-const DEFAULT_PARAMS: GetArticleListParams = {
-  pageSize: 3,
-  orderBy: "like",
-};
 
 const PAGE_SIZE = {
   desktop: 3,
