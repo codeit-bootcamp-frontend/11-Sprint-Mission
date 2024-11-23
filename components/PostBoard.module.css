@@ -15,7 +15,7 @@
   color: var(--gray-800);
 }
 
-.BoardItemList {
+.PostItemList {
   display: flex;
   flex-direction: column;
   gap: 24px;

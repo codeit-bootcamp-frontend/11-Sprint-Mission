@@ -96,7 +96,7 @@ export default function PostBoard() {
           )}
         </div>
       </div>
-      <div className={styles.BoardItemList}>
+      <div className={styles.PostItemList}>
         {articles.list.map((article) => (
           <PostItem key={article.id} article={article} />
         ))}

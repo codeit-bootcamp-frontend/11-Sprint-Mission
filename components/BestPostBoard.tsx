@@ -31,7 +31,7 @@ export default function BestPostBoard() {
       <header className={styles.BoardHeader}>
         <h2 className={styles.BoardTitle}>베스트 게시글</h2>
       </header>
-      <div className={styles.BoardItemList}>
+      <div className={styles.PostItemList}>
         {articles.list.map((article) => (
           <PostItem key={article.id} article={article} />
         ))}
@@ -42,30 +42,28 @@ export default function BestPostBoard() {
 
 function PostItem({ article }: { article: Article }) {
   return (
-    <div>
-      <div>
-        <div>
-          <div style={{ width: "16px", height: "16px", position: "relative" }}>
-            <Image fill src="/images/ic_medal.svg" alt="베스트" />
-          </div>
-          <span>Best</span>
+    <div className={styles.Item}>
+      <div className={styles.badge}>
+        <div className={styles.medal}>
+          <Image fill src="/images/ic_medal.svg" alt="베스트" />
         </div>
+        <span>Best</span>
       </div>
-      <div>
-        <h3>{article.title}</h3>
-        <div style={{ width: "72px", height: "62px", position: "relative" }}>
+      <div className={styles.main}>
+        <h3 className={styles.title}>{article.title}</h3>
+        <div className={styles.preview}>
           <Image fill src={article.image} alt={article.title} />
         </div>
       </div>
-      <div>
+      <div className={styles.util}>
         <span>{article.writer.nickname}</span>
-        <div>
-          <div style={{ width: "16px", height: "16px", position: "relative" }}>
+        <div className={styles.likeCount}>
+          <div className={styles.heart}>
             <Image fill src="/images/ic_heart.svg" alt="베스트" />
           </div>
           <span>{article.likeCount < 10000 ? article.likeCount : "9999+"}</span>
         </div>
-        <span>{article.createdAt}</span>
+        {/* <span>{article.createdAt}</span> */}
       </div>
     </div>
   );

@@ -1,0 +1,92 @@
+.Board {
+  width: 1200px;
+  margin: 0 auto 40px;
+}
+
+.BoardHeader {
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.BoardTitle {
+  flex-grow: 1;
+  font-size: 20px;
+  line-height: 32px;
+  color: var(--gray-800);
+}
+
+.PostItemList {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Item {
+  padding: 0 24px 16px;
+  background-color: var(--gray-100);
+}
+
+.Item .badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  padding: 2px 24px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  margin-bottom: 16px;
+  background-color: var(--blue);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.Item .medal {
+  width: 16px;
+  height: 16px;
+  position: relative;
+}
+
+.Item .main {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.Item .title {
+  width: 256px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  color: var(--gray-800);
+}
+
+.Item .preview {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border: 1px solid var(--gray-100);
+  border-radius: 8px;
+}
+
+.Item .util {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--gray-500);
+}
+
+.Item .likeCount {
+  flex-wrap: 1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.Item .likeCount .heart {
+  width: 16px;
+  height: 16px;
+  position: relative;
+}
