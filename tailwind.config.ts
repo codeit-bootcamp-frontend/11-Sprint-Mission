@@ -10,11 +10,6 @@ export default {
     container: {
       center: true,
       screens: {
-        /**
-         * sm: 모바일 (768px 이하)
-         * md: 태블릿 (1280px 이하)
-         * lg: 데스크탑 (1280px 이상)
-         */
         sm: '768px',
         md: '1024px',
         lg: '1280px',
