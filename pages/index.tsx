@@ -2,9 +2,6 @@ import Head from 'next/head';
 import Link from 'next/link';
 import clsx from 'clsx';
 //
-import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
-//
 import styles from '@/styles/Home.module.css';
 
 export default function Home() {
@@ -13,8 +10,6 @@ export default function Home() {
       <Head>
         <title>판다마켓 - desc</title>
       </Head>
-
-      <Nav />
 
       <section className={styles.hero}>
         <div className={styles.container}>
@@ -34,8 +29,6 @@ export default function Home() {
       {/* register section */}
 
       {/* bottom visual */}
-
-      <Footer />
     </>
   );
 }
