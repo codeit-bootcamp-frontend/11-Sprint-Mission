@@ -5,19 +5,18 @@ import { useEffect, useRef, useState } from "react";
 import { getArticleList, GetArticleListParams } from "@/lib/article.api";
 import formatDate from "../lib/formatDate";
 
-const DEFAULT_ARTICLE_LIST: ArticleList = {
-  totalCount: 0,
-  list: [],
-};
-
 const DEFAULT_PARAMS: GetArticleListParams = {
   page: 1,
   pageSize: 10,
   orderBy: "recent",
 };
 
-export default function PostBoard() {
-  const [articles, setArticles] = useState(DEFAULT_ARTICLE_LIST);
+export default function PostBoard({
+  articles: initArticles,
+}: {
+  articles: ArticleList;
+}) {
+  const [articles, setArticles] = useState(initArticles);
   const [params, setParams] = useState(DEFAULT_PARAMS);
   const [keyword, setKeyword] = useState("");
   const [selectedDropdown, setSelecedDropdown] = useState(false);
@@ -116,7 +115,7 @@ export default function PostBoard() {
         </div>
       </div>
       <div className={styles.PostItemList}>
-        {articles.list.map((article) => (
+        {articles?.list.map((article) => (
           <PostItem key={article.id} article={article} />
         ))}
       </div>

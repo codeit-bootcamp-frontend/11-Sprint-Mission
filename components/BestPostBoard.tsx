@@ -5,18 +5,17 @@ import styles from "./BestPostBoard.module.css";
 import Image from "next/image";
 import formatDate from "../lib/formatDate";
 
-const DEFAULT_ARTICLE_LIST: ArticleList = {
-  totalCount: 0,
-  list: [],
-};
-
 const DEFAULT_PARAMS: GetArticleListParams = {
   pageSize: 3,
   orderBy: "like",
 };
 
-export default function BestPostBoard() {
-  const [articles, setArticles] = useState(DEFAULT_ARTICLE_LIST);
+export default function BestPostBoard({
+  articles: initArticles,
+}: {
+  articles: ArticleList;
+}) {
+  const [articles, setArticles] = useState(initArticles);
   const [params, setParams] = useState(DEFAULT_PARAMS);
 
   useEffect(() => {
