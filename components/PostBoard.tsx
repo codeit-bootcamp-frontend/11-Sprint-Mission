@@ -23,7 +23,7 @@ export default function PostBoard() {
 
   const handleClickDropdown = () => setSelecedDropdown((prev) => !prev);
 
-  const handleClickOption = (event: MouseEvent) => {
+  const handleClickOption = (event: React.MouseEvent<HTMLDivElement>) => {
     const target = event.target;
     if (!(target instanceof HTMLElement)) return;
     if (!target.dataset.option) return;
