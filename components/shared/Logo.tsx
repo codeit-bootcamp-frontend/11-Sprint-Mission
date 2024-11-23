@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import styled from 'styled-components';
 import deviceType from '../../utils/deviceType';
 
@@ -16,13 +15,7 @@ function Logo({ size = 'sm' }: LogoProps) {
   return (
     <StyledLogo size={size}>
       <Link href='/'>
-        <Image
-          src={deviceType() === 'mo' ? LOGO_MO : LOGO_PC}
-          alt='로고'
-          width={153}
-          height={51}
-          priority
-        />
+        <img src={deviceType() === 'mo' ? LOGO_MO : LOGO_PC} alt='로고' />
       </Link>
     </StyledLogo>
   );
@@ -31,6 +24,10 @@ function Logo({ size = 'sm' }: LogoProps) {
 export const StyledLogo = styled.h1<LogoProps>`
   width: ${({ size }) => (size === 'sm' ? '15.3rem' : '39.6rem')};
   height: ${({ size }) => (size === 'sm' ? '5.1rem' : '13.2rem')};
+  a {
+    width: 100%;
+    height: 100%;
+  }
 
   ${media.mo`
     width: ${({ size }) => (size === 'sm' ? '8.1rem' : '19.8rem')};

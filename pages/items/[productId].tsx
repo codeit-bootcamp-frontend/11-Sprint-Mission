@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
 import { getProductsDetail, getProductsDetailComments } from '@/services/api';
-import useAsyncRequest from '@/hooks/useAsyncRequest';
 import useComments from '@/hooks/useComments';
 import { ProductDetailType } from '@/types/types';
 
@@ -18,32 +17,45 @@ import ComentList from '@/components/shared/Coment/ComentList';
 
 function ProdDetailPage() {
   const [details, setDetails] = useState<ProductDetailType | null>(null);
-  const { execute, isLoading, error: fetchError } = useAsyncRequest();
+  const [isLoading, setIsLoading] = useState(false);
+  const [fetchError, setFetchError] = useState<Error | null>(null);
+
   const {
     commentsList,
     isLoading: commentLoading,
     error: commentFetchError,
     handleEditSubmit,
     handleDeleteClick,
-  } = useComments();
+  } = useComments(getProductsDetailComments);
 
   const router = useRouter();
 
   const { productId } = router.query as { productId?: string };
 
+  const fetchProductItems = useCallback(async () => {
+    setIsLoading(true);
+    setFetchError(null);
+    try {
+      const result = await getProductsDetail(productId);
+      if (result) {
+        setDetails(result);
+      }
+    } catch (error) {
+      setFetchError(error as Error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [productId]);
+
   useEffect(() => {
     if (!router.isReady || !productId) return;
-    const loadProductDetails = async () => {
-      const result = await execute(() => getProductsDetail(productId));
-      if (result) setDetails(result);
-    };
 
-    loadProductDetails();
-  }, [router.isReady, productId, execute]);
+    fetchProductItems();
+  }, [router.isReady, productId]);
 
-  if (!details) return <p>상품 정보를 불러올 수 없습니다.</p>;
+  if (!details) return console.log('details', details);
   if (isLoading || commentLoading) return <p>로딩 중 입니다...</p>;
-  if (fetchError || commentFetchError) return <p>데이터를 불러올 수 없습니다.</p>;
+  if (fetchError || commentFetchError) return console.log('fetchError', fetchError);
 
   return (
     <Page>

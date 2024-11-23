@@ -1,34 +1,30 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import axios from 'axios';
+import useAsyncRequest from './useAsyncRequest';
 import { CommentType } from '@/types/types';
 
-const useComments = () => {
+type FetchCommentsFunction = (productId: string) => Promise<{ list: Comment[] }>;
+
+/**
+ * 댓글 목록을 가져오는 커스텀 훅
+ */
+const useComments = (fetchCommentsFunction: FetchCommentsFunction) => {
   const [commentsList, setCommentsList] = useState<CommentType[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
+  const { execute, isLoading, error } = useAsyncRequest();
   const router = useRouter();
   const { productId } = router.query as { productId?: string };
 
   useEffect(() => {
     const loadComments = async () => {
       if (!productId) return;
-      setIsLoading(true);
-      setError(null);
-      try {
-        const response = await axios.get<{ list: CommentType[] }>(
-          `/api/comments?productId=${productId}`
-        );
-        setCommentsList(response.data.list);
-      } catch (err) {
-        setError((err as any).message);
-      } finally {
-        setIsLoading(false);
+      const result = await execute(() => fetchCommentsFunction(productId));
+      if (result) {
+        setCommentsList(result.list);
       }
     };
 
     loadComments();
-  }, [productId]);
+  }, [productId, execute, fetchCommentsFunction]);
 
   const handleEditSubmit = (item: CommentType, updatedContent: string) => {
     setCommentsList((prevItems) =>
