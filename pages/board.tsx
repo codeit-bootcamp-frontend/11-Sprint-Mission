@@ -1,13 +1,25 @@
+import { getArticleList } from "@/lib/article.api";
 import { Article, ArticleList } from "@/types/Article";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const mock_article: ArticleList = { totalCount: 0, list: [] };
 
 export default function Board() {
+  const [articles, setArticles] = useState(mock_article);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      const data = await getArticleList();
+      setArticles(data);
+    };
+    fetchArticles();
+  }, []);
+
   return (
     <>
       <BestPostBoard />
-      <PostBoard articles={mock_article} />
+      <PostBoard articles={articles} />
     </>
   );
 }
@@ -62,15 +74,47 @@ function PostBoardItem({ article }: { article: Article }) {
   return (
     <div>
       <div>
+        <div
+          style={{
+            position: "relative",
+            width: "48px",
+            height: "48px",
+          }}
+        >
+          {article.image && (
+            <Image
+              fill
+              src={article.image}
+              alt={article.title}
+              style={{
+                objectFit: "cover",
+              }}
+            />
+          )}
+        </div>
+        {article.title}
+      </div>
+      <div>
         <div>
-          <Image
-            fill
-            src={article.image}
-            alt={article.title}
-            style={{
-              objectFit: "cover",
-            }}
-          />
+          <div style={{ position: "relative", width: "24px", height: "24px" }}>
+            <Image
+              fill
+              src="/images/profile.svg"
+              alt={article.writer.nickname}
+            />
+          </div>
+          <span>{article.writer.nickname}</span>
+          <span>{article.createdAt}</span>
+        </div>
+        <div>
+          <div style={{ position: "relative", width: "24px", height: "24px" }}>
+            <Image
+              fill
+              src="/images/ic_heart.svg"
+              alt={article.writer.nickname}
+            />
+          </div>
+          <span>{article.likeCount < 10000 ? article.likeCount : "9999+"}</span>
         </div>
       </div>
     </div>
