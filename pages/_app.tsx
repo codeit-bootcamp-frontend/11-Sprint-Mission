@@ -2,6 +2,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import "../styles/global.css";
 import { DeviceTypeProvider } from "@/contexts/DeviceTypeContext";
+import Navigation from "@/components/Navigation";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -13,6 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/images/ic_logo.svg" />
       </Head>
       <DeviceTypeProvider>
+        <Navigation />
         <Component {...pageProps} />
       </DeviceTypeProvider>
     </>
