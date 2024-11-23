@@ -1,12 +1,14 @@
 import { ArticleList } from "@/types/Article.type";
-import axios from "../lib/axios";
+import axios from "./axios";
 
 interface GetArticleListParams {
   page?: number;
   pageSize?: number;
-  orderBy?: "recent" | "like";
+  orderBy?: OrderBy;
   keyword?: string | undefined;
 }
+
+type OrderBy = "recent" | "like";
 
 async function getArticleList({
   page = 1,
@@ -26,4 +28,4 @@ async function getArticleList({
 }
 
 export { getArticleList };
-export type { GetArticleListParams };
+export type { GetArticleListParams, OrderBy };

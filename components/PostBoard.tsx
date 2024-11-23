@@ -2,7 +2,11 @@ import { Article, ArticleList } from "@/types/Article.type";
 import Image from "next/image";
 import styles from "./PostBoard.module.css";
 import { useEffect, useRef, useState } from "react";
-import { getArticleList, GetArticleListParams } from "@/api/article.api";
+import {
+  getArticleList,
+  GetArticleListParams,
+  OrderBy,
+} from "@/api/article.api";
 import formatDate from "../lib/formatDate";
 
 const DEFAULT_PARAMS: GetArticleListParams = {
@@ -31,7 +35,7 @@ export default function PostBoard({
     setParams((prev) => {
       return {
         ...prev,
-        orderBy: target.dataset.option as "recent" | "like",
+        orderBy: target.dataset.option as OrderBy,
       };
     });
   };
