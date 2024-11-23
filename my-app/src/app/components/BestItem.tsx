@@ -28,7 +28,7 @@ export default function BestItem({
             <div className="flex items-center gap-[4px]">
               <p className="text-sm text-gray-400">{writer.nickname}</p>
               <div className="flex items-center gap-[8px]">
-                <div className="w-[16px] h-[16px] relative">
+                <div className="w-[21px] h-[18px] relative">
                   <Image src="/icon/like_icon.png" fill alt="likeicon" />
                 </div>
                 <p className="text-sm text-gray-400">{likeCount}</p>
