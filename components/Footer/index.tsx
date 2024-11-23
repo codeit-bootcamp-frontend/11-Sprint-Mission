@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import clsx from 'clsx';
 //
 import styles from './Footer.module.css';
 import IcoFacebook from './ico-facebook.svg';
@@ -9,9 +10,9 @@ import IcoInstagram from './ico-instagram.svg';
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={styles.container + ' container'}>
+      <div className={clsx(styles.container, 'container')}>
         <p className={styles.copyright}>©codeit - 2024</p>
-        <nav aria-label="footer navigation">
+        <nav className={styles.nav} aria-label="footer navigation">
           <ul className={styles.links}>
             <li>
               <Link href="/privacy" className={styles.link}>
