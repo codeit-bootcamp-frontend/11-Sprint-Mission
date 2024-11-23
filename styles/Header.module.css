@@ -1,19 +1,21 @@
-.nav-bar,
-.nav-content,
+/*Header.css*/
+
+.navBar,
+.navContent,
 .logo,
 .tab,
 .title {
   display: flex;
 }
 
-.nav-bar,
+.navBar,
 .logo,
 .tab,
 .title {
   align-items: center;
 }
 
-.nav-bar {
+.navBar {
   position: sticky;
   z-index: 1;
   top: 0;
@@ -25,31 +27,30 @@
 }
 
 .title,
-.tab-list {
-  text-align: center;
+.tabList {
+  text-decoration: none;
 }
 
 .title {
   justify-content: center;
+  text-align: center;
   color: var(--primary);
   font-weight: var(--bold);
   font-size: 2.6rem;
   line-height: 3.5rem;
 }
 
-li {
+.tabList {
   list-style: none;
-}
-.tab-list {
   font-weight: var(--medium);
   font-size: 1.8rem;
   line-height: 2.6rem;
   padding: 2.1rem 1.5rem;
   gap: 1rem;
 }
-li > a {
-  color: var(--grayish-blue);
-}
-a {
+
+#boards,
+#fleaMarket {
   text-decoration: none;
+  color: var(--grayish-blue);
 }

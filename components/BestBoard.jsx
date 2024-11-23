@@ -1,38 +1,40 @@
 import Image from 'next/image';
 import medal from '@/public/ic_medal.svg';
-import example from '@/public/img_example.svg';
 import heart from '@/public/ic_heart.svg';
+import styles from '@/styles/BestBoard.module.css';
 
-export default function BestBoard() {
+export default function BestBoard({ data = {} }) {
+  const { title, image, updatedAt, likeCount, writer } = data;
+
+  const date = new Date(updatedAt);
+
+  const formattedDate = date.toLocaleDateString({
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
   return (
-    <div className="best-board-container">
-      <div className="best-board-title">베스트 게시글</div>
-      <div className="best-board-card">
-        <div className="card-content">
-          <div className="card-head">
-            <Image src={medal} alt="메달" />
-            <div className="card-head-title">Best</div>
-          </div>
-          <div className="card-body">
-            <div className="card-body-content">
-              맥북 16기가 1테라 정도
-              사양이면 얼마에 팔아야 하나요?
-            </div>
-            <div className="card-body-content-image">
-              <Image src={example} alt="맥북" />
-            </div>
-          </div>
-          <div className="card-bottom">
-            <div className="card-bottom-ahead">
-              <div className="board-user-id">총명한 판다</div>
-              <div className="like-it">
-                <Image src={heart} alt="좋아요" />
-                <div className="like-count">9999+</div>
-              </div>
-            </div>
-            <div className="upload-date">2024. 04. 16</div>
+    <div className={styles.cardContent}>
+      <div className={styles.cardHead}>
+        <Image width={'12'} height={'14'} src={medal} alt="메달" />
+        <div className={styles.cardHeadTitle}>Best</div>
+      </div>
+      <div className={styles.cardBody}>
+        <div className={styles.cardBodyContent}>{title}</div>
+        <div className={styles.cardBodyContentImage}>
+          <Image width={'48'} height={'44'} src={image} alt="게시글 사진" />
+        </div>
+      </div>
+      <div className={styles.cardBottom}>
+        <div className={styles.cardBottomAhead}>
+          <div className={styles.boardUserId}>{writer.nickname}</div>
+          <div className={styles.likeIt}>
+            <Image width={'14'} height={'12'} src={heart} alt="좋아요" />
+            <div className={styles.likeCount}>{likeCount}</div>
           </div>
         </div>
+        <div className={styles.bestUploadDate}>{formattedDate}</div>
       </div>
     </div>
   );

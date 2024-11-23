@@ -1,41 +1,13 @@
-.boards-page {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 4rem;
-  margin-top: 2.4rem;
-}
-.best-board-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 2.4rem;
-}
-
-.best-board-title {
-  font-weight: var(--bold);
-  font-size: 2rem;
-  line-height: 2.3rem;
-}
-
-.best-board-card {
-  display: grid;
-  width: 100%;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 2.4rem;
-}
-
-.card-content {
+.cardContent {
   display: flex;
   flex-direction: column;
   width: 38.4rem;
-  height: 16.9rem;
   padding: 0 2.4rem 1.6rem 2.4rem;
   background-color: var(--gray-50);
   gap: 1rem;
 }
 
-.card-head {
+.cardHead {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,21 +19,21 @@
   border-bottom-right-radius: 1.6rem;
 }
 
-.card-head-title {
+.cardHeadTitle {
   font-weight: var(--medium);
   font-size: 1.6rem;
   line-height: 2.6rem;
   color: var(--white);
 }
 
-.card-body {
+.cardBody {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
 
-.card-body-content {
+.cardBodyContent {
   width: auto;
   font-weight: var(--medium);
   font-size: 2rem;
@@ -69,50 +41,55 @@
   color: var(--approx-midnight);
 }
 
-.card-body-content-image {
+.cardBodyContentImage {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: auto;
   padding: 1.2rem;
   background-color: var(--white);
   border-radius: 0.6rem;
   border: 0.1rem solid var(--gray-200);
 }
 
-.card-bottom {
+.cardBottom {
   display: flex;
   justify-content: space-between;
 }
 
-.card-bottom-ahead {
+.cardBottomAhead {
   display: flex;
   width: 100%;
   gap: 0.8rem;
 }
 
-.board-user-id,
-.like-count,
-.upload-date {
+.boardUserId,
+.likeCount,
+.bestUploadDate {
+  display: flex;
   font-weight: var(--regular);
   font-size: 1.4rem;
   line-height: 2.4rem;
 }
 
-.board-user-id {
+.boardUserId {
   color: var(--grayish-blue);
 }
 
-.like-count {
+.likeCount {
+  width: 100%;
   color: var(--gray-500);
 }
 
-.upload-date {
+.bestUploadDate {
+  width: 100%;
+  justify-content: flex-end;
   color: var(--gray-400);
 }
 
-.like-it {
+.likeIt {
   display: flex;
-  width: 100%;
+  align-items: center;
   gap: 0.4rem;
 }
 

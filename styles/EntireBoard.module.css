@@ -1,0 +1,88 @@
+/*entireBoard.css*/
+
+.boardListContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1.6rem;
+  padding-bottom: 2.4rem;
+  background-color: var(--gray-10);
+  border-bottom: 0.1rem solid var(--gray-200);
+}
+
+.listMainContent {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.8rem;
+}
+
+.listMainTitle {
+  font-weight: var(--medium);
+  font-size: 2rem;
+  line-height: 3.2rem;
+  color: var(--approx-midnight);
+}
+
+.listMainContentImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  padding: 1.2rem;
+  background-color: var(--white);
+  border-radius: 0.6rem;
+  border: 0.1rem solid var(--gray-200);
+}
+
+.listInfo {
+  display: flex;
+  width: 100%;
+  gap: 0.8rem;
+}
+
+.listInfoAhead {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.listUserInfo {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.listUserId {
+  display: flex;
+  font-weight: var(--regular);
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  color: var(--grayish-blue);
+}
+
+.listContentInfo {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.listUploadate {
+  display: flex;
+  font-weight: var(--regular);
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  color: var(--gray-400);
+}
+
+.listLikeCount {
+  font-weight: var(--regular);
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  color: var(--gray-500);
+}
+
+.listLikeIt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.4rem;
+}

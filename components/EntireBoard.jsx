@@ -1,50 +1,40 @@
 import Image from 'next/image';
-import search from '@/public/ic_search.svg';
-import example from '@/public/img_example.svg';
 import heart from '@/public/ic_heart.svg';
 import profile from '@/public/ic_profile.svg';
+import styles from '@/styles/EntireBoard.module.css';
 
-export default function EntierBoard() {
+export default function EntireBoard({ data }) {
+  const { title, image, updatedAt, likeCount, writer } = data;
+  const imageUrl = image || '/default-image.jpg';
+
+  const date = new Date(updatedAt);
+
+  const formattedDate = date.toLocaleDateString({
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
   return (
-    <div className="entire-board-container">
-      <div className="entire-board-header">
-        <div className="entire-board-title">게시글</div>
-        <button type="button" className="small-button">
-          글쓰기
-        </button>
-      </div>
-      <div className="entire-board-body">
-        <div className="user-select-section">
-          <div className='search-bar'>
-            <Image src={search} alt="검색" />
-            <input placeholder="검색할 상품을 입력해주세요" className="search-bar-input" />
-          </div>
-          <select >
-            <option value="latest">최신순</option>
-            <option value="favorite">좋아요순</option>
-          </select>
+    <div className={styles.boardListContent}>
+      <div className={styles.listMainContent}>
+        <div className={styles.listMainTitle}>{title}</div>
+        <div className={styles.listMainContentImage}>
+          <Image width={'48'} height={'44'} src={imageUrl} alt="리스트 사진" />
         </div>
-        <div className="entire-board-list">
-          <div className="board-list-content">
-            <div className="list-main-content">
-              <div className="list-main-question">맥북 16인치 16기가 1테라정도 사양이면 얼마에 팔아야 하나요?</div>
-              <div className="card-body-content-image">
-                <Image src={example} alt="맥북" />
-              </div>
+      </div>
+      <div className={styles.listInfo}>
+        <div className={styles.listInfoAhead}>
+          <div className={styles.listUserInfo}>
+            <Image width={'24'} height={'24'} src={profile} alt="프로필" />
+            <div className={styles.listContentInfo}>
+              <div className={styles.listUserId}>{writer.nickname}</div>
+              <div className={styles.listUploadate}>{formattedDate}</div>
             </div>
-            <div className="list-info">
-              <div className="list-info-ahead">
-              <div className="board-user-info">
-                <Image src={profile} alt="프로필" />
-                  <div className="board-user-id">총명한 판다</div>
-                  <div className="upload-date">2024. 04. 16</div>
-                </div>
-                <div className="liked-it">
-                  <Image src={heart} alt="좋아요" />
-                  <div className="liked-count">9999+</div>
-                </div>
-              </div>
-            </div>
+          </div>
+          <div className={styles.listLikeIt}>
+            <Image width={'14'} height={'12'} src={heart} alt="좋아요" />
+            <div className={styles.listLikeCount}>{likeCount}</div>
           </div>
         </div>
       </div>
