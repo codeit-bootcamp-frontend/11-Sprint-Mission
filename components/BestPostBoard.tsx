@@ -3,6 +3,7 @@ import { Article, ArticleList } from "@/types/Article.type";
 import { useEffect, useState } from "react";
 import styles from "./BestPostBoard.module.css";
 import Image from "next/image";
+import formatDate from "../lib/formatDate";
 
 const DEFAULT_ARTICLE_LIST: ArticleList = {
   totalCount: 0,
@@ -41,6 +42,8 @@ export default function BestPostBoard() {
 }
 
 function PostItem({ article }: { article: Article }) {
+  const createdAt = formatDate(article.createdAt);
+
   return (
     <div className={styles.Item}>
       <div className={styles.badge}>
@@ -63,7 +66,7 @@ function PostItem({ article }: { article: Article }) {
           </div>
           <span>{article.likeCount < 10000 ? article.likeCount : "9999+"}</span>
         </div>
-        {/* <span>{article.createdAt}</span> */}
+        <span>{createdAt}</span>
       </div>
     </div>
   );

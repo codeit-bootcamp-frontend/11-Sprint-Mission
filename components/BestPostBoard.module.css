@@ -79,7 +79,7 @@
 }
 
 .Item .likeCount {
-  flex-wrap: 1;
+  flex-grow: 1;
   display: flex;
   align-items: center;
   gap: 4px;

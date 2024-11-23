@@ -167,6 +167,9 @@
 .ItemInfo .wrap {
   display: flex;
   gap: 8px;
+  color: var(--gray-500);
+  font-size: 14px;
+  line-height: 24px;
 }
 
 .ItemInfo .wrap:first-of-type {
@@ -181,12 +184,9 @@
   height: 24px;
 }
 
-.ItemWriter {
-  font-size: 14px;
-  line-height: 24px;
-}
-
 .ItemLikeCount {
   width: 50px;
   text-align: end;
+  font-size: 16px;
+  line-height: 26px;
 }

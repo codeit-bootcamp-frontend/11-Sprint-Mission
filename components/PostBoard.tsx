@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "./PostBoard.module.css";
 import { useEffect, useRef, useState } from "react";
 import { getArticleList, GetArticleListParams } from "@/lib/article.api";
+import formatDate from "../lib/formatDate";
 
 const DEFAULT_ARTICLE_LIST: ArticleList = {
   totalCount: 0,
@@ -106,6 +107,8 @@ export default function PostBoard() {
 }
 
 function PostItem({ article }: { article: Article }) {
+  const createdAt = formatDate(article.createdAt);
+
   return (
     <div className={styles.Item}>
       <div className={styles.ItemContent}>
@@ -133,7 +136,7 @@ function PostItem({ article }: { article: Article }) {
             />
           </div>
           <span className={styles.ItemWriter}>{article.writer.nickname}</span>
-          <span>{article.createdAt}</span>
+          <span>{createdAt}</span>
         </div>
         <div className={styles.wrap}>
           <div className={styles.image}>
