@@ -1,13 +1,20 @@
 import { getArticleList, GetArticleListParams } from "@/api/article.api";
 import { Article, ArticleList } from "@/types/Article.type";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./BestPostBoard.module.css";
 import Image from "next/image";
 import formatDate from "../lib/formatDate";
+import { useDeviceType } from "@/contexts/DeviceTypeContext";
 
 const DEFAULT_PARAMS: GetArticleListParams = {
   pageSize: 3,
   orderBy: "like",
+};
+
+const PAGE_SIZE = {
+  desktop: 3,
+  tablet: 2,
+  mobile: 1,
 };
 
 export default function BestPostBoard({
@@ -16,15 +23,15 @@ export default function BestPostBoard({
   articles: ArticleList;
 }) {
   const [articles, setArticles] = useState(initArticles);
-  const [params, setParams] = useState(DEFAULT_PARAMS);
+  const deviceType = useDeviceType();
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const data = await getArticleList(params);
+      const data = await getArticleList(DEFAULT_PARAMS);
       setArticles(data);
     };
     fetchArticles();
-  }, [params]);
+  }, []);
 
   return (
     <div className={styles.Board}>
@@ -32,9 +39,11 @@ export default function BestPostBoard({
         <h2 className={styles.BoardTitle}>베스트 게시글</h2>
       </header>
       <div className={styles.PostItemList}>
-        {articles.list.map((article) => (
-          <PostItem key={article.id} article={article} />
-        ))}
+        {articles.list.map((article, i) => {
+          if (i < PAGE_SIZE[deviceType]) {
+            return <PostItem key={article.id} article={article} />;
+          }
+        })}
       </div>
     </div>
   );

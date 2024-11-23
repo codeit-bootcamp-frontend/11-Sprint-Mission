@@ -1,6 +1,5 @@
 .Board {
-  max-width: 1200px;
-  margin: 0 auto 40px;
+  width: 100%;
 }
 
 .BoardHeader {
@@ -54,6 +53,7 @@
 }
 
 .Item .title {
+  flex-grow: 1;
   font-size: 20px;
   font-weight: 600;
   line-height: 32px;
