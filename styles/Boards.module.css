@@ -1,0 +1,35 @@
+.section {
+  @apply mb-10;
+}
+.sectionTitle {
+  @apply my-6 text-xl font-bold;
+}
+
+.bestArticle {
+  @apply relative flex flex-1 flex-col gap-4 rounded-lg px-6 py-2;
+  background-color: var(--gray-50);
+
+  .title {
+    @apply line-clamp-2 flex-1 text-xl font-semibold;
+  }
+  .thumbnail {
+    @apply relative rounded-lg border;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-color: var(--gray-200);
+    background-color: #fff;
+
+    .img {
+      @apply h-full w-full object-cover;
+    }
+  }
+  .badge {
+    @apply -m-2 flex items-center gap-1 self-start px-6 py-1;
+    border-radius: 0 0 1rem 1rem;
+    background-color: var(--primary-100);
+    color: #fff;
+  }
+  .meta {
+    @apply flex justify-between gap-2 text-sm;
+  }
+}

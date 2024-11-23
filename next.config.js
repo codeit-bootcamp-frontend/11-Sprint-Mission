@@ -26,24 +26,22 @@ const nextConfig = {
           },
         ],
       },
-      // svgo off
-      // {
-      //   test: /\.svg$/i,
-      //   use: [
-      //     {
-      //       loader: '@svgr/webpack',
-      //       options: {
-      //         svgo: false,
-      //       },
-      //     },
-      //   ],
-      // },
     );
 
     // Modify the file loader rule to ignore *.svg, since we have it handled now.
     fileLoaderRule.exclude = /\.svg$/i;
 
     return config;
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'sprint-fe-project.s3.ap-northeast-2.amazonaws.com',
+        port: '',
+        pathname: '/Sprint_Mission/**',
+      },
+    ],
   },
 };
 

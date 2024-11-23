@@ -34,7 +34,7 @@
 }
 .section-point {
   margin-bottom: 0.75rem;
-  color: var(--blue);
+  color: var(--primary-100);
   font-size: 1.125rem;
   font-weight: bold;
 }
@@ -69,7 +69,7 @@
   margin: 0 auto;
   height: 540px;
   padding: 0 46px;
-  background: url('./assets/bg-hero.png') right 46px bottom no-repeat;
+  background: url('/images/main/bg-hero.png') right 46px bottom no-repeat;
 }
 .hero .heading,
 .bottom-visual .heading {
@@ -84,7 +84,7 @@
 
 /* bottom visual */
 .bottom-visual .container {
-  background-image: url('./assets/bg-bottom.png');
+  background-image: url('/images/main/bg-bottom.png');
 }
 .bottom-visual .heading {
   padding-top: 255px;

@@ -29,7 +29,7 @@
     font-size: 16px;
   }
   body {
-    background-color: #fcfcfc;
+    color: var(--gray-900);
   }
   input,
   button,
@@ -83,5 +83,11 @@
   .v-bar {
     @apply h-4/5 w-0 border-l;
     border-color: var(--gray-200);
+  }
+  .stretched-link::after {
+    position: absolute;
+    inset: 0;
+    content: '';
+    z-index: 1;
   }
 }
