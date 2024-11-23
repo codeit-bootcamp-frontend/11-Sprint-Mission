@@ -1,6 +1,6 @@
 import { getArticleList, GetArticleListParams } from "@/api/article.api";
 import { Article, ArticleList } from "@/types/Article.type";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./BestPostBoard.module.css";
 import Image from "next/image";
 import formatDate from "../lib/formatDate";
