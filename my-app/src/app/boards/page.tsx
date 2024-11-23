@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import BestItem from "../components/BestItem";
 import SearchBar from "../components/SearchBar";
-import AllBoards from "../components/AllBoards";
+import AllItem from "../components/AllItem";
 import { BestItemData } from "../type";
 
 async function fetchBestBoards(
@@ -21,9 +21,12 @@ async function fetchBestBoards(
 
 export default function Page() {
   const [bestBoards, setBestBoards] = useState<BestItemData[]>([]);
+  const [allBoards, setAllBoards] = useState<BestItemData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [pageSize, setPageSize] = useState<number>(3);
+  const [orderBy, setOrderBy] = useState<string>("recent");
+  const [searchKeyword, setSearchKeyword] = useState<string>("");
 
   useEffect(() => {
     const handleResize = () => {
@@ -45,11 +48,16 @@ export default function Page() {
     };
   }, []);
 
+  // "최신순" 또는 "좋아요순" 클릭 시 orderBy 상태 업데이트
+  const handleSortChange = (orderBy: string) => {
+    setOrderBy(orderBy);
+  };
+
   useEffect(() => {
     const loadBestBoards = async () => {
       try {
-        const data = await fetchBestBoards(1, pageSize);
-        setBestBoards(data.list || []);
+        const data = await fetchBestBoards(1, pageSize, "like");
+        setBestBoards(data?.list || []);
       } catch (err: unknown) {
         if (err instanceof Error) {
           setError(err.message);
@@ -63,6 +71,23 @@ export default function Page() {
     loadBestBoards();
   }, [pageSize]);
 
+  // 모든 게시글 로드 (10개 이상)
+  useEffect(() => {
+    const loadAllBoards = async () => {
+      try {
+        const data = await fetchBestBoards(1, 10, orderBy, searchKeyword);
+        setAllBoards(data?.list || []);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("알 수 없는 오류가 발생했습니다.");
+        }
+      }
+    };
+    loadAllBoards();
+  }, [orderBy, searchKeyword]);
+
   if (loading) return <div>로딩 중...</div>;
   if (error) return <div>{error}</div>;
 
@@ -75,9 +100,19 @@ export default function Page() {
         ))}
       </div>
       <div className="mt-[24px]">
-        <h3 className="text-lg font-bold">게시글</h3>
-        <SearchBar />
-        <AllBoards />
+        <div className="flex justify-between items-center">
+          <h3 className="text-lg font-bold">게시글</h3>
+          <button className="w-[88px] h-[42px] text-background bg-skyblue rounded-lg">
+            글쓰기
+          </button>
+        </div>
+        <SearchBar
+          onSearch={setSearchKeyword}
+          onSortChange={handleSortChange}
+        />
+        {allBoards.map((item) => (
+          <AllItem key={item.id} {...item} />
+        ))}
       </div>
     </section>
   );
