@@ -1,7 +1,8 @@
 import { getArticleList } from "@/lib/article.api";
 import { Article, ArticleList } from "@/types/Article";
-import Image from "next/image";
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import styles from "../styles/borad.module.css";
 
 const mock_article: ArticleList = { totalCount: 0, list: [] };
 
@@ -72,15 +73,10 @@ function PostBoard({ articles }: { articles: ArticleList }) {
 
 function PostBoardItem({ article }: { article: Article }) {
   return (
-    <div>
-      <div>
-        <div
-          style={{
-            position: "relative",
-            width: "48px",
-            height: "48px",
-          }}
-        >
+    <div className={styles.postBoardItem}>
+      <div className={styles.content}>
+        <h3 className={styles.title}> {article.title}</h3>
+        <div className={styles.preview}>
           {article.image && (
             <Image
               fill
@@ -92,29 +88,30 @@ function PostBoardItem({ article }: { article: Article }) {
             />
           )}
         </div>
-        {article.title}
       </div>
-      <div>
-        <div>
-          <div style={{ position: "relative", width: "24px", height: "24px" }}>
+      <div className={styles.info}>
+        <div className={styles.wrap}>
+          <div className={styles.image}>
             <Image
               fill
               src="/images/profile.svg"
               alt={article.writer.nickname}
             />
           </div>
-          <span>{article.writer.nickname}</span>
+          <span className={styles.writer}>{article.writer.nickname}</span>
           <span>{article.createdAt}</span>
         </div>
-        <div>
-          <div style={{ position: "relative", width: "24px", height: "24px" }}>
+        <div className={styles.wrap}>
+          <div className={styles.image}>
             <Image
               fill
               src="/images/ic_heart.svg"
               alt={article.writer.nickname}
             />
           </div>
-          <span>{article.likeCount < 10000 ? article.likeCount : "9999+"}</span>
+          <span className={styles.like}>
+            {article.likeCount < 10000 ? article.likeCount : "9999+"}
+          </span>
         </div>
       </div>
     </div>
