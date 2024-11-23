@@ -49,6 +49,11 @@ body {
   min-width: 375px;
 }
 
+a,
+p {
+  vertical-align: center;
+}
+
 a {
   color: inherit;
   text-decoration: none;
