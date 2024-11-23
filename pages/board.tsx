@@ -1,6 +1,6 @@
 import BestPostBoard from "@/components/BestPostBoard";
 import PostBoard from "@/components/PostBoard";
-import { getArticleList } from "@/lib/article.api";
+import { getArticleList } from "@/api/article.api";
 import { ArticleList } from "@/types/Article.type";
 
 export async function getServerSideProps() {

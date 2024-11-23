@@ -2,7 +2,7 @@ import { Article, ArticleList } from "@/types/Article.type";
 import Image from "next/image";
 import styles from "./PostBoard.module.css";
 import { useEffect, useRef, useState } from "react";
-import { getArticleList, GetArticleListParams } from "@/lib/article.api";
+import { getArticleList, GetArticleListParams } from "@/api/article.api";
 import formatDate from "../lib/formatDate";
 
 const DEFAULT_PARAMS: GetArticleListParams = {

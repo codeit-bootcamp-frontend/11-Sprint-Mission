@@ -1,5 +1,5 @@
 import { ArticleList } from "@/types/Article.type";
-import axios from "./axios";
+import axios from "../lib/axios";
 
 interface GetArticleListParams {
   page?: number;

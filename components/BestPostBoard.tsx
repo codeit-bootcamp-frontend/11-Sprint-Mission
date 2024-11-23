@@ -1,4 +1,4 @@
-import { getArticleList, GetArticleListParams } from "@/lib/article.api";
+import { getArticleList, GetArticleListParams } from "@/api/article.api";
 import { Article, ArticleList } from "@/types/Article.type";
 import { useEffect, useState } from "react";
 import styles from "./BestPostBoard.module.css";
