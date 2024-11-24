@@ -316,9 +316,10 @@ export default function Page() {
           </div>
         )}
         {isLoading && (
-          <div className="flex flex-col justify-center items-center">
-            <h2 className="h2 mb-2 mt-4">상품 목록을 불러오고 있습니다.</h2>
-            <p>잠시만 기다려주세요.</p>
+          <div className="fixed inset-0 bg-white flex justify-center items-center z-50">
+            <div className="relative w-16 h-16 animate-spin">
+              <Image fill src="/images/loading.png" alt="로딩 중" />
+            </div>
           </div>
         )}
         {error && (
