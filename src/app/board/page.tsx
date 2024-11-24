@@ -95,7 +95,6 @@ export default function Page() {
   const handleDropdownView = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     setDropDownView((prevState) => !prevState);
-    console.log(dropDownView);
   };
 
   // 드롭다운 메뉴에서 선택한 값에 따라 정렬 조건 변경
