@@ -1,0 +1,138 @@
+.itemInfo {
+  padding: 20px 0;
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.itemImage {
+  border-radius: 16px;
+  width: 340px;
+  height: 340px;
+}
+
+.itemDetailContainer {
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.itemTitle {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.itemTitle * {
+  margin-bottom: 15px;
+}
+
+.itemName {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  color: #1f2937;
+}
+
+.itemPrice {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.itemSectionTitle {
+  margin-top: 23px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #4b5563;
+}
+
+.itemDescription {
+  margin-top: 12px;
+  color: #1f2937;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 400;
+}
+
+.itemTag {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tagTitle {
+  margin-bottom: 12px;
+}
+.tag {
+  font-size: 16px;
+  color: #1f2937;
+  background-color: #f3f4f6;
+  border-radius: 999px;
+  padding: 6px 16px;
+  margin-top: 12px;
+  margin-right: 6px;
+}
+
+.heartButtonContainer {
+  margin-top: 10px;
+}
+
+.heartButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 35px;
+  height: 40px;
+  border: 1px solid #e5e7eb;
+  padding: 4px 12px;
+  font-size: 16px;
+  color: #6b7280;
+}
+
+.heartIcon {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+}
+
+@media (max-width: 767px) {
+  .itemInfo {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 768px) {
+  .itemName {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  .itemPrice {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .itemImage {
+    width: 486px;
+    height: 486px;
+  }
+
+  .itemDetailContainer {
+    width: 680px;
+  }
+
+  .itemName {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .itemPrice {
+    font-size: 40px;
+    line-height: 48px;
+  }
+
+  .itemDescriptionTitle {
+    font-size: 16px;
+  }
+}
