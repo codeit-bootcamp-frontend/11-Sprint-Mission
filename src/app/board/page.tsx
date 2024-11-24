@@ -15,7 +15,7 @@ import { throttle } from 'lodash';
 // 로컬 파일
 import { getArticles } from '@/api';
 import useAsync from '@/hooks/useAsync';
-import { ArticleList } from '@/types/article';
+import { Article } from '@/types/article';
 
 const PAGESIZE = 10;
 
@@ -32,9 +32,9 @@ const getBestArticles = (): number => {
 };
 
 export default function Page() {
-  const [resultArticle, setResultArticle] = useState<ArticleList[] | []>([]);
-  const [article, setArticle] = useState<ArticleList[] | []>([]);
-  const [bestArticle, setBestArticle] = useState<ArticleList[] | []>([]);
+  const [resultArticle, setResultArticle] = useState<Article[] | []>([]);
+  const [article, setArticle] = useState<Article[] | []>([]);
+  const [bestArticle, setBestArticle] = useState<Article[] | []>([]);
 
   const dropDownRef = useRef<HTMLDivElement | null>(null);
   const [pageArray, setPageArray] = useState<number[]>([]);
@@ -96,8 +96,7 @@ export default function Page() {
   };
 
   // 드롭다운 메뉴 토글
-  const handleDropdownView = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
+  const handleDropdownView = () => {
     setDropDownView((prevState) => !prevState);
   };
 

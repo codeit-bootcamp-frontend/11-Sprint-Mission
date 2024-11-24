@@ -1,4 +1,4 @@
-export interface ArticleList {
+export interface Article {
   id: number;
   title: string;
   content: string;
@@ -12,7 +12,7 @@ export interface ArticleList {
   };
 }
 
-export interface ArticleData {
-  list: ArticleList[];
+export interface ArticleList {
+  list: Article[];
   totalCount: number;
 }
