@@ -1,32 +1,38 @@
 "use client";
 import styles from "./BestPost.module.css";
 import { useEffect, useState } from "react";
-import { fetchArticles, Article } from "@/app/lib/api/api";
+import { fetchArticles, Article, PaginatedResponse } from "@/app/lib/api/api";
 import Image from "next/image";
+import usePageSize from "@/app/hooks/usePagesize";
 
 export default function BestPost() {
   const [articles, setArticles] = useState<Article[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const pageSize: number = usePageSize();
 
   useEffect(() => {
     async function loadArticles() {
       try {
-        const response = await fetchArticles({
+        const response: PaginatedResponse<Article> = await fetchArticles({
           page: 1,
-          pageSize: 3,
+          pageSize: pageSize,
           orderBy: "like",
         });
         setArticles(response.list);
-      } catch (err: any) {
-        setError(err.message);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("알 수 없는 에러가 발생했습니다.");
+        }
       }
     }
 
     loadArticles();
-  }, []);
+  }, [pageSize]);
 
   if (error) {
-    return <div>에러 발생: {error}</div>;
+    return <div>에러가 발생했습니다: {error}</div>;
   }
 
   return (

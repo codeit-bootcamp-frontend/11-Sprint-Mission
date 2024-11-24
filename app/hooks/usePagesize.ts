@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-function useResponsivePageSize() {
-  const [pageSize, setPageSize] = useState(3);
+function usePageSize(): number {
+  const [pageSize, setPageSize] = useState<number>(3);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -27,4 +27,4 @@ function useResponsivePageSize() {
   return pageSize;
 }
 
-export default useResponsivePageSize;
+export default usePageSize;

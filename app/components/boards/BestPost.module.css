@@ -12,7 +12,7 @@
 }
 
 .post {
-  flex: 0 0 384px;
+  width: 100%;
   height: 169px;
   border-radius: 8px;
   padding: 0 24px;
