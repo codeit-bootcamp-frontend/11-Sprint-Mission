@@ -2,6 +2,7 @@
 
 import { FormEvent, useEffect } from 'react';
 import { useState } from 'react';
+import { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -10,7 +11,7 @@ import { throttle } from 'lodash';
 
 import { getArticles } from '@/api';
 import useAsync from '@/hooks/useAsync';
-import { ArticleSummary } from '@/types/articleSummary';
+import { ArticleSummary } from '@/types/article';
 
 const PAGESIZE = 10;
 
@@ -29,6 +30,7 @@ export default function Page() {
   const [resultArticle, setResultArticle] = useState<ArticleSummary[] | []>([]);
   const [article, setArticle] = useState<ArticleSummary[] | []>([]);
   const [bestArticle, setBestArticle] = useState<ArticleSummary[] | []>([]);
+  const [orderBy, setOrderBy] = useState<string>('recent');
   const { error, isLoading, wrappedFunction } = useAsync(getArticles);
 
   // 전체 데이터 로드
@@ -37,16 +39,16 @@ export default function Page() {
       wrappedFunction(),
       wrappedFunction(`page=1&pageSize=${getBestArticles()}&orderBy=like`),
     ]);
-    setBestArticle(bestArticleResult?.list || null);
+    setBestArticle(bestArticleResult?.list || []);
 
-    if (articleResult.totalCount) {
+    if (articleResult?.totalCount) {
       const pages = Math.ceil(articleResult.totalCount / PAGESIZE);
       const pageArray = Array.from({ length: pages }, (_, i) => i + 1);
 
       const allArticles = await Promise.all(
         pageArray.map(async (page) => {
           const articleListResult = await wrappedFunction(
-            `page=${page}&pageSize=${PAGESIZE}`
+            `page=${page}&pageSize=${PAGESIZE}&orderBy=${orderBy}`
           );
           return articleListResult?.list || [];
         })
@@ -57,7 +59,7 @@ export default function Page() {
   };
 
   // 쓰로틀링된 fetchData 함수
-  const throttledFetchData = throttle(fetchData, 500);
+  const throttledFetchData = useRef(throttle(fetchData, 500)).current;
 
   // 검색 결과 가져오기
   const getSearchResult = (e: FormEvent<HTMLFormElement>): void => {
@@ -84,7 +86,7 @@ export default function Page() {
     return () => {
       window.removeEventListener('resize', throttledFetchData);
     };
-  }, [wrappedFunction]);
+  }, [throttledFetchData]);
 
   return (
     <>

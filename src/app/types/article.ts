@@ -11,3 +11,8 @@ export interface ArticleSummary {
     nickname: string;
   };
 }
+
+export interface ArticleData {
+  list: ArticleSummary[];
+  totalCount: number;
+}
