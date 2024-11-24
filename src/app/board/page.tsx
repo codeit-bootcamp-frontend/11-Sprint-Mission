@@ -3,6 +3,7 @@
 import { FormEvent, useEffect } from 'react';
 import { useState } from 'react';
 import { useRef } from 'react';
+import { useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -30,10 +31,31 @@ export default function Page() {
   const [resultArticle, setResultArticle] = useState<ArticleSummary[] | []>([]);
   const [article, setArticle] = useState<ArticleSummary[] | []>([]);
   const [bestArticle, setBestArticle] = useState<ArticleSummary[] | []>([]);
+
+  const dropDownRef = useRef<HTMLDivElement | null>(null);
+  const [pageArray, setPageArray] = useState<number[]>([]);
   const [orderBy, setOrderBy] = useState<string>('recent');
+  const [dropDownView, setDropDownView] = useState<boolean>(false);
+
   const { error, isLoading, wrappedFunction } = useAsync(getArticles);
 
-  // 전체 데이터 로드
+  // 전체 게시글 로드
+  const fetchItemList = useCallback(async () => {
+    const allArticles = await Promise.all(
+      pageArray.map(async (page) => {
+        const articleListResult = await wrappedFunction(
+          `page=${page}&pageSize=${PAGESIZE}&orderBy=${orderBy}`
+        );
+
+        return articleListResult?.list || [];
+      })
+    );
+    const flattenArticles = allArticles.flat();
+    setArticle(flattenArticles);
+    setResultArticle(flattenArticles);
+  }, [orderBy, pageArray, wrappedFunction]);
+
+  // 전체 데이터 로드 및 베스트 게시글 로드
   const fetchData = async () => {
     const [articleResult, bestArticleResult] = await Promise.all([
       wrappedFunction(),
@@ -43,18 +65,10 @@ export default function Page() {
 
     if (articleResult?.totalCount) {
       const pages = Math.ceil(articleResult.totalCount / PAGESIZE);
-      const pageArray = Array.from({ length: pages }, (_, i) => i + 1);
+      const page = Array.from({ length: pages }, (_, i) => i + 1);
+      setPageArray(page);
 
-      const allArticles = await Promise.all(
-        pageArray.map(async (page) => {
-          const articleListResult = await wrappedFunction(
-            `page=${page}&pageSize=${PAGESIZE}&orderBy=${orderBy}`
-          );
-          return articleListResult?.list || [];
-        })
-      );
-      setArticle(allArticles.flat());
-      setResultArticle(allArticles.flat());
+      fetchItemList();
     }
   };
 
@@ -77,7 +91,18 @@ export default function Page() {
     setResultArticle(searchResult);
   };
 
-  // 초기 데이터 로드
+  // 드롭다운 메뉴 토글
+  const handleDropdownView = () => {
+    setDropDownView(!dropDownView);
+  };
+
+  // 드롭다운 메뉴에서 선택한 값에 따라 정렬 조건 변경
+  const handleClickLabel = (order: string) => {
+    setOrderBy(order);
+    setDropDownView(false);
+  };
+
+  // 초기 데이터 로드 및 리사이즈 시 게시글 리로드
   useEffect(() => {
     throttledFetchData();
 
@@ -88,17 +113,40 @@ export default function Page() {
     };
   }, [throttledFetchData]);
 
+  // 드롭메뉴 눌렀을 때 게시글 목록만 리로드
+  useEffect(() => {
+    fetchItemList();
+  }, [pageArray, orderBy, fetchItemList]);
+
+  // 바깥 클릭 시 드롭다운 메뉴 닫기
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      if (
+        dropDownRef.current &&
+        !dropDownRef.current.contains(e.target as HTMLElement)
+      ) {
+        setDropDownView(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
+
   return (
     <>
       <div className="mt-10 mb-24 container">
-        {!error && !isLoading && (
+        {!error && (
           <div>
             <h2 className="h2 mb-6">베스트 게시글</h2>
             <div className="flex justify-between md:gap-4 lg:gap-6">
               {bestArticle?.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-gray-50 w-[384px] h-[180px] rounded-lg pl-6 pr-6"
+                  className="bg-gray-50 border w-full h-[180px] rounded-xl pl-6 pr-6"
                 >
                   <div className="w-[102px] h-[30px] rounded-b-2xl bg-blue text-white font-semiBold flex items-center justify-center mb-4">
                     <div className="relative w-4 h-4 mr-1">
@@ -161,20 +209,52 @@ export default function Page() {
                 </button>
               </Link>
             </div>
-            <div className="flex items-center gap-1 mt-6">
-              <Image
-                className="absolute ml-5"
-                width={14}
-                height={14}
-                src="/images/search.png"
-                alt="검색"
-              />
-              <form onSubmit={getSearchResult}>
-                <input
-                  className="bg-gray-100 w-[1054px] h-[42px] rounded-xl pt-2 pb-2 pl-11 pr-5 text-gray-500 focus:outline-none"
-                  placeholder="검색할 상품을 입력해주세요."
+            <div className="flex justify-between items-center gap-[6px] mt-6">
+              <div className="flex items-center gap-1 w-full">
+                <Image
+                  className="absolute ml-5"
+                  width={14}
+                  height={14}
+                  src="/images/search.png"
+                  alt="검색"
                 />
-              </form>
+                <form onSubmit={getSearchResult} className="w-full">
+                  <input
+                    className="bg-gray-100 h-[42px] rounded-xl pt-2 pb-2 pl-11 pr-5 text-gray-500 w-full focus:outline-none"
+                    placeholder="검색할 상품을 입력해주세요."
+                  />
+                </form>
+              </div>
+              <div>
+                <button
+                  onClick={handleDropdownView}
+                  className="text-gray-900 w-[130px] h-[42px] border pt-3 pb-3 pl-5 pr-5 rounded-xl flex justify-between items-center"
+                >
+                  {orderBy === 'recent' ? '최신순' : '좋아요순'}
+                  <div className="w-4 h-2 relative">
+                    <Image fill src="/images/dropDown.png" alt="메뉴 다운" />
+                  </div>
+                </button>
+                {dropDownView && (
+                  <div
+                    ref={dropDownRef}
+                    className="absolute flex flex-col justify-center items-center z-10 bg-white mt-3"
+                  >
+                    <label
+                      className="flex justify-center items-center h-11 w-[130px] border rounded-t-xl"
+                      onClick={() => handleClickLabel('recent')}
+                    >
+                      최신순
+                    </label>
+                    <label
+                      className="flex justify-center items-center h-11 w-[130px] border rounded-b-xl"
+                      onClick={() => handleClickLabel('like')}
+                    >
+                      좋아요순
+                    </label>
+                  </div>
+                )}
+              </div>
             </div>
             {resultArticle.length > 0 ? (
               <div className="overflow-y-auto">
@@ -237,7 +317,7 @@ export default function Page() {
         )}
         {isLoading && (
           <div className="flex flex-col justify-center items-center">
-            <h2 className="h2 mb-2 mt-4">로딩 중입니다.</h2>
+            <h2 className="h2 mb-2 mt-4">상품 목록을 불러오고 있습니다.</h2>
             <p>잠시만 기다려주세요.</p>
           </div>
         )}
