@@ -44,3 +44,15 @@
 .searchForm {
   @apply mb-6 flex gap-4;
 }
+
+.articles {
+  @apply flex flex-col gap-6;
+
+  &:empty {
+    @apply py-24 text-center text-xl;
+
+    &::after {
+      content: '게시글이 없습니다.';
+    }
+  }
+}

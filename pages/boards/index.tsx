@@ -156,7 +156,7 @@ const ArticleListWithSearch = () => {
         </select>
       </form>
 
-      <ul className="flex flex-col gap-6">
+      <ul className={styles.articles}>
         {articles.map((article) => (
           <li className="relative border-b pb-6" key={article.id}>
             <div className="mb-4 flex gap-2">
