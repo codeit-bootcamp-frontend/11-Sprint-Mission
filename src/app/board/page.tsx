@@ -1,10 +1,7 @@
 'use client';
 
 // react, next
-import { FormEvent, useEffect } from 'react';
-import { useState } from 'react';
-import { useRef } from 'react';
-import { useCallback } from 'react';
+import { useState, useRef, useCallback, FormEvent, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -16,6 +13,9 @@ import { throttle } from 'lodash';
 import { getArticles } from '@/api';
 import useAsync from '@/hooks/useAsync';
 import { Article } from '@/types/article';
+
+// 컴포넌트
+import Dropdown from '@/components/Dropdown';
 
 const PAGESIZE = 10;
 
@@ -36,10 +36,8 @@ export default function Page() {
   const [article, setArticle] = useState<Article[] | []>([]);
   const [bestArticle, setBestArticle] = useState<Article[] | []>([]);
 
-  const dropDownRef = useRef<HTMLDivElement | null>(null);
   const [pageArray, setPageArray] = useState<number[]>([]);
   const [orderBy, setOrderBy] = useState<string>('recent');
-  const [dropDownView, setDropDownView] = useState<boolean>(false);
 
   const { error, isLoading, wrappedFunction } = useAsync(getArticles);
 
@@ -95,17 +93,6 @@ export default function Page() {
     setResultArticle(searchResult);
   };
 
-  // 드롭다운 메뉴 토글
-  const handleDropdownView = () => {
-    setDropDownView((prevState) => !prevState);
-  };
-
-  // 드롭다운 메뉴에서 선택한 값에 따라 정렬 조건 변경
-  const handleClickLabel = (order: string) => {
-    setOrderBy(order);
-    setDropDownView(false);
-  };
-
   // 초기 데이터 로드 및 리사이즈 시 게시글 리로드
   useEffect(() => {
     throttledFetchData();
@@ -121,24 +108,6 @@ export default function Page() {
   useEffect(() => {
     fetchItemList();
   }, [pageArray, orderBy, fetchItemList]);
-
-  // 바깥 클릭 시 드롭다운 메뉴 닫기
-  useEffect(() => {
-    const handleOutsideClick = (e: MouseEvent) => {
-      if (
-        dropDownRef.current &&
-        !dropDownRef.current.contains(e.target as HTMLElement)
-      ) {
-        setDropDownView(false);
-      }
-    };
-
-    document.addEventListener('click', handleOutsideClick);
-
-    return () => {
-      document.removeEventListener('click', handleOutsideClick);
-    };
-  }, []);
 
   return (
     <>
@@ -231,47 +200,7 @@ export default function Page() {
                   />
                 </form>
               </div>
-              <div ref={dropDownRef}>
-                <button
-                  onClick={handleDropdownView}
-                  className="text-gray-900 w-[130px] h-[42px] border pt-3 pb-3 pl-5 pr-5 rounded-xl flex justify-between items-center"
-                >
-                  {orderBy === 'recent' ? '최신순' : '좋아요순'}
-                  <div className="w-4 h-2 relative">
-                    {!dropDownView ? (
-                      <Image
-                        fill
-                        src="/images/dropDown.png"
-                        alt="메뉴 다운"
-                        sizes="(max-width: 640px) 1rem 0.5rem"
-                      />
-                    ) : (
-                      <Image
-                        fill
-                        src="/images/dropUp.png"
-                        alt="메뉴 업"
-                        sizes="(max-width: 640px) 1rem 0.5rem"
-                      />
-                    )}
-                  </div>
-                </button>
-                {dropDownView && (
-                  <div className="absolute flex flex-col justify-center items-center z-10 bg-white mt-3">
-                    <label
-                      className="flex justify-center items-center h-11 w-[130px] border rounded-t-xl"
-                      onClick={() => handleClickLabel('recent')}
-                    >
-                      최신순
-                    </label>
-                    <label
-                      className="flex justify-center items-center h-11 w-[130px] border rounded-b-xl"
-                      onClick={() => handleClickLabel('like')}
-                    >
-                      좋아요순
-                    </label>
-                  </div>
-                )}
-              </div>
+              <Dropdown orderBy={orderBy} setOrderBy={setOrderBy} />
             </div>
             {resultArticle.length > 0 ? (
               <div className="overflow-y-auto">
