@@ -9,27 +9,38 @@
   @apply relative flex flex-1 flex-col gap-4 rounded-lg px-6 py-2;
   background-color: var(--gray-50);
 
-  .title {
-    @apply line-clamp-2 flex-1 text-xl font-semibold;
-  }
-  .thumbnail {
-    @apply relative rounded-lg border;
-    width: 4.5rem;
-    height: 4.5rem;
-    border-color: var(--gray-200);
-    background-color: #fff;
-
-    .img {
-      @apply h-full w-full object-cover;
-    }
-  }
   .badge {
     @apply -m-2 flex items-center gap-1 self-start px-6 py-1;
     border-radius: 0 0 1rem 1rem;
     background-color: var(--primary-100);
     color: #fff;
   }
-  .meta {
-    @apply flex justify-between gap-2 text-sm;
+}
+.title {
+  @apply line-clamp-2 flex-1 text-xl font-semibold;
+}
+.thumbnail {
+  @apply relative overflow-hidden rounded-lg border;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-color: var(--gray-200);
+  background-color: #fff;
+
+  .img {
+    @apply h-full w-full object-cover;
   }
+}
+.meta {
+  @apply flex items-center justify-between gap-2 text-sm;
+  color: var(--gray-600);
+}
+.date {
+  color: var(--gray-400);
+}
+.like {
+  color: var(--gray-500);
+}
+
+.searchForm {
+  @apply mb-6 flex gap-4;
 }

@@ -80,6 +80,21 @@
       color: var(--gray-400);
     }
   }
+  .select {
+    @apply rounded-xl border py-4 pl-6 pr-10;
+    border-color: var(--gray-100);
+    background-color: #fff;
+    appearance: none;
+    background-image: url('/images/common/ico-arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+  }
+  .input-small {
+    @apply py-2 pl-4;
+  }
+  .input-icon {
+    @apply pl-11;
+  }
   .v-bar {
     @apply h-4/5 w-0 border-l;
     border-color: var(--gray-200);
