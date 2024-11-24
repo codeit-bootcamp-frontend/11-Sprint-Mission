@@ -23,6 +23,7 @@ function Header() {
             height={50}
             src="/logos/panda.png"
             alt="판다마켓"
+            priority
             className={styles.headerLogo}
           />
         </Link>
@@ -30,7 +31,7 @@ function Header() {
         <nav>
           <ul className={styles.navUl}>
             <li>
-              <Link href="/community" style={getNavStyle("/community")}>
+              <Link href="/boards" style={getNavStyle("/boards")}>
                 자유게시판
               </Link>
             </li>

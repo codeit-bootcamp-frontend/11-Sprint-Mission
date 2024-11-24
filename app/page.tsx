@@ -1,3 +1,3 @@
 export default function page() {
-  return <>안녕</>;
+  return <></>;
 }
