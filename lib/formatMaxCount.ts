@@ -1,11 +1,11 @@
 /**
- * 좋아요 수 포맷
- * @param {number} likeCount 좋아요 수
- * @param {number} maxLike 최대 좋아요 수
- * @returns {string} 포맷된 좋아요 수
+ * 갯수 출력 포맷
+ * @param {number} count 갯수
+ * @param {number} maxCount 최대 갯수
+ * @returns {string} 포맷된 갯수
  */
-const formatMaxCount = (likeCount: number, maxLike: number = 9999): string => {
-  return likeCount > maxLike ? maxLike.toLocaleString() + '+' : likeCount.toLocaleString();
+const formatMaxCount = (count: number, maxCount: number = 9999): string => {
+  return count > maxCount ? maxCount.toLocaleString() + '+' : count.toLocaleString();
 };
 
 export default formatMaxCount;
