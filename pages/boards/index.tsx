@@ -71,16 +71,16 @@ const BestArticleList = () => {
  * @returns {JSX.Element} 게시글 리스트 + 검색 폼
  */
 const ArticleListWithSearch = () => {
-  const [keyword, setKeyword] = useState('');
   const [orderBy, setOrderBy] = useState<OrderByType>('recent');
   const [articles, setArticles] = useState<Article[]>([]);
   const keywordRef = useRef<HTMLInputElement | null>(null);
 
   // TODO: 나중에 페이지네이션 처리
-  const getArticles = useCallback(async () => {
+  const getArticles = async (orderBy: OrderByType) => {
+    const keyword = keywordRef.current?.value ?? '';
     const data = await getArticleList({ orderBy, keyword });
     setArticles(data.list ?? []);
-  }, [orderBy, keyword]);
+  };
 
   // select 요소 변경 이벤트 핸들러
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -91,13 +91,12 @@ const ArticleListWithSearch = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (keywordRef.current) setKeyword(keywordRef.current.value);
-    getArticles();
+    getArticles(orderBy);
   };
 
   useEffect(() => {
-    getArticles();
-  }, [orderBy, getArticles]);
+    getArticles(orderBy);
+  }, [orderBy]);
 
   return (
     <>
@@ -107,11 +106,10 @@ const ArticleListWithSearch = () => {
             <IconSearch />
           </label>
           <input
+            id="search"
             type="text"
             className="input input-small input-icon"
-            id="search"
             placeholder="검색할 상품을 입력해 주세요."
-            value={keyword}
             ref={keywordRef}
           />
         </div>
