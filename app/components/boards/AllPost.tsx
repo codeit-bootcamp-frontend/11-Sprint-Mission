@@ -5,17 +5,37 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import styles from "./AllPost.module.css";
 import SearchInput from "@/app/components/ui/SearchInput";
+import { fetchArticles, Article } from "@/app/lib/api/api";
+import Image from "next/image";
 
 export default function AllPost() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [searchQuery, setSearchQuery] = useState<string>(""); // 검색어 상태
+  const [articles, setArticles] = useState<Article[]>([]); // 게시글 상태
 
+  // API를 호출하여 게시글 가져오기
+  const fetchArticlesFromApi = async (query: string = "") => {
+    try {
+      const response = await fetchArticles({
+        q: query,
+        page: 1,
+        pageSize: 10,
+      });
+      setArticles(response.list); // 결과 업데이트
+    } catch (error) {
+      console.error("Error fetching articles:", error);
+    }
+  };
+
+  // 페이지 초기 렌더링 시 전체 게시글 로드 및 쿼리 상태 동기화
   useEffect(() => {
     const query = searchParams.get("q") || "";
     setSearchQuery(query);
+    fetchArticlesFromApi(query); // 검색어가 있으면 해당 검색 결과, 없으면 전체 게시글
   }, [searchParams]);
 
+  // 검색어를 URL에 추가
   const handleSearch = (value: string) => {
     router.push(`/boards?q=${encodeURIComponent(value)}`);
   };
@@ -34,10 +54,42 @@ export default function AllPost() {
       </div>
 
       <div className={styles.postsContainer}>
-        {searchQuery ? (
-          <p>검색어: {searchQuery}에 대한 결과를 여기에 표시합니다.</p>
+        {articles.length > 0 ? (
+          articles.map((article) => (
+            <div key={article.id} className={styles.post}>
+              <div className={styles.postContents}>
+                <h3 className={styles.title}>{article.title}</h3>
+                <div className={styles.imgContainer}>
+                  <Image
+                    src={article.image}
+                    alt={article.title}
+                    width={48}
+                    height={48}
+                    className={styles.image}
+                  />
+                </div>
+              </div>
+              <div className={styles.postFooter}>
+                <div className={styles.info}>
+                  <p>{article.writer.nickname}</p>
+                  <div className={styles.metaDate}>
+                    {new Date(article.createdAt).toLocaleDateString()}
+                  </div>
+                </div>
+                <div className={styles.metaLike}>
+                  <Image
+                    width={16}
+                    height={16}
+                    src="/images/ic_heart.png"
+                    alt="하트"
+                  />
+                  {article.likeCount}
+                </div>
+              </div>
+            </div>
+          ))
         ) : (
-          <p>전체 게시글을 여기에 표시합니다.</p>
+          <p>게시글이 없습니다.</p>
         )}
       </div>
     </div>

@@ -24,3 +24,66 @@
   line-height: 19px;
   color: #fff;
 }
+
+.post {
+  margin: 20px 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.postContents {
+  display: flex;
+  justify-content: space-between;
+}
+
+.imgContainer {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 6px;
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+}
+
+.image {
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.title {
+  max-width: 256px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 32px;
+  color: #1f2937;
+}
+
+.metaLike {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  color: #6b7280;
+}
+
+.info {
+  display: flex;
+  gap: 10px;
+}
+
+.metaDate {
+  color: #9ca3af;
+}
+
+.postFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #4b5563;
+}

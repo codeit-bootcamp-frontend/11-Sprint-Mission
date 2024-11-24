@@ -1,12 +1,11 @@
 .container {
   display: flex;
   align-items: center;
-  background-color: #f9fafb;
-  border: 1px solid #e5e7eb;
-  border-radius: 24px;
-  padding: 8px 16px;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  padding: 9px 20px;
   width: 100%;
-  max-width: 400px;
+  height: 42px;
 }
 
 .input {
@@ -15,13 +14,10 @@
   outline: none;
   background-color: transparent;
   font-size: 16px;
-  color: #374151;
+  font-weight: 400px;
+  color: #000000;
 }
 
 .input::placeholder {
   color: #9ca3af;
-}
-
-.input:focus {
-  outline: none;
 }
