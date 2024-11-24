@@ -92,8 +92,10 @@ export default function Page() {
   };
 
   // 드롭다운 메뉴 토글
-  const handleDropdownView = () => {
-    setDropDownView(!dropDownView);
+  const handleDropdownView = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    setDropDownView((prevState) => !prevState);
+    console.log(dropDownView);
   };
 
   // 드롭다운 메뉴에서 선택한 값에 따라 정렬 조건 변경
@@ -129,10 +131,10 @@ export default function Page() {
       }
     };
 
-    document.addEventListener('mousedown', handleOutsideClick);
+    document.addEventListener('click', handleOutsideClick);
 
     return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('click', handleOutsideClick);
     };
   }, []);
 
@@ -171,6 +173,7 @@ export default function Page() {
                           src={item.image ? item.image : '/images/noImage.jfif'}
                           alt={item.title}
                           className="object-cover"
+                          sizes="(max-width: 640px) 72px 72px"
                         />
                       </div>
                     </div>
@@ -217,6 +220,7 @@ export default function Page() {
                   height={14}
                   src="/images/search.png"
                   alt="검색"
+                  sizes="(max-width: 640px) 14px 14px"
                 />
                 <form onSubmit={getSearchResult} className="w-full">
                   <input
@@ -225,21 +229,32 @@ export default function Page() {
                   />
                 </form>
               </div>
-              <div>
+              <div ref={dropDownRef}>
                 <button
                   onClick={handleDropdownView}
                   className="text-gray-900 w-[130px] h-[42px] border pt-3 pb-3 pl-5 pr-5 rounded-xl flex justify-between items-center"
                 >
                   {orderBy === 'recent' ? '최신순' : '좋아요순'}
                   <div className="w-4 h-2 relative">
-                    <Image fill src="/images/dropDown.png" alt="메뉴 다운" />
+                    {!dropDownView ? (
+                      <Image
+                        fill
+                        src="/images/dropDown.png"
+                        alt="메뉴 다운"
+                        sizes="(max-width: 640px) 1rem 0.5rem"
+                      />
+                    ) : (
+                      <Image
+                        fill
+                        src="/images/dropUp.png"
+                        alt="메뉴 업"
+                        sizes="(max-width: 640px) 1rem 0.5rem"
+                      />
+                    )}
                   </div>
                 </button>
                 {dropDownView && (
-                  <div
-                    ref={dropDownRef}
-                    className="absolute flex flex-col justify-center items-center z-10 bg-white mt-3"
-                  >
+                  <div className="absolute flex flex-col justify-center items-center z-10 bg-white mt-3">
                     <label
                       className="flex justify-center items-center h-11 w-[130px] border rounded-t-xl"
                       onClick={() => handleClickLabel('recent')}
@@ -318,7 +333,12 @@ export default function Page() {
         {isLoading && (
           <div className="fixed inset-0 bg-white flex justify-center items-center z-50">
             <div className="relative w-16 h-16 animate-spin">
-              <Image fill src="/images/loading.png" alt="로딩 중" />
+              <Image
+                fill
+                src="/images/loading.png"
+                alt="로딩 중"
+                sizes="(max-width: 640px) 3rem 3rem"
+              />
             </div>
           </div>
         )}
