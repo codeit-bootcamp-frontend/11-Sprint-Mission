@@ -1,4 +1,4 @@
-export interface ArticleSummary {
+export interface ArticleList {
   id: number;
   title: string;
   content: string;
@@ -13,6 +13,6 @@ export interface ArticleSummary {
 }
 
 export interface ArticleData {
-  list: ArticleSummary[];
+  list: ArticleList[];
   totalCount: number;
 }

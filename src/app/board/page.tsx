@@ -1,5 +1,6 @@
 'use client';
 
+// react, next
 import { FormEvent, useEffect } from 'react';
 import { useState } from 'react';
 import { useRef } from 'react';
@@ -7,15 +8,18 @@ import { useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+// 외부 라이브러리
 import { format } from 'date-fns';
 import { throttle } from 'lodash';
 
+// 로컬 파일
 import { getArticles } from '@/api';
 import useAsync from '@/hooks/useAsync';
-import { ArticleSummary } from '@/types/article';
+import { ArticleList } from '@/types/article';
 
 const PAGESIZE = 10;
 
+// 디바이스 크기 별로 베스트 게시글 개수 설정
 const getBestArticles = (): number => {
   const width = window.innerWidth;
   if (width >= 1280) {
@@ -28,9 +32,9 @@ const getBestArticles = (): number => {
 };
 
 export default function Page() {
-  const [resultArticle, setResultArticle] = useState<ArticleSummary[] | []>([]);
-  const [article, setArticle] = useState<ArticleSummary[] | []>([]);
-  const [bestArticle, setBestArticle] = useState<ArticleSummary[] | []>([]);
+  const [resultArticle, setResultArticle] = useState<ArticleList[] | []>([]);
+  const [article, setArticle] = useState<ArticleList[] | []>([]);
+  const [bestArticle, setBestArticle] = useState<ArticleList[] | []>([]);
 
   const dropDownRef = useRef<HTMLDivElement | null>(null);
   const [pageArray, setPageArray] = useState<number[]>([]);
