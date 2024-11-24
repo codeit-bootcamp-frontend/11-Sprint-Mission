@@ -12,11 +12,18 @@ export default function Header() {
       <div className="w-100% mx-auto border-b">
         <div className="h-[70px] flex justify-between items-center container">
           <div className="flex items-center gap-6 md:gap-10">
-            <div className="relative w-[9.5rem] h-[3.2rem]">
-              <Link href="/">
-                <Image fill src="/images/logo.svg" alt="로고" />
-              </Link>
-            </div>
+            <Link href="/">
+              <div className="relative w-[9.5rem] h-[3.2rem]">
+                <Image
+                  fill
+                  priority
+                  src="/images/logo.svg"
+                  alt="로고"
+                  sizes="(max-width: 640px) 9.5rem, 9.5rem"
+                />
+              </div>
+            </Link>
+
             <div className="flex gap-8 nav">
               <Link href="/board">
                 <span className={pathName === '/board' ? 'text-blue' : ''}>
@@ -31,7 +38,12 @@ export default function Header() {
             </div>
           </div>
           <div className="relative w-[2.5rem] h-[2.5rem]">
-            <Image fill src="/images/profile.png" alt="프로필" />
+            <Image
+              fill
+              src="/images/profile.png"
+              alt="프로필"
+              sizes="(max-width: 640px) 2.5rem, 2.5rem"
+            />
           </div>
         </div>
       </div>

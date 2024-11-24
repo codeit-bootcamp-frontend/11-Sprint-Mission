@@ -159,6 +159,11 @@
       border-color: #ffffff;
     }
 
+    /* outline Color */
+    .outline-blue {
+      outline-color: var(--blue);
+    }
+
     /* Text Color */
     .text-gray-900 {
       color: var(--gray-900);
