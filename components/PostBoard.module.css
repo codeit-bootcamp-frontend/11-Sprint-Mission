@@ -108,13 +108,17 @@
 
 .OrderByDropdown .wrap {
   position: absolute;
-  left: 0;
+  right: 0;
   bottom: -92px;
   z-index: 10;
 }
 
 .OrderByDropdown .option {
-  padding: 10px 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 42px;
   border: 1px solid var(--gray-300);
   background-color: #ffffff;
 }
@@ -193,6 +197,11 @@
 @media screen and (max-width: 767px) {
   .OrderByDropdown .select {
     width: 42px;
+    height: 42px;
+  }
+
+  .OrderByDropdown .option {
+    width: 80px;
     height: 42px;
   }
 }
