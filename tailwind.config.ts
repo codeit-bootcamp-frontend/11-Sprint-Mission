@@ -11,7 +11,15 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary_100: "#3692FF",
+        primary_200: "#1967D6",
+        primary_300: "#1251AA",
       },
+    },
+    // 디바이스 사이즈 정의
+    screens: {
+      tablet: "745px",
+      pc: "1280px",
     },
   },
   plugins: [],
