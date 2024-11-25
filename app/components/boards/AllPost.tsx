@@ -7,12 +7,15 @@ import styles from "./AllPost.module.css";
 import SearchInput from "@/app/components/ui/SearchInput";
 import { fetchArticles, Article } from "@/app/lib/api/api";
 import Image from "next/image";
+import Dropdown from "../ui/Dropdown";
 
 export default function AllPost() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [articles, setArticles] = useState<Article[]>([]);
+  const [sortOption, setSortOption] = useState<string>("recent");
+  const [isDropdownVisible, setIsDropdownVisible] = useState<boolean>(false);
 
   const fetchArticlesFromApi = async (query: string = "") => {
     try {
@@ -33,7 +36,14 @@ export default function AllPost() {
     fetchArticlesFromApi(query);
   }, [searchParams]);
 
-  const filteredArticles = articles.filter((article) =>
+  const sortedArticles = [...articles].sort((a, b) => {
+    if (sortOption === "favorite") {
+      return b.likeCount - a.likeCount;
+    }
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+  });
+
+  const filteredArticles = sortedArticles.filter((article) =>
     article.title.includes(searchQuery)
   );
 
@@ -44,6 +54,16 @@ export default function AllPost() {
       router.push(`/boards?q=${encodeURIComponent(value)}`);
     }
   };
+
+  const handleSortSelection = (option: string) => {
+    setSortOption(option);
+    setIsDropdownVisible(false);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownVisible((prev) => !prev);
+  };
+
   return (
     <div className="container">
       <div className={styles.titleContainer}>
@@ -52,9 +72,14 @@ export default function AllPost() {
           글쓰기
         </Link>
       </div>
-
-      <div className={styles.searchContainer}>
+      <div className={styles.serachDropdown}>
         <SearchInput placeholder="게시글 검색" onSearch={handleSearch} />
+        <button className={styles.dropdownButton} onClick={toggleDropdown}>
+          <Image width={30} height={30} src="/images/ic_sort.png" alt="정렬" />
+        </button>
+        {isDropdownVisible && (
+          <Dropdown onSortSelection={handleSortSelection} />
+        )}
       </div>
 
       <div className={styles.postsContainer}>

@@ -74,6 +74,27 @@
   gap: 10px;
 }
 
+.serachDropdown {
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdownButton {
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 60px;
+  height: 42px;
+  border-radius: 10px;
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+}
+
 .metaDate {
   color: #9ca3af;
 }
