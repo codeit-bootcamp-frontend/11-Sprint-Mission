@@ -38,9 +38,12 @@ export default function AllPost() {
   );
 
   const handleSearch = (value: string) => {
-    router.push(`/boards?q=${encodeURIComponent(value)}`);
+    if (value.trim() === "") {
+      router.push("/boards");
+    } else {
+      router.push(`/boards?q=${encodeURIComponent(value)}`);
+    }
   };
-
   return (
     <div className="container">
       <div className={styles.titleContainer}>
