@@ -17,14 +17,25 @@ export default function AllPost() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isDropdownVisible, setIsDropdownVisible] = useState<boolean>(false);
 
-  const fetchArticlesFromApi = async (query: string = ""): Promise<void> => {
+  const fetchArticlesFromApi = async (
+    query: string = "",
+    page: number = 1
+  ): Promise<void> => {
     try {
       const response = await fetchArticles({
         q: query,
-        page: 1,
+        page,
         pageSize: 1000,
       });
-      setArticles(response.list);
+
+      let filteredArticles = response.list;
+
+      if (query) {
+        filteredArticles = filteredArticles.filter((article) =>
+          article.title.includes(query)
+        );
+      }
+      setArticles(filteredArticles);
     } catch (error) {
       console.error("Error fetching articles:", error);
     }
@@ -52,9 +63,9 @@ export default function AllPost() {
   const getPaginatedArticles = (): Article[] => {
     const sortedArticles = [...articles].sort((a, b) => {
       if (sortOption === "favorite") {
-        return b.likeCount - a.likeCount; // 좋아요순
+        return b.likeCount - a.likeCount;
       }
-      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(); // 최신순
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     });
 
     return sortedArticles.slice((currentPage - 1) * 10, currentPage * 10);
@@ -74,6 +85,7 @@ export default function AllPost() {
         <SearchInput
           placeholder="게시글 검색"
           onSearch={(value) => {
+            setCurrentPage(1);
             router.push(
               value.trim()
                 ? `/boards?q=${encodeURIComponent(value)}`
