@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./BestBoardList.module.css";
-import { FormatDate } from "@/lib/formatDate";
+import { formatDate } from "@/lib/formatDate";
 import Image from "next/image";
 import { Articles } from "@/lib/types";
 
@@ -51,7 +51,7 @@ const BestBoardList = ({ bestArticles }: BestBoardListProps) => {
                 <p className={styles["like-count"]}>{articles.likeCount}</p>
               </div>
               <p className={styles["create-date"]}>
-                {FormatDate(articles.createdAt)}
+                {formatDate(articles.createdAt)}
               </p>
             </div>
           </div>

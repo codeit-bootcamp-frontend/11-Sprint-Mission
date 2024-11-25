@@ -1,4 +1,4 @@
-import { FormatDate } from "@/lib/formatDate";
+import { formatDate } from "@/lib/formatDate";
 import React from "react";
 import styles from "./BoardList.module.css";
 import { Articles } from "@/lib/types";
@@ -40,7 +40,6 @@ const BoardList = ({ articles }: BoardListProps) => {
           <div key={article.id} className={styles["article-box"]}>
             <div className={styles["article-title-box"]}>
               <p className={styles["article-title"]}>{article.title}</p>
-
               <img
                 className={styles["product-img"]}
                 src={article.image}
@@ -60,7 +59,7 @@ const BoardList = ({ articles }: BoardListProps) => {
                 <p className={styles["user-nickname"]}>
                   {article.writer.nickname}
                 </p>
-                <p className={styles.date}>{FormatDate(article.createdAt)}</p>
+                <p className={styles.date}>{formatDate(article.createdAt)}</p>
               </div>
               <div className={styles["like-count-box"]}>
                 <div className={styles.heart}>
