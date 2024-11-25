@@ -3,12 +3,15 @@ import styles from "./BestPostBoard.module.css";
 import Image from "next/image";
 import formatDate from "../lib/formatDate";
 import { useDeviceType } from "@/contexts/DeviceTypeContext";
+import { useState } from "react";
 
 const PAGE_SIZE = {
   desktop: 3,
   tablet: 2,
   mobile: 1,
 };
+
+const IMAGE_PLACEHOLDER = "/images/landscape-placeholder.svg";
 
 export default function BestPostBoard({ articles }: { articles: ArticleList }) {
   const deviceType = useDeviceType();
@@ -30,6 +33,8 @@ export default function BestPostBoard({ articles }: { articles: ArticleList }) {
 }
 
 function PostItem({ article }: { article: Article }) {
+  const [imgSrc, setImgSrc] = useState(article.image || IMAGE_PLACEHOLDER);
+
   const createdAt = formatDate(article.createdAt);
 
   return (
@@ -43,7 +48,15 @@ function PostItem({ article }: { article: Article }) {
       <div className={styles.main}>
         <h3 className={styles.title}>{article.title}</h3>
         <div className={styles.preview}>
-          <Image fill src={article.image} alt={article.title} />
+          <Image
+            fill
+            src={article.image}
+            alt={article.title}
+            style={{
+              objectFit: "cover",
+            }}
+            onError={() => setImgSrc(IMAGE_PLACEHOLDER)}
+          />
         </div>
       </div>
       <div className={styles.util}>

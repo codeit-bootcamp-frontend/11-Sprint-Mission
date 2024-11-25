@@ -16,6 +16,8 @@ const DEFAULT_PARAMS: GetArticleListParams = {
   orderBy: "recent",
 };
 
+const IMAGE_PLACEHOLDER = "/images/landscape-placeholder.svg";
+
 export default function PostBoard({
   articles: initArticles,
 }: {
@@ -141,22 +143,22 @@ export default function PostBoard({
 
 function PostItem({ article }: { article: Article }) {
   const createdAt = formatDate(article.createdAt);
+  const [imgSrc, setImgSrc] = useState(article.image || IMAGE_PLACEHOLDER);
 
   return (
     <div className={styles.Item}>
       <div className={styles.ItemContent}>
         <h3 className={styles.ItemTitle}> {article.title}</h3>
         <div className={styles.ItemPreview}>
-          {article.image && (
-            <Image
-              fill
-              src={article.image}
-              alt={article.title}
-              style={{
-                objectFit: "cover",
-              }}
-            />
-          )}
+          <Image
+            fill
+            src={imgSrc}
+            alt={article.title}
+            style={{
+              objectFit: "cover",
+            }}
+            onError={() => setImgSrc(IMAGE_PLACEHOLDER)}
+          />
         </div>
       </div>
       <div className={styles.ItemInfo}>
