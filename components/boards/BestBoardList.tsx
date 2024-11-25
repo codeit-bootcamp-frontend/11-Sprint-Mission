@@ -3,7 +3,16 @@ import styles from "./BestBoardList.module.css";
 import { FormatDate } from "@/lib/formatDate";
 
 interface BestBoardListProps {
-  bestArticles: Array<any>;
+  bestArticles: {
+    id: number;
+    title: string;
+    image: string;
+    writer: {
+      nickname: string;
+    };
+    likeCount: number;
+    createdAt: string;
+  }[];
 }
 
 const BestBoardList = ({ bestArticles }: BestBoardListProps) => {
@@ -16,7 +25,7 @@ const BestBoardList = ({ bestArticles }: BestBoardListProps) => {
             <div className={styles["best-sticker"]}>
               <img
                 className={styles["best-img"]}
-                src="/images/bestIcon.png"
+                src="/images/bestIcon.svg"
                 alt="베스트 아이콘 이미지"
               />
               <p className={styles["best-title"]}>Best</p>
@@ -34,7 +43,7 @@ const BestBoardList = ({ bestArticles }: BestBoardListProps) => {
                 <p className={styles.nickname}>{articles.writer.nickname}</p>
                 <img
                   className={styles["info-img"]}
-                  src="/images/heartIcon.png"
+                  src="/images/heartIcon.svg"
                   alt="좋아요 하트 이미지"
                 />
                 <p className={styles["like-count"]}>{articles.likeCount}</p>

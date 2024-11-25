@@ -8,12 +8,12 @@ const Header = () => {
       <div className={styles.navBox}>
         <img
           className={styles.logo}
-          src="/images/logoBig.png"
+          src="/images/logoBig.svg"
           alt="판다마켓 로고 이미지"
         />
         <img
           className={styles.logoSmall}
-          src="/images/logoSmall.png"
+          src="/images/logoSmall.svg"
           alt="판다마켓 로고 이미지"
         />
         <div className={styles.textBox}>
@@ -23,7 +23,7 @@ const Header = () => {
       </div>
       <img
         className={styles.profile}
-        src="/images/profileBig.png"
+        src="/images/profileBig.svg"
         alt="프로필 이미지"
       />
     </div>

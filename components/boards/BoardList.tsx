@@ -25,7 +25,7 @@ const BoardList = ({ articles }: BoardListProps) => {
           </select>
           <img
             className={styles["sort-icon"]}
-            src="/images/sortIcon.png"
+            src="/images/sortIcon.svg"
             alt="화살표"
           />
         </div>
@@ -45,7 +45,7 @@ const BoardList = ({ articles }: BoardListProps) => {
               <div className={styles["user-info-box"]}>
                 <img
                   className={styles["user-profile"]}
-                  src="/images/profileBig.png"
+                  src="/images/profileBig.svg"
                   alt="프로필 이미지"
                 />
                 <p className={styles["user-nickname"]}>
@@ -56,7 +56,7 @@ const BoardList = ({ articles }: BoardListProps) => {
               <div className={styles["like-count-box"]}>
                 <img
                   className={styles.heart}
-                  src="/images/heartIcon.png"
+                  src="/images/heartIcon.svg"
                   alt="좋아요 하트 이미지"
                 />
                 <p className={styles["like-count"]}>{article.likeCount}</p>
