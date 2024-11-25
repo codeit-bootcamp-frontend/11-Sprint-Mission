@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Home.css";
-import Header from "../layouts/Header.tsx";
+import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
 
 import Img01 from "../assets/home/Img_home_01.svg";
