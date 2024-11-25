@@ -1,0 +1,96 @@
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  width: 38.4rem;
+  padding: 0 2.4rem 1.6rem 2.4rem;
+  background-color: var(--gray-50);
+  gap: 1rem;
+}
+
+.cardHead {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10.2rem;
+  padding: 0.2rem 2.4rem;
+  gap: 0.5rem;
+  background-color: var(--primary);
+  border-bottom-left-radius: 1.6rem;
+  border-bottom-right-radius: 1.6rem;
+}
+
+.cardHeadTitle {
+  font-weight: var(--medium);
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  color: var(--white);
+}
+
+.cardBody {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.cardBodyContent {
+  width: auto;
+  font-weight: var(--medium);
+  font-size: 2rem;
+  line-height: 3.2rem;
+  color: var(--approx-midnight);
+}
+
+.cardBodyContentImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  padding: 1.2rem;
+  background-color: var(--white);
+  border-radius: 0.6rem;
+  border: 0.1rem solid var(--gray-200);
+}
+
+.cardBottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardBottomAhead {
+  display: flex;
+  width: 100%;
+  gap: 0.8rem;
+}
+
+.boardUserId,
+.likeCount,
+.bestUploadDate {
+  display: flex;
+  font-weight: var(--regular);
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+}
+
+.boardUserId {
+  color: var(--grayish-blue);
+}
+
+.likeCount {
+  width: 100%;
+  color: var(--gray-500);
+}
+
+.bestUploadDate {
+  width: 100%;
+  justify-content: flex-end;
+  color: var(--gray-400);
+}
+
+.likeIt {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/*module로 바꾸기*/
