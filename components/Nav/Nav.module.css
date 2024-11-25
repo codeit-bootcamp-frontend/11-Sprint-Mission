@@ -1,0 +1,28 @@
+.header {
+  @apply sticky top-0 z-50 border-b bg-white py-2;
+  border-color: var(--gray-200);
+
+  .container {
+    @apply mx-auto flex items-center px-4;
+    max-width: var(--container-width);
+  }
+}
+
+.gnb {
+  @apply mr-auto flex gap-2 sm:gap-8;
+
+  .links {
+    @apply flex font-bold;
+    font-size: 18px;
+    color: var(--gray-600);
+
+    .link {
+      @apply block px-1 py-3 sm:px-2 md:px-4;
+
+      &:hover,
+      &.active {
+        color: var(--primary-100);
+      }
+    }
+  }
+}
