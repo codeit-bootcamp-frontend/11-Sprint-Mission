@@ -11,10 +11,9 @@ import Image from "next/image";
 export default function AllPost() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [searchQuery, setSearchQuery] = useState<string>(""); // 검색어 상태
-  const [articles, setArticles] = useState<Article[]>([]); // 게시글 상태
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [articles, setArticles] = useState<Article[]>([]);
 
-  // API를 호출하여 게시글 가져오기
   const fetchArticlesFromApi = async (query: string = "") => {
     try {
       const response = await fetchArticles({
@@ -22,20 +21,22 @@ export default function AllPost() {
         page: 1,
         pageSize: 10,
       });
-      setArticles(response.list); // 결과 업데이트
+      setArticles(response.list);
     } catch (error) {
       console.error("Error fetching articles:", error);
     }
   };
 
-  // 페이지 초기 렌더링 시 전체 게시글 로드 및 쿼리 상태 동기화
   useEffect(() => {
     const query = searchParams.get("q") || "";
     setSearchQuery(query);
-    fetchArticlesFromApi(query); // 검색어가 있으면 해당 검색 결과, 없으면 전체 게시글
+    fetchArticlesFromApi(query);
   }, [searchParams]);
 
-  // 검색어를 URL에 추가
+  const filteredArticles = articles.filter((article) =>
+    article.title.includes(searchQuery)
+  );
+
   const handleSearch = (value: string) => {
     router.push(`/boards?q=${encodeURIComponent(value)}`);
   };
@@ -54,15 +55,15 @@ export default function AllPost() {
       </div>
 
       <div className={styles.postsContainer}>
-        {articles.length > 0 ? (
-          articles.map((article) => (
+        {filteredArticles.length > 0 ? (
+          filteredArticles.map((article) => (
             <div key={article.id} className={styles.post}>
               <div className={styles.postContents}>
                 <h3 className={styles.title}>{article.title}</h3>
                 <div className={styles.imgContainer}>
                   <Image
-                    src={article.image}
-                    alt={article.title}
+                    src={article.image || "/images/default.png"}
+                    alt={article.title || "default"}
                     width={48}
                     height={48}
                     className={styles.image}
@@ -89,7 +90,7 @@ export default function AllPost() {
             </div>
           ))
         ) : (
-          <p>게시글이 없습니다.</p>
+          <p>검색 결과가 없습니다.</p>
         )}
       </div>
     </div>

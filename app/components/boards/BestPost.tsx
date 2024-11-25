@@ -54,8 +54,8 @@ export default function BestPost() {
               <h3 className={styles.title}>{article.title}</h3>
               <div className={styles.imgContainer}>
                 <Image
-                  src={article.image}
-                  alt={article.title}
+                  src={article.image || "/images/default.png"}
+                  alt={article.title || "default"}
                   width={48}
                   height={48}
                   className={styles.image}
