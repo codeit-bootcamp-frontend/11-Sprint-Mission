@@ -80,6 +80,11 @@
 .best-img {
   width: 16px;
   height: 16px;
+  position: relative;
+}
+
+.image-component {
+  position: absolute;
 }
 
 .best-title {
@@ -129,6 +134,7 @@
   border: 1px solid var(--color-white-300);
   border-radius: 6px;
   object-fit: contain;
+  position: relative;
 }
 
 .info-container {
@@ -155,6 +161,7 @@
   width: 16px;
   height: 16px;
   margin-right: 4px;
+  position: relative;
 }
 
 .like-count {
