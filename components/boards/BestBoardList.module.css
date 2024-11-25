@@ -1,4 +1,4 @@
-.bestContainer {
+.best-container {
   width: 62%;
   margin: 0 auto;
   overflow: hidden;
@@ -9,21 +9,21 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
-  color: #111827;
+  color: var(--color-blue-100);
   margin-bottom: 24px;
 }
 
-.bestBox {
+.best-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 24px;
 }
 
-.articleBox {
+.article-box {
   display: flex;
   flex-direction: column;
-  background-color: #f9fafb;
+  background-color: var(--color-white-100);
   width: 384px;
   height: 169px;
   border-radius: 8px;
@@ -31,11 +31,11 @@
   padding: 0 24px;
 }
 
-.bestSticker {
+.best-sticker {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #3692ff;
+  background-color: var(--color-blue-200);
   width: 102px;
   height: 30px;
   border-bottom-left-radius: 16px;
@@ -43,48 +43,48 @@
   gap: 5px;
 }
 
-.bestImg {
+.best-img {
   width: 16px;
   height: 16px;
 }
 
-.bestTitle {
+.best-title {
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
-  color: #ffffff;
+  color: var(--color-white-200);
 }
 
-.titleBox {
+.title-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 8px;
 }
 
-.articleTitle {
+.article-title {
   font-weight: 600;
   font-size: 20px;
   line-height: 32px;
-  color: #1f2937;
+  color: var(--color-blue-300);
   white-space: nowrap;
 }
 
-.productImg {
+.product-img {
   width: 72px;
   height: 72px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--color-white-300);
   border-radius: 6px;
   object-fit: contain;
 }
 
-.infoContainer {
+.info-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.infoBox {
+.info-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -94,28 +94,28 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;
-  color: #4b5563;
+  color: var(--color-blue-400);
   margin-right: 8px;
 }
 
-.infoImg {
+.info-img {
   width: 16px;
   height: 16px;
   margin-right: 4px;
 }
 
-.likeCount {
+.like-count {
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;
-  color: #6b7280;
+  color: var(--color-blue-500);
 }
 
-.createDate {
+.create-date {
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;
-  color: #9ca3af;
+  color: var(--color-blue-600);
 }
 
 @media screen and (max-width: 744px) {

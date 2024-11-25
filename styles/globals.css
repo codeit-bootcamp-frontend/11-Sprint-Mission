@@ -1,5 +1,20 @@
 @import "@fontsource/pretendard";
 
+:root {
+  --color-blue-100: #111827;
+  --color-blue-200: #3692ff;
+  --color-blue-300: #1f2937;
+  --color-blue-400: #4b5563;
+  --color-blue-500: #6b7280;
+  --color-blue-600: #9ca3af;
+
+  --color-white-100: #f9fafb;
+  --color-white-200: #ffffff;
+  --color-white-300: #e5e7eb;
+  --color-white-400: #f3f4f6;
+  --color-white-500: #fcfcfc;
+}
+
 * {
   box-sizing: border-box;
   font-family: "Pretendard", sans-serif;

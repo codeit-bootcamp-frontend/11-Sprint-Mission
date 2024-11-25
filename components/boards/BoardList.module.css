@@ -1,9 +1,9 @@
-.boardListContainer {
+.board-list-container {
   width: 62%;
   margin: 0 auto;
 }
 
-.titleBox {
+.title-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,20 +14,20 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 32px;
-  color: #1f2937;
+  color: var(--color-blue-300);
 }
 
-.writeButton {
+.write-button {
   border-radius: 8px;
   padding: 12px 23px;
-  background-color: #3692ff;
-  color: #ffffff;
+  background-color: var(--color-blue-200);
+  color: var(--color-white-200);
   font-weight: 600;
   font-size: 16px;
   border: none;
 }
 
-.searchBox {
+.search-box {
   display: flex;
   width: 100%;
   align-items: center;
@@ -35,112 +35,112 @@
   margin-bottom: 24px;
 }
 
-.searchBar {
+.search-bar {
   flex-grow: 1;
   flex-shrink: 1;
   height: 42px;
   border: none;
   border-radius: 12px;
   padding: 9px 20px 9px 44px;
-  background-color: #f3f4f6;
+  background-color: var(--color-white-400);
   background-image: url("/images/searchIcon.png");
   background-repeat: no-repeat;
   background-position: left 16px center;
   background-size: 20px;
 }
 
-.orderBySelect {
+.order-by-select {
   flex-shrink: 0;
   width: 130px;
   height: 42px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--color-white-300);
   border-radius: 12px;
   padding: 10px 20px;
   gap: 10px;
   font-weight: 400;
   font-size: 16px;
-  color: #1f2937;
+  color: var(--color-blue-300);
 }
 
 .option {
   font-weight: 400;
   font-size: 16px;
-  color: #1f2937;
+  color: var(--color-blue-300);
 }
 
-.sortIcon {
+.sort-icon {
   display: none;
 }
 
-.articleContainer {
+.article-container {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.articleBox {
+.article-box {
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--color-white-300);
   height: 138px;
-  background-color: #fcfcfc;
+  background-color: var(--color-white-500);
 }
 
-.articleTitleBox {
+.article-title-box {
   display: flex;
   justify-content: space-between;
   gap: 8px;
 }
 
-.articleTitle {
+.article-title {
   font-weight: 600;
   font-size: 20px;
   line-height: 32px;
-  color: #1f2937;
+  color: var(--color-blue-300);
   margin: 0;
 }
 
-.productImg {
+.product-img {
   width: 72px;
   height: 72px;
   border-radius: 8px;
-  border: 1px solid #f3f4f6;
+  border: 1px solid var(--color-white-400);
   object-fit: contain;
 }
 
-.infoBox {
+.info-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.userInfoBox {
+.user-info-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 8px;
 }
 
-.userProfile {
+.user-profile {
   width: 24px;
   height: 24px;
 }
 
-.userNickname {
+.user-nickname {
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;
-  color: #4b5563;
+  color: var(--color-blue-400);
 }
 
 .date {
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;
-  color: #9ca3af;
+  color: var(--color-blue-600);
 }
 
-.likeCountBox {
+.like-count-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -152,11 +152,11 @@
   height: 24px;
 }
 
-.likeCount {
+.like-count {
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
-  color: #6b7280;
+  color: var(--color-blue-500);
 }
 
 /* 반응형 - Tablet */
@@ -204,7 +204,7 @@
   .option {
     font-weight: 400;
     font-size: 16px;
-    color: #1f2937;
+    color: var(--color-blue-300);
   }
 
   .sortIcon {

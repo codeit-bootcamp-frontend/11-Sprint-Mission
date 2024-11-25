@@ -8,38 +8,38 @@ interface BestBoardListProps {
 
 const BestBoardList = ({ bestArticles }: BestBoardListProps) => {
   return (
-    <div className={styles.bestContainer}>
+    <div className={styles["best-container"]}>
       <p className={styles.title}>베스트 게시글</p>
-      <div className={styles.bestBox}>
+      <div className={styles["best-box"]}>
         {bestArticles.map((articles) => (
-          <div key={articles.id} className={styles.articleBox}>
-            <div className={styles.bestSticker}>
+          <div key={articles.id} className={styles["article-box"]}>
+            <div className={styles["best-sticker"]}>
               <img
-                className={styles.bestImg}
+                className={styles["best-img"]}
                 src="/images/bestIcon.png"
                 alt="베스트 아이콘 이미지"
               />
-              <p className={styles.bestTitle}>Best</p>
+              <p className={styles["best-title"]}>Best</p>
             </div>
-            <div className={styles.titleBox}>
-              <p className={styles.articleTitle}>{articles.title}</p>
+            <div className={styles["title-box"]}>
+              <p className={styles["article-title"]}>{articles.title}</p>
               <img
-                className={styles.productImg}
+                className={styles["product-img"]}
                 src={articles.image}
                 alt="상품 이미지"
               />
             </div>
-            <div className={styles.infoContainer}>
-              <div className={styles.infoBox}>
+            <div className={styles["info-container"]}>
+              <div className={styles["info-box"]}>
                 <p className={styles.nickname}>{articles.writer.nickname}</p>
                 <img
-                  className={styles.infoImg}
+                  className={styles["info-img"]}
                   src="/images/heartIcon.png"
                   alt="좋아요 하트 이미지"
                 />
-                <p className={styles.likeCount}>{articles.likeCount}</p>
+                <p className={styles["like-count"]}>{articles.likeCount}</p>
               </div>
-              <p className={styles.createDate}>
+              <p className={styles["create-date"]}>
                 {FormatDate(articles.createdAt)}
               </p>
             </div>
