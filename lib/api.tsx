@@ -21,7 +21,7 @@ export async function getArticles(
   }
 }
 
-export async function getArticleById(id: string): Promise<Article> {
+export async function getArticleById(id: number): Promise<Article> {
   const response = await axiosInstance.get(`/articles/${id}`);
   return response.data;
 }
