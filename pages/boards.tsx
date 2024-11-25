@@ -1,32 +1,66 @@
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import styles from '@/styles/Board.module.css';
 import BestCard from '@/components/BestCard';
 import Button from '@/components/common/Button';
 import Search from '@/components/common/Search';
-import axios from '@/lib/axios';
 import Card from '@/components/Card';
+import useResize, { ScreenType } from '@/hooks/useResize';
+import { getProducts, Product, ProductResult } from '@/api/productApi';
 
 const Board = () => {
+  const screenType = useResize(); // useResize 훅 사용
+  const [page, setPage] = useState(1); // 페이지 번호
+  const [bestProducts, setBestProducts] = useState<ProductResult[]>([]);
+  const [order, setOrder] = useState('');
+
   const handleClick = () => {
     console.log('클릭');
   };
 
   const handleSearch = () => {};
 
-  const getProduct = async () => {
-    const res = await axios.get(`/articles?page=1&pageSize=3&orderBy=like`);
-    const nextProduct = res.data;
+  const getSizeForScreenType = (screenType: ScreenType): number => {
+    const sizeMap: Record<ScreenType, number> = {
+      mobile: 1,
+      tablet: 2,
+      desktop: 3,
+    };
+
+    return sizeMap[screenType] || 1;
+  };
+
+  const fetcfhBestProducts = async (param: Product): Promise<void> => {
+    try {
+      const reaponse = await getProducts(param);
+      setBestProducts(reaponse.data.list);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
-    getProduct();
-  }, []);
+    const size = getSizeForScreenType(screenType);
+
+    const param: Product = {
+      page: page,
+      pageSize: size,
+      orderBy: 'favorite',
+    };
+
+    fetcfhBestProducts(param);
+  }, [screenType, page]);
 
   return (
     <div className={styles.boardContainer}>
       <section>
         <h2>베스트 게시글</h2>
-        <BestCard />
+        {bestProducts.map((data) => {
+          return (
+            <React.Fragment key={data.id}>
+              <BestCard bestProducts={data} />
+            </React.Fragment>
+          );
+        })}
       </section>
       <section className={styles.boardBox}>
         <div className={styles.titles}>
