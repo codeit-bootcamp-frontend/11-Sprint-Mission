@@ -3,6 +3,17 @@
   margin: 0 auto;
   overflow: hidden;
   margin-bottom: 40px;
+
+  @media screen and (max-width: 744px) {
+    width: 100%;
+    padding: 0 24px;
+    margin-bottom: 24px;
+  }
+
+  @media screen and (max-width: 376px) {
+    width: 100%;
+    padding: 0 16px;
+  }
 }
 
 .title {
@@ -11,6 +22,12 @@
   line-height: 24px;
   color: var(--color-blue-100);
   margin-bottom: 24px;
+
+  @media screen and (max-width: 376px) {
+    font-size: 18px;
+    line-height: 26px;
+    margin-bottom: 16px;
+  }
 }
 
 .best-box {
@@ -18,6 +35,10 @@
   justify-content: space-between;
   align-items: center;
   gap: 24px;
+
+  @media screen and (max-width: 744px) {
+    gap: 16px;
+  }
 }
 
 .article-box {
@@ -29,6 +50,19 @@
   border-radius: 8px;
   gap: 10px;
   padding: 0 24px;
+
+  @media screen and (max-width: 744px) {
+    width: 340px;
+    height: 198px;
+    padding: 0 16px 24px;
+  }
+
+  @media screen and (max-width: 376px) {
+    width: 343px;
+    height: 198px;
+    gap: 16px;
+    padding: 0 16px 24px;
+  }
 }
 
 .best-sticker {
@@ -60,6 +94,14 @@
   justify-content: space-between;
   align-items: center;
   gap: 8px;
+
+  @media screen and (max-width: 744px) {
+    gap: 40px;
+  }
+
+  @media screen and (max-width: 376px) {
+    gap: 40px;
+  }
 }
 
 .article-title {
@@ -68,6 +110,17 @@
   line-height: 32px;
   color: var(--color-blue-300);
   white-space: nowrap;
+
+  @media screen and (max-width: 744px) {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  @media screen and (max-width: 376px) {
+    font-size: 18px;
+    line-height: 26px;
+  }
 }
 
 .product-img {
@@ -116,62 +169,4 @@
   font-size: 14px;
   line-height: 24px;
   color: var(--color-blue-600);
-}
-
-@media screen and (max-width: 744px) {
-  .bestContainer {
-    width: 100%;
-    padding: 0 24px;
-    margin-bottom: 24px;
-  }
-
-  .bestBox {
-    gap: 16px;
-  }
-
-  .articleBox {
-    width: 340px;
-    height: 198px;
-    padding: 0 16px 24px;
-  }
-
-  .titleBox {
-    gap: 40px;
-  }
-
-  .articleTitle {
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 26px;
-  }
-}
-
-/* 반응형 - Mobile */
-@media screen and (max-width: 376px) {
-  .bestContainer {
-    width: 100%;
-    padding: 0 16px;
-  }
-
-  .title {
-    font-size: 18px;
-    line-height: 26px;
-    margin-bottom: 16px;
-  }
-
-  .articleBox {
-    width: 343px;
-    height: 198px;
-    gap: 16px;
-    padding: 0 16px 24px;
-  }
-
-  .titleBox {
-    gap: 40px;
-  }
-
-  .articleTitle {
-    font-size: 18px;
-    line-height: 26px;
-  }
 }

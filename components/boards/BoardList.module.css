@@ -1,6 +1,16 @@
 .board-list-container {
   width: 62%;
   margin: 0 auto;
+
+  @media screen and (max-width: 744px) {
+    width: 100%;
+    padding: 0 24px;
+  }
+
+  @media screen and (max-width: 376px) {
+    width: 100%;
+    padding: 0 16px;
+  }
 }
 
 .title-box {
@@ -8,6 +18,14 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
+
+  @media screen and (max-width: 744px) {
+    margin-bottom: 48px;
+  }
+
+  @media screen and (max-width: 376px) {
+    margin-bottom: 16px;
+  }
 }
 
 .title {
@@ -15,6 +33,11 @@
   font-size: 20px;
   line-height: 32px;
   color: var(--color-blue-300);
+
+  @media screen and (max-width: 376px) {
+    font-size: 18px;
+    line-height: 26px;
+  }
 }
 
 .write-button {
@@ -33,6 +56,16 @@
   align-items: center;
   gap: 16px;
   margin-bottom: 24px;
+
+  @media screen and (max-width: 744px) {
+    gap: 6px;
+    margin-bottom: 40px;
+  }
+
+  @media screen and (max-width: 376px) {
+    gap: 13px;
+    margin-bottom: 16px;
+  }
 }
 
 .search-bar {
@@ -60,16 +93,30 @@
   font-weight: 400;
   font-size: 16px;
   color: var(--color-blue-300);
+
+  @media screen and (max-width: 376px) {
+    display: none;
+  }
 }
 
 .option {
   font-weight: 400;
   font-size: 16px;
   color: var(--color-blue-300);
+
+  @media screen and (max-width: 376px) {
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--color-blue-300);
+  }
 }
 
 .sort-icon {
   display: none;
+
+  @media screen and (max-width: 376px) {
+    display: block;
+  }
 }
 
 .article-container {
@@ -84,6 +131,10 @@
   border-bottom: 1px solid var(--color-white-300);
   height: 138px;
   background-color: var(--color-white-500);
+
+  @media screen and (max-width: 376px) {
+    height: 136px;
+  }
 }
 
 .article-title-box {
@@ -98,6 +149,11 @@
   line-height: 32px;
   color: var(--color-blue-300);
   margin: 0;
+
+  @media screen and (max-width: 376px) {
+    font-size: 18px;
+    line-height: 26px;
+  }
 }
 
 .product-img {
@@ -157,66 +213,4 @@
   font-size: 16px;
   line-height: 26px;
   color: var(--color-blue-500);
-}
-
-/* 반응형 - Tablet */
-@media screen and (max-width: 744px) {
-  .boardListContainer {
-    width: 100%;
-    padding: 0 24px;
-  }
-
-  .titleBox {
-    margin-bottom: 48px;
-  }
-
-  .searchBox {
-    gap: 6px;
-    margin-bottom: 40px;
-  }
-}
-
-/* 반응형 - Mobile */
-@media screen and (max-width: 376px) {
-  .boardListContainer {
-    width: 100%;
-    padding: 0 16px;
-  }
-
-  .titleBox {
-    margin-bottom: 16px;
-  }
-
-  .title {
-    font-size: 18px;
-    line-height: 26px;
-  }
-
-  .searchBox {
-    gap: 13px;
-    margin-bottom: 16px;
-  }
-
-  .orderBySelect {
-    display: none;
-  }
-
-  .option {
-    font-weight: 400;
-    font-size: 16px;
-    color: var(--color-blue-300);
-  }
-
-  .sortIcon {
-    display: block;
-  }
-
-  .articleBox {
-    height: 136px;
-  }
-
-  .articleTitle {
-    font-size: 18px;
-    line-height: 26px;
-  }
 }
