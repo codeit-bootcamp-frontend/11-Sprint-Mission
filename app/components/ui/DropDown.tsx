@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Dropdown.module.css";
 
 interface DropdownProps {
-  onSortSelection: (option: string) => void;
+  onSortSelection: (option: "recent" | "favorite") => void;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({ onSortSelection }) => {

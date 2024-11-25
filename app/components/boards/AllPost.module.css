@@ -74,7 +74,7 @@
   gap: 10px;
 }
 
-.serachDropdown {
+.searchDropdown {
   position: relative;
   margin-top: 20px;
   display: flex;
@@ -107,4 +107,30 @@
   font-weight: 400;
   line-height: 24px;
   color: #4b5563;
+}
+
+.pagination {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.paginationButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: #24242c;
+  border: none;
+  border-radius: 10px;
+  width: 30px;
+  height: 25px;
+  font-size: 16px;
+}
+
+.paginationButton:disabled {
+  cursor: not-allowed;
+  background-color: #d1d5db;
 }

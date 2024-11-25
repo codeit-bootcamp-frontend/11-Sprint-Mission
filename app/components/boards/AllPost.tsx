@@ -12,17 +12,17 @@ import Dropdown from "../ui/Dropdown";
 export default function AllPost() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [searchQuery, setSearchQuery] = useState<string>("");
   const [articles, setArticles] = useState<Article[]>([]);
-  const [sortOption, setSortOption] = useState<string>("recent");
+  const [sortOption, setSortOption] = useState<"recent" | "favorite">("recent");
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const [isDropdownVisible, setIsDropdownVisible] = useState<boolean>(false);
 
-  const fetchArticlesFromApi = async (query: string = "") => {
+  const fetchArticlesFromApi = async (query: string = ""): Promise<void> => {
     try {
       const response = await fetchArticles({
         q: query,
         page: 1,
-        pageSize: 10,
+        pageSize: 1000,
       });
       setArticles(response.list);
     } catch (error) {
@@ -32,37 +32,35 @@ export default function AllPost() {
 
   useEffect(() => {
     const query = searchParams.get("q") || "";
-    setSearchQuery(query);
     fetchArticlesFromApi(query);
   }, [searchParams]);
 
-  const sortedArticles = [...articles].sort((a, b) => {
-    if (sortOption === "favorite") {
-      return b.likeCount - a.likeCount;
-    }
-    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-  });
-
-  const filteredArticles = sortedArticles.filter((article) =>
-    article.title.includes(searchQuery)
-  );
-
-  const handleSearch = (value: string) => {
-    if (value.trim() === "") {
-      router.push("/boards");
-    } else {
-      router.push(`/boards?q=${encodeURIComponent(value)}`);
-    }
-  };
-
-  const handleSortSelection = (option: string) => {
+  const handleSortSelection = (option: "recent" | "favorite"): void => {
     setSortOption(option);
+    setCurrentPage(1);
     setIsDropdownVisible(false);
   };
 
-  const toggleDropdown = () => {
+  const toggleDropdown = (): void => {
     setIsDropdownVisible((prev) => !prev);
   };
+
+  const handlePageChange = (newPage: number): void => {
+    setCurrentPage(newPage);
+  };
+
+  const getPaginatedArticles = (): Article[] => {
+    const sortedArticles = [...articles].sort((a, b) => {
+      if (sortOption === "favorite") {
+        return b.likeCount - a.likeCount; // 좋아요순
+      }
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(); // 최신순
+    });
+
+    return sortedArticles.slice((currentPage - 1) * 10, currentPage * 10);
+  };
+
+  const paginatedArticles = getPaginatedArticles();
 
   return (
     <div className="container">
@@ -72,8 +70,17 @@ export default function AllPost() {
           글쓰기
         </Link>
       </div>
-      <div className={styles.serachDropdown}>
-        <SearchInput placeholder="게시글 검색" onSearch={handleSearch} />
+      <div className={styles.searchDropdown}>
+        <SearchInput
+          placeholder="게시글 검색"
+          onSearch={(value) => {
+            router.push(
+              value.trim()
+                ? `/boards?q=${encodeURIComponent(value)}`
+                : "/boards"
+            );
+          }}
+        />
         <button className={styles.dropdownButton} onClick={toggleDropdown}>
           <Image width={30} height={30} src="/images/ic_sort.png" alt="정렬" />
         </button>
@@ -83,8 +90,8 @@ export default function AllPost() {
       </div>
 
       <div className={styles.postsContainer}>
-        {filteredArticles.length > 0 ? (
-          filteredArticles.map((article) => (
+        {paginatedArticles.length > 0 ? (
+          paginatedArticles.map((article) => (
             <div key={article.id} className={styles.post}>
               <div className={styles.postContents}>
                 <h3 className={styles.title}>{article.title}</h3>
@@ -120,6 +127,36 @@ export default function AllPost() {
         ) : (
           <p>검색 결과가 없습니다.</p>
         )}
+      </div>
+
+      <div className={styles.pagination}>
+        <button
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+          className={styles.paginationButton}
+        >
+          <Image
+            width={20}
+            height={20}
+            src="/images/ic_left.png"
+            alt="왼쪽 화살표"
+          />
+        </button>
+        <span>{currentPage}</span>
+        <button
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={
+            paginatedArticles.length < 10 || currentPage * 10 >= articles.length
+          }
+          className={styles.paginationButton}
+        >
+          <Image
+            width={20}
+            height={20}
+            src="/images/ic_right.png"
+            alt="오른쪽 화살표"
+          />
+        </button>
       </div>
     </div>
   );
