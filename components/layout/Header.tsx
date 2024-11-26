@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "../public/images/logo.png";
-import Profile from "../public/images/profile.png";
-import "./Header.css";
+import Logo from "../../public/images/logo.svg";
+import Profile from "../../public/images/profile.svg";
+import "../../styles/Header.module.css";
 
 const Header = () => {
   return (

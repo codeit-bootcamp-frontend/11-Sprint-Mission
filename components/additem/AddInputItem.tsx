@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DeleteButton from "./DeleteButton";
+import DeleteButton from "../ui/DeleteButton";
 
 interface AddInputItemProps {
   productName: string;

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 // import AddInputItem from "../component/AddInputItem";
-import Tag from "../../component/Tag";
-import InputItem from "../../component/InputItem";
-import ImageUpload from "../../component/ImageUpload";
+import Tag from "../../components/Tag";
+import InputItem from "../../components/InputItem";
+import ImageUpload from "../../components/ImageUpload";
 // import AddItemButton from "../component/AddItemButton";
 // import TagInput from "../component/TagInput";
 
-function AddItem() {
+export default function AddItem() {
   const [name, setName] = useState("");
   // const [image, setImage] = useState(null);
   const [description, setDescription] = useState("");
@@ -110,5 +110,3 @@ function AddItem() {
     </div>
   );
 }
-
-export default AddItem;

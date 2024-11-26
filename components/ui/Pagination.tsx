@@ -15,7 +15,7 @@ const Pagination = ({
   onPageChange,
 }: PaginationProps) => {
   const maxVisiblePages = 5;
-  let startPage;
+  let startPage: number;
 
   if (totalPageNum <= maxVisiblePages) {
     startPage = 1;

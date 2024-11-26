@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import "./LoginPage.css";
+import "../../styles/LoginPage.css";
 
 // 이미지 파일 import
 import Logo from "../../public/images/logo.svg";

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import HeartIcon from "../images/ic_heart.svg";
 import ItemCard from "./ItemCard";
-import { getProducts } from "../../../api/api";
+import { getProducts } from "../../api/api";
 
 const getPageSize = () => {
   const width = window.innerWidth;

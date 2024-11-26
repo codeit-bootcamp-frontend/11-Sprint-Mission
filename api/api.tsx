@@ -1,44 +1,11 @@
-// export async function getProducts(order = "resent") {
-//   const query = `order=${order}`;
-//   // const response = await fetch(
-//   //   `https://panda-market-api.vercel.app/products?${query}`
-//   // );
-//   // const body = await response.json();
-//   // return body;
-//   try {
-//     const response = await fetch(
-//       `https://panda-market-api.vercel.app/products?${query}`
-//     );
-//     if (!response.ok) {
-//       throw new Error(`HTTP error: ${response.status}`);
-//     }
-//     const body = await response.json();
-//     return body;
-//   } catch (error) {
-//     console.error("Failed to fetch products:", error);
-//     throw error;
-//   }
-// }
+import { ProductListFetch } from "@/types/Types";
 
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  images: string[];
-  favoriteCount: number;
-}
-
-interface ApiResponse {
-  list: Product[];
-  totalCount: number;
-}
-
-export async function getProducts(
-  order = "resent",
-  page: number = 1,
-  pageSize: number = 10
-): Promise<ApiResponse> {
-  const query = `order=${order}&page=${page}&pageSize=${pageSize}`; // pageSize를 쿼리 파라미터에 추가
+export async function getProducts({
+  orderBy,
+  pageSize,
+  page = 1,
+}: ProductListFetch) {
+  const query = `orderBy=${orderBy}&page=${page}&pageSize=${pageSize}`; // pageSize를 쿼리 파라미터에 추가
   try {
     const response = await fetch(
       `https://panda-market-api.vercel.app/products?${query}`
@@ -54,23 +21,7 @@ export async function getProducts(
   }
 }
 
-// const API_BASE_URL = "https://panda-market-api.vercel.app";
-
-// 상품상세정보
-// export const getDetail = async (productId) => {
-//   try {
-//     const response = await fetch(`${API_BASE_URL}/products/${productId}`);
-//     if (!response.ok) {
-//       throw new Error("오류 응답");
-//     }
-//     const data = await response.json();
-//     return data;
-//   } catch (error) {
-//     console.error("실패", error);
-//     throw error;
-//   }
-// };
-export async function getDetailComments(productId: string): Promise<any> {
+export async function getDetailComments(productId: string) {
   if (!productId) {
     throw new Error("Invalid product ID");
   }
@@ -90,60 +41,21 @@ export async function getDetailComments(productId: string): Promise<any> {
   }
 }
 
-// 댓글
-// export const getDetailComment = async (productId) => {
-//   try {
-//     const response = await fetch(
-//       `${API_BASE_URL}/products/${productId}/comments`
-//     );
-//     if (!response.ok) {
-//       throw new Error("오류응답");
-//     }
-//     const data = await response.json();
-//     return data;
-//   } catch (error) {
-//     console.error("실패", error);
-//     throw error;
-//   }
-// };
-
-// export const postComment = async (productId, comment) => {
-//   try {
-//     const response = await fetch(
-//       `${API_BASE_URL}/product/${productId}/comments`,
-//       { text: comment }
-//     );
-//     return response.data;
-//   } catch (error) {
-//     console.error("실패", error);
-//     throw error;
-//   }
-// };
-
-type Comment = {
-  id: string;
-  content: string;
-  writer: {
-    id: string;
-    nickname: string;
-    image?: string; // Optional: 일부 사용자에게 이미지가 없을 수도 있음
-  };
-  createdAt: string; // 문자열 형식의 날짜
-  updatedAt: string; // 문자열 형식의 날짜
-};
-
-type GetProductCommentsResponse = Comment[];
-
-export async function getProductComments(
-  productId: string
-): Promise<GetProductCommentsResponse> {
+export async function getProductComments({
+  productId,
+  limit = 10,
+}: {
+  productId: number;
+  limit?: number;
+}) {
   if (!productId) {
     throw new Error("Invalid product ID");
   }
 
   try {
     // 올바르게 URLSearchParams 생성
-    const query = new URLSearchParams().toString(); // 빈 쿼리 문자열을 생성
+    // const query = new URLSearchParams().toString(); // 빈 쿼리 문자열을 생성
+    const query = `limit=${limit}`;
     const response = await fetch(
       `https://panda-market-api.vercel.app/products/${productId}/comments?${query}`
     ); // api 호출
@@ -152,31 +64,10 @@ export async function getProductComments(
       throw new Error(`HTTP error: ${response.status}`);
     }
 
-    const body: GetProductCommentsResponse = await response.json();
+    const body = await response.json();
     return body;
   } catch (error) {
     console.error("패치 실패", error);
     throw error;
   }
 }
-
-// export async function getProductComments({ productId }) {
-//   if (!productId) {
-//     throw new Error("Invalid product ID");
-//   }
-
-//   try {
-//     const query = new URLSearchParams.toString();
-//     const response = await fetch(
-//       `https://panda-market-api.vercel.app/products/${productId}/comments?${query}`
-//     );
-//     if (!response.ok) {
-//       throw new Error(`HTTP error: ${response.status}`);
-//     }
-//     const body = await response.json();
-//     return body;
-//   } catch (error) {
-//     console.error("실패:", error);
-//     throw error;
-//   }
-// }

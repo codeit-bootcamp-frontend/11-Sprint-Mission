@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 // import "./common.css";
-import "./HomePage.css";
+import "../../styles/HomePage.module.css";
 
 // 이미지 import
 // import logo from "../../public/images/logo.svg";
@@ -19,18 +19,6 @@ import instagramIcon from "../../public/images/instargram.svg";
 function HomePage() {
   return (
     <div>
-      {/* <header className="nav">
-        <a href="index.html">
-          <img className="logo" src={logo} alt="판다마켓" />
-        </a>
-        <button
-          onClick={() => (window.location.href = "signin.html")}
-          className="login"
-        >
-          로그인
-        </button>
-      </header> */}
-
       <main>
         <section className="home_top_section banner">
           <div className="home_top_div">
@@ -40,12 +28,6 @@ function HomePage() {
                 거래해 보세요
               </p>
               <br />
-              {/* <button
-                onClick={() => (window.location.href = "items.html")}
-                className="items_btn"
-              >
-                구경하러 가기
-              </button> */}
               <Link href="/items">
                 <button className="items_btn">구경하러 가기</button>
               </Link>
