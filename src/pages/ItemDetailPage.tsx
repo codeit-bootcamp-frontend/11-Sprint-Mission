@@ -1,15 +1,23 @@
-import ProductComment from "../components/ProductComment";
-import ProductDetail from "../components/ProductDetail";
-import { useParams, useNavigate } from "react-router-dom";
-import "../styles/ItemDetailPage.css";
+import ProductComment from '../components/ProductComment';
+import ProductDetail from '../components/ProductDetail';
+import { useParams, useNavigate } from 'react-router-dom';
+import '../styles/ItemDetailPage.css';
+
+type Params = {
+  productId: string | undefined;
+};
 
 function ItemDetailPage() {
-  const { productId } = useParams();
+  const { productId } = useParams<Params>();
   const navigate = useNavigate();
 
   const handleBackToList = () => {
-    navigate("/items");
+    navigate('/items');
   };
+
+  if (!productId) {
+    return <div>"상품을 찾을 수 없습니다."</div>;
+  }
 
   return (
     <>

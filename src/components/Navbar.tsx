@@ -6,7 +6,7 @@ import profileImg from '../image/profile-img.png';
 function Navbar() {
   const location = useLocation();
   // 파라미터로 경로를 받아, 현재 경로(location.pathname)가 포함되어 있는지 여부
-  const getLinkStyle = (targetPaths) => ({
+  const getLinkStyle = (targetPaths: string[]): React.CSSProperties => ({
     color: targetPaths.includes(location.pathname) ? '#3692FF' : undefined,
   });
 
@@ -19,7 +19,7 @@ function Navbar() {
         <div className="navbar-menus">
           <NavLink
             to="/freeboard"
-            style={() => getLinkStyle('/freeboard')}
+            style={() => getLinkStyle(['/freeboard'])}
             className="navbar-menu"
           >
             자유게시판

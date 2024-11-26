@@ -1,9 +1,15 @@
-import { useNavigate } from "react-router-dom";
-import "./ProductCard.css";
-import "../styles/Reset.css";
-import HeartIcon from "../image/heart-icon.png";
+import { useNavigate } from 'react-router-dom';
+import { Product } from '../types/Product';
+import './ProductCard.css';
+import '../styles/Reset.css';
+import HeartIcon from '../image/heart-icon.png';
 
-function ProductCard({ product, className }) {
+type ProductCardProps = {
+  product: Product;
+  className?: string;
+};
+
+function ProductCard({ product, className }: ProductCardProps) {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -19,7 +25,7 @@ function ProductCard({ product, className }) {
       />
       <h3>{product.name}</h3>
       <p>{product.price}원</p>
-      <div class="favorite-count">
+      <div className="favorite-count">
         <img src={HeartIcon} alt="좋아요 아이콘" />
         <span>{product.favoriteCount}</span>
       </div>
