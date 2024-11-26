@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchComments } from "../../../api/itemsApi";
+import { fetchComments, Comment } from "../../../api/itemsApi";
 import { useParams } from "react-router-dom";
 import MoreDropDown from "./MoreDropDown";
 import commentDefault from "../../../images/icons/commentDefault.svg";
@@ -7,46 +7,43 @@ import more from "../../../images/icons/more.svg";
 import "./ItemCommentList.css";
 
 function CommentList() {
-  const { productId } = useParams();
-  const [comments, setComments] = useState([]);
-  const [isMoreDropDown, setIsMoreDropDown] = useState(null);
+  const { productId } = useParams<{ productId: string }>();
+  const [comments, setComments] = useState<Comment[]>([]);
+  const [isMoreDropDown, setIsMoreDropDown] = useState<number | null>(null);
 
   useEffect(() => {
     const loadComments = async () => {
+      if (!productId) return;
       try {
-        const response = await fetchComments(productId, { page: 1, limit: 10 });
-        if (response && Array.isArray(response.list)) {
-          setComments(response.list);
-        } else {
-          console.error("댓글 데이터가 올바르지 않습니다:", response);
-          setComments([]);
-        }
+        const response = await fetchComments(Number(productId), {
+          page: 1,
+          limit: 10,
+        });
+        setComments(response.list);
       } catch (error) {
         console.error("Error fetching comments:", error);
         setComments([]);
       }
     };
 
-    if (productId) {
-      loadComments();
-    }
+    loadComments();
   }, [productId]);
 
-  const toggleDropdown = (id) => {
+  const toggleDropdown = (id: number) => {
     setIsMoreDropDown((prev) => (prev === id ? null : id));
   };
 
-  const handleEdit = (commentId) => {
+  const handleEdit = (commentId: number) => {
     alert(`${commentId} 댓글 수정`);
     setIsMoreDropDown(null);
   };
 
-  const handleDelete = (commentId) => {
+  const handleDelete = (commentId: number) => {
     alert(`${commentId} 댓글 삭제`);
     setIsMoreDropDown(null);
   };
 
-  if (comments.length === 0) return <div>댓글이 없습니다.</div>;
+  if (!comments.length) return <div>댓글이 없습니다.</div>;
 
   return (
     <div className="commentList">

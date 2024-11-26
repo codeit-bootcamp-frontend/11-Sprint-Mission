@@ -1,6 +1,10 @@
 import React from "react";
 
-function DropDown({ onSortSelection }) {
+interface DropDownProps {
+  onSortSelection: (option: string) => void;
+}
+
+function DropDown({ onSortSelection }: DropDownProps) {
   return (
     <div className="dropDown">
       <div className="dropDownMenu" onClick={() => onSortSelection("recent")}>

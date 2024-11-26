@@ -1,4 +1,16 @@
-import React from "react";
+import React, { ChangeEvent, KeyboardEvent } from "react";
+
+interface InputFieldProps {
+  id: string;
+  label?: string;
+  type: "text" | "password" | "email" | "textarea";
+  placeholder?: string;
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onKeyDown?: (
+    e: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+}
 
 const InputField = ({
   id,
@@ -8,7 +20,7 @@ const InputField = ({
   value,
   onChange,
   onKeyDown,
-}) => {
+}: InputFieldProps) => {
   return (
     <div className="inputField">
       {label && (

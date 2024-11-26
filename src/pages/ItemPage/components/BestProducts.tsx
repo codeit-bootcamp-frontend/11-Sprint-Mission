@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
-import { fetchProducts } from "../../../api/itemsApi";
+import { fetchProducts, Product } from "../../../api/itemsApi";
 
 const getUserWidth = () => {
   const width = window.innerWidth;
@@ -14,10 +14,16 @@ const getUserWidth = () => {
 };
 
 function BestProducts() {
-  const [itemList, setItemList] = useState([]);
-  const [pageSize, setPageSize] = useState(getUserWidth());
+  const [itemList, setItemList] = useState<Product[]>([]);
+  const [pageSize, setPageSize] = useState<number>(getUserWidth());
 
-  const fetchData = async ({ orderBy, pageSize }) => {
+  const fetchData = async ({
+    orderBy,
+    pageSize,
+  }: {
+    orderBy: string;
+    pageSize: number;
+  }) => {
     const products = await fetchProducts({ orderBy, pageSize });
     setItemList(products.list);
   };

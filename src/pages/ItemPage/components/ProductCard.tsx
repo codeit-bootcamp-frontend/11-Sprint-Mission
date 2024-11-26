@@ -2,10 +2,20 @@ import React from "react";
 import { ReactComponent as HeartIcon } from "../../../images/icons/heart.svg";
 import { Link } from "react-router-dom";
 
-function ProductCard({ item }) {
+interface ProductCardProps {
+  item: {
+    id: number;
+    name: string;
+    price: number;
+    images?: string[];
+    favoriteCount?: number;
+  };
+}
+
+function ProductCard({ item }: ProductCardProps) {
   return (
     <Link to={`/items/${item.id}`} className="productCard">
-      <img src={item.images[0]} alt={item.name} className="productCardImg" />
+      <img src={item.images?.[0]} alt={item.name} className="productCardImg" />
       <div className="productContents">
         <h2 className="productName">{item.name}</h2>
         <p className="productPrice">{item.price.toLocaleString()}원</p>

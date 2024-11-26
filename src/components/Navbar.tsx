@@ -4,7 +4,11 @@ import Icon from "../images/icons/account.png";
 import "../BeforeSprintReact/style/global.css";
 import "./Navbar.css";
 
-function getNavStyle({ isActive }) {
+interface NavStyleProps {
+  isActive: boolean;
+}
+
+function getNavStyle({ isActive }: NavStyleProps) {
   return {
     color: isActive ? "#3692FF" : undefined,
   };
