@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '@/styles/Board.module.css';
 import BestCard from '@/components/BestCard';
 import Button from '@/components/common/Button';
@@ -19,35 +19,40 @@ const Board = () => {
 
   const handleSearch = () => {};
 
-  const getSizeForScreenType = (screenType: ScreenType): number => {
-    const sizeMap: Record<ScreenType, number> = {
+  const getSizeForScreenType = (screenType: ScreenType | null): number => {
+    const sizeMap = {
       mobile: 1,
       tablet: 2,
       desktop: 3,
     };
 
+    if (!screenType || !sizeMap[screenType]) {
+      return 1;
+    }
+
     return sizeMap[screenType] || 1;
   };
 
-  const fetcfhBestProducts = async (param: Product): Promise<void> => {
+  const fetchBestProducts = async (param: Product): Promise<void> => {
     try {
-      const reaponse = await getProducts(param);
-      setBestProducts(reaponse.data.list);
+      const response = await getProducts(param);
+      setBestProducts(response.data.list);
     } catch (error) {
       console.error(error);
     }
   };
 
   useEffect(() => {
-    const size = getSizeForScreenType(screenType);
+    if (!screenType) return;
 
+    const size = getSizeForScreenType(screenType);
     const param: Product = {
       page: page,
       pageSize: size,
       orderBy: 'favorite',
     };
 
-    fetcfhBestProducts(param);
+    fetchBestProducts(param);
   }, [screenType, page]);
 
   return (

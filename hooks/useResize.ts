@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
-export type ScreenType = 'mobile' | 'tablet' | 'desktop';
+export type ScreenType = 'mobile' | 'tablet' | 'desktop' | null;
 
 const useResize = () => {
-  const [screenType, setScreenType] = useState<ScreenType>('mobile');
+  const [screenType, setScreenType] = useState<ScreenType>(null);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
