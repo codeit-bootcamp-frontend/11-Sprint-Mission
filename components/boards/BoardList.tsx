@@ -1,14 +1,25 @@
 import { formatDate } from "@/lib/formatDate";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./BoardList.module.css";
 import { Articles } from "@/lib/types";
 import Image from "next/image";
 
 interface BoardListProps {
   articles: Articles[];
+  onOrderChange: (newOrder: string) => void;
 }
 
-const BoardList = ({ articles }: BoardListProps) => {
+const BoardList = ({ articles, onOrderChange }: BoardListProps) => {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handelSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const filteredArticles = articles.filter((article) =>
+    article.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className={styles["board-list-container"]}>
       <div className={styles["title-box"]}>
@@ -19,11 +30,20 @@ const BoardList = ({ articles }: BoardListProps) => {
         <input
           className={styles["search-bar"]}
           placeholder="검색할 상품을 입력해주세요"
+          onChange={handelSearch}
+          value={searchQuery}
         />
-        <div className={styles.customSelectWrapper}>
-          <select className={styles["order-by-select"]}>
-            <option className={styles.option}>최신순</option>
-            <option className={styles.option}>좋아요순</option>
+        <div className={styles["select-wrapper"]}>
+          <select
+            className={styles["order-by-select"]}
+            onChange={(e) => onOrderChange(e.target.value)}
+          >
+            <option className={styles.option} value="recent">
+              최신순
+            </option>
+            <option className={styles.option} value="like">
+              좋아요순
+            </option>
           </select>
           <div className={styles["sort-icon"]}>
             <Image
@@ -36,7 +56,7 @@ const BoardList = ({ articles }: BoardListProps) => {
         </div>
       </div>
       <div className={styles["article-container"]}>
-        {articles.map((article) => (
+        {filteredArticles.map((article) => (
           <div key={article.id} className={styles["article-box"]}>
             <div className={styles["article-title-box"]}>
               <p className={styles["article-title"]}>{article.title}</p>
