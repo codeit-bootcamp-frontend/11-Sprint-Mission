@@ -1,3 +1,7 @@
+.link {
+  text-decoration: none;
+}
+
 .article-box {
   display: flex;
   flex-direction: column;

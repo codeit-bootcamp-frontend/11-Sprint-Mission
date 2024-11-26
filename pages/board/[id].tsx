@@ -1,0 +1,37 @@
+import axios from "@/lib/axios";
+import { notFound } from "next/navigation";
+import React from "react";
+
+export async function getServerSideProps(context: any) {
+  const articleId = context.params["id"];
+  console.log(articleId);
+  let article;
+  try {
+    const res = await axios.get(`/articles/${articleId}`);
+    article = res.data;
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const res = await axios.get(`/articles/${articleId}/comments?limit=100`);
+  const articleComments = res.data.list ?? [];
+
+  return {
+    props: { article, articleComments },
+  };
+}
+
+const DetailBoard = ({ article, articleComments }: any) => {
+  console.log(article);
+  console.log(articleComments);
+  return (
+    <div>
+      {article.title}
+      {articleComments[0].content}
+    </div>
+  );
+};
+
+export default DetailBoard;

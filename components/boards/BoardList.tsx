@@ -2,7 +2,7 @@ import { formatDate } from "@/lib/formatDate";
 import React, { useEffect, useState } from "react";
 import styles from "./BoardList.module.css";
 import { Articles } from "@/lib/types";
-
+import Link from "next/link";
 import ArticleCard from "./ArticleCard";
 import BoardSearchSort from "./BoardSearchSort";
 
@@ -26,7 +26,9 @@ const BoardList = ({ articles, onOrderChange }: BoardListProps) => {
     <div className={styles["board-list-container"]}>
       <div className={styles["title-box"]}>
         <p className={styles.title}>게시글</p>
-        <button className={styles["write-button"]}>글쓰기</button>
+        <Link href="/addboard">
+          <button className={styles["write-button"]}>글쓰기</button>
+        </Link>
       </div>
       <BoardSearchSort
         searchQuery={searchQuery}
