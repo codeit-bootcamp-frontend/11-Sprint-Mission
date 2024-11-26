@@ -2,7 +2,7 @@ import axios from 'axios';
 import { ArticleList } from '@/types/article.type';
 
 const instance = axios.create({
-  baseURL: 'https://panda-market-api.vercel.app',
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
 });
 
 /**
@@ -23,12 +23,18 @@ const getArticleList = async ({
   pageSize = 10,
   orderBy = 'recent',
   keyword = '',
-}: getArticleListProps = {}): Promise<ArticleList> => {
-  const res = await instance.get('/articles', {
-    params: { page, pageSize, orderBy, keyword },
-  });
+}: getArticleListProps = {}): Promise<ArticleList | null> => {
+  try {
+    const res = await instance.get('/articles', {
+      params: { page, pageSize, orderBy, keyword },
+    });
 
-  return res.data;
+    return res.data;
+  } catch (error) {
+    console.error(error);
+    return null;
+    // throw error;
+  }
 };
 
 export { getArticleList };

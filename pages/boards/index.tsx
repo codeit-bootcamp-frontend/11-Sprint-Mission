@@ -13,6 +13,7 @@ import IconMedal from '@/public/images/boards/ico-medal.svg';
 import IconHeart from '@/public/images/common/ico-heart.svg';
 import IconSearch from '@/public/images/common/ico-search.svg';
 import BaseThumbnail from '@/public/images/common/base-thumbnail.svg';
+import clsx from 'clsx';
 
 /**
  * 베스트 게시글 리스트
@@ -24,14 +25,14 @@ const BestArticleList = () => {
   useEffect(() => {
     const getBestArticles = async () => {
       const data = await getArticleList({ pageSize: 3, orderBy: 'like' });
-      setBestArticles(data.list ?? []);
+      setBestArticles(data?.list ?? []);
     };
 
     getBestArticles();
   }, []);
 
   return (
-    <ul className="flex gap-6">
+    <ul className={clsx(styles.articleListEmpty, 'flex', 'gap-6')}>
       {bestArticles.map((article) => (
         <li className={styles.bestArticle} key={article.id}>
           <span className={styles.badge}>
@@ -79,7 +80,7 @@ const ArticleListWithSearch = () => {
   const getArticles = async (orderBy: OrderByType) => {
     const keyword = keywordRef.current?.value ?? '';
     const data = await getArticleList({ orderBy, keyword });
-    setArticles(data.list ?? []);
+    setArticles(data?.list ?? []);
   };
 
   // select 요소 변경 이벤트 핸들러
@@ -124,7 +125,7 @@ const ArticleListWithSearch = () => {
         </select>
       </form>
 
-      <ul className={styles.articles}>
+      <ul className={clsx(styles.articles, styles.articleListEmpty)}>
         {articles.map((article) => (
           <li className="relative border-b pb-6" key={article.id}>
             <div className="mb-4 flex gap-2">
