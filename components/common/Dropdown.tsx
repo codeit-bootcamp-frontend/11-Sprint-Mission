@@ -4,15 +4,27 @@ import Image from 'next/image';
 import dropdownIcon from '@/public/ic_drowdown.svg';
 import { ScreenType } from '@/hooks/useResize';
 import sortImage from '@/public/ic_sort.svg';
+import { OrderType } from '@/api/productApi';
+
+type DropdownItem = {
+  id: number;
+  label: string;
+  value: string;
+};
 
 interface DropdownProps {
-  items: string[];
+  items: DropdownItem[];
   screenType: ScreenType;
+  onclickSelect: (item: OrderType) => void;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ items, screenType }) => {
+const Dropdown: React.FC<DropdownProps> = ({
+  items,
+  screenType,
+  onclickSelect,
+}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedItem, setSelectedItem] = useState<string>(items[0]);
+  const [selectedItem, setSelectedItem] = useState<string>(items[0].label);
 
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
@@ -41,9 +53,11 @@ const Dropdown: React.FC<DropdownProps> = ({ items, screenType }) => {
     setIsOpen((prevState) => !prevState);
   };
 
-  const handleItemClick = (item: string) => {
-    setSelectedItem(item);
+  const handleItemClick = (item: DropdownItem) => {
+    setSelectedItem(item.label);
     setIsOpen(false);
+
+    onclickSelect(item.value);
   };
 
   return (
@@ -80,11 +94,11 @@ const Dropdown: React.FC<DropdownProps> = ({ items, screenType }) => {
         <ul id="dropdown-menu" className={styles['dropdown-menu']}>
           {items.map((item) => (
             <li
-              key={item}
+              key={item.id}
               onClick={() => handleItemClick(item)}
               className={styles['dropdown-item']}
             >
-              {item}
+              {item.label}
             </li>
           ))}
         </ul>

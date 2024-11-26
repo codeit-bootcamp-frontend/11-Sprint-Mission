@@ -1,10 +1,12 @@
 import { AxiosResponse } from 'axios';
 import axiosInstance from './axios';
 
+export type OrderType = 'recent' | 'favorite';
+
 export interface Product {
   page: number;
   pageSize: number;
-  orderBy: 'favorite' | 'recent';
+  orderBy: OrderType;
   keyword?: string;
 }
 
@@ -34,7 +36,7 @@ export const getProducts = (
     params: {
       page: 1,
       pageSize: 10,
-      sortBy: 'recent',
+      orderBy: 'recent',
       ...params,
     },
   });

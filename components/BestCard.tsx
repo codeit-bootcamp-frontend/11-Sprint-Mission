@@ -6,8 +6,11 @@ import testImage from '@/public/testImage.png';
 import heartIcon from '@/public/ic_heart.svg';
 import { ProductResult } from '@/api/productApi';
 
-const BestCard = ({ bestProducts }: any) => {
-  // TODO typescript any 처리하기
+interface BestCardProps {
+  bestProducts: ProductResult;
+}
+
+const BestCard: React.FC<BestCardProps> = ({ bestProducts }: BestCardProps) => {
   const { description, ownerNickname, favoriteCount, createdAt, images } =
     bestProducts;
 
@@ -30,7 +33,6 @@ const BestCard = ({ bestProducts }: any) => {
           <div className={styles.bestContentLeft}>
             <div className={styles.nickName}>{ownerNickname}</div>
             <div className={styles.heartCount}>
-              {/* <Image src={images} alt="좋아요버튼"></Image> */}
               <div className={styles.heartCountNum}>{favoriteCount}+</div>
             </div>
           </div>

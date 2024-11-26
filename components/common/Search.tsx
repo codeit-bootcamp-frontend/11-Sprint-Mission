@@ -12,7 +12,9 @@ const Search = ({ onSearch, addClassName }: SearchProps) => {
   const [query, setQuery] = useState<string>('');
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value);
+    const value = event.target.value;
+    setQuery(value);
+    onSearch(value);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {

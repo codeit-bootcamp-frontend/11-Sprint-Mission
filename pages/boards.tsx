@@ -1,25 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import styles from '@/styles/Board.module.css';
 import BestCard from '@/components/BestCard';
 import Button from '@/components/common/Button';
 import Search from '@/components/common/Search';
 import Card from '@/components/Card';
 import useResize, { ScreenType } from '@/hooks/useResize';
-import { getProducts, Product, ProductResult } from '@/api/productApi';
+import {
+  getProducts,
+  OrderType,
+  Product,
+  ProductResult,
+} from '@/api/productApi';
 import Dropdown from '@/components/common/Dropdown';
-const items = ['최신순', '좋아요순'];
+import debounce from 'lodash.debounce';
+
+const items = [
+  { id: 0, label: '최신순', value: 'recent' },
+  { id: 1, label: '좋아요순', value: 'favorite' },
+];
 
 const Board = () => {
   const screenType = useResize(); // useResize 훅 사용
   const [page, setPage] = useState(1); // 페이지 번호
   const [bestProducts, setBestProducts] = useState<ProductResult[]>([]);
-  const [order, setOrder] = useState('');
-
-  const handleClick = () => {
-    console.log('클릭');
-  };
-
-  const handleSearch = () => {};
+  const [allProducts, setAllProducts] = useState<ProductResult[]>([]);
+  const [order, setOrder] = useState<OrderType>('recent');
 
   const getSizeForScreenType = (screenType: ScreenType | null): number => {
     const sizeMap = {
@@ -44,6 +49,32 @@ const Board = () => {
     }
   };
 
+  const fetchAllProducts = useMemo(
+    () =>
+      debounce(async (param: Product | {}) => {
+        try {
+          const response = await getProducts(param);
+          setAllProducts(response.data.list);
+        } catch (error) {
+          console.error(error);
+        }
+      }, 500),
+    [],
+  );
+
+  const handleClick = () => {
+    console.log('클릭');
+  };
+
+  const handleSearch = (query: string) => {
+    const params = {
+      orderBy: order,
+      keyword: query,
+    };
+
+    fetchAllProducts(params);
+  };
+
   useEffect(() => {
     if (!screenType) return;
 
@@ -55,19 +86,22 @@ const Board = () => {
     };
 
     fetchBestProducts(param);
-  }, [screenType, page]);
+    fetchAllProducts({});
+  }, [screenType, page, fetchAllProducts]);
 
   return (
     <div className={styles.boardContainer}>
       <section>
         <h2>베스트 게시글</h2>
-        {bestProducts.map((data) => {
-          return (
-            <React.Fragment key={data.id}>
-              <BestCard bestProducts={data} />
-            </React.Fragment>
-          );
-        })}
+        <div className={styles.bestCardBox}>
+          {bestProducts.map((data) => {
+            return (
+              <React.Fragment key={data.id}>
+                <BestCard bestProducts={data} />
+              </React.Fragment>
+            );
+          })}
+        </div>
       </section>
       <section className={styles.boardBox}>
         <div className={styles.titles}>
@@ -82,11 +116,22 @@ const Board = () => {
         </div>
         <div className={styles.searchBox}>
           <Search onSearch={handleSearch} addClassName="boardSearch" />
-          <Dropdown items={items} screenType={screenType} />
+          <Dropdown
+            items={items}
+            screenType={screenType}
+            onclickSelect={(select) => {
+              fetchAllProducts({ orderBy: select });
+              setOrder(select);
+            }}
+          />
         </div>
-        <Card />
-        <Card />
-        <Card />
+        {allProducts.map((data) => {
+          return (
+            <React.Fragment key={data.id}>
+              <Card products={data} />
+            </React.Fragment>
+          );
+        })}
       </section>
     </div>
   );
