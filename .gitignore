@@ -14,6 +14,7 @@
 
 # production
 /build
+example.http
 
 # misc
 .DS_Store
@@ -33,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# React Component Preview
+previewConfig.json
