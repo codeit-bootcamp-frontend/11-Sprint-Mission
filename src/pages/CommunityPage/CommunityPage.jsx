@@ -1,5 +1,4 @@
 import React from "react";
-import './CommunityPage.css';
 
 function CommunityPage() {
 	return (
