@@ -6,6 +6,8 @@ import Search from '@/components/common/Search';
 import Card from '@/components/Card';
 import useResize, { ScreenType } from '@/hooks/useResize';
 import { getProducts, Product, ProductResult } from '@/api/productApi';
+import Dropdown from '@/components/common/Dropdown';
+const items = ['최신순', '좋아요순'];
 
 const Board = () => {
   const screenType = useResize(); // useResize 훅 사용
@@ -78,7 +80,10 @@ const Board = () => {
             글쓰기
           </Button>
         </div>
-        <Search onSearch={handleSearch} addClassName="boardSearch" />
+        <div className={styles.searchBox}>
+          <Search onSearch={handleSearch} addClassName="boardSearch" />
+          <Dropdown items={items} screenType={screenType} />
+        </div>
         <Card />
         <Card />
         <Card />
