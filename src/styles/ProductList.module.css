@@ -1,0 +1,42 @@
+.AllProductList {
+  margin-top: 40px;
+}
+
+.ProductListItem {
+  width: 221px;
+  overflow: hidden;
+}
+
+.ProductListItemImg {
+  height: 221px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.ProductList {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 1rem;
+  list-style-type: none;
+  padding: 0;
+  row-gap: 40px;
+}
+
+.productName {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.productPrice {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.productFavoriteCount {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+  font-weight: 500;
+}

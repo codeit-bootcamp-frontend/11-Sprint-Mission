@@ -1,0 +1,40 @@
+.BestProductItem {
+  width: 282px;
+  overflow: hidden;
+}
+
+.BestProductItemImg {
+  height: 282px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.BestProductList {
+  width: 100%;
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.BestProductName {
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 16px;
+}
+
+.BestProductPrice {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 16px 0;
+}
+
+.BestProductFavoriteCount {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+  font-weight: 500;
+}

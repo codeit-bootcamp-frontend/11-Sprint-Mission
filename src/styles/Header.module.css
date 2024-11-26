@@ -1,0 +1,68 @@
+.header {
+  display: flex !important;
+  align-items: center;
+  height: 4.5rem;
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+}
+
+.headerBody {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.header-left {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.header-left nav {
+  display: flex;
+  margin-left: 2.5rem;
+  gap: 1.5rem;
+  align-items: center;
+  font-size: 18px;
+}
+
+/* PC: 1200px 이상 */
+@media (min-width: 1200px) {
+}
+
+/* Tablet: 768px 이상 ~ 1199px 이하 */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .headerBody {
+    width: 85%;
+  }
+
+  .nav {
+    margin-left: 20px;
+  }
+}
+
+/* Mobile: 375px 이상 ~ 767px 이하 */
+@media (min-width: 375px) and (max-width: 767px) {
+  .headerBody {
+    width: 94%;
+  }
+
+  .imgContainer {
+    width: 90px;
+    overflow: hidden;
+  }
+
+  .logoImg {
+    width: 120px;
+    object-fit: cover;
+    transform: translateX(-32px);
+  }
+
+  .nav {
+    margin-left: 10px;
+    gap: 8px;
+  }
+}
