@@ -21,6 +21,7 @@
   --gray-900: #111827;
 
   --container-width: 1200px;
+  --body-bg: #fff;
 }
 
 @layer base {
@@ -105,4 +106,9 @@
     content: '';
     z-index: 1;
   }
+}
+
+.wrap {
+  @apply flex min-h-screen flex-col;
+  background-color: var(--body-bg);
 }

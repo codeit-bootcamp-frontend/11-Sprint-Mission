@@ -8,7 +8,7 @@ import '@/styles/globals.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="wrap">
       <Head>
         <title>판다마켓</title>
         <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
