@@ -1,77 +1,55 @@
 import BestBoardList from "@/components/boards/BestBoardList";
 import BoardList from "@/components/boards/BoardList";
 import axios from "@/lib/axios";
-import React, { useEffect, useState } from "react";
+import { Articles } from "@/lib/types";
+import { setupResizeListener } from "@/lib/resize";
+import { setupScrollListener } from "@/lib/scroll";
+import { prefetchArticles } from "../api/prefetchArticles";
+import React, { useEffect, useState, useRef } from "react";
+import styles from "@/pages/boards/index.module.css";
+import { useArticles } from "@/hooks/useArticles";
 
-const Article = () => {
-  const [bestArticles, setBestArticles] = useState([]);
-  const [articles, setArticles] = useState([]);
-  const [orderBy, setOrderBy] = useState("recent");
+export const getServerSideProps = prefetchArticles;
+interface ArticleProps {
+  initialBestArticles: Articles[];
+  initialArticles: Articles[];
+}
+
+const Article = ({ initialBestArticles, initialArticles }: ArticleProps) => {
+  const [orderBy, setOrderBy] = useState<string>("recent");
   const [pageSize, setPageSize] = useState<number | null>(null);
+  const scrollBoxRef = useRef<HTMLDivElement>(null);
 
-  function getPageSize(width: number): number {
-    // 윈도우 크기에 따라 pageSize 계산하는 함수
-    if (width > 744) {
-      return 3;
-    } else if (width > 376) {
-      return 2;
-    } else {
-      return 1;
-    }
-  }
+  const { bestArticles, articles, onLoadMore, resetData } = useArticles(
+    initialBestArticles,
+    initialArticles,
+    orderBy,
+    pageSize
+  );
+
+  const handleOrderChange = (newOrder: string) => {
+    setOrderBy(newOrder);
+    resetData();
+  };
 
   useEffect(() => {
-    // 윈도우 크기 변경 시 pageSize를 업데이트
-    const handleResize = () => {
-      setPageSize(getPageSize(window.innerWidth));
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
+    const cleanResizeListener = setupResizeListener(setPageSize);
     return () => {
-      // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
-      window.removeEventListener("resize", handleResize);
+      cleanResizeListener();
     };
   }, []);
 
   useEffect(() => {
-    if (pageSize !== null) {
-      getBestArticles();
-    }
-  }, [pageSize]);
-
-  async function getBestArticles() {
-    try {
-      const res = await axios.get(
-        `/articles?page=1&pageSize=${pageSize}&orderBy=like`
-      );
-      const nextArticles = res.data.list;
-      setBestArticles(nextArticles);
-    } catch (error) {
-      console.error("데이터를 불러오는데 실패했습니다:", error);
-    }
-  }
-
-  useEffect(() => {
-    getArticles();
-  }, []);
-
-  async function getArticles() {
-    try {
-      const res = await axios.get(
-        `/articles?page=1&pageSize=100&orderBy=${orderBy}`
-      );
-      const nextArticles = res.data.list;
-      setArticles(nextArticles);
-    } catch (error) {
-      console.error("데이터를 불러오는데 실패했습니다:", error);
-    }
-  }
+    const cleanScrollListener = setupScrollListener(scrollBoxRef, onLoadMore);
+    return () => {
+      cleanScrollListener();
+    };
+  }, [onLoadMore]);
 
   return (
-    <div>
+    <div className={styles.container} ref={scrollBoxRef}>
       <BestBoardList bestArticles={bestArticles} />
-      <BoardList articles={articles} />
+      <BoardList articles={articles} onOrderChange={handleOrderChange} />
     </div>
   );
 };
