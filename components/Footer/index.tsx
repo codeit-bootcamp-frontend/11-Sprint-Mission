@@ -7,6 +7,52 @@ import IcoTwitter from './ico-twitter.svg';
 import IcoYoutube from './ico-youtube.svg';
 import IcoInstagram from './ico-instagram.svg';
 
+// SNS 목록
+const snsList = [
+  {
+    name: 'facebook',
+    url: 'https://www.facebook.com/',
+    icon: IcoFacebook,
+  },
+  {
+    name: 'twitter',
+    url: 'https://x.com/',
+    icon: IcoTwitter,
+  },
+  {
+    name: 'youtube',
+    url: 'https://youtube.com/',
+    icon: IcoYoutube,
+  },
+  {
+    name: 'instagram',
+    url: 'https://www.instagram.com/',
+    icon: IcoInstagram,
+  },
+];
+
+/**
+ * SNS 링크 컴포넌트
+ * @returns {JSX.Element}
+ */
+const SnsLinks = () => {
+  return (
+    <ul className={styles.sns}>
+      {snsList.map((sns) => (
+        <li key={sns.name}>
+          <Link href={sns.url} className={styles.link} target="_blank" rel="noopener noreferrer">
+            <sns.icon />
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+/**
+ * 푸터 컴포넌트
+ * @returns {JSX.Element}
+ */
 export default function Footer() {
   return (
     <footer className={styles.footer}>
@@ -27,48 +73,7 @@ export default function Footer() {
           </ul>
         </nav>
 
-        <ul className={styles.sns}>
-          <li>
-            <Link
-              href="https://www.facebook.com/"
-              className={styles.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <IcoFacebook />
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="https://x.com/"
-              className={styles.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <IcoTwitter />
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="https://youtube.com/"
-              className={styles.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <IcoYoutube />
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="https://www.instagram.com/"
-              className={styles.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <IcoInstagram />
-            </Link>
-          </li>
-        </ul>
+        <SnsLinks />
       </div>
     </footer>
   );
