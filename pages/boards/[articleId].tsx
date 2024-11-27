@@ -87,10 +87,11 @@ export default function ArticlePage() {
 
       <div className={styles.article_leave_comment}>
         <div className={styles.article_comment_title}>댓글달기</div>
-        <input
+        <textarea
           className={styles.article_comment_input}
           placeholder="댓글을 입력해주세요."
         />
+        <button className={styles.btn}>등록</button>
       </div>
 
       <div className={styles.article_container_bottom}>
@@ -102,14 +103,12 @@ export default function ArticlePage() {
                 <Image src={plusBtn} alt="더보기 버튼" width={3} height={13} />
               </div>
               <div className={styles.profile}>
-                {comment.writer.image && (
-                  <Image
-                    src={comment.writer.image}
-                    alt={`${comment.writer.nickname}의 프로필`}
-                    width={24}
-                    height={24}
-                  />
-                )}
+                <Image
+                  src={comment.writer.image || profileImg}
+                  alt={`${comment.writer.nickname}의 프로필`}
+                  width={32}
+                  height={32}
+                />
                 <div>
                   <div className={styles.writer_nickname}>
                     {comment.writer.nickname}
