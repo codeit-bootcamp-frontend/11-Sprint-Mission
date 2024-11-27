@@ -32,9 +32,14 @@
   border-radius: 8px;
   border: none;
   padding: 12px 23px;
-  background-color: var(--color-blue-600);
   font-weight: 600;
   font-size: 16px;
+  background-color: var(--color-blue-200);
+  color: var(--color-white-200);
+}
+
+.button:disabled {
+  background-color: var(--color-blue-600);
   color: var(--color-white-400);
 }
 
@@ -119,6 +124,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 
 .plus {
@@ -138,4 +144,31 @@
 
 .none {
   display: none;
+}
+
+.preview {
+  display: flex;
+  position: relative;
+  width: 282px;
+  height: 282px;
+  object-fit: contain;
+  @media screen and (max-width: 744px) {
+    width: 168px;
+    height: 168px;
+  }
+
+  @media screen and (max-width: 376px) {
+    width: 168px;
+    height: 168px;
+  }
+}
+
+.image {
+  position: absolute;
+  border-radius: 12px;
+}
+
+.photo {
+  display: flex;
+  gap: 10px;
 }

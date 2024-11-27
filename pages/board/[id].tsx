@@ -6,10 +6,11 @@ import { notFound } from "next/navigation";
 import React from "react";
 import styles from "./[id].module.css";
 import CommentInput from "@/components/board/CommentInput";
+import Link from "next/link";
 
 export async function getServerSideProps(context: any) {
   const articleId = context.params["id"];
-  console.log(articleId);
+
   let article;
   try {
     const res = await axios.get(`/articles/${articleId}`);
@@ -29,17 +30,24 @@ export async function getServerSideProps(context: any) {
 }
 
 const DetailBoard = ({ article, articleComments }: any) => {
-  console.log(article);
-  console.log(articleComments);
   return (
     <div className={styles.container}>
       <ArticleInfo article={article} />
-      <CommentInput />
+      <CommentInput articleId={article.id} />
       <ArticleCommentInfo articleComments={articleComments} />
-      <button>
-        <p>목록으로 돌아가기</p>
-        <Image />
-      </button>
+      <Link href="/boards" className={styles.link}>
+        <button className={styles.button}>
+          <p className={styles.text}>목록으로 돌아가기</p>
+          <div className={styles.return}>
+            <Image
+              className={styles.image}
+              fill
+              src="/images/returnIcon.svg"
+              alt="목록으로 돌아가는 이미지"
+            />
+          </div>
+        </button>
+      </Link>
     </div>
   );
 };

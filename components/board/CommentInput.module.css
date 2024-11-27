@@ -46,10 +46,15 @@
   height: 42px;
   border-radius: 8px;
   border: none;
-  background-color: var(--color-blue-600);
   padding: 12px 23px;
   font-weight: 600;
   font-size: 16px;
-  color: var(--color-white-400);
   margin-left: auto;
+  background-color: var(--color-blue-200);
+  color: var(--color-white-200);
+}
+
+.button:disabled {
+  color: var(--color-white-400);
+  background-color: var(--color-blue-600);
 }
