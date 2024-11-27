@@ -40,3 +40,17 @@ export interface GetArticlesCommentResponse {
   nextCursor: number;
   list: Comment[];
 }
+
+export interface ImageInputProps {
+  className?: string;
+  name: string;
+  value: File | null;
+  initialPreview?: string | null;
+  onChange: (name: string, file: File | null) => void;
+}
+
+export interface FormValues {
+  title: string;
+  content: string;
+  image: File | null;
+}

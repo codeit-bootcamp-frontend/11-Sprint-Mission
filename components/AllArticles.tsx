@@ -109,7 +109,9 @@ export default function AllArticles() {
     <div className={styles.article_container}>
       <div className={styles.article_top}>
         <h2 className={styles.h2}>게시글</h2>
-        <button className={styles.button}>글쓰기</button>
+        <Link href={"/addboard"}>
+          <button className={styles.button}>글쓰기</button>
+        </Link>
       </div>
 
       <div className={styles.article_controls}>
