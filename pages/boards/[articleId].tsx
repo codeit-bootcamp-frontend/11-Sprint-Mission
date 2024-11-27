@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { formatDistanceToNow } from "date-fns";
+import { ko } from "date-fns/locale";
 import { getArticleById, getArticleComment } from "@/lib/api";
 import { Article, Comment } from "@/types/commontypes";
 import styles from "@/styles/articleId.module.css";
@@ -114,7 +116,10 @@ export default function ArticlePage() {
                     {comment.writer.nickname}
                   </div>
                   <div className={styles.comment_date}>
-                    {new Date(comment.createdAt).toLocaleString()}
+                    {formatDistanceToNow(new Date(comment.createdAt), {
+                      addSuffix: true,
+                      locale: ko,
+                    })}
                   </div>
                 </div>
               </div>
