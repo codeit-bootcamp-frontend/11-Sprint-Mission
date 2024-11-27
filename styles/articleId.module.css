@@ -85,6 +85,16 @@
   padding: 16px 24px;
   width: 100%;
   box-sizing: border-box;
+  height: 100px;
+}
+
+.article_comment_input::placeholder {
+  color: #9ca3af;
+  font-size: 16px;
+}
+
+.article_comment_input:focus {
+  outline: 1px solid #3692ff;
 }
 
 .btn {
@@ -98,6 +108,15 @@
   align-self: flex-end;
   margin-top: 7px;
   margin-bottom: 4px;
+}
+
+.btn_enabled {
+  background-color: #3692ff;
+}
+
+.btn:hover {
+  background-color: #2e7ae4;
+  cursor: pointer;
 }
 
 .article_container_bottom {
@@ -145,6 +164,14 @@
   color: #f3f4f6;
   display: flex;
   align-items: center;
+  margin-top: 32px;
+  margin-bottom: 60px;
+  gap: 8px;
+}
+
+.back_btn:hover {
+  cursor: pointer;
+  background-color: #2e7ae4;
 }
 
 @media (max-width: 1279px) {

@@ -14,10 +14,13 @@ import backIcon from "@/public/svgs/ic_back.svg";
 export default function ArticlePage() {
   const router = useRouter();
   const { articleId } = router.query;
+
   const [article, setArticle] = useState<Article | null>(null);
   const [comments, setComments] = useState<Comment[]>([]);
   const [nextCursor, setNextCursor] = useState<number | null>(null);
   const [isLoadingComments, setIsLoadingComments] = useState(false);
+
+  const [commentInput, setCommentInput] = useState("");
 
   // 게시글 데이터 가져오기
   useEffect(() => {
@@ -64,6 +67,11 @@ export default function ArticlePage() {
     router.back();
   };
 
+  const handleCommentSubmit = () => {
+    console.log("댓글 등록:", commentInput);
+    setCommentInput("");
+  };
+
   return (
     <div className={styles.article_container}>
       <div className={styles.article_container_top}>
@@ -96,8 +104,18 @@ export default function ArticlePage() {
         <textarea
           className={styles.article_comment_input}
           placeholder="댓글을 입력해주세요."
+          value={commentInput}
+          onChange={(e) => setCommentInput(e.target.value)}
         />
-        <button className={styles.btn}>등록</button>
+        <button
+          className={`${styles.btn} ${
+            commentInput.trim() ? styles.btn_enabled : styles.btn_disabled
+          }`}
+          onClick={handleCommentSubmit}
+          disabled={!commentInput.trim()}
+        >
+          등록
+        </button>
       </div>
 
       <div className={styles.article_container_bottom}>
