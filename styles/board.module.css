@@ -263,10 +263,7 @@
 }
 
 @media (max-width: 1279px) {
-  .article_container {
-    width: 90%;
-  }
-
+  .article_container,
   .best_article_container {
     width: 90%;
   }

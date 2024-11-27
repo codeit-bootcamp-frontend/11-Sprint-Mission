@@ -143,7 +143,7 @@ export default function AllArticles() {
         {articles.map((article) => (
           <Link
             key={article.id}
-            href={`/articles/${article.id}`}
+            href={`/boards/${article.id}`}
             className={styles.article_link}
             passHref
           >

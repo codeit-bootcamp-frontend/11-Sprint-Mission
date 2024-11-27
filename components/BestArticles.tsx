@@ -59,7 +59,7 @@ export default function BestArticles() {
         {articles.map((article) => (
           <Link
             key={article.id}
-            href={`/articles/${article.id}`}
+            href={`/boards/${article.id}`}
             className={styles.best_article_link}
           >
             <div className={styles.container}>

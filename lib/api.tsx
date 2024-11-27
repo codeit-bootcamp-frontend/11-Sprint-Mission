@@ -3,6 +3,7 @@ import {
   GetArticlesResponse,
   GetArticlesParams,
   Article,
+  GetArticlesCommentResponse,
 } from "@/types/commontypes";
 
 export async function getArticles(
@@ -24,4 +25,22 @@ export async function getArticles(
 export async function getArticleById(id: number): Promise<Article> {
   const response = await axiosInstance.get(`/articles/${id}`);
   return response.data;
+}
+
+export async function getArticleComment(
+  id: number,
+  cursor: number | null = null,
+  limit: number = 10
+): Promise<GetArticlesCommentResponse> {
+  try {
+    const { data } = await axiosInstance.get<GetArticlesCommentResponse>(
+      `/articles/${id}/comments`,
+      {
+        params: { cursor, limit },
+      }
+    );
+    return data;
+  } catch (error) {
+    throw new Error("댓글 데이터를 불러오는 데 실패했습니다.");
+  }
 }

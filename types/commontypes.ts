@@ -23,3 +23,20 @@ export interface GetArticlesResponse {
   totalCount: string;
   list: Article[];
 }
+
+export interface Comment {
+  writer: {
+    image: string;
+    nickname: string;
+    id: number;
+  };
+  updatedAt: string;
+  createdAt: string;
+  content: string;
+  id: number;
+}
+
+export interface GetArticlesCommentResponse {
+  nextCursor: number;
+  list: Comment[];
+}
