@@ -13,6 +13,8 @@ import {
 } from '@/api/productApi';
 import Dropdown from '@/components/common/Dropdown';
 import debounce from 'lodash.debounce';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/router';
 
 const items = [
   { id: 0, label: '최신순', value: 'recent' },
@@ -25,6 +27,7 @@ const Board = () => {
   const [bestProducts, setBestProducts] = useState<ProductResult[]>([]);
   const [allProducts, setAllProducts] = useState<ProductResult[]>([]);
   const [order, setOrder] = useState<OrderType>('recent');
+  const router = useRouter();
 
   const getSizeForScreenType = (screenType: ScreenType | null): number => {
     const sizeMap = {
@@ -63,6 +66,7 @@ const Board = () => {
   );
 
   const handleClick = () => {
+    router.push(`/posts?query=테스트!`);
     console.log('클릭');
   };
 
@@ -74,6 +78,12 @@ const Board = () => {
 
     fetchAllProducts(params);
   };
+
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  console.log(pathname);
+  console.log(searchParams);
 
   useEffect(() => {
     if (!screenType) return;
