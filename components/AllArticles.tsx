@@ -43,8 +43,6 @@ export default function AllArticles() {
 
       if (data.list.length < 10) {
         setHasMore(false);
-      } else {
-        setHasMore(true);
       }
 
       setIsFetching(false);
