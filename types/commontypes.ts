@@ -1,7 +1,7 @@
 export interface GetArticlesParams {
   page?: number;
   pageSize?: number;
-  keyword?: string | null;
+  keyword?: string | null | undefined;
   orderBy?: string;
 }
 
