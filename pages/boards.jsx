@@ -1,4 +1,3 @@
-// boards.jsx
 import { Fragment, useEffect, useState } from 'react';
 import Image from 'next/image';
 import search from '@/public/ic_search.svg';
@@ -45,6 +44,7 @@ export default function Boards() {
 
   const fetchEntireData = async param => {
     const data = await getList(param); // 비동기 호출 후 대기
+    
     if (data && Array.isArray(data.list)) {
       setEntireList(data.list);
     } else {

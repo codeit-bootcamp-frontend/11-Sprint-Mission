@@ -1,4 +1,3 @@
-// Header.jsx
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '@/public/ic_logo.svg';
