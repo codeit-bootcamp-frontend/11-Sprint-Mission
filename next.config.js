@@ -21,7 +21,19 @@ const nextConfig = {
           {
             loader: '@svgr/webpack',
             options: {
-              svgo: false,
+              svgoConfig: {
+                plugins: [
+                  {
+                    name: 'preset-default',
+                    params: {
+                      overrides: {
+                        removeViewBox: false,
+                        removeTitle: false,
+                      },
+                    },
+                  },
+                ],
+              },
             },
           },
         ],
