@@ -83,6 +83,8 @@
   border-radius: 12px;
   border: none;
   padding: 16px 24px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .btn {
@@ -134,10 +136,25 @@
   color: #9ca3af;
 }
 
+.back_btn {
+  background-color: #3692ff;
+  border: none;
+  border-radius: 40px;
+  padding: 12px 64px;
+  font-size: 18px;
+  color: #f3f4f6;
+  display: flex;
+  align-items: center;
+}
+
 @media (max-width: 1279px) {
   .article_container_top,
   .article_leave_comment,
   .article_container_bottom {
     width: 90%;
+  }
+
+  .article_comment_input {
+    width: 100%; /* 부모 컨테이너에 맞게 textarea 조정 */
   }
 }

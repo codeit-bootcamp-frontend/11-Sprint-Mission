@@ -9,11 +9,11 @@ import styles from "@/styles/articleId.module.css";
 import heart from "@/public/svgs/ic_heart (1).svg";
 import profileImg from "@/public/svgs/Frame 2609463.svg";
 import plusBtn from "@/public/svgs/Group 33735 (1).svg";
+import backIcon from "@/public/svgs/ic_back.svg";
 
 export default function ArticlePage() {
   const router = useRouter();
   const { articleId } = router.query;
-
   const [article, setArticle] = useState<Article | null>(null);
   const [comments, setComments] = useState<Comment[]>([]);
   const [nextCursor, setNextCursor] = useState<number | null>(null);
@@ -59,6 +59,10 @@ export default function ArticlePage() {
   }, [articleId]);
 
   if (!article) return <p>로딩 중...</p>;
+
+  const handleGoBack = () => {
+    router.back();
+  };
 
   return (
     <div className={styles.article_container}>
@@ -129,12 +133,17 @@ export default function ArticlePage() {
           <p>댓글이 없습니다.</p>
         )}
         {isLoadingComments && <p>댓글 로딩 중...</p>}
-        {nextCursor && !isLoadingComments && (
-          <button onClick={fetchComments} style={{ marginTop: "1rem" }}>
-            더보기
-          </button>
-        )}
       </div>
+      <button onClick={handleGoBack} className={styles.back_btn}>
+        목록으로 돌아가기
+        <Image
+          src={backIcon}
+          className={styles.back_icon}
+          width={24}
+          height={24}
+          alt="뒤로가기 아이콘"
+        />
+      </button>
     </div>
   );
 }

@@ -30,7 +30,7 @@ export async function getArticleById(id: number): Promise<Article> {
 export async function getArticleComment(
   id: number,
   cursor: number | null = null,
-  limit: number = 10
+  limit: number = 1000
 ): Promise<GetArticlesCommentResponse> {
   try {
     const { data } = await axiosInstance.get<GetArticlesCommentResponse>(
