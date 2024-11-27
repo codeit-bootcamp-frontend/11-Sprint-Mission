@@ -3,9 +3,7 @@ import medal from '@/public/ic_medal.svg';
 import heart from '@/public/ic_heart.svg';
 import styles from '@/styles/BestBoard.module.css';
 
-export default function BestBoard({ data = {} }) {
-  const { title, image, updatedAt, likeCount, writer } = data;
-
+export default function BestBoard({ title, image, updatedAt, likeCount, writer }) {
   const date = new Date(updatedAt);
 
   const formattedDate = date.toLocaleDateString({

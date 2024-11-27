@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState, useCallback } from 'react';
 import Image from 'next/image';
 import search from '@/public/ic_search.svg';
 import BestBoard from '../components/BestBoard';
@@ -25,11 +25,12 @@ export default function Boards() {
       return data; // 데이터 반환
     } catch (error) {
       console.error('API 호출 실패:', error);
+      alert(error.message);
       return null; // 실패 시 null 반환
     }
   };
 
-  const fetchBestData = async param => {
+  const fetchBestData = useCallback(async param => {
     const data = await getList(param); // 비동기 호출 후 대기
 
     if (data && Array.isArray(data.list)) {
@@ -40,17 +41,17 @@ export default function Boards() {
       setBestList([]);
     }
     // console.log(data);
-  };
+  }, []);
 
-  const fetchEntireData = async param => {
+  const fetchEntireData = useCallback(async param => {
     const data = await getList(param); // 비동기 호출 후 대기
-    
+
     if (data && Array.isArray(data.list)) {
       setEntireList(data.list);
     } else {
       setEntireList([]);
     }
-  };
+  }, []);
 
   const handleChange = async e => {
     const selectedOrderBy = e.target.value;
@@ -76,25 +77,25 @@ export default function Boards() {
   useEffect(() => {
     fetchBestData({ pageSize: 3 }); // 베스트 호출
     fetchEntireData({ orderBy: 'recent' }); // 일반 조회
-  }, []);
+  }, [fetchBestData, fetchEntireData]);
 
   return (
     <div className={styles.boardsPage}>
-      <div className={styles.bestBoardContainer}>
-        <div className={styles.bestBoardTitle}>베스트 게시글</div>
+      <section className={styles.bestBoardContainer}>
+        <h2 className={styles.bestBoardTitle}>베스트 게시글</h2>
         <div className={styles.bestBoardCard}>
           {bestList.map(data => {
             return (
               <Fragment key={data.id}>
-                <BestBoard data={data} />
+                <BestBoard {...data} />
               </Fragment>
             );
           })}
         </div>
-      </div>
-      <div className={styles.entireBoardContainer}>
+      </section>
+      <section className={styles.entireBoardContainer}>
         <div className={styles.entireBoardHeader}>
-          <div className={styles.entireBoardTitle}>게시글</div>
+          <h2 className={styles.entireBoardTitle}>게시글</h2>
           <button type="button" className={styles.smallButton}>
             글쓰기
           </button>
@@ -103,7 +104,7 @@ export default function Boards() {
           <div className={styles.userSelectSection}>
             <div className={styles.searchBar}>
               <Image width={'15'} height={'15'} src={search} alt="검색" />
-              <input value={searchKeyword} onChange={handleInputChange} placeholder="검색할 상품을 입력해주세요" className={styles.searchBarInput} />
+              <input value={searchKeyword} onChange={handleInputChange} placeholder="검색할 상품을 입력해주세요." className={styles.searchBarInput} />
             </div>
             <select value={orderBy} onChange={handleChange}>
               <option value="recent">최신순</option>
@@ -119,11 +120,11 @@ export default function Boards() {
                 </Fragment>
               ))
             ) : (
-              <div> 아직 리스트가 없습니다.</div> // 전체 리스트가 없을 때 출력될 메시지
+              <div> 아직 게시글이 없습니다. 첫번째 게시글을 작성해 주세요!</div> // 전체 리스트가 없을 때 출력될 메시지
             )}
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
