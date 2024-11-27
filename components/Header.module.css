@@ -1,0 +1,59 @@
+.header {
+  border-bottom: 1px solid #dfdfdf;
+  padding: 2rem 1.6rem 1.5rem;
+}
+
+.headerLayout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logoText {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2.7rem;
+  color: #3692ff;
+  font-family: 'ROKAF Sans', sans-serif;
+  /* TODO 폰트 잘안먹힘 */
+}
+
+.logoLink {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.headerLeft {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.headerLink {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.headerFont {
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 2.6rem;
+  color: #4b5563;
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding: 1.5rem 2.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .headerLayout {
+    width: 144rem;
+  }
+}

@@ -1,0 +1,47 @@
+.boardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.bestCardBox {
+  display: flex;
+}
+
+.boardBox {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.buttonMiddle {
+  padding: 1.1rem 2.3rem;
+}
+
+.titles {
+  display: flex;
+  justify-content: space-between;
+}
+
+.searchBox {
+  display: flex;
+  gap: 1.3rem;
+}
+
+.boardSearch {
+  width: 28.8rem;
+  height: 4.2rem;
+  border-radius: 1.2rem;
+}
+
+@media (min-width: 768px) {
+  .bestCardBox {
+    gap: 1.6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bestCardBox {
+    gap: 2.4rem;
+  }
+}
