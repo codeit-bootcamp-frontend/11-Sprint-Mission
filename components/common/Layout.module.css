@@ -13,13 +13,14 @@
 @media (min-width: 768px) {
   .container {
     width: 100%;
-    padding: 1.6rem;
+    padding: 2.4rem;
     margin: 0 auto;
   }
 }
 
 @media (min-width: 1024px) {
   .container {
+    width: 100%;
     max-width: 120rem;
   }
 }

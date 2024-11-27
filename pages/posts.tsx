@@ -3,8 +3,9 @@ import React from 'react';
 
 const Posts = () => {
   const router = useRouter();
+  const { query } = router.query;
 
-  return <div></div>;
+  return <div>라우터 {query}</div>;
 };
 
 export default Posts;

@@ -79,12 +79,6 @@ const Board = () => {
     fetchAllProducts(params);
   };
 
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  console.log(pathname);
-  console.log(searchParams);
-
   useEffect(() => {
     if (!screenType) return;
 
@@ -136,11 +130,7 @@ const Board = () => {
           />
         </div>
         {allProducts.map((data) => {
-          return (
-            <React.Fragment key={data.id}>
-              <Card products={data} />
-            </React.Fragment>
-          );
+          return <Card products={data} key={data.id} />;
         })}
       </section>
     </div>

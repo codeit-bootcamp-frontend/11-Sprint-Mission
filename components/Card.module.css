@@ -20,11 +20,9 @@
 }
 
 .bestContentImage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
   width: 7.2rem;
-  width: 7.2rem;
+  height: 7.2rem;
   border: 0.075rem solid #e5e7eb;
   background-color: white;
   border-radius: 0.8rem;

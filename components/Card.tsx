@@ -5,29 +5,32 @@ import styles from './Card.module.css';
 import heartIcon from '@/public/ic_heart.svg';
 import profile from '@/public/profile.svg';
 import { ProductResult } from '@/api/productApi';
+import Link from 'next/link';
 
 interface CardProps {
   products: ProductResult;
 }
 
 const Card: React.FC<CardProps> = ({ products }) => {
-  const { description, ownerNickname, favoriteCount, createdAt, images } =
+  const { id, name, ownerNickname, favoriteCount, createdAt, images } =
     products;
 
   return (
     <>
       <div className={styles.CardBox}>
-        <div className={styles.CardContent}>
-          <div className={styles.bestContentText}>{description}</div>
-          <div className={styles.bestContentImage}>
-            <Image
-              src={images[0]}
-              width={48}
-              height={48}
-              alt="상품이미지"
-            ></Image>
+        <Link href={`boards/${id}`}>
+          <div className={styles.CardContent}>
+            <div className={styles.bestContentText}>{name}</div>
+            <div className={styles.bestContentImage}>
+              <Image
+                src={images[0]}
+                fill
+                alt="상품이미지"
+                style={{ objectFit: 'contain' }}
+              ></Image>
+            </div>
           </div>
-        </div>
+        </Link>
         <div className={styles.cardInfo}>
           <div className={styles.bestContentLeft}>
             <Image
