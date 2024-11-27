@@ -110,11 +110,15 @@
   margin-bottom: 4px;
 }
 
+.btn_disabled {
+  cursor: not-allowed;
+}
+
 .btn_enabled {
   background-color: #3692ff;
 }
 
-.btn:hover {
+.btn_enabled:hover {
   background-color: #2e7ae4;
   cursor: pointer;
 }

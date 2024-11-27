@@ -125,6 +125,7 @@
 
 .button:hover {
   cursor: pointer;
+  background-color: #2e7ae4;
 }
 
 .article_controls {
