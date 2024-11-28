@@ -1,7 +1,7 @@
 import { Article, ArticleList } from "@/types/Article.type";
 import Image from "next/image";
 import styles from "./PostBoard.module.css";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import {
   getArticleList,
   GetArticleListParams,
@@ -9,6 +9,7 @@ import {
 } from "@/api/article.api";
 import formatDate from "../lib/formatDate";
 import { useDeviceType } from "@/contexts/DeviceTypeContext";
+import ImageSafe from "./ImageSafe";
 
 const DEFAULT_PARAMS: GetArticleListParams = {
   page: 1,
@@ -143,22 +144,13 @@ export default function PostBoard({
 
 function PostItem({ article }: { article: Article }) {
   const createdAt = formatDate(article.createdAt);
-  const [imgSrc, setImgSrc] = useState(article.image || IMAGE_PLACEHOLDER);
 
   return (
     <div className={styles.Item}>
       <div className={styles.ItemContent}>
         <h3 className={styles.ItemTitle}> {article.title}</h3>
         <div className={styles.ItemPreview}>
-          <Image
-            fill
-            src={imgSrc}
-            alt={article.title}
-            style={{
-              objectFit: "cover",
-            }}
-            onError={() => setImgSrc(IMAGE_PLACEHOLDER)}
-          />
+          <ImageSafe src={article.image} alt={article.title} />
         </div>
       </div>
       <div className={styles.ItemInfo}>
