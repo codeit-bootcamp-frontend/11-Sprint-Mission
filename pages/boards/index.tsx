@@ -11,12 +11,12 @@ import {
   Product,
   ProductResult,
 } from '@/api/productApi';
-import Dropdown from '@/components/common/Dropdown';
+import Dropdown, { DropdownItem } from '@/components/common/Dropdown';
 import debounce from 'lodash.debounce';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
 
-const items = [
+const items: DropdownItem[] = [
   { id: 0, label: '최신순', value: 'recent' },
   { id: 1, label: '좋아요순', value: 'favorite' },
 ];
