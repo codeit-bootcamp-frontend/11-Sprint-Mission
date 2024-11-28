@@ -1,14 +1,17 @@
+import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import SmallButton from '@/components/common/SmallButton';
 import FileInput from '@/components/FileInput';
+import axios from '@/pages/api/api';
 
 export default function AddBoard() {
   const [values, setValues] = useState({
     title: '',
     content: '',
-    imgFile: null,
+    image: 'https://example.com/...',
   });
   const [isFormValid, setIsFormValid] = useState(false);
+  const router = useRouter();
 
   const handleChange = (name, value) => {
     setValues(preValues => ({ ...preValues, [name]: value }));
@@ -19,9 +22,22 @@ export default function AddBoard() {
     handleChange(name, value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    console.log(values);
+    const config = {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
+      },
+    };
+
+    try {
+      const response = await axios.post('/articles', values, config);
+      console.log('응답:', response.data);
+      const createdArticleId = response.data.id;
+      router.push(`/board/${createdArticleId}`);
+    } catch (error) {
+      console.error('에러 발생:', error);
+    }
   };
 
   useEffect(() => {
@@ -54,7 +70,7 @@ export default function AddBoard() {
           </section>
           <section className="formSection">
             <h3 className="sectionTheme">이미지</h3>
-            <FileInput name="imgFile" value={values.imgFile} onChange={handleChange} />
+            <FileInput name="image" value={values.imgFile} onChange={handleChange} />
           </section>
         </div>
       </main>
