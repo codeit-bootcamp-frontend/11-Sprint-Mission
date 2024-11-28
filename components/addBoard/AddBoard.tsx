@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./AddBoard.module.css";
 import Image from "next/image";
-import { createPost } from "@/pages/api/posts";
+import { createPost, uploadImage } from "@/pages/api/posts";
 import { useRouter } from "next/router";
 
 interface BoardValue {
@@ -46,18 +46,26 @@ const AddBoard = ({ initailValues = INITIAL_VALUES }) => {
     if (!isFormValid) return;
     setLoading(true);
     try {
+      let imageUrl = null;
+      if (image) {
+        imageUrl = await uploadImage(image);
+      }
+
       const postData = {
         title: value.title,
         content: value.content,
-        image: preview,
+        image: imageUrl,
       };
       const createdPost = await createPost(postData);
 
       alert("게시글이 성공적으로 등록되었습니다.");
       router.push(`/board/${createdPost.id}`);
-    } catch (error: any) {
-      console.error(error);
-      alert(error.message || "오류가 발생했어요");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        alert(error.message);
+      } else {
+        alert("알 수 없는 오류가 발생했어요");
+      }
     } finally {
       setLoading(false);
     }

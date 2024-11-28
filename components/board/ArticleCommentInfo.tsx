@@ -2,8 +2,17 @@ import React from "react";
 import styles from "./ArticleCommentInfo.module.css";
 import Image from "next/image";
 
+interface ArticleComment {
+  id: number;
+  content: string;
+  writer: {
+    nickname: string;
+  };
+  createdAt: string;
+}
+
 interface ArticleCommentInfoProps {
-  articleComments: any;
+  articleComments: ArticleComment[];
 }
 
 const ArticleCommentInfo = ({ articleComments }: ArticleCommentInfoProps) => {
@@ -29,8 +38,8 @@ const ArticleCommentInfo = ({ articleComments }: ArticleCommentInfoProps) => {
   }
   return (
     <section className={styles.container}>
-      {articleComments.map((comment: any) => (
-        <div key={articleComments.id} className={styles.box}>
+      {articleComments.map((comment) => (
+        <div key={comment.id} className={styles.box}>
           <div className={styles["content-box"]}>
             <p className={styles.title}>{comment.content}</p>
             <div className={styles.dot}>

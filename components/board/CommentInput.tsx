@@ -2,11 +2,22 @@ import React, { useState } from "react";
 import styles from "./CommentInput.module.css";
 import { createComment } from "@/pages/api/posts";
 
-interface CommentInputProps {
-  articleId: number;
+interface Comment {
+  id: number;
+  content: string;
+  writer: {
+    id: number;
+    nickname: string;
+  };
+  createdAt: string;
 }
 
-const CommentInput = ({ articleId }: CommentInputProps) => {
+interface CommentInputProps {
+  articleId: number;
+  onAddComment: (newComment: Comment) => void;
+}
+
+const CommentInput = ({ articleId, onAddComment }: CommentInputProps) => {
   const [value, setValue] = useState({
     content: "",
   });
@@ -21,8 +32,9 @@ const CommentInput = ({ articleId }: CommentInputProps) => {
     if (!value.content) return;
     try {
       const commentData = { content: value.content };
-      await createComment(articleId, commentData);
+      const newComment = await createComment(articleId, commentData);
       setValue({ content: "" });
+      onAddComment(newComment);
     } catch (error) {
       console.error("댓글 작성 실패", error);
     }

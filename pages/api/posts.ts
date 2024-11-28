@@ -7,10 +7,6 @@ export interface CreatePostData {
   image: string | null;
 }
 
-export interface CreateCommentData {
-  content: string | null;
-}
-
 export interface CreatePostResponse {
   id: number;
   title: string;
@@ -23,6 +19,9 @@ export interface CreatePostResponse {
     nickname: string;
     id: number;
   };
+}
+export interface CreateCommentData {
+  content: string | null;
 }
 
 export interface CreateCommentResponse {
@@ -37,6 +36,29 @@ export interface CreateCommentResponse {
   };
 }
 
+//게시글 이미지 url 생성
+export const uploadImage = async (file: File): Promise<string> => {
+  const formData = new FormData();
+  formData.append("image", file);
+
+  const res = await fetch(`${API_BASE_URL}/images/upload`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${ACCESS_TOKEN}`,
+    },
+    body: formData,
+  });
+
+  if (!res.ok) {
+    const errorText = await res.text();
+    throw new Error(`이미지 업로드에 실패했어요: ${errorText}`);
+  }
+
+  const data = await res.json();
+  return data.url;
+};
+
+// 게시글 생성
 export const createPost = async (
   data: CreatePostData
 ): Promise<CreatePostResponse> => {
@@ -55,6 +77,7 @@ export const createPost = async (
   return res.json();
 };
 
+// 게시글 댓글 생성
 export const createComment = async (
   articleId: number,
   data: CreateCommentData

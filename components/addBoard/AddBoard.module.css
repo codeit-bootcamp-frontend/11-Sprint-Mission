@@ -36,11 +36,13 @@
   font-size: 16px;
   background-color: var(--color-blue-200);
   color: var(--color-white-200);
+  cursor: pointer;
 }
 
 .button:disabled {
   background-color: var(--color-blue-600);
   color: var(--color-white-400);
+  cursor: not-allowed;
 }
 
 .body {

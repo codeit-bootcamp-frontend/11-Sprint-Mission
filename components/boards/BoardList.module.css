@@ -1,5 +1,6 @@
 .board-list-container {
-  width: 62%;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   @media screen and (max-width: 744px) {
     width: 100%;
