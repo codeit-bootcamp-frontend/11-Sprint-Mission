@@ -188,7 +188,7 @@
 
 .create-question-textarea::placeholder {
   color: var(--gray-400);
-  font-family: 'Pretendard';
+  font-family: 'Pretendard Variable';
   resize: none;
 }
 

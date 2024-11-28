@@ -1,17 +1,24 @@
 import { useState } from 'react';
+import { DEFAULT_DELAY_TIME } from '@constant';
 import './KebabMenu.css';
 
-const KebabMenu = ({ openEdit, onDelete, id }) => {
+interface KebabMenuProps {
+  openEdit: () => void;
+  onDelete: (id: number) => void;
+  id: number;
+}
+
+const KebabMenu = ({ openEdit, onDelete, id }: KebabMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [shouldRender, setShouldRender] = useState(false);
 
   const toggleMenu = () => {
     if (!isOpen) {
       setShouldRender(true);
-      setTimeout(() => setIsOpen(true), 10);
+      setTimeout(() => setIsOpen(true), DEFAULT_DELAY_TIME);
     } else {
       setIsOpen(false);
-      setTimeout(() => setShouldRender(false), 100);
+      setTimeout(() => setShouldRender(false), DEFAULT_DELAY_TIME);
     }
   };
 
@@ -28,7 +35,7 @@ const KebabMenu = ({ openEdit, onDelete, id }) => {
             onClick={() => {
               openEdit();
               setIsOpen(false);
-              setTimeout(() => setShouldRender(false), 200);
+              setTimeout(() => setShouldRender(false), DEFAULT_DELAY_TIME);
             }}
           >
             수정하기

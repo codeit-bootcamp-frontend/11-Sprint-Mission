@@ -1,28 +1,45 @@
 import { useParams, Link } from 'react-router-dom';
-import Header from '../../common/home/Header';
 import { useEffect, useState, useCallback } from 'react';
-import { getProductById } from '../../../api/productsApi';
-import './ProductDetail.css';
-import AddItemTag from '../additem/AddItemTag';
+import { getProductById } from '@api/productsApi';
 import {
   createComment,
   deleteCommentById,
   getCommentsByProductId,
-} from '../../../api/commentsApi';
+} from '@api/commentsApi';
+import Header from '@common/home/Header';
+import AddItemTag from '../additem/AddItemTag';
 import CommentBox from './CommentBox';
+import './ProductDetail.css';
+
+export interface Product {
+  id: number;
+  name: string;
+  images?: string[];
+  price?: number;
+  favoriteCount: number;
+  updatedAt: string;
+  description?: string;
+  tags?: string[];
+  ownerNickname?: string;
+}
+
+export interface Comment {
+  id: number;
+  content: string;
+  createdAt: string;
+}
 
 function ProductDetail() {
-  const { id } = useParams();
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [comments, setComments] = useState([]);
-  const [newCommentInput, setNewCommentInput] = useState('');
+  const { id } = useParams<{ id: string }>();
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [comments, setComments] = useState<Comment[]>([]);
+  const [newCommentInput, setNewCommentInput] = useState<string>('');
 
   const fetchComments = useCallback(async () => {
     try {
-      const data = await getCommentsByProductId(id);
-      setComments(data);
-      console.log(data);
+      const data = await getCommentsByProductId(Number(id));
+      setComments(data || []);
     } catch (error) {
       console.error('Error fetching comments:', error);
     }
@@ -31,8 +48,8 @@ function ProductDetail() {
   useEffect(() => {
     async function fetchProduct() {
       try {
-        const data = await getProductById(id);
-        setProduct(data);
+        const data = await getProductById(Number(id));
+        setProduct(data || null);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching product:', error);
@@ -44,7 +61,7 @@ function ProductDetail() {
     fetchComments();
   }, [id, fetchComments]);
 
-  const handleDelete = async (commentId) => {
+  const handleDelete = async (commentId: number) => {
     const success = await deleteCommentById(commentId);
     if (success) {
       setComments((prevComments) =>
@@ -63,24 +80,27 @@ function ProductDetail() {
     return <p>상품을 찾을 수 없습니다.</p>;
   }
 
-  const handleCreateComment = () => {
+  const handleCreateComment = async (
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    e.preventDefault();
     try {
-      createComment(id, newCommentInput);
+      await createComment(Number(id), newCommentInput);
+      setNewCommentInput('');
+      fetchComments();
     } catch (error) {
-      console.log(error.massage);
+      console.error('Error creating comment:', error);
     }
   };
 
-  const getFormattedDate = (isoString) => {
+  const getFormattedDate = (isoString: string): string => {
     const date = new Date(isoString);
 
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
 
-    const formattedDate = `${year}. ${month}. ${day}`;
-
-    return formattedDate;
+    return `${year}. ${month}. ${day}`;
   };
 
   return (
@@ -88,8 +108,12 @@ function ProductDetail() {
       <Header
         leftMenu={
           <>
-            <Link className='menu-item free-board'>자유게시판</Link>
-            <Link className='menu-item secondhand-market'>중고마켓</Link>
+            <Link to='/' className='menu-item free-board'>
+              자유게시판
+            </Link>
+            <Link to='/items' className='menu-item secondhand-market'>
+              중고마켓
+            </Link>
           </>
         }
         rightMenu={
@@ -106,7 +130,7 @@ function ProductDetail() {
         <div className='product-detail-content'>
           <img
             className='product-detail-image'
-            src={product.images[0]}
+            src={product.images?.[0] || '/images/default.png'}
             alt={product.name}
           />
           <div className='product-detail-info-wrapper'>
@@ -114,7 +138,9 @@ function ProductDetail() {
               <div className='product-detail-info-title'>
                 <h1 className='product-detail-info-name'>{product.name}</h1>
                 <p className='product-detail-info-price'>
-                  {product.price.toLocaleString()}원
+                  {product.price
+                    ? product.price.toLocaleString() + '원'
+                    : '가격 정보 없음'}
                 </p>
                 <img
                   className='product-detail-info-kebab'
@@ -126,12 +152,12 @@ function ProductDetail() {
                 <div className='product-detail-info-description'>
                   <p className='product-detail-info-caption'>상품 소개</p>
                   <p className='product-detail-info-description-text'>
-                    {product.description}
+                    {product.description || '상품 설명이 없습니다.'}
                   </p>
                 </div>
                 <div className='product-detail-info-tag'>
                   <p className='product-detail-info-caption'>상품 태그</p>
-                  <AddItemTag tags={product.tags} />
+                  <AddItemTag tags={product.tags || []} />
                 </div>
               </div>
               <div className='product-detail-seller'>
@@ -142,7 +168,9 @@ function ProductDetail() {
                     alt='판매자 이미지'
                   />
                   <div className='seller-wrapper'>
-                    <p className='seller-nickname'>{product.ownerNickname}</p>
+                    <p className='seller-nickname'>
+                      {product.ownerNickname || '닉네임 없음'}
+                    </p>
                     <p className='seller-updatedat'>
                       {getFormattedDate(product.updatedAt)}
                     </p>
@@ -171,35 +199,36 @@ function ProductDetail() {
               </label>
               <textarea
                 className='create-question-textarea'
-                type='text'
                 placeholder='개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다.'
                 value={newCommentInput}
                 onChange={(e) => setNewCommentInput(e.target.value)}
               />
               <button
                 className='create-question-btn'
-                disabled={newCommentInput ? false : true}
+                disabled={!newCommentInput}
                 onClick={handleCreateComment}
               >
                 등록
               </button>
             </form>
           </div>
-          <div className='product-detial-comments'>
-            {comments.map((comment) => {
-              return (
-                <CommentBox
-                  key={comment.id}
-                  comment={comment}
-                  onDelete={handleDelete}
-                />
-              );
-            })}
+          <div className='product-detail-comments'>
+            {comments.map((comment) => (
+              <CommentBox
+                key={comment.id}
+                comment={comment}
+                onDelete={handleDelete}
+              />
+            ))}
           </div>
         </div>
         <Link className='back-btn' to='/items'>
           목록으로 돌아가기
-          <img className='back-btn-image' src='/images/icons/ic_back.svg' alt='목록 돌아가기 버튼' />
+          <img
+            className='back-btn-image'
+            src='/images/icons/ic_back.svg'
+            alt='목록 돌아가기 버튼'
+          />
         </Link>
       </main>
     </>

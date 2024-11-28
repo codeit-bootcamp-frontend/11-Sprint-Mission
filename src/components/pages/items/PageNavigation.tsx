@@ -1,16 +1,27 @@
-function PageNavigation({ currentPage, totalPages, onPageChange }) {
+interface PageNavigationProps {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}
+
+function PageNavigation({
+  currentPage,
+  totalPages,
+  onPageChange,
+}: PageNavigationProps) {
   const maxPagesToShow = 5;
   const startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
   const endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
-  
+
   const handlePreviousClick = () => {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
     }
   };
 
-  const handlePageClick = (e) => {
-    onPageChange(+e.target.value);
+  const handlePageClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const value = +e.currentTarget.value;
+    onPageChange(value);
   };
 
   const handleNextClick = () => {
@@ -20,18 +31,18 @@ function PageNavigation({ currentPage, totalPages, onPageChange }) {
   };
 
   return (
-    <footer className="items-footer">
-      <nav className="page-nav">
-        <ul className="page-nav-ul">
+    <footer className='items-footer'>
+      <nav className='page-nav'>
+        <ul className='page-nav-ul'>
           <li>
             <button
-              className="page-btn page-move-btn"
+              className='page-btn page-move-btn'
               onClick={handlePreviousClick}
               disabled={currentPage === 1}
             >
               <img
-                src="images/icons/ic_arrow_right.svg"
-                alt="이전 페이지 이동"
+                src='images/icons/ic_arrow_right.svg'
+                alt='이전 페이지 이동'
               />
             </button>
           </li>
@@ -42,7 +53,7 @@ function PageNavigation({ currentPage, totalPages, onPageChange }) {
               <li key={page}>
                 <button
                   className={`page-btn ${
-                    page === currentPage ? "current-page" : ""
+                    page === currentPage ? 'current-page' : ''
                   }`}
                   value={page}
                   onClick={handlePageClick}
@@ -54,14 +65,14 @@ function PageNavigation({ currentPage, totalPages, onPageChange }) {
           })}
           <li>
             <button
-              className="page-btn page-move-btn"
+              className='page-btn page-move-btn'
               onClick={handleNextClick}
               disabled={currentPage === totalPages}
             >
               <img
-                className="arrow-rotated"
-                src="images/icons/ic_arrow_right.svg"
-                alt="다음 페이지 이동"
+                className='arrow-rotated'
+                src='images/icons/ic_arrow_right.svg'
+                alt='다음 페이지 이동'
               />
             </button>
           </li>

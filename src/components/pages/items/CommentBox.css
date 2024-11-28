@@ -3,8 +3,9 @@
   flex-direction: column;
   gap: 18px;
   width: 100%;
-  padding-bottom: 26px;
+  padding-bottom: 10px;
   border-bottom: 1px solid var(--neutral-400);
+  margin-bottom: 14px;
 }
 
 .comment-edit-textarea {
@@ -25,6 +26,7 @@
 .comment-content-wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .comment-content {

@@ -1,10 +1,21 @@
 import { useState } from 'react';
-import { getTimeDifference } from '../../../utills';
-import './CommentBox.css';
+import { getTimeDifference } from '@utills';
+import { updateCommentById } from '@api/commentsApi';
+import { DEFAULT_PROFILE_IMAGE } from '@constant';
 import KebabMenu from './KebabMenu';
-import { updateCommentById } from '../../../api/commentsApi';
+import './CommentBox.css';
 
-function CommentBox({ comment, onDelete }) {
+interface CommentBoxProps {
+  comment: {
+    content: string;
+    createdAt: string;
+    writer?: { image: string; nickname: string };
+    id: number;
+  };
+  onDelete: (id: number) => void;
+}
+
+function CommentBox({ comment, onDelete }: CommentBoxProps) {
   let { content, createdAt, writer, id } = comment;
   const [isEdit, setIsEdit] = useState(false);
   const [editInput, setEditInput] = useState(content);
@@ -17,12 +28,16 @@ function CommentBox({ comment, onDelete }) {
     setIsEdit(false);
   };
 
-  const handleCompleteEdit = () => {
+  const handleCompleteEdit = async () => {
     try {
-      updateCommentById(id, editInput);
+      await updateCommentById(id, editInput);
       content = editInput;
     } catch (error) {
-      console.log(error.message);
+      if (error instanceof Error) {
+        console.log(error.message);
+      } else {
+        console.log('An unknown error occurred:', error);
+      }
     }
   };
 
@@ -48,12 +63,12 @@ function CommentBox({ comment, onDelete }) {
       <div className='comment-writer-container'>
         <img
           className='comment-writer-image'
-          src={writer.image ? writer.image : '/images/icons/ic_mypage.svg'}
+          src={writer?.image || DEFAULT_PROFILE_IMAGE}
           alt='댓글 작성자 프로필 이미지'
         />
         <div className='comment-edit-btn-wrapper'>
           <div className='comment-writer-wrapper'>
-            <p className='comment-writer-nickname'>{writer.nickname}</p>
+            <p className='comment-writer-nickname'>{writer?.nickname}</p>
             <p className='comment-writer-createdat'>
               {getTimeDifference(createdAt)}
             </p>
