@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import BestBoard from '../components/BestBoard';
@@ -83,9 +83,11 @@ export default function Boards() {
         <div className={styles.bestBoardCard}>
           {bestList.map(data => {
             return (
-              <Fragment key={data.id}>
-                <BestBoard {...data} />
-              </Fragment>
+              <li key={data.id} className={styles.boardCard}>
+                <Link href={`/board/${data.id}`} className={styles.boardCard}>
+                  <BestBoard {...data} />
+                </Link>
+              </li>
             );
           })}
         </div>
@@ -111,9 +113,11 @@ export default function Boards() {
           <div className={styles.entireBoardList}>
             {entireList?.length > 0 ? (
               entireList.map(data => (
-                <Fragment key={data.id}>
-                  <EntireBoard data={data} />
-                </Fragment>
+                <li key={data.id} className={styles.boardCard}>
+                  <Link href={`/board/${data.id}`} className={styles.boardCard}>
+                    <EntireBoard data={data} />
+                  </Link>
+                </li>
               ))
             ) : (
               <div> 아직 게시글이 없습니다. 첫번째 게시글을 작성해 주세요!</div> // 전체 리스트가 없을 때 출력될 메시지
