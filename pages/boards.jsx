@@ -1,9 +1,11 @@
 import { Fragment, useEffect, useState, useCallback } from 'react';
 import Image from 'next/image';
-import search from '@/public/ic_search.svg';
+import Link from 'next/link';
 import BestBoard from '../components/BestBoard';
 import EntireBoard from '../components/EntireBoard';
+import SmallButton from '../components/common/SmallButton';
 import axios from '@/pages/api/api';
+import search from '@/public/ic_search.svg';
 import styles from '@/styles/Boards.module.css';
 
 export default function Boards() {
@@ -69,11 +71,6 @@ export default function Boards() {
     await fetchEntireData({ keyword: value, orderBy });
   };
 
-  // 모바일용 버튼
-  // const handleClickSearch = () => {
-  //   fetchBestData({ keyword: { keyword } });
-  // };
-
   useEffect(() => {
     fetchBestData({ pageSize: 3 }); // 베스트 호출
     fetchEntireData({ orderBy: 'recent' }); // 일반 조회
@@ -96,9 +93,9 @@ export default function Boards() {
       <section className={styles.entireBoardContainer}>
         <div className={styles.entireBoardHeader}>
           <h2 className={styles.entireBoardTitle}>게시글</h2>
-          <button type="button" className={styles.smallButton}>
-            글쓰기
-          </button>
+          <Link href="/addboard">
+            <SmallButton type="button">글쓰기</SmallButton>
+          </Link>
         </div>
         <div className={styles.entireBoardBody}>
           <div className={styles.userSelectSection}>
@@ -112,7 +109,6 @@ export default function Boards() {
             </select>
           </div>
           <div className={styles.entireBoardList}>
-            {/* <button onClick={handleClickSearch}>검색하기</button> */}
             {entireList?.length > 0 ? (
               entireList.map(data => (
                 <Fragment key={data.id}>
