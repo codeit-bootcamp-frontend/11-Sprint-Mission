@@ -64,6 +64,18 @@ export interface ArticlesResponse {
   list: Article[];
 }
 
+//게시판 상세 정보
+export interface ArticleDetail {
+  id: number;
+  title: string;
+  content: string;
+  image: string;
+  likeCount: number;
+  writer: Writer;
+  createdAt: string;
+  updatedAt: string;
+}
+
 // 상품 목록 API
 export async function getProducts(
   page: number = 1,
@@ -188,4 +200,24 @@ export async function postBoardsList(
 
   const response = await instance.post(path, data);
   return response.data;
+}
+
+//게시판 상세 정보 불러오는 api
+export async function getBoardsDetail(
+  articleId: number
+): Promise<ArticleDetail> {
+  const apiUrl = `${baseUrl}/articles/${articleId}`;
+
+  try {
+    const response = await fetch(apiUrl);
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status} - ${response.statusText}`);
+    }
+
+    const data: ArticleDetail = await response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
 }
