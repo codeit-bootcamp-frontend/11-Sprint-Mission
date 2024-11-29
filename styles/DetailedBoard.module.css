@@ -148,13 +148,6 @@
   justify-content: flex-end;
 }
 
-.commentContainer {
-  display: grid;
-  width: 100%;
-  grid-template-rows: repeat(3, 1fr);
-  column-gap: 4rem;
-}
-
 .waitingComment {
   display: flex;
   flex-direction: column;
