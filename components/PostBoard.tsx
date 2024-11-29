@@ -10,6 +10,7 @@ import {
 import formatDate from "@/lib/formatDate";
 import { useDeviceType } from "@/contexts/DeviceTypeContext";
 import ImageSafe from "./ImageSafe";
+import useAsync from "@/hooks/useAsync";
 
 const DEFAULT_PARAMS: GetArticleListParams = {
   page: 1,
@@ -28,6 +29,11 @@ export default function PostBoard({
   const [selectedDropdown, setSelecedDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const deviceType = useDeviceType();
+  const {
+    excute: getArticleListAsync,
+    loading,
+    error,
+  } = useAsync(getArticleList);
 
   const handleClickDropdown = () => setSelecedDropdown((prev) => !prev);
 
@@ -67,8 +73,8 @@ export default function PostBoard({
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const data = await getArticleList(params);
-      setArticles(data);
+      const data = await getArticleListAsync(params);
+      if (data) setArticles(data);
     };
     fetchArticles();
 
@@ -76,7 +82,7 @@ export default function PostBoard({
 
     return () =>
       document.removeEventListener("click", handleClickDropdownOutside);
-  }, [params]);
+  }, [params, getArticleListAsync]);
 
   return (
     <div className={styles.Board}>
