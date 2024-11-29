@@ -1,9 +1,10 @@
 import React, { ChangeEvent, KeyboardEvent } from "react";
+import styles from "./InputField.module.css";
 
 interface InputFieldProps {
   id: string;
   label?: string;
-  type: "text" | "textarea";
+  type: "text" | "password" | "email" | "textarea";
   placeholder?: string;
   value: string;
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
@@ -22,15 +23,15 @@ const InputField = ({
   onKeyDown,
 }: InputFieldProps) => {
   return (
-    <div className="inputField">
+    <div className={styles.inputField}>
       {label && (
-        <label className="inputLabel" htmlFor={id}>
+        <label className={styles.inputLabel} htmlFor={id}>
           {label}
         </label>
       )}
       {type === "textarea" ? (
         <textarea
-          className="inputTextarea"
+          className={styles.inputTextarea}
           id={id}
           placeholder={placeholder}
           value={value}
@@ -38,7 +39,7 @@ const InputField = ({
         />
       ) : (
         <input
-          className="inputText"
+          className={styles.inputText}
           id={id}
           type={type}
           placeholder={placeholder}

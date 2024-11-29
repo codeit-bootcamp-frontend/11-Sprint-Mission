@@ -1,0 +1,39 @@
+.inputField {
+  margin-bottom: 20px;
+}
+
+.inputLabel {
+  display: block;
+  margin-bottom: 18px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.inputText {
+  height: 56px;
+}
+
+.inputTextarea {
+  resize: none;
+  height: 282px;
+}
+
+.inputText,
+.inputTextarea {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  padding: 16px 24px;
+  font-family: "Pretendard", sans-serif;
+}
+
+.inputText::placeholder,
+.inputTextarea::placeholder {
+  color: #9ca3af;
+}
