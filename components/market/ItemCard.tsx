@@ -1,21 +1,14 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import HeartIcon from "../../../public/images/ic_heart.svg";
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  images: string[];
-  favoriteCount: number;
-}
+import HeartIcon from "@/public/images/ic_heart.svg";
+import { Product } from "@/types/Types";
 
 interface ItemCardProps {
   item: Product;
 }
 
-function ItemCard({ item }: ItemCardProps) {
+const ItemCard = ({ item }: ItemCardProps) => {
   return (
     <Link href={`/items/${item.id}`} className="itemCard">
       <Image
@@ -28,11 +21,17 @@ function ItemCard({ item }: ItemCardProps) {
         <p className="itemPrice">{item.price.toLocaleString()}원</p>
         <div className="favoriteCount">
           <HeartIcon />
+          {/* <Image
+            src="/images/ic_heart.svg"
+            alt="Heart Icon"
+            width={20}
+            height={20}
+          /> */}
           {item.favoriteCount}
         </div>
       </div>
     </Link>
   );
-}
+};
 
 export default ItemCard;

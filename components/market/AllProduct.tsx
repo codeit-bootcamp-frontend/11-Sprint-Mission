@@ -1,17 +1,19 @@
 import React from "react";
 import Link from "next/link";
 // import SortIcon from "../images/ic_sort.svg";
-import SearchIcon from "../..//../public/images/ic_search.svg";
-import Dropdown from "../../../component/Dropdown";
-import "./AllProduct.css";
+import SearchIcon from "@/public/images/ic_search.svg";
+// import Image from "next/image";
+import Dropdown from "@/components/ui/Dropdown";
+import "@/styles/AllProduct.module.css";
 import { useEffect, useState } from "react";
-import ItemCard from "./ItemCard";
-import { getProducts } from "../../../api/api";
-import Pagination from "../../../component/Pagination";
+import ItemCard from "@/components/market/ItemCard";
+import { getProducts } from "@/api/api";
+import Pagination from "@/components/ui/Pagination";
+import { Product, ProductListResponse, ProductSortOption } from "@/types/Types";
+import { useRouter } from "next/router";
 
 // 화면 사이즈
-const getPageSize = () => {
-  const width = window.innerWidth;
+const getPageSize = (width: number) => {
   if (width < 768) {
     // 모바일
     return 4;
@@ -24,52 +26,111 @@ const getPageSize = () => {
   }
 };
 
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  images: string[];
-  favoriteCount: number;
-}
+// 너비 추적
+const useViewport = () => {
+  const [width, setWidth] = useState(0);
 
-function AllProduct() {
+  useEffect(() => {
+    const handleWindowResize = () => setWidth(window.innerWidth);
+    handleWindowResize();
+    window.addEventListener("resize", handleWindowResize);
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, []);
+
+  return width;
+};
+
+const AllProduct = () => {
   const [orderBy, setOrderBy] = useState("recent");
   const [itemList, setItemList] = useState<Product[]>([]);
   // const pageSize = 4;
   const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(getPageSize());
+  // const [pageSize, setPageSize] = useState(getPageSize());
+  const [pageSize, setPageSize] = useState<number | null>(null);
   const [totalPageNum, setTotalPageNum] = useState<number>();
 
-  const sortedData = async ({
-    orderBy,
-    page,
-    pageSize,
-  }: {
-    orderBy: string;
-    page: number;
-    pageSize: number;
-  }) => {
-    const products = await getProducts(orderBy, page, pageSize); // 객체로 전달하면 안됨?
-    setItemList(products.list);
-    setTotalPageNum(Math.ceil(products.totalCount / pageSize) || 1); // 기본값을 1로 설정
-  };
+  const sortOptions = [
+    { key: "recent", label: "최신순" },
+    { key: "favorite", label: "인기순" },
+  ];
 
-  const handleSortSelection = (sortOption: string) => {
+  // const sortedData = async ({
+  //   orderBy,
+  //   page,
+  //   pageSize,
+  // }: {
+  //   orderBy: string;
+  //   page: number;
+  //   pageSize: number;
+  // }) => {
+  //   const products = await getProducts(orderBy, page, pageSize); // 객체로 전달하면 안됨?
+  //   setItemList(products.list);
+  //   setTotalPageNum(Math.ceil(products.totalCount / pageSize) || 1); // 기본값을 1로 설정
+  // };
+
+  // // useEffect(() => {
+  // //   sortedData({ orderBy: "favorite", pageSize });
+  // // }, []);
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setPageSize(getPageSize());
+  //   };
+
+  //   // 화면 크기 변경할 때마다 pageSize를 다시 계산해 넣음
+  //   window.addEventListener("resize", handleResize);
+  //   sortedData({ orderBy, page, pageSize });
+  // }, [orderBy, page, pageSize]);
+
+  const router = useRouter();
+  const viewportWidth = useViewport();
+
+  // viewportWidth 값이 변경될 때마다 getPageSize 함수를 사용해 새로운 pageSize를 계산하고, 이전 값과 다를 경우 setPageSize를 호출하여 업데이트
+  useEffect(() => {
+    if (viewportWidth === 0) return; // viewportWidth의 초기 값 확인
+
+    const newPageSize = getPageSize(viewportWidth);
+    if (newPageSize !== pageSize) {
+      setPageSize(newPageSize);
+    }
+  }, [viewportWidth, pageSize]);
+
+  // pageSize 값이 변경될 때마다 데이터를 비동기로 가져오는 로직
+  useEffect(() => {
+    if (pageSize === null) return;
+
+    const fetchSortedData = async () => {
+      try {
+        const data: ProductListResponse = await getProducts({
+          orderBy: "favorite",
+          page,
+          pageSize,
+        });
+        setItemList(data.list);
+        setTotalPageNum(Math.ceil(data.totalCount / pageSize));
+      } catch (error) {
+        console.error("오류: ", error);
+      }
+    };
+
+    fetchSortedData();
+  }, [orderBy, page, pageSize]);
+
+  const handleSortSelection = (sortOption: ProductSortOption) => {
     setOrderBy(sortOption);
   };
 
-  // useEffect(() => {
-  //   sortedData({ orderBy: "favorite", pageSize });
-  // }, []);
-  useEffect(() => {
-    const handleResize = () => {
-      setPageSize(getPageSize());
-    };
+  const [searchKeyword, setSearchKeyword] = useState("");
 
-    // 화면 크기 변경할 때마다 pageSize를 다시 계산해 넣음
-    window.addEventListener("resize", handleResize);
-    sortedData({ orderBy, page, pageSize });
-  }, [orderBy, page, pageSize]);
+  const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchKeyword(e.target.value); // 사용자가 입력한 검색어를 상태에 저장
+  };
+
+  const handleSearch = (searchKeyword: string) => {
+    router.push({
+      pathname: router.pathname,
+      query: { ...router.query, q: searchKeyword },
+    });
+  };
 
   const onPageChange = (pageNumber: number) => {
     setPage(pageNumber);
@@ -85,21 +146,40 @@ function AllProduct() {
         </Link>
 
         <div className="search">
-          <SearchIcon />
+          {/* <Image
+            src="/images/ic_search.svg"
+            alt="Search Icon"
+            width={24}
+            height={24}
+          /> */}
+          <SearchIcon alt="Search Icon" />
           <input
             className="searchInput"
+            // onSearch={handleSearch}
+            value={searchKeyword}
+            onChange={handleSearchInput}
             placeholder="검색할 상품을 입력해 주세요"
           />
         </div>
 
-        <Dropdown onSortSelection={handleSortSelection} />
+        <Dropdown
+          onSortSelection={handleSortSelection}
+          sortOptions={sortOptions}
+        />
       </div>
 
       <div>
-        {itemList &&
-          itemList?.map((item) => (
+        {/* {itemList.length &&
+          itemList.map((item) => (
             <ItemCard item={item} key={`all-item-${item.id}`} />
-          ))}
+          ))} */}
+        {itemList.length > 0 ? (
+          itemList.map((item) => (
+            <ItemCard item={item} key={`all-item-${item.id}`} />
+          ))
+        ) : (
+          <p>No items available</p>
+        )}
       </div>
 
       <div>
@@ -113,6 +193,6 @@ function AllProduct() {
       </div>
     </div>
   );
-}
+};
 
 export default AllProduct;

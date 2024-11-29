@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 // import "./Dropdown.css";
-import SortIcon from "../public/images/ic_sort.svg";
+// import SortIcon from "../../public/images/ic_sort.svg";
+import Image from "next/image";
 
 interface DropdownProps {
-  onSortSelection: (sortOption: "resent" | "favorite") => void;
+  onSortSelection: (sortOption: any) => void;
+  sortOptions: { key: string; label: string }[];
 }
 
-function Dropdown({ onSortSelection }: DropdownProps) {
+function Dropdown({ onSortSelection, sortOptions }: DropdownProps) {
   const [isDropdownView, setIsDropdownView] = useState(false);
 
   const toggleDropdown = () => {
@@ -16,12 +18,17 @@ function Dropdown({ onSortSelection }: DropdownProps) {
   return (
     <div>
       <button onClick={toggleDropdown}>
-        <SortIcon />
+        <Image
+          src="/images/ic_sort.svg"
+          alt="Sort Icon"
+          width={24}
+          height={24}
+        />
       </button>
 
       {isDropdownView && (
         <div>
-          <div
+          {/* <div
             onClick={() => {
               onSortSelection("resent");
               setIsDropdownView(false);
@@ -36,7 +43,18 @@ function Dropdown({ onSortSelection }: DropdownProps) {
             }}
           >
             인기순
-          </div>
+          </div> */}
+          {sortOptions.map((option) => (
+            <div
+              key={option.key}
+              onClick={() => {
+                onSortSelection(option.key);
+                setIsDropdownView(false);
+              }}
+            >
+              {option.label}
+            </div>
+          ))}
         </div>
       )}
     </div>

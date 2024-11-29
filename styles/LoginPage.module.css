@@ -20,7 +20,7 @@
   flex-direction: column;
 }
 
-label {
+.label {
   display: block;
   margin-bottom: 16px;
   font-size: 18px;
@@ -190,7 +190,7 @@ label {
     margin-bottom: 24px;
   }
 
-  label {
+  .label {
     font-size: 14px;
     line-height: 24px;
     margin-bottom: 8px;

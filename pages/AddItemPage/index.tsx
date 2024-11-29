@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 // import AddInputItem from "../component/AddInputItem";
-import Tag from "../../components/Tag";
-import InputItem from "../../components/InputItem";
-import ImageUpload from "../../components/ImageUpload";
+import Tag from "@/components/ui/Tag";
+import InputItem from "@/components/ui/InputItem";
+import ImageUpload from "@/components/ui/ImageUpload";
 // import AddItemButton from "../component/AddItemButton";
 // import TagInput from "../component/TagInput";
 

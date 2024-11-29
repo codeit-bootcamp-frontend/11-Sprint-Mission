@@ -1,4 +1,5 @@
-// import "@/styles/globals.css";
+import "@/styles/globals.css";
+import React from "react";
 import type { AppProps } from "next/app";
 // import Header from "@/component/layout/Header";
 import Layout from "@/components/layout/Layout";

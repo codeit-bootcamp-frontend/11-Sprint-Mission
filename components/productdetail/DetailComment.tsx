@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { getProductComments } from "../../../api/api";
+import { getProductComments } from "@/api/api";
 import InquiryEmpty from "../../../public/images/inquiry_empty.svg";
 import ProfileImg from "../../../images/profile.png";
 import Kebab from "../../../public/images/ic_kebab.svg";

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import "../../styles/LoginPage.css";
+import styles from "@/styles/LoginPage.module.css";
 
 // 이미지 파일 import
 import Logo from "../../public/images/logo.svg";
@@ -78,18 +78,23 @@ const Signup = () => {
   };
 
   return (
-    <div className="sign_div">
-      <div className="logo_home">
+    <div className={styles.sign_div}>
+      <div className={styles.logo_home}>
         <Link href="/">
-          <Image src={Logo} alt="판다마켓 홈" className="logo_img" />
+          <Image src={Logo} alt="판다마켓 홈" className={styles.logo_img} />
         </Link>
       </div>
-      <form className="signinup signupForm" onSubmit={handleSubmit}>
+      <form
+        className={`${styles.signinup} ${styles.signupForm}`}
+        onSubmit={handleSubmit}
+      >
         {/* 이메일 */}
-        <div className="input_item">
-          <label htmlFor="email">이메일</label>
+        <div className={styles.input_item}>
+          <label className={styles.lagel} htmlFor="email">
+            이메일
+          </label>
           <input
-            className="input"
+            className={styles.input}
             id="email"
             type="email"
             placeholder="이메일을 입력해 주세요."
@@ -97,15 +102,17 @@ const Signup = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           {errors.email && (
-            <span className="error_message">{errors.email}</span>
+            <span className={styles.error_message}>{errors.email}</span>
           )}
         </div>
 
         {/* 닉네임 */}
-        <div className="input_item">
-          <label htmlFor="nickname">닉네임</label>
+        <div className={styles.input_item}>
+          <label className={styles.label} htmlFor="nickname">
+            닉네임
+          </label>
           <input
-            className="input"
+            className={styles.input}
             id="nickname"
             type="text"
             placeholder="닉네임을 입력해 주세요."
@@ -113,16 +120,18 @@ const Signup = () => {
             onChange={(e) => setNickname(e.target.value)}
           />
           {errors.nickname && (
-            <span className="error_message">{errors.nickname}</span>
+            <span className={styles.error_message}>{errors.nickname}</span>
           )}
         </div>
 
         {/* 비밀번호 */}
-        <div className="input_item">
-          <label htmlFor="password">비밀번호</label>
-          <div className="input_div">
+        <div className={styles.input_item}>
+          <label className={styles.label} htmlFor="password">
+            비밀번호
+          </label>
+          <div className={styles.input_div}>
             <input
-              className="input"
+              className={styles.input}
               id="password"
               type={showPassword ? "text" : "password"}
               placeholder="비밀번호를 입력해 주세요."
@@ -132,21 +141,23 @@ const Signup = () => {
             <Image
               src={showPassword ? EyeOpenIcon : EyeClosedIcon}
               alt={showPassword ? "비밀번호 표시" : "비밀번호 숨김"}
-              className="toggle_pwd"
+              className={styles.toggle_pwd}
               onClick={() => setShowPassword(!showPassword)}
             />
           </div>
           {errors.password && (
-            <span className="error_message">{errors.password}</span>
+            <span className={styles.error_message}>{errors.password}</span>
           )}
         </div>
 
         {/* 비밀번호 확인 */}
-        <div className="input_item">
-          <label htmlFor="passwordCheck">비밀번호 확인</label>
-          <div className="input_div">
+        <div className={styles.input_item}>
+          <label className={styles.label} htmlFor="passwordCheck">
+            비밀번호 확인
+          </label>
+          <div className={styles.input_div}>
             <input
-              className="input"
+              className={styles.input}
               id="passwordCheck"
               type={showPasswordCheck ? "text" : "password"}
               placeholder="비밀번호를 다시 한 번 입력해 주세요."
@@ -156,19 +167,22 @@ const Signup = () => {
             <Image
               src={showPasswordCheck ? EyeOpenIcon : EyeClosedIcon}
               alt={showPasswordCheck ? "비밀번호 표시" : "비밀번호 숨김"}
-              className="toggle_pwd"
+              className={styles.toggle_pwd}
               onClick={() => setShowPasswordCheck(!showPasswordCheck)}
             />
           </div>
           {errors.passwordCheck && (
-            <span className="error_message">{errors.passwordCheck}</span>
+            <span className={styles.error_message}>{errors.passwordCheck}</span>
           )}
         </div>
 
         <button
           type="submit"
-          className={`button signupBtn ${
-            email && nickname && password && passwordCheck ? "active" : ""
+          // className={`button signupBtn ${
+          //   email && nickname && password && passwordCheck ? "active" : ""
+          // }`}
+          className={`${styles.button} ${styles.signupBtn} ${
+            email && nickname && password && passwordCheck ? styles.active : ""
           }`}
           disabled={!email || !nickname || !password || !passwordCheck}
         >
@@ -176,23 +190,31 @@ const Signup = () => {
         </button>
       </form>
 
-      <div className="social_login_div">
+      <div className={styles.social_login_div}>
         <h3>간편 로그인하기</h3>
         <div className="social_login_buttons_div">
           <Link href="https://www.google.com/" target="_blank" rel="noreferrer">
-            <Image src={GoogleIcon} alt="구글 로그인" className="icon_img" />
+            <Image
+              src={GoogleIcon}
+              alt="구글 로그인"
+              className={styles.icon_img}
+            />
           </Link>
           <a
             href="https://www.kakaocorp.com/page/"
             target="_blank"
             rel="noreferrer"
           >
-            <Image src={KakaoIcon} alt="카카오톡 로그인" className="icon_img" />
+            <Image
+              src={KakaoIcon}
+              alt="카카오톡 로그인"
+              className={styles.icon_img}
+            />
           </a>
         </div>
       </div>
 
-      <div className="signup_switch">
+      <div className={styles.signup_switch}>
         이미 회원이신가요? <a href="/login">로그인</a>
       </div>
     </div>

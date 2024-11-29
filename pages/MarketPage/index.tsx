@@ -1,14 +1,14 @@
+import AllProduct from "@/components/market/AllProduct";
+import BestProduct from "@/components/market/BestProduct";
 import React from "react";
-import AllProduct from "../../components/market/AllProduct";
-import BestProduct from "../../components/market/BestProduct";
 
-function MarketPage() {
+const MarketPage = () => {
   return (
-    <div className="Section">
+    <div className="section">
       <BestProduct />
       <AllProduct />
     </div>
   );
-}
+};
 
 export default MarketPage;

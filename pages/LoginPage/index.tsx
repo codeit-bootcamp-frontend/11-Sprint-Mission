@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 // import './common.css';
-import "../../styles/LoginPage.css";
+import styles from "@/styles/LoginPage.module.css";
 
 // 이미지 import
 import Logo from "../../public/images/logo.svg";
@@ -70,18 +70,23 @@ const SignIn = () => {
   };
 
   return (
-    <div className="sign_div">
-      <div className="logo_home">
+    <div className={styles.sign_div}>
+      <div className={styles.logo_home}>
         <Link href="/">
-          <Image src={Logo} alt="판다마켓 홈" className="logo_img" />
+          <Image src={Logo} alt="판다마켓 홈" className={styles.logo_img} />
         </Link>
       </div>
 
-      <form className="signinup signinForm" onSubmit={handleSubmit}>
-        <div className="input_item">
-          <label htmlFor="email">이메일</label>
+      <form
+        className={`${styles.signinup} ${styles.signinForm}`}
+        onSubmit={handleSubmit}
+      >
+        <div className={styles.input_item}>
+          <label className={styles.label} htmlFor="email">
+            이메일
+          </label>
           <input
-            className="input"
+            className={styles.input}
             id="email"
             name="email"
             type="email"
@@ -90,14 +95,18 @@ const SignIn = () => {
             onChange={handleEmailChange}
             onBlur={validateEmail}
           />
-          {emailError && <span className="error_message">{emailError}</span>}
+          {emailError && (
+            <span className={styles.error_message}>{emailError}</span>
+          )}
         </div>
 
-        <div className="input_item">
-          <label htmlFor="password">비밀번호</label>
+        <div className={styles.input_item}>
+          <label className={styles.label} htmlFor="password">
+            비밀번호
+          </label>
           <div className="input_div">
             <input
-              className="input"
+              className={styles.input}
               id="password"
               name="password"
               type={passwordVisible ? "text" : "password"}
@@ -109,7 +118,7 @@ const SignIn = () => {
             <Image
               src={passwordVisible ? EyeVisibleIcon : EyeInvisibleIcon}
               alt={passwordVisible ? "비밀번호 표시" : "비밀번호 숨김"}
-              className="toggle_pwd"
+              className={styles.toggle_pwd}
               onClick={togglePasswordVisibility}
             />
           </div>
@@ -119,7 +128,10 @@ const SignIn = () => {
         </div>
 
         <button
-          className={`button signinBtn ${isFormValid() ? "active" : ""}`}
+          // className={`button signinBtn ${isFormValid() ? "active" : ""}`}
+          className={`${styles.button} ${styles.signinBtn} ${
+            isFormValid() ? styles.active : ""
+          }`}
           type="submit"
           disabled={!isFormValid()}
         >
@@ -127,30 +139,38 @@ const SignIn = () => {
         </button>
       </form>
 
-      <div className="social_login_div">
+      <div className={styles.social_login_div}>
         <h3>간편 로그인하기</h3>
-        <div className="social_login_buttons_div">
+        <div className={styles.social_login_buttons_div}>
           <a
             href="https://www.google.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="social_icon"
+            className={styles.social_icon}
           >
-            <Image src={GoogleIcon} alt="구글 로그인" className="icon_img" />
+            <Image
+              src={GoogleIcon}
+              alt="구글 로그인"
+              className={styles.icon_img}
+            />
           </a>
           <a
             href="https://www.kakaocorp.com/page/"
             target="_blank"
             rel="noopener noreferrer"
-            className="social_icon"
+            className={styles.social_icon}
           >
-            <Image src={KakaoIcon} alt="카카오톡 로그인" className="icon_img" />
+            <Image
+              src={KakaoIcon}
+              alt="카카오톡 로그인"
+              className={styles.icon_img}
+            />
           </a>
         </div>
       </div>
 
-      <div className="signup_switch">
-        판다마켓이 처음이신가요? <Link href="/signup">회원가입</Link>
+      <div className={styles.signup_switch}>
+        판다마켓이 처음이신가요? <Link href="/SignupPage">회원가입</Link>
       </div>
     </div>
   );

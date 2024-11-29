@@ -23,7 +23,7 @@ interface BoardsPageProps {
 export default function BoardsPage({ initialArticles }: BoardsPageProps) {
   return (
     <div className="pageContainer">
-      <BestArticle />
+      <BestArticle
       <AllArticle initialArticles={initialArticles} />
     </div>
   );

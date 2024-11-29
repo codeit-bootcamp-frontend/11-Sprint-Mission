@@ -12,6 +12,24 @@
 
 import Head from "next/head";
 
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+// import "./common.css";
+import styles from "@/styles/HomePage.module.css";
+
+// 이미지 import
+// import logo from "../../public/images/logo.svg";
+import imgHomeTop from "@/public/images/Img_home_top.png";
+import imgHome01 from "@/public/images/Img_home_01.png";
+import imgHome02 from "@/public/images/Img_home_02.png";
+import imgHome03 from "@/public/images/Img_home_03.png";
+import imgHomeBottom from "@/public/images/Img_home_bottom.png";
+import facebookIcon from "@/public/images/facebook.svg";
+import twitterIcon from "@/public/images/twiter.svg";
+import youtubeIcon from "@/public/images/youtube.svg";
+import instagramIcon from "@/public/images/instargram.svg";
+
 export default function Home() {
   return (
     <>
@@ -22,7 +40,164 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>Home Page</main>
+      <div>
+        <main className={styles.main}>
+          <section
+            className={`${styles.home_top_section} ${styles.banner} ${styles.section}`}
+          >
+            <div className={styles.home_top_div}>
+              <div className={styles.div_top}>
+                <p className={`${styles.subtitle} ${styles.top_sub}`}>
+                  일상의 모든 물건을 <br className={styles.brPc} />
+                  거래해 보세요
+                </p>
+                <br />
+                <Link href="/MarketPage">
+                  <button className={styles.items_btn}>구경하러 가기</button>
+                </Link>
+              </div>
+              <Image
+                className={styles.home_img_top}
+                src={imgHomeTop}
+                alt="판다"
+              />
+            </div>
+          </section>
+
+          <section
+            className={`${styles.home_section} ${styles.container} ${styles.section}`}
+          >
+            <div className={styles.home_div}>
+              <Image
+                className={styles.home_img}
+                src={imgHome01}
+                alt="인기 상품"
+              />
+              <div className={styles.text}>
+                <p className={styles.ptitle}>Hot item</p>
+                <br />
+                <p className={styles.subtitle}>
+                  인기 상품을 <br className={styles.brPc} />
+                  확인해 보세요
+                </p>
+                <br />
+                <p className={styles.pcontent}>
+                  가장 HOT한 중고거래 물품을 <br />
+                  판다 마켓에서 확인해 보세요
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section
+            className={`${styles.home_section} ${styles.container} ${styles.section_search} ${styles.section}`}
+          >
+            <div className={`${styles.home_div} ${styles.div_searcj}`}>
+              <div className={styles.text}>
+                <p className={styles.ptitle}>Search</p>
+                <br />
+                <p className={styles.subtitle}>
+                  구매를 원하는 <br className={styles.brPc} />
+                  상품을 검색하세요
+                </p>
+                <br />
+                <p className={styles.pcontent}>
+                  구매하고 싶은 물품은 검색해서 <br />
+                  쉽게 찾아보세요
+                </p>
+              </div>
+              <Image
+                className={styles.home_img}
+                src={imgHome02}
+                alt="상품 검색"
+              />
+            </div>
+          </section>
+
+          <section
+            className={`${styles.home_section} ${styles.container} ${styles.section}`}
+          >
+            <div className={styles.home_div}>
+              <Image
+                className={styles.home_img}
+                src={imgHome03}
+                alt="상품 등록"
+              />
+              <div className={styles.text}>
+                <p className={styles.ptitle}>Register</p>
+                <br />
+                <p className={styles.subtitle}>
+                  판매를 원하는
+                  <br />
+                  상품을 등록하세요
+                </p>
+                <br />
+                <p className={styles.pcontent}>
+                  어떤 물건이든 판매하고 싶은 상품을
+                  <br />
+                  쉽게 등록하세요
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section
+            className={`${styles.home_bottom_section} ${styles.banner} ${styles.section}`}
+          >
+            <div className={styles.home_bottom_div}>
+              <div className={styles.bottom_div}>
+                <p className={`${styles.subtitle} ${styles.bottom_sub}`}>
+                  믿을 수 있는 <br className={styles.brPc} />
+                  판다마켓 중고 거래
+                </p>
+              </div>
+              <Image
+                className={styles.home_img_bottom}
+                src={imgHomeBottom}
+                alt="판다"
+              />
+            </div>
+          </section>
+        </main>
+
+        <footer className={styles.footer}>
+          <div className={styles.codeit}>@codeit - 2024</div>
+          <div className={styles.footer_menu}>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="faq.html">FAQ</a>
+          </div>
+          <div className={styles.footer_icon}>
+            <a href="https://www.facebook.com/">
+              <Image
+                className={styles.facebook}
+                src={facebookIcon}
+                alt="Facebook"
+              />
+            </a>
+            <a href="https://x.com/">
+              <Image
+                className={styles.twitter}
+                src={twitterIcon}
+                alt="Twitter"
+              />
+            </a>
+            <a href="https://www.youtube.com/">
+              <Image
+                className={styles.youtube}
+                src={youtubeIcon}
+                alt="YouTube"
+              />
+            </a>
+            <a href="https://www.instagram.com/">
+              <Image
+                className={styles.instargram}
+                src={instagramIcon}
+                alt="Instagram"
+              />
+            </a>
+          </div>
+        </footer>
+      </div>
     </>
   );
 }
