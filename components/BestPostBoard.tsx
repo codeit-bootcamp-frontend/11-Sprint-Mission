@@ -20,8 +20,8 @@ export default function BestPostBoard({ articles }: { articles: ArticleList }) {
         <h2 className={styles.BoardTitle}>베스트 게시글</h2>
       </header>
       <div className={styles.PostItemList}>
-        {articles.list.map((article, i) => {
-          if (i < PAGE_SIZE[deviceType]) {
+        {articles.list.map((article, postIndex) => {
+          if (postIndex < PAGE_SIZE[deviceType]) {
             return <PostItem key={article.id} article={article} />;
           }
         })}
