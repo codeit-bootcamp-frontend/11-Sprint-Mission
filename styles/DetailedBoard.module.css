@@ -148,6 +148,10 @@
   justify-content: flex-end;
 }
 
+.commentContainer {
+  list-style: none;
+}
+
 .waitingComment {
   display: flex;
   flex-direction: column;
