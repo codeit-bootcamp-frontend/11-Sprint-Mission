@@ -3,6 +3,7 @@ import Head from "next/head";
 import "@/styles/global.css";
 import { DeviceTypeProvider } from "@/contexts/DeviceTypeContext";
 import Navigation from "@/components/Navigation";
+import Container from "@/components/Container";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -15,7 +16,9 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <DeviceTypeProvider>
         <Navigation />
-        <Component {...pageProps} />
+        <Container>
+          <Component {...pageProps} />
+        </Container>
       </DeviceTypeProvider>
     </>
   );

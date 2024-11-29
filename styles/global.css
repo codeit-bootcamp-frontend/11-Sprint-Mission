@@ -36,6 +36,10 @@
   --blue-active: #1251aa;
   --error: #f74747;
   --inactive: #9ca3af;
+
+  --width-desktop: 1200px;
+  --width-tablet: 696px;
+  --width-mobile: 343px;
 }
 
 * {
@@ -61,4 +65,21 @@ a {
 
 ul {
   list-style: none;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: var(--width-desktop);
+}
+
+@media screen and (max-width: 1199px) {
+  .container {
+    max-width: var(--width-tablet);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    max-width: var(--width-mobile);
+  }
 }
