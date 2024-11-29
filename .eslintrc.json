@@ -33,7 +33,7 @@
     "@typescript-eslint/camelcase": "off",
     "import/extensions": [
       "error",
-      "always",
+      "ignorePackages",
       {
         "tsx": "never", // .tsx 확장자를 생략할 수 있도록 허용
         "ts": "never" // .ts 확장자도 생략 가능
