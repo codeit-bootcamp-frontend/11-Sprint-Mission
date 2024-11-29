@@ -2,6 +2,7 @@ import styles from '../styles/BestProduct.module.css';
 import icHeart from '../assets/ic_heart.svg';
 import Link from 'next/link';
 import React from 'react';
+import Image from 'next/image';
 
 interface BestProductItem {
   id: number;
@@ -22,7 +23,7 @@ function BestProduct({ items }: BestProductProps) {
         <li key={item.id}>
           <Link href={`/items/${item.id}`} passHref>
             <div className={styles.BestProductItem}>
-              <img
+              <Image
                 className={styles.BestProductItemImg}
                 src={item.images}
                 alt={item.name}
@@ -33,7 +34,7 @@ function BestProduct({ items }: BestProductProps) {
                   {item.price.toLocaleString()}원
                 </p>
                 <p className={styles.BestProductFavoriteCount}>
-                  <img src={icHeart} alt="iconHeart" />
+                  <Image src={icHeart} alt="iconHeart" />
                   {item.favoriteCount}
                 </p>
               </div>
