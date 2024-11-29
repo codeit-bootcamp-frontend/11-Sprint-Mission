@@ -28,13 +28,13 @@ export default class MyDocument extends Document {
           <>
             {initialProps.styles}
             {/* styled-components에서 생성된 스타일을 포함 */}
-            {sheet.getStyleElement()} 
+            {sheet.getStyleElement()}
           </>
         ),
       };
     } finally {
       // 스타일 시트의 seal 호출
-      sheet.seal(); 
+      sheet.seal();
     }
   }
 
