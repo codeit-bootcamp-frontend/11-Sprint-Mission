@@ -221,3 +221,49 @@ export async function getBoardsDetail(
     throw error;
   }
 }
+
+export interface Comment {
+  id: number;
+  content: string;
+  writer: {
+    nickname: string;
+  };
+  createdAt: string;
+}
+
+export interface CommentResponse {
+  comments: Comment[];
+  nextCursor: string | null;
+}
+
+// 게시판 댓글 API 호출 함수
+export async function getBoardsComments(
+  boardsId: number,
+  limit: number = 100,
+  cursor?: string
+): Promise<CommentResponse> {
+  let url = `${baseUrl}/articles/${boardsId}/comments?limit=${limit}`;
+  if (cursor) {
+    url += `&cursor=${cursor}`;
+  }
+
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      console.error(`API Error: ${response.status} - ${response.statusText}`);
+      throw new Error('댓글 정보를 불러오는 데 실패했습니다.');
+    }
+
+    const data: CommentResponse = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Fetch Error:', error);
+    throw error;
+  }
+}
