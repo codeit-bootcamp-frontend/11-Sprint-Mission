@@ -1,6 +1,7 @@
 .detailedBoardPage {
   display: flex;
   flex-direction: column;
+  height: auto;
   align-items: center;
   width: 100%;
   margin: 0 auto;
@@ -12,7 +13,9 @@
 .detailContent {
   display: flex;
   flex-direction: column;
-  width: 120rem;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
   gap: 3.2rem;
 }
 
