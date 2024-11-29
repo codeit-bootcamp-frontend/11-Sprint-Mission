@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { fetchArticles, Article, PaginatedResponse } from "@/app/lib/api/api";
 import Image from "next/image";
 import usePageSize from "@/app/hooks/usePagesize";
+import Link from "next/link";
 
 export default function BestPost() {
   const [articles, setArticles] = useState<Article[]>([]);
@@ -40,46 +41,54 @@ export default function BestPost() {
       <h2 className={styles.sectionTitle}>베스트 게시글</h2>
       <div className={styles.postList}>
         {articles.map((article) => (
-          <div key={article.id} className={styles.post}>
-            <div className={styles.bestMedal}>
-              <Image
-                width={16}
-                height={16}
-                src="/images/ic_medal.png"
-                alt="메달"
-              />
-              Best
-            </div>
-            <div className={styles.postContents}>
-              <h3 className={styles.title}>{article.title}</h3>
-              <div className={styles.imgContainer}>
+          <Link
+            key={article.id}
+            href={`/boards/${article.id}`}
+            className={styles.detailLink}
+          >
+            <div className={styles.post}>
+              <div className={styles.bestMedal}>
                 <Image
-                  src={article.image || "/images/default.png"}
-                  alt={article.title || "default"}
-                  width={48}
-                  height={48}
-                  className={styles.image}
+                  width={16}
+                  height={16}
+                  src="/images/ic_medal.png"
+                  alt="메달"
                 />
+                Best
               </div>
-            </div>
-            <div className={styles.metaContainer}>
-              <div className={styles.postInfo}>
-                <div className={styles.metaName}>{article.writer.nickname}</div>
-                <div className={styles.metaLike}>
+              <div className={styles.postContents}>
+                <h3 className={styles.title}>{article.title}</h3>
+                <div className={styles.imgContainer}>
                   <Image
-                    width={16}
-                    height={16}
-                    src="/images/ic_heart.png"
-                    alt="하트"
+                    src={article.image || "/images/default.png"}
+                    alt={article.title || "default"}
+                    width={48}
+                    height={48}
+                    className={styles.image}
                   />
-                  {article.likeCount}
                 </div>
               </div>
-              <div className={styles.metaDate}>
-                {new Date(article.createdAt).toLocaleDateString()}
+              <div className={styles.metaContainer}>
+                <div className={styles.postInfo}>
+                  <div className={styles.metaName}>
+                    {article.writer.nickname}
+                  </div>
+                  <div className={styles.metaLike}>
+                    <Image
+                      width={16}
+                      height={16}
+                      src="/images/ic_heart.png"
+                      alt="하트"
+                    />
+                    {article.likeCount}
+                  </div>
+                </div>
+                <div className={styles.metaDate}>
+                  {new Date(article.createdAt).toLocaleDateString()}
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
