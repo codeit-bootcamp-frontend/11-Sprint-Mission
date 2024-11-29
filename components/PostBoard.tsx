@@ -17,8 +17,6 @@ const DEFAULT_PARAMS: GetArticleListParams = {
   orderBy: "recent",
 };
 
-const IMAGE_PLACEHOLDER = "/images/landscape-placeholder.svg";
-
 export default function PostBoard({
   articles: initArticles,
 }: {
