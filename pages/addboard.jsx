@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import SmallButton from '@/components/common/SmallButton';
 import FileInput from '@/components/FileInput';
 import axios from '@/pages/api/api';
+import styles from '@/styles/AddBoard.module.css';
 
 export default function AddBoard() {
   const [values, setValues] = useState({
@@ -45,35 +46,35 @@ export default function AddBoard() {
   }, [values.title, values.content]);
 
   return (
-    <form onSubmit={handleSubmit} className="registerForm">
-      <main className="formBody">
-        <aside className="formTop">
-          <h2 className="formTheme">게시글 쓰기</h2>
+    <form onSubmit={handleSubmit} className={styles.registerForm}>
+      <div className={styles.formContent}>
+        <aside className={styles.formTop}>
+          <h2 className={styles.formTheme}>게시글 쓰기</h2>
           <SmallButton type="submit" disabled={!isFormValid}>
             등록
           </SmallButton>
         </aside>
-        <div className="formBody">
-          <section className="formSection">
-            <h3 className="sectionTheme">*제목</h3>
-            <input name="title" value={values.title} onChange={handleInputChange} placeholder="제목을 입력해주세요" className="add-item-input" />
+        <div className={styles.formBody}>
+          <section className={styles.formSection}>
+            <h3 className={styles.sectionTheme}>*제목</h3>
+            <input name="title" value={values.title} onChange={handleInputChange} placeholder="제목을 입력해주세요" className={styles.inputTitle} />
           </section>
-          <section className="formSection">
-            <h3 className="sectionTheme">*내용</h3>
+          <section className={styles.formSection}>
+            <h3 className={styles.sectionTheme}>*내용</h3>
             <textarea
               name="content"
               value={values.content}
               onChange={handleInputChange}
-              placeholder="상품 소개를 입력해주세요"
-              className="addItemContent"
+              placeholder="내용을 입력해주세요"
+              className={styles.inputContent}
             />
           </section>
-          <section className="formSection">
-            <h3 className="sectionTheme">이미지</h3>
+          <section className={styles.formSection}>
+            <h3 className={styles.sectionTheme}>이미지</h3>
             <FileInput name="image" value={values.imgFile} onChange={handleChange} />
           </section>
         </div>
-      </main>
+      </div>
     </form>
   );
 }

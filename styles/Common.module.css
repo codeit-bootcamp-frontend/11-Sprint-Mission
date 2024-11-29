@@ -9,6 +9,8 @@
 
 .smallButton:disabled {
   background-color: var(--gray-400);
+  color: var(--gray-100);
+  line-height: 2.6rem;
 }
 
 .smallButtonText {
