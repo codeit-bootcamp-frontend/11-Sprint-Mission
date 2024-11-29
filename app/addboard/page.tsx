@@ -8,11 +8,32 @@ import styles from "./AddBoard.module.css";
 export default function AddBoard() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+
+  const isButtonDisabled = !title || !content;
+
+  const handleSubmit = () => {
+    alert("등록했습니다!");
+    setTitle("");
+    setContent("");
+  };
+  /*심화 요구사항에 회원가입, 로그인 api를 사용하여 받은 accessToken을 사용하여 게시물 등록을 합니다가 있는데
+  어떻게 해야 할 지 감이 안 잡힙니다...
+  일단 등록버튼을 클릭하면 인풋필드를 비우고 등록했다는 내용을 화면에 표시되도록 했습니다
+  이어지는 심화 내용인 상세 페이지 이동도 아마 등록을 한 이후에 등록된 내용의 id도 이동하는 것으로 예상되는데
+  이 부분도 위 내용을 진행해야 할 수 있을거로 추측됩니다!
+  */
+
   return (
     <div className="container">
       <div className={styles.header}>
         <h2 className={styles.headerTitle}>상품 등록하기</h2>
-        <button className={styles.headerButton}>등록</button>
+        <button
+          onClick={handleSubmit}
+          disabled={isButtonDisabled}
+          className={styles.headerButton}
+        >
+          등록
+        </button>
       </div>
       <InputField
         id="title"

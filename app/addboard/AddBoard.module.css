@@ -20,9 +20,15 @@
   height: 42px;
   padding: 12px 20px;
   border: none;
-  background-color: #9ca3af;
+  background-color: #3692ff;
   border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
   color: #f3f4f6;
+  cursor: pointer;
+}
+
+.headerButton:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
 }
