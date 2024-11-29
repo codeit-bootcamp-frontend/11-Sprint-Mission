@@ -48,6 +48,7 @@ body {
 button {
   border: 0;
   cursor: pointer;
+  text-decoration: none;
 }
 
 button:disabled {
