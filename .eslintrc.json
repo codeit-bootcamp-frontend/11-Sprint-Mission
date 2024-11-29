@@ -28,6 +28,7 @@
   ],
   "rules": {
     // 규칙을 하나하나 세세하게 제어하기 위해 사용 (보통 extends 옵션에 의해 설정된 규칙을 덮어쓰고 싶을 때 사용)
+    "react/jsx-props-no-spreading": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": ["warn", { "extensions": [".ts", ".tsx"] }], // jsx 파일 확장자를 .ts, .tsx로 한정. 위반 시 경고(warn)
     "@typescript-eslint/camelcase": "off",
