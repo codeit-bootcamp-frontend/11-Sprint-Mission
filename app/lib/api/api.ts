@@ -116,3 +116,50 @@ export async function fetchArticles(
     throw error;
   }
 }
+
+export async function fetchCommentsForArticle(
+  articleId: number,
+  params: Record<string, string | number> = {}
+): Promise<PaginatedResponse<Comment>> {
+  const query = new URLSearchParams(
+    params as Record<string, string>
+  ).toString();
+  try {
+    const response = await fetch(
+      `${BASE_URL}articles/${articleId}/comments?${query}`
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching comments for article:", error);
+    throw error;
+  }
+}
+
+export async function postComment(
+  articleId: number,
+  content: string
+): Promise<Comment> {
+  const token = localStorage.getItem("accessToken");
+  try {
+    const response = await fetch(`${BASE_URL}articles/${articleId}/comments`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ content }),
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error posting comment:", error);
+    throw error;
+  }
+}

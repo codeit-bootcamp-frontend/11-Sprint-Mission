@@ -1,0 +1,53 @@
+.header {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+  color: #1f2937;
+}
+
+.meta {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #4b5563;
+}
+
+.userInfo {
+  display: flex;
+  gap: 10px;
+}
+
+.date {
+  font-weight: 400;
+  color: #9ca3af;
+}
+
+.likeContainer {
+  border-left: 1px solid #e5e7eb;
+  margin-left: 20px;
+  padding: 0 20px;
+}
+
+.like {
+  width: 87px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #e5e7eb;
+  border-radius: 36px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  color: #6b7280;
+}
