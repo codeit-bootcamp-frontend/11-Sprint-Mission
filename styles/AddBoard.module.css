@@ -2,20 +2,26 @@
   display: flex;
   width: 100%;
   height: auto;
-  /* margin: 2.4rem 36rem 0 36rem; */
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding-top: 2.4rem;
+  padding-bottom: 13rem;
 }
 
 .formContent {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  align-items: center;
+  height: auto;
+  width: 120rem;
   gap: 3.2rem;
 }
 
 .formTop {
   display: flex;
-  width: 100%;
   justify-content: space-between;
+  width: 100%;
 }
 
 .formTheme {
@@ -25,16 +31,17 @@
   color: var(--approx-midnight);
 }
 
-.formBody {
+.formBody, .formSection {
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+.formBody {
   gap: 2.4rem;
 }
 
 .formSection {
-  display: flex;
-  flex-direction: column;
   gap: 1.2rem;
 }
 

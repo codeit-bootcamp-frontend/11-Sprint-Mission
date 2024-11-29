@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import plus from '@/public/ic_plus.svg';
+import styles from '@/styles/FileInput.module.css';
 
 function FileInput({ name, value, onChange }) {
   const [preview, setPreview] = useState(null);
@@ -42,24 +43,24 @@ function FileInput({ name, value, onChange }) {
   }, [value]);
 
   return (
-    <div>
+    <>
       {value && (
-        <button onClick={handleDeleteClick} className="xButton">
+        <button onClick={handleDeleteClick}>
           x
         </button>
       )}
-      <div className="imageUpload">
+      <div className={styles.imageUpload}>
         {preview ? (
-          <Image width={282} height={282} src={preview} alt="이미지 미리보기" className="previewImage" />
+          <Image width={282} height={282} src={preview} alt="이미지 미리보기" className={styles.previewImage} />
         ) : (
-          <button className="imageUploadButton" onClick={handleClick}>
+          <button className={styles.imageUploadButton} onClick={handleClick}>
             <Image width={48} height={48} src={plus} className="plus" alt="이미지 등록 아이콘" />
-            <span className="imageUploadText">이미지 등록</span>
+            <span className={styles.imageUploadText}>이미지 등록</span>
           </button>
         )}
         <input type="file" id="fileInput" accept="image/jpeg, image/png" onChange={handleChange} ref={inputRef} style={invisible} />
       </div>
-    </div>
+    </>
   );
 }
 export default FileInput;

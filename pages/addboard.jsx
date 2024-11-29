@@ -9,7 +9,7 @@ export default function AddBoard() {
   const [values, setValues] = useState({
     title: '',
     content: '',
-    image: 'https://example.com/...',
+    image: '' || null,
   });
   const [isFormValid, setIsFormValid] = useState(false);
   const router = useRouter();
