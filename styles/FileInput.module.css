@@ -25,7 +25,7 @@
 }
 
 .imageUploadText {
-  font-weight: var(--regular);
+  font-weight: var(--thin);
   font-size: 1.6rem;
   line-height: 2.6rem;
   color: var(--gray-400);

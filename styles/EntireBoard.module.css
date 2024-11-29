@@ -52,7 +52,7 @@
 
 .listUserId {
   display: flex;
-  font-weight: var(--regular);
+  font-weight: var(--thin);
   font-size: 1.4rem;
   line-height: 2.4rem;
   color: var(--grayish-blue);
@@ -65,14 +65,14 @@
 
 .listUploadate {
   display: flex;
-  font-weight: var(--regular);
+  font-weight: var(--thin);
   font-size: 1.4rem;
   line-height: 2.4rem;
   color: var(--gray-400);
 }
 
 .listLikeCount {
-  font-weight: var(--regular);
+  font-weight: var(--thin);
   font-size: 1.6rem;
   line-height: 2.6rem;
   color: var(--gray-500);

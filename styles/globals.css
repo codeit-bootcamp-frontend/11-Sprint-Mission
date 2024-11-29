@@ -29,7 +29,8 @@ body {
   --black-700: #374151;
 
   /*font-weight*/
-  --regular: 400;
+  --thin: 400;
+  --regular: 500;
   --medium: 600;
   --bold: 700;
 }

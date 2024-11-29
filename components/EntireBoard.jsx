@@ -5,7 +5,7 @@ import styles from '@/styles/EntireBoard.module.css';
 
 export default function EntireBoard({ data }) {
   const { title, image, updatedAt, likeCount, writer } = data;
-  const imageUrl = image || '/default-image.jpg';
+  const imageUrl = image || null;
 
   const date = new Date(updatedAt);
 
@@ -20,7 +20,7 @@ export default function EntireBoard({ data }) {
       <div className={styles.listMainContent}>
         <div className={styles.listMainTitle}>{title}</div>
         <div className={styles.listMainContentImage}>
-          <Image width={'48'} height={'44'} src={imageUrl} alt="리스트 사진" />
+          <Image width={'48'} height={'44'} src={imageUrl} alt="게시글 이미지" />
         </div>
       </div>
       <div className={styles.listInfo}>

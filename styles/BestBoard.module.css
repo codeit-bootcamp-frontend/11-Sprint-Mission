@@ -67,7 +67,7 @@
 .likeCount,
 .bestUploadDate {
   display: flex;
-  font-weight: var(--regular);
+  font-weight: var(--thin);
   font-size: 1.4rem;
   line-height: 2.4rem;
 }
