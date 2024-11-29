@@ -1,3 +1,12 @@
+import axios from 'axios';
+
+export const instance = axios.create({
+  baseURL: 'process.env.NEXT_PUBLIC_API_BASE_URL', // API의 기본 URL
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
 const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL as string;
 
 // 상품 데이터 타입
@@ -162,4 +171,21 @@ export async function getBoardsList(
   } catch (error) {
     throw error;
   }
+}
+
+//자유게시판 글 올리는 api
+export async function postBoardsList(
+  image: string,
+  content: string,
+  title: string
+): Promise<Article> {
+  const path = `${baseUrl}/articles`;
+  const data = {
+    image,
+    content,
+    title,
+  };
+
+  const response = await instance.post(path, data);
+  return response.data;
 }

@@ -23,7 +23,7 @@ function BestProduct({ items }: BestProductProps) {
         <li key={item.id}>
           <Link href={`/items/${item.id}`} passHref>
             <div className={styles.BestProductItem}>
-              <Image
+              <img
                 className={styles.BestProductItemImg}
                 src={item.images}
                 alt={item.name}
@@ -34,7 +34,7 @@ function BestProduct({ items }: BestProductProps) {
                   {item.price.toLocaleString()}원
                 </p>
                 <p className={styles.BestProductFavoriteCount}>
-                  <Image src={icHeart} alt="iconHeart" />
+                  <img src={icHeart} alt="iconHeart" />
                   {item.favoriteCount}
                 </p>
               </div>
