@@ -3,6 +3,7 @@ import styles from "./AddBoard.module.css";
 import Image from "next/image";
 import { createPost, uploadImage } from "@/pages/api/posts";
 import { useRouter } from "next/router";
+import ImageUploader from "./ImageUploader";
 
 interface BoardValue {
   title: string;
@@ -16,7 +17,6 @@ const INITIAL_VALUES: BoardValue = {
 
 const AddBoard = ({ initailValues = INITIAL_VALUES }) => {
   const [value, setValue] = useState<BoardValue>(initailValues);
-  const [preview, setPreview] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState<File | null>(null);
 
@@ -30,15 +30,6 @@ const AddBoard = ({ initailValues = INITIAL_VALUES }) => {
         [title]: e.target.value,
       }));
     };
-
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const nextValue = e.target.files?.[0];
-    if (nextValue) {
-      setImage(nextValue);
-      const imgURL = URL.createObjectURL(nextValue);
-      setPreview(imgURL);
-    }
-  };
 
   const isFormValid = () => value.title && value.content;
 
@@ -105,31 +96,7 @@ const AddBoard = ({ initailValues = INITIAL_VALUES }) => {
         </div>
         <div>
           <p className={styles.title}>이미지</p>
-          <div className={styles.photo}>
-            <div className={styles.box}>
-              <label htmlFor="image-upload" className={styles.label}>
-                <p className={styles.plus}>+</p>
-                <p className={styles.upload}>이미지등록</p>
-              </label>
-            </div>
-            <input
-              type="file"
-              id="image-upload"
-              name="images"
-              className={styles.none}
-              onChange={handleImageChange}
-            />
-            {preview && (
-              <div className={styles.preview}>
-                <Image
-                  className={styles.image}
-                  fill
-                  src={preview}
-                  alt="상품 이미지 프리뷰"
-                />
-              </div>
-            )}
-          </div>
+          <ImageUploader onImageChange={setImage} />
         </div>
       </section>
     </div>
