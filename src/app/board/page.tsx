@@ -1,12 +1,10 @@
 'use client';
 
 // react, next
-import { useState, useRef, useCallback, FormEvent, useEffect } from 'react';
-import Image from 'next/image';
+import { useState, useRef, FormEvent, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 
 // 외부 라이브러리
-import { format } from 'date-fns';
 import { throttle } from 'lodash';
 
 // 로컬 파일
@@ -15,7 +13,12 @@ import useAsync from '@/hooks/useAsync';
 import { Article } from '@/types/article';
 
 // 컴포넌트
+import BoardBestItem from '@/components/board/BoardBestItem';
+import BoardItemList from '@/components/board/BoardItemList';
 import Dropdown from '@/components/Dropdown';
+import SearchInput from '@/components/SearchInput';
+import Loading from '@/board/loading';
+import Error from '@/board/error';
 
 const PAGESIZE = 10;
 
@@ -32,20 +35,24 @@ const getBestArticles = (): number => {
 };
 
 export default function Page() {
-  const [resultArticle, setResultArticle] = useState<Article[] | []>([]);
-  const [article, setArticle] = useState<Article[] | []>([]);
-  const [bestArticle, setBestArticle] = useState<Article[] | []>([]);
+  const [resultArticle, setResultArticle] = useState<Article[]>([]);
+  const [article, setArticle] = useState<Article[]>([]);
+  const [bestArticle, setBestArticle] = useState<Article[]>([]);
 
   const [pageArray, setPageArray] = useState<number[]>([]);
-  const [orderBy, setOrderBy] = useState<string>('recent');
+  const [orderBy, setOrderBy] = useState<'recent' | 'like'>('recent');
+
+  const [searchKeyword, setSearchKeyword] = useState<string>('');
 
   const { error, isLoading, wrappedFunction } = useAsync(getArticles);
+
+  const wrappedFunctionRef = useRef(wrappedFunction);
 
   // 전체 게시글 로드
   const fetchItemList = useCallback(async () => {
     const allArticles = await Promise.all(
       pageArray.map(async (page) => {
-        const articleListResult = await wrappedFunction(
+        const articleListResult = await wrappedFunctionRef.current(
           `page=${page}&pageSize=${PAGESIZE}&orderBy=${orderBy}`
         );
 
@@ -55,7 +62,7 @@ export default function Page() {
     const flattenArticles = allArticles.flat();
     setArticle(flattenArticles);
     setResultArticle(flattenArticles);
-  }, [orderBy, pageArray, wrappedFunction]);
+  }, [pageArray, orderBy]);
 
   // 전체 데이터 로드 및 베스트 게시글 로드
   const fetchData = async () => {
@@ -69,8 +76,6 @@ export default function Page() {
       const pages = Math.ceil(articleResult.totalCount / PAGESIZE);
       const page = Array.from({ length: pages }, (_, i) => i + 1);
       setPageArray(page);
-
-      fetchItemList();
     }
   };
 
@@ -90,6 +95,7 @@ export default function Page() {
         .trim()
         .includes(keyword.value.toUpperCase().trim())
     );
+    setSearchKeyword(keyword.value);
     setResultArticle(searchResult);
   };
 
@@ -104,184 +110,59 @@ export default function Page() {
     };
   }, [throttledFetchData]);
 
-  // 드롭메뉴 눌렀을 때 게시글 목록만 리로드
+  // 초기 전체 게시글 목록 로드
   useEffect(() => {
-    fetchItemList();
-  }, [pageArray, orderBy, fetchItemList]);
+    setTimeout(() => {
+      fetchItemList();
+    }, 200);
+  }, [fetchItemList]);
+
+  // isLoading, error 처리
+  if (isLoading || (!searchKeyword && !article.length)) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <Error error={error} />;
+  }
 
   return (
     <>
+      {console.log('render')}
       <div className="mt-10 mb-24 container">
-        {!error && (
-          <div>
-            <h2 className="h2 mb-6">베스트 게시글</h2>
-            <div className="flex justify-between md:gap-4 lg:gap-6">
-              {bestArticle?.map((item) => (
-                <div
-                  key={item.id}
-                  className="bg-gray-50 border w-full h-[180px] rounded-xl pl-6 pr-6"
-                >
-                  <div className="w-[102px] h-[30px] rounded-b-2xl bg-blue text-white font-semiBold flex items-center justify-center mb-4">
-                    <div className="relative w-4 h-4 mr-1">
-                      <Image
-                        fill
-                        src="/images/medal.png"
-                        alt="베스트"
-                        sizes="(max-width: 640px) 1rem, 1rem"
-                      />
-                    </div>
-                    Best
-                  </div>
-                  <div>
-                    <div className="flex justify-between">
-                      <span className="text-lg font-semibold text-gray-900">
-                        {item.title}
-                      </span>
-                      <div className="relative bg-white border border-gray-200 w-[72px] h-[72px] rounded-lg overflow-hidden">
-                        <Image
-                          fill
-                          unoptimized
-                          src={item.image ? item.image : '/images/noImage.jfif'}
-                          alt={item.title}
-                          className="object-cover"
-                          sizes="(max-width: 640px) 72px 72px"
-                        />
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between mt-4">
-                      <div className="flex items-center gap-3">
-                        <span className="text-sm text-gray-500">
-                          {item.writer.nickname}
-                        </span>
-                        <div className="flex items-center gap-1">
-                          <div className="relative w-4 h-4">
-                            <Image
-                              fill
-                              src="/images/like.png"
-                              alt="좋아요"
-                              sizes="(max-width: 640px) 1rem, 1rem"
-                            />
-                          </div>
-                          <span>{item.likeCount}</span>
-                        </div>
-                      </div>
-                      <div>
-                        <span className="text-sm text-gray-400">
-                          {format(new Date(item.createdAt), 'yyyy-MM-dd')}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+        <div>
+          <h2 className="h2 mb-6">베스트 게시글</h2>
+          <div className="flex justify-between md:gap-4 lg:gap-6">
+            {bestArticle?.map((item) => (
+              <BoardBestItem key={item.id} item={item} />
+            ))}
+          </div>
+          <div className="mt-12 flex items-center justify-between">
+            <h2 className="h2">게시글</h2>
+            <Link href="/addArticle">
+              <button className="w-[88px] h-[42px] bg-blue text-white rounded-lg font-medium">
+                글쓰기
+              </button>
+            </Link>
+          </div>
+          <div className="flex justify-between items-center gap-[6px] mt-6">
+            <SearchInput getSearchResult={getSearchResult} />
+            <Dropdown orderBy={orderBy} setOrderBy={setOrderBy} />
+          </div>
+          {resultArticle.length > 0 ? (
+            <div className="overflow-y-auto">
+              {resultArticle?.map((item) => (
+                <BoardItemList key={item.id} item={item} />
               ))}
             </div>
-            <div className="mt-12 flex items-center justify-between">
-              <h2 className="h2">게시글</h2>
-              <Link href="/addArticle">
-                <button className="w-[88px] h-[42px] bg-blue text-white rounded-lg font-medium">
-                  글쓰기
-                </button>
-              </Link>
+          ) : (
+            <div>
+              <span className="mt-8 flex justify-center">
+                검색 결과가 없습니다.
+              </span>
             </div>
-            <div className="flex justify-between items-center gap-[6px] mt-6">
-              <div className="flex items-center gap-1 w-full">
-                <Image
-                  className="absolute ml-5"
-                  width={14}
-                  height={14}
-                  src="/images/search.png"
-                  alt="검색"
-                  sizes="(max-width: 640px) 14px 14px"
-                />
-                <form onSubmit={getSearchResult} className="w-full">
-                  <input
-                    className="bg-gray-100 h-[42px] rounded-xl pt-2 pb-2 pl-11 pr-5 text-gray-500 w-full focus:outline-none"
-                    placeholder="검색할 상품을 입력해주세요."
-                  />
-                </form>
-              </div>
-              <Dropdown orderBy={orderBy} setOrderBy={setOrderBy} />
-            </div>
-            {resultArticle.length > 0 ? (
-              <div className="overflow-y-auto">
-                {resultArticle?.map((item) => (
-                  <div key={item.id} className="mt-6 border-b pb-6">
-                    <div className="flex justify-between">
-                      <span className="text-lg font-semibold text-gray-900">
-                        {item.title}
-                      </span>
-                      <div className="relative bg-white border border-gray-200 w-[72px] h-[72px] rounded-lg overflow-hidden">
-                        <Image
-                          fill
-                          unoptimized
-                          src={item.image ? item.image : '/images/noImage.jfif'}
-                          alt={item.title}
-                          className="object-cover"
-                        />
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between mt-4">
-                      <div className="flex items-center gap-3">
-                        <div className="relative w-6 h-6">
-                          <Image
-                            fill
-                            src="/images/profile.png"
-                            alt="프로필"
-                            sizes="(max-width: 640px) 1.5rem, 1.5rem"
-                          />
-                        </div>
-                        <span className="text-sm text-gray-500">
-                          {item.writer.nickname}
-                        </span>
-                        <span className="text-sm text-gray-400">
-                          {format(new Date(item.createdAt), 'yyyy-MM-dd')}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <div className="relative w-4 h-4">
-                          <Image
-                            fill
-                            src="/images/like.png"
-                            alt="좋아요"
-                            sizes="(max-width: 640px) 1rem, 1rem"
-                          />
-                        </div>
-                        <span>{item.likeCount}</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div>
-                <span className="mt-8 flex justify-center">
-                  검색 결과가 없습니다.
-                </span>
-              </div>
-            )}
-          </div>
-        )}
-        {isLoading && (
-          <div className="fixed inset-0 bg-white flex justify-center items-center z-50">
-            <div className="relative w-16 h-16 animate-spin">
-              <Image
-                fill
-                src="/images/loading.png"
-                alt="로딩 중"
-                sizes="(max-width: 640px) 3rem 3rem"
-              />
-            </div>
-          </div>
-        )}
-        {error && (
-          <div className="flex flex-col justify-center items-center">
-            <h2 className="h2 mb-2 mt-4">에러가 발생했습니다.</h2>
-            <p>잠시 후 다시 시도해주세요.</p>
-            <span className="mt-10 text-gray-500 text-sm">
-              (Error: {error})
-            </span>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </>
   );
