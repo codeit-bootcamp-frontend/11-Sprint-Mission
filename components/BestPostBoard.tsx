@@ -1,7 +1,7 @@
 import { Article, ArticleList } from "@/types/Article.type";
 import styles from "./BestPostBoard.module.css";
 import Image from "next/image";
-import formatDate from "../lib/formatDate";
+import formatDate from "@/lib/formatDate";
 import { useDeviceType } from "@/contexts/DeviceTypeContext";
 import ImageSafe from "./ImageSafe";
 

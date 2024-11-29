@@ -1,4 +1,3 @@
-import getConfig from "next/config";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 

@@ -1,13 +1,13 @@
 import { Article, ArticleList } from "@/types/Article.type";
 import Image from "next/image";
 import styles from "./PostBoard.module.css";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   getArticleList,
   GetArticleListParams,
   OrderBy,
 } from "@/api/article.api";
-import formatDate from "../lib/formatDate";
+import formatDate from "@/lib/formatDate";
 import { useDeviceType } from "@/contexts/DeviceTypeContext";
 import ImageSafe from "./ImageSafe";
 
