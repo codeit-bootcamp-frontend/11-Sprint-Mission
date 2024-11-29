@@ -77,7 +77,7 @@ export default function AllPost() {
     <div className="container">
       <div className={styles.titleContainer}>
         <div className={styles.sectionTitle}>게시글</div>
-        <Link href="/addPost" className={styles.addPostLink}>
+        <Link href="/addboard" className={styles.addPostLink}>
           글쓰기
         </Link>
       </div>
@@ -107,7 +107,7 @@ export default function AllPost() {
             <Link
               key={article.id}
               href={`/boards/${article.id}`}
-              className={styles.postLink} // 클릭 가능 스타일 추가
+              className={styles.postLink}
             >
               <div className={styles.post}>
                 <div className={styles.postContents}>
