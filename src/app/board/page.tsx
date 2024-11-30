@@ -44,11 +44,11 @@ export default function Page() {
 
   const [searchKeyword, setSearchKeyword] = useState<string>('');
 
+  const refreshToken = useRef<string | null>(null);
+
   const { error, isLoading, wrappedFunction } = useAsync(getArticles);
 
   const wrappedFunctionRef = useRef(wrappedFunction);
-
-  const accessToken: string | null = localStorage.getItem('accessToken');
 
   // 전체 게시글 로드
   const fetchItemList = useCallback(async () => {
@@ -119,6 +119,14 @@ export default function Page() {
     }, 200);
   }, [fetchItemList]);
 
+  // 로컬 스토리지에 저장된 refreshToken로 로그인 상태 검증
+  useEffect(() => {
+    const localRefreshToken = localStorage.getItem('refreshToken');
+    if (localRefreshToken) {
+      refreshToken.current = localRefreshToken;
+    }
+  }, []);
+
   // isLoading, error 처리
   if (isLoading || (!searchKeyword && !article.length && !error)) {
     return <Loading />;
@@ -140,7 +148,7 @@ export default function Page() {
           </div>
           <div className="mt-12 flex items-center justify-between">
             <h2 className="h2">게시글</h2>
-            <Link href={accessToken ? '/board/addboard' : '/login'}>
+            <Link href={refreshToken ? '/board/addboard' : '/login'}>
               <button className="w-[88px] h-[42px] bg-blue text-white rounded-lg font-medium">
                 글쓰기
               </button>

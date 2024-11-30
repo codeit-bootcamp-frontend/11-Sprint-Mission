@@ -19,6 +19,8 @@ export default function Page() {
   const [image, setImage] = useState<string | null>(null);
   const [id, setId] = useState<number | null>(null);
 
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [refreshToken, setRefreshToken] = useState<string | null>(null);
 
@@ -103,15 +105,16 @@ export default function Page() {
 
     setAccessToken(localAccessToken);
     setRefreshToken(localRefreshToken);
+    setIsLoading(false);
   }, []);
 
   // isLoading, error 처리
-  if (!accessToken && !refreshToken) {
-    return <Error error="로그인 혹은 재로그인 후 이용해주세요." />;
+  if (articleIsLoading || refreshTokenIsLoading || isLoading) {
+    return <Loading />;
   }
 
-  if (articleIsLoading || refreshTokenIsLoading) {
-    return <Loading />;
+  if (!accessToken && !refreshToken) {
+    return <Error error="로그인 혹은 재로그인 후 이용해주세요." />;
   }
 
   if (articleError) {
