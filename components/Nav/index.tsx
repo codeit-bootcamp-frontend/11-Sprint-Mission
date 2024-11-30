@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/router';
 import clsx from 'clsx';
 //
 import styles from './Nav.module.css';
@@ -13,7 +13,8 @@ const navLinks = [
 ];
 
 export default function Nav() {
-  const pathname = usePathname();
+  const router = useRouter();
+  const pathname = router.pathname;
 
   return (
     <header className={styles.header}>
@@ -27,7 +28,10 @@ export default function Nav() {
           <ul className={styles.links}>
             {navLinks.map(({ href, label }) => (
               <li key={href}>
-                <Link href={href} className={clsx(styles.link, pathname === href && styles.active)}>
+                <Link
+                  href={href}
+                  className={clsx(styles.link, pathname.includes(href) && styles.active)}
+                >
                   {label}
                 </Link>
               </li>
