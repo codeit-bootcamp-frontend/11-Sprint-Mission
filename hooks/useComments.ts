@@ -1,30 +1,28 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import useAsyncRequest from './useAsyncRequest';
 import { CommentType } from '@/types/types';
 
-type FetchCommentsFunction = (productId: string) => Promise<{ list: Comment[] }>;
+type FetchCommentsFunction = (id: string) => Promise<{ list: CommentType[] }>;
 
 /**
  * 댓글 목록을 가져오는 커스텀 훅
  */
-const useComments = (fetchCommentsFunction: FetchCommentsFunction) => {
+function useComments(fetchCommentsFunction: FetchCommentsFunction, id: string | undefined) {
   const [commentsList, setCommentsList] = useState<CommentType[]>([]);
   const { execute, isLoading, error } = useAsyncRequest();
-  const router = useRouter();
-  const { productId } = router.query as { productId?: string };
 
   useEffect(() => {
     const loadComments = async () => {
-      if (!productId) return;
-      const result = await execute(() => fetchCommentsFunction(productId));
+      if (!id) return;
+
+      const result = await execute(() => fetchCommentsFunction(id));
       if (result) {
         setCommentsList(result.list);
       }
     };
 
     loadComments();
-  }, [productId, execute, fetchCommentsFunction]);
+  }, [id, execute, fetchCommentsFunction]);
 
   const handleEditSubmit = (item: CommentType, updatedContent: string) => {
     setCommentsList((prevItems) =>
@@ -45,6 +43,6 @@ const useComments = (fetchCommentsFunction: FetchCommentsFunction) => {
     handleEditSubmit,
     handleDeleteClick,
   };
-};
+}
 
 export default useComments;
