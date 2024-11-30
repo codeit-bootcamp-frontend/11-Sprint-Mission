@@ -4,9 +4,6 @@ import axios from "axios";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_API_URL || "https://panda-market-api.vercel.app";
-const DEFAULT_PAGE = 1;
-const DEFAULT_PAGE_SIZE = 10;
-const DEFAULT_ORDER_BY = "like";
 
 class ApiError extends Error {
   constructor(
@@ -20,12 +17,8 @@ class ApiError extends Error {
 }
 
 const createQueryParams = (params: ArticleParams): URLSearchParams => {
-  const {
-    page = DEFAULT_PAGE,
-    pageSize = DEFAULT_PAGE_SIZE,
-    orderBy = DEFAULT_ORDER_BY,
-    keyword = "",
-  } = params;
+  const { page = 1, pageSize = 10, orderBy = "like", keyword = "" } = params;
+
   return new URLSearchParams({
     page: page.toString(),
     pageSize: pageSize.toString(),
