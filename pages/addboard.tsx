@@ -1,4 +1,5 @@
 import styles from "@/styles/addboard.module.css";
+import Image from "next/image";
 import { ChangeEvent, useState } from "react";
 
 const DEFAULT_VALUES: {
@@ -38,9 +39,12 @@ export default function AddBoard() {
           등록
         </button>
       </header>
-      <fieldset>
-        <label htmlFor="title">*제목</label>
+      <fieldset className={styles.fieldTitle}>
+        <label className={styles.label} htmlFor="title">
+          *제목
+        </label>
         <input
+          className={styles.inputTitle}
           id="title"
           name="title"
           type="text"
@@ -49,21 +53,36 @@ export default function AddBoard() {
           required
         />
       </fieldset>
-      <fieldset>
-        <label htmlFor="content">*내용</label>
+      <fieldset className={styles.fieldContent}>
+        <label className={styles.label} htmlFor="content">
+          *내용
+        </label>
         <textarea
+          className={styles.inputContent}
           id="content"
           name="content"
-          placeholder="s내용을 입력하세요"
+          placeholder="내용을 입력하세요"
           onChange={handleChangeInput}
           required
         />
       </fieldset>
-      <fieldset>
-        <label htmlFor="image">
-          <span>이미지 등록</span>
-        </label>
-        <input id="image" name="image" type="file" required />
+      <fieldset className={styles.fieldImage}>
+        <span className={styles.label}>이미지</span>
+        <div className={styles.inputImageList}>
+          <label className={styles.inputImageButton} htmlFor="image">
+            <div className={styles.inputImageIcon}>
+              <Image fill src="/images/ic_plus.svg" alt="이미지 등록" />
+            </div>
+            <span>이미지 등록</span>
+          </label>
+        </div>
+        <input
+          className={styles.inputImage}
+          id="image"
+          name="image"
+          type="file"
+          required
+        />
       </fieldset>
     </form>
   );

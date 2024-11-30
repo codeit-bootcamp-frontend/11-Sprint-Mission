@@ -34,3 +34,71 @@
 .submitButton:disabled {
   background-color: var(--inactive);
 }
+
+.fieldTitle,
+.fieldContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: none;
+  margin: 24px;
+}
+
+.label {
+  color: var(--gray-800);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.inputTitle,
+.inputContent {
+  padding: 16px 24px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--gray-200);
+}
+
+.inputTitle::placeholder,
+.inputContent::placeholder {
+  color: var(--gray-400);
+}
+
+.inputContent {
+  min-height: 282px;
+  resize: none;
+}
+
+.fieldImage {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: none;
+  margin: 24px;
+}
+
+.inputImageList {
+  display: flex;
+  gap: 12px;
+}
+
+.inputImageButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 282px;
+  height: 282px;
+  background-color: var(--gray-200);
+  color: var(--gray-400);
+}
+
+.inputImageIcon {
+  position: relative;
+  width: 48px;
+  height: 48px;
+}
+
+.inputImage {
+  display: none;
+}
