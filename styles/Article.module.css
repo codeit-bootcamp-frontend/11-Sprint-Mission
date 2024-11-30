@@ -1,0 +1,22 @@
+.title {
+  @apply text-xl font-bold;
+}
+.meta {
+  @apply mb-6 flex items-center border-b py-4 text-sm;
+  border-color: var(--gray-200);
+}
+.name {
+  @apply ml-4 text-sm font-medium;
+}
+.date {
+  @apply ml-2 text-sm;
+  color: var(--gray-400);
+}
+.content {
+  @apply mb-8 text-lg;
+}
+.like {
+  @apply flex items-center gap-1 rounded-full border px-4 py-1 text-base;
+  color: var(--gray-500);
+  border-color: var(--gray-200);
+}

@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import clsx from 'clsx';
 import formatDate from '@/lib/formatDate';
 import formatMaxCount from '@/lib/formatMaxCount';
 import { OrderByType, getArticleList } from '@/lib/api';
@@ -13,7 +14,6 @@ import IconMedal from '@/public/images/boards/ico-medal.svg';
 import IconHeart from '@/public/images/common/ico-heart.svg';
 import IconSearch from '@/public/images/common/ico-search.svg';
 import BaseThumbnail from '@/public/images/common/base-thumbnail.svg';
-import clsx from 'clsx';
 
 /**
  * 베스트 게시글 리스트
@@ -178,9 +178,9 @@ export default function Boards() {
         <section className={styles.section}>
           <header className="flex items-center justify-between">
             <h1 className={styles.sectionTitle}>게시글</h1>
-            <button className="btn" type="button">
+            <Link className="btn" href="/addboard">
               글쓰기
-            </button>
+            </Link>
           </header>
 
           <ArticleListWithSearch />

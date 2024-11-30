@@ -1,0 +1,12 @@
+.container {
+  @apply flex flex-1 flex-col items-center justify-center;
+}
+.title {
+  @apply mb-5 text-3xl font-bold;
+}
+.lead {
+  @apply mb-1 text-lg font-semibold;
+}
+.btns {
+  @apply flex justify-center gap-3;
+}

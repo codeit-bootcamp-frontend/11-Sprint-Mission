@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
 
       <Nav />
-      <main className="flex-1">
+      <main className="flex flex-1 flex-col">
         <Component {...pageProps} />
       </main>
       <Footer />
