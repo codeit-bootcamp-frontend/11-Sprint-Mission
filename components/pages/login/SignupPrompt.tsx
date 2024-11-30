@@ -10,13 +10,16 @@ function SignupPrompt() {
 
   return (
     <StyledSignupPrompt>
-      {isPathname === '/login'
-        ? '판다마켓이 처음이신가요?'
-        : '이미 회원이신가요?'}
       {isPathname === '/login' ? (
-        <StyledLink href='/signup'>회원가입</StyledLink>
+        <>
+          '판다마켓이 처음이신가요?'
+          <StyledLink href='/signup'>회원가입</StyledLink>
+        </>
       ) : (
-        <StyledLink href='/login'>로그인</StyledLink>
+        <>
+          '이미 회원이신가요?'
+          <StyledLink href='/login'>로그인</StyledLink>
+        </>
       )}
     </StyledSignupPrompt>
   );
