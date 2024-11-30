@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import font from '../../../styles/fontStyle.styles';
+import font from '@/styles/fontStyle.styles';
 
 import IconLink from '@/components/shared/IconLink';
 
@@ -10,18 +10,8 @@ function Alternative() {
   return (
     <StyledLogin>
       <p>간편 로그인하기</p>
-      <IconLink
-        to='https://www.google.com/'
-        name='google'
-        src={ICON_GOOGLE}
-        size='md'
-      />
-      <IconLink
-        to='https://www.kakaocorp.com/page/'
-        name='google'
-        src={ICON_KAKAO}
-        size='md'
-      />
+      <IconLink to='https://www.google.com/' name='google' src={ICON_GOOGLE} size='md' />
+      <IconLink to='https://www.kakaocorp.com/page/' name='google' src={ICON_KAKAO} size='md' />
     </StyledLogin>
   );
 }
