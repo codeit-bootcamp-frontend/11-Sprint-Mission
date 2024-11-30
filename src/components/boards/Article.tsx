@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import bestBadge from "../../assets/icons/img_best_badge.svg";
 import likeIcon from "../../assets/icons/ic_like_heart.svg";
-import { Article } from "@/types/article";
+import { Article as ArticleType } from "@/types/article";
 import formatDate from "@/utils/formatDate";
 
-const Articles = ({
+const Article = ({
   id,
   title,
   writer,
@@ -13,7 +13,9 @@ const Articles = ({
   updatedAt,
   image,
   isBest = false,
-}: Article & { isBest?: boolean }) => {
+}: ArticleType & { isBest?: boolean }) => {
+  const imageUrl = image || "http://via.placeholder.com/500.jpg";
+
   return (
     <Link
       href={`/boards/${id}`}
@@ -36,14 +38,14 @@ const Articles = ({
             />
           </div>
 
-          <div className="absolute top-[46px] h-[calc(100%-46px)] left-6 flex flex-col justify-between items-start gap-4 w-full">
-            <div className="flex justify-between w-[calc(100%-48px)]">
-              <div className="text-[18px] pc:text-[20px] font-[600] leading-tight line-clamp-2  h-full">
+          <div className="absolute top-[46px] h-[calc(100%-46px)] left-6 w-[calc(100%-48px)] flex flex-col justify-between items-start">
+            <div className="flex justify-between w-full">
+              <div className="text-[18px] pc:text-[20px] font-[600] leading-tight line-clamp-2 h-full">
                 {title}
               </div>
               <div className="w-18 h-18 rounded-lg overflow-hidden">
                 <Image
-                  src={image}
+                  src={imageUrl}
                   alt={`${title} thumbnail`}
                   width={72}
                   height={72}
@@ -53,7 +55,7 @@ const Articles = ({
               </div>
             </div>
 
-            <div className="flex justify-between gap-2 w-full mb-4 w-[calc(100%-48px)] text-gray500">
+            <div className="flex justify-between w-full mb-4 text-gray500">
               <div className="flex items-center gap-2">
                 <div className="truncate text-[#4B5563]">{writer.nickname}</div>
                 <div className="flex items-center gap-1">
@@ -78,7 +80,7 @@ const Articles = ({
             </div>
             <div className="w-18 h-18 rounded-lg overflow-hidden">
               <Image
-                src={image}
+                src={imageUrl}
                 alt={`${title} thumbnail`}
                 width={72}
                 height={72}
@@ -112,4 +114,4 @@ const Articles = ({
   );
 };
 
-export default Articles;
+export default Article;

@@ -23,14 +23,16 @@
       "@/*": ["./src/*"],
       "@api/*": ["./src/api/*"],
       "@app/*": ["./src/app/*"],
-      "@components/*": ["./src/components/*"],
       "@icons/*": ["./src/assets/icons/*"],
       "@images/*": ["./src/assets/images/*"],
+      "@components/*": ["./src/components/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@lib/*": ["./src/lib/*"],
       "@providers/*": ["./src/providers/*"],
+      "@store/*": ["./src/store/*"],
       "@styles/*": ["./src/styles/*"],
-      "@types/*": ["./src/types/*"]
+      "@types/*": ["./src/types/*"],
+      "@utils/*": ["./src/utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

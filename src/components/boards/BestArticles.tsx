@@ -1,6 +1,6 @@
 "use client";
 
-import Articles from "./Articles";
+import Articles from "./Article";
 import { useArticles } from "@/api/apiGetArticles";
 import { useDeviceType } from "@/hooks/useDeviceType";
 
@@ -26,14 +26,23 @@ const BestArticles = () => {
   }
 
   return (
-    <div className="flex gap-0 tablet:gap-4 pc:gap-6 w-full">
-      {data?.list.map((article) => (
-        <Articles
-          key={article.id}
-          {...article}
-          isBest={true}
-        />
-      ))}
+    <div className="mb-6 pc:mb-10">
+      <div
+        className="text-[20px] font-[700]
+        mb-4
+        tablet:mb-6"
+      >
+        베스트 게시글
+      </div>
+      <div className="flex gap-0 tablet:gap-4 pc:gap-6 w-full">
+        {data?.list.map((article) => (
+          <Articles
+            key={article.id}
+            {...article}
+            isBest={true}
+          />
+        ))}
+      </div>
     </div>
   );
 };
