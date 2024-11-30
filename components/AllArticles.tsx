@@ -150,7 +150,6 @@ export default function AllArticles() {
             passHref
           >
             <div>
-              {""}
               <div className={styles.article_content}>
                 <div className={styles.article_title}>{article.title}</div>
                 <div className={styles.image_container}>

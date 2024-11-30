@@ -1,0 +1,277 @@
+.all_item_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.all_item_content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.all_item_header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+}
+
+.all_item_header_front {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.all_item_title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.all_item_header_end {
+  display: flex;
+  gap: 12px;
+}
+
+.all_item_search {
+  display: flex;
+  gap: 12px;
+}
+
+.all_item_search_container {
+  display: flex;
+  align-items: center;
+  width: 325px;
+  height: 42px;
+  border-radius: 12px;
+  background-color: #f3f4f6;
+}
+
+.all_item_search_icon {
+  width: 24px;
+  height: 24px;
+  padding-left: 16px;
+}
+
+.all_item_search_input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.all_item_search_input::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  color: #9ca3af;
+}
+
+.all_item_register_button {
+  border: none;
+  height: 42px;
+  width: 133px;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #3692ff;
+  font-size: 16px;
+  line-height: 26px;
+  color: #f3f4f6;
+}
+
+.all_item_register_button:hover {
+  background-color: #2e7ae4;
+  cursor: pointer;
+}
+
+.all_item_sort_button {
+  width: 130px;
+  height: 42px;
+  border: 1px solid #e5e7eb;
+  background-color: #fff;
+  border-radius: 12px;
+  font-size: 16px;
+  line-height: 26px;
+  color: #1f2937;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.all_item_sort {
+  position: relative;
+  display: flex;
+  gap: 12px;
+}
+
+.all_item_sort_options {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  margin-top: 8px;
+  z-index: 1000;
+  width: 130px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.all_item_sort_options div {
+  font-size: 16px;
+  padding: 10px 0;
+  text-align: center;
+  cursor: pointer;
+  color: #1f2937;
+}
+
+.all_item_sort_options div + div {
+  border-top: 1px solid #e5e7eb;
+}
+
+.all_item_card_container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 24px;
+  row-gap: 40px;
+}
+
+@media (max-width: 1279px) {
+  .all_item_card_container {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 16px;
+  }
+
+  .all_item_content {
+    width: 710px;
+  }
+
+  .all_item_search_container {
+    width: 242px;
+  }
+}
+
+@media (max-width: 767px) {
+  .all_item_card_container {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 8px;
+    row-gap: 32px;
+  }
+
+  .all_item_content {
+    width: 343px;
+  }
+
+  .all_item_header {
+    flex-direction: column;
+  }
+
+  .all_item_header_front {
+    width: 100%;
+  }
+
+  .all_item_header_end {
+    margin-left: auto;
+  }
+}
+
+/* 아이템 카드 */
+.item_card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.all_item_card_img {
+  display: block;
+  width: 221px;
+  height: 221px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .all_item_card_img {
+    width: 168px;
+    height: 168px;
+  }
+}
+
+.item_card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item_card_img {
+  display: block;
+  width: 282px;
+  height: 282px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.item_description {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.item_name {
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.item_price {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 700;
+}
+
+.item_favorite_count {
+  display: flex;
+  gap: 4px;
+  font-size: 12px;
+  color: #4b5563;
+}
+
+@media (max-width: 1279px) {
+  .item_card_img {
+    width: 343px;
+    height: 343px;
+    border-radius: 20px;
+    object-fit: cover;
+  }
+}
+
+/* 베스트 아이템 */
+.best_item_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 24px;
+}
+
+.best_item_content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.best_item_title {
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 700;
+}
+
+.best_item_card_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 24px;
+}
