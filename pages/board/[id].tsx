@@ -7,6 +7,7 @@ import useOutsideClick from "@/hooks/useOutsideClick";
 import formatDate from "@/lib/formatDate";
 import { getCommentListByArticleId } from "@/api/comment.api";
 import { Comment, CommentList } from "@/types/Commnet.type";
+import Link from "next/link";
 
 export async function getServerSideProps(context: any) {
   const { id } = context.params;
@@ -77,6 +78,12 @@ export default function ArticleDetail({
         onSubmit={handleSubmitComment}
       />
       <CommentListWrap comments={comments} />
+      <Link href="/board" className={styles.buttonBack}>
+        <span>목록으로 돌아가기</span>
+        <div className={styles.iconBack}>
+          <Image fill src="/images/ic_back.svg" alt="프로필" />
+        </div>
+      </Link>
     </>
   );
 }
