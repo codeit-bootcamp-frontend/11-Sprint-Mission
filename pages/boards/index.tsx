@@ -71,9 +71,11 @@ function BoardsPage() {
   }, [order, search]);
 
   useEffect(() => {
+    if (!fetchBoardFavoriteItems) return;
     fetchBoardFavoriteItems();
   }, [fetchBoardFavoriteItems]);
   useEffect(() => {
+    if (!fetchBoardAllItems) return;
     fetchBoardAllItems();
   }, [fetchBoardAllItems]);
 
