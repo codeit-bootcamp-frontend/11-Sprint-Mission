@@ -1,3 +1,6 @@
+import QueryProvider from "@/providers/QueryProvider";
+import Header from "@/components/ui/Header";
+import "./globals.css";
 export default function RootLayout({
   children,
 }: {
@@ -6,7 +9,10 @@ export default function RootLayout({
   // 모든 페이지에 적용되는 레이아웃
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        <Header />
+        <QueryProvider>{children}</QueryProvider>
+      </body>
     </html>
   );
 }
