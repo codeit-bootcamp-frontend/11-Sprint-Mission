@@ -47,6 +47,7 @@ export default function ArticleDetail({ article }: { article: Article }) {
         </div>
       </header>
       <main className={styles.content}>{article.content}</main>
+      <CommentForm />
     </>
   );
 }
@@ -88,5 +89,27 @@ function Dropdown() {
         </div>
       )}
     </div>
+  );
+}
+
+function CommentForm() {
+  return (
+    <form className={styles.form}>
+      <fieldset className={styles.fieldContent}>
+        <label className={styles.label} htmlFor="comment">
+          댓글달기
+        </label>
+        <textarea
+          className={styles.inputContent}
+          id="comment"
+          name="content"
+          placeholder="댓글을 입력해주세요"
+          required
+        />
+      </fieldset>
+      <button className={styles.submitButton} type="submit" disabled>
+        등록
+      </button>
+    </form>
   );
 }
