@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
-import useDeviceType from '@/utils/deviceType';
 import { useAuth } from '@/context/AuthContext';
 
 import { Container } from '@/styles/Common.styles';
@@ -10,10 +9,10 @@ import Navigation from './Navigation';
 import ProfileImage from '../shared/ProfileImage';
 import Logo from '../shared/Logo';
 import Button from '../shared/Button';
+import font from '@/styles/fontStyle.styles';
 
 function Headers() {
   const router = useRouter();
-  const deviceType = useDeviceType();
   const { hasLogin } = useAuth();
 
   return (
@@ -26,10 +25,7 @@ function Headers() {
             <ProfileImage />
           </>
         ) : (
-          <Button
-            href='/login'
-            color='blue'
-            size={deviceType === 'mo' ? 'small' : 'medium'}>
+          <Button href='/login' color='blue' size='medium' className='header-btn'>
             로그인
           </Button>
         )}
@@ -60,5 +56,10 @@ const StlyedContainer = styled(Container)`
 
   ${media.mo`
     gap: 0.8rem;
+
+    .header-btn{
+      padding: 0.8rem 1.6rem;
+      ${font('16sb')};
+    }
   `}
 `;
