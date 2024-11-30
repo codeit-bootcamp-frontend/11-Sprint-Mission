@@ -52,6 +52,7 @@ export default function AddBoard() {
               name='boardDescription'
               value={formValues.boardDescription}
               onChange={handleInputChange}
+              className='textarea'
             />
             <InputFile title='이미지' />
           </div>

@@ -9,9 +9,7 @@ interface InputPropsBase {
 }
 
 // input용 props
-interface InputPropsInput
-  extends InputPropsBase,
-    React.InputHTMLAttributes<HTMLInputElement> {
+interface InputPropsInput extends InputPropsBase, React.InputHTMLAttributes<HTMLInputElement> {
   as?: 'input';
   type?: string;
 }
@@ -35,11 +33,11 @@ function Input({
   isError = false,
   errorMessage = '에러가 발생 했습니다.',
   onChange,
+  className,
   ...rest
 }: InputProps) {
   // `type` prop은 `as`가 'input'일 때만 전달
-  const inputProps =
-    as === 'input' ? { type: (rest as InputPropsInput).type } : {};
+  const inputProps = as === 'input' ? { type: (rest as InputPropsInput).type } : {};
 
   return (
     <StyledInputContainer>
@@ -52,6 +50,7 @@ function Input({
           value={value}
           $isError={isError}
           onChange={onChange}
+          className={className}
           {...inputProps}
           {...rest}
         />
@@ -90,8 +89,7 @@ export const StyledInput = styled.input<StyledInputProps>`
   }
   &:focus {
     outline: none;
-    border-color: ${({ $isError }) =>
-      $isError ? 'var(--red)' : 'var(--blue-300)'};
+    border-color: ${({ $isError }) => ($isError ? 'var(--red)' : 'var(--blue-300)')};
   }
 `;
 

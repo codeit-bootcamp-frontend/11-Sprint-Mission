@@ -9,6 +9,7 @@ import TagsList from '@/components/shared/Tags/TagsList';
 import { Container, Page } from '@/styles/Common.styles';
 import InputFile from '@/components/shared/InputFile';
 import Input from '@/components/shared/Input';
+import { media } from '@/styles/media.styles';
 
 interface FormValues {
   productName: string;
@@ -92,6 +93,7 @@ function AddProd() {
               name='productDescription'
               value={formValues.productDescription}
               onChange={handleInputChange}
+              className='textarea'
             />
             <Input
               type='number'
@@ -136,6 +138,13 @@ export const AddProdForm = styled.form`
       ${flexColumn}
       gap: 1.4rem;
     }
+  }
+
+  .textarea {
+    height: 28.2rem;
+    ${media.mo`
+      height: 20rem;
+      `}
   }
 `;
 
