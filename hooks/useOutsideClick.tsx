@@ -1,7 +1,7 @@
 import { RefObject, useCallback, useEffect, useState } from "react";
 
 const useOutsideClick = <T extends HTMLElement>(ref: RefObject<T>) => {
-  const [flag, setFlag] = useState(false);
+  const [flag, setFlag] = useState(true);
 
   const handler = useCallback(
     (event: MouseEvent) => {

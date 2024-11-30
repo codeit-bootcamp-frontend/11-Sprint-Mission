@@ -12,6 +12,7 @@ import { useDeviceType } from "@/contexts/DeviceTypeContext";
 import ImageSafe from "./ImageSafe";
 import useAsync from "@/hooks/useAsync";
 import useOutsideClick from "@/hooks/useOutsideClick";
+import Link from "next/link";
 
 const DEFAULT_PARAMS: GetArticleListParams = {
   page: 1,
@@ -69,7 +70,9 @@ export default function PostBoard({
     <div className={styles.Board}>
       <header className={styles.BoardHeader}>
         <h2 className={styles.BoardTitle}>게시글</h2>
-        <button className={styles.BoardBlueButton}>글쓰기</button>
+        <Link href="/addboard" className={styles.BoardBlueButton}>
+          글쓰기
+        </Link>
       </header>
       <div className={styles.BoardUtil}>
         <form className={styles.PostSearchFrom} onSubmit={handleSubmitSearch}>
@@ -161,7 +164,6 @@ function Dropdown({
   };
 
   useEffect(() => {
-    console.log(flag);
     setSelecedDropdown(!flag);
   }, [flag]);
 
