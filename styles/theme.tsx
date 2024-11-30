@@ -1,4 +1,3 @@
-// Updated color palette
 const colors = {
   gray: {
     900: '#111827',
