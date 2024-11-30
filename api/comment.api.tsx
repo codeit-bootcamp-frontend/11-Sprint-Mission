@@ -2,7 +2,7 @@ import axios from "./axios";
 
 interface GetCommentListByArticleId {
   articleId: number;
-  limit?: number;
+  limit: number;
   cursor?: number;
 }
 
@@ -13,7 +13,6 @@ async function getCommentListByArticleId({
 }: GetCommentListByArticleId) {
   const response = await axios.get(`/articles/${articleId}/comments`, {
     params: {
-      articleId,
       limit,
       cursor,
     },

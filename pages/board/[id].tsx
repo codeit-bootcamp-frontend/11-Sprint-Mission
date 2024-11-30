@@ -5,20 +5,35 @@ import styles from "@/styles/article.module.css";
 import { useEffect, useRef, useState } from "react";
 import useOutsideClick from "@/hooks/useOutsideClick";
 import formatDate from "@/lib/formatDate";
+import { getCommentListByArticleId } from "@/api/comment.api";
+import { Comment, CommentList } from "@/types/Commnet.type";
 
 export async function getServerSideProps(context: any) {
   const { id } = context.params;
 
   const article = await getArticle({ id });
+  const initComments = await getCommentListByArticleId({
+    articleId: id,
+    limit: 10,
+  });
 
   return {
     props: {
       article,
+      initComments,
     },
   };
 }
 
-export default function ArticleDetail({ article }: { article: Article }) {
+export default function ArticleDetail({
+  article,
+  initComments,
+}: {
+  article: Article;
+  initComments: CommentList;
+}) {
+  const [comments, setCommnet] = useState(initComments);
+
   if (!article) return null;
 
   return (
@@ -48,7 +63,64 @@ export default function ArticleDetail({ article }: { article: Article }) {
       </header>
       <main className={styles.content}>{article.content}</main>
       <CommentForm />
+      <CommentListWrap comments={comments} />
     </>
+  );
+}
+
+function CommentForm() {
+  return (
+    <form className={styles.form}>
+      <fieldset className={styles.fieldContent}>
+        <label className={styles.label} htmlFor="comment">
+          댓글달기
+        </label>
+        <textarea
+          className={styles.inputContent}
+          id="comment"
+          name="content"
+          placeholder="댓글을 입력해주세요"
+          required
+        />
+      </fieldset>
+      <button className={styles.submitButton} type="submit" disabled>
+        등록
+      </button>
+    </form>
+  );
+}
+
+function CommentListWrap({ comments }: { comments: CommentList }) {
+  return (
+    <div>
+      {comments.list.map((comment) => (
+        <CommentItem key={comment.id} comment={comment} />
+      ))}
+    </div>
+  );
+}
+
+function CommentItem({ comment }: { comment: Comment }) {
+  if (!comment.content.trim()) return null;
+
+  return (
+    <div className={styles.CommentItem}>
+      <div className={styles.commentMain}>
+        <span className={styles.commentContent}>{comment.content}</span>
+        <Dropdown />
+      </div>
+      <div className={styles.commentHeader}>
+        <div className={styles.profile}>
+          <Image fill src="/images/profile.svg" alt="프로필" />
+        </div>
+        <div className={styles.commentInfo}>
+          <span className={styles.writer}>{comment.writer.nickname}</span>
+          <span className={styles.createdAt}>
+            {formatDate(comment.createdAt)}
+          </span>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -89,27 +161,5 @@ function Dropdown() {
         </div>
       )}
     </div>
-  );
-}
-
-function CommentForm() {
-  return (
-    <form className={styles.form}>
-      <fieldset className={styles.fieldContent}>
-        <label className={styles.label} htmlFor="comment">
-          댓글달기
-        </label>
-        <textarea
-          className={styles.inputContent}
-          id="comment"
-          name="content"
-          placeholder="댓글을 입력해주세요"
-          required
-        />
-      </fieldset>
-      <button className={styles.submitButton} type="submit" disabled>
-        등록
-      </button>
-    </form>
   );
 }
