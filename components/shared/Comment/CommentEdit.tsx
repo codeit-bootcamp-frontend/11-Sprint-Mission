@@ -7,7 +7,7 @@ import UserInfo from '../UserInfo';
 import Button from '../Button';
 import Input from '../Input';
 
-interface ComentItem {
+interface CommentItem {
   content: string;
   writer: {
     nickname: string;
@@ -15,13 +15,13 @@ interface ComentItem {
   createdAt: string;
 }
 
-interface ComentEditProps {
-  item: ComentItem;
+interface CommentEditProps {
+  item: CommentItem;
   onCancel: () => void;
   onSubmit: (editValue: string) => void;
 }
 
-function ComentEdit({ item, onCancel, onSubmit }: ComentEditProps) {
+function CommentEdit({ item, onCancel, onSubmit }: CommentEditProps) {
   const [editValue, setEditValue] = useState(item.content);
   const hasEditValue = editValue.trim() !== '';
 
@@ -36,12 +36,7 @@ function ComentEdit({ item, onCancel, onSubmit }: ComentEditProps) {
       <div className='coment-edit'>
         <UserInfo wide>
           <UserInfo.ProfileImage imageSize='small' />
-          <UserInfo.Text
-            userName={item.writer.nickname}
-            date={item.createdAt}
-            column
-            wide
-          />
+          <UserInfo.Text userName={item.writer.nickname} date={item.createdAt} column wide />
         </UserInfo>
         <div className='coment-btnArea'>
           <Button color='none' onClick={onCancel}>
@@ -59,7 +54,7 @@ function ComentEdit({ item, onCancel, onSubmit }: ComentEditProps) {
   );
 }
 
-export default ComentEdit;
+export default CommentEdit;
 
 const StyledEditForm = styled.form`
   ${flexColumn}

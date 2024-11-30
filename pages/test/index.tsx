@@ -12,7 +12,7 @@ import InputFile from '@/components/shared/InputFile';
 import NotResult from '@/components/shared/NotResult';
 import UserInfo from '@/components/shared/UserInfo';
 import Input from '@/components/shared/Input';
-import ComentPost from '@/components/shared/Coment/ComentPost';
+import CommentPost from '@/components/shared/Comment/CommentPost';
 
 function Test() {
   return (
@@ -123,22 +123,13 @@ function Test() {
                 <TdContainer>
                   <UserInfo wide>
                     <UserInfo.ProfileImage imageSize='big' />
-                    <UserInfo.Text
-                      userName='유저이름'
-                      date='2024. 01. 02'
-                      column
-                      wide
-                    />
+                    <UserInfo.Text userName='유저이름' date='2024. 01. 02' column wide />
                     <UserInfo.Line column />
                     <UserInfo.Heart borderType count={123} />
                   </UserInfo>
                   <UserInfo wide>
                     <UserInfo.ProfileImage imageSize='small' />
-                    <UserInfo.Text
-                      userName='유저이름'
-                      date='2024. 01. 02'
-                      wide
-                    />
+                    <UserInfo.Text userName='유저이름' date='2024. 01. 02' wide />
                     <UserInfo.Heart count={123} />
                   </UserInfo>
                   <UserInfo wide>
@@ -156,15 +147,8 @@ function Test() {
                   <Input placeholder='플레이스 홀더 입니다.' />
                   <Input type='number' placeholder='number 타입' />
                   <Input as='textarea' placeholder='플레이스 홀더 입니다.' />
-                  <Input
-                    title='일반 인풋'
-                    placeholder='플레이스 홀더 입니다.'
-                  />
-                  <Input
-                    title='장문 인풋'
-                    as='textarea'
-                    placeholder='플레이스 홀더 입니다.'
-                  />
+                  <Input title='일반 인풋' placeholder='플레이스 홀더 입니다.' />
+                  <Input title='장문 인풋' as='textarea' placeholder='플레이스 홀더 입니다.' />
                   <Input
                     placeholder='플레이스 홀더 입니다.'
                     isError={true}
@@ -175,17 +159,14 @@ function Test() {
             </tr>
 
             <tr>
-              <Td>ComentPost</Td>
+              <Td>CommentPost</Td>
               <Td>
                 <TdContainer>
-                  <ComentPost
+                  <CommentPost
                     title='문의하기'
                     placeholder='개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다.'
                   />
-                  <ComentPost
-                    title='댓글달기'
-                    placeholder='댓글을 입력해주세요.'
-                  />
+                  <CommentPost title='댓글달기' placeholder='댓글을 입력해주세요.' />
                 </TdContainer>
               </Td>
             </tr>

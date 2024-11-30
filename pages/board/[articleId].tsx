@@ -4,8 +4,8 @@ import { useRouter } from 'next/router';
 import { getBoardDetail, getBoardsDetailComments } from '@/services/api';
 import useComments from '@/hooks/useComments';
 
-import ComentList from '@/components/shared/Coment/ComentList';
-import ComentPost from '@/components/shared/Coment/ComentPost';
+import CommentList from '@/components/shared/Comment/CommentList';
+import CommentPost from '@/components/shared/Comment/CommentPost';
 import DropDownMenu from '@/components/shared/DropDownMenu';
 import Line from '@/components/shared/Line';
 import UserInfo from '@/components/shared/UserInfo';
@@ -90,8 +90,8 @@ export default function Board() {
           <p>{details.content}</p>
         </StyledBoardTitleContainer>
         <StyledBoardComments>
-          <ComentPost title='댓글달기' placeholder='댓글을 입력해주세요' />
-          <ComentList
+          <CommentPost title='댓글달기' placeholder='댓글을 입력해주세요' />
+          <CommentList
             commentsList={commentsList}
             onEditSubmit={handleEditSubmit}
             onDeleteClick={handleDeleteClick}
