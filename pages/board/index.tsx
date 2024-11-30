@@ -21,9 +21,10 @@ interface BoardsPageProps {
 interface ArticleRes {
   totalCount: number;
   list: Article[];
-}
+} 
 
-const getStaticProps: GetStaticProps = async () => {
+// 렌더링 전 데이터 미리 가져오기
+export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch(
     `https://panda-market-api.vercel.app/articles?orderBy=recent`,
   );

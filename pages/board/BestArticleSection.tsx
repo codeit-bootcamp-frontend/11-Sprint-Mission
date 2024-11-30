@@ -70,7 +70,7 @@ const BestSection = styled.div`
   border-radius: 0 0 32px 32px;
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
+  color:  ${({ theme }) => theme.colors.white};
   gap: 4px;
   padding: 6px 24px 8px 24px;
   margin-left: 24px;
@@ -88,7 +88,7 @@ const DescriptSection = styled.div`
 `;
 
 const ImgSection = styled.div`
-  background-color: #fff;
+  background-color:  ${({ theme }) => theme.colors.white};
   border: 1px solid var(--gray-200);
   width: 72px;
   height: 72px;

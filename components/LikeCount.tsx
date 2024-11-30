@@ -23,6 +23,6 @@ const LikeSection = styled.div`
   color: var(--gray-500);
   font-size: 16px;
   gap: 4px;
-`;
+`; 
 
 export default LikeCount;

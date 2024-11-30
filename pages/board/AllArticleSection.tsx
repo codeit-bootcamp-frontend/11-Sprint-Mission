@@ -3,8 +3,10 @@ import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import Image from 'next/image';
 import Link from 'next/link';
-import LikeCount from '@/components/LikeCount';
 import { format } from 'date-fns';
+import LikeCount from '@/components/LikeCount';
+import Search from '@/components/Search';
+import Dropdown from '@/components/Dropdown';
 
 interface Article {
   updatedAt: Date;
@@ -15,11 +17,6 @@ interface Article {
   content: string;
   title: string;
   id: number;
-}
-
-interface ArticleRes {
-  totalCount: number;
-  list: Article[];
 }
 
 type ArticleSortOption = 'recent' | 'like';
@@ -52,7 +49,7 @@ const AllArticleCard = ({ article }: { article: Article }) => {
           <LikeCount count={article.likeCount} />
         </InfoSection>
       </CardSection>
-      <Line $margin="24px 0" />
+      <Line />
     </>
   );
 };
@@ -76,7 +73,7 @@ const ArticleTitle = styled.h2`
 `;
 
 const ImgSection = styled.div`
-  background-color: #fff;
+  background-color:  ${({ theme }) => theme.colors.white};
   border: 1px solid var(--gray-200);
   width: 72px;
   height: 72px;
@@ -105,12 +102,12 @@ const Timestamp = styled.span`
   color: var(--gray-400);
 `;
 
-const Line = styled.hr<{ $margin?: string }>`
+const Line = styled.hr`
   width: 100%;
   border: none;
   height: 1px;
   background-color: var(--gray-200);
-  margin: ${(props) => props.$margin || '16px 0'};
+  margin: 24px 0;
 `;
 
 interface AllArticleSectionProps {
@@ -124,6 +121,20 @@ const AllArticleSection: React.FC<AllArticleSectionProps> = ({
   const [articles, setArticles] = useState<Article[]>(initialArticles);
   const router = useRouter();
   const keyword = (router.query.q as string) || '';
+
+	const handleSortSelection = (sortOption: ArticleSortOption) => {
+    setOrderBy(sortOption);
+  };
+
+	const handleSearch = (searchKeyword: string) => {
+    const query = { ...router.query };
+    if (searchKeyword.trim()) query.q = searchKeyword;
+    else delete query.q; // 키워드가 빈 문자열일 때 URL에서 query string 없애기
+    router.replace({
+      pathname: router.pathname,
+      query,
+    });
+  };
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -151,8 +162,14 @@ const AllArticleSection: React.FC<AllArticleSectionProps> = ({
       </HeaderSection>
 
       <HeaderSection>
-        <span>검색을 놓을 자리입니다.</span>
-        <span>드롭다운을 놓을 자리입니다.</span>
+        <Search onSearch={handleSearch} />
+        <Dropdown
+          onSortSelection={handleSortSelection}
+          sortOptions={[
+            { key: "recent", label: "최신순" },
+            { key: "like", label: "인기순" },
+          ]}
+        />
       </HeaderSection>
 
       {articles.length ? (
