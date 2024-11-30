@@ -3,7 +3,7 @@
   flex-direction: column;
   height: auto;
   align-items: center;
-  width: 100%;
+  width: 120rem;
   margin: 0 auto;
   gap: 6.4rem;
   padding-top: 3.2rem;
@@ -15,7 +15,6 @@
   flex-direction: column;
   width: 100%;
   height: auto;
-  margin: 0 auto;
   gap: 3.2rem;
 }
 

@@ -102,7 +102,7 @@ export default function Boards() {
         <div className={styles.entireBoardBody}>
           <div className={styles.userSelectSection}>
             <div className={styles.searchBar}>
-              <Image width={'15'} height={'15'} src={search} alt="검색" />
+              <Image width={'15'} height={'15'} src={search} alt="검색" className={styles.searchBarImage}/>
               <input value={searchKeyword} onChange={handleInputChange} placeholder="검색할 상품을 입력해주세요." className={styles.searchBarInput} />
             </div>
             <select value={orderBy} onChange={handleChange}>
