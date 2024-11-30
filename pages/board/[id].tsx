@@ -2,7 +2,7 @@ import { getArticle } from "@/api/article.api";
 import { Article } from "@/types/Article.type";
 import Image from "next/image";
 import styles from "@/styles/article.module.css";
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import useOutsideClick from "@/hooks/useOutsideClick";
 import formatDate from "@/lib/formatDate";
 import { getCommentListByArticleId } from "@/api/comment.api";
@@ -32,7 +32,16 @@ export default function ArticleDetail({
   article: Article;
   initComments: CommentList;
 }) {
-  const [comments, setCommnet] = useState(initComments);
+  const [comments, setComments] = useState(initComments);
+  const [commentValue, setCommentVlaue] = useState("");
+
+  const handleChangeComment = (value: string) => {
+    setCommentVlaue(value);
+  };
+
+  const handleSubmitComment = () => {
+    //
+  };
 
   if (!article) return null;
 
@@ -62,15 +71,41 @@ export default function ArticleDetail({
         </div>
       </header>
       <main className={styles.content}>{article.content}</main>
-      <CommentForm />
+      <CommentForm
+        value={commentValue}
+        onChange={handleChangeComment}
+        onSubmit={handleSubmitComment}
+      />
       <CommentListWrap comments={comments} />
     </>
   );
 }
 
-function CommentForm() {
+interface CommentFormProps {
+  value: string;
+  onChange: (value: string) => void;
+  onSubmit: () => void;
+}
+
+function CommentForm({ value, onChange, onSubmit }: CommentFormProps) {
+  const [valid, setValid] = useState(false);
+
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    onChange(event.target.value);
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    onSubmit();
+  };
+
+  useEffect(() => {
+    if (value.trim().length < 1) setValid(false);
+    else setValid(true);
+  }, [value]);
+
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <fieldset className={styles.fieldContent}>
         <label className={styles.label} htmlFor="comment">
           댓글달기
@@ -80,10 +115,12 @@ function CommentForm() {
           id="comment"
           name="content"
           placeholder="댓글을 입력해주세요"
+          value={value}
+          onChange={handleChange}
           required
         />
       </fieldset>
-      <button className={styles.submitButton} type="submit" disabled>
+      <button className={styles.submitButton} type="submit" disabled={!valid}>
         등록
       </button>
     </form>
