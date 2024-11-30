@@ -96,7 +96,7 @@ const StyledFeature = styled.section`
       width: 98.8rem;
       border-radius: 1.2rem;
       overflow: hidden;
-      background-color: #fcfcfc;
+      background-color: var(--card-bg);
       ${media.tamo`
         flex-direction: column;
         align-items: flex-start;

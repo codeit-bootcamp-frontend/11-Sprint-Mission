@@ -27,7 +27,7 @@ const StyledLogin = styled.div`
   ${font('16m')}
   color: var(--gray-800);
   border-radius: 0.8rem;
-  background-color: #e6f2ff;
+  background-color: var(--blue-50);
   margin: 2.4rem 0;
   p {
     flex: 1;
