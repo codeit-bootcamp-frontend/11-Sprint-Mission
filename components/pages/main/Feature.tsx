@@ -65,21 +65,26 @@ const StyledFeature = styled.section`
   padding: 13.8rem 0;
   ${flexColumn}
   align-items: center;
+
   ${media.tamo`
     padding: 0;
   `}
 
+  /* 개별 섹션의 마지막 요소 */
   &:last-child {
     margin-bottom: 13.8rem;
+
     ${media.tamo`
       margin-bottom: 0;
     `}
   }
 
+  /* 짝수 번째 섹션 */
   &:nth-child(even) {
     .feature-item {
       flex-direction: row-reverse;
       text-align: right;
+
       ${media.tamo`
         flex-direction: column;
         align-items: flex-end;
@@ -88,6 +93,7 @@ const StyledFeature = styled.section`
     }
   }
 
+  /* Feature 아이템 */
   .feature {
     &-item {
       display: flex;
@@ -97,22 +103,25 @@ const StyledFeature = styled.section`
       border-radius: 1.2rem;
       overflow: hidden;
       background-color: var(--card-bg);
+
       ${media.tamo`
         flex-direction: column;
         align-items: flex-start;
+        gap: 2.4rem;
         width: 100%;
         border-radius: 0;
-        gap: 2.4rem;
       `}
     }
 
     &-image {
       width: 57.9rem;
       height: auto;
+
       ${media.tamo`
         width: 100%;
         overflow: hidden;
       `}
+
       ${media.ta`
         border-radius: 1.42rem;
       `}
@@ -124,9 +133,11 @@ const StyledFeature = styled.section`
         margin-bottom: 1.2rem;
         color: var(--blue-100);
         ${font('18b')}
+
         ${media.ta`
           margin-bottom: 1.6rem;
         `}
+
         ${media.mo`
           ${font('16b')}
         `}
@@ -135,14 +146,17 @@ const StyledFeature = styled.section`
       .title {
         margin-bottom: 2.4rem;
         ${font('40b')}
+
         ${media.tamo`
           > br{
             display: none;
           }
         `}
+
         ${media.ta`
           ${font('32b')}
         `}
+
         ${media.mo`
           margin-bottom: 1.6rem;
           ${font('24b')}
@@ -152,9 +166,11 @@ const StyledFeature = styled.section`
       .desc {
         ${font('24m')}
         letter-spacing: -0.05rem;
+
         ${media.ta`
           ${font('18m')}
         `}
+
         ${media.mo`
           ${font('16m')}
         `}
