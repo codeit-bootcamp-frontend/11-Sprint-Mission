@@ -123,7 +123,7 @@ function AddProd() {
 
 export default AddProd;
 
-const AddProdForm = styled.form`
+export const AddProdForm = styled.form`
   ${flexColumn}
   gap: 2.4rem;
   .input {
@@ -139,7 +139,7 @@ const AddProdForm = styled.form`
   }
 `;
 
-const AddProdTitle = styled.div`
+export const AddProdTitle = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
