@@ -14,6 +14,7 @@ export default {
         gray50: "#f9fafb",
         gray100: "#f3f4f6",
         gray200: "#e5e7eb",
+        gray400: "#9ca3af",
         gray600: "#4b5563",
         bordergray: "#DFDFDF",
         skyblue: "#3692ff",
