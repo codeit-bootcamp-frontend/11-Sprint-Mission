@@ -1,5 +1,5 @@
 import React from "react";
-// import BestArticle from "@/components/board/BestArticle";
+import BestArticle from "@/components/board/BestArticle";
 import AllArticle from "@/components/board/AllArticle";
 import { Article, ArticleList } from "@/types/Types";
 
@@ -23,7 +23,7 @@ interface BoardsPageProps {
 export default function BoardsPage({ initialArticles }: BoardsPageProps) {
   return (
     <div className="pageContainer">
-      {/* <BestArticle /> */}
+      <BestArticle />
       <AllArticle initialArticles={initialArticles} />
     </div>
   );
