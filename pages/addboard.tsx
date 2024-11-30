@@ -2,22 +2,31 @@ import styles from "@/styles/addboard.module.css";
 import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
 
-const DEFAULT_VALUES: {
+interface Valuse {
   title: string;
   content: string;
   image: {
     id: string;
     file: File;
   } | null;
-} = {
+}
+
+interface ImagePreview {
+  id: string;
+  src: string;
+}
+
+const DEFAULT_VALUES: Valuse = {
   title: "",
   content: "",
   image: null,
 };
 
-interface ImagePreview {
-  id: string;
-  src: string;
+function checkValuesValid(values: Valuse): boolean {
+  const { title, content } = values;
+  if (title.trim().length < 1) return false;
+  if (content.trim().length < 1) return false;
+  return true;
 }
 
 export default function AddBoard() {
@@ -54,6 +63,7 @@ export default function AddBoard() {
   const handleImagePreviewsClear = () => {
     setImagePreviews((prev) => {
       prev.forEach((e) => {
+        console.log("revoke : " + e.src);
         URL.revokeObjectURL(e.src);
       });
       return [];
@@ -76,6 +86,8 @@ export default function AddBoard() {
         },
       ]);
     } else;
+
+    setValid(checkValuesValid(values));
 
     return () => handleImagePreviewsClear();
   }, [values]);

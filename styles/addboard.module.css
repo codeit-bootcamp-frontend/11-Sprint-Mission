@@ -21,6 +21,7 @@
   color: var(--gray-200);
   font-size: 16px;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .submitButton:hover {
@@ -33,6 +34,7 @@
 
 .submitButton:disabled {
   background-color: var(--inactive);
+  cursor: no-drop;
 }
 
 .fieldTitle,
@@ -57,6 +59,11 @@
   border: none;
   border-radius: 12px;
   background-color: var(--gray-200);
+}
+
+.inputTitle:focus-visible,
+.inputContent:focus-visible {
+  outline: 2px solid var(--blue);
 }
 
 .inputTitle::placeholder,
@@ -91,6 +98,7 @@
   border-radius: 12px;
   background-color: var(--gray-200);
   color: var(--gray-400);
+  cursor: pointer;
 }
 
 .inputImageIcon {
@@ -120,6 +128,7 @@
   opacity: 0;
   transition: 100ms ease;
   color: var(--gray-400);
+  cursor: pointer;
 }
 
 .overlay:hover {
