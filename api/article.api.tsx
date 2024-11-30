@@ -27,5 +27,21 @@ async function getArticleList({
   return response.data;
 }
 
-export { getArticleList };
+interface PostArticle {
+  image?: string;
+  content: string;
+  title: string;
+}
+
+async function postArticle({ image, content, title }: PostArticle) {
+  const response = await axios.post("/articles", {
+    body: {
+      content,
+      title,
+      image,
+    },
+  });
+}
+
+export { getArticleList, postArticle };
 export type { GetArticleListParams, OrderBy };
