@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from 'react';
 import styles from '@/styles/Board.module.css';
 import BestCard from '@/components/BestCard';
 import Button from '@/components/common/Button';
-import Search from '@/components/common/Search';
 import Card from '@/components/Card';
 import useResize, { ScreenType } from '@/hooks/useResize';
 import {
@@ -13,8 +12,10 @@ import {
 } from '@/api/productApi';
 import Dropdown, { DropdownItem } from '@/components/common/Dropdown';
 import debounce from 'lodash.debounce';
-import { usePathname, useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
+import InputIcon from '@/public/ic_search.svg';
+import Input from '@/components/common/Input';
+import Image from 'next/image';
 
 const items: DropdownItem[] = [
   { id: 0, label: '최신순', value: 'recent' },
@@ -66,7 +67,7 @@ const Board = () => {
   );
 
   const handleClick = () => {
-    router.push(`/posts?query=테스트!`);
+    router.push('addboard');
     console.log('클릭');
   };
 
@@ -119,7 +120,16 @@ const Board = () => {
           </Button>
         </div>
         <div className={styles.searchBox}>
-          <Search onSearch={handleSearch} addClassName="boardSearch" />
+          <Input
+            onInput={handleSearch}
+            addClassName="boardSearch"
+            image={true}
+            placehorder="검색할 상품을 입력해주세요"
+          >
+            <div className={styles['input-icon']}>
+              <Image src={InputIcon} alt="검색 아이콘" width={20} height={20} />
+            </div>
+          </Input>
           <Dropdown
             items={items}
             screenType={screenType}
