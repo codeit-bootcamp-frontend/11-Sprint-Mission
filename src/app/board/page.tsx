@@ -7,7 +7,7 @@ import Link from 'next/link';
 // 외부 라이브러리
 import { throttle } from 'lodash';
 
-// 로컬 파일
+// 함수, 타입
 import { getArticles } from '@/api';
 import useAsync from '@/hooks/useAsync';
 import { Article } from '@/types/article';
@@ -47,6 +47,8 @@ export default function Page() {
   const { error, isLoading, wrappedFunction } = useAsync(getArticles);
 
   const wrappedFunctionRef = useRef(wrappedFunction);
+
+  const accessToken: string | null = localStorage.getItem('accessToken');
 
   // 전체 게시글 로드
   const fetchItemList = useCallback(async () => {
@@ -118,7 +120,7 @@ export default function Page() {
   }, [fetchItemList]);
 
   // isLoading, error 처리
-  if (isLoading || (!searchKeyword && !article.length)) {
+  if (isLoading || (!searchKeyword && !article.length && !error)) {
     return <Loading />;
   }
 
@@ -138,7 +140,7 @@ export default function Page() {
           </div>
           <div className="mt-12 flex items-center justify-between">
             <h2 className="h2">게시글</h2>
-            <Link href="/board/addboard">
+            <Link href={accessToken ? '/board/addboard' : '/login'}>
               <button className="w-[88px] h-[42px] bg-blue text-white rounded-lg font-medium">
                 글쓰기
               </button>
