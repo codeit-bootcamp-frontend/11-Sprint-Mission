@@ -4,6 +4,7 @@ import Image from "next/image";
 import formatDate from "@/lib/formatDate";
 import { useDeviceType } from "@/contexts/DeviceTypeContext";
 import ImageSafe from "./ImageSafe";
+import Link from "next/link";
 
 const PAGE_SIZE = {
   desktop: 3,
@@ -34,7 +35,7 @@ function PostItem({ article }: { article: Article }) {
   const createdAt = formatDate(article.createdAt);
 
   return (
-    <div className={styles.Item}>
+    <Link className={styles.Item} href={`/board/${article.id}`}>
       <div className={styles.badge}>
         <div className={styles.medal}>
           <Image fill src="/images/ic_medal.svg" alt="베스트" />
@@ -57,6 +58,6 @@ function PostItem({ article }: { article: Article }) {
         </div>
         <span>{createdAt}</span>
       </div>
-    </div>
+    </Link>
   );
 }

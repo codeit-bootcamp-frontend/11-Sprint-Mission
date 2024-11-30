@@ -106,7 +106,7 @@ function PostItem({ article }: { article: Article }) {
   const createdAt = formatDate(article.createdAt);
 
   return (
-    <div className={styles.Item}>
+    <Link className={styles.Item} href={`/board/${article.id}`}>
       <div className={styles.ItemContent}>
         <h3 className={styles.ItemTitle}> {article.title}</h3>
         <div className={styles.ItemPreview}>
@@ -138,7 +138,7 @@ function PostItem({ article }: { article: Article }) {
           </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
