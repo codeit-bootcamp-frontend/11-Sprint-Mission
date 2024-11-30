@@ -128,7 +128,6 @@ export default function Page() {
 
   return (
     <>
-      {console.log('render')}
       <div className="mt-10 mb-24 container">
         <div>
           <h2 className="h2 mb-6">베스트 게시글</h2>
@@ -139,7 +138,7 @@ export default function Page() {
           </div>
           <div className="mt-12 flex items-center justify-between">
             <h2 className="h2">게시글</h2>
-            <Link href="/addArticle">
+            <Link href="/board/addboard">
               <button className="w-[88px] h-[42px] bg-blue text-white rounded-lg font-medium">
                 글쓰기
               </button>

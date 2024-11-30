@@ -18,7 +18,7 @@ export default function SearchInput({
         />
         <form onSubmit={getSearchResult} className="w-full">
           <input
-            className="bg-gray-100 h-[42px] rounded-xl pt-2 pb-2 pl-11 pr-5 text-gray-500 w-full focus:outline-none"
+            className="input h-[42px] pt-2 pb-2 pl-11 pr-5 w-full focus:outline-none"
             placeholder="검색할 상품을 입력해주세요."
           />
         </form>
