@@ -169,17 +169,17 @@ const AllProduct = () => {
       </div>
 
       <div>
-        {/* {itemList.length &&
+        {itemList.length &&
           itemList.map((item) => (
             <ItemCard item={item} key={`all-item-${item.id}`} />
-          ))} */}
-        {itemList.length > 0 ? (
+          ))}
+        {/* {itemList.length > 0 ? (
           itemList.map((item) => (
             <ItemCard item={item} key={`all-item-${item.id}`} />
           ))
         ) : (
           <p>No items available</p>
-        )}
+        )} */}
       </div>
 
       <div>
