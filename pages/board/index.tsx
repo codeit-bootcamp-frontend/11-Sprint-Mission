@@ -24,7 +24,9 @@ interface ArticleRes {
 }
 
 const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(`https://panda-market-api.vercel.app/articles?orderBy=recent`);
+  const res = await fetch(
+    `https://panda-market-api.vercel.app/articles?orderBy=recent`,
+  );
   const data: ArticleRes = await res.json();
 
   return {
@@ -38,7 +40,6 @@ export default function BoardsPage({ initialArticles }: BoardsPageProps) {
   return (
     <PageContainer>
       <BestArticleSection />
-      
     </PageContainer>
   );
 }

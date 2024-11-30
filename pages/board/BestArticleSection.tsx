@@ -26,48 +26,48 @@ interface ArticleRes {
 type ArticleSortOption = 'recent' | 'like';
 
 const BestArticleCard = ({ article }: { article: Article }) => {
-	const date = format(article.createdAt, "yyyy. MM. dd");
+  const date = format(article.createdAt, 'yyyy. MM. dd');
 
-	return (
-		<CardSection href={`/boards/${article.id}`}>
-			<BestSection>
-				<MedalIcon alt="베스트" />
-				Best
-			</BestSection>
+  return (
+    <CardSection href={`/boards/${article.id}`}>
+      <BestSection>
+        <MedalIcon alt="베스트" />
+        Best
+      </BestSection>
 
-			<ContentSection>
-				<DescriptSection>
-					<Title>{article.title}</Title>
-					{article.image && (
-						<ImgSection>
-							<Image 
-								fill
+      <ContentSection>
+        <DescriptSection>
+          <Title>{article.title}</Title>
+          {article.image && (
+            <ImgSection>
+              <Image
+                fill
                 src={article.image}
                 alt={`${article.id}번 게시글 이미지`}
-                style={{ objectFit: "contain" }}
-							/>
-						</ImgSection>
-					)}
-				</DescriptSection>
+                style={{ objectFit: 'contain' }}
+              />
+            </ImgSection>
+          )}
+        </DescriptSection>
 
-				<InfoSection>
-					<Username>{article.writer.nickname}</Username>
-					<LikeCount count={article.likeCount}>{article.likeCount}</LikeCount>
-					<Timestamp>{date}</Timestamp>
-				</InfoSection>
-			</ContentSection>
-		</CardSection>
-	);
-}
+        <InfoSection>
+          <Username>{article.writer.nickname}</Username>
+          <LikeCount count={article.likeCount}>{article.likeCount}</LikeCount>
+          <Timestamp>{date}</Timestamp>
+        </InfoSection>
+      </ContentSection>
+    </CardSection>
+  );
+};
 
 const CardSection = styled(Link)`
-	background-color: var(--gray-50);
-	border-redius: 8px;
+  background-color: var(--gray-50);
+  border-redius: 8px;
 `;
 
 const BestSection = styled.div`
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
   background-color: var(--blue);
   border-radius: 0 0 32px 32px;
   font-size: 16px;
@@ -80,7 +80,7 @@ const BestSection = styled.div`
 `;
 
 const ContentSection = styled.div`
-	padding: 16px 24px;
+  padding: 16px 24px;
 `;
 
 const DescriptSection = styled.div`
@@ -100,15 +100,15 @@ const ImgSection = styled.div`
 `;
 
 const InfoSection = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-  margin-top: 16px; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
 `;
 
 const Username = styled.span`
-	font-size: 14px;
-	color: var(--gray-400);
+  font-size: 14px;
+  color: var(--gray-400);
 `;
 
 const Timestamp = styled.span`
@@ -135,52 +135,54 @@ const useViewport = () => {
 };
 
 const getPageSize = (width: number): number => {
-  if (width < 768) return 1; 
-	else if (width < 1200) return 2; 
-	else return 3;
+  if (width < 768) return 1;
+  else if (width < 1200) return 2;
+  else return 3;
 };
 
 const BestArticlesSection = () => {
-	const [articles, setArticles] = useState<Article[]>([]);
+  const [articles, setArticles] = useState<Article[]>([]);
   const [pageSize, setPageSize] = useState<number | null>(null);
-	const viewportWidth = useViewport();
+  const viewportWidth = useViewport();
 
-	useEffect(() => {
-		// 계산이나 데이터 호출 예외처리
-		if(viewportWidth === 0) return;
+  useEffect(() => {
+    // 계산이나 데이터 호출 예외처리
+    if (viewportWidth === 0) return;
 
-		const newPageSize = getPageSize(viewportWidth);
+    const newPageSize = getPageSize(viewportWidth);
 
-		if(newPageSize !== pageSize) {
-			setPageSize(newPageSize);
+    if (newPageSize !== pageSize) {
+      setPageSize(newPageSize);
 
-			const fetchBest = async(size: number) => {
-				try {
-					const res = await fetch(`https://panda-market-api.vercel.app/articles?orderBy=like&pageSize=${size}`);
-					const data: ArticleRes = await res.json();
-					setArticles(data.list);
-				} catch(e) {
-					console.error('실패', e);
-				}
-			};
+      const fetchBest = async (size: number) => {
+        try {
+          const res = await fetch(
+            `https://panda-market-api.vercel.app/articles?orderBy=like&pageSize=${size}`,
+          );
+          const data: ArticleRes = await res.json();
+          setArticles(data.list);
+        } catch (e) {
+          console.error('실패', e);
+        }
+      };
 
-			fetchBest(newPageSize);
-		}
-	}, [viewportWidth, pageSize]);
+      fetchBest(newPageSize);
+    }
+  }, [viewportWidth, pageSize]);
 
-	return (
-		<>
-			<HeaderSection>
-				<Title>베스트 게시글</Title>
-			</HeaderSection>
+  return (
+    <>
+      <HeaderSection>
+        <Title>베스트 게시글</Title>
+      </HeaderSection>
 
-			<BestArticlesCardSection>
-				{articles.map((article) => (
+      <BestArticlesCardSection>
+        {articles.map((article) => (
           <BestArticleCard key={article.id} article={article} />
         ))}
-			</BestArticlesCardSection>
-		</>
-	)
+      </BestArticlesCardSection>
+    </>
+  );
 };
 
 const HeaderSection = styled.div`
