@@ -20,17 +20,17 @@ function ProdDetailPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [fetchError, setFetchError] = useState<Error | null>(null);
 
+  const router = useRouter();
+
+  const { productId } = router.query as { productId?: string };
+
   const {
     commentsList,
     isLoading: commentLoading,
     error: commentFetchError,
     handleEditSubmit,
     handleDeleteClick,
-  } = useComments(getProductsDetailComments);
-
-  const router = useRouter();
-
-  const { productId } = router.query as { productId?: string };
+  } = useComments(getProductsDetailComments, productId);
 
   const fetchProductItems = useCallback(async () => {
     setIsLoading(true);
