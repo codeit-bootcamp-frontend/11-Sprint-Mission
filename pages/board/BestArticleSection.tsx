@@ -23,8 +23,6 @@ interface ArticleRes {
   list: Article[];
 }
 
-type ArticleSortOption = 'recent' | 'like';
-
 const BestArticleCard = ({ article }: { article: Article }) => {
   const date = format(article.createdAt, 'yyyy. MM. dd');
 

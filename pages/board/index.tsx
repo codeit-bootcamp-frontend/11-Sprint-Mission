@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import BestArticleSection from './BestArticleSection';
-//import AllArticleSection from './AllArticleSection';
+import AllArticleSection from './AllArticleSection';
 import { GetStaticProps } from 'next';
 
 interface Article {
@@ -40,6 +40,7 @@ export default function BoardsPage({ initialArticles }: BoardsPageProps) {
   return (
     <PageContainer>
       <BestArticleSection />
+			<AllArticleSection initialArticles={initialArticles} />
     </PageContainer>
   );
 }
