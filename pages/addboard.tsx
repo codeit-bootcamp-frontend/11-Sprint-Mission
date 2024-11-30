@@ -63,7 +63,6 @@ export default function AddBoard() {
   const handleImagePreviewsClear = () => {
     setImagePreviews((prev) => {
       prev.forEach((e) => {
-        console.log("revoke : " + e.src);
         URL.revokeObjectURL(e.src);
       });
       return [];

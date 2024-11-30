@@ -32,7 +32,6 @@ export default async function handler(req, res) {
       });
     }
   } catch (error) {
-    console.error("Error checking image:", error);
     res.status(500).json({ imessage: "Error checking image" });
   }
 }
