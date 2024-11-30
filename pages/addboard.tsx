@@ -1,20 +1,29 @@
 import styles from "@/styles/addboard.module.css";
 import Image from "next/image";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 const DEFAULT_VALUES: {
   title: string;
   content: string;
-  image: any;
+  image: {
+    id: string;
+    file: File;
+  } | null;
 } = {
   title: "",
   content: "",
-  image: undefined,
+  image: null,
 };
+
+interface ImagePreview {
+  id: string;
+  src: string;
+}
 
 export default function AddBoard() {
   const [values, setValues] = useState(DEFAULT_VALUES);
   const [valid, setValid] = useState(false);
+  const [imagePreviews, setImagePreviews] = useState<ImagePreview[]>([]);
 
   const handleChangeValue = (name: string, value: any) => {
     setValues((prev) => ({
@@ -30,6 +39,46 @@ export default function AddBoard() {
     const { name, value } = event.target;
     handleChangeValue(name, value);
   };
+
+  const handleChangeInputImage = (event: ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files && files[0]) {
+      const image = {
+        id: Date.now().toString(),
+        file: files[0],
+      };
+      handleChangeValue("image", image);
+    }
+  };
+
+  const handleImagePreviewsClear = () => {
+    setImagePreviews((prev) => {
+      prev.forEach((e) => {
+        URL.revokeObjectURL(e.src);
+      });
+      return [];
+    });
+  };
+
+  const handleDeleteImage = () => {
+    handleChangeValue("image", null);
+    handleImagePreviewsClear();
+  };
+
+  useEffect(() => {
+    const image = values.image;
+    handleImagePreviewsClear();
+    if (image) {
+      setImagePreviews([
+        {
+          id: image.id,
+          src: URL.createObjectURL(image.file),
+        },
+      ]);
+    } else;
+
+    return () => handleImagePreviewsClear();
+  }, [values]);
 
   return (
     <form>
@@ -75,12 +124,29 @@ export default function AddBoard() {
             </div>
             <span>이미지 등록</span>
           </label>
+          {imagePreviews[0] && (
+            <div className={styles.inputImageItem} onClick={handleDeleteImage}>
+              <Image
+                className={styles.previewImage}
+                fill
+                src={imagePreviews[0].src}
+                alt="이미지 미리보기"
+              />
+              <div className={styles.overlay}>
+                <div className={styles.inputImageIcon}>
+                  <Image fill src="/images/ic_delete.svg" alt="이미지 제거" />
+                </div>
+                <span>이미지 제거</span>
+              </div>
+            </div>
+          )}
         </div>
         <input
           className={styles.inputImage}
           id="image"
           name="image"
           type="file"
+          onChange={handleChangeInputImage}
           required
         />
       </fieldset>

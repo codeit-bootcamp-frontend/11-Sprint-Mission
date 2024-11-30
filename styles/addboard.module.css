@@ -36,12 +36,13 @@
 }
 
 .fieldTitle,
-.fieldContent {
+.fieldContent,
+.fieldImage {
   display: flex;
   flex-direction: column;
   gap: 12px;
   border: none;
-  margin: 24px;
+  margin-bottom: 24px;
 }
 
 .label {
@@ -68,17 +69,15 @@
   resize: none;
 }
 
-.fieldImage {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  border: none;
-  margin: 24px;
-}
-
 .inputImageList {
   display: flex;
   gap: 12px;
+}
+
+.inputImageItem {
+  position: relative;
+  width: 282px;
+  height: 282px;
 }
 
 .inputImageButton {
@@ -89,6 +88,7 @@
   gap: 12px;
   width: 282px;
   height: 282px;
+  border-radius: 12px;
   background-color: var(--gray-200);
   color: var(--gray-400);
 }
@@ -99,6 +99,57 @@
   height: 48px;
 }
 
+.previewImage {
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: 100ms ease;
+  color: var(--gray-400);
+}
+
+.overlay:hover {
+  opacity: 1;
+}
+
 .inputImage {
   display: none;
 }
+
+@media screen and (max-width: 1199px) {
+  .inputImageButton {
+    width: 168px;
+    height: 168px;
+  }
+
+  .inputImageItem {
+    width: 168px;
+    height: 168px;
+  }
+}
+
+/* @media screen and (max-width: 767px) {
+  .inputImageButton {
+    width: 168px;
+    height: 168px;
+  }
+
+  .inputImageItem {
+    width: 168px;
+    height: 168px;
+  }
+} */
