@@ -38,7 +38,7 @@ export default function SearchBar({ onSortChange, onSearch }: SearchBarProps) {
           placeholder="검색할 상품을 입력해주세요"
         />
       </div>
-      <button
+      <div
         className="md:w-[130px] w-[42px] h-[42px] relative rounded-xl border border-solid border-gray200"
         onClick={toggleDropdown}
       >
@@ -47,8 +47,8 @@ export default function SearchBar({ onSortChange, onSearch }: SearchBarProps) {
             <Image src="/icon/drop_down_icon.png" fill alt="drop down icon" />
           </div>
         </div>
-        <div className="hidden md:flex items-center justify-center gap-[24px]">
-          <p>최신순</p>
+        <div className="hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:flex items-center justify-center gap-[24px]">
+          <p className="whitespace-nowrap">최신순</p>
           <div className="w-[15px] h-[7px] relative">
             <Image src="/icon/down_icon.png" fill alt="down_icon" />
           </div>
@@ -68,7 +68,7 @@ export default function SearchBar({ onSortChange, onSearch }: SearchBarProps) {
             좋아요순
           </button>
         </div>
-      </button>
+      </div>
     </div>
   );
 }

@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import BestItem from "../components/BestItem";
 import SearchBar from "../components/SearchBar";
 import AllItem from "../components/AllItem";
-import { BestItemData } from "../type";
+import { BestItemData } from "../type/type";
+import Link from "next/link";
 
 async function fetchBestBoards(
   page = 1,
@@ -103,7 +104,7 @@ export default function Page() {
         <div className="flex justify-between items-center">
           <h3 className="text-lg font-bold">게시글</h3>
           <button className="w-[88px] h-[42px] text-background bg-skyblue rounded-lg">
-            글쓰기
+            <Link href="/addboard">글쓰기</Link>
           </button>
         </div>
         <SearchBar
