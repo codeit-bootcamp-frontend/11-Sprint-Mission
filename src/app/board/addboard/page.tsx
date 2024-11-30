@@ -16,11 +16,13 @@ import Error from '@/board/error';
 export default function Page() {
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
+  const [image, setImage] = useState<string | null>(null);
   const [id, setId] = useState<number | null>(null);
 
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [refreshToken, setRefreshToken] = useState<string | null>(null);
 
+  // 필요한 API 호출
   const {
     error: articleError,
     isLoading: articleIsLoading,
@@ -32,6 +34,7 @@ export default function Page() {
     wrappedFunction: refreshTokenWrappedFunction,
   } = useAsync(postRefreshToken);
 
+  // title, content input 값 있을 때만 등록 버튼 활성화
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   };
@@ -40,6 +43,9 @@ export default function Page() {
     setContent(e.target.value);
   };
 
+  // 게시글 등록
+  // accessToken이 없을 때 refreshToken이 있으면 refreshToken으로 accessToken 재발급 후 다시 시도
+  // accessToken, refreshToken 둘 다 있을 때 게시글 등록 (이미지는 blob URL이므로 테스트용 이미지로 대체)
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -53,9 +59,15 @@ export default function Page() {
       const boardForm: BoardForm = {
         title: title,
         content: content,
-        image:
-          'https://mblogthumb-phinf.pstatic.net/20161008_259/sasa9508_1475929220574OA2NI_JPEG/3.jpg?type=w420',
       };
+
+      const imageUrl = image
+        ? 'https://mblogthumb-phinf.pstatic.net/20161008_259/sasa9508_1475929220574OA2NI_JPEG/3.jpg?type=w420'
+        : null;
+
+      if (imageUrl) {
+        boardForm.image = imageUrl;
+      }
 
       const articleResult = await articleWrappedFunction({
         boardForm,
@@ -69,6 +81,7 @@ export default function Page() {
     }
   };
 
+  // 테스트용 토큰 발급
   const getTestToken = async () => {
     const result = await postSignIn({
       email: '123@123.com',
@@ -83,6 +96,7 @@ export default function Page() {
     }
   };
 
+  // 로컬 스토리지에 저장된 토큰 가져오기
   useEffect(() => {
     const localAccessToken = localStorage.getItem('accessToken');
     const localRefreshToken = localStorage.getItem('refreshToken');
@@ -149,7 +163,7 @@ export default function Page() {
               onChange={handleContentChange}
             />
             <label className="h3">이미지</label>
-            <FileUploadInput />
+            <FileUploadInput image={image} setImage={setImage} />
           </form>
         </div>
       </div>

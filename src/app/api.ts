@@ -24,7 +24,7 @@ async function getArticles(query?: string): Promise<ArticleList> {
  * @param {Object} boardForm - 게시글 작성 폼
  * @param {string} boardForm.title - 게시글 제목
  * @param {string} boardForm.content - 게시글 내용
- * @param {string} boardForm.image - 게시글 이미지
+ * @param {string} boardForm.image - (선택) 게시글 이미지
  * @param {string} accessToken - 엑세스 토큰
  * @returns {Promise<Object>} - 게시글
  */
@@ -35,7 +35,6 @@ async function postArticle({
   boardForm: BoardForm;
   accessToken: string;
 }): Promise<Article> {
-  console.log(boardForm, accessToken);
   const response = await instance.post('/articles', boardForm, {
     headers: {
       'Content-Type': 'application/json',

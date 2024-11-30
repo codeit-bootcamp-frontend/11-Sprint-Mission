@@ -1,20 +1,20 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
 
-export default function FileUploadInput() {
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
-
+export default function FileUploadInput({
+  image,
+  setImage,
+}: {
+  image: string | null;
+  setImage: (image: string) => void;
+}) {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      setImageUrl(reader.result as string);
-    };
+    const imageUrl = URL.createObjectURL(file);
+    setImage(imageUrl);
   };
 
   return (
@@ -43,11 +43,11 @@ export default function FileUploadInput() {
             accept="image/*"
           />
         </div>
-        {imageUrl && (
+        {image && (
           <div className="relative overflow-hidden w-[282px] h-[282px] bg-gray-100 block flex flex-col gap-2 items-center justify-center rounded-lg mt-3 border">
             <Image
               fill
-              src={imageUrl}
+              src={image}
               alt="이미지"
               objectFit="cover"
               sizes="(max-width: 640px) 282px 282px"
