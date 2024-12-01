@@ -1,6 +1,6 @@
 "use client";
 
-import Articles from "./Article";
+import Articles from "@/components/boards/Article";
 import { useArticles } from "@/api/apiGetArticles";
 import { useDeviceType } from "@/hooks/useDeviceType";
 
@@ -26,7 +26,7 @@ const BestArticles = () => {
   }
 
   return (
-    <div className="mb-6 pc:mb-10">
+    <div className="mb-6 pc:mb-10 w-full">
       <div
         className="text-[20px] font-[700]
         mb-4

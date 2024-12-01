@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import bestBadge from "../../assets/icons/img_best_badge.svg";
-import likeIcon from "../../assets/icons/ic_like_heart.svg";
+import bestBadge from "@images/img_best_badge.svg";
+import likeIcon from "@icons/ic_like_heart.svg";
 import { Article as ArticleType } from "@/types/article";
 import formatDate from "@/utils/formatDate";
 

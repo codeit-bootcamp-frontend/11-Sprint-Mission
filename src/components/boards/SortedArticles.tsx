@@ -1,6 +1,6 @@
 "use client";
 
-import Articles from "./Article";
+import Articles from "@/components/boards/Article";
 import SearchArticles from "@/components/boards/SearchArticles/SearchArticles";
 import SortToggle from "@/components/boards/SortToggle/SortToggle";
 import { useArticles } from "@/api/apiGetArticles";
@@ -32,7 +32,7 @@ const SortedArticles = () => {
   }
 
   return (
-    <>
+    <div className="w-full">
       <div
         className="text-[20px] font-[700]
         mb-4
@@ -60,7 +60,7 @@ const SortedArticles = () => {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
