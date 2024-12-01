@@ -66,7 +66,18 @@ export default function SignUp() {
       return;
     }
     const response = await postSignUpAsync(values);
-    router.push("/");
+    if (response) {
+      sessionStorage.setItem("user", JSON.stringify(response.user));
+      sessionStorage.setItem(
+        "accessToken",
+        JSON.stringify(response.accessToken)
+      );
+      sessionStorage.setItem(
+        "refreshToken",
+        JSON.stringify(response.refreshToken)
+      );
+      router.push("/");
+    } else alert("회원가입에 실패했습니다.");
   };
 
   useEffect(() => {

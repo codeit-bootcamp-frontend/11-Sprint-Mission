@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 
 export default function useAsync<T, R>(
-  asyncFunction: (parmas: T) => Promise<R>
+  asyncFunction: (parmas: T) => Promise<R | null>
 ) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
@@ -17,6 +17,7 @@ export default function useAsync<T, R>(
       } finally {
         setLoading(false);
       }
+      return null;
     },
     [asyncFunction]
   );

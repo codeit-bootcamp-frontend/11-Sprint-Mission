@@ -46,6 +46,7 @@ async function postArticle({ image, content, title }: PostArticle) {
       image,
     },
   });
+  return response.data;
 }
 
 export { getArticleList, getArticle, postArticle };

@@ -47,8 +47,20 @@ export default function SignIn() {
       alert("허용되지 않은 명령입니다.");
       return;
     }
+
     const response = await postSignInAsync(values);
-    router.push("/");
+    if (response) {
+      sessionStorage.setItem("user", JSON.stringify(response.user));
+      sessionStorage.setItem(
+        "accessToken",
+        JSON.stringify(response.accessToken)
+      );
+      sessionStorage.setItem(
+        "refreshToken",
+        JSON.stringify(response.refreshToken)
+      );
+      router.push("/");
+    } else alert("회원가입에 실패했습니다.");
   };
 
   useEffect(() => {

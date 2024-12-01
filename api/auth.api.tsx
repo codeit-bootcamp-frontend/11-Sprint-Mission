@@ -54,4 +54,4 @@ async function postSignIn({
 }
 
 export { postSignUp, postSignIn };
-export type { SignUpParams, SignInParams };
+export type { SignUpParams, SignInParams, AuthResponse };
