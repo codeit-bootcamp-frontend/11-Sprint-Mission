@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import Image from 'next/image';
-import Link from 'next/link';
 
 import { getArticle, getComment, postComment, postRefreshToken } from '@/api';
 import useAsync from '@/hooks/useAsync';
@@ -16,6 +14,8 @@ import CommentForm from '@/components/CommentForm';
 import Loading from '@/board/loading';
 import Error from '@/board/error';
 import ArticleComment from '@/components/board/[id]/ArticleComment';
+import EmptyComment from '@/components/EmptyComment';
+import BackToListButton from '@/components/BackToListButton';
 
 export default function Page() {
   const { id } = useParams() as { id: string };
@@ -151,36 +151,9 @@ export default function Page() {
             );
           })
         ) : (
-          <div className="flex flex-col justify-center items-center">
-            <div className="relative w-[140px] h-[140px]">
-              <Image
-                fill
-                src="/images/noComment.png"
-                alt="댓글 없음"
-                sizes="(max-width: 640px) 140px 140px"
-              />
-            </div>
-            <span className="text-center text-gray-400 mt-4">
-              아직 댓글이 없어요, <br />
-              지금 댓글을 달아보세요!
-            </span>
-          </div>
+          <EmptyComment />
         )}
-        <div className="flex justify-center items-center mt-12">
-          <Link href="/board">
-            <button className="w-[240px] h-12 rounded-full bg-blue text-white text-lg flex justify-center items-center gap-2">
-              목록으로 돌아가기
-              <div className="relative w-6 h-6">
-                <Image
-                  fill
-                  src="/images/back.png"
-                  alt="돌아가기"
-                  sizes="(max-width: 640px) 24px, 24px"
-                />
-              </div>
-            </button>
-          </Link>
-        </div>
+        <BackToListButton />
       </div>
     </>
   );
