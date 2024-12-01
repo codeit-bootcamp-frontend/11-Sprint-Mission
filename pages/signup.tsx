@@ -23,8 +23,8 @@ function checkValuesValid(values: SignUpParams) {
 
   if (!regex.test(_email)) return false;
   if (_nickname.length < 1) return false;
-  if (_password.length < 1) return false;
-  if (_repeat.length < 1) return false;
+  if (_password.length < 8) return false;
+  if (_repeat.length < 8) return false;
   if (_password !== _repeat) return false;
   return true;
 }
@@ -74,7 +74,7 @@ export default function SignUp() {
   }, [values]);
 
   return (
-    <>
+    <div className={styles.container}>
       <Link className={styles.logoWrap} href="/">
         <div className={styles.logoIcon}>
           <Image fill src="/images/ic_logo.svg" alt="판다마켓" />
@@ -205,6 +205,6 @@ export default function SignUp() {
           로그인
         </Link>
       </div>
-    </>
+    </div>
   );
 }

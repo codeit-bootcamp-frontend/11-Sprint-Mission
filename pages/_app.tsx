@@ -4,8 +4,12 @@ import "@/styles/global.css";
 import { DeviceTypeProvider } from "@/contexts/DeviceTypeContext";
 import Navigation from "@/components/Navigation";
 import Container from "@/components/Container";
+import { useRouter } from "next/router";
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const isShowNav = !["/signup", "/signin"].includes(router.pathname);
+
   return (
     <>
       <Head>
@@ -15,7 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/images/ic_logo.svg" />
       </Head>
       <DeviceTypeProvider>
-        <Navigation />
+        {isShowNav && <Navigation />}
         <Container>
           <Component {...pageProps} />
         </Container>

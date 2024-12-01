@@ -1,3 +1,8 @@
+.container {
+  max-width: 640px;
+  margin: 64px auto;
+}
+
 .logoWrap {
   display: flex;
   justify-content: center;
@@ -43,7 +48,7 @@
   color: var(--gray-400);
 }
 
-.input-email:focus-visible {
+.input:focus-visible {
   outline-color: var(--blue);
 }
 
@@ -120,9 +125,6 @@
   cursor: no-drop;
 }
 
-/* form end */
-
-/* social start */
 .social {
   display: flex;
   align-items: center;
@@ -148,9 +150,6 @@
   height: 42px;
 }
 
-/* social end */
-
-/* signup start */
 .goto {
   width: fit-content;
   margin: 0 auto 64px;
@@ -164,9 +163,6 @@
   text-decoration: underline;
 }
 
-/* signup end */
-
-/* mobile viewport */
 @media screen and (max-width: 767px) {
   .logoWrap {
     gap: 12px;
@@ -179,6 +175,10 @@
 
   .logoText {
     font-size: 33px;
+  }
+
+  .form {
+    max-width: 432px;
   }
 
   .input {

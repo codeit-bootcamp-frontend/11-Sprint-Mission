@@ -18,7 +18,7 @@ function checkValuesValid(values: SignInParams) {
   const regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
 
   if (!regex.test(_email)) return false;
-  if (_password.length < 1) return false;
+  if (_password.length < 8) return false;
   return true;
 }
 
@@ -56,7 +56,7 @@ export default function SignIn() {
   }, [values]);
 
   return (
-    <>
+    <div className={styles.container}>
       <Link className={styles.logoWrap} href="/">
         <div className={styles.logoIcon}>
           <Image fill src="/images/ic_logo.svg" alt="로고 이미지" />
@@ -135,6 +135,6 @@ export default function SignIn() {
           회원가입
         </Link>
       </div>
-    </>
+    </div>
   );
 }

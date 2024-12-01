@@ -25,8 +25,10 @@ async function postSignUp({
   password,
   passwordConfirmation,
 }: SignUpParams): Promise<AuthResponse> {
-  const response = await axios.post("/auth/signUp", {
-    params: {
+  const response = await axios({
+    method: "post",
+    url: "/auth/signUp",
+    data: {
       email,
       nickname,
       password,
@@ -40,8 +42,10 @@ async function postSignIn({
   email,
   password,
 }: SignInParams): Promise<AuthResponse> {
-  const response = await axios.post("/auth/signIn", {
-    params: {
+  const response = await axios({
+    method: "post",
+    url: "/auth/signIn",
+    data: {
       email,
       password,
     },
