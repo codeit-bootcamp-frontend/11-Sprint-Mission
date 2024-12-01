@@ -34,6 +34,7 @@ export default function Page() {
     isLoading: articleIsLoading,
     wrappedFunction: articleWrappedFunction,
   } = useAsync(postArticle);
+
   const {
     error: refreshTokenError,
     isLoading: refreshTokenIsLoading,
@@ -71,7 +72,7 @@ export default function Page() {
     router.push(`/board/${articleResult.id}`);
   };
 
-  // 테스트용 토큰 발급 (다음 미션 작업 시 삭제)
+  // 테스트용 토큰 발급 버튼 (다음 미션 작업 시 삭제)
   const getTestToken = async () => {
     const result = await postSignIn({
       email: '123@123.com',
@@ -86,8 +87,7 @@ export default function Page() {
     }
   };
 
-  // 로컬 스토리지에 저장된 토큰 가져오기
-  // refreshToken이 있을 경우 accessToken 갱신
+  // 로컬 스토리지에 저장된 토큰 가져오기, refreshToken이 있을 경우 accessToken 갱신
   useEffect(() => {
     const localAccessToken = localStorage.getItem('accessToken');
     const localRefreshToken = localStorage.getItem('refreshToken');
@@ -111,21 +111,18 @@ export default function Page() {
     setIsLoading(false);
   }, []);
 
-  // isLoading, error 처리
+  // 로딩, 에러 처리
   if (articleIsLoading || refreshTokenIsLoading || isLoading) {
     return <Loading />;
   }
 
+  if (articleError || refreshTokenError) {
+    const error = (articleError || refreshTokenError) as string;
+    return <Error error={error} />;
+  }
+
   if (!accessToken && !refreshToken) {
     return <Error error="로그인 혹은 재로그인 후 이용해주세요." />;
-  }
-
-  if (articleError) {
-    return <Error error={articleError} />;
-  }
-
-  if (refreshTokenError) {
-    return <Error error={refreshTokenError} />;
   }
 
   return (
