@@ -82,7 +82,7 @@ export default function Page() {
   };
 
   // 쓰로틀링된 fetchData 함수
-  const throttledFetchData = useRef(throttle(fetchData, 500)).current;
+  const throttledFetchData = useRef(throttle(fetchData, 300)).current;
 
   // 검색 결과 가져오기
   const getSearchResult = (e: FormEvent<HTMLFormElement>): void => {
@@ -114,9 +114,7 @@ export default function Page() {
 
   // 초기 전체 게시글 목록 로드
   useEffect(() => {
-    setTimeout(() => {
-      fetchItemList();
-    }, 200);
+    fetchItemList();
   }, [fetchItemList]);
 
   // 로컬 스토리지에 저장된 refreshToken로 로그인 상태 검증
@@ -143,7 +141,11 @@ export default function Page() {
           <h2 className="h2 mb-6">베스트 게시글</h2>
           <div className="flex justify-between md:gap-4 lg:gap-6">
             {bestArticle?.map((item) => (
-              <BoardBestItem key={item.id} item={item} />
+              <div className="w-full" key={item.id}>
+                <Link href={`/board/${item.id}`}>
+                  <BoardBestItem item={item} />
+                </Link>
+              </div>
             ))}
           </div>
           <div className="mt-12 flex items-center justify-between">
@@ -161,7 +163,11 @@ export default function Page() {
           {resultArticle.length > 0 ? (
             <div className="overflow-y-auto">
               {resultArticle?.map((item) => (
-                <BoardItemList key={item.id} item={item} />
+                <div key={item.id}>
+                  <Link href={`/board/${item.id}`}>
+                    <BoardItemList key={item.id} item={item} />
+                  </Link>
+                </div>
               ))}
             </div>
           ) : (
