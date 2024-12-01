@@ -1,7 +1,7 @@
 'use client';
 
 // react, next
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 
 // 함수, 타입
@@ -58,19 +58,19 @@ export default function Page() {
   } = useAsync(postRefreshToken);
 
   // 게시글 가져오는 함수
-  const fetchItem = async () => {
+  const fetchItem = useCallback(async () => {
     setArticle((await articleWrappedFunction(id)) as Article);
-  };
+  }, [id, articleWrappedFunction]);
 
   // 댓글 가져오는 함수 (개수가 많지 않을 것이라 가정, 사용자 경험을 위해 limit 5000으로 설정)
-  const fetchComment = async () => {
+  const fetchComment = useCallback(async () => {
     const query = `limit=5000&cursor=0`;
     const result = (await commentsWrappedFunction({ id, query })) as Comments;
     if (result.list) setComment(result.list);
-  };
+  }, [id, commentsWrappedFunction]);
 
   // 댓글 작성 시 post 후 가져오는 함수
-  const fetchPostComment = async () => {
+  const fetchPostComment = useCallback(async () => {
     if (submitComment) {
       await postCommentWrappedFunction({
         id,
@@ -84,18 +84,24 @@ export default function Page() {
 
       fetchComment();
     }
-  };
+  }, [
+    submitComment,
+    id,
+    accessToken,
+    postCommentWrappedFunction,
+    fetchComment,
+  ]);
 
   // submitComment 값이 바뀔 때마다 댓글 post 후 가져오는 함수 실행 (댓글 등록 시 submitComment 업데이트)
   useEffect(() => {
     fetchPostComment();
-  }, [submitComment]);
+  }, [submitComment, fetchPostComment]);
 
   // 초기 데이터 로드
   useEffect(() => {
     fetchItem();
     fetchComment();
-  }, []);
+  }, [fetchItem, fetchComment]);
 
   // 로컬 스토리지에 저장된 토큰 가져오기, refreshToken이 있을 경우 accessToken 갱신
   useEffect(() => {
@@ -119,7 +125,7 @@ export default function Page() {
     }
 
     setIsLoading(false);
-  }, []);
+  }, [refreshTokenWrappedFunction]);
 
   // 로딩, 에러 처리
 

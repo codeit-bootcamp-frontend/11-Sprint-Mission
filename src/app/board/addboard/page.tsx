@@ -59,10 +59,10 @@ export default function Page() {
       content: content,
     };
 
-    image
-      ? (boardForm.image =
-          'https://mblogthumb-phinf.pstatic.net/20161008_259/sasa9508_1475929220574OA2NI_JPEG/3.jpg?type=w420')
-      : null;
+    if (image) {
+      boardForm.image =
+        'https://mblogthumb-phinf.pstatic.net/20161008_259/sasa9508_1475929220574OA2NI_JPEG/3.jpg?type=w420';
+    }
 
     const articleResult = (await articleWrappedFunction({
       boardForm,
@@ -109,7 +109,7 @@ export default function Page() {
     }
 
     setIsLoading(false);
-  }, []);
+  }, [refreshTokenWrappedFunction]);
 
   // 로딩, 에러 처리
   if (articleIsLoading || refreshTokenIsLoading || isLoading) {
