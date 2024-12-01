@@ -6,17 +6,16 @@ export interface ArticleParams {
 }
 
 export interface Writer {
-  id: number;
   nickname: string;
 }
 
 export interface Article {
   id: number;
   title: string;
-  image: string;
   writer: Writer;
   likeCount: number;
   updatedAt: string;
+  image?: string;
 }
 
 export interface ArticleResponse {
