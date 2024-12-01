@@ -8,6 +8,7 @@ import {
   RefreshTokenArg,
 } from '@/types/sign';
 import { BoardForm } from '@/types/boardForm';
+import { Comments } from '@/types/comment';
 
 const instance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
@@ -22,6 +23,16 @@ const instance = axios.create({
  */
 async function getArticles(query?: string): Promise<ArticleList> {
   const response = await instance.get(`/articles?${query}`);
+  return response.data;
+}
+
+/**
+ * 게시글을 가져옵니다.
+ * @param {number} id - 게시글 ID
+ * @returns {Promise<Object>} - 게시글
+ */
+async function getArticle(id: string): Promise<Article> {
+  const response = await instance.get(`/articles/${id}`);
   return response.data;
 }
 
@@ -47,6 +58,52 @@ async function postArticle({
       Authorization: `Bearer ${accessToken}`,
     },
   });
+  return response.data;
+}
+
+/**
+ * 댓글을 가져옵니다.
+ * @param {number} id - 게시글 ID
+ * @returns {Promise<Object>} - 댓글 리스트
+ */
+async function getComment({
+  id,
+  query,
+}: {
+  id: string;
+  query: string;
+}): Promise<Comments> {
+  const response = await instance.get(`/articles/${id}/comments?${query}`);
+  return response.data;
+}
+
+/**
+ * 댓글을 작성합니다.
+ * @param {Object} comment - 댓글 작성 폼
+ * @param {string} comment.id - 게시글 ID
+ * @param {string} comment.content - 댓글 내용
+ * @param {string} accessToken - 엑세스 토큰
+ * @returns {Promise<Object>} - 댓글
+ */
+async function postComment({
+  id,
+  content,
+  accessToken,
+}: {
+  id: string;
+  content: string;
+  accessToken: string;
+}): Promise<Comment> {
+  const response = await instance.post(
+    `/articles/${id}/comments`,
+    { content },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
   return response.data;
 }
 
@@ -100,4 +157,13 @@ async function postRefreshToken(
   return response.data;
 }
 
-export { getArticles, postArticle, postSignUp, postSignIn, postRefreshToken };
+export {
+  getArticles,
+  getArticle,
+  postArticle,
+  getComment,
+  postComment,
+  postSignUp,
+  postSignIn,
+  postRefreshToken,
+};
