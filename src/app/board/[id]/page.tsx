@@ -3,8 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
-
-import { format } from 'date-fns';
+import Link from 'next/link';
 
 import { getArticle, getComment, postComment, postRefreshToken } from '@/api';
 import useAsync from '@/hooks/useAsync';
@@ -92,18 +91,18 @@ export default function Page() {
     setAccessToken(localAccessToken);
     setRefreshToken(localRefreshToken);
 
-    const refreshToken = async () => {
-      if (!localAccessToken && localRefreshToken) {
+    if (localRefreshToken) {
+      const refreshToken = async () => {
         const tokenResult = (await refreshTokenWrappedFunction({
           refreshToken: localRefreshToken,
         })) as RefreshToken;
 
         localStorage.setItem('accessToken', tokenResult.accessToken);
         setAccessToken(tokenResult.accessToken);
-      }
-    };
+      };
 
-    refreshToken();
+      refreshToken();
+    }
 
     setIsLoading(false);
   }, []);
@@ -143,7 +142,7 @@ export default function Page() {
       <div className="mt-10 mb-24 container">
         {article && <ArticleDetail article={article} />}
         <CommentForm setContent={setContent} />
-        {comment ? (
+        {comment && comment.length > 0 ? (
           comment.map((comm) => {
             return (
               <div key={comm.id}>
@@ -152,8 +151,36 @@ export default function Page() {
             );
           })
         ) : (
-          <div>댓글이 없습니다.</div>
+          <div className="flex flex-col justify-center items-center">
+            <div className="relative w-[140px] h-[140px]">
+              <Image
+                fill
+                src="/images/noComment.png"
+                alt="댓글 없음"
+                sizes="(max-width: 640px) 140px 140px"
+              />
+            </div>
+            <span className="text-center text-gray-400 mt-4">
+              아직 댓글이 없어요, <br />
+              지금 댓글을 달아보세요!
+            </span>
+          </div>
         )}
+        <div className="flex justify-center items-center mt-12">
+          <Link href="/board">
+            <button className="w-[240px] h-12 rounded-full bg-blue text-white text-lg flex justify-center items-center gap-2">
+              목록으로 돌아가기
+              <div className="relative w-6 h-6">
+                <Image
+                  fill
+                  src="/images/back.png"
+                  alt="돌아가기"
+                  sizes="(max-width: 640px) 24px, 24px"
+                />
+              </div>
+            </button>
+          </Link>
+        </div>
       </div>
     </>
   );

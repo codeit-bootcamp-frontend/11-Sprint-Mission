@@ -24,15 +24,16 @@ export default function Header() {
                 />
               </div>
             </Link>
-
             <div className="flex gap-8 nav">
               <Link href="/board">
-                <span className={pathName === '/board' ? 'text-blue' : ''}>
+                <span
+                  className={pathName.includes('/board') ? 'text-blue' : ''}
+                >
                   자유게시판
                 </span>
               </Link>
               <Link href="/items">
-                <span className={pathName === '/items' ? 'text-blue' : ''}>
+                <span className={pathName.includes('items') ? 'text-blue' : ''}>
                   중고마켓
                 </span>
               </Link>

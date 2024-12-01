@@ -87,7 +87,7 @@ export default function Page() {
   };
 
   // 로컬 스토리지에 저장된 토큰 가져오기
-  // accessToken이 없을 때 refreshToken이 있으면 accessToken 갱신
+  // refreshToken이 있을 경우 accessToken 갱신
   useEffect(() => {
     const localAccessToken = localStorage.getItem('accessToken');
     const localRefreshToken = localStorage.getItem('refreshToken');
@@ -95,18 +95,18 @@ export default function Page() {
     setAccessToken(localAccessToken);
     setRefreshToken(localRefreshToken);
 
-    const refreshToken = async () => {
-      if (!localAccessToken && localRefreshToken) {
+    if (localRefreshToken) {
+      const refreshToken = async () => {
         const tokenResult = (await refreshTokenWrappedFunction({
           refreshToken: localRefreshToken,
         })) as RefreshToken;
 
         localStorage.setItem('accessToken', tokenResult.accessToken);
         setAccessToken(tokenResult.accessToken);
-      }
-    };
+      };
 
-    refreshToken();
+      refreshToken();
+    }
 
     setIsLoading(false);
   }, []);
