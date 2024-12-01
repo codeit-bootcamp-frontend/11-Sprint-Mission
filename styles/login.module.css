@@ -1,0 +1,197 @@
+.logoWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+}
+
+.logoIcon {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.logoText {
+  font-family: "ROKAF Sans";
+  font-size: 66.34px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+}
+
+.input {
+  background-color: var(--gray-200);
+  width: 100%;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 12px;
+
+  color: var(--gray-800);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.input::placeholder {
+  color: var(--gray-400);
+}
+
+.input-email:focus-visible {
+  outline-color: var(--blue);
+}
+
+.label {
+  display: block;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin-bottom: 16px;
+}
+
+/* input.warning {
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: var(--warning);
+} */
+
+/* .input-alert {
+  margin-left: 16px;
+  font-size: 14px;
+  font-weight: 600;
+} */
+
+/* .input-alert.warning {
+  margin-top: 8px;
+  color: var(--warning);
+} */
+
+.fieldset {
+  width: 100%;
+  border: none;
+  position: relative;
+}
+
+.visibility {
+  position: absolute;
+  top: 58px;
+  right: 24px;
+  color: var(--gray-600);
+  cursor: pointer;
+}
+
+.visibilityIcon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 16px 124px;
+  border: none;
+  border-radius: 40px;
+  margin-bottom: 24px;
+  background-color: var(--blue);
+  color: var(--gray-100);
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.submitButton.hover {
+  background-color: var(--blue-hover);
+}
+
+.submitButton.active {
+  background-color: var(--blue-acrive);
+}
+
+.submitButton:disabled {
+  background-color: var(--inactive);
+  color: var(--gray-200);
+  cursor: no-drop;
+}
+
+/* form end */
+
+/* social start */
+.social {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background-color: #e6f2ff;
+  width: 100%;
+  padding: 16px 23px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.socialText {
+  flex-grow: 1;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+.socialButton {
+  position: relative;
+  width: 42px;
+  height: 42px;
+}
+
+/* social end */
+
+/* signup start */
+.goto {
+  width: fit-content;
+  margin: 0 auto 64px;
+  color: var(--gray-800);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.gotoLink {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+/* signup end */
+
+/* mobile viewport */
+@media screen and (max-width: 767px) {
+  .logoWrap {
+    gap: 12px;
+  }
+
+  .logoIcon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .logoText {
+    font-size: 33px;
+  }
+
+  .input {
+    margin-bottom: 16px;
+  }
+
+  .label {
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .visibility {
+    top: 42px;
+  }
+}
