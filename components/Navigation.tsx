@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./Navigation.module.css";
 import Link from "next/link";
 
@@ -17,11 +18,10 @@ function Navigation() {
     <nav className={styles.Navigation}>
       <div className={styles.wrap}>
         <Link href="/" className={styles.logo}>
-          <img
-            className={styles.icon}
-            src="./images/ic_logo.svg"
-            alt="판다마켓 아이콘 로고"
-          />
+          <div className={styles.logoIcon}>
+            <Image fill src="./images/ic_logo.svg" alt="판다마켓 아이콘 로고" />
+          </div>
+
           <span className={styles.text}>판다마켓</span>
         </Link>
         <ul className={styles.tabList}>
@@ -31,8 +31,10 @@ function Navigation() {
             </li>
           ))}
         </ul>
-        <Link className={styles.profile} href="/">
-          <img src="/images/profile.svg" alt="유저 프로필" />
+        <Link className={styles.profile} href="/signin">
+          <div className={styles.profileIcon}>
+            <Image fill src="/images/profile.svg" alt="유저 프로필" />
+          </div>
         </Link>
       </div>
     </nav>

@@ -64,7 +64,7 @@ export default function SignIn() {
         <span className={styles.logoText}>판다마켓</span>
       </Link>
 
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <fieldset className={styles.fieldset}>
           <label className={styles.label} htmlFor="email">
             이메일

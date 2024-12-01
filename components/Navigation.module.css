@@ -22,8 +22,10 @@
   gap: 10px;
 }
 
-.logo .icon {
+.logoIcon {
+  position: relative;
   width: 40px;
+  height: 40px;
 }
 
 .logo .text {
@@ -55,6 +57,11 @@
 
 .tabList .tab.current {
   color: var(--blue);
+}
+.profileIcon {
+  position: relative;
+  width: 40px;
+  height: 40px;
 }
 
 @media screen and (min-width: 1600px) {
