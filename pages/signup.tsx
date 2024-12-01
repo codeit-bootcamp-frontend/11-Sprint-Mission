@@ -1,11 +1,41 @@
+import { postSignUp, SignUpParams } from "@/api/auth.api";
+import useAsync from "@/hooks/useAsync";
 import styles from "@/styles/login.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import { MouseEvent, useState } from "react";
+import { useRouter } from "next/router";
+import { ChangeEvent, FormEvent, MouseEvent, useEffect, useState } from "react";
+
+const DEFAULT_VALUES: SignUpParams = {
+  email: "",
+  nickname: "",
+  password: "",
+  passwordConfirmation: "",
+};
+
+function checkValuesValid(values: SignUpParams) {
+  const { email, nickname, password, passwordConfirmation } = values;
+  const _email = email.trim();
+  const _nickname = nickname.trim();
+  const _password = password.trim();
+  const _repeat = passwordConfirmation.trim();
+  const regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
+
+  if (!regex.test(_email)) return false;
+  if (_nickname.length < 1) return false;
+  if (_password.length < 1) return false;
+  if (_repeat.length < 1) return false;
+  if (_password !== _repeat) return false;
+  return true;
+}
 
 export default function SignUp() {
+  const [values, setValues] = useState(DEFAULT_VALUES);
+  const [valid, setValid] = useState(false);
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [visibleRepeat, setVisibleRepeat] = useState(false);
+  const { excute: postSignUpAsync, loading, error } = useAsync(postSignUp);
+  const router = useRouter();
 
   const handleClickVisible = (event: MouseEvent<HTMLDivElement>) => {
     if (!(event.currentTarget instanceof HTMLElement)) return;
@@ -21,6 +51,28 @@ export default function SignUp() {
     }
   };
 
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setValues((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!valid) {
+      alert("허용되지 않은 명령입니다.");
+      return;
+    }
+    const response = await postSignUpAsync(values);
+    router.push("/");
+  };
+
+  useEffect(() => {
+    setValid(checkValuesValid(values));
+  }, [values]);
+
   return (
     <>
       <Link className={styles.logoWrap} href="/">
@@ -30,7 +82,7 @@ export default function SignUp() {
         <span className={styles.logoText}>판다마켓</span>
       </Link>
 
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <fieldset className={styles.fieldset}>
           <label className={styles.label} htmlFor="email">
             이메일
@@ -40,6 +92,8 @@ export default function SignUp() {
             id="email"
             name="email"
             type="text"
+            value={values.email}
+            onChange={handleChange}
             placeholder="이메일을 입력해주세요"
             required
           />
@@ -54,6 +108,8 @@ export default function SignUp() {
             id="nickname"
             name="nickname"
             type="text"
+            value={values.nickname}
+            onChange={handleChange}
             placeholder="닉네임을 입력해주세요"
             required
           />
@@ -68,6 +124,8 @@ export default function SignUp() {
             id="password"
             name="password"
             type={visiblePassword ? "text" : "password"}
+            value={values.password}
+            onChange={handleChange}
             placeholder="비밀번호를 입력해주세요"
             required
           />
@@ -95,8 +153,10 @@ export default function SignUp() {
           <input
             className={styles.input}
             id="repeat"
-            name="repeat"
+            name="passwordConfirmation"
             type={visibleRepeat ? "text" : "password"}
+            value={values.passwordConfirmation}
+            onChange={handleChange}
             placeholder="비밀번호를 다시 한 번 입력해주세요"
             required
           />
@@ -117,7 +177,7 @@ export default function SignUp() {
             </div>
           </div>
         </fieldset>
-        <button className={styles.submitButton} type="submit">
+        <button className={styles.submitButton} type="submit" disabled={!valid}>
           회원가입
         </button>
       </form>
