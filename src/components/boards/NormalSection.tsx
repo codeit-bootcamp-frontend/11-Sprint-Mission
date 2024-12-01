@@ -13,7 +13,7 @@ const DEVICE_PAGE_SIZE = {
   mobile: 5,
 } as const;
 
-const SortedArticles = () => {
+const NormalSection = () => {
   const DEVICE_TYPE = useDeviceType();
   const { keyword, toggleState } = useArticleStore();
 
@@ -64,4 +64,4 @@ const SortedArticles = () => {
   );
 };
 
-export default SortedArticles;
+export default NormalSection;

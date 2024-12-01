@@ -10,7 +10,7 @@ const DEVICE_PAGE_SIZE = {
   mobile: 1,
 } as const;
 
-const BestArticles = () => {
+const BestSection = () => {
   const deviceType = useDeviceType();
   const { data, isLoading, error } = useArticles({
     orderBy: "like",
@@ -47,4 +47,4 @@ const BestArticles = () => {
   );
 };
 
-export default BestArticles;
+export default BestSection;

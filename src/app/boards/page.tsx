@@ -1,7 +1,7 @@
 "use client";
 
-import BestArticles from "@/components/boards/BestArticles";
-import SortedArticles from "@/components/boards/SortedArticles";
+import BestSection from "@/components/boards/BestSection";
+import NormalSection from "@/components/boards/NormalSection";
 
 export default function BoardsPage() {
   return (
@@ -11,8 +11,8 @@ export default function BoardsPage() {
       tablet:w-[696px]
       pc:w-[1200px]"
     >
-      <BestArticles />
-      <SortedArticles />
+      <BestSection />
+      <NormalSection />
     </div>
   );
 }
