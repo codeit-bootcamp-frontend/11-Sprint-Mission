@@ -4,7 +4,7 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import formatDate from '@/lib/formatDate';
 import formatMaxCount from '@/lib/formatMaxCount';
-import { OrderByType, getArticleList } from '@/lib/api';
+import { OrderByType, getArticles } from '@/lib/api';
 import { Article } from '@/types/article.type';
 //
 import Img from '@/components/Img';
@@ -13,7 +13,7 @@ import styles from '@/styles/Boards.module.css';
 import IconMedal from '@/public/images/boards/ico-medal.svg';
 import IconHeart from '@/public/images/common/ico-heart.svg';
 import IconSearch from '@/public/images/common/ico-search.svg';
-import BaseThumbnail from '@/public/images/common/base-thumbnail.svg';
+import BaseAvatar from '@/public/images/common/base-avatar.svg';
 
 /**
  * 베스트 게시글 리스트
@@ -24,7 +24,7 @@ const BestArticleList = () => {
 
   useEffect(() => {
     const getBestArticles = async () => {
-      const data = await getArticleList({ pageSize: 3, orderBy: 'like' });
+      const data = await getArticles({ pageSize: 3, orderBy: 'like' });
       setBestArticles(data?.list ?? []);
     };
 
@@ -77,9 +77,9 @@ const ArticleListWithSearch = () => {
   const keywordRef = useRef<HTMLInputElement | null>(null);
 
   // TODO: 나중에 페이지네이션 처리
-  const getArticles = async (orderBy: OrderByType) => {
+  const handleArticlesLoad = async (orderBy: OrderByType) => {
     const keyword = keywordRef.current?.value ?? '';
-    const data = await getArticleList({ orderBy, keyword });
+    const data = await getArticles({ orderBy, keyword });
     setArticles(data?.list ?? []);
   };
 
@@ -92,11 +92,11 @@ const ArticleListWithSearch = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    getArticles(orderBy);
+    handleArticlesLoad(orderBy);
   };
 
   useEffect(() => {
-    getArticles(orderBy);
+    handleArticlesLoad(orderBy);
   }, [orderBy]);
 
   return (
@@ -141,7 +141,7 @@ const ArticleListWithSearch = () => {
 
             <div className={styles.meta}>
               <p className="flex items-center gap-2">
-                <BaseThumbnail width={24} height={24} />
+                <BaseAvatar width={24} height={24} />
                 {article.writer.nickname}
                 <span className={styles.date}>{formatDate(article.updatedAt, '. ')}</span>
               </p>
