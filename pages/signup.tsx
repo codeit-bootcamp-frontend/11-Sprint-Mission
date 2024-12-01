@@ -200,9 +200,9 @@ export default function SignUp() {
       </div>
 
       <div className={styles.goto}>
-        <span>판다마켓이 처음이신가요?</span>
-        <Link className={styles.gotoLink} href="/signup">
-          회원가입
+        <span>이미 회원이신가요?</span>
+        <Link className={styles.gotoLink} href="/signin">
+          로그인
         </Link>
       </div>
     </>

@@ -1,15 +1,59 @@
+import { postSignIn, SignInParams } from "@/api/auth.api";
+import useAsync from "@/hooks/useAsync";
 import styles from "@/styles/login.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+
+const DEFAULT_VALUES: SignInParams = {
+  email: "",
+  password: "",
+};
+
+function checkValuesValid(values: SignInParams) {
+  const { email, password } = values;
+  const _email = email.trim();
+  const _password = password.trim();
+  const regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
+
+  if (!regex.test(_email)) return false;
+  if (_password.length < 1) return false;
+  return true;
+}
 
 export default function SignIn() {
+  const [values, setValues] = useState(DEFAULT_VALUES);
   const [visible, setVisible] = useState(false);
   const [valid, setValid] = useState(false);
+  const { excute: postSignInAsync, loading, error } = useAsync(postSignIn);
+  const router = useRouter();
 
   const handleClickVisible = () => {
     setVisible((prev) => !prev);
   };
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setValues((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!valid) {
+      alert("허용되지 않은 명령입니다.");
+      return;
+    }
+    const response = await postSignInAsync(values);
+    router.push("/");
+  };
+
+  useEffect(() => {
+    setValid(checkValuesValid(values));
+  }, [values]);
 
   return (
     <>
@@ -30,10 +74,12 @@ export default function SignIn() {
             id="email"
             name="email"
             type="text"
+            value={values.email}
+            onChange={handleChange}
             placeholder="이메일을 입력해주세요"
             required
           />
-          <p className="input-alert"></p>
+          <p className={styles.alert}></p>
         </fieldset>
 
         <fieldset className={styles.fieldset}>
@@ -45,6 +91,8 @@ export default function SignIn() {
             id="password"
             name="password"
             type={visible ? "text" : "password"}
+            value={values.password}
+            onChange={handleChange}
             placeholder="비밀번호를 입력해주세요"
             required
           />
