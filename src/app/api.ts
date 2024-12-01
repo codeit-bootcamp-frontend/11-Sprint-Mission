@@ -1,6 +1,12 @@
 import axios from 'axios';
 import { Article, ArticleList } from '@/types/article';
-import { SignUp, SignIn, UserInfo, RefreshToken } from '@/types/sign';
+import {
+  SignUp,
+  SignIn,
+  UserInfo,
+  RefreshToken,
+  RefreshTokenArg,
+} from '@/types/sign';
 import { BoardForm } from '@/types/boardForm';
 
 const instance = axios.create({
@@ -83,7 +89,9 @@ async function postSignIn(signInInfo: SignIn): Promise<UserInfo> {
  * @param {string} refreshToken - 리프레시 토큰
  * @returns {Promise<object>} - 엑세스 토큰 (.accessToken)
  */
-async function postRefreshToken(refreshToken: string): Promise<RefreshToken> {
+async function postRefreshToken(
+  refreshToken: RefreshTokenArg
+): Promise<RefreshToken> {
   const response = await instance.post('/auth/refresh-Token', refreshToken, {
     headers: {
       'Content-Type': 'application/json',

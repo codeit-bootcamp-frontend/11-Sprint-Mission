@@ -26,3 +26,7 @@ export interface UserInfo {
 export interface RefreshToken {
   accessToken: string;
 }
+
+export interface RefreshTokenArg {
+  refreshToken: string;
+}

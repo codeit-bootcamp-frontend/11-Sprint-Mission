@@ -2,27 +2,31 @@
 
 // react, next
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 // 함수, 타입
 import { postArticle, postRefreshToken, postSignIn } from '@/api';
 import useAsync from '@/hooks/useAsync';
 import { BoardForm } from '@/types/boardForm';
+import { Article } from '@/types/article';
 
 // 컴포넌트
 import FileUploadInput from '@/components/board/addboard/FileUploadInput';
 import Loading from '@/board/loading';
 import Error from '@/board/error';
+import { RefreshToken } from '@/types/sign';
 
 export default function Page() {
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
   const [image, setImage] = useState<string | null>(null);
-  const [id, setId] = useState<number | null>(null);
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [refreshToken, setRefreshToken] = useState<string | null>(null);
+
+  const router = useRouter();
 
   // 필요한 API 호출
   const {
@@ -45,45 +49,29 @@ export default function Page() {
     setContent(e.target.value);
   };
 
-  // 게시글 등록
-  // accessToken이 없을 때 refreshToken이 있으면 refreshToken으로 accessToken 재발급 후 다시 시도
-  // accessToken, refreshToken 둘 다 있을 때 게시글 등록 (이미지는 blob URL이므로 테스트용 이미지로 대체)
+  // 게시글 등록 (이미지는 blob URL이므로 테스트용 이미지로 대체)
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!accessToken && refreshToken) {
-      const tokenResult = await refreshTokenWrappedFunction(refreshToken);
-      if (tokenResult) {
-        setAccessToken(tokenResult.accessToken);
-        handleSubmit(e);
-      }
-    } else if (accessToken && refreshToken) {
-      const boardForm: BoardForm = {
-        title: title,
-        content: content,
-      };
+    const boardForm: BoardForm = {
+      title: title,
+      content: content,
+    };
 
-      const imageUrl = image
-        ? 'https://mblogthumb-phinf.pstatic.net/20161008_259/sasa9508_1475929220574OA2NI_JPEG/3.jpg?type=w420'
-        : null;
+    image
+      ? (boardForm.image =
+          'https://mblogthumb-phinf.pstatic.net/20161008_259/sasa9508_1475929220574OA2NI_JPEG/3.jpg?type=w420')
+      : null;
 
-      if (imageUrl) {
-        boardForm.image = imageUrl;
-      }
+    const articleResult = (await articleWrappedFunction({
+      boardForm,
+      accessToken: accessToken as string,
+    })) as Article;
 
-      const articleResult = await articleWrappedFunction({
-        boardForm,
-        accessToken,
-      });
-      if (articleResult) {
-        setId(articleResult?.id);
-      }
-      setTitle('');
-      setContent('');
-    }
+    router.push(`/board/${articleResult.id}`);
   };
 
-  // 테스트용 토큰 발급
+  // 테스트용 토큰 발급 (다음 미션 작업 시 삭제)
   const getTestToken = async () => {
     const result = await postSignIn({
       email: '123@123.com',
@@ -99,12 +87,27 @@ export default function Page() {
   };
 
   // 로컬 스토리지에 저장된 토큰 가져오기
+  // accessToken이 없을 때 refreshToken이 있으면 accessToken 갱신
   useEffect(() => {
     const localAccessToken = localStorage.getItem('accessToken');
     const localRefreshToken = localStorage.getItem('refreshToken');
 
     setAccessToken(localAccessToken);
     setRefreshToken(localRefreshToken);
+
+    const refreshToken = async () => {
+      if (!localAccessToken && localRefreshToken) {
+        const tokenResult = (await refreshTokenWrappedFunction({
+          refreshToken: localRefreshToken,
+        })) as RefreshToken;
+
+        localStorage.setItem('accessToken', tokenResult.accessToken);
+        setAccessToken(tokenResult.accessToken);
+      }
+    };
+
+    refreshToken();
+
     setIsLoading(false);
   }, []);
 
