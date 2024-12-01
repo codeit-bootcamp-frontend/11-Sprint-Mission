@@ -1,7 +1,7 @@
 "use client";
 
-import BestSection from "@/components/boards/BestSection";
-import NormalSection from "@/components/boards/NormalSection";
+import BestSection from "@/components/boards/BestSection/BestSection";
+import NormalSection from "@/components/boards/NormalSection/NormalSection";
 
 export default function BoardsPage() {
   return (
