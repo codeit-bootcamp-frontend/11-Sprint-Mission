@@ -3,14 +3,38 @@ import medal from '@/public/ic_medal.svg';
 import heart from '@/public/ic_heart.svg';
 import styles from '@/styles/BestBoard.module.css';
 
-export default function BestBoard({ title, image, updatedAt, likeCount, writer }) {
-  const date = new Date(updatedAt);
+interface Writer {
+  nickname: string;
+}
 
-  const formattedDate = date.toLocaleDateString({
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+interface BestBoardData {
+  title?: string;
+  image?: string;
+  updatedAt?: string;
+  likeCount?: number;
+  writer?: Writer | null;
+}
+
+interface BestBoardProps {
+  data?: BestBoardData;
+}
+
+export default function BestBoard({ data = {} }: BestBoardProps) {
+  if (!data) {
+    return <div>게시글을 불러오는 중입니다...</div>;
+  }
+
+  const { title = '제목 없음', image = '', updatedAt = '', likeCount = 0, writer } = data || {};
+
+  const imageUrl = image || '/default-image.jpg';
+
+  const formattedDate = updatedAt
+    ? new Date(updatedAt).toLocaleDateString('ko-KR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+    : '날짜 없음';
 
   return (
     <div className={styles.cardContent}>
@@ -21,12 +45,12 @@ export default function BestBoard({ title, image, updatedAt, likeCount, writer }
       <div className={styles.cardBody}>
         <div className={styles.cardBodyContent}>{title}</div>
         <div className={styles.cardBodyContentImage}>
-          <Image width={'48'} height={'44'} src={image} alt="게시글 사진" />
+          <Image width={'48'} height={'44'} src={imageUrl} alt="게시글 사진" />
         </div>
       </div>
       <div className={styles.cardBottom}>
         <div className={styles.cardBottomAhead}>
-          <div className={styles.boardUserId}>{writer.nickname}</div>
+          <div className={styles.boardUserId}>{writer?.nickname || '익명'}</div>
           <div className={styles.likeIt}>
             <Image width={'14'} height={'12'} src={heart} alt="좋아요" />
             <div className={styles.likeCount}>{likeCount}</div>

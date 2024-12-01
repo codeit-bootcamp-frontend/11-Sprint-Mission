@@ -3,17 +3,34 @@ import heart from '@/public/ic_heart.svg';
 import profile from '@/public/ic_profile.svg';
 import styles from '@/styles/EntireBoard.module.css';
 
-export default function EntireBoard({ data }) {
-  const { title, image, updatedAt, likeCount, writer } = data;
-  const imageUrl = image || null;
+interface Writer {
+  nickname: string;
+}
 
-  const date = new Date(updatedAt);
+interface EntireBoardData {
+  title?: string;
+  image?: string;
+  updatedAt?: string;
+  likeCount?: number;
+  writer?: Writer | null;
+}
 
-  const formattedDate = date.toLocaleDateString({
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+interface EntireBoardProps {
+  data?: EntireBoardData;
+}
+
+export default function EntireBoard({ data }: EntireBoardProps) {
+  const { title = '제목 없음', image, updatedAt = '', likeCount = 0, writer } = data || {};
+
+  const imageUrl = image || '/default-image.jpg';
+
+  const formattedDate = updatedAt
+    ? new Date(updatedAt).toLocaleDateString('ko-KR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+    : '날짜 없음';
 
   return (
     <div className={styles.boardListContent}>
@@ -28,7 +45,7 @@ export default function EntireBoard({ data }) {
           <div className={styles.listUserInfo}>
             <Image width={'24'} height={'24'} src={profile} alt="프로필" />
             <div className={styles.listContentInfo}>
-              <div className={styles.listUserId}>{writer.nickname}</div>
+              <div className={styles.listUserId}>{writer?.nickname || '익명'}</div>
               <div className={styles.listUploadate}>{formattedDate}</div>
             </div>
           </div>

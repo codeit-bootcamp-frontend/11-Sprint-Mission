@@ -1,9 +1,9 @@
 import { useEffect, useState, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import BestBoard from '../components/BestBoard';
-import EntireBoard from '../components/EntireBoard';
-import SmallButton from '../components/common/SmallButton';
+import BestBoard from '@/components/BestBoard'
+import EntireBoard from '@/components/EntireBoard';
+import SmallButton from '@/components/common/SmallButton';
 import axios from '@/pages/api/api';
 import search from '@/public/ic_search.svg';
 import styles from '@/styles/Boards.module.css';

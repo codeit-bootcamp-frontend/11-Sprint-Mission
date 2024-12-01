@@ -1,18 +1,17 @@
-import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router'; // Next.js의 useRouter를 사용해 페이지 이동 처리
 import SmallButton from '@/components/common/SmallButton';
 import FileInput from '@/components/FileInput';
 import axios from '@/pages/api/api';
-import styles from '@/styles/AddBoard.module.css';
 
 export default function AddBoard() {
   const [values, setValues] = useState({
     title: '',
     content: '',
-    image: '' || null,
+    image: 'https://example.com/...',
   });
   const [isFormValid, setIsFormValid] = useState(false);
-  const router = useRouter();
+  const router = useRouter(); // useRouter 사용
 
   const handleChange = (name, value) => {
     setValues(preValues => ({ ...preValues, [name]: value }));
@@ -25,6 +24,7 @@ export default function AddBoard() {
 
   const handleSubmit = async e => {
     e.preventDefault();
+
     const config = {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
@@ -34,7 +34,9 @@ export default function AddBoard() {
     try {
       const response = await axios.post('/articles', values, config);
       console.log('응답:', response.data);
-      const createdArticleId = response.data.id;
+
+      // 등록 성공 시 상세 페이지로 이동
+      const createdArticleId = response.data.id; // 서버에서 반환한 게시글 ID
       router.push(`/board/${createdArticleId}`);
     } catch (error) {
       console.error('에러 발생:', error);
@@ -46,35 +48,35 @@ export default function AddBoard() {
   }, [values.title, values.content]);
 
   return (
-    <form onSubmit={handleSubmit} className={styles.registerForm}>
-      <div className={styles.formContent}>
-        <aside className={styles.formTop}>
-          <h2 className={styles.formTheme}>게시글 쓰기</h2>
+    <form onSubmit={handleSubmit} className="registerForm">
+      <main className="formBody">
+        <aside className="formTop">
+          <h2 className="formTheme">게시글 쓰기</h2>
           <SmallButton type="submit" disabled={!isFormValid}>
             등록
           </SmallButton>
         </aside>
-        <div className={styles.formBody}>
-          <section className={styles.formSection}>
-            <h3 className={styles.sectionTheme}>*제목</h3>
-            <input name="title" value={values.title} onChange={handleInputChange} placeholder="제목을 입력해주세요" className={styles.inputTitle} />
+        <div className="formBody">
+          <section className="formSection">
+            <h3 className="sectionTheme">*제목</h3>
+            <input name="title" value={values.title} onChange={handleInputChange} placeholder="제목을 입력해주세요" className="add-item-input" />
           </section>
-          <section className={styles.formSection}>
-            <h3 className={styles.sectionTheme}>*내용</h3>
+          <section className="formSection">
+            <h3 className="sectionTheme">*내용</h3>
             <textarea
               name="content"
               value={values.content}
               onChange={handleInputChange}
-              placeholder="내용을 입력해주세요"
-              className={styles.inputContent}
+              placeholder="상품 소개를 입력해주세요"
+              className="addItemContent"
             />
           </section>
-          <section className={styles.formSection}>
-            <h3 className={styles.sectionTheme}>이미지</h3>
+          <section className="formSection">
+            <h3 className="sectionTheme">이미지</h3>
             <FileInput name="image" value={values.imgFile} onChange={handleChange} />
           </section>
         </div>
-      </div>
+      </main>
     </form>
   );
 }
