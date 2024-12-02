@@ -1,19 +1,21 @@
 "use client";
 
-import { useState } from "react";
-import debounce from "lodash/debounce";
+import { useState, useEffect } from "react";
 import { useArticleStore, ArticleStore } from "@/store/articleStore";
+import { useDebounce } from "@/hooks/useDebounce";
 
 const SearchArticles = () => {
   const setKeyword = useArticleStore((state: ArticleStore) => state.setKeyword);
   const [searchInput, setSearchInput] = useState("");
+  const debouncedValue = useDebounce(searchInput, 500);
 
-  const debounceDelay = 500;
+  useEffect(() => {
+    setKeyword(debouncedValue);
+  }, [debouncedValue, setKeyword]);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.trim();
     setSearchInput(value);
-    debounce(() => setKeyword(value), debounceDelay)();
   };
 
   return (
