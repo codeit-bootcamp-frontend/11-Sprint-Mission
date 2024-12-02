@@ -1,4 +1,5 @@
 import { postSignIn, SignInParams } from "@/api/auth.api";
+import { setInstanceHeaders } from "@/api/axios";
 import useAsync from "@/hooks/useAsync";
 import styles from "@/styles/login.module.css";
 import Image from "next/image";
@@ -51,14 +52,10 @@ export default function SignIn() {
     const response = await postSignInAsync(values);
     if (response) {
       sessionStorage.setItem("user", JSON.stringify(response.user));
-      sessionStorage.setItem(
-        "accessToken",
-        JSON.stringify(response.accessToken)
-      );
-      sessionStorage.setItem(
-        "refreshToken",
-        JSON.stringify(response.refreshToken)
-      );
+      sessionStorage.setItem("accessToken", response.accessToken);
+      sessionStorage.setItem("refreshToken", response.refreshToken);
+      setInstanceHeaders(response.accessToken);
+
       router.push("/");
     } else alert("회원가입에 실패했습니다.");
   };
