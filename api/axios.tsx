@@ -9,9 +9,17 @@ const instance = axios.create({
   },
 });
 
+let interceptorId: any;
+
 export const setInstanceHeaders = (token?: string) => {
   const value = token ? `Bearer ${token}` : undefined;
-  instance.interceptors.request.use((config) => {
+  // 기존 인터셉터 제거
+  if (interceptorId !== undefined) {
+    instance.interceptors.request.eject(interceptorId);
+  }
+
+  // 새로운 인터셉터 추가
+  interceptorId = instance.interceptors.request.use((config) => {
     config.headers["Authorization"] = value;
     return config;
   });

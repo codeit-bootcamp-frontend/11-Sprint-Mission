@@ -20,5 +20,24 @@ async function getCommentListByArticleId({
   return response.data;
 }
 
-export { getCommentListByArticleId };
-export type { GetCommentListByArticleId };
+interface PostCommentByArticleId {
+  articleId: number;
+  content: string;
+}
+
+async function postCommentByArticleId({
+  articleId,
+  content,
+}: PostCommentByArticleId) {
+  const response = await axios({
+    method: "post",
+    url: `/articles/${articleId}/comments`,
+    data: {
+      content,
+    },
+  });
+  return response.data;
+}
+
+export { getCommentListByArticleId, postCommentByArticleId };
+export type { GetCommentListByArticleId, PostCommentByArticleId };

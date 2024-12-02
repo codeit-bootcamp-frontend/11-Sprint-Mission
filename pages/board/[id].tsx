@@ -5,9 +5,15 @@ import styles from "@/styles/article.module.css";
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import useOutsideClick from "@/hooks/useOutsideClick";
 import formatDate from "@/lib/formatDate";
-import { getCommentListByArticleId } from "@/api/comment.api";
+import {
+  getCommentListByArticleId,
+  postCommentByArticleId,
+} from "@/api/comment.api";
 import { Comment, CommentList } from "@/types/Commnet.type";
 import Link from "next/link";
+import useAsync from "@/hooks/useAsync";
+import { setInstanceHeaders } from "@/api/axios";
+import renewAccessToken from "@/lib/renewAccessToken";
 
 export async function getServerSideProps(context: any) {
   const { id } = context.params;
@@ -35,14 +41,44 @@ export default function ArticleDetail({
 }) {
   const [comments, setComments] = useState(initComments);
   const [commentValue, setCommentVlaue] = useState("");
+  const {
+    excute: postCommentAsync,
+    loading: loadingPostComment,
+    error: errorPostComment,
+  } = useAsync(postCommentByArticleId);
+  const {
+    excute: getCommentListAsync,
+    loading: loadingGetComments,
+    error: errorGetComments,
+  } = useAsync(getCommentListByArticleId);
 
   const handleChangeComment = (value: string) => {
     setCommentVlaue(value);
   };
 
-  const handleSubmitComment = () => {
-    //
+  const handleSubmitComment = async () => {
+    const response = await postCommentAsync({
+      articleId: article.id,
+      content: commentValue,
+    });
+    if (response) {
+      const next = await getCommentListAsync({
+        articleId: article.id,
+        limit: 10,
+      });
+      if (next) {
+        setComments(next);
+        setCommentVlaue("");
+      }
+    }
   };
+
+  useEffect(() => {
+    const token = sessionStorage.getItem("accessToken");
+    if (token) {
+      setInstanceHeaders(token);
+    } else alert("로그인 하렴");
+  }, []);
 
   if (!article) return null;
 
