@@ -1,7 +1,41 @@
-# 프로젝트 공통 사항
+# Common Project Guidelines
 
-## 디바이스 사이즈
+## Device Size
 
-- pc: 1280px 이상
-- tablet: 745px 이상
-- mobile: 744px 이하
+- pc: 1280px or above
+- tablet: 745px or above
+- mobile: 744px or below
+
+## Next.js App Router Best Practices
+
+- Default to server components
+- Implement client components only when needed
+- Use file-based routing system
+- Use layout.js for shared layouts
+- Implement loading.js for loading states
+- Use error.js for error handling
+- Use route handlers for API routes
+
+## TypeScript and Code Quality
+
+- Use TypeScript for type safety
+- Provide proper type definitions and interfaces
+- Let TypeScript infer types when possible
+- Use functional programming over classes
+- Prefer iteration and modularization over duplication
+- Use descriptive variable names (e.g., isLoading)
+
+## Component Development
+
+- Use functional components and hooks for state
+- Default to React Server Components (RSC)
+- Minimize 'use client', 'useEffect', 'setState'
+- Wrap client components in Suspense
+- Use dynamic loading for non-critical components
+
+## Styling and UI
+
+- Use Tailwind CSS classes only
+- Use Shadcn UI, Radix UI, Tailwind Aria
+- Mobile-first responsive design
+
