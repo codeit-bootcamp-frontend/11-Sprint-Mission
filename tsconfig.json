@@ -17,6 +17,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_app.jsx", "pages/api/api.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_app.jsx", "pages/api/api.js", "components/FileInput.jsx"],
   "exclude": ["node_modules"]
 }

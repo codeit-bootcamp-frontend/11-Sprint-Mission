@@ -3,24 +3,41 @@ import heart from '@/public/ic_heart.svg';
 import profile from '@/public/ic_profile.svg';
 import styles from '@/styles/EntireBoard.module.css';
 
-export default function EntireBoard({ data }) {
-  const { title, image, updatedAt, likeCount, writer } = data;
+interface Writer {
+  nickname: string;
+}
+
+interface EntireBoardData {
+  title?: string;
+  image?: string;
+  updatedAt?: string;
+  likeCount?: number;
+  writer?: Writer | null;
+}
+
+interface EntireBoardProps {
+  data?: EntireBoardData;
+}
+
+export default function EntireBoard({ data }: EntireBoardProps) {
+  const { title = '제목 없음', image, updatedAt = '', likeCount = 0, writer } = data || {};
+
   const imageUrl = image || '/default-image.jpg';
 
-  const date = new Date(updatedAt);
-
-  const formattedDate = date.toLocaleDateString({
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+  const formattedDate = updatedAt
+    ? new Date(updatedAt).toLocaleDateString('ko-KR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+    : '날짜 없음';
 
   return (
     <div className={styles.boardListContent}>
       <div className={styles.listMainContent}>
         <div className={styles.listMainTitle}>{title}</div>
         <div className={styles.listMainContentImage}>
-          <Image width={'48'} height={'44'} src={imageUrl} alt="리스트 사진" />
+          <Image width={'48'} height={'44'} src={imageUrl} alt="게시글 이미지" />
         </div>
       </div>
       <div className={styles.listInfo}>
@@ -28,7 +45,7 @@ export default function EntireBoard({ data }) {
           <div className={styles.listUserInfo}>
             <Image width={'24'} height={'24'} src={profile} alt="프로필" />
             <div className={styles.listContentInfo}>
-              <div className={styles.listUserId}>{writer.nickname}</div>
+              <div className={styles.listUserId}>{writer?.nickname || '익명'}</div>
               <div className={styles.listUploadate}>{formattedDate}</div>
             </div>
           </div>
