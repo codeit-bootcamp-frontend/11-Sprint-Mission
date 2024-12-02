@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { ArticleList } from '@/types/article.type';
+import { Articles } from '@/types/article.type';
 
 const instance = axios.create({
-  baseURL: 'https://panda-market-api.vercel.app',
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
 });
 
 /**
@@ -11,26 +11,32 @@ const instance = axios.create({
  */
 type OrderByType = 'recent' | 'like';
 
-interface getArticleListProps {
+interface getArticlesParams {
   page?: number;
   pageSize?: number;
   orderBy?: OrderByType;
   keyword?: string;
 }
 
-const getArticleList = async ({
+const getArticles = async ({
   page = 1,
   pageSize = 10,
   orderBy = 'recent',
   keyword = '',
-}: getArticleListProps = {}): Promise<ArticleList> => {
-  const res = await instance.get('/articles', {
-    params: { page, pageSize, orderBy, keyword },
-  });
+}: getArticlesParams = {}): Promise<Articles | null> => {
+  try {
+    const res = await instance.get('/articles', {
+      params: { page, pageSize, orderBy, keyword },
+    });
 
-  return res.data;
+    return res.data;
+  } catch (error) {
+    console.error(error);
+    return null;
+    // throw error;
+  }
 };
 
-export { getArticleList };
-export type { OrderByType, getArticleListProps };
+export { getArticles };
+export type { OrderByType, getArticlesParams };
 export default instance;

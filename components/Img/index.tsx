@@ -20,7 +20,21 @@ const handleError = (e: React.SyntheticEvent<HTMLImageElement>) => {
   e.currentTarget.src = NoImage.src;
 };
 
-export default function Img({ useImg = false, src = NoImage, alt = '', ...props }: Props) {
-  if (useImg) return <img src={src || NoImage} alt={alt} {...props} onError={handleError} />;
-  return <Image src={src || NoImage} alt={alt} {...props} onError={handleError} />;
+export default function Img({ useImg = false, src, alt = '', ...props }: Props) {
+  const imgProps = {
+    src: src || NoImage,
+    alt,
+    onError: handleError,
+    ...props,
+  };
+
+  return useImg ? (
+    <img {...imgProps} />
+  ) : (
+    <Image
+      placeholder="blur"
+      blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
+      {...imgProps}
+    />
+  );
 }

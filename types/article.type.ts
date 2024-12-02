@@ -26,13 +26,13 @@ interface Article {
 
 /**
  * 게시글 리스트 타입
- * @interface ArticleList
+ * @interface Articles
  * @property {number} totalCount - 게시글 총 갯수
  * @property {Article[]} list - 게시글 목록
  */
-interface ArticleList {
+interface Articles {
   totalCount: number;
   list: Article[];
 }
 
-export type { Article, ArticleList };
+export type { Article, Articles };

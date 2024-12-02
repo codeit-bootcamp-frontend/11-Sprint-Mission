@@ -3,12 +3,11 @@
   padding: 138px 0;
 
   .container {
+    @apply mx-auto flex justify-center;
     max-width: var(--container-width);
-    display: flex;
-    justify-content: center;
   }
 }
-.section-content {
+.sectionContent {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,26 +24,26 @@
     text-align: right;
   }
 }
-.section-img {
+.sectionImg {
   border-radius: 12px 0 0 12px;
 
   &.right {
     border-radius: 0 12px 12px 0;
   }
 }
-.section-point {
+.sectionPoint {
   margin-bottom: 0.75rem;
   color: var(--primary-100);
   font-size: 1.125rem;
   font-weight: bold;
 }
-.section-title {
+.sectionTitle {
   margin: 0;
   font-size: 2.5rem;
   font-weight: bold;
   line-height: 1.4;
 }
-.section-desc {
+.sectionDesc {
   margin-top: 1.5rem;
   margin-bottom: 0;
   font-size: 1.5rem;
@@ -63,8 +62,11 @@
     font-size: 1.25rem;
   }
 }
+.bottomVisual {
+  background-color: #cfe5ff;
+}
 .hero .container,
-.bottom-visual .container {
+.bottomVisual .container {
   max-width: var(--container-width);
   margin: 0 auto;
   height: 540px;
@@ -72,7 +74,7 @@
   background: url('/images/main/bg-hero.png') right 46px bottom no-repeat;
 }
 .hero .heading,
-.bottom-visual .heading {
+.bottomVisual .heading {
   position: relative;
   margin: 0;
   padding-top: 240px;
@@ -83,10 +85,10 @@
 }
 
 /* bottom visual */
-.bottom-visual .container {
+.bottomVisual .container {
   background-image: url('/images/main/bg-bottom.png');
 }
-.bottom-visual .heading {
+.bottomVisual .heading {
   padding-top: 255px;
 }
 
@@ -100,10 +102,10 @@
       flex-direction: column;
     }
   }
-  .section-img {
+  .sectionImg {
     border-radius: 14px;
   }
-  .section-content {
+  .sectionContent {
     width: auto;
     margin-top: 24px;
     padding: 0;
@@ -113,10 +115,10 @@
       order: 2;
     }
   }
-  .section-title {
+  .sectionTitle {
     font-size: 2rem;
   }
-  .section-desc {
+  .sectionDesc {
     font-size: 1.125rem;
   }
 
@@ -132,7 +134,7 @@
       padding-top: 84px;
     }
   }
-  .bottom-visual {
+  .bottomVisual {
     .container {
       text-align: center;
       height: 927px;
@@ -155,25 +157,27 @@
     }
     .btn {
       width: 240px;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 
   .section {
     padding: 20px 16px;
   }
-  .section-point {
+  .sectionPoint {
     margin-bottom: 0.5rem;
     font-size: 1rem;
   }
-  .section-title {
+  .sectionTitle {
     font-size: 1.5rem;
   }
-  .section-desc {
+  .sectionDesc {
     margin-top: 1rem;
     font-size: 1rem;
   }
 
-  .bottom-visual {
+  .bottomVisual {
     margin-top: 60px;
 
     .container {

@@ -21,6 +21,7 @@
   --gray-900: #111827;
 
   --container-width: 1200px;
+  --body-bg: #fff;
 }
 
 @layer base {
@@ -44,6 +45,24 @@
   }
   .error-message {
     @apply py-12 text-center text-2xl font-bold;
+  }
+  .preview {
+    @apply relative flex cursor-pointer flex-col items-center justify-center gap-3 overflow-hidden rounded-xl border;
+    width: 282px;
+    height: 282px;
+    color: var(--gray-400);
+    border-color: var(--gray-200);
+    background-color: var(--gray-100);
+
+    .input-image {
+      @apply hidden;
+    }
+    .preview-image {
+      @apply size-full object-cover;
+    }
+    .btn-delete {
+      @apply absolute right-3 top-3;
+    }
   }
 }
 
@@ -72,12 +91,30 @@
       background-color: var(--gray-500);
     }
   }
+  .btn-outline {
+    @apply border;
+    color: var(--primary-100);
+    border-color: var(--primary-100);
+    background-color: var(--gray-50);
+
+    &:hover {
+      background-color: var(--primary-100);
+      color: var(--gray-50);
+    }
+  }
   .input {
     @apply w-full rounded-xl px-6 py-4;
     background-color: var(--gray-100);
 
     &:placeholder {
       color: var(--gray-400);
+    }
+  }
+  .label {
+    @apply text-lg font-bold;
+
+    .input + & {
+      @apply mt-2;
     }
   }
   .select {
@@ -96,7 +133,7 @@
     @apply pl-11;
   }
   .v-bar {
-    @apply h-4/5 w-0 border-l;
+    @apply mx-8 w-0 self-stretch border-l;
     border-color: var(--gray-200);
   }
   .stretched-link::after {
@@ -105,4 +142,9 @@
     content: '';
     z-index: 1;
   }
+}
+
+.wrap {
+  @apply flex min-h-screen flex-col;
+  background-color: var(--body-bg);
 }
