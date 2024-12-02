@@ -16,17 +16,56 @@ import { useRouter } from 'next/router';
 import InputIcon from '@/public/ic_search.svg';
 import Input from '@/components/common/Input';
 import Image from 'next/image';
+import { GetServerSidePropsContext } from 'next';
 
 const items: DropdownItem[] = [
   { id: 0, label: '최신순', value: 'recent' },
   { id: 1, label: '좋아요순', value: 'favorite' },
 ];
 
-const Board = () => {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  try {
+    const bestProductsResponse = await getProducts({
+      orderBy: 'favorite',
+      page: 1,
+      pageSize: 1,
+    });
+    const allProductsResponse = await getProducts({
+      orderBy: 'recent',
+      page: 1,
+      pageSize: 10,
+    });
+
+    return {
+      props: {
+        initialBestProducts: bestProductsResponse.data.list,
+        initialAllProducts: allProductsResponse.data.list,
+      },
+    };
+  } catch (error) {
+    console.error('데이터를 불러오는 데 실패했습니다:', error);
+    return {
+      props: {
+        initialBestProducts: [],
+        initialAllProducts: [],
+      },
+    };
+  }
+}
+
+const Board = ({
+  initialBestProducts,
+  initialAllProducts,
+}: {
+  initialBestProducts: ProductResult[];
+  initialAllProducts: ProductResult[];
+}) => {
   const screenType = useResize(); // useResize 훅 사용
   const [page, setPage] = useState(1); // 페이지 번호
-  const [bestProducts, setBestProducts] = useState<ProductResult[]>([]);
-  const [allProducts, setAllProducts] = useState<ProductResult[]>([]);
+  const [bestProducts, setBestProducts] =
+    useState<ProductResult[]>(initialBestProducts);
+  const [allProducts, setAllProducts] =
+    useState<ProductResult[]>(initialAllProducts);
   const [order, setOrder] = useState<OrderType>('recent');
   const router = useRouter();
 
