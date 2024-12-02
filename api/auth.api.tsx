@@ -53,5 +53,16 @@ async function postSignIn({
   return response.data;
 }
 
-export { postSignUp, postSignIn };
+async function postRefresh({ refreshToken }: { refreshToken: string }) {
+  const response = await axios({
+    method: "post",
+    url: "/auth/refresh-token",
+    data: {
+      refreshToken,
+    },
+  });
+  return response.data;
+}
+
+export { postSignUp, postSignIn, postRefresh };
 export type { SignUpParams, SignInParams, AuthResponse };
