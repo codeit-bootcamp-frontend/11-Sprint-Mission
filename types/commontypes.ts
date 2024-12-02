@@ -122,3 +122,36 @@ export interface FormValues {
   content: string;
   image: File | null;
 }
+
+export interface AddItemFormProps {
+  className?: string;
+  initialValues?: {
+    name: string;
+    favorite: number;
+    content: string;
+    price: string;
+    imgFile: File | null;
+    tags: string[];
+  };
+  initialPreview?: string;
+  onSubmit: (formData: FormData) => Promise<{ review: any } | null>;
+  onSubmitSuccess: (review: any) => void;
+}
+
+export interface Item {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  createdAt: string;
+  favoriteCount: number;
+  ownerNickname: string;
+  ownerId: number;
+  images: string[];
+  tags: string[];
+}
+
+export interface ItemListResponse {
+  totalCount: number;
+  list: Item[];
+}

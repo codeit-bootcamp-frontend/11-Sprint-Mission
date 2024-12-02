@@ -1,0 +1,158 @@
+.add_item_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 24px;
+}
+
+.add_item_form_total_container {
+  display: flex;
+  flex-direction: column;
+  width: 1200px;
+  gap: 24px;
+}
+
+.add_item_form_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add_item_form_title {
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.add_item_submit_button {
+  width: 74px;
+  height: 42px;
+  border-radius: 8px;
+  background-color: #9ca3af;
+  border-style: none;
+  color: #f3f4f6;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  cursor: not-allowed;
+}
+
+.add_item_submit_button:enabled {
+  background-color: #3692ff;
+  cursor: pointer;
+}
+
+.add_item_submit_button:enabled:hover {
+  background-color: #2e7ae4;
+}
+
+.add_item_form_container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.add_item_img_container,
+.add_item_name_container,
+.add_item_content_container,
+.add_item_price_container,
+.add_item_tags_container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.add_item_img_title,
+.add_item_name_title,
+.add_item_content_title,
+.add_item_price_title,
+.add_item_tags_title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  color: #1f2937;
+}
+
+.add_item_img_preview {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.add_item_name_input,
+.add_item_price_input,
+.add_item_tag_input {
+  background-color: #f3f4f6;
+  border: 1px solid #f3f4f6;
+  border-radius: 12px;
+  padding: 16px 24px;
+}
+
+.add_item_content_container textarea {
+  background-color: #f3f4f6;
+  border: 1px solid #f3f4f6;
+  border-radius: 12px;
+  padding: 16px 24px 240px 24px;
+}
+
+.add_item_name_input:focus,
+.add_item_price_input:focus,
+.add_item_tag_input:focus,
+.add_item_content_textarea:focus {
+  border-color: #3692ff;
+  outline: none;
+}
+
+.add_item_name_input::placeholder,
+.add_item_price_input::placeholder,
+.add_item_tag_input::placeholder,
+.add_item_content_textarea::placeholder {
+  color: #9ca3af;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.add_item_tags_list {
+  display: flex;
+  gap: 12px;
+}
+
+.add_item_tag {
+  display: inline-flex;
+  align-items: center;
+  background-color: #f3f4f6;
+  border-radius: 26px;
+  padding: 8px 16px;
+  font-size: 16px;
+  color: #1f2937;
+  line-height: 26px;
+}
+
+.add_item_tag_remove_button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 8;
+  padding-right: 0;
+}
+
+.add_item_tag_remove_button img {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 1279px) {
+  .add_item_form_total_container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 24px;
+  }
+
+  .add_item_form_container {
+    gap: 24px;
+  }
+}
