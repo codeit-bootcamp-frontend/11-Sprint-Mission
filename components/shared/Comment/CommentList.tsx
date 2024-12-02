@@ -7,25 +7,20 @@ const RETURN_IMAGE = '/ic_back.svg';
 
 import { CommentType } from '@/types/types';
 
-import Coment from './Coment';
-import ComentEdit from './ComentEdit';
+import Comment from './Comment';
+import CommentEdit from './CommentEdit';
 import NotResult from '../NotResult';
 import Button from '../Button';
 import Line from '../Line';
 
-interface ComentListProps {
+interface CommentListProps {
   commentsList: CommentType[];
   onEditSubmit: (item: CommentType, updatedContent: string) => void;
   onDeleteClick: (commentId: string) => void;
   type: 'search' | 'inquiry' | 'comments';
 }
 
-function ComentList({
-  commentsList,
-  onEditSubmit,
-  onDeleteClick,
-  type,
-}: ComentListProps) {
+function CommentList({ commentsList, onEditSubmit, onDeleteClick, type }: CommentListProps) {
   const [editingCommentId, setEditingCommentId] = useState<string | null>(null);
 
   const handleEditClick = (commentId: string) => {
@@ -44,21 +39,19 @@ function ComentList({
   };
 
   return (
-    <StyledComentListContainer>
+    <StyledCommentListContainer>
       {commentsList.length > 0 ? (
         <ul className='coment-list'>
           {commentsList.map((item) => (
             <li key={item.id} className='coment-item'>
               {editingCommentId === item.id ? (
-                <ComentEdit
+                <CommentEdit
                   item={item}
                   onCancel={handleCancelEdit}
-                  onSubmit={(updatedContent) =>
-                    handleEditSubmit(item, updatedContent)
-                  }
+                  onSubmit={(updatedContent) => handleEditSubmit(item, updatedContent)}
                 />
               ) : (
-                <Coment
+                <Comment
                   name={item.writer.nickname}
                   date={item.createdAt}
                   content={item.content}
@@ -77,13 +70,13 @@ function ComentList({
         목록으로 돌아가기
         <IconReturn src={RETURN_IMAGE} alt='' />
       </Button>
-    </StyledComentListContainer>
+    </StyledCommentListContainer>
   );
 }
 
-export default ComentList;
+export default CommentList;
 
-const StyledComentListContainer = styled.div`
+const StyledCommentListContainer = styled.div`
   ${flexColumn}
   align-items: center;
   justify-content: center;

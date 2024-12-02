@@ -14,8 +14,13 @@ import BoardList from '@/components/pages/boards/BoardList';
 import SelectMenu from '@/components/shared/SelectMenu';
 import { getBoardList } from '@/services/api';
 
+enum OrderTypes {
+  RECENT = 'recent',
+  LIKE = 'like',
+}
+
 function BoardsPage() {
-  const [order, setOrder] = useState<'recent' | 'like'>('recent');
+  const [order, setOrder] = useState<OrderTypes>(OrderTypes.RECENT);
   const [search, setSearch] = useState('');
   const [allItems, setAllItems] = useState([]);
   const [bestBoardList, setBestBoardList] = useState([]);
@@ -35,7 +40,7 @@ function BoardsPage() {
     try {
       const result = await getBoardList({
         pageSize: pageBestSize,
-        orderBy: 'like',
+        orderBy: OrderTypes.LIKE,
       });
       if (result) {
         setBestBoardList(result.list);
@@ -66,13 +71,15 @@ function BoardsPage() {
   }, [order, search]);
 
   useEffect(() => {
+    if (!fetchBoardFavoriteItems) return;
     fetchBoardFavoriteItems();
   }, [fetchBoardFavoriteItems]);
   useEffect(() => {
+    if (!fetchBoardAllItems) return;
     fetchBoardAllItems();
   }, [fetchBoardAllItems]);
 
-  const handleSelect = (value: string) => setOrder(value as 'recent' | 'like');
+  const handleSelect = (value: string) => setOrder(value as OrderTypes);
 
   const handleSearchSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -103,10 +110,10 @@ function BoardsPage() {
             <SelectMenu
               title='최신순'
               option={[
-                { label: '최신순', value: 'recent', onSelect: handleSelect },
+                { label: '최신순', value: OrderTypes.RECENT, onSelect: handleSelect },
                 {
                   label: '좋아요순',
-                  value: 'like',
+                  value: OrderTypes.LIKE,
                   onSelect: handleSelect,
                 },
               ]}

@@ -12,13 +12,17 @@ import { flexColumn } from '@/styles/layout.styles';
 
 import Line from '@/components/shared/Line';
 import ProdDetail from '@/components/pages/items/ProdDetail';
-import ComentPost from '@/components/shared/Coment/ComentPost';
-import ComentList from '@/components/shared/Coment/ComentList';
+import CommentPost from '@/components/shared/Comment/CommentPost';
+import CommentList from '@/components/shared/Comment/CommentList';
 
 function ProdDetailPage() {
   const [details, setDetails] = useState<ProductDetailType | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [fetchError, setFetchError] = useState<Error | null>(null);
+
+  const router = useRouter();
+
+  const { productId } = router.query as { productId?: string };
 
   const {
     commentsList,
@@ -26,11 +30,7 @@ function ProdDetailPage() {
     error: commentFetchError,
     handleEditSubmit,
     handleDeleteClick,
-  } = useComments(getProductsDetailComments);
-
-  const router = useRouter();
-
-  const { productId } = router.query as { productId?: string };
+  } = useComments(getProductsDetailComments, productId);
 
   const fetchProductItems = useCallback(async () => {
     setIsLoading(true);
@@ -71,18 +71,18 @@ function ProdDetailPage() {
           favoriteCount={details.favoriteCount}
         />
         <StyledLine />
-        <StyledComentContainer>
-          <ComentPost
+        <StyledCommentContainer>
+          <CommentPost
             title='문의하기'
             placeholder='개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다.'
           />
-          <ComentList
+          <CommentList
             commentsList={commentsList}
             onEditSubmit={handleEditSubmit}
             onDeleteClick={handleDeleteClick}
             type='inquiry'
           />
-        </StyledComentContainer>
+        </StyledCommentContainer>
       </Container>
     </Page>
   );
@@ -100,7 +100,7 @@ const StyledLine = styled(Line)`
   `}
 `;
 
-const StyledComentContainer = styled.div`
+const StyledCommentContainer = styled.div`
   ${flexColumn}
   justify-content: center;
   align-items: center;

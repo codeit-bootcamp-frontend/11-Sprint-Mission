@@ -3,10 +3,12 @@ import { media } from './media.styles';
 
 const GlobalStyle = createGlobalStyle`
   :root {
+    --blue-50: #e6f2ff;
     --blue-100: #3692ff;
     --blue-200: #1967d6;
     --blue-300: #1251aa;
 
+    --card-bg: #fcfcfc;
     --gray-50: #f9fafb;
     --gray-100: #f3f4f6;
     --gray-200: #e5e7eb;
@@ -17,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
     --gray-700: #374151;
     --gray-800: #1f2937;
     --gray-900: #111827;
+
 
     --red: #f74747;
   }

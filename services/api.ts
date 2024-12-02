@@ -113,3 +113,34 @@ export async function getBoardList({
     throw new Error(errorMessage);
   }
 }
+
+export async function getBoardDetail(articleId: string | undefined) {
+  try {
+    const response = await apiClient.get(`/articles/${articleId}`);
+    return response.data;
+  } catch (error: unknown) {
+    const errorMessage =
+      axios.isAxiosError(error) && error.response
+        ? error.response.data.message
+        : '게시판 상세 정보를 불러오는데 실패했습니다.';
+    throw new Error(errorMessage);
+  }
+}
+
+/**
+ * 게시판 상세 정보의 댓글 목록 조회 API
+ */
+export async function getBoardsDetailComments(articleId: string | undefined, limit: number = 100) {
+  try {
+    const response = await apiClient.get(`/articles/${articleId}/comments`, {
+      params: { limit },
+    });
+    return response.data;
+  } catch (error: unknown) {
+    const errorMessage =
+      axios.isAxiosError(error) && error.response
+        ? error.response.data.message
+        : '게시판 댓글 목록을 불러오는데 실패했습니다.';
+    throw new Error(errorMessage);
+  }
+}

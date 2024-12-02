@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import DropDownMenu from '../DropDownMenu';
 import font from '@/styles/fontStyle.styles';
 
-export interface ComentProps {
+export interface CommentProps {
   name: string;
   date: string;
   content: string;
@@ -11,39 +11,33 @@ export interface ComentProps {
   onClickDelete: () => void;
 }
 
-function Coment({
-  name,
-  date,
-  content,
-  onClickEdit,
-  onClickDelete,
-}: ComentProps) {
+function Comment({ name, date, content, onClickEdit, onClickDelete }: CommentProps) {
   return (
-    <ComentContainer>
-      <ComentText>{content}</ComentText>
+    <CommentContainer>
+      <CommentText>{content}</CommentText>
       <UserInfo wide>
         <UserInfo.ProfileImage imageSize='small' />
         <UserInfo.Text userName={name} date={date} column wide />
       </UserInfo>
-      <ComentDropDown>
+      <CommentDropDown>
         <DropDownMenu.Item onClick={onClickEdit}>수정하기</DropDownMenu.Item>
         <DropDownMenu.Item onClick={onClickDelete}>삭제하기</DropDownMenu.Item>
-      </ComentDropDown>
-    </ComentContainer>
+      </CommentDropDown>
+    </CommentContainer>
   );
 }
 
-export default Coment;
+export default Comment;
 
-const ComentContainer = styled.div`
+const CommentContainer = styled.div`
   position: relative;
 `;
 
-const ComentDropDown = styled(DropDownMenu)`
+const CommentDropDown = styled(DropDownMenu)`
   position: absolute;
 `;
 
-const ComentText = styled.p`
+const CommentText = styled.p`
   ${font('14')}
   margin-bottom: 1.6rem;
   padding-right: 2.8rem;

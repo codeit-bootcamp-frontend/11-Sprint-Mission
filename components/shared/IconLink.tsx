@@ -9,12 +9,7 @@ interface IconLinkProps {
   size?: 'sm' | 'md';
 }
 
-function IconLink({
-  to = '',
-  name = 'facebook',
-  src = '',
-  size = 'sm',
-}: IconLinkProps) {
+function IconLink({ to = '', name = 'facebook', src = '', size = 'sm' }: IconLinkProps) {
   return (
     <StyledIconLink href={to} target='_blank' $size={size}>
       <Image src={src} alt={`${name} 아이콘`} width={180} height={180} />
@@ -24,14 +19,21 @@ function IconLink({
 
 export default IconLink;
 
+type SizeKey = keyof typeof size;
+
 type StyledIconLinkProps = {
-  $size: 'sm' | 'md';
+  $size: SizeKey;
 };
+
+const size = {
+  sm: '1.8rem',
+  md: '4.2rem',
+} as const;
 
 export const StyledIconLink = styled(Link)<StyledIconLinkProps>`
   display: inline-block;
   font-size: 0;
   line-height: 0;
-  width: ${({ $size }) => ($size === 'sm' ? '1.8rem' : '4.2rem')};
-  height: ${({ $size }) => ($size === 'sm' ? '1.8rem' : '4.2rem')};
+  width: ${({ $size }) => size[$size]};
+  height: ${({ $size }) => size[$size]};
 `;

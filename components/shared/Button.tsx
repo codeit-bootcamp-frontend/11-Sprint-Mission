@@ -12,6 +12,7 @@ interface ButtonProps {
   children: ReactNode;
   href?: string;
   disabled?: boolean;
+  className?: string;
   onClick?: () => void;
 }
 
@@ -23,6 +24,7 @@ function Button({
   round,
   wide,
   children,
+  className,
   onClick,
   ...rest
 }: ButtonProps) {
@@ -36,6 +38,7 @@ function Button({
       href={href}
       disabled={disabled}
       onClick={onClick}
+      className={className}
       {...rest}>
       {children}
     </StyledButton>
@@ -100,15 +103,10 @@ const StyledButton = styled.button<StyledButtonProps>`
   ${({ $size }) => $size === 'medium' && font('18sb')}
   ${({ $size }) => $size === 'large' && font('20sb')}
   padding: ${({ $size }) =>
-    $size === 'small'
-      ? '0.8rem 2.3rem'
-      : $size === 'medium'
-      ? '1.1rem 3.95rem'
-      : '1.2rem 12.4rem'};
+    $size === 'small' ? '0.8rem 2.3rem' : $size === 'medium' ? '1.1rem 3.95rem' : '1.2rem 12.4rem'};
 
   &:hover {
-    background-color: ${({ $color }) =>
-      colorStyles[$color]?.hover || colorStyles[$color]?.default};
+    background-color: ${({ $color }) => colorStyles[$color]?.hover || colorStyles[$color]?.default};
   }
 
   ${media.mo`

@@ -8,39 +8,35 @@ import { flexColumn } from '@/styles/layout.styles';
 import { StyledInput } from '../Input';
 import Button from '../Button';
 
-function ComentPost({ title = '문의하기', placeholder = '댓글달기' }) {
+function CommentPost({ title = '문의하기', placeholder = '댓글달기' }) {
   const [formValues, setFormValues] = useState('');
 
   const isFormValid = formValues.trim() !== '';
 
-  const handleInputChange = (
-    e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  ) => {
+  const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     const value = e.target.value;
     setFormValues(value);
   };
 
   return (
-    <ComentPostForm>
-      <ComentPostTitle>{title}</ComentPostTitle>
+    <CommentPostForm>
+      <CommentPostTitle>{title}</CommentPostTitle>
       <StyledPostInputContainer
         as='textarea'
         placeholder={placeholder}
         onChange={handleInputChange}
         value={formValues}
       />
-      <ComentButton
-        color={!isFormValid ? 'gray' : 'blue'}
-        disabled={!isFormValid}>
+      <CommentButton color={!isFormValid ? 'gray' : 'blue'} disabled={!isFormValid}>
         등록
-      </ComentButton>
-    </ComentPostForm>
+      </CommentButton>
+    </CommentPostForm>
   );
 }
 
-export default ComentPost;
+export default CommentPost;
 
-const ComentPostForm = styled.form`
+const CommentPostForm = styled.form`
   ${flexColumn}
   align-items: flex-end;
   width: 100%;
@@ -54,11 +50,11 @@ const StyledPostInputContainer = styled(StyledInput)`
   `}
 `;
 
-const ComentButton = styled(Button)`
+const CommentButton = styled(Button)`
   margin-top: 1.6rem;
 `;
 
-const ComentPostTitle = styled.h3`
+const CommentPostTitle = styled.h3`
   width: 100%;
   ${font('16sb')}
   margin-bottom: 0.9rem;
