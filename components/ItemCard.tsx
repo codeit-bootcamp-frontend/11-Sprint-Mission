@@ -1,32 +1,38 @@
+import { useState } from "react";
 import Link from "next/link";
 import { AllItemCardProps } from "@/types/commontypes";
 import styles from "@/styles/items.module.css";
 import heartIcon from "@/public/svgs/ic_heart (1).svg";
 import Image from "next/image";
+import defaultImg from "@/public/pngs/noImage.png";
 
-function AllItemCard({ item }: AllItemCardProps) {
-  const handleNoneImg = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    e.currentTarget.src;
+export default function AllItemCard({ item }: AllItemCardProps) {
+  const [imageSrc, setImageSrc] = useState(item.images[0] || defaultImg.src);
+
+  const handleImageError = () => {
+    setImageSrc(defaultImg.src);
   };
 
   return (
-    <div className={styles.item_card}>
-      <img
-        src={item.images[0]}
-        alt={item.name}
-        className={styles.all_item_card_img}
-        onError={handleNoneImg}
-      />
-      <div className={styles.item_description}>
-        <div className={styles.item_name}>{item.name}</div>
-        <div className={styles.item_price}>{item.price.toLocaleString()}원</div>
-        <div className={styles.item_favorite_count}>
-          <Image src={heartIcon} alt="하트 아이콘" width={16} height={16} />
-          {item.favoriteCount}
+    <Link href={`/items/${item.id}`} className={styles.link}>
+      <div className={styles.item_card}>
+        <img
+          src={imageSrc}
+          alt={item.name}
+          className={styles.all_item_card_img}
+          onError={handleImageError}
+        />
+        <div className={styles.item_description}>
+          <div className={styles.item_name}>{item.name}</div>
+          <div className={styles.item_price}>
+            {item.price.toLocaleString()}원
+          </div>
+          <div className={styles.item_favorite_count}>
+            <Image src={heartIcon} alt="하트 아이콘" width={16} height={16} />
+            {item.favoriteCount}
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
-
-export default AllItemCard;

@@ -178,6 +178,11 @@
 }
 
 /* 아이템 카드 */
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .item_card {
   display: flex;
   flex-direction: column;
