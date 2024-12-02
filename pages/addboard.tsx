@@ -1,5 +1,4 @@
 import { postArticle } from "@/api/article.api";
-import { setInstanceHeaders } from "@/api/axios";
 import useAsync from "@/hooks/useAsync";
 import renewAccessToken from "@/lib/renewAccessToken";
 import styles from "@/styles/addboard.module.css";
@@ -94,10 +93,7 @@ export default function AddBoard() {
   };
 
   useEffect(() => {
-    const token = sessionStorage.getItem("accessToken");
-    if (token) {
-      setInstanceHeaders(token);
-    } else alert("로그인 하렴");
+    renewAccessToken();
   }, []);
 
   useEffect(() => {

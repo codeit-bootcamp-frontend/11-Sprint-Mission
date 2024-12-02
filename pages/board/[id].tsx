@@ -12,7 +12,6 @@ import {
 import { Comment, CommentList } from "@/types/Commnet.type";
 import Link from "next/link";
 import useAsync from "@/hooks/useAsync";
-import { setInstanceHeaders } from "@/api/axios";
 import renewAccessToken from "@/lib/renewAccessToken";
 
 export async function getServerSideProps(context: any) {
@@ -75,10 +74,7 @@ export default function ArticleDetail({
   };
 
   useEffect(() => {
-    const token = sessionStorage.getItem("accessToken");
-    if (token) {
-      setInstanceHeaders(token);
-    } else alert("로그인 하렴");
+    renewAccessToken();
   }, []);
 
   if (!article) return null;
