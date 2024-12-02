@@ -53,7 +53,7 @@ async function postSignIn({
   return response.data;
 }
 
-async function postRefresh({ refreshToken }: { refreshToken: string }) {
+async function postRefresh(refreshToken: string) {
   const response = await axios({
     method: "post",
     url: "/auth/refresh-token",

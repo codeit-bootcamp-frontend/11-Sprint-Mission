@@ -1,5 +1,4 @@
 import { postSignUp, SignUpParams } from "@/api/auth.api";
-import { setInstanceHeaders } from "@/api/axios";
 import useAsync from "@/hooks/useAsync";
 import setLogIn from "@/lib/setLogIn";
 import styles from "@/styles/login.module.css";
