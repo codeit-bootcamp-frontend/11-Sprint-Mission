@@ -1,6 +1,10 @@
+import { postArticle } from "@/api/article.api";
+import { setInstanceHeaders } from "@/api/axios";
+import useAsync from "@/hooks/useAsync";
 import styles from "@/styles/addboard.module.css";
 import Image from "next/image";
-import { ChangeEvent, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 interface Valuse {
   title: string;
@@ -33,6 +37,8 @@ export default function AddBoard() {
   const [values, setValues] = useState(DEFAULT_VALUES);
   const [valid, setValid] = useState(false);
   const [imagePreviews, setImagePreviews] = useState<ImagePreview[]>([]);
+  const { excute: postArticleAsync, loading, error } = useAsync(postArticle);
+  const router = useRouter();
 
   const handleChangeValue = (name: string, value: any) => {
     setValues((prev) => ({
@@ -74,6 +80,24 @@ export default function AddBoard() {
     handleImagePreviewsClear();
   };
 
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const response = await postArticleAsync({
+      title: values.title,
+      content: values.content,
+    });
+    if (response) {
+      router.push(`/board/${response.id}`);
+    } else alert("게시글 생성 실패");
+  };
+
+  useEffect(() => {
+    const token = sessionStorage.getItem("accessToken");
+    if (token) {
+      setInstanceHeaders(token);
+    } else alert("로그인 하렴");
+  }, []);
+
   useEffect(() => {
     const image = values.image;
     handleImagePreviewsClear();
@@ -92,7 +116,7 @@ export default function AddBoard() {
   }, [values]);
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <header className={styles.header}>
         <h2 className={styles.headerTitle}>게시글 쓰기</h2>
         <button type="submit" className={styles.submitButton} disabled={!valid}>
@@ -158,7 +182,6 @@ export default function AddBoard() {
           name="image"
           type="file"
           onChange={handleChangeInputImage}
-          required
         />
       </fieldset>
     </form>

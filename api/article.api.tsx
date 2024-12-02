@@ -33,14 +33,20 @@ async function getArticle({ id }: { id: number }): Promise<Article> {
 }
 
 interface PostArticle {
-  image?: string;
+  image?: string | undefined;
   content: string;
   title: string;
 }
 
-async function postArticle({ image, content, title }: PostArticle) {
-  const response = await axios.post("/articles", {
-    body: {
+async function postArticle({
+  image,
+  content,
+  title,
+}: PostArticle): Promise<Article> {
+  const response = await axios({
+    method: "post",
+    url: "/articles",
+    data: {
       content,
       title,
       image,
