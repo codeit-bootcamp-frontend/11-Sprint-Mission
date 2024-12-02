@@ -1,177 +1,43 @@
-.bestContainer {
-  width: 62%;
+.best-container {
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   overflow: hidden;
   margin-bottom: 40px;
+
+  @media screen and (max-width: 744px) {
+    width: 100%;
+    padding: 0 24px;
+    margin-bottom: 24px;
+  }
+
+  @media screen and (max-width: 376px) {
+    width: 100%;
+    padding: 0 16px;
+  }
 }
 
 .title {
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
-  color: #111827;
+  color: var(--color-blue-100);
   margin-bottom: 24px;
-}
 
-.bestBox {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 24px;
-}
-
-.articleBox {
-  display: flex;
-  flex-direction: column;
-  background-color: #f9fafb;
-  width: 384px;
-  height: 169px;
-  border-radius: 8px;
-  gap: 10px;
-  padding: 0 24px;
-}
-
-.bestSticker {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #3692ff;
-  width: 102px;
-  height: 30px;
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
-  gap: 5px;
-}
-
-.bestImg {
-  width: 16px;
-  height: 16px;
-}
-
-.bestTitle {
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 26px;
-  color: #ffffff;
-}
-
-.titleBox {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-}
-
-.articleTitle {
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 32px;
-  color: #1f2937;
-  white-space: nowrap;
-}
-
-.productImg {
-  width: 72px;
-  height: 72px;
-  border: 1px solid #e5e7eb;
-  border-radius: 6px;
-  object-fit: contain;
-}
-
-.infoContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.infoBox {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nickname {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
-  color: #4b5563;
-  margin-right: 8px;
-}
-
-.infoImg {
-  width: 16px;
-  height: 16px;
-  margin-right: 4px;
-}
-
-.likeCount {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
-  color: #6b7280;
-}
-
-.createDate {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
-  color: #9ca3af;
-}
-
-@media screen and (max-width: 744px) {
-  .bestContainer {
-    width: 100%;
-    padding: 0 24px;
-    margin-bottom: 24px;
-  }
-
-  .bestBox {
-    gap: 16px;
-  }
-
-  .articleBox {
-    width: 340px;
-    height: 198px;
-    padding: 0 16px 24px;
-  }
-
-  .titleBox {
-    gap: 40px;
-  }
-
-  .articleTitle {
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 26px;
-  }
-}
-
-/* 반응형 - Mobile */
-@media screen and (max-width: 376px) {
-  .bestContainer {
-    width: 100%;
-    padding: 0 16px;
-  }
-
-  .title {
+  @media screen and (max-width: 376px) {
     font-size: 18px;
     line-height: 26px;
     margin-bottom: 16px;
   }
+}
 
-  .articleBox {
-    width: 343px;
-    height: 198px;
+.best-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+
+  @media screen and (max-width: 744px) {
     gap: 16px;
-    padding: 0 16px 24px;
-  }
-
-  .titleBox {
-    gap: 40px;
-  }
-
-  .articleTitle {
-    font-size: 18px;
-    line-height: 26px;
   }
 }

@@ -1,66 +1,43 @@
-import { FormatDate } from "@/lib/formatDate";
-import React from "react";
+import { formatDate } from "@/lib/formatDate";
+import React, { useEffect, useState } from "react";
 import styles from "./BoardList.module.css";
+import { Articles } from "@/lib/types";
+import Link from "next/link";
+import ArticleCard from "./ArticleCard";
+import BoardSearchSort from "./BoardSearchSort";
 
 interface BoardListProps {
-  articles: Array<any>;
+  articles: Articles[];
+  onOrderChange: (newOrder: string) => void;
 }
 
-const BoardList = ({ articles }: BoardListProps) => {
+const BoardList = ({ articles, onOrderChange }: BoardListProps) => {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+  };
+
+  const filteredArticles = articles.filter((article) =>
+    article.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    <div className={styles.boardListContainer}>
-      <div className={styles.titleBox}>
+    <div className={styles["board-list-container"]}>
+      <div className={styles["title-box"]}>
         <p className={styles.title}>게시글</p>
-        <button className={styles.writeButton}>글쓰기</button>
+        <Link href="/addboard">
+          <button className={styles["write-button"]}>글쓰기</button>
+        </Link>
       </div>
-      <div className={styles.searchBox}>
-        <input
-          className={styles.searchBar}
-          placeholder="검색할 상품을 입력해주세요"
-        />
-        <div className={styles.customSelectWrapper}>
-          <select className={styles.orderBySelect}>
-            <option className={styles.option}>최신순</option>
-            <option className={styles.option}>좋아요순</option>
-          </select>
-          <img
-            className={styles.sortIcon}
-            src="/images/sortIcon.png"
-            alt="화살표"
-          />
-        </div>
-      </div>
-      <div className={styles.articleContainer}>
-        {articles.map((article) => (
-          <div key={article.id} className={styles.articleBox}>
-            <div className={styles.articleTitleBox}>
-              <p className={styles.articleTitle}>{article.title}</p>
-              <img
-                className={styles.productImg}
-                src={article.image}
-                alt="물품 이미지"
-              />
-            </div>
-            <div className={styles.infoBox}>
-              <div className={styles.userInfoBox}>
-                <img
-                  className={styles.userProfile}
-                  src="/images/profileBig.png"
-                  alt="프로필 이미지"
-                />
-                <p className={styles.userNickname}>{article.writer.nickname}</p>
-                <p className={styles.date}>{FormatDate(article.createdAt)}</p>
-              </div>
-              <div className={styles.likeCountBox}>
-                <img
-                  className={styles.heart}
-                  src="/images/heartIcon.png"
-                  alt="좋아요 하트 이미지"
-                />
-                <p className={styles.likeCount}>{article.likeCount}</p>
-              </div>
-            </div>
-          </div>
+      <BoardSearchSort
+        searchQuery={searchQuery}
+        onSearchChange={handleSearch}
+        onOrderChange={onOrderChange}
+      />
+      <div className={styles["article-container"]}>
+        {filteredArticles.map((article) => (
+          <ArticleCard key={article.id} article={article} />
         ))}
       </div>
     </div>

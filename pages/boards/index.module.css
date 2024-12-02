@@ -1,0 +1,13 @@
+.container {
+  padding: 0 10%;
+  overflow-y: auto;
+  height: 100vh;
+  @media screen and (max-width: 744px) {
+    padding: 0;
+  }
+
+  @media screen and (max-width: 376px) {
+    width: 100%;
+    padding: 0;
+  }
+}
