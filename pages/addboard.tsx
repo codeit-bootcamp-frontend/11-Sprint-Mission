@@ -34,7 +34,6 @@ export default function AddBoard() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", values);
 
     setValues(INITIAL_VALUES);
   };

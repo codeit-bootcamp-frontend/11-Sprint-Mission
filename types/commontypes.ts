@@ -1,13 +1,13 @@
 export interface GetProductsParams {
   page?: number;
   pageSize?: number;
-  keyword?: string | undefined;
+  keyword?: string;
   orderBy?: string;
 }
 
 export interface GetProductCommentsParams {
   limit?: number;
-  cursor?: string | undefined;
+  cursor?: string;
 }
 
 // 상품 타입 정의
@@ -69,7 +69,7 @@ export interface GetCommentsResponse {
 export interface GetArticlesParams {
   page?: number;
   pageSize?: number;
-  keyword?: string | undefined;
+  keyword?: string;
   orderBy?: string;
 }
 
@@ -113,7 +113,7 @@ export interface ImageInputProps {
   className?: string;
   name: string;
   value: File | null;
-  initialPreview?: string | undefined;
+  initialPreview?: string;
   onChange: (name: string, file: File | null) => void;
 }
 

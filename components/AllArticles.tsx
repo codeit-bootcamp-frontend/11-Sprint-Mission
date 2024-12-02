@@ -25,7 +25,7 @@ export default function AllArticles() {
 
       const data = await getArticles({
         orderBy: sortOrder,
-        page: page,
+        page,
         pageSize: 10,
         keyword: keyword,
       });
