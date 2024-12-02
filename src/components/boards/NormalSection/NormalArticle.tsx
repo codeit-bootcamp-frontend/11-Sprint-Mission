@@ -1,10 +1,12 @@
 import Image from "next/image";
 import { Article } from "@/types/article";
 import formatDate from "@/utils/formatDate";
+import { skeletonClass } from "@/styles/skeleton";
 
 interface NormalArticleProps extends Omit<Article, "image"> {
   imageUrl: string;
   likeIcon: string;
+  isLoading?: boolean;
 }
 
 const NormalArticle = ({
@@ -14,9 +16,42 @@ const NormalArticle = ({
   updatedAt,
   imageUrl,
   likeIcon,
+  isLoading = false,
 }: NormalArticleProps) => {
+  const baseContainerClass =
+    "flex flex-col justify-between w-full h-[138px] bg-[#FCFCFC]";
+
+  if (isLoading) {
+    return (
+      <div className={baseContainerClass}>
+        <div className="flex justify-between">
+          {/* Title skeleton */}
+          <div className="mt-1 ml-1 flex flex-col gap-2 w-[70%]">
+            <div className={`${skeletonClass} h-6 w-full`} />
+            <div className={`${skeletonClass} h-6 w-3/4`} />
+          </div>
+          {/* Thumbnail skeleton */}
+          <div className={`${skeletonClass} w-[72px] h-[72px] rounded-lg`} />
+        </div>
+
+        <div className="flex justify-between mb-6 ml-1">
+          <div className="flex items-center gap-2">
+            {/* Nickname and date skeleton */}
+            <div className={`${skeletonClass} w-20 h-5`} />
+            <div className={`${skeletonClass} w-24 h-5`} />
+          </div>
+          {/* Like count skeleton */}
+          <div className="flex items-center gap-2">
+            <div className={`${skeletonClass} w-6 h-6 rounded-full`} />
+            <div className={`${skeletonClass} w-12 h-5`} />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex flex-col justify-between w-full h-[138px] bg-[#FCFCFC]">
+    <div className={baseContainerClass}>
       <div className="flex justify-between">
         <h2 className="mt-1 ml-1 text-[18px] pc:text-[20px] font-[600]">
           {title}

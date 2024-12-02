@@ -3,6 +3,8 @@
 import Articles from "@/components/boards/Article";
 import { useArticles } from "@/api/apiGetArticles";
 import { useDeviceType } from "@/hooks/useDeviceType";
+import { createSkeletonArray } from "@/utils/skeleton";
+import { Article } from "@/types/article";
 
 const DEVICE_PAGE_SIZE = {
   pc: 3,
@@ -10,40 +12,55 @@ const DEVICE_PAGE_SIZE = {
   mobile: 1,
 } as const;
 
+const BestArticleList = ({ articles }: { articles: Article[] }) =>
+  articles.map((article) => (
+    <Articles
+      key={article.id}
+      {...article}
+      isBest={true}
+      isLoading={false}
+    />
+  ));
+
+const BestArticleSkeletons = ({ count }: { count: number }) =>
+  createSkeletonArray(count).map((_, index) => (
+    <Articles
+      key={`skeleton-${index}`}
+      id={0}
+      title=""
+      writer={{ nickname: "" }}
+      likeCount={0}
+      updatedAt=""
+      isBest={true}
+      isLoading={true}
+    />
+  ));
+
+// BestSection
 const BestSection = () => {
   const deviceType = useDeviceType();
+  const pageSize = DEVICE_PAGE_SIZE[deviceType];
+
   const { data, isLoading, error } = useArticles({
     orderBy: "like",
-    pageSize: DEVICE_PAGE_SIZE[deviceType],
+    pageSize,
   });
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
 
   if (error) {
     return <div>Error loading articles</div>;
   }
 
   return (
-    <div className="mb-6 pc:mb-10 w-full">
-      <div
-        className="text-[20px] font-[700]
-        mb-4
-        tablet:mb-6"
-      >
-        베스트 게시글
-      </div>
+    <section className="mb-6 pc:mb-10 w-full">
+      <h1 className="text-[20px] font-[700] mb-4 tablet:mb-6">베스트 게시글</h1>
       <div className="flex gap-0 tablet:gap-4 pc:gap-6 w-full">
-        {data?.list.map((article) => (
-          <Articles
-            key={article.id}
-            {...article}
-            isBest={true}
-          />
-        ))}
+        {isLoading ? (
+          <BestArticleSkeletons count={pageSize} />
+        ) : (
+          <BestArticleList articles={data?.list ?? []} />
+        )}
       </div>
-    </div>
+    </section>
   );
 };
 

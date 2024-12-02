@@ -6,6 +6,8 @@ import SortToggle from "@/components/boards/SortToggle/SortToggle";
 import { useArticles } from "@/api/apiGetArticles";
 import { useDeviceType } from "@/hooks/useDeviceType";
 import { useArticleStore } from "@/store/articleStore";
+import { createSkeletonArray } from "@/utils/skeleton";
+import { Article } from "@/types/article";
 
 const DEVICE_PAGE_SIZE = {
   pc: 10,
@@ -13,54 +15,67 @@ const DEVICE_PAGE_SIZE = {
   mobile: 5,
 } as const;
 
+const ArticleList = ({ articles }: { articles: Article[] }) =>
+  articles.map((article) => (
+    <Articles
+      key={article.id}
+      {...article}
+      isLoading={false}
+    />
+  ));
+
+const ArticleSkeletons = ({ count }: { count: number }) =>
+  createSkeletonArray(count).map((_, index) => (
+    <Articles
+      key={`skeleton-${index}`}
+      id={0}
+      title=""
+      writer={{ nickname: "" }}
+      likeCount={0}
+      updatedAt=""
+      isLoading={true}
+    />
+  ));
+
+const SearchControls = () => (
+  <div className="flex items-center h-[42px] gap-[13px] mb-4 tablet:gap-[6px] tablet:mb-10 pc:gap-[16px] pc:mb-6">
+    <SearchArticles />
+    <SortToggle />
+  </div>
+);
+
+// NormalSection
 const NormalSection = () => {
-  const DEVICE_TYPE = useDeviceType();
+  const deviceType = useDeviceType();
+  const pageSize = DEVICE_PAGE_SIZE[deviceType];
   const { keyword, toggleState } = useArticleStore();
 
   const { data, isLoading, error } = useArticles({
     orderBy: toggleState,
-    pageSize: DEVICE_PAGE_SIZE[DEVICE_TYPE],
-    keyword: keyword,
+    pageSize,
+    keyword,
   });
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
 
   if (error) {
     return <div>Error loading articles</div>;
   }
 
   return (
-    <div className="w-full">
-      <div
-        className="text-[20px] font-[700]
-        mb-4
-        tablet:mb-12
-        pc:mb-6"
-      >
+    <section className="w-full">
+      <h1 className="text-[20px] font-[700] mb-4 tablet:mb-12 pc:mb-6">
         게시글
-      </div>
+      </h1>
 
-      <div
-        className="flex items-center h-[42px]
-        gap-[13px] mb-4
-        tablet:gap-[6px] tablet:mb-10
-        pc:gap-[16px] pc:mb-6"
-      >
-        <SearchArticles />
-        <SortToggle />
-      </div>
+      <SearchControls />
 
       <div className="flex flex-col gap-4">
-        {data?.list.map((article) => (
-          <Articles
-            key={article.id}
-            {...article}
-          />
-        ))}
+        {isLoading ? (
+          <ArticleSkeletons count={pageSize} />
+        ) : (
+          <ArticleList articles={data?.list ?? []} />
+        )}
       </div>
-    </div>
+    </section>
   );
 };
 
