@@ -8,7 +8,9 @@ import { useRouter } from "next/router";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const isShowNav = !["/signup", "/signin"].includes(router.pathname);
+  const isShowNav = ["/", "/addboard", "/board", "/board/[id]"].includes(
+    router.pathname
+  );
 
   return (
     <>
