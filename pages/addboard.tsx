@@ -1,6 +1,7 @@
 import { postArticle } from "@/api/article.api";
 import { setInstanceHeaders } from "@/api/axios";
 import useAsync from "@/hooks/useAsync";
+import renewAccessToken from "@/lib/renewAccessToken";
 import styles from "@/styles/addboard.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -82,6 +83,7 @@ export default function AddBoard() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    renewAccessToken();
     const response = await postArticleAsync({
       title: values.title,
       content: values.content,

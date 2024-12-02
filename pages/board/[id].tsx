@@ -57,6 +57,7 @@ export default function ArticleDetail({
   };
 
   const handleSubmitComment = async () => {
+    renewAccessToken();
     const response = await postCommentAsync({
       articleId: article.id,
       content: commentValue,
