@@ -4,6 +4,8 @@ import { getProducts } from "@/lib/api";
 import Pagination from "@/components/Pagination";
 import { Product } from "@/types/commontypes";
 import styles from "@/styles/items.module.css";
+import searchIcon from "@/public/svgs/ic_search.svg";
+import Image from "next/image";
 
 const getPageSize = () => {
   if (typeof window === "undefined") return 10;
@@ -73,6 +75,13 @@ function AllItems() {
           <div className={styles.all_item_header_front}>
             <div className={styles.all_item_title}>전체 상품</div>
             <div className={styles.all_item_search_container}>
+              <Image
+                className={styles.all_item_search_icon}
+                src={searchIcon}
+                alt="돋보기 아이콘"
+                width={24}
+                height={24}
+              />
               <input
                 className={styles.all_item_search_input}
                 placeholder="검색할 상품을 입력해주세요"

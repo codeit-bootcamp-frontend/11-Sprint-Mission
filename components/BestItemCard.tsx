@@ -1,22 +1,18 @@
 import Link from "next/link";
 import { AllItemCardProps } from "@/types/commontypes";
-import styles from "@/styles/items.module.css";
+import styles from "@/styles/bestitem.module.css";
 import heartIcon from "@/public/svgs/ic_heart (1).svg";
 import Image from "next/image";
 
-function AllItemCard({ item }: AllItemCardProps) {
-  const handleNoneImg = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    e.currentTarget.src;
-  };
-
+function BestItemCard({ item }: AllItemCardProps) {
   return (
     <div className={styles.item_card}>
       <img
         src={item.images[0]}
         alt={item.name}
-        className={styles.all_item_card_img}
-        onError={handleNoneImg}
+        className={styles.item_card_img}
       />
+
       <div className={styles.item_description}>
         <div className={styles.item_name}>{item.name}</div>
         <div className={styles.item_price}>{item.price.toLocaleString()}원</div>
@@ -29,4 +25,4 @@ function AllItemCard({ item }: AllItemCardProps) {
   );
 }
 
-export default AllItemCard;
+export default BestItemCard;

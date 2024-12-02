@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { getProducts } from "@/lib/api";
-import ItemCard from "@/components/ItemCard";
 import { Product, GetProductsResponse } from "@/types/commontypes";
 import styles from "@/styles/items.module.css";
+import BestItemCard from "./BestItemCard";
 
 const getPageSize = () => {
   if (typeof window === "undefined") return 4;
@@ -63,7 +63,7 @@ function BestItem() {
         <div className={styles.best_item_title}>베스트 상품</div>
         <div className={styles.best_item_card_container}>
           {items?.map((item) => (
-            <ItemCard item={item} key={`best-item-${item.id}`} />
+            <BestItemCard item={item} key={`best-item-${item.id}`} />
           ))}
         </div>
       </div>

@@ -1,4 +1,8 @@
 import React from "react";
+import styles from "@/styles/pagination.module.css";
+import prevIcon from "@/public/svgs/arrow_left.svg";
+import nextIcon from "@/public/svgs/arrow_right.svg";
+import Image from "next/image";
 
 interface PaginationProps {
   currentPage: number;
@@ -40,21 +44,21 @@ function Pagination({
   };
 
   return (
-    <div className="pagination">
+    <div className={styles.pagination}>
       <button disabled={startPage === 1} onClick={goToPreviousGroup}>
-        {/* <img src={prevIcon} alt="이전 버튼" /> */}
+        <Image src={prevIcon} alt="이전 버튼" width={16} height={16} />
       </button>
       {pageNumbers.map((number) => (
         <button
           key={number}
-          className={currentPage === number ? "active" : ""}
+          className={currentPage === number ? styles.active : ""}
           onClick={() => onPageChange(number)}
         >
           {number}
         </button>
       ))}
       <button disabled={endPage === totalPageNum} onClick={goToNextGroup}>
-        {/* <img src={nextIcon} alt="다음 버튼" /> */}
+        <Image src={nextIcon} alt="다음 버튼" width={16} height={16} />
       </button>
     </div>
   );
