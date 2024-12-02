@@ -125,6 +125,7 @@
 
 .button:hover {
   cursor: pointer;
+  background-color: #2e7ae4;
 }
 
 .article_controls {
@@ -263,10 +264,7 @@
 }
 
 @media (max-width: 1279px) {
-  .article_container {
-    width: 90%;
-  }
-
+  .article_container,
   .best_article_container {
     width: 90%;
   }

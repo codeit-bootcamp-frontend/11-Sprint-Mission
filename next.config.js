@@ -8,6 +8,9 @@ const nextConfig = {
       "example.com",
       "via.placeholder.com",
       "flexible.img.hani.co.kr",
+      "youtube.com",
+      "www.shutterstock.com",
+      "image.hanatour.com",
     ],
   },
 };

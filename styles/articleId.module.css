@@ -1,0 +1,191 @@
+.article_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.article_container_top {
+  margin-top: 32px;
+  width: 1200px;
+}
+
+.article_top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.article_title {
+  font-size: 20px;
+  color: #1f2937;
+  margin-bottom: 16px;
+}
+
+.article_profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.article_profile_front {
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #e5e7eb;
+}
+
+.article_writer {
+  font-size: 14px;
+  color: #4b5563;
+  margin-left: 16px;
+  margin-right: 8px;
+}
+
+.article_date {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-right: 32px;
+}
+
+.article_like {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #6b7280;
+  gap: 3px;
+  border: 1px solid #e5e7eb;
+  border-radius: 35px;
+  padding: 4px 12px;
+  margin-left: 32px;
+}
+
+.article_content {
+  font-size: 18px;
+  color: #1f2937;
+}
+
+.article_leave_comment {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  width: 1200px;
+}
+
+.article_comment_title {
+  font-weight: 700;
+  font-size: 16px;
+  color: #111827;
+}
+
+.article_comment_input {
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  border: none;
+  padding: 16px 24px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 100px;
+}
+
+.article_comment_input::placeholder {
+  color: #9ca3af;
+  font-size: 16px;
+}
+
+.article_comment_input:focus {
+  outline: 1px solid #3692ff;
+}
+
+.btn {
+  background-color: #9ca3af;
+  padding: 12px 23px;
+  border: none;
+  border-radius: 8px;
+  color: #f3f4f6;
+  font-size: 16px;
+  width: 74px;
+  align-self: flex-end;
+  margin-top: 7px;
+  margin-bottom: 4px;
+}
+
+.btn_disabled {
+  cursor: not-allowed;
+}
+
+.btn_enabled {
+  background-color: #3692ff;
+}
+
+.btn_enabled:hover {
+  background-color: #2e7ae4;
+  cursor: pointer;
+}
+
+.article_container_bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 1200px;
+}
+
+.content_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content {
+  font-size: 14px;
+  color: #1f2937;
+  margin-bottom: 24px;
+}
+
+.profile {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 12px;
+}
+
+.writer_nickname {
+  font-size: 12px;
+  color: #4b5563;
+  margin-bottom: 4px;
+}
+
+.comment_date {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.back_btn {
+  background-color: #3692ff;
+  border: none;
+  border-radius: 40px;
+  padding: 12px 64px;
+  font-size: 18px;
+  color: #f3f4f6;
+  display: flex;
+  align-items: center;
+  margin-top: 32px;
+  margin-bottom: 60px;
+  gap: 8px;
+}
+
+.back_btn:hover {
+  cursor: pointer;
+  background-color: #2e7ae4;
+}
+
+@media (max-width: 1279px) {
+  .article_container_top,
+  .article_leave_comment,
+  .article_container_bottom {
+    width: 90%;
+  }
+
+  .article_comment_input {
+    width: 100%; /* 부모 컨테이너에 맞게 textarea 조정 */
+  }
+}

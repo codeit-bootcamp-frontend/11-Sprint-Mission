@@ -1,0 +1,52 @@
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.item_card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item_card_img {
+  display: block;
+  width: 282px;
+  height: 282px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.item_description {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.item_name {
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.item_price {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 700;
+}
+
+.item_favorite_count {
+  display: flex;
+  gap: 4px;
+  font-size: 12px;
+  color: #4b5563;
+}
+
+@media (max-width: 1279px) {
+  .item_card_img {
+    width: 343px;
+    height: 343px;
+    border-radius: 20px;
+    object-fit: cover;
+  }
+}

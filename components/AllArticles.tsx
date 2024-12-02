@@ -18,33 +18,27 @@ export default function AllArticles() {
   const [isDropdown, setIsDropdown] = useState<boolean>(false);
   const [keyword, setKeyword] = useState<string>("");
 
-  const fetchArticles = async (reset: boolean = false) => {
+  const fetchArticles = async (page: number = 1) => {
     try {
       if (isFetching) return;
       setIsFetching(true);
 
-      const currentPage = reset ? 1 : page;
-
       const data = await getArticles({
         orderBy: sortOrder,
-        page: currentPage,
+        page: page,
         pageSize: 10,
         keyword: keyword,
       });
 
-      if (reset) {
+      if (page === 1) {
         setArticles(data.list);
       } else {
-        if (currentPage === page) {
-          const updatedArticles = [...articles, ...data.list];
-          setArticles(updatedArticles);
-        }
+        const updatedArticles = [...articles, ...data.list];
+        setArticles(updatedArticles);
       }
 
       if (data.list.length < 10) {
         setHasMore(false);
-      } else {
-        setHasMore(true);
       }
 
       setIsFetching(false);
@@ -54,12 +48,12 @@ export default function AllArticles() {
   };
 
   useEffect(() => {
-    fetchArticles(true);
+    fetchArticles(1);
   }, [sortOrder]);
 
   useEffect(() => {
     if (page === 1) return;
-    fetchArticles();
+    fetchArticles(page);
   }, [page]);
 
   useEffect(() => {
@@ -101,7 +95,8 @@ export default function AllArticles() {
 
   const handleSearchSubmit = () => {
     setPage(1);
-    fetchArticles(true);
+    setHasMore(true);
+    fetchArticles(1);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -114,7 +109,9 @@ export default function AllArticles() {
     <div className={styles.article_container}>
       <div className={styles.article_top}>
         <h2 className={styles.h2}>게시글</h2>
-        <button className={styles.button}>글쓰기</button>
+        <Link href={"/addboard"}>
+          <button className={styles.button}>글쓰기</button>
+        </Link>
       </div>
 
       <div className={styles.article_controls}>
@@ -148,12 +145,11 @@ export default function AllArticles() {
         {articles.map((article) => (
           <Link
             key={article.id}
-            href={`/articles/${article.id}`}
+            href={`/boards/${article.id}`}
             className={styles.article_link}
             passHref
           >
             <div>
-              {" "}
               <div className={styles.article_content}>
                 <div className={styles.article_title}>{article.title}</div>
                 <div className={styles.image_container}>

@@ -1,0 +1,148 @@
+.item_inquiry {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  width: 1200px;
+}
+
+.item_inquiry_input {
+  background-color: #f3f4f6;
+  border: 1px solid #f3f4f6;
+  border-radius: 12px;
+  padding: 16px 24px 70px 24px;
+}
+
+.item_inquiry_input:focus {
+  outline: 1px solid #3692ff;
+}
+
+.item_inquiry_button_container {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 7px;
+}
+
+.item_inquiry_button {
+  background-color: #9ca3af;
+  border-style: none;
+  border-radius: 8px;
+  padding: 8px 23px;
+  color: #f3f4f6;
+  font-size: 16px;
+  line-height: 26px;
+  cursor: not-allowed;
+}
+
+.item_inquiry_button:enabled {
+  background-color: #3692ff;
+  cursor: pointer;
+}
+
+.item_inquiry_button:enabled:hover {
+  background-color: #2e7ae4;
+}
+
+.item_comments_section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 15px;
+}
+
+.comment_item {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 12px;
+}
+
+.comment_content_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment_content_more {
+  position: relative;
+}
+
+.comment_content {
+  word-wrap: break-word;
+  font-size: 14px;
+  line-height: 24px;
+  color: #1f2937;
+}
+
+.comment_actions {
+  position: absolute;
+  top: 25px;
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  right: 0;
+  z-index: 1;
+}
+
+.comment_edit_button,
+.comment_delete_button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 26px;
+  padding: 10px 41.5px;
+  color: #6b7280;
+}
+
+.item_detail_more {
+  cursor: pointer;
+}
+
+.comment_author_info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.comment_author_image {
+  width: 32px;
+  height: 32px;
+}
+
+.comment_author_details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.comment_author_nickname {
+  font-size: 12px;
+  line-height: 18px;
+  color: #4b5563;
+}
+
+.comment_updated_at {
+  font-size: 12px;
+  line-height: 18px;
+  color: #9ca3af;
+}
+
+@media (max-width: 1279px) {
+  .item_inquiry {
+    width: 90%;
+  }
+}
+
+@media (max-width: 767px) {
+  .item_comments_section {
+    padding-top: 30px;
+  }
+
+  .item_inquiry_input::placeholder {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
