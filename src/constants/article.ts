@@ -1,6 +1,6 @@
-export const PLACEHOLDER_IMAGE = "http://via.placeholder.com/500.jpg";
+export const placeholderImage = "http://via.placeholder.com/500.jpg";
 
-export const ARTICLE_SIZES = {
+export const articleSizes = {
   best: {
     mobile: {
       width: 343,

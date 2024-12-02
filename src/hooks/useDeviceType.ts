@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const DEVICE_BREAKPOINTS = {
+const deviceBreakpoints = {
   MOBILE: 744,
   TABLET: 1279,
 } as const;
@@ -21,8 +21,8 @@ const debounce = <T extends (...args: unknown[]) => void>(
 
 // 디바이스 타입 판별 함수
 const getDeviceType = (width: number): DeviceType => {
-  if (width <= DEVICE_BREAKPOINTS.MOBILE) return "mobile";
-  if (width <= DEVICE_BREAKPOINTS.TABLET) return "tablet";
+  if (width <= deviceBreakpoints.MOBILE) return "mobile";
+  if (width <= deviceBreakpoints.TABLET) return "tablet";
   return "pc";
 };
 

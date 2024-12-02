@@ -9,7 +9,7 @@ import { useArticleStore } from "@/store/articleStore";
 import { createSkeletonArray } from "@/utils/skeleton";
 import { Article } from "@/types/article";
 
-const DEVICE_PAGE_SIZE = {
+const devicePageSize = {
   pc: 10,
   tablet: 7,
   mobile: 5,
@@ -47,7 +47,7 @@ const SearchControls = () => (
 // NormalSection
 const NormalSection = () => {
   const deviceType = useDeviceType();
-  const pageSize = DEVICE_PAGE_SIZE[deviceType];
+  const pageSize = devicePageSize[deviceType];
   const { keyword, toggleState } = useArticleStore();
 
   const { data, isLoading, error } = useArticles({

@@ -8,12 +8,12 @@ const SearchArticles = () => {
   const setKeyword = useArticleStore((state: ArticleStore) => state.setKeyword);
   const [searchInput, setSearchInput] = useState("");
 
-  const DEBOUNCE_DELAY = 500;
+  const debounceDelay = 500;
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.trim();
     setSearchInput(value);
-    debounce(() => setKeyword(value), DEBOUNCE_DELAY)();
+    debounce(() => setKeyword(value), debounceDelay)();
   };
 
   return (

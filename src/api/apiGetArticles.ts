@@ -2,7 +2,7 @@ import { ArticleParams, ArticleResponse } from "@/types/article";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-const BASE_URL =
+const baseUrl =
   process.env.NEXT_PUBLIC_API_URL || "https://panda-market-api.vercel.app";
 
 class ApiError extends Error {
@@ -33,7 +33,7 @@ const apiGetArticles = async (
   try {
     const queryParams = createQueryParams(params);
     const response = await axios.get<ArticleResponse>(
-      `${BASE_URL}/articles?${queryParams}`
+      `${baseUrl}/articles?${queryParams}`
     );
     return response.data;
   } catch (error) {

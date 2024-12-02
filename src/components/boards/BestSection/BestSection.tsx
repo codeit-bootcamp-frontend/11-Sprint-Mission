@@ -6,7 +6,7 @@ import { useDeviceType } from "@/hooks/useDeviceType";
 import { createSkeletonArray } from "@/utils/skeleton";
 import { Article } from "@/types/article";
 
-const DEVICE_PAGE_SIZE = {
+const devicePageSize = {
   pc: 3,
   tablet: 2,
   mobile: 1,
@@ -39,7 +39,7 @@ const BestArticleSkeletons = ({ count }: { count: number }) =>
 // BestSection
 const BestSection = () => {
   const deviceType = useDeviceType();
-  const pageSize = DEVICE_PAGE_SIZE[deviceType];
+  const pageSize = devicePageSize[deviceType];
 
   const { data, isLoading, error } = useArticles({
     orderBy: "like",
