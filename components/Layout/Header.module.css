@@ -1,0 +1,33 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 200px;
+  width: 100%;
+  height: 70px;
+  border-bottom: 1px solid #dfdfdf;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+}
+
+.navbar-left {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar ul {
+  display: flex;
+  padding-left: 32px;
+  align-items: center;
+}
+
+.navbar li {
+  display: flex;
+  list-style-type: none;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  color: #4b5563;
+}
