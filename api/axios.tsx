@@ -9,9 +9,10 @@ const instance = axios.create({
   },
 });
 
-export const setInstanceHeaders = (token: string) => {
+export const setInstanceHeaders = (token?: string) => {
+  const value = token ? `Bearer ${token}` : undefined;
   instance.interceptors.request.use((config) => {
-    config.headers["Authorization"] = `Bearer ${token}`;
+    config.headers["Authorization"] = value;
     return config;
   });
 };
