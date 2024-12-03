@@ -11,19 +11,19 @@ import { useState, useCallback } from 'react';
  * @returns {Object | null} data - 비동기 함수의 반환 데이터
  */
 
-export default function useAsync<TArg, TReturn>(
-  asyncFunction: (arg?: TArg) => Promise<TReturn>
+export default function useAsync<TArgs, TReturn>(
+  asyncFunction: (...args: TArgs[]) => Promise<TReturn>
 ) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
   const wrappedFunction = useCallback(
-    async (arg?: TArg) => {
+    async (...args: TArgs[]) => {
       setIsLoading(true);
       setError(null);
 
       try {
-        return await asyncFunction(arg);
+        return await asyncFunction(...(args.length > 0 ? args : []));
       } catch (error) {
         const err = error as Error;
         setError(err.message);

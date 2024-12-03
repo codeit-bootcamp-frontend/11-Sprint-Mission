@@ -5,8 +5,8 @@ export default function Dropdown({
   orderBy,
   setOrderBy,
 }: {
-  orderBy: string;
-  setOrderBy: (order: string) => void;
+  orderBy: 'recent' | 'like';
+  setOrderBy: (order: 'recent' | 'like') => void;
 }) {
   const dropDownRef = useRef<HTMLDivElement | null>(null);
   const [dropDownView, setDropDownView] = useState<boolean>(false);
@@ -17,7 +17,7 @@ export default function Dropdown({
   };
 
   // 드롭다운 메뉴에서 선택한 값에 따라 정렬 조건 변경
-  const handleClickLabel = (order: string) => {
+  const handleClickLabel = (order: 'recent' | 'like') => {
     setOrderBy(order);
     setDropDownView(false);
   };
