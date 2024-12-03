@@ -1,0 +1,24 @@
+.commentBack {
+  display: flex;
+  flex-direction: row;
+  padding: 4px 12px;
+  margin: 0 auto;
+  width: 240px;
+  height: 48px;
+  background: var(--skyblue);
+  border: 1px solid #e5e7eb;
+  border-radius: 35px;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  position: relative;
+}
+.commentImage {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+}
+.commentText {
+  width: 90%;
+  margin: 10px 0;
+}

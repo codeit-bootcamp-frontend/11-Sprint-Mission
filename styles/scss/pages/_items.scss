@@ -1,0 +1,297 @@
+.navHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20vh 0 20vh;
+  margin-top: 5px;
+  border-bottom: 1px solid #dfdfdf;
+}
+.navigation {
+  display: flex;
+  flex-direction: row;
+}
+.activeNav {
+  width: 10ch;
+  margin-left: 20px;
+  line-height: 4.3vh;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--skyblue);
+}
+.inactiveNav {
+  width: 10ch;
+  margin-left: 20px;
+  line-height: 4.3vh;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--gray600);
+}
+.itemContentsTitle {
+  height: 42px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-left: 25px;
+}
+.itemcontents {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.itemContentsForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 18rem;
+  height: 20rem;
+  margin-left: 0.5rem;
+  background: none;
+}
+.itemContentsFormSmall {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: none;
+  width: 15rem;
+  height: 15rem;
+}
+.bestItemDetail {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.bestItemImg {
+  border-radius: 16px;
+  height: 22vh;
+}
+.itemName {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--blueBlack);
+  padding: 16px 0;
+}
+.itemPrice {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--blueBlack);
+  margin: 6px 0;
+}
+.favoriteCount {
+  display: flex;
+  flex-direction: row;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.favoriteCount a {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--gray600);
+}
+.itemDetail {
+  display: flex;
+  flex-direction: column;
+  margin-left: 24px;
+  width: 100%;
+  height: 100%;
+}
+.itemImg {
+  border-radius: 16px;
+  height: 20vh;
+  width: 100%;
+}
+.contentsSearch {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+}
+.contentsSearch .inputWrap {
+  width: 100%;
+}
+.addItemBtn {
+  width: 210px;
+  margin: 0 12px;
+  border-radius: 30px;
+  border: 0px;
+  border-radius: 8px;
+  background-color: var(--skyblue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.addItemBtn a {
+  height: 26px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.8rem;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  color: var(--gray100);
+}
+.selectBox {
+  width: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  background-color: white;
+  border-radius: 12px;
+  border: 1px solid var(--gray200);
+}
+.selectBox * {
+  width: 42px;
+  height: 26px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--gray800);
+}
+.pagenation {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}
+.pagenationBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--gray200);
+  background: var(--white);
+  color: black;
+  border-radius: 40px;
+}
+.pagenationBtnSelect {
+  background: #2f80ed !important;
+  color: white !important;
+}
+@media (max-width: 1199px) {
+  .section {
+    width: 100%;
+  }
+  .navHeader {
+    padding: 0 24px 0 24px;
+  }
+  .itemContentsForm {
+    height: 40vh;
+    align-content: center;
+    gap: 0 2%;
+  }
+  .bestItemDetail {
+    width: 48%;
+    margin: 0;
+    display: flex;
+    margin: 0;
+  }
+  .bestItemDetail:nth-child(2) {
+    margin: 0;
+  }
+  .itemContentsFormSmall {
+    gap: 40px 2.5%;
+    margin-bottom: 50px;
+  }
+  .bestItemImg {
+    border-radius: 16px;
+    height: 34vh;
+  }
+  .itemDetail {
+    width: 30%;
+    margin-left: 16px;
+  }
+  .itemImg {
+    border-radius: 16px;
+    height: 221px;
+    width: 100%;
+  }
+  .addItemBtn,
+  .selectBox {
+    width: 145px;
+  }
+  .selectBox *,
+  .addItemBtn a {
+    font-size: 0.7rem;
+  }
+}
+@media (max-width: 767px) {
+  .itemLogo {
+    content: url('../../public/common/ic_logo_item_mobile.png');
+  }
+  .section {
+    width: 100%;
+    padding-top: 0;
+    margin-bottom: 20px;
+  }
+  .navHeader {
+    padding: 0 24px 0 24px;
+  }
+  .itemContentsForm {
+    height: 40vh;
+    align-content: center;
+    gap: 0 2%;
+  }
+  .bestItemDetail {
+    width: 100%;
+    padding: 0 16px;
+  }
+  .itemContentsFormSmall {
+    gap: 40px 2%;
+    height: 80vh;
+  }
+  .itemContentsTitle {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 32px;
+    align-items: flex-start;
+    flex-direction: column;
+    position: relative;
+    height: 60px;
+  }
+  .itemContentsTitle:nth-last-child(3) {
+    height: 120px;
+  }
+  .contentsSearch {
+    width: 100%;
+  }
+  .bestItemImg {
+    border-radius: 16px;
+    height: 34vh;
+  }
+  .itemDetail {
+    width: 43%;
+    margin-left: 16px;
+  }
+  .itemImg {
+    border-radius: 16px;
+    height: 221px;
+    width: 100%;
+  }
+  .addItemBtn,
+  .selectBox {
+    width: 140px;
+  }
+  .selectBox *,
+  .addItemBtn a {
+    font-size: 0.6rem;
+  }
+}

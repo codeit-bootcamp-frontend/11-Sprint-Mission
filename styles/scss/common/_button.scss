@@ -1,0 +1,6 @@
+button {
+  &:hover,
+  &active {
+    background: var(--skyblue);
+  }
+}
