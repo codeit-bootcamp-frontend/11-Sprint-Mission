@@ -1,0 +1,19 @@
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.goToButton {
+  width: 240px;
+  height: 48px;
+  border-radius: 40px;
+  border: none;
+  background-color: #3692ff;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  color: #f3f4f6;
+  cursor: pointer;
+}

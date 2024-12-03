@@ -11,8 +11,11 @@
   gap: 20px;
 }
 
-.post {
+.detailLink {
   width: 100%;
+}
+
+.post {
   height: 169px;
   border-radius: 8px;
   padding: 0 24px;
