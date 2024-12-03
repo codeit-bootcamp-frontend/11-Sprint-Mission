@@ -1,21 +1,65 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import styles from '@/styles/Addboard.module.css';
 import Button from '@/components/common/Button';
 import Input from '@/components/common/Input';
-import IconPlus from '@/public/ic_plus.svg';
-import Image from 'next/image';
 import useResize from '@/hooks/useResize';
+import FileInput from '@/components/common/FileInput';
+import { create } from 'domain';
+import { createProduct } from '@/api/productApi';
+
+export interface InputDataProps {
+  name: string;
+  description: string;
+  images: string[];
+  tags: string[];
+  price: number;
+}
 
 const Addboard = () => {
   const screenType = useResize(); // useResize 훅 사용
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    console.log(e.target.value);
+  const [inputData, setInputData] = useState<InputDataProps>({
+    name: '',
+    description: '',
+    images: [],
+    price: 0,
+    tags: ['1', '2'],
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const { name, value } = e.target;
+    setInputData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+
+    console.log(inputData);
+  };
+
+  const onChangeFile = (url: string) => {
+    setInputData((prevData) => ({
+      ...prevData,
+      images: [url],
+    }));
   };
 
   const getTextTitle = () => {
     return screenType === 'desktop' ? '게시글 쓰기' : '상품 등록하기';
+  };
+
+  const isFormValid = Object.values(inputData).every((value) => {
+    if (Array.isArray(value)) {
+      return value.length > 0;
+    }
+    return value !== '';
+  });
+
+  const handleRegistClick = async () => {
+    try {
+      await createProduct(inputData);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -24,7 +68,11 @@ const Addboard = () => {
         <div className={styles['addboard-header']}>
           <h2>{getTextTitle()}</h2>
           {/* 버튼 css 안됨 */}
-          <Button addClassName={styles.buttonMiddle} disabled={false}>
+          <Button
+            addClassName={styles.buttonMiddle}
+            disabled={!isFormValid}
+            handleClick={handleRegistClick}
+          >
             등록
           </Button>
         </div>
@@ -32,30 +80,24 @@ const Addboard = () => {
           <div className={styles.box}>
             <h3>*제목</h3>
             <Input
+              name="name"
               addClassName={styles.inputTitle}
-              placehorder="제목을 입력해주세요"
+              placeholder="제목을 입력해주세요"
+              onChange={handleInputChange}
             />
           </div>
           <div className={styles.box}>
             <h3>*내용</h3>
             <Input
+              name="description"
               addClassName={`${styles.inputTitle} ${styles.inputLarge}`}
-              placehorder="내용을 입력해주세요"
+              placeholder="내용을 입력해주세요"
+              onChange={handleInputChange}
             />
           </div>
           <div className={styles.box}>
             <h3>이미지</h3>
-            <div className={styles.image}>
-              <div className={styles['image-block']}>
-                <Image
-                  src={IconPlus}
-                  alt="이미지등록"
-                  width={48}
-                  height={48}
-                ></Image>
-                <div className={styles['image-txt']}>이미지 등록</div>
-              </div>
-            </div>
+            <FileInput onChangeFile={onChangeFile} />
           </div>
         </div>
       </div>

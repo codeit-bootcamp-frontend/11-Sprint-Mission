@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
 import axiosInstance from './axios';
+import { InputDataProps } from '@/pages/addboard';
 
 export type OrderType = 'recent' | 'favorite';
 
@@ -42,12 +43,18 @@ export const getProducts = (
   });
 };
 
-export const getProductById = (productId: string) => {
+export const getProductById = (productId: number) => {
   return axiosInstance.get(`/products/${productId}`);
 };
 
-export const createProduct = (productData: Product) => {
-  return axiosInstance.post('/products', productData);
+export const createProduct = (
+  productData: InputDataProps,
+): Promise<AxiosResponse> => {
+  return axiosInstance.post('/products', productData, {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
+    },
+  });
 };
 
 export const updateProduct = (

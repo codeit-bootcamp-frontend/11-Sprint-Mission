@@ -17,8 +17,8 @@ const Card: React.FC<CardProps> = ({ products }) => {
 
   return (
     <>
-      <div className={styles.CardBox}>
-        <Link href={`boards/${id}`}>
+      <Link href={`boards/${id}`}>
+        <div className={styles.CardBox}>
           <div className={styles.CardContent}>
             <div className={styles.bestContentText}>{name}</div>
             <div className={styles.bestContentImage}>
@@ -30,29 +30,29 @@ const Card: React.FC<CardProps> = ({ products }) => {
               ></Image>
             </div>
           </div>
-        </Link>
-        <div className={styles.cardInfo}>
-          <div className={styles.bestContentLeft}>
-            <Image
-              src={profile}
-              width={24}
-              height={24}
-              alt="프로파일이미지"
-            ></Image>
-            <div className={styles.nickName}>{ownerNickname}</div>
-            <div className={styles.date}>{createdAt}</div>
-          </div>
-          <div className={styles.heartCount}>
-            <Image
-              src={heartIcon}
-              width={24}
-              height={24}
-              alt="좋아요버튼"
-            ></Image>
-            <div className={styles.heartCountNum}>{favoriteCount}+</div>
+          <div className={styles.cardInfo}>
+            <div className={styles.bestContentLeft}>
+              <Image
+                src={profile}
+                width={24}
+                height={24}
+                alt="프로파일이미지"
+              ></Image>
+              <div className={styles.nickName}>{ownerNickname}</div>
+              <div className={styles.date}>{createdAt}</div>
+            </div>
+            <div className={styles.heartCount}>
+              <Image
+                src={heartIcon}
+                width={24}
+                height={24}
+                alt="좋아요버튼"
+              ></Image>
+              <div className={styles.heartCountNum}>{favoriteCount}+</div>
+            </div>
           </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 };

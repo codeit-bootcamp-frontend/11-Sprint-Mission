@@ -3,12 +3,13 @@ import styles from './Input.module.css';
 import Image from 'next/image';
 
 interface InputProps {
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onInput?: (query: string) => void;
   image?: boolean;
   addClassName?: string | string[];
-  placehorder: string;
+  placeholder: string;
   children?: ReactNode;
+  name: string;
 }
 
 const Input = ({
@@ -16,7 +17,8 @@ const Input = ({
   onChange,
   image,
   addClassName,
-  placehorder,
+  placeholder,
+  name,
   children,
 }: InputProps) => {
   const inputClass = Array.isArray(addClassName)
@@ -43,11 +45,12 @@ const Input = ({
       {image && <> {children} </>}
       <input
         type="text"
+        name={name}
         value={query}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         className={styles['input-input']}
-        placeholder={placehorder}
+        placeholder={placeholder}
       />
     </div>
   );

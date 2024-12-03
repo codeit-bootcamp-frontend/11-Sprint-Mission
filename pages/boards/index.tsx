@@ -163,7 +163,7 @@ const Board = ({
             onInput={handleSearch}
             addClassName="boardSearch"
             image={true}
-            placehorder="검색할 상품을 입력해주세요"
+            placeholder="검색할 상품을 입력해주세요"
           >
             <div className={styles['input-icon']}>
               <Image src={InputIcon} alt="검색 아이콘" width={20} height={20} />
