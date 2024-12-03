@@ -23,12 +23,11 @@ const nextConfig = {
       ],
     },
   },
-  async redirects() {
+  async rewrites() {
     return [
       {
         source: "/:path*",
-        destination: "/",
-        permanent: true,
+        destination: "/:path*",
       },
     ];
   },
