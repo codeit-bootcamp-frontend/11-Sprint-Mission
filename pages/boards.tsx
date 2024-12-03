@@ -1,14 +1,15 @@
 import styles from "@/styles/boards.module.css";
-import BoardsBestArticles from "../components/Boards/BoardsBestArticles";
+import BestArticles from "../components/Boards/BestArticles";
 import SearchInput from "../components/common/SearchInput";
 import Button from "@/components/common/Button";
-import DropDown from "@/components/common/DropDown";
 import { InferGetServerSidePropsType } from "next";
-import axios from "@/pages/api/axiosApi";
+import AllArticles from "@/components/Boards/AllArticles";
+import instance from "@/api/axiosApi";
 
+// 베스트 게시글은 계속 바뀌니까 서버사이드렌더링이 적합?
 export async function getServerSideProps() {
-  const res = await axios.get("/articles");
-  const articles = res.data.results ?? [];
+  const res = await instance.get("/articles?orderBy=recent");
+  const articles = res.data.list ?? [];
 
   return {
     props: {
@@ -20,19 +21,13 @@ export async function getServerSideProps() {
 export default function Boards({
   articles,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  // console.log("Received articles:", articles);
+
   return (
     <>
       <section className={styles.container}>
-        <div>
-          <h1>베스트 게시글</h1>
-          <BoardsBestArticles articles={articles} />
-        </div>
-        <div>
-          <h2>게시글</h2>
-          <Button buttonName="글쓰기" />
-          <SearchInput />
-          <DropDown />
-        </div>
+        <BestArticles articles={articles} />
+        <AllArticles />
       </section>
     </>
   );
