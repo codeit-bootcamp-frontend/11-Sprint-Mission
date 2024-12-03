@@ -1,0 +1,32 @@
+:global(*) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:global(html) {
+  font-family: Pretendard, sans-serif;
+  word-break: keep-all;
+}
+
+:global(body) {
+  background-color: #ffffff;
+}
+
+:global(a) {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* button {
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+img,
+svg {
+  vertical-align: bottom;
+} */

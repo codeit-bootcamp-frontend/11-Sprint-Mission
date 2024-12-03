@@ -71,3 +71,50 @@ export async function getProductComments({
     throw error;
   }
 }
+
+// Article에 대한 API
+export async function getArticleDetail(articleId: number) {
+  if (!articleId) {
+    throw new Error("Invalid article ID");
+  }
+
+  try {
+    const response = await fetch(
+      `https://panda-market-api.vercel.app/articles/${articleId}`
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    const body = await response.json();
+    return body;
+  } catch (error) {
+    console.error("실패:", error);
+    throw error;
+  }
+}
+
+export async function getArticleComments({
+  articleId,
+  limit = 10,
+}: {
+  articleId: number;
+  limit?: number;
+}) {
+  if (!articleId) {
+    throw new Error("Invalid article ID");
+  }
+
+  try {
+    const response = await fetch(
+      `https://panda-market-api.vercel.app/articles/${articleId}/comments?limit=${limit}`
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    const body = await response.json();
+    return body;
+  } catch (error) {
+    console.error("실패:", error);
+    throw error;
+  }
+}

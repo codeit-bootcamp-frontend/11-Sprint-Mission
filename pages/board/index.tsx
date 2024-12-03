@@ -1,6 +1,6 @@
 import React from "react";
-import BestArticle from "../../components/boards/BestArticle";
-import AllArticle from "../../components/boards/AllArticle";
+import BestArticle from "@/components/board/BestArticle";
+import AllArticle from "@/components/board/AllArticle";
 import { Article, ArticleList } from "@/types/Types";
 
 export async function getServerSideProps() {
