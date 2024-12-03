@@ -1,8 +1,11 @@
+import Container from "@/components/Layout/Container";
+import Header from "@/components/Layout/Header";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { ThemeProvider } from "styled-components";
-import theme from "@/styles/theme";
+// import Layout from "../components/Layout/Layout";
+// import { ThemeProvider } from "styled-components";
+// import theme from "@/styles/theme";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -11,9 +14,12 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>판다마켓</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ThemeProvider theme={theme}>
+      {/* <ThemeProvider theme={theme}> */}
+      <Header />
+      <Container>
         <Component {...pageProps} />
-      </ThemeProvider>
+      </Container>
+      {/* </ThemeProvider> */}
     </>
   );
 }
