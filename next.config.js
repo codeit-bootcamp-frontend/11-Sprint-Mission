@@ -14,6 +14,7 @@ const nextConfig = {
       "mblogthumb-phinf.pstatic.net",
       "ibb.co",
     ],
+    formats: ["image/avif", "image/webp"],
   },
 };
 

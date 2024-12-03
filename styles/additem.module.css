@@ -21,16 +21,16 @@
   font-size: 20px;
   line-height: 32px;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--gray800);
 }
 
 .add_item_submit_button {
   width: 74px;
   height: 42px;
   border-radius: 8px;
-  background-color: #9ca3af;
+  background-color: var(--gray400);
   border-style: none;
-  color: #f3f4f6;
+  color: var(--gray100);
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
@@ -38,12 +38,12 @@
 }
 
 .add_item_submit_button:enabled {
-  background-color: #3692ff;
+  background-color: var(--blue);
   cursor: pointer;
 }
 
 .add_item_submit_button:enabled:hover {
-  background-color: #2e7ae4;
+  background-color: var(--darkblue);
 }
 
 .add_item_form_container {
@@ -70,7 +70,7 @@
   font-size: 18px;
   font-weight: 700;
   line-height: 26px;
-  color: #1f2937;
+  color: var(--gray800);
 }
 
 .add_item_img_preview {
@@ -82,15 +82,15 @@
 .add_item_name_input,
 .add_item_price_input,
 .add_item_tag_input {
-  background-color: #f3f4f6;
-  border: 1px solid #f3f4f6;
+  background-color: var(--gray100);
+  border: 1px solid var(--gray100);
   border-radius: 12px;
   padding: 16px 24px;
 }
 
 .add_item_content_container textarea {
-  background-color: #f3f4f6;
-  border: 1px solid #f3f4f6;
+  background-color: var(--gray100);
+  border: 1px solid var(--gray100);
   border-radius: 12px;
   padding: 16px 24px 240px 24px;
 }
@@ -99,7 +99,7 @@
 .add_item_price_input:focus,
 .add_item_tag_input:focus,
 .add_item_content_textarea:focus {
-  border-color: #3692ff;
+  border-color: var(--blue);
   outline: none;
 }
 
@@ -107,7 +107,7 @@
 .add_item_price_input::placeholder,
 .add_item_tag_input::placeholder,
 .add_item_content_textarea::placeholder {
-  color: #9ca3af;
+  color: var(--gray400);
   font-size: 16px;
   line-height: 26px;
 }
@@ -120,11 +120,11 @@
 .add_item_tag {
   display: inline-flex;
   align-items: center;
-  background-color: #f3f4f6;
+  background-color: var(--gray100);
   border-radius: 26px;
   padding: 8px 16px;
   font-size: 16px;
-  color: #1f2937;
+  color: var(--gray800);
   line-height: 26px;
 }
 

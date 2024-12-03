@@ -17,7 +17,7 @@
 
 .article_title {
   font-size: 20px;
-  color: #1f2937;
+  color: var(--gray800);
   margin-bottom: 16px;
 }
 
@@ -26,25 +26,25 @@
   align-items: center;
   margin-bottom: 24px;
   padding-bottom: 16px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--gray200);
 }
 
 .article_profile_front {
   display: flex;
   align-items: center;
-  border-right: 1px solid #e5e7eb;
+  border-right: 1px solid var(--gray200);
 }
 
 .article_writer {
   font-size: 14px;
-  color: #4b5563;
+  color: var(--gray600);
   margin-left: 16px;
   margin-right: 8px;
 }
 
 .article_date {
   font-size: 14px;
-  color: #9ca3af;
+  color: var(--gray400);
   margin-right: 32px;
 }
 
@@ -52,9 +52,9 @@
   display: flex;
   align-items: center;
   font-size: 16px;
-  color: #6b7280;
+  color: var(--gray500);
   gap: 3px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--gray200);
   border-radius: 35px;
   padding: 4px 12px;
   margin-left: 32px;
@@ -62,7 +62,7 @@
 
 .article_content {
   font-size: 18px;
-  color: #1f2937;
+  color: var(--gray800);
 }
 
 .article_leave_comment {
@@ -75,11 +75,11 @@
 .article_comment_title {
   font-weight: 700;
   font-size: 16px;
-  color: #111827;
+  color: var(--gray900);
 }
 
 .article_comment_input {
-  background-color: #f3f4f6;
+  background-color: var(--gray100);
   border-radius: 12px;
   border: none;
   padding: 16px 24px;
@@ -89,20 +89,20 @@
 }
 
 .article_comment_input::placeholder {
-  color: #9ca3af;
+  color: var(--gray400);
   font-size: 16px;
 }
 
 .article_comment_input:focus {
-  outline: 1px solid #3692ff;
+  outline: 1px solid var(--blue);
 }
 
 .btn {
-  background-color: #9ca3af;
+  background-color: var(--gray400);
   padding: 12px 23px;
   border: none;
   border-radius: 8px;
-  color: #f3f4f6;
+  color: var(--gray100);
   font-size: 16px;
   width: 74px;
   align-self: flex-end;
@@ -119,7 +119,7 @@
 }
 
 .btn_enabled:hover {
-  background-color: #2e7ae4;
+  background-color: var(--darkblue);
   cursor: pointer;
 }
 
@@ -137,26 +137,26 @@
 
 .content {
   font-size: 14px;
-  color: #1f2937;
+  color: var(--gray800);
   margin-bottom: 24px;
 }
 
 .profile {
   display: flex;
   gap: 8px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--gray200);
   padding-bottom: 12px;
 }
 
 .writer_nickname {
   font-size: 12px;
-  color: #4b5563;
+  color: var(--gray600);
   margin-bottom: 4px;
 }
 
 .comment_date {
   font-size: 12px;
-  color: #9ca3af;
+  color: var(--gray400);
 }
 
 .back_btn {
@@ -165,7 +165,7 @@
   border-radius: 40px;
   padding: 12px 64px;
   font-size: 18px;
-  color: #f3f4f6;
+  color: var(--gray100);
   display: flex;
   align-items: center;
   margin-top: 32px;

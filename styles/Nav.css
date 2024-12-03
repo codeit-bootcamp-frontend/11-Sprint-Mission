@@ -1,5 +1,5 @@
 .nav-container {
-  border-bottom: 1px solid #dfdfdf;
+  border-bottom: 1px solid var(--border);
 }
 
 .nav-bar {
@@ -30,12 +30,12 @@
 }
 
 .nav-board a {
-  color: #4b5563;
+  color: var(--gray600);
   text-decoration: none;
 }
 
 .nav-board-used-market.active {
-  color: #3692ff;
+  color: var(--blue);
 }
 
 .nav-icon {

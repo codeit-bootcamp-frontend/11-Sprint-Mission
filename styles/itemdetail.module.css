@@ -20,7 +20,7 @@
   flex-direction: row;
   gap: 24px;
   padding-bottom: 40px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--gray200);
 }
 
 .item_detail_image {
@@ -50,7 +50,7 @@
   flex-direction: column;
   gap: 16px;
   padding-bottom: 16px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--gray200);
 }
 
 .item_detail_name_container {
@@ -61,7 +61,7 @@
 .item_detail_name {
   font-size: 24px;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--gray800);
   line-height: 32px;
 }
 
@@ -82,13 +82,13 @@
   font-size: 16px;
   font-weight: 600;
   line-height: 26px;
-  color: #4b5563;
+  color: var(--gray600);
 }
 
 .item_detail_description {
   font-size: 16px;
   line-height: 26px;
-  color: #1f2937;
+  color: var(--gray800);
 }
 
 .item_detail_info_bottom {
@@ -110,9 +110,9 @@
 }
 
 .item_detail_tag {
-  background-color: #f3f4f6;
+  background-color: var(--gray100);
   border-radius: 26px;
-  color: #1f2937;
+  color: var(--gray800);
   font-size: 16px;
   line-height: 26px;
   padding: 6px 16px;
@@ -136,18 +136,18 @@
 .item_detail_author_nickname {
   font-size: 14px;
   line-height: 24px;
-  color: #4b5563;
+  color: var(--gray600);
 }
 
 .item_detail_createdAt {
   font-size: 14px;
   line-height: 24px;
-  color: #9ca3af;
+  color: var(--gray400);
 }
 
 .item_detail_favorite {
-  background-color: #ffffff;
-  border: 1px solid #e5e7eb;
+  background-color: var(--white);
+  border: 1px solid var(--gray200);
   border-radius: 35px;
   display: flex;
   height: 30px;
@@ -166,7 +166,7 @@
   font-size: 16px;
   font-weight: 500;
   line-height: 26px;
-  color: #6b7280;
+  color: var(--gray500);
 }
 
 .item_detail_bottom_container {
@@ -192,15 +192,15 @@
   gap: 8px;
   font-size: 18px;
   line-height: 26px;
-  color: #f3f4f6;
-  background-color: #3692ff;
+  color: var(--gray100);
+  background-color: var(--blue);
   border-radius: 40px;
   padding: 12px 40px;
   border-style: none;
 }
 
 .item_detail_back_button:hover {
-  background-color: #2e7ae4;
+  background-color: var(--darkblue);
   cursor: pointer;
 }
 

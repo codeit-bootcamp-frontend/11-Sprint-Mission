@@ -14,8 +14,8 @@
   height: 40px;
   border-radius: 50%;
   border: 1px solid #d1d5db;
-  background-color: #fff;
-  color: #6b7280;
+  background-color: var(--white);
+  color: var(--gray500);
   cursor: pointer;
   font-size: 16px;
   line-height: 26px;
@@ -28,7 +28,7 @@
 }
 
 .pagination .active {
-  background-color: #3692ff;
-  color: #fff;
-  border: 1px solid #3692ff;
+  background-color: var(--blue);
+  color: var(--white);
+  border: 1px solid var(--blue);
 }

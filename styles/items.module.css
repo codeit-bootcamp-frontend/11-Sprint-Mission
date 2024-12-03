@@ -47,7 +47,7 @@
   width: 325px;
   height: 42px;
   border-radius: 12px;
-  background-color: #f3f4f6;
+  background-color: var(--gray100);
 }
 
 .all_item_search_icon {
@@ -65,7 +65,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
-  color: #9ca3af;
+  color: var(--gray400);
 }
 
 .all_item_register_button {
@@ -74,26 +74,26 @@
   width: 133px;
   border-radius: 8px;
   text-align: center;
-  background-color: #3692ff;
+  background-color: var(--blue);
   font-size: 16px;
   line-height: 26px;
-  color: #f3f4f6;
+  color: var(--gray100);
 }
 
 .all_item_register_button:hover {
-  background-color: #2e7ae4;
+  background-color: var(--darkblue);
   cursor: pointer;
 }
 
 .all_item_sort_button {
   width: 130px;
   height: 42px;
-  border: 1px solid #e5e7eb;
-  background-color: #fff;
+  border: 1px solid var(--gray200);
+  background-color: var(--white);
   border-radius: 12px;
   font-size: 16px;
   line-height: 26px;
-  color: #1f2937;
+  color: var(--gray800);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -110,8 +110,8 @@
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: #fff;
-  border: 1px solid #e5e7eb;
+  background-color: var(--white);
+  border: 1px solid var(--gray200);
   border-radius: 12px;
   margin-top: 8px;
   z-index: 1000;
@@ -124,11 +124,11 @@
   padding: 10px 0;
   text-align: center;
   cursor: pointer;
-  color: #1f2937;
+  color: var(--gray800);
 }
 
 .all_item_sort_options div + div {
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--gray200);
 }
 
 .all_item_card_container {
@@ -240,7 +240,7 @@
   display: flex;
   gap: 4px;
   font-size: 12px;
-  color: #4b5563;
+  color: var(--gray600);
 }
 
 @media (max-width: 1279px) {
