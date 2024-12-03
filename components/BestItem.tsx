@@ -4,16 +4,7 @@ import { Product, GetProductsResponse } from "@/types/commontypes";
 import styles from "@/styles/items.module.css";
 import BestItemCard from "./BestItemCard";
 import getPageSize from "@/lib/utils/getPageSize";
-
-const debounce = (func: (...args: any[]) => void, delay: number) => {
-  let timeoutId: NodeJS.Timeout;
-  return (...args: any[]) => {
-    if (timeoutId) clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => {
-      func(...args);
-    }, delay);
-  };
-};
+import debounce from "@/lib/utils/debounce";
 
 function BestItem() {
   const [items, setItems] = useState<Product[]>([]);

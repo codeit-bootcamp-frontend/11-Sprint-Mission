@@ -8,6 +8,7 @@ import heart from "@/public/svgs/ic_heart (1).svg";
 import defaultImage from "@/public/pngs/noImage.png";
 import searchIcon from "@/public/svgs/ic_search.svg";
 import { getArticles } from "@/lib/api";
+import debounce from "@/lib/utils/debounce";
 
 export default function AllArticles() {
   const [articles, setArticles] = useState<Article[]>([]);
@@ -57,24 +58,22 @@ export default function AllArticles() {
   }, [page]);
 
   useEffect(() => {
-    let debounceTimer: NodeJS.Timeout;
-
-    const handleScroll = () => {
-      clearTimeout(debounceTimer);
-      debounceTimer = setTimeout(() => {
-        if (
-          window.innerHeight + document.documentElement.scrollTop >=
-            document.documentElement.offsetHeight - 50 &&
-          !isFetching &&
-          hasMore
-        ) {
-          setPage((prev) => prev + 1);
-        }
-      }, 200);
-    };
+    const handleScroll = debounce(() => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop >=
+          document.documentElement.offsetHeight - 50 &&
+        !isFetching &&
+        hasMore
+      ) {
+        setPage((prev) => prev + 1);
+      }
+    }, 200);
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [isFetching, hasMore]);
 
   const toggleDropdown = () => {
