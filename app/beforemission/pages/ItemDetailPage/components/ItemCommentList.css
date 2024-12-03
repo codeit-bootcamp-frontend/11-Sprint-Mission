@@ -1,0 +1,45 @@
+.commnetContent {
+  margin: 20px 0;
+  color: #1f2937;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.commentContainer {
+  position: relative;
+}
+
+.commentItem {
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  color: #4b5563;
+  font-size: 12px;
+}
+
+.commnetContent {
+  max-width: 300px;
+}
+
+.commentUserImage {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background-color: rgba(156, 163, 175, 1);
+}
+
+.commentMoreButton {
+  position: absolute;
+  right: 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .commnetContent {
+    max-width: 700px;
+  }
+}

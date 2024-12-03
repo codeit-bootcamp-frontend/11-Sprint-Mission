@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (min-width: 375px) {
+  .container {
+    margin: 70px 20px 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin: 70px 20px 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    margin: 70px 200px 0;
+  }
+}

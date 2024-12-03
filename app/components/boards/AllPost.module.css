@@ -1,0 +1,136 @@
+.titleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sectionTitle {
+  padding-top: 15px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.addPostLink {
+  width: 88px;
+  height: 42px;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #3692ff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  color: #fff;
+}
+
+.post {
+  margin: 20px 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.postContents {
+  display: flex;
+  justify-content: space-between;
+}
+
+.imgContainer {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 6px;
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+}
+
+.image {
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.title {
+  max-width: 256px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 32px;
+  color: #1f2937;
+}
+
+.metaLike {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  color: #6b7280;
+}
+
+.info {
+  display: flex;
+  gap: 10px;
+}
+
+.searchDropdown {
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdownButton {
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 60px;
+  height: 42px;
+  border-radius: 10px;
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+}
+
+.metaDate {
+  color: #9ca3af;
+}
+
+.postFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #4b5563;
+}
+
+.pagination {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.paginationButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: #24242c;
+  border: none;
+  border-radius: 10px;
+  width: 30px;
+  height: 25px;
+  font-size: 16px;
+}
+
+.paginationButton:disabled {
+  cursor: not-allowed;
+  background-color: #d1d5db;
+}

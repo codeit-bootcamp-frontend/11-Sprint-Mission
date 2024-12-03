@@ -1,0 +1,24 @@
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+}
+
+.dropdownMenu {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #1f2937;
+  cursor: pointer;
+  width: 130px;
+  text-align: center;
+  background-color: #fff;
+  border: none;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.dropdownMenu:last-child {
+  border-bottom: none;
+}
