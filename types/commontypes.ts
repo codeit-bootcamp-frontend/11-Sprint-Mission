@@ -113,7 +113,7 @@ export interface ImageInputProps {
   className?: string;
   name: string;
   value: File | null;
-  initialPreview?: string;
+  initialPreview?: string | null;
   onChange: (name: string, file: File | null) => void;
 }
 
