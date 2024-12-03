@@ -130,40 +130,28 @@ export default function Home() {
               </Link>
             </div>
             <div className={styles.footer_sns}>
-              <Link
-                href="https://www.facebook.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <Link href="https://www.facebook.com/" target="_blank">
                 <Image
                   className={styles.facebook}
                   src={facebook}
                   alt="페이스북 링크"
                 />
               </Link>
-              <Link href="https://x.com/" target="_blank" rel="noreferrer">
+              <Link href="https://x.com/" target="_blank">
                 <Image
                   className={styles.twitter}
                   src={twitter}
                   alt="트위터 링크"
                 />
               </Link>
-              <Link
-                href="https://www.youtube.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <Link href="https://www.youtube.com/" target="_blank">
                 <Image
                   className={styles.youtube}
                   src={youtube}
                   alt="유튜브 링크"
                 />
               </Link>
-              <Link
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <Link href="https://www.instagram.com/" target="_blank">
                 <Image
                   className={styles.instagram}
                   src={instagram}
