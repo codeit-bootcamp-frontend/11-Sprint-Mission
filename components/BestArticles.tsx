@@ -7,18 +7,11 @@ import heart from "@/public/svgs/ic_heart (1).svg";
 import defaultImage from "@/public/pngs/noImage.png";
 import { getArticles } from "@/lib/api";
 import Link from "next/link";
-
-const getPageSize = () => {
-  if (typeof window === "undefined") return 3;
-  const width = window.innerWidth;
-  if (width < 768) return 1;
-  if (width < 1280) return 2;
-  return 3;
-};
+import getPageSize from "@/lib/utils/getPageSize";
 
 export default function BestArticles() {
   const [articles, setArticles] = useState<Article[]>([]);
-  const [pageSize, setPageSize] = useState<number>(getPageSize);
+  const [pageSize, setPageSize] = useState<number>(getPageSize("article"));
 
   useEffect(() => {
     const fetchArticles = async ({
@@ -40,7 +33,8 @@ export default function BestArticles() {
     };
 
     const handleResize = () => {
-      setPageSize(getPageSize());
+      // 화면 크기가 바뀔 때마다 최신 pageSize를 업데이트
+      setPageSize(getPageSize("article"));
     };
 
     window.addEventListener("resize", handleResize);

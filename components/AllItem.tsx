@@ -6,18 +6,7 @@ import { Product } from "@/types/commontypes";
 import styles from "@/styles/items.module.css";
 import searchIcon from "@/public/svgs/ic_search.svg";
 import Image from "next/image";
-
-const getPageSize = () => {
-  if (typeof window === "undefined") return 10;
-  const width = window.innerWidth;
-  if (width < 768) {
-    return 4;
-  } else if (width < 1280) {
-    return 6;
-  } else {
-    return 10;
-  }
-};
+import getPageSize from "@/lib/utils/getPageSize";
 
 function AllItems() {
   const [orderBy, setOrderBy] = useState<string>("recent");

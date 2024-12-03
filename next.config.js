@@ -11,6 +11,8 @@ const nextConfig = {
       "youtube.com",
       "www.shutterstock.com",
       "image.hanatour.com",
+      "mblogthumb-phinf.pstatic.net",
+      "ibb.co",
     ],
   },
 };
