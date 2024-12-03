@@ -50,6 +50,20 @@
   background-color: var(--gray100);
 }
 
+.search_button {
+  border: none;
+  background-color: var(--gray100);
+  padding: 0;
+}
+
+.search_button:hover {
+  cursor: pointer;
+}
+
+.search_button > img {
+  display: flex;
+}
+
 .all_item_search_icon {
   padding-left: 16px;
 }

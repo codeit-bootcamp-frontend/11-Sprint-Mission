@@ -28,7 +28,7 @@ export default function AllArticles() {
         orderBy: sortOrder,
         page,
         pageSize: 10,
-        keyword: keyword,
+        keyword,
       });
 
       if (page === 1) {
