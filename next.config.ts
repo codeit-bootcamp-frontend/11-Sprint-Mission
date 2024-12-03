@@ -1,4 +1,6 @@
-const nextConfig = {
+import type { NextConfig } from 'next'
+
+const nextConfig: NextConfig = {
   /* config options here */
   reactStrictMode: false,
   allowFutureImage: true,
@@ -19,4 +21,4 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+export default nextConfig
