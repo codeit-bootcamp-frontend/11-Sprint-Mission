@@ -2,6 +2,7 @@ import styles from '../styles/BestProduct.module.css';
 import icHeart from '../assets/ic_heart.svg';
 import Link from 'next/link';
 import React from 'react';
+import Image from 'next/image';
 
 interface BestProductItem {
   id: number;

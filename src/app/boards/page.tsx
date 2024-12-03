@@ -5,6 +5,8 @@ import styles from '../../styles/boards.module.css';
 import React, { useEffect, useState } from 'react';
 import { getBoardsList, Article } from '../../hooks/api';
 
+import Link from 'next/link';
+
 interface BoardsPageProps {}
 
 const BoardsPage: React.FunctionComponent<BoardsPageProps> = () => {
@@ -64,14 +66,16 @@ const BoardsPage: React.FunctionComponent<BoardsPageProps> = () => {
         <ul>
           {bestArticles.map((article) => (
             <li key={article.id}>
-              <div>
-                <h3>{article.title}</h3>
-                <img
-                  src={article.image}
-                  alt={article.title}
-                  style={{ width: '200px' }}
-                />
-              </div>
+              <Link href={`/boards/${article.id}`} passHref>
+                <div>
+                  <h3>{article.title}</h3>
+                  <img
+                    src={article.image}
+                    alt={article.title}
+                    style={{ width: '200px' }}
+                  />
+                </div>
+              </Link>
               {/* <p>{article.content}</p> */}
               <div>
                 <p>{article.writer.nickname}</p>
@@ -108,14 +112,16 @@ const BoardsPage: React.FunctionComponent<BoardsPageProps> = () => {
       <ul>
         {sortedArticles.map((article) => (
           <li key={article.id}>
-            <div>
-              <h3>{article.title}</h3>
-              <img
-                src={article.image}
-                alt={article.title}
-                style={{ width: '200px' }}
-              />
-            </div>
+            <Link href={`/boards/${article.id}`} passHref>
+              <div>
+                <h3>{article.title}</h3>
+                <img
+                  src={article.image}
+                  alt={article.title}
+                  style={{ width: '200px' }}
+                />
+              </div>
+            </Link>
             <div>
               {/* <p>{article.content}</p> */}
               <p>{article.writer.nickname}</p>
