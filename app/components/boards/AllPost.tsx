@@ -78,6 +78,54 @@ export default function AllPost() {
 
   const paginatedArticles = getPaginatedArticles();
 
+  const PostList = ({ articles }: { articles: Article[] }) => (
+    <div className={styles.postsContainer}>
+      {articles.length > 0 ? (
+        articles.map((article) => (
+          <Link
+            key={article.id}
+            href={`/boards/${article.id}`}
+            className={styles.postLink}
+          >
+            <div className={styles.post}>
+              <div className={styles.postContents}>
+                <h3 className={styles.title}>{article.title}</h3>
+                <div className={styles.imgContainer}>
+                  <Image
+                    src={article.image || "/images/default.png"}
+                    alt={article.title || "default"}
+                    width={48}
+                    height={48}
+                    className={styles.image}
+                  />
+                </div>
+              </div>
+              <div className={styles.postFooter}>
+                <div className={styles.info}>
+                  <p>{article.writer.nickname}</p>
+                  <div className={styles.metaDate}>
+                    {new Date(article.createdAt).toLocaleDateString()}
+                  </div>
+                </div>
+                <div className={styles.metaLike}>
+                  <Image
+                    width={16}
+                    height={16}
+                    src="/images/ic_heart.png"
+                    alt="하트"
+                  />
+                  {article.likeCount}
+                </div>
+              </div>
+            </div>
+          </Link>
+        ))
+      ) : (
+        <p>검색 결과가 없습니다.</p>
+      )}
+    </div>
+  );
+
   return (
     <div className="container">
       <div className={styles.titleContainer}>
@@ -106,51 +154,7 @@ export default function AllPost() {
         )}
       </div>
 
-      <div className={styles.postsContainer}>
-        {paginatedArticles.length > 0 ? (
-          paginatedArticles.map((article) => (
-            <Link
-              key={article.id}
-              href={`/boards/${article.id}`}
-              className={styles.postLink}
-            >
-              <div className={styles.post}>
-                <div className={styles.postContents}>
-                  <h3 className={styles.title}>{article.title}</h3>
-                  <div className={styles.imgContainer}>
-                    <Image
-                      src={article.image || "/images/default.png"}
-                      alt={article.title || "default"}
-                      width={48}
-                      height={48}
-                      className={styles.image}
-                    />
-                  </div>
-                </div>
-                <div className={styles.postFooter}>
-                  <div className={styles.info}>
-                    <p>{article.writer.nickname}</p>
-                    <div className={styles.metaDate}>
-                      {new Date(article.createdAt).toLocaleDateString()}
-                    </div>
-                  </div>
-                  <div className={styles.metaLike}>
-                    <Image
-                      width={16}
-                      height={16}
-                      src="/images/ic_heart.png"
-                      alt="하트"
-                    />
-                    {article.likeCount}
-                  </div>
-                </div>
-              </div>
-            </Link>
-          ))
-        ) : (
-          <p>검색 결과가 없습니다.</p>
-        )}
-      </div>
+      <PostList articles={paginatedArticles} />
 
       <Pagination
         currentPage={currentPage}
