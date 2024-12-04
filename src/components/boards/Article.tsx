@@ -7,7 +7,7 @@ import likeIcon from "@icons/ic_like_heart.svg";
 
 interface ArticleProps extends ArticleType {
   isBest?: boolean;
-  isLoading?: boolean;
+  isLoading: boolean;
 }
 
 const Article = ({

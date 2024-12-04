@@ -7,7 +7,7 @@ import { skeletonClass } from "@/styles/skeleton";
 interface BestArticleProps extends Omit<Article, "image"> {
   imageUrl: string;
   likeIcon: string;
-  isLoading?: boolean;
+  isLoading: boolean;
 }
 
 const BestArticle = ({

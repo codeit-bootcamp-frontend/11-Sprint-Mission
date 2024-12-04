@@ -6,7 +6,7 @@ import { skeletonClass } from "@/styles/skeleton";
 interface NormalArticleProps extends Omit<Article, "image"> {
   imageUrl: string;
   likeIcon: string;
-  isLoading?: boolean;
+  isLoading: boolean;
 }
 
 const NormalArticle = ({
