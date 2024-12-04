@@ -8,6 +8,7 @@ import SearchInput from "@/app/components/ui/SearchInput";
 import { fetchArticles, Article } from "@/app/lib/api/api";
 import Image from "next/image";
 import Dropdown from "../ui/Dropdown";
+import Pagination from "./AllPostPagination";
 
 export default function AllPost() {
   const router = useRouter();
@@ -42,7 +43,11 @@ export default function AllPost() {
   };
 
   useEffect(() => {
-    const query = searchParams.get("q") || "";
+    const getSearchQuery = (): string => {
+      return searchParams.get("q") || "";
+    };
+
+    const query = getSearchQuery();
     fetchArticlesFromApi(query);
   }, [searchParams]);
 
@@ -147,35 +152,11 @@ export default function AllPost() {
         )}
       </div>
 
-      <div className={styles.pagination}>
-        <button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-          className={styles.paginationButton}
-        >
-          <Image
-            width={20}
-            height={20}
-            src="/images/ic_left.png"
-            alt="왼쪽 화살표"
-          />
-        </button>
-        <span>{currentPage}</span>
-        <button
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={
-            paginatedArticles.length < 10 || currentPage * 10 >= articles.length
-          }
-          className={styles.paginationButton}
-        >
-          <Image
-            width={20}
-            height={20}
-            src="/images/ic_right.png"
-            alt="오른쪽 화살표"
-          />
-        </button>
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        totalArticles={articles.length}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 }
