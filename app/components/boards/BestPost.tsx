@@ -9,7 +9,14 @@ import Link from "next/link";
 export default function BestPost() {
   const [articles, setArticles] = useState<Article[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const pageSize: number = usePageSize();
+  const pageSizeType: "mobile" | "tablet" | "desktop" = usePageSize();
+
+  const pageSizeMap: Record<"mobile" | "tablet" | "desktop", number> = {
+    mobile: 1,
+    tablet: 2,
+    desktop: 3,
+  };
+  const pageSize = pageSizeMap[pageSizeType];
 
   useEffect(() => {
     async function loadArticles() {
