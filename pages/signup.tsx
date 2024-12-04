@@ -14,7 +14,7 @@ Signup.getLayout = function (page: React.ReactNode) {
   return <>{page}</>;
 };
 
-function Signup() {
+export default function Signup() {
   const router = useRouter();
 
   const [email, setEmail] = useState<string>("");
@@ -31,7 +31,6 @@ function Signup() {
   );
 
   const [serverError, setServerError] = useState<string | null>(null);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
@@ -280,5 +279,3 @@ function Signup() {
     </div>
   );
 }
-
-export default Signup;

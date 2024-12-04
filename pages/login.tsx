@@ -10,7 +10,7 @@ import google from "@/public/pngs/Component 2.png";
 import Link from "next/link";
 import { signIn } from "@/lib/api";
 
-const Login = () => {
+export default function Login() {
   const router = useRouter();
 
   const [email, setEmail] = useState<string>("");
@@ -192,6 +192,4 @@ const Login = () => {
       </div>
     </div>
   );
-};
-
-export default Login;
+}

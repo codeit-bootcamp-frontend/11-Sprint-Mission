@@ -157,7 +157,6 @@ export async function signIn(params: {
   password: string;
 }): Promise<{ accessToken: string }> {
   try {
-    // 로그인 API 요청
     const { data } = await axiosInstance.post("/auth/signIn", params);
 
     // accessToken 반환
