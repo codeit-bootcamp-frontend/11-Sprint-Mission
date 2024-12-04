@@ -10,8 +10,18 @@ import facebook from "@/public/svgs/ic_facebook.svg";
 import twitter from "@/public/svgs/ic_twitter.svg";
 import youtube from "@/public/svgs/ic_youtube.svg";
 import instagram from "@/public/svgs/ic_instagram.svg";
+import MainNav from "@/components/MainNav";
 
-export default function Home() {
+Home.getLayout = function (page: React.ReactNode) {
+  return (
+    <>
+      <MainNav />
+      {page}
+    </>
+  );
+};
+
+export default function Home<NextPageWithLayout>() {
   return (
     <div className={styles.body}>
       <div className={styles.body1}>

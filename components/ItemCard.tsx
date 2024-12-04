@@ -16,9 +16,11 @@ export default function AllItemCard({ item }: AllItemCardProps) {
   return (
     <Link href={`/items/${item.id}`} className={styles.link}>
       <div className={styles.item_card}>
-        <img
+        <Image
           src={imageSrc}
           alt={item.name}
+          width={221}
+          height={221}
           className={styles.all_item_card_img}
           onError={handleImageError}
         />

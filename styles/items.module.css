@@ -242,6 +242,8 @@
   font-size: 14px;
   line-height: 24px;
   font-weight: 500;
+  inline-size: 220px;
+  overflow-wrap: break-word;
 }
 
 .item_price {

@@ -167,9 +167,9 @@ const Login = () => {
             <p className={styles.login_signup_question}>
               판다마켓이 처음이신가요?
             </p>
-            <a className={styles.login_signup_link} href="signup.html">
+            <Link className={styles.login_signup_link} href="/signup">
               회원가입
-            </a>
+            </Link>
           </div>
         </div>
       </div>
