@@ -8,10 +8,10 @@ import styles from "@/styles/additem.module.css";
 
 const INITIAL_VALUE = {
   name: "",
-  favorite: 0,
-  content: "",
-  price: "",
-  imgFile: null,
+  favoriteCount: 0,
+  description: "",
+  price: 0,
+  images: null,
   tags: [],
 };
 
@@ -28,11 +28,14 @@ export default function AddItemForm({
 
   // 유효성 검사
   const isValidForm =
-    values.name && values.content && values.price && values.tags.length > 0;
+    values.name?.trim() !== "" &&
+    values.description?.trim() !== "" &&
+    values.price > 0 &&
+    values.tags.length > 0;
 
   const handleChange = (name: string, value: any) => {
-    setValues((prevValues) => ({
-      ...prevValues,
+    setValues((initialValues) => ({
+      ...initialValues,
       [name]: value,
     }));
   };
@@ -77,10 +80,14 @@ export default function AddItemForm({
     e.preventDefault();
     const formData = new FormData();
     formData.append("name", values.name);
-    formData.append("favorite", values.favorite.toString());
-    formData.append("content", values.content);
-    formData.append("price", values.price);
-    if (values.imgFile) formData.append("imgFile", values.imgFile);
+    formData.append("favorite", values.favoriteCount.toString());
+    formData.append("description", values.description);
+    formData.append("price", values.price.toString());
+    if (values.images) {
+      values.images.forEach((image, index) => {
+        formData.append(`images[${index}]`, image);
+      });
+    }
     formData.append("tags", JSON.stringify(values.tags));
 
     const result = await onSubmit(formData);
@@ -114,7 +121,7 @@ export default function AddItemForm({
           <ImgInput
             className={styles.add_item_img_preview}
             name="imgFile"
-            value={values.imgFile}
+            value={values.images ? values.images[0] : null}
             initialPreview={initialPreview}
             onChange={handleFileChange}
           />
@@ -133,8 +140,8 @@ export default function AddItemForm({
           <div className={styles.add_item_content_title}>상품 소개</div>
           <textarea
             className={styles.add_item_content_textarea}
-            name="content"
-            value={values.content}
+            name="description"
+            value={values.description}
             onChange={handleInputChange}
             placeholder="상품 소개를 입력해주세요"
           />

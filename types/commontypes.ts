@@ -10,18 +10,8 @@ export interface GetProductCommentsParams {
   cursor?: string;
 }
 
-// 상품 타입 정의
-export interface Product {
-  id: number;
-  name: string;
-  price: number;
-  description?: string;
-  images: string[];
-  favoriteCount?: number;
-}
-
 export interface AllItemCardProps {
-  item: Product;
+  item: Product[];
 }
 
 // 상품 목록 응답 타입 정의
@@ -127,18 +117,18 @@ export interface AddItemFormProps {
   className?: string;
   initialValues?: {
     name: string;
-    favorite: number;
-    content: string;
-    price: string;
-    imgFile: File | null;
+    favoriteCount: number;
+    description: string;
+    price: number;
+    images: File[] | null;
     tags: string[];
   };
   initialPreview?: string;
-  onSubmit: (formData: FormData) => Promise<{ review: any } | null>;
-  onSubmitSuccess: (review: any) => void;
+  onSubmit: (formData: FormData) => Promise<{ review: Product } | null>;
+  onSubmitSuccess: (review: Product) => void;
 }
 
-export interface Item {
+export interface Product {
   id: number;
   name: string;
   description: string;
@@ -151,7 +141,7 @@ export interface Item {
   tags: string[];
 }
 
-export interface ItemListResponse {
+export interface ProductListResponse {
   totalCount: number;
-  list: Item[];
+  list: Product[];
 }

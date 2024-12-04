@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import styles from "@/styles/login.module.css";
 import Image from "next/image";
 import logoLarge from "@/public/pngs/logo.png";
@@ -7,13 +8,17 @@ import btnOff from "@/public/svgs/btn_visibility_off_24px.svg";
 import kakao from "@/public/pngs/Component 3.png";
 import google from "@/public/pngs/Component 2.png";
 import Link from "next/link";
+import { signIn } from "@/lib/api";
 
 const Login = () => {
+  const router = useRouter();
+
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<string | null>(null);
   const [passwordError, setPasswordError] = useState<string | null>(null);
+  const [serverError, setServerError] = useState<string | null>(null);
 
   // 이메일 유효성 검증 함수
   const validateEmail = (email: string): boolean => {
@@ -57,9 +62,21 @@ const Login = () => {
   };
 
   // 로그인 버튼 클릭 핸들러
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (isLoginEnabled()) {
-      window.location.href = "/items.html";
+      try {
+        // 서버로 로그인 요청
+        const response = await signIn({ email, password });
+
+        // accessToken 저장
+        localStorage.setItem("accessToken", response.accessToken);
+
+        // 메인 페이지로 리디렉션
+        router.push("/");
+      } catch (error: any) {
+        // 서버 에러 처리
+        setServerError(error.message || "로그인에 실패했습니다.");
+      }
     }
   };
 

@@ -90,8 +90,7 @@
   width: 100%;
 }
 
-#eye_icon_password:hover,
-#eye_icon_password_again:hover {
+.eye_icon:hover {
   cursor: pointer;
 }
 

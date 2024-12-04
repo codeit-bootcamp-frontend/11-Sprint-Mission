@@ -9,6 +9,7 @@ import {
   GetArticlesParams,
   Article,
   GetArticlesCommentResponse,
+  Product,
 } from "@/types/commontypes";
 
 export async function getProducts(
@@ -111,5 +112,90 @@ export async function getArticleComment(
     return data;
   } catch (error) {
     throw new Error("댓글 데이터를 불러오는 데 실패했습니다.");
+  }
+}
+
+/**
+ * 회원가입 요청을 보냅니다.
+ * @param {Object} params - 회원가입 요청에 필요한 데이터
+ * @param {string} params.email - 이메일
+ * @param {string} params.nickname - 닉네임
+ * @param {string} params.password - 비밀번호
+ * @param {string} params.passwordConfirmation - 비밀번호 확인
+ * @returns {Promise<Object>} 회원가입 성공 시 서버의 응답 데이터를 반환합니다.
+ * @throws {Error} 회원가입 실패 시 에러를 발생시킵니다.
+ */
+export async function signUp(params: {
+  email: string;
+  nickname: string;
+  password: string;
+  passwordConfirmation: string;
+}): Promise<{ accessToken: string }> {
+  try {
+    const { data } = await axiosInstance.post("/auth/signUp", params);
+    return data; // 서버 응답에서 accessToken 반환
+  } catch (error: any) {
+    if (error.response) {
+      throw new Error(
+        error.response.data.message || "회원가입에 실패했습니다."
+      );
+    }
+    throw new Error("회원가입 요청 중 문제가 발생했습니다.");
+  }
+}
+
+/**
+ * 로그인 요청을 보냅니다.
+ * @param {Object} params - 로그인 요청에 필요한 데이터
+ * @param {string} params.email - 이메일
+ * @param {string} params.password - 비밀번호
+ * @returns {Promise<Object>} 로그인 성공 시 서버의 응답 데이터를 반환합니다.
+ * @throws {Error} 로그인 실패 시 에러를 발생시킵니다.
+ */
+export async function signIn(params: {
+  email: string;
+  password: string;
+}): Promise<{ accessToken: string }> {
+  try {
+    // 로그인 API 요청
+    const { data } = await axiosInstance.post("/auth/signIn", params);
+
+    // accessToken 반환
+    return data;
+  } catch (error: any) {
+    if (error.response) {
+      throw new Error(error.response.data.message || "로그인에 실패했습니다.");
+    }
+    throw new Error("로그인 요청 중 문제가 발생했습니다.");
+  }
+}
+
+/**
+ * 상품 등록 요청을 보냅니다.
+ * @param {Object} itemData - 상품 등록에 필요한 데이터 (JSON 형식)
+ * @returns {Promise<Product>} 등록된 상품 데이터를 반환합니다.
+ * @throws {Error} 상품 등록 실패 시 에러를 발생시킵니다.
+ */
+export async function addItem(itemData: {
+  name: string;
+  description: string;
+  price: number;
+  images: string[]; // 서버에서 파일 경로나 이름을 요구한다고 가정
+  tags: string[];
+}): Promise<Product> {
+  try {
+    const { data } = await axiosInstance.post<Product>("/products", itemData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return data;
+  } catch (error: any) {
+    if (error.response) {
+      throw new Error(
+        error.response.data.message || "상품 등록에 실패했습니다."
+      );
+    }
+    throw new Error("상품 등록 요청 중 문제가 발생했습니다.");
   }
 }

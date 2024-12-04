@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "@/styles/signup.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -8,6 +8,7 @@ import btnOn from "@/public/svgs/btn_visibility_on_24px.svg";
 import btnOff from "@/public/svgs/btn_visibility_off_24px.svg";
 import kakao from "@/public/pngs/Component 3.png";
 import google from "@/public/pngs/Component 2.png";
+import { signUp } from "@/lib/api";
 
 Signup.getLayout = function (page: React.ReactNode) {
   return <>{page}</>;
@@ -28,6 +29,16 @@ function Signup() {
   const [passwordAgainError, setPasswordAgainError] = useState<string | null>(
     null
   );
+
+  const [serverError, setServerError] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      router.push("/"); // 토큰이 있는 경우 홈으로 리디렉션
+    }
+  }, [router]);
 
   // 이메일 유효성 검사
   const validateEmail = (email: string): boolean => {
@@ -114,9 +125,25 @@ function Signup() {
   };
 
   // 회원가입 버튼 클릭 핸들러
-  const handleSignup = () => {
+  const handleSignup = async () => {
     if (isSignupEnabled()) {
-      router.push("/signin");
+      try {
+        // 서버로 회원가입 요청
+        const response = await signUp({
+          email,
+          nickname,
+          password,
+          passwordConfirmation: passwordAgain,
+        });
+
+        // accessToken 저장
+        localStorage.setItem("accessToken", response.accessToken);
+
+        // 메인 페이지로 리디렉션
+        router.push("/");
+      } catch (error: any) {
+        setServerError(error.message);
+      }
     }
   };
 
