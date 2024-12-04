@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 
-function usePageSize(): number {
-  const [pageSize, setPageSize] = useState<number>(3);
+type PageSizeType = "mobile" | "tablet" | "desktop";
+
+function usePageSize(): PageSizeType {
+  const [pageSize, setPageSize] = useState<PageSizeType>("desktop");
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -10,11 +12,11 @@ function usePageSize(): number {
       const width = window.innerWidth;
 
       if (width >= 1280) {
-        setPageSize(3);
+        setPageSize("desktop");
       } else if (width >= 768) {
-        setPageSize(2);
+        setPageSize("tablet");
       } else {
-        setPageSize(1);
+        setPageSize("mobile");
       }
     }
 
