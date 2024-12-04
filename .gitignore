@@ -5,6 +5,7 @@
 .cursorrules
 devFlow.md
 PRD.md
+.env.local
 /node_modules
 /.pnp
 .pnp.*

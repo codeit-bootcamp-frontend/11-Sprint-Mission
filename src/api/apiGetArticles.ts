@@ -2,8 +2,11 @@ import { ArticleParams, ArticleResponse } from "@/types/article";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_API_URL || "https://panda-market-api.vercel.app";
+const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+
+if (!baseUrl) {
+  throw new Error("NEXT_PUBLIC_API_URL is can not be found");
+}
 
 class ApiError extends Error {
   constructor(
