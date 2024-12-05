@@ -3,60 +3,42 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+if (!baseUrl) throw new Error("Missing NEXT_PUBLIC_API_URL");
 
-if (!baseUrl) {
-  throw new Error("NEXT_PUBLIC_API_URL is can not be found");
-}
-
-class ApiError extends Error {
-  constructor(
-    message: string,
-    public statusCode?: number,
-    public originalError?: unknown
-  ) {
-    super(message);
-    this.name = "ApiError";
-  }
-}
-
-const createQueryParams = (params: ArticleParams): URLSearchParams => {
-  const { page = 1, pageSize = 10, orderBy = "like", keyword = "" } = params;
-
-  return new URLSearchParams({
-    page: page.toString(),
-    pageSize: pageSize.toString(),
+const createQueryParams = ({
+  page = 1,
+  pageSize = 10,
+  orderBy = "like",
+  keyword = "",
+}: ArticleParams) =>
+  new URLSearchParams({
+    page: String(page),
+    pageSize: String(pageSize),
     orderBy,
-    ...(keyword && { keyword }),
+    ...(keyword && { keyword }) /*Keyword가 있으면 쿼리에 추가*/,
   });
-};
 
 const apiGetArticles = async (
   params: ArticleParams
 ): Promise<ArticleResponse> => {
   try {
-    const queryParams = createQueryParams(params);
-    const response = await axios.get<ArticleResponse>(
-      `${baseUrl}/articles?${queryParams}`
+    const { data } = await axios.get<ArticleResponse>(
+      `${baseUrl}/articles?${createQueryParams(params)}`
     );
-    return response.data;
+    return data;
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      throw new ApiError(
-        error.response?.data?.message || "Failed to fetch articles",
-        error.response?.status,
-        error
-      );
-    }
-    throw new ApiError("An unexpected error occurred", undefined, error);
+    const message = axios.isAxiosError(error)
+      ? error.response?.data?.message ??
+        "error occurred & server error message is missing"
+      : "An unexpected error occurred(not axios error)";
+    throw new Error(message);
   }
 };
 
-// React Query hook
-export const useArticles = (params: ArticleParams) => {
-  return useQuery({
+export const useArticles = (params: ArticleParams) =>
+  useQuery({
     queryKey: ["articles", params],
     queryFn: () => apiGetArticles(params),
   });
-};
 
 export type { ArticleParams, ArticleResponse };
