@@ -158,7 +158,7 @@ const AllArticleSection: React.FC<AllArticleSectionProps> = ({
     <>
       <HeaderSection>
         <Title>게시글</Title>
-        <AddArticleLink href="/addArticle">글쓰기</AddArticleLink>
+        <AddArticleLink href="/addBoard">글쓰기</AddArticleLink>
       </HeaderSection>
 
       <HeaderSection>
