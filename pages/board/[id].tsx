@@ -1,11 +1,59 @@
 import styled from 'styled-components';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { getArticleDetail } from '@/api/articleApi';
+import ArticleContentSection from '@/ArticleContentSection';
+import { ar } from 'date-fns/locale';
+
+interface Article {
+  updatedAt: Date;
+  createdAt: Date;
+  likeCount: number;
+  writer: { nickname: string; id: number };
+  image: string;
+  content: string;
+  title: string;
+  id: number;
+}
 
 const BoardsPage = () => {
   const router = useRouter();
   const { id } = router.query;
+  const [article, setArticle] = useState<Article | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  return <Container>{id}번 게시글 페이지</Container>;
+  const articleId = Number(id);
+
+  useEffect(() => {
+    async function fetchArticle() {
+      if(!articleId) {
+        setError('아이디없음');
+        return;
+      }
+
+      try {
+        const data: Article = await getArticleDetail(articleId);
+
+        if(!data) throw new Error('데이터를 못찾음');
+        
+        setArticle(data);
+      } catch(e) {
+        setError('e.message')
+      }
+    }
+
+    fetchArticle();
+  }, [articleId]);
+
+  if(error) console.log(`${error}`);
+
+  if(!id || !article) return null;
+
+  return (
+    <Container>
+      <ArticleCotentSection />
+    </Container>
+  );
 };
 
 const Container = styled.div`
