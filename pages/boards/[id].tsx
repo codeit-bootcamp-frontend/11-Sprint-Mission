@@ -2,8 +2,7 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { getArticleDetail } from '@/api/articleApi';
-import ArticleContentSection from '@/ArticleContentSection';
-import { ar } from 'date-fns/locale';
+import ArticleContentSection from './ArticleContentSection';
 
 interface Article {
   updatedAt: Date;
@@ -25,6 +24,8 @@ const BoardsPage = () => {
   const articleId = Number(id);
 
   useEffect(() => {
+    if (!router.isReady) return;
+
     async function fetchArticle() {
       if(!articleId) {
         setError('아이디없음');
@@ -43,7 +44,7 @@ const BoardsPage = () => {
     }
 
     fetchArticle();
-  }, [articleId]);
+  }, [articleId, router.isReady]);
 
   if(error) console.log(`${error}`);
 
@@ -51,7 +52,7 @@ const BoardsPage = () => {
 
   return (
     <Container>
-      <ArticleCotentSection />
+      <ArticleContentSection article={article} />
     </Container>
   );
 };
