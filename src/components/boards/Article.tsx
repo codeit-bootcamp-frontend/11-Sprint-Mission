@@ -37,7 +37,7 @@ const Article = ({
       href={`/boards/${articleProps.id}`}
       className="block transition-transform hover:scale-[1.01] w-full"
     >
-      {content}
+      {content} {/* 컴포넌트 출력 */}
     </Link>
   );
 };

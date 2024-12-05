@@ -47,7 +47,7 @@ const BestSection = () => {
   });
 
   if (error) {
-    return <div>Error loading articles</div>;
+    return <div>process of fetching articles failed</div>;
   }
 
   return (
