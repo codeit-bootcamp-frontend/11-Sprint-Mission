@@ -32,13 +32,6 @@ export default function Signup() {
 
   const [serverError, setServerError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken");
-    if (accessToken) {
-      router.push("/"); // 토큰이 있는 경우 홈으로 리디렉션
-    }
-  }, [router]);
-
   // 이메일 유효성 검사
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

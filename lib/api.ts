@@ -155,17 +155,49 @@ export async function signUp(params: {
 export async function signIn(params: {
   email: string;
   password: string;
-}): Promise<{ accessToken: string }> {
+}): Promise<{ accessToken: string; refreshToken: string }> {
   try {
+    // 서버로 로그인 요청
     const { data } = await axiosInstance.post("/auth/signIn", params);
 
-    // accessToken 반환
-    return data;
+    // accessToken과 refreshToken 반환
+    return {
+      accessToken: data.accessToken,
+      refreshToken: data.refreshToken,
+    };
   } catch (error: any) {
+    // 서버에서 반환된 에러 메시지 처리
     if (error.response) {
       throw new Error(error.response.data.message || "로그인에 실패했습니다.");
     }
     throw new Error("로그인 요청 중 문제가 발생했습니다.");
+  }
+}
+
+/**
+ * Refresh Token을 사용해 새로운 Access Token을 요청합니다.
+ * @param {string} refreshToken - 사용자의 Refresh Token
+ * @returns {Promise<string>} 새로운 Access Token을 반환합니다.
+ * @throws {Error} 요청 실패 시 에러를 발생시킵니다.
+ */
+export async function refreshAccessToken(
+  refreshToken: string
+): Promise<string> {
+  try {
+    // Refresh Token 요청
+    const { data } = await axiosInstance.post("/auth/refresh-token", {
+      refreshToken,
+    });
+
+    // 새로운 Access Token 반환
+    return data.accessToken;
+  } catch (error: any) {
+    if (error.response) {
+      throw new Error(
+        error.response.data.message || "토큰 갱신에 실패했습니다."
+      );
+    }
+    throw new Error("토큰 갱신 요청 중 문제가 발생했습니다.");
   }
 }
 

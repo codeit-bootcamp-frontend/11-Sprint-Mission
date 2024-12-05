@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import styles from "@/styles/login.module.css";
 import Image from "next/image";
@@ -19,6 +19,13 @@ export default function Login() {
   const [emailError, setEmailError] = useState<string | null>(null);
   const [passwordError, setPasswordError] = useState<string | null>(null);
   const [serverError, setServerError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      router.push("/"); // 토큰이 있는 경우 홈으로 리디렉션
+    }
+  }, [router]);
 
   // 이메일 유효성 검증 함수
   const validateEmail = (email: string): boolean => {
