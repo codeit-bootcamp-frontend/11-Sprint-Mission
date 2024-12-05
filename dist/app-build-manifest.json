@@ -9,24 +9,8 @@
     "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
+      "static/css/app/page.css",
       "static/chunks/app/page.js"
-    ],
-    "/boards/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/boards/layout.css",
-      "static/chunks/app/boards/layout.js"
-    ],
-    "/boards/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/boards/page.css",
-      "static/chunks/app/boards/page.js"
-    ],
-    "/boards/[boardsId]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/boards/[boardsId]/page.js"
     ],
     "/items/layout": [
       "static/chunks/webpack.js",
@@ -40,16 +24,17 @@
       "static/css/app/items/page.css",
       "static/chunks/app/items/page.js"
     ],
-    "/items/[productId]/page": [
+    "/login/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/items/[productId]/page.css",
-      "static/chunks/app/items/[productId]/page.js"
+      "static/css/app/login/page.css",
+      "static/chunks/app/login/page.js"
     ],
-    "/_not-found/page": [
+    "/signup/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/css/app/signup/page.css",
+      "static/chunks/app/signup/page.js"
     ]
   }
 }
