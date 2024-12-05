@@ -45,10 +45,50 @@
   text-decoration: none;
 }
 
+.profile-container {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-image {
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: white;
+  border: 1px solid var(--white100);
+  border-bottom: none;
+  border-radius: 8px;
+  padding: 16px 0;
+  width: 139px;
+  height: 51px;
+  text-align: center;
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  color: var(--gray500);
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 16px;
+}
+
 /* 반응형 - Tablet*/
 @media screen and (max-width: 1199px) and (min-width: 768px) {
   .header {
     padding: 0 24px;
+  }
+  .dropdown {
+    width: 102px;
+    height: 49px;
+  }
+
+  .logout-button {
+    font-size: 14px;
   }
 }
 
@@ -56,5 +96,13 @@
 @media screen and (max-width: 767px) {
   .header {
     padding: 0 16px;
+  }
+  .dropdown {
+    width: 102px;
+    height: 49px;
+  }
+
+  .logout-button {
+    font-size: 14px;
   }
 }

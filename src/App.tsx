@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import MainPage from "./page/MainPage";
 import AddItemPage from "./page/AddItemPage";
@@ -11,11 +11,22 @@ import LoginPage from "./page/LoginPage";
 import RegisterPage from "./page/RegisterPage";
 
 function App() {
+  const isAccessToken = localStorage.getItem("access_token");
   return (
     <Routes>
       <Route path={ROUTES.LANDING} element={<LandingPage />} />
-      <Route path={ROUTES.LOGIN} element={<LoginPage />} />
-      <Route path={ROUTES.REGISTER} element={<RegisterPage />} />
+      <Route
+        path={ROUTES.LOGIN}
+        element={
+          isAccessToken ? <Navigate to={ROUTES.LANDING} /> : <LoginPage />
+        }
+      />
+      <Route
+        path={ROUTES.REGISTER}
+        element={
+          isAccessToken ? <Navigate to={ROUTES.LANDING} /> : <RegisterPage />
+        }
+      />
       <Route path={ROUTES.PRIVACY} element={<Privacy />} />
       <Route path={ROUTES.FAQ} element={<FAQ />} />
       <Route path={ROUTES.MAIN}>

@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://panda-market-api.vercel.app";
+export const API_BASE_URL = "https://panda-market-api.vercel.app";
 
 async function fetchApi(url: string, options = {}) {
   try {
@@ -60,5 +60,49 @@ export async function updateCommentsById(
     body: JSON.stringify({ content }),
   };
 
+  return fetchApi(url, options);
+}
+
+interface SignupParams {
+  email: string;
+  nickname: string;
+  password: string;
+  passwordConfirmation: string;
+}
+
+export async function signup(data: SignupParams) {
+  const url = `${API_BASE_URL}/auth/signUp`;
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: data.email,
+      nickname: data.nickname,
+      password: data.password,
+      passwordConfirmation: data.passwordConfirmation,
+    }),
+  };
+  return fetchApi(url, options);
+}
+
+interface LoginParams {
+  email: string;
+  password: string;
+}
+
+export async function login(data: LoginParams) {
+  const url = `${API_BASE_URL}/auth/signIn`;
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: data.email,
+      password: data.password,
+    }),
+  };
   return fetchApi(url, options);
 }

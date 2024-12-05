@@ -1,53 +1,46 @@
 import React, { ChangeEvent, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { SubmitHandler, useForm } from "react-hook-form";
 import InputField from "./InputField";
 import LoginButton from "./LoginButton";
 import SocialLogin from "./SocialLogin";
 import SignUpLink from "./SignUpLink";
 import "./Login.css";
 import logo from "../../assets/image/Property 1=lg.png";
+import { login } from "../../api/api";
+
+interface FormValues {
+  email: string;
+  password: string;
+}
 
 const Login = () => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [emailError, setEmailError] = useState<string>("");
-  const [passwordError, setPasswordError] = useState<string>("");
-  const [isButtonActive, setIsButtonActive] = useState<boolean>(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm<FormValues>({ mode: "onChange" });
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const isEmailValid = email && !emailError;
-    const isPasswordValid = password && !passwordError;
-    setIsButtonActive(!!(isEmailValid && isPasswordValid));
-  }, [email, password, emailError, passwordError]);
-
-  const validateEmail = (value: string) => {
-    if (!value) return "이메일을 입력해주세요.";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
-      return "잘못된 이메일 형식입니다.";
-    return "";
-  };
-
-  const validatePassword = (value: string) => {
-    if (!value) return "비밀번호를 입력해주세요.";
-    if (value.length < 8) return "비밀번호를 8자 이상 입력해주세요.";
-    return "";
-  };
-
-  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setEmail(value);
-    setEmailError(validateEmail(value));
-  };
-
-  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setPassword(value);
-    setPasswordError(validatePassword(value));
-  };
-
-  const handleLoginButtonClick = () => {
-    if (!email) setEmailError("이메일을 입력해주세요.");
-    if (!password) setPasswordError("비밀번호를 입력해주세요.");
+  const onsubmit: SubmitHandler<FormValues> = async (data) => {
+    try {
+      const res = await login(data);
+      localStorage.setItem("access_token", res.accessToken);
+      localStorage.setItem("refresh_token", res.refreshToken);
+      alert("로그인이 정상적으로 완료되었습니다.");
+      navigate("/");
+      console.log(res);
+    } catch (error: any) {
+      console.error(
+        "회원가입 실패:",
+        error.res?.data?.message || error.message
+      );
+      alert(
+        `회원가입 실패: ${
+          error.response?.data?.message || "회원가입 중 오류가 발생했습니다."
+        }`
+      );
+    }
   };
 
   return (
@@ -59,26 +52,35 @@ const Login = () => {
           </Link>
         </section>
         <section className="sub-box">
-          <InputField
-            label="이메일"
-            type="email"
-            value={email}
-            onChange={handleEmailChange}
-            error={emailError}
-            placeholder="이메일을 입력해주세요"
-          />
-          <InputField
-            label="비밀번호"
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-            error={passwordError}
-            placeholder="비밀번호를 입력해주세요"
-          />
-          <LoginButton
-            isActive={isButtonActive}
-            onClick={handleLoginButtonClick}
-          />
+          <form onSubmit={handleSubmit(onsubmit)}>
+            <InputField
+              label="이메일"
+              type="email"
+              placeholder="이메일을 입력해주세요"
+              error={errors.email?.message}
+              {...register("email", {
+                required: { value: true, message: "이메일을 입력해주세요." },
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "잘못된 이메일 형식입니다.",
+                },
+              })}
+            />
+            <InputField
+              label="비밀번호"
+              type="password"
+              placeholder="비밀번호를 입력해주세요"
+              error={errors.password?.message}
+              {...register("password", {
+                required: "비밀번호를 입력해주세요",
+                minLength: {
+                  value: 8,
+                  message: "비밀번호를 8자 이상 입력해주세요.",
+                },
+              })}
+            />
+            <LoginButton isActive={isValid} />
+          </form>
           <SocialLogin />
           <SignUpLink />
         </section>

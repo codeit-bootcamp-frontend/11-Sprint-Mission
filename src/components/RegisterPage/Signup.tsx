@@ -1,129 +1,104 @@
-import React, { ChangeEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { SubmitHandler, useForm } from "react-hook-form";
 import Logo from "./Logo";
 import RegisterInputField from "./RegisterInputField";
 import SignButton from "./SignButton";
 import SocialLogin from "../LoginPage/SocialLogin";
 import "./Signup.css";
+import { signup } from "../../api/api";
 
 interface FormValues {
   email: string;
-  username: string;
+  nickname: string;
   password: string;
-  confirmPassword: string;
-}
-
-interface Errors {
-  email: string;
-  username: string;
-  password: string;
-  confirmPassword: string;
+  passwordConfirmation: string;
 }
 
 const Signup = () => {
-  const [formValues, setFormValues] = useState<FormValues>({
-    email: "",
-    username: "",
-    password: "",
-    confirmPassword: "",
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors, isValid },
+  } = useForm<FormValues>({
+    mode: "onChange",
   });
+  const navigate = useNavigate();
 
-  const [errors, setErrors] = useState<Errors>({
-    email: "",
-    username: "",
-    password: "",
-    confirmPassword: "",
-  });
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormValues({ ...formValues, [name]: value });
-    validateField(name as keyof FormValues, value);
-  };
-
-  const handleRegisterButtonClick = () => {
-    if (!formValues.email)
-      setErrors((prev) => ({ ...prev, email: "이메일을 입력해주세요." }));
-    if (!formValues.username)
-      setErrors((prev) => ({ ...prev, username: "닉네임을 입력해주세요." }));
-    if (!formValues.password)
-      setErrors((prev) => ({ ...prev, password: "비밀번호를 입력해주세요." }));
-    if (!formValues.confirmPassword)
-      setErrors((prev) => ({
-        ...prev,
-        confirmPassword: "비밀번호를 다시 입력해주세요.",
-      }));
-  };
-
-  const validateField = (name: keyof FormValues, value: string) => {
-    let errorMsg = "";
-
-    if (name === "email") {
-      if (!value) errorMsg = "이메일을 입력해주세요.";
-      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
-        errorMsg = "잘못된 이메일 형식입니다.";
-    } else if (name === "username") {
-      if (!value) errorMsg = "닉네임을 입력해주세요.";
-    } else if (name === "password") {
-      if (!value) errorMsg = "비밀번호를 입력해주세요.";
-      else if (value.length < 8) errorMsg = "비밀번호를 8자 이상 입력해주세요.";
-    } else if (name === "confirmPassword") {
-      if (!value) errorMsg = "비밀번호를 다시 한 번 입력해주세요.";
-      else if (value !== formValues.password)
-        errorMsg = "비밀번호가 일치하지 않습니다.";
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    try {
+      await signup(data);
+      alert("회원가입이 정상적으로 완료되었습니다.");
+      navigate("/login");
+    } catch (error: any) {
+      console.error(
+        "회원가입 실패:",
+        error.res?.data?.message || error.message
+      );
+      alert(
+        `회원가입 실패: ${
+          error.response?.data?.message || "회원가입 중 오류가 발생했습니다."
+        }`
+      );
     }
-
-    setErrors((prevErrors) => ({ ...prevErrors, [name]: errorMsg }));
   };
 
-  const isFormValid =
-    Object.values(errors).every((err) => !err) &&
-    Object.values(formValues).every((val) => val);
+  const password = watch("password");
 
   return (
     <main className="sign-main">
       <section className="sign-main-box">
         <Logo />
         <section className="sub-box">
-          <RegisterInputField
-            label="이메일"
-            type="email"
-            name="email"
-            placeholder="이메일을 입력해주세요"
-            value={formValues.email}
-            onChange={handleChange}
-            error={errors.email}
-          />
-          <RegisterInputField
-            label="닉네임"
-            type="text"
-            name="username"
-            placeholder="닉네임을 입력해주세요"
-            value={formValues.username}
-            onChange={handleChange}
-            error={errors.username}
-          />
-          <RegisterInputField
-            label="비밀번호"
-            type="password"
-            name="password"
-            placeholder="비밀번호를 입력해주세요"
-            value={formValues.password}
-            onChange={handleChange}
-            error={errors.password}
-          />
-          <RegisterInputField
-            label="비밀번호 확인"
-            type="password"
-            name="confirmPassword"
-            placeholder="비밀번호를 다시 한 번 입력해주세요"
-            value={formValues.confirmPassword}
-            onChange={handleChange}
-            error={errors.confirmPassword}
-          />
-          <SignButton
-            isActive={isFormValid}
-            onClick={handleRegisterButtonClick}
-          />
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <RegisterInputField
+              label="이메일"
+              type="email"
+              placeholder="이메일을 입력해주세요"
+              error={errors.email?.message}
+              {...register("email", {
+                required: { value: true, message: "이메일을 입력해주세요" },
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "잘못된 이메일 형식입니다.",
+                },
+              })}
+            />
+            <RegisterInputField
+              label="닉네임"
+              type="text"
+              placeholder="닉네임을 입력해주세요"
+              error={errors.nickname?.message}
+              {...register("nickname", {
+                required: "닉네임을 입력해주세요.",
+              })}
+            />
+            <RegisterInputField
+              label="비밀번호"
+              type="password"
+              placeholder="비밀번호를 입력해주세요"
+              error={errors.password?.message}
+              {...register("password", {
+                required: "비밀번호를 입력해주세요",
+                minLength: {
+                  value: 8,
+                  message: "비밀번호를 8자 이상 입력해주세요.",
+                },
+              })}
+            />
+            <RegisterInputField
+              label="비밀번호 확인"
+              type="password"
+              placeholder="비밀번호를 다시 한 번 입력해주세요"
+              error={errors.passwordConfirmation?.message}
+              {...register("passwordConfirmation", {
+                required: "비밀번호를 다시 한 번 입력해주세요.",
+                validate: (value) =>
+                  value === password || "비밀번호가 일치하지 않습니다.",
+              })}
+            />
+            <SignButton isActive={isValid} />
+          </form>
           <SocialLogin />
           <p className="to-signup">
             이미 회원이신가요?
