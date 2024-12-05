@@ -31,3 +31,9 @@
   text-align: center;
   color: #4b5563;
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .navbar {
+    padding: 0 24px;
+  }
+}

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Badge from "@/assets/images/ui/img_badge.svg";
 import Link from "next/link";
 import Heart from "@/assets/images/icons/ic_heart.svg";
-import styles from "@/styles/BoardsBestArticles.module.css";
+import styles from "@/styles/BestArticles.module.css";
 import ImageTemplate from "@/assets/images/ui/empty-comments.svg";
 import { format } from "date-fns";
 
@@ -61,7 +61,9 @@ export default function BestArticles({ articles }: { articles: ArticleList }) {
                       </div>
                     </div>
                     {/* date-fns 라이브러리 활용 */}
-                    <span>{format(article.createdAt, "yyyy. MM. dd")}</span>
+                    <span className={styles.date}>
+                      {format(article.createdAt, "yyyy. MM. dd")}
+                    </span>
                   </div>
                 </div>
               </Link>

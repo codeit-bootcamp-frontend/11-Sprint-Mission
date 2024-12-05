@@ -1,5 +1,6 @@
 .best-article-container {
   display: grid;
+  /* grid-template-columns: repeat(1, 1fr); */
   gap: 24px;
   margin-bottom: 40px;
 }
@@ -64,4 +65,18 @@
   align-items: center;
   gap: 4px;
   height: 16px;
+}
+
+.info span {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.info-left span {
+  color: #4b5563;
+}
+
+.date {
+  color: #9ca3af;
 }
