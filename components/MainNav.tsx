@@ -56,6 +56,7 @@ export default function MainNav() {
                 alt="프로필 아이콘"
                 width={40}
                 height={40}
+                className="profile-icon"
               />
             </button>
             {showLogout && (
