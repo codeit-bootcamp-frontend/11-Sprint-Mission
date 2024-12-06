@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
 import AritcleCommentThread from './AritcleCommentThread';
+import SeeMoreIcon from "@/public/images/icons/ic_kebab.svg";
 
 interface ArticleCommentSectionProps {
   articleId: number;

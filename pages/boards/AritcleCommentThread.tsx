@@ -5,6 +5,12 @@ import ProfileImg from '@/public/images/icons/ic_profile.svg';
 import { TimestampCal } from '@/components/TimestampCal'
 import BackIcon from '@/public/images/icons/ic_back.svg';
 import Link from 'next/link';
+import SeeMoreIcon from "@/public/images/icons/ic_kebab.svg";
+
+const SeeMoreButton = styled.button`
+  position: absolute;
+  right: 0;
+`;
 
 interface Comment {
   writer: {
@@ -51,7 +57,12 @@ const ArticleCommentThread: React.FC<ArticleCommentThreadProps> = ({ articleId }
 		<Container>
 			{comment.map((item) => (
 				<CommentContainer key={`comment-${item.id}`}>
+					<SeeMoreButton>
+            <SeeMoreIcon />
+          </SeeMoreButton>
+
 					<CommentContent>{item.content}</CommentContent>
+					
 					<InfoSection>
 						<ProfileImg width={40} height={40} />
 						<UserDetails>
