@@ -1,7 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
 import AritcleCommentThread from './AritcleCommentThread';
-import SeeMoreIcon from "@/public/images/icons/ic_kebab.svg";
 
 interface ArticleCommentSectionProps {
   articleId: number;
@@ -25,7 +24,7 @@ const ArticleCommentSection: React.FC<ArticleCommentSectionProps> = ({ articleId
 					onChange={handleInputChange}
 				/>
 
-				<CommentPillButton disabled={!comment.trim()}>
+				<CommentPillButton type="submit" disabled={!comment.trim()}>
 					등록
 				</CommentPillButton>
 			</CommentInputSection>
@@ -69,7 +68,6 @@ const TextArea = styled.textarea`
   }
 `;
 
-
 const CommentPillButton = styled.button`
 	background-color: ${({ theme }) => theme.colors.blue.primary};
 	color: ${({ theme }) => theme.colors.white};
@@ -84,6 +82,12 @@ const CommentPillButton = styled.button`
 
   @media (min-width: 768px) {
     font-size: 16px;
+  }
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.colors.gray[400]};
+    cursor: default;
+    pointer-events: none;
   }
 `;
 
