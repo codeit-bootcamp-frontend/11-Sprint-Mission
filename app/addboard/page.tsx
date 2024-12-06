@@ -9,7 +9,7 @@ import styles from "./AddBoard.module.css";
 export default function AddBoard() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [image, setImage] = useState<File | null>(null); // 이미지 파일 상태 추가
+  const [image, setImage] = useState<File | null>(null);
 
   const isButtonDisabled = !title || !content;
 
@@ -55,10 +55,7 @@ export default function AddBoard() {
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />
-      <ImageUpload
-        title="이미지"
-        onImageChange={(file) => setImage(file)} // 이미지 파일 상태 관리
-      />
+      <ImageUpload title="이미지" onImageChange={(file) => setImage(file)} />
     </div>
   );
 }
