@@ -5,10 +5,10 @@ import axios from '@/pages/api/api';
 import SelectBox from '@/components/common/SelectBox';
 import SmallButton from '@/components/common/SmallButton';
 import Comment from '@/components/Comment';
-import Profile from '@/public/ic_profile.svg';
-import Heart from '@/public/ic_heart.svg';
-import EmptyComment from '@/public/img_empty_comment.svg';
-import Back from '@/public/ic_back.svg';
+import Profile from '@/public/icons/ic_profile.svg';
+import Heart from '@/public/icons/ic_heart.svg';
+import EmptyComment from '@/public/images/img_empty_comment.svg';
+import Back from '@/public/icons/ic_back.svg';
 import styles from '@/styles/DetailedBoard.module.css';
 
 function formatDate(value) {

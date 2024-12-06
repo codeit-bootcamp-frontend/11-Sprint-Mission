@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import SelectBox from '@/components/common/SelectBox';
-import Profile from '@/public/ic_profile.svg';
+import Profile from '@/public/icons/ic_profile.svg';
 import styles from '@/styles/Comment.module.css';
 
 export default function Comment({ comment }) {

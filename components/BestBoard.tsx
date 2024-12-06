@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import medal from '@/public/ic_medal.svg';
-import heart from '@/public/ic_heart.svg';
+import medal from '@/public/icons/ic_medal.svg';
+import heart from '@/public/icons/ic_heart.svg';
 import styles from '@/styles/BestBoard.module.css';
 
 interface Writer {

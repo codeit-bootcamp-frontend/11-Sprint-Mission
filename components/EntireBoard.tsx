@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import heart from '@/public/ic_heart.svg';
-import profile from '@/public/ic_profile.svg';
+import heart from '@/public/icons/ic_heart.svg';
+import profile from '@/public/icons/ic_profile.svg';
 import styles from '@/styles/EntireBoard.module.css';
 
 interface Writer {

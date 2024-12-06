@@ -1,33 +1,67 @@
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import logo from '@/public/ic_logo.svg';
-import homeTop from '@/public/img_home_top.png';
-import firstSection from '@/public/img_first_main_section.png';
-import secondSection from '@/public/img_second_main_section.png';
-import thirdSection from '@/public/img_third_main_section.png';
-import homeBottom from '@/public/img_home_bottom.png';
-import facebook from '@/public/ic_facebook.svg';
-import twitter from '@/public/ic_twitter.svg';
-import instagram from '@/public/ic_instagram.svg';
-import youtube from '@/public/ic_youtube.svg';
+import logo from '@/public/icons/ic_logo.svg';
+import login from '@/public/icons/ic_login.svg';
+import homeTop from '@/public/images/img_home_top.svg';
+import firstSection from '@/public/images/Img_first_main_section.svg';
+import secondSection from '@/public/images/img_second_main_section.svg';
+import thirdSection from '@/public/images/img_third_main_section.svg';
+import homeBottom from '@/public/images/img_home_bottom.svg';
+import facebook from '@/public/icons/ic_facebook.svg';
+import twitter from '@/public/icons/ic_twitter.svg';
+import instagram from '@/public/icons/ic_instagram.svg';
+import youtube from '@/public/icons/ic_youtube.svg';
+import { useRouter } from 'next/router';
 
 export default function Home() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showLogout, setShowLogout] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem('accessToken');
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('accessToken');
+    setIsLoggedIn(false);
+    router.push('/');
+  };
+
+  const handlePandaLogoClick = () => {
+    setShowLogout(!showLogout);
+  };
+
   return (
     <>
-    {/* <body>
-      <header> */}
-        <div className="head">
-          <div className="logo">
-            <Image src={logo} alt="로고" />
-            <Link href="/" className="title">
-              판다마켓
-            </Link>
-          </div>
+      <div className="head">
+        <div className="logo">
+          <Image src={logo} alt="로고" />
+          <Link href="/" className="title">
+            판다마켓
+          </Link>
+        </div>
+        {isLoggedIn ? (
+          <>
+            <button onClick={handlePandaLogoClick}>
+              <Image src={login} alt="로그인" />
+            </button>
+            {showLogout && (
+              <button onClick={handleLogout} className="button small-button">
+                로그아웃
+              </button>
+            )}
+          </>
+        ) : (
           <Link href="/login" className="button small-button">
             로그인
           </Link>
-        </div>
-      {/* </header> */}
+        )}
+      </div>
 
       <div className="home">
         <div className="top">
@@ -42,12 +76,12 @@ export default function Home() {
               구경하러 가기
             </Link>
           </div>
-          <Image src={homeTop} alt="거래하는 판다" />
+          <Image width={'746'} height={'340'} src={homeTop} alt="거래하는 판다" />
         </div>
       </div>
       <section>
         <div className="section">
-          <Image src={firstSection} alt="인기 상품 확인하기" />
+          <Image width={'579'} height={'444'} src={firstSection} alt="인기 상품 확인하기" />
           <div className="section-image">
             <span>Hot item</span>
             <div className="section-text">
@@ -82,12 +116,12 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <Image src={secondSection} alt="원하는 상품 검색하기" />
+          <Image width={'579'} height={'444'} src={secondSection} alt="원하는 상품 검색하기" />
         </div>
       </section>
       <section>
         <div className="section">
-          <Image src={thirdSection} alt="상품 등록하기" />
+          <Image width={'579'} height={'444'} src={thirdSection} alt="상품 등록하기" />
           <div className="section-image">
             <span>Resister</span>
             <div className="section-text">
@@ -114,7 +148,7 @@ export default function Home() {
               판다마켓 중고 거래
             </h2>
           </div>
-          <Image src={homeBottom} alt="판다마켓에서 거래하기" />
+          <Image width={'746'} height={'397'} src={homeBottom} alt="판다마켓에서 거래하기" />
         </div>
       </div>
       <footer>
@@ -140,7 +174,6 @@ export default function Home() {
           </div>
         </div>
       </footer>
-    {/* </body> */}
     </>
   );
 }

@@ -1,10 +1,79 @@
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import instance from '@/pages/api/api';
 import Image from 'next/image';
 import Link from 'next/link';
-import logo from '@/public/ic_logo.svg';
-import google from '@/public/ic_google.svg';
-import kakao from '@/public/ic_kakao.svg';
+import logo from '@/public/icons/ic_logo.svg';
+import google from '@/public/icons/ic_google.svg';
+import kakao from '@/public/icons/ic_kakao.svg';
 
 export default function Login() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const [formValidity, setFormValidity] = useState({
+    isEmailValid: false,
+    isPasswordValid: false,
+  });
+  const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+
+  const validateEmail = value => {
+    const regex = new RegExp('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$');
+    return regex.test(value);
+  };
+
+  const validatePassword = value => value.length >= 8;
+
+  const handleEmailBlur = () =>
+    setFormValidity(prev => ({
+      ...prev,
+      isEmailValid: validateEmail(formData.email),
+    }));
+
+  const handlePasswordBlur = () =>
+    setFormValidity(prev => ({
+      ...prev,
+      isPasswordValid: validatePassword(formData.password),
+    }));
+
+  useEffect(() => {
+    setIsButtonEnabled(formValidity.isEmailValid && formValidity.isPasswordValid);
+    const token = localStorage.getItem('accessToken');
+    if (token) {
+      router.push('/');
+    }
+  }, [formValidity, router]);
+
+  const handleLogin = async e => {
+    e.preventDefault();
+    try {
+      const response = await instance.post('/auth/signIn', {
+        email: formData.email,
+        password: formData.password,
+      });
+      if (!response) return;
+      // 로그인 성공 시 처리
+      console.log(response);
+      const token = response.data.access_token;
+      localStorage.setItem('token', token);
+      router.push('/');
+    } catch (error) {
+      // 에러 처리
+      console.log(error);
+    }
+  };
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   return (
     <>
       <div className="join-page">
@@ -20,31 +89,47 @@ export default function Login() {
           <main>
             <div className="join-main">
               <div className="join">
-                <form id="login-form" className="form" action="/site/items.html" method="GET">
+                <form id="login-form" className="form" onSubmit={handleLogin}>
                   <div className="email-form">
-                    <label for="input-email" className="email-form__input">
+                    <label htmlFor="input-email" className="email-form__input">
                       이메일
                       <br />
-                      <input id="input-email" className="input" name="email" type="email" placeholder="이메일을 입력해주세요" data-valid="false" />
-                      <span className="invalid-text"></span>
+                      <input
+                        id="input-email"
+                        className={`input ${!formValidity.isEmailValid && formData.email ? 'invalid-mark' : ''}`}
+                        name="email"
+                        type="email"
+                        placeholder="이메일을 입력해주세요"
+                        value={formData.email}
+                        onChange={handleChange}
+                        onBlur={handleEmailBlur}
+                      />
+                      {!formValidity.isEmailValid && formData.email && <span className="invalid-text">잘못된 이메일 형식입니다.</span>}
                     </label>
                   </div>
                   <div className="password-form">
-                    <label for="input-password" className="password-form__input">
+                    <label htmlFor="input-password" className="password-form__input">
                       비밀번호
                       <br />
                       <input
                         id="input-password"
-                        className="input"
+                        className={`input ${!formValidity.isPasswordValid && formData.password ? 'invalid-mark' : ''}`}
                         name="password"
                         type="password"
                         placeholder="비밀번호를 입력해주세요"
-                        data-valid="false"
+                        value={formData.password}
+                        onChange={handleChange}
+                        onBlur={handlePasswordBlur}
                       />
-                      <span className="invalid-text"></span>
+                      {!formValidity.isPasswordValid && formData.password && <span className="invalid-text">비밀번호는 8자 이상이어야 합니다.</span>}
                     </label>
                   </div>
-                  <button type="submit" id="login-button" className="button large-button" disabled>
+                  <button
+                    type="submit"
+                    id="login-button"
+                    className={`button large-button ${isButtonEnabled ? 'active' : ''}`}
+                    disabled={!isButtonEnabled}
+                  >
                     로그인
                   </button>
                 </form>
@@ -76,8 +161,6 @@ export default function Login() {
           </footer>
         </div>
       </div>
-      {/* <script type="module" src="/function/common-form.js"></script>
-      <script type="module" src="/function/login.js"></script> */}
     </>
   );
 }
