@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ProfileImg from '@/public/images/icons/ic_profile.svg';
 import { TimestampCal } from '@/components/TimestampCal'
-import BackIcon from "@/public/images/icons/ic_back.svg";
-import Link from "next/link";
+import BackIcon from '@/public/images/icons/ic_back.svg';
+import Link from 'next/link';
 
 interface Comment {
   writer: {
@@ -64,7 +64,7 @@ const ArticleCommentThread: React.FC<ArticleCommentThreadProps> = ({ articleId }
 				</CommentContainer>
 			))}
 
-			<BackToMarketPageLink href="/boards">
+			<BackToMarketPageLink href='/boards'>
         목록으로 돌아가기
         <BackIcon />
       </BackToMarketPageLink>
@@ -125,7 +125,7 @@ const BackToMarketPageLink = styled(Link)`
 	font-size: 16px;
 	font-weight: bold;
 	cursor: pointer;
-	max-width: 215px;
+	max-width: 215px; 
 
 	&:hover {
 		background-color: ${({ theme }) => theme.colors.blue.primary};
