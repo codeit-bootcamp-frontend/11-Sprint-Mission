@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import logo from '../../assets/logo/logo.svg';
 import eyeVariant from '../../assets/input-icon/Property 1=Variant2.svg';
@@ -8,6 +9,7 @@ import eyeDefault from '../../assets/input-icon/Property 1=Default.svg';
 import google from '../../assets/login-icon/goolge.svg';
 import kakao from '../../assets/login-icon/kakao.svg';
 import styles from '../../styles/signup.module.css';
+import { signup, isLoggedIn } from '../../hooks/api';
 
 const Signup = (): JSX.Element => {
   const [email, setEmail] = useState('');
@@ -21,7 +23,16 @@ const Signup = (): JSX.Element => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordVerifyVisible, setPasswordVerifyVisible] = useState(false);
 
+  const router = useRouter();
+
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  useEffect(() => {
+    // accessToken이 있다면 메인 페이지로 이동
+    if (isLoggedIn()) {
+      router.push('/');
+    }
+  }, [router]);
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -71,10 +82,28 @@ const Signup = (): JSX.Element => {
     password.length >= 8 &&
     password === passwordVerify;
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (isFormValid) {
-      alert('회원가입 성공!');
+      try {
+        const payload = {
+          email,
+          nickname: username,
+          password,
+          passwordConfirmation: passwordVerify,
+        };
+
+        const { accessToken } = await signup(payload);
+
+        // accessToken을 로컬 스토리지에 저장
+        localStorage.setItem('accessToken', accessToken);
+
+        router.push('/');
+      } catch (error: any) {
+        console.error('회원가입 중 오류 발생:', error);
+        alert(error.message || '회원가입에 실패했습니다. 다시 시도해주세요.');
+      }
     } else {
       alert('입력 정보를 확인해주세요.');
     }

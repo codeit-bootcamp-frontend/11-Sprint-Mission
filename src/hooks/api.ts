@@ -267,3 +267,72 @@ export async function getBoardsComments(
     throw error;
   }
 }
+
+// 회원가입 타입
+export interface SignupPayload {
+  email: string;
+  nickname: string;
+  password: string;
+  passwordConfirmation: string;
+}
+
+// 회원가입 API
+export async function signup(
+  payload: SignupPayload
+): Promise<{ accessToken: string }> {
+  const apiUrl = `${baseUrl}/auth/signUp`;
+
+  try {
+    const response = await axios.post(apiUrl, payload, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    return response.data; // 서버에서 반환된 accessToken
+  } catch (error: any) {
+    console.error(
+      '회원가입 API 호출 중 오류 발생:',
+      error.response?.data || error
+    );
+    throw new Error(
+      error.response?.data?.message || '회원가입 요청에 실패했습니다. '
+    );
+  }
+}
+
+// 로컬 스토리지 accessToken 확인 (로그인상태여부확인)
+export function isLoggedIn(): boolean {
+  return !!localStorage.getItem('accessToken');
+}
+
+// 로그인 타입
+export interface LoginPayload {
+  email: string;
+  password: string;
+}
+
+// 로그인 API
+export async function login(
+  payload: LoginPayload
+): Promise<{ accessToken: string }> {
+  const apiUrl = `${baseUrl}/auth/signIn`;
+
+  try {
+    const response = await axios.post(apiUrl, payload, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    return response.data; // 서버에서 반환된 accessToken
+  } catch (error: any) {
+    console.error(
+      '로그인 API 호출 중 오류 발생:',
+      error.response?.data || error
+    );
+    throw new Error(
+      error.response?.data?.message || '로그인 요청에 실패했습니다. '
+    );
+  }
+}
