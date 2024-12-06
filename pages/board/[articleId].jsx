@@ -40,7 +40,7 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default function Board({ articleData, initialCommentData }) {
+export default function Board({ articleData, commentData: initialCommentData }) {
   const [comment, setComment] = useState('');
   const [isFormValid, setIsFormValid] = useState(false);
   const [commentData, setCommentData] = useState(initialCommentData || []);
