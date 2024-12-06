@@ -1,10 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import styles from "../styles/sign.module.css";
 import useSign from "../hooks/useSign";
 import SocialLogin from "../components/sign/SocialLogin";
+import { signIn } from "../lib/api/api";
+import { useEffect } from "react";
 
 export default function LoginPage() {
   const {
@@ -16,11 +19,27 @@ export default function LoginPage() {
     passwordError,
     isFormValid,
   } = useSign();
+  const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      router.push("/");
+    }
+  }, [router]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isFormValid) {
-      window.location.href = "/items"; // 로그인 성공 시 이동
+
+    if (!isFormValid) return;
+
+    try {
+      const { accessToken } = await signIn(email, password);
+      localStorage.setItem("accessToken", accessToken);
+      alert("로그인 성공!");
+      router.push("/");
+    } catch (error: any) {
+      alert(error.message || "로그인 중 오류가 발생했습니다.");
     }
   };
 

@@ -7,3 +7,12 @@ Content-Type: application/json
   "password": "testpassword999",
   "passwordConfirmation": "testpassword999"
 }
+
+###
+POST https://panda-market-api.vercel.app/auth/signIn
+Content-Type: application/json
+
+{
+  "email": "test999@example.com",
+  "password": "testpassword999"
+}

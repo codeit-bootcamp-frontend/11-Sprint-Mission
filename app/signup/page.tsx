@@ -4,9 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "../styles/sign.module.css";
 import useSign from "../hooks/useSign";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SocialLogin from "../components/sign/SocialLogin";
 import { signUp } from "../lib/api/api";
+import { useRouter } from "next/navigation";
 
 export default function SignupPage() {
   const {
@@ -18,6 +19,14 @@ export default function SignupPage() {
     passwordError,
     isFormValid,
   } = useSign();
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      router.push("/");
+    }
+  }, [router]);
 
   const [username, setUsername] = useState("");
   const [usernameError, setUsernameError] = useState("");
@@ -60,7 +69,6 @@ export default function SignupPage() {
       isFormValid
     ) {
       try {
-        // API 호출
         await signUp(email, username, password, passwordRepeat);
         alert("회원가입 성공!");
         window.location.href = "/login";
