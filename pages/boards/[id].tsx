@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { getArticleDetail } from '@/api/articleApi';
 import ArticleContentSection from './ArticleContentSection';
+import ArticleCommentSection from './ArticleCommentSection';
 
 interface Article {
   updatedAt: Date;
@@ -53,6 +54,7 @@ const BoardsPage = () => {
   return (
     <Container>
       <ArticleContentSection article={article} />
+      <ArticleCommentSection articleId={articleId} />
     </Container>
   );
 };
