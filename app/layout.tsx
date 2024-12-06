@@ -1,5 +1,5 @@
-import Header from "./components/layout/Header";
 import "./global.css";
+import ConditionalLayout from "./components/ConditionalLayout";
 
 export const metadata = {
   title: "판다마켓",
@@ -14,8 +14,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <Header />
-        {children}
+        <ConditionalLayout>{children}</ConditionalLayout>
       </body>
     </html>
   );

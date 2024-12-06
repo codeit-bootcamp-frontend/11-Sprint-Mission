@@ -1,0 +1,121 @@
+/* login.module.scss */
+
+@media (min-width: 1200px) {
+  /* 추가 스타일 정의 가능 */
+}
+
+@media (min-width: 375px) and (max-width: 768px) {
+  .loginHome {
+    max-width: 400px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .loginLogo a {
+    display: flex;
+    justify-content: center;
+  }
+
+  .loginLogo img {
+    max-width: 80%;
+  }
+}
+
+.loginHome {
+  margin-top: 1.25em;
+  width: 40em;
+  display: flex;
+  flex-direction: column;
+  color: var(--gray800);
+  margin-bottom: 1.875em;
+}
+
+.loginLogo {
+  display: flex;
+  justify-content: center;
+}
+
+.info {
+  margin: 1.5625em 0 1.875em;
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.625rem;
+}
+
+.email,
+.password,
+.passwordRepeat,
+.username {
+  width: 100%;
+  height: 3.5em;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.625rem;
+  background-color: var(--gray100);
+  padding: 1em 1.5em;
+  margin: 0.75em 0;
+}
+
+.passwordLabel,
+.passwordRepeat {
+  position: relative;
+}
+
+/* 비밀번호 눈모양 임시 */
+.seeBlind {
+  position: absolute;
+  left: 92%;
+  top: 3.457rem;
+}
+
+.formError {
+  color: #f74747;
+  display: none;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.loginButton {
+  background-color: var(--gray400);
+  height: 3.111em;
+  border-radius: 2.5rem;
+  color: var(--gray100);
+  line-height: 2rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.simpleLogin {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.625rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e6f2ff;
+  padding: 1em 1.4375em;
+}
+
+.signup {
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.9375em;
+  gap: 4px;
+}
+
+.textDecorationUnderline {
+  text-decoration: underline;
+}
+
+/* 임시 */
+.signupButton {
+  color: var(--blue);
+  line-height: 1.0625rem;
+}
