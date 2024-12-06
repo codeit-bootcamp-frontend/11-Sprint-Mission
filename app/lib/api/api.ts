@@ -202,3 +202,28 @@ export const signIn = async (email: string, password: string) => {
 
   return response.json();
 };
+
+export const addArticle = async (
+  title: string,
+  content: string,
+  image?: string
+): Promise<void> => {
+  const token = localStorage.getItem("accessToken");
+  if (!token) {
+    throw new Error("로그인이 필요합니다.");
+  }
+
+  const response = await fetch(`${BASE_URL}articles`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ title, content, image }),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.message || "게시물 등록 실패");
+  }
+};

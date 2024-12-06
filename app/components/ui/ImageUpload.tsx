@@ -7,11 +7,12 @@ import styles from "./ImageUpload.module.css";
 
 interface ImageUploadProps {
   title: string;
+  onImageChange: (file: File | null) => void; // 상위 컴포넌트로 이미지 전달
 }
 
-function ImageUpload({ title }: ImageUploadProps) {
-  const [preview, setPreview] = useState<string>("");
-  const [errorMessage, setErrorMessage] = useState<string>("");
+function ImageUpload({ title, onImageChange }: ImageUploadProps) {
+  const [preview, setPreview] = useState<string>(""); // 미리보기 URL
+  const [errorMessage, setErrorMessage] = useState<string>(""); // 에러 메시지
   const fileInput = useRef<HTMLInputElement | null>(null);
   const inputId = "imageUpload";
 
@@ -27,9 +28,10 @@ function ImageUpload({ title }: ImageUploadProps) {
   const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file && file.type.startsWith("image/")) {
-      const prevUrl = URL.createObjectURL(file);
+      const prevUrl = URL.createObjectURL(file); // 미리보기 URL 생성
       setPreview(prevUrl);
       setErrorMessage("");
+      onImageChange(file); // 이미지 파일 전달
     } else {
       alert("이미지 파일만 업로드 가능합니다.");
     }
@@ -38,6 +40,7 @@ function ImageUpload({ title }: ImageUploadProps) {
   const handleImageDelete = () => {
     setPreview("");
     setErrorMessage("");
+    onImageChange(null); // 이미지 삭제 시 null 전달
     if (fileInput.current) {
       fileInput.current.value = "";
     }
