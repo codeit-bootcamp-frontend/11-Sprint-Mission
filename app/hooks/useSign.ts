@@ -7,7 +7,6 @@ export default function useSign() {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [isFormValid, setIsFormValid] = useState(false);
 
   const validateEmail = (value: string) => {
     const isValid = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
@@ -37,17 +36,16 @@ export default function useSign() {
 
   const handleEmailChange = (value: string) => {
     setEmail(value);
-    const isEmailValid = validateEmail(value);
-    const isPasswordValid = validatePassword(password);
-    setIsFormValid(isEmailValid && isPasswordValid);
+    validateEmail(value);
   };
 
   const handlePasswordChange = (value: string) => {
     setPassword(value);
-    const isPasswordValid = validatePassword(value);
-    const isEmailValid = validateEmail(email);
-    setIsFormValid(isEmailValid && isPasswordValid);
+    validatePassword(value);
   };
+
+  const isFormValid =
+    emailError === "" && passwordError === "" && email && password;
 
   return {
     email,

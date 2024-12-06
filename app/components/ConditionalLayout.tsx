@@ -10,7 +10,7 @@ export default function ConditionalLayout({
 }) {
   const pathname = usePathname();
 
-  if (pathname === "/login" || pathname === "signup") {
+  if (pathname === "/login" || pathname === "/signup") {
     return <>{children}</>;
   }
 

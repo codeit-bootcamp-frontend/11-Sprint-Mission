@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "../styles/sign.module.css";
 import useSign from "../hooks/useSign";
+import SocialLogin from "../components/sign/SocialLogin";
 
 export default function LoginPage() {
   const {
@@ -93,35 +94,7 @@ export default function LoginPage() {
             </button>
           </form>
         </div>
-        <div className={styles.simpleLogin}>
-          간편 로그인하기
-          <div className="social">
-            <a
-              href="https://www.google.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                width={42}
-                height={42}
-                src="/social/google.png"
-                alt="구글"
-              />
-            </a>
-            <a
-              href="https://www.kakaocorp.com/page/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                width={42}
-                height={42}
-                src="/social/kakao.png"
-                alt="카카오"
-              />
-            </a>
-          </div>
-        </div>
+        <SocialLogin />
         <div className={styles.signup}>
           판다마켓이 처음이신가요?
           <Link href="/signup">
