@@ -1,38 +1,25 @@
-/* login.module.scss */
-
-@media (min-width: 1200px) {
-  /* 추가 스타일 정의 가능 */
-}
-
-@media (min-width: 375px) and (max-width: 768px) {
-  .loginHome {
-    max-width: 400px;
-    margin-left: 16px;
-    margin-right: 16px;
-  }
-
-  .loginLogo a {
-    display: flex;
-    justify-content: center;
-  }
-
-  .loginLogo img {
-    max-width: 80%;
-  }
-}
-
-.loginHome {
-  margin-top: 1.25em;
-  width: 40em;
+.header {
   display: flex;
-  flex-direction: column;
-  color: var(--gray800);
-  margin-bottom: 1.875em;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoContainer {
+  position: relative;
+  width: 396px;
+  height: 132px;
 }
 
 .loginLogo {
+  object-fit: contain;
+}
+
+.content {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  max-width: 640px;
+  width: 100%;
 }
 
 .info {
@@ -42,19 +29,20 @@
   line-height: 1.625rem;
 }
 
-.email,
-.password,
-.passwordRepeat,
-.username {
+.inputfield {
   width: 100%;
   height: 3.5em;
   border-radius: 0.75rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.625rem;
-  background-color: var(--gray100);
+  background-color: #f3f4f6;
   padding: 1em 1.5em;
   margin: 0.75em 0;
+}
+
+.inputfield::placeholder {
+  color: #9ca3af;
 }
 
 .passwordLabel,
@@ -62,31 +50,31 @@
   position: relative;
 }
 
-/* 비밀번호 눈모양 임시 */
-.seeBlind {
-  position: absolute;
-  left: 92%;
-  top: 3.457rem;
-}
-
 .formError {
   color: #f74747;
-  display: none;
   font-size: 1rem;
   font-weight: 600;
 }
 
 .loginButton {
-  background-color: var(--gray400);
+  width: 100%;
+  background-color: #9ca3af;
   height: 3.111em;
   border-radius: 2.5rem;
-  color: var(--gray100);
+  border: none;
+  color: #f3f4f6;
   line-height: 2rem;
   font-size: 1.25rem;
   font-weight: 600;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: not-allowed;
+}
+
+.activeLoginButton {
+  background-color: #3692ff;
+  cursor: pointer;
 }
 
 .simpleLogin {
@@ -118,4 +106,11 @@
 .signupButton {
   color: var(--blue);
   line-height: 1.0625rem;
+}
+
+@media (max-width: 1200px) {
+  .logoContainer {
+    width: 266px;
+    height: 90px;
+  }
 }
