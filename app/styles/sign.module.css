@@ -107,6 +107,7 @@
 
 .textDecorationUnderline {
   text-decoration: underline;
+  color: #3282f6;
 }
 
 @media (max-width: 1200px) {

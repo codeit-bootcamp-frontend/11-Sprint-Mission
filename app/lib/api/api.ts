@@ -163,3 +163,25 @@ export async function postComment(
     throw error;
   }
 }
+
+export const signUp = async (
+  email: string,
+  nickname: string,
+  password: string,
+  passwordConfirmation: string
+) => {
+  const response = await fetch(`${BASE_URL}auth/signUp`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, nickname, password, passwordConfirmation }),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.message || "회원가입 실패");
+  }
+
+  return response.json();
+};

@@ -6,6 +6,7 @@ import styles from "../styles/sign.module.css";
 import useSign from "../hooks/useSign";
 import { useState } from "react";
 import SocialLogin from "../components/sign/SocialLogin";
+import { signUp } from "../lib/api/api";
 
 export default function SignupPage() {
   const {
@@ -50,15 +51,22 @@ export default function SignupPage() {
     validatePasswordRepeat(value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (
       validateUsername(username) &&
       validatePasswordRepeat(passwordRepeat) &&
       isFormValid
     ) {
-      alert("회원가입 성공!");
-      window.location.href = "/login";
+      try {
+        // API 호출
+        await signUp(email, username, password, passwordRepeat);
+        alert("회원가입 성공!");
+        window.location.href = "/login";
+      } catch (error: any) {
+        alert(error.message || "회원가입 중 오류가 발생했습니다.");
+      }
     }
   };
 
