@@ -8,6 +8,8 @@ import SignUpLink from "./SignUpLink";
 import "./Login.css";
 import logo from "../../assets/image/Property 1=lg.png";
 import { login } from "../../api/api";
+import { useDispatch } from "react-redux";
+import { check } from "../../redux/counterAccessToken";
 
 interface FormValues {
   email: string;
@@ -21,12 +23,14 @@ const Login = () => {
     formState: { errors, isValid },
   } = useForm<FormValues>({ mode: "onChange" });
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onsubmit: SubmitHandler<FormValues> = async (data) => {
     try {
       const res = await login(data);
       localStorage.setItem("access_token", res.accessToken);
       localStorage.setItem("refresh_token", res.refreshToken);
+      dispatch(check());
       alert("로그인이 정상적으로 완료되었습니다.");
       navigate("/");
       console.log(res);

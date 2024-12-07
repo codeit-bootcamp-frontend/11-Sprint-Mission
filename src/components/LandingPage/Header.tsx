@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../../assets/image/Property 1=lg.png";
 import profile from "../../assets/image/size=large.png";
+import { useDispatch, useSelector } from "react-redux";
+import { reset } from "../../redux/counterAccessToken";
 
 function Header() {
-  const isAccessToken = localStorage.getItem("access_token");
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const dispatch = useDispatch();
+  const count = useSelector((state: any) => state.counter.value);
 
   const toggleDropdown = () => {
     setIsDropdownVisible((prev) => !prev);
@@ -14,7 +17,8 @@ function Header() {
 
   const handleLogout = () => {
     localStorage.clear();
-    window.location.reload();
+    dispatch(reset());
+    window.location.reload(); // 로그아웃 되면 새로고침
   };
 
   return (
@@ -24,7 +28,7 @@ function Header() {
           <img className="logo" src={logo} alt="판다마켓" />
         </div>
       </Link>
-      {isAccessToken ? (
+      {count ? (
         <div className="profile-container">
           <img
             src={profile}

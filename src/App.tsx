@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
 import "./App.css";
 import MainPage from "./page/MainPage";
 import AddItemPage from "./page/AddItemPage";
@@ -9,22 +10,27 @@ import Privacy from "./components/Privacy";
 import FAQ from "./components/FAQ";
 import LoginPage from "./page/LoginPage";
 import RegisterPage from "./page/RegisterPage";
+import { useSelector } from "react-redux";
 
 function App() {
-  const isAccessToken = localStorage.getItem("access_token");
+  // const isAccessToken = localStorage.getItem("access_token");
+  const count = useSelector((state: any) => state.counter.value);
+  useEffect(() => {
+    console.log("Count changed:", count);
+  }, [count]);
   return (
     <Routes>
       <Route path={ROUTES.LANDING} element={<LandingPage />} />
       <Route
         path={ROUTES.LOGIN}
         element={
-          isAccessToken ? <Navigate to={ROUTES.LANDING} /> : <LoginPage />
+          count === true ? <Navigate to={ROUTES.LANDING} /> : <LoginPage />
         }
       />
       <Route
         path={ROUTES.REGISTER}
         element={
-          isAccessToken ? <Navigate to={ROUTES.LANDING} /> : <RegisterPage />
+          count === true ? <Navigate to={ROUTES.LANDING} /> : <RegisterPage />
         }
       />
       <Route path={ROUTES.PRIVACY} element={<Privacy />} />
