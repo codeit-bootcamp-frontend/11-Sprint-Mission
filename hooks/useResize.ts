@@ -1,30 +1,32 @@
+import debounce from 'lodash.debounce';
 import { useState, useEffect } from 'react';
 
 export type ScreenType = 'mobile' | 'tablet' | 'desktop' | null;
+
+const BREAKPOINTS = {
+  mobile: 0,
+  tablet: 768,
+  desktop: 1024,
+} as const;
 
 const useResize = () => {
   const [screenType, setScreenType] = useState<ScreenType>(null);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    // 클라이언트에서만 실행되도록 설정, 서버에서는 window객체 x
-    setIsClient(true);
-  }, []);
+    if (typeof window === 'undefined') return;
 
-  useEffect(() => {
-    if (!isClient) return;
-
-    const handleResize = () => {
+    const handleResize = debounce(() => {
       const currentWidth = window.innerWidth;
 
-      if (currentWidth >= 1024) {
+      if (currentWidth >= BREAKPOINTS.desktop) {
         setScreenType('desktop');
-      } else if (currentWidth >= 768) {
+      } else if (currentWidth >= BREAKPOINTS.tablet) {
         setScreenType('tablet');
       } else {
         setScreenType('mobile');
       }
-    };
+    }, 250);
 
     window.addEventListener('resize', handleResize);
     handleResize(); // 초기 크기 설정
