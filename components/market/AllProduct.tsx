@@ -4,7 +4,7 @@ import Link from "next/link";
 import SearchIcon from "@/public/images/ic_search.svg";
 // import Image from "next/image";
 import Dropdown from "@/components/ui/Dropdown";
-import "@/styles/AllProduct.module.css";
+// import styles from "@/styles/AllProduct.module.css";
 import { useEffect, useState } from "react";
 import ItemCard from "@/components/market/ItemCard";
 import { getProducts } from "@/api/api";
