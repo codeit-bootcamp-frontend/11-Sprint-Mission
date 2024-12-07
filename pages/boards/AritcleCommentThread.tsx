@@ -5,7 +5,7 @@ import ProfileImg from '@/public/images/icons/ic_profile.svg';
 import { TimestampCal } from '@/components/TimestampCal'
 import BackIcon from '@/public/images/icons/ic_back.svg';
 import Link from 'next/link';
-import SeeMoreIcon from "@/public/images/icons/ic_kebab.svg";
+import SeeMoreIcon from '@/public/images/icons/ic_kebab.svg';
 
 const SeeMoreButton = styled.button`
   position: absolute;
