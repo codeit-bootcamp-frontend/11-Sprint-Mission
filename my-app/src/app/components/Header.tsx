@@ -26,8 +26,8 @@ export default function HeaderContainer() {
             중고마켓
           </Link>
         </nav>
-        <div className="w-[40px] h-[40px] relative ">
-          <Link href={"/"}>
+        <div className="w-[40px] h-[40px] relative">
+          <Link href={"/login"}>
             <Image src="/head/myPageIcon.png" fill alt="myPageIcon" />
           </Link>
         </div>
