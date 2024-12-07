@@ -99,7 +99,6 @@ export default function Signup() {
   };
 
   return (
-    <>
       <div className="join-page">
         <div className="join-page-header">
           <div className="head">
@@ -222,6 +221,5 @@ export default function Signup() {
           </footer>
         </div>
       </div>
-    </>
   );
 }

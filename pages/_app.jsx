@@ -2,6 +2,7 @@
 import { useRouter } from 'next/router';
 import Header from '../components/Header';
 import '@/styles/globals.css';
+import '@/styles/Home.module.css'
 import '@/styles/Header.module.css';
 import '@/styles/Boards.module.css';
 import '@/styles/BestBoard.module.css';
