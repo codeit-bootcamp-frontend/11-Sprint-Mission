@@ -79,3 +79,20 @@
   padding: 1.6rem 2.4rem;
   justify-content: left;
 }
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.comment-btn {
+  text-align: right;
+}
+
+.comment .buttonDetail {
+  padding: 0.8rem 2.3rem;
+  background-color: #9ca3af;
+  color: #f3f4f6;
+  text-align: right;
+}

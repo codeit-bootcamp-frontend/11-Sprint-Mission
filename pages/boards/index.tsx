@@ -1,15 +1,10 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { FormEvent, useEffect, useMemo, useState } from 'react';
 import styles from '@/styles/Board.module.css';
 import BestCard from '@/components/BestCard';
 import Button from '@/components/common/Button';
-import Card from '@/components/Card';
+import Card, { Product } from '@/components/Card';
 import useResize, { ScreenType } from '@/hooks/useResize';
-import {
-  getProducts,
-  OrderType,
-  Product,
-  ProductResult,
-} from '@/api/productApi';
+import { GetProduct, getProducts, OrderType } from '@/api/productApi';
 import Dropdown, { DropdownItem } from '@/components/common/Dropdown';
 import debounce from 'lodash.debounce';
 import { useRouter } from 'next/router';
@@ -57,15 +52,14 @@ const Board = ({
   initialBestProducts,
   initialAllProducts,
 }: {
-  initialBestProducts: ProductResult[];
-  initialAllProducts: ProductResult[];
+  initialBestProducts: Product[];
+  initialAllProducts: Product[];
 }) => {
   const screenType = useResize(); // useResize 훅 사용
   const [page, setPage] = useState(1); // 페이지 번호
   const [bestProducts, setBestProducts] =
-    useState<ProductResult[]>(initialBestProducts);
-  const [allProducts, setAllProducts] =
-    useState<ProductResult[]>(initialAllProducts);
+    useState<Product[]>(initialBestProducts);
+  const [allProducts, setAllProducts] = useState<Product[]>(initialAllProducts);
   const [order, setOrder] = useState<OrderType>('recent');
   const router = useRouter();
 
@@ -83,7 +77,7 @@ const Board = ({
     return sizeMap[screenType] || 1;
   };
 
-  const fetchBestProducts = async (param: Product): Promise<void> => {
+  const fetchBestProducts = async (param: GetProduct): Promise<void> => {
     try {
       const response = await getProducts(param);
       setBestProducts(response.data.list);
@@ -107,7 +101,6 @@ const Board = ({
 
   const handleClick = () => {
     router.push('addboard');
-    console.log('클릭');
   };
 
   const handleSearch = (query: string) => {
@@ -123,7 +116,7 @@ const Board = ({
     if (!screenType) return;
 
     const size = getSizeForScreenType(screenType);
-    const param: Product = {
+    const param = {
       page: page,
       pageSize: size,
       orderBy: 'favorite',

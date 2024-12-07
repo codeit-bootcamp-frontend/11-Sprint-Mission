@@ -4,11 +4,23 @@ import Image from 'next/image';
 import styles from './Card.module.css';
 import heartIcon from '@/public/ic_heart.svg';
 import profile from '@/public/profile.svg';
-import { ProductResult } from '@/api/productApi';
 import Link from 'next/link';
 
+export interface Product {
+  createdAt: string;
+  favoriteCount: number;
+  ownerNickname: string;
+  ownerId: number;
+  images: string[];
+  tags: string[];
+  price: number;
+  description: string;
+  name: string;
+  id: number;
+}
+
 interface CardProps {
-  products: ProductResult;
+  products: Product;
 }
 
 const Card: React.FC<CardProps> = ({ products }) => {

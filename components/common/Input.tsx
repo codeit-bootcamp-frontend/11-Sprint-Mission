@@ -1,25 +1,21 @@
-import { ReactNode, useState } from 'react';
+import { FormEvent, InputHTMLAttributes, ReactNode, useState } from 'react';
 import styles from './Input.module.css';
-import Image from 'next/image';
 
-interface InputProps {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onInput?: (query: string) => void;
   image?: boolean;
   addClassName?: string | string[];
-  placeholder: string;
   children?: ReactNode;
-  name: string;
 }
 
 const Input = ({
-  onInput,
   onChange,
   image,
   addClassName,
-  placeholder,
-  name,
   children,
+  onInput,
+  ...props
 }: InputProps) => {
   const inputClass = Array.isArray(addClassName)
     ? addClassName.join(' ')
@@ -31,7 +27,6 @@ const Input = ({
     const value = event.target.value;
     setQuery(value);
     if (onChange) onChange(event);
-    if (onInput) onInput(value);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -45,12 +40,11 @@ const Input = ({
       {image && <> {children} </>}
       <input
         type="text"
-        name={name}
         value={query}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         className={styles['input-input']}
-        placeholder={placeholder}
+        {...props}
       />
     </div>
   );

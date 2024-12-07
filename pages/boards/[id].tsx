@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { use, useEffect, useState } from 'react';
 import Iconkebab from '@/public/ic_kebab.svg';
 import Image from 'next/image';
 import styles from '@/styles/BoardDetail.module.css';
@@ -6,7 +6,11 @@ import profile from '@/public/profile.svg';
 import heartIcon from '@/public/ic_heart.svg';
 import Input from '@/components/common/Input';
 import { GetServerSidePropsContext } from 'next';
-import { getProductById, ProductResult } from '@/api/productApi';
+import { getProductById } from '@/api/productApi';
+import Button from '@/components/common/Button';
+import Comment from '@/components/Comment';
+import { Product } from '@/components/Card';
+import { createComments, getComment } from '@/api/commentApi';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   if (context.params) {
@@ -14,10 +18,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
     try {
       const detailResponse = await getProductById(productId);
+      const commentResponse = await getComment(productId, {});
 
       return {
         props: {
           detailProduct: detailResponse.data,
+          detailCommentList: commentResponse.data.list,
         },
       };
     } catch (error) {
@@ -25,13 +31,37 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       return {
         props: {
           detailProduct: {},
+          detailCommentList: [],
         },
       };
     }
   }
 }
 
-const BoardDetail = ({ detailProduct }: { detailProduct: ProductResult }) => {
+const BoardDetail = ({
+  detailProduct,
+  detailCommentList,
+}: {
+  detailProduct: Product;
+  detailCommentList: Comment[];
+}) => {
+  const [content, setContent] = useState('');
+  const [buttonDisabled, setbuttonDisabled] = useState(false);
+
+  const handleRegisterClick = async () => {
+    const productId = detailProduct.id;
+
+    try {
+      const data = await createComments(productId, { content: content });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    setbuttonDisabled(!content);
+  }, [content]);
+
   return (
     <>
       <div className={styles.boardDetail}>
@@ -75,14 +105,32 @@ const BoardDetail = ({ detailProduct }: { detailProduct: ProductResult }) => {
           <div className={styles.content}>{detailProduct.description}</div>
         </div>
         <div className={styles.comment}>
-          <h2>댓글달기</h2>
-          <Input
-            // onInput={handleSearch}
-            name="content"
-            addClassName={styles.board}
-            placeholder="댓글을 입력해주세요."
-          />
+          <div>
+            <h2>댓글달기</h2>
+            <Input
+              name="content"
+              addClassName={styles.board}
+              placeholder="댓글을 입력해주세요."
+              onChange={(e) => setContent(e.target.value)}
+            />
+          </div>
+          <div className={styles['comment-btn']}>
+            <Button
+              addClassName={styles.buttonDetail}
+              handleClick={handleRegisterClick}
+              disabled={buttonDisabled}
+            >
+              등록
+            </Button>
+          </div>
         </div>
+        {detailCommentList.map((comment) => {
+          return (
+            <>
+              <Comment comment={comment} />
+            </>
+          );
+        })}
       </div>
     </>
   );

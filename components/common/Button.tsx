@@ -1,18 +1,17 @@
 import { ReactNode } from 'react';
 import styles from './Button.module.css';
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
   addClassName?: string | string[];
   handleClick?: () => void;
-  disabled: boolean;
 }
 
 function Button({
   children,
   addClassName,
   handleClick,
-  disabled,
+  ...props
 }: ButtonProps) {
   const buttonClass = Array.isArray(addClassName)
     ? addClassName.join(' ')
@@ -24,7 +23,7 @@ function Button({
         type="button"
         className={`${styles.button} ${buttonClass}`}
         onClick={handleClick}
-        disabled={disabled}
+        {...props}
       >
         {children}
       </button>

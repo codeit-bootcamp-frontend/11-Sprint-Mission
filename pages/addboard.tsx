@@ -1,24 +1,15 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import styles from '@/styles/Addboard.module.css';
 import Button from '@/components/common/Button';
 import Input from '@/components/common/Input';
 import useResize from '@/hooks/useResize';
 import FileInput from '@/components/common/FileInput';
-import { create } from 'domain';
-import { createProduct } from '@/api/productApi';
-
-export interface InputDataProps {
-  name: string;
-  description: string;
-  images: string[];
-  tags: string[];
-  price: number;
-}
+import { createProduct, CreateProductProps } from '@/api/productApi';
 
 const Addboard = () => {
   const screenType = useResize(); // useResize 훅 사용
 
-  const [inputData, setInputData] = useState<InputDataProps>({
+  const [inputData, setInputData] = useState<CreateProductProps>({
     name: '',
     description: '',
     images: [],
@@ -32,8 +23,6 @@ const Addboard = () => {
       ...prevData,
       [name]: value,
     }));
-
-    console.log(inputData);
   };
 
   const onChangeFile = (url: string) => {

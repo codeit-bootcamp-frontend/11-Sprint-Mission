@@ -1,33 +1,30 @@
-import { AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import axiosInstance from './axios';
-import { InputDataProps } from '@/pages/addboard';
+import { Product } from '@/components/Card';
+import { Comment } from '@/components/Comment';
 
 export type OrderType = 'recent' | 'favorite';
 
-export interface Product {
+interface ProductResultResponse {
+  totalCount: number; // 전체 상품 수
+  list: Product[]; // 상품 목록
+}
+
+export interface GetProduct {
   page: number;
   pageSize: number;
-  orderBy: OrderType;
+  orderBy: string;
   keyword?: string;
 }
 
-export interface ProductResult {
-  createdAt: string;
-  favoriteCount: number;
-  ownerNickname: string;
-  ownerId: number;
+export interface CreateProductProps {
+  name: string;
+  description: string;
   images: string[];
   tags: string[];
   price: number;
-  description: string;
-  name: string;
-  id: number;
 }
-
-interface ProductResultResponse {
-  totalCount: number; // 전체 상품 수
-  list: ProductResult[]; // 상품 목록
-}
+// -- Product API
 
 // 상품목록가져오기
 export const getProducts = (
@@ -43,12 +40,22 @@ export const getProducts = (
   });
 };
 
-export const getProductById = (productId: number) => {
-  return axiosInstance.get(`/products/${productId}`);
+export const getProductById = async (productId: number) => {
+  try {
+    return await axiosInstance.get(`/products/${productId}`);
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.error('Axios Error:', error.response?.data || error.message);
+      throw new Error('데이터를 불러오는도중 에러가 발생했습니다.');
+    } else {
+      console.error('Unknown Error:', error);
+      throw new Error('기타 에러입니다.');
+    }
+  }
 };
 
 export const createProduct = (
-  productData: InputDataProps,
+  productData: CreateProductProps,
 ): Promise<AxiosResponse> => {
   return axiosInstance.post('/products', productData, {
     headers: {
