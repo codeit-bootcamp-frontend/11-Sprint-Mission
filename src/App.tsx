@@ -1,5 +1,4 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { useEffect } from "react";
 import "./App.css";
 import MainPage from "./page/MainPage";
 import AddItemPage from "./page/AddItemPage";
@@ -13,11 +12,7 @@ import RegisterPage from "./page/RegisterPage";
 import { useSelector } from "react-redux";
 
 function App() {
-  // const isAccessToken = localStorage.getItem("access_token");
   const count = useSelector((state: any) => state.counter.value);
-  useEffect(() => {
-    console.log("Count changed:", count);
-  }, [count]);
   return (
     <Routes>
       <Route path={ROUTES.LANDING} element={<LandingPage />} />

@@ -33,7 +33,6 @@ const Login = () => {
       dispatch(check());
       alert("로그인이 정상적으로 완료되었습니다.");
       navigate("/");
-      console.log(res);
     } catch (error: any) {
       console.error(
         "회원가입 실패:",
