@@ -4,7 +4,7 @@ import Link from 'next/link';
 import logo from '@/public/icons/ic_logo.svg';
 import login from '@/public/icons/ic_login.svg';
 import homeTop from '@/public/images/img_home_top.svg';
-import firstSection from '@/public/images/Img_first_main_section.svg';
+import firstSection from '@/public/images/img_first_main_section.svg';
 import secondSection from '@/public/images/img_second_main_section.svg';
 import thirdSection from '@/public/images/img_third_main_section.svg';
 import homeBottom from '@/public/images/img_home_bottom.svg';
