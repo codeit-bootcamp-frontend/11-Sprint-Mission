@@ -4,7 +4,9 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  margin-top: 6rem;
   width: 100%;
+  min-width: 40rem;
   gap: 4rem;
 }
 
@@ -22,6 +24,7 @@
 .entireForm {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 100%;
   gap: 2.4rem;
 }
@@ -49,35 +52,32 @@
 
 .input,
 .button {
-  width: 396px;
-  gap: 10px;
   display: flex;
+  width: 39.6rem;
+  gap: 1rem;
+  height: 5.6rem;
 }
 
 .input {
-  margin-top: 16px;
-}
-
-.input,
-.button {
-  height: 56px;
+  width: 100%;
+  margin-top: 1.6rem;
 }
 
 .input {
   border: none;
-  border-radius: 12px;
-  padding: 16px 24px;
+  border-radius: 1.2rem;
+  padding: 1.6rem 2.4rem;
   color: var(--gray-400);
   background-color: var(--gray-100);
 }
 
 .input:focus {
-  border: 2px solid var(--primary);
+  border: 0.2rem solid var(--primary);
   outline: none;
 }
 
 .invalidMark {
-  border: 1px solid var(--tomato);
+  border: 0.1rem solid var(--tomato);
 }
 
 .invalidText {
@@ -145,9 +145,7 @@
 
 @media (max-width: 767px) {
   .joinPage {
-    width: 100%;
-    max-width: 400px;
-    margin: 16px;
+    margin-top: 2.4rem;
   }
 
   .head {
@@ -160,116 +158,47 @@
   }
 
   .title {
-    font-size: 33px;
-    line-height: 44px;
+    font-size: 3.3rem;
+    line-height: 4.4rem;
   }
 
   .entireForm {
-    gap: 16px;
+    gap: 1.6rem;
   }
 
-  .emailLabel,
-  .password-form__input {
-    font-size: 14px;
-    line-height: 24px;
+  .formLabel {
+    font-size: 1.4rem;
+    line-height: 24rem;
   }
 
-  .input,
   .large-button {
-    width: 100%;
-  }
-
-  .authContent {
     width: 100%;
   }
 }
 
 @media (max-width: 1199px) {
   .joinPage {
-    padding: 48px 52px;
-  }
-
-  .joinPage,
-  .password-form__input {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .joinPage {
-    justify-content: center;
-    align-items: center;
+    margin-top: 4.8rem;
   }
 
   .title {
-    font-size: 66px;
-    line-height: 89px;
+    font-size: 6.6rem;
+    line-height: 8.9rem;
   }
 
-  .joinPage {
+  .button{
     width: 100%;
-    gap: 40px;
-  }
-
-  .join,
-  .entireForm {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-  }
-
-  .password-form__input {
-    font-weight: 700;
-    font-size: 18px;
-    color: var(--gray-800);
-    line-height: 26px;
-  }
-
-  .input {
-    margin-top: 16px;
-  }
-
-  .input,
-  .button,
-  .simpleAuth {
-    width: 100%;
-    gap: 10px;
+    gap: 1rem;
     display: flex;
   }
 
-  .input,
   .button {
     height: 56px;
-  }
-
-  .input {
-    border: none;
-    border-radius: 12px;
-    padding: 16px 24px;
-    color: var(--gray-400);
-    background-color: var(--gray-100);
-  }
-
-  .input:focus {
-    border: 2px solid var(--primary);
-    outline: none;
   }
 
   .large-button {
     background-color: var(--gray-400);
     color: var(--gray-100);
     text-align: center;
-  }
-
-  .simpleAuth {
-    display: flex;
-    align-items: center;
-  }
-
-  .simpleAuth {
-    height: 74px;
-    border-radius: 8px;
-    padding: 16px 23px;
-    background-color: var(--Alice-Blue);
   }
 }
