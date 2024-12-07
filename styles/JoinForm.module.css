@@ -1,0 +1,275 @@
+.joinPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  gap: 4rem;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2.2rem;
+  width: auto;
+}
+
+.joinContent,
+.joinMain,
+.join,
+.entireForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2.4rem;
+}
+
+.joinContent {
+  justify-content: center;
+}
+
+.title {
+  font-size: 6.6rem;
+  line-height: 8.9rem;
+  color: var(--primary);
+  font-weight: var(--bold);
+  text-decoration: none;
+}
+
+.formLabel {
+  display: flex;
+  flex-direction: column;
+  font-weight: var(--bold);
+  font-size: 1.8rem;
+  color: var(--gray-800);
+  line-height: 2.6rem;
+}
+
+.input,
+.button {
+  width: 396px;
+  gap: 10px;
+  display: flex;
+}
+
+.input {
+  margin-top: 16px;
+}
+
+.input,
+.button {
+  height: 56px;
+}
+
+.input {
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+  color: var(--gray-400);
+  background-color: var(--gray-100);
+}
+
+.input:focus {
+  border: 2px solid var(--primary);
+  outline: none;
+}
+
+.invalidMark {
+  border: 1px solid var(--tomato);
+}
+
+.invalidText {
+  font-weight: var(--medium);
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  color: var(--tomato);
+  margin-top: 0.8rem;
+  margin-left: 1.6rem;
+}
+
+.large-button {
+  background-color: var(--gray-400);
+  color: var(--gray-100);
+  text-align: center;
+}
+
+.simpleAuth {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 7.4rem;
+  border-radius: 0.8rem;
+  padding: 1.6rem 2.3rem;
+  background-color: var(--Alice-Blue);
+}
+
+.authContent {
+  display: flex;
+  align-items: center;
+  font-weight: var(--regular);
+  width: 100%;
+  justify-content: space-between;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  color: var(--gray-800);
+}
+
+.authSns {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  width: auto;
+}
+
+.toUs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: var(--regular);
+  gap: 0.4rem;
+  font-size: 1.4rem;
+}
+
+.usMessage {
+  line-height: 2.4rem;
+  color: var(--gray-800);
+}
+
+.usLink {
+  line-height: 1.7rem;
+  color: var(--primary);
+}
+
+@media (max-width: 767px) {
+  .joinPage {
+    width: 100%;
+    max-width: 400px;
+    margin: 16px;
+  }
+
+  .head {
+    width: 19.8rem;
+  }
+
+  .head > img {
+    width: 5.1rem;
+    height: 5.1rem;
+  }
+
+  .title {
+    font-size: 33px;
+    line-height: 44px;
+  }
+
+  .entireForm {
+    gap: 16px;
+  }
+
+  .emailLabel,
+  .password-form__input {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .input,
+  .large-button {
+    width: 100%;
+  }
+
+  .authContent {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1199px) {
+  .joinPage {
+    padding: 48px 52px;
+  }
+
+  .joinPage,
+  .password-form__input {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .joinPage {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 66px;
+    line-height: 89px;
+  }
+
+  .joinPage {
+    width: 100%;
+    gap: 40px;
+  }
+
+  .join,
+  .entireForm {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .password-form__input {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--gray-800);
+    line-height: 26px;
+  }
+
+  .input {
+    margin-top: 16px;
+  }
+
+  .input,
+  .button,
+  .simpleAuth {
+    width: 100%;
+    gap: 10px;
+    display: flex;
+  }
+
+  .input,
+  .button {
+    height: 56px;
+  }
+
+  .input {
+    border: none;
+    border-radius: 12px;
+    padding: 16px 24px;
+    color: var(--gray-400);
+    background-color: var(--gray-100);
+  }
+
+  .input:focus {
+    border: 2px solid var(--primary);
+    outline: none;
+  }
+
+  .large-button {
+    background-color: var(--gray-400);
+    color: var(--gray-100);
+    text-align: center;
+  }
+
+  .simpleAuth {
+    display: flex;
+    align-items: center;
+  }
+
+  .simpleAuth {
+    height: 74px;
+    border-radius: 8px;
+    padding: 16px 23px;
+    background-color: var(--Alice-Blue);
+  }
+}
