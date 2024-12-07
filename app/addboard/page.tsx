@@ -15,9 +15,7 @@ export default function AddBoard() {
 
   const handleSubmit = async () => {
     try {
-      const imageUrl = image ? URL.createObjectURL(image) : undefined;
-      await addArticle(title, content, imageUrl);
-
+      await addArticle(title, content, image);
       alert("게시물이 성공적으로 등록되었습니다!");
       setTitle("");
       setContent("");

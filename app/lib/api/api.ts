@@ -203,27 +203,101 @@ export const signIn = async (email: string, password: string) => {
   return response.json();
 };
 
-export const addArticle = async (
-  title: string,
-  content: string,
-  image?: string
-): Promise<void> => {
+export const refreshAccessToken = async (): Promise<string> => {
+  const refreshToken = localStorage.getItem("refreshToken");
+  if (!refreshToken) {
+    throw new Error("리프레시 토큰이 없습니다. 다시 로그인해주세요.");
+  }
+
+  const response = await fetch(`${BASE_URL}auth/refresh-token`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ refreshToken }),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.message || "토큰 갱신 실패");
+  }
+
+  const data = await response.json();
+  localStorage.setItem("accessToken", data.accessToken);
+  return data.accessToken;
+};
+
+export const uploadImage = async (image: File): Promise<string> => {
   const token = localStorage.getItem("accessToken");
   if (!token) {
     throw new Error("로그인이 필요합니다.");
   }
 
-  const response = await fetch(`${BASE_URL}articles`, {
+  const formData = new FormData();
+  formData.append("file", image);
+
+  const response = await fetch(`${BASE_URL}images/upload`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ title, content, image }),
+    body: formData,
   });
 
   if (!response.ok) {
     const errorData = await response.json();
-    throw new Error(errorData.message || "게시물 등록 실패");
+    throw new Error(errorData.message || "이미지 업로드 실패");
+  }
+
+  const data = await response.json();
+  return data.url;
+};
+
+export const addArticle = async (
+  title: string,
+  content: string,
+  image?: File | null
+): Promise<void> => {
+  let token = localStorage.getItem("accessToken");
+  if (!token) {
+    throw new Error("로그인이 필요합니다.");
+  }
+
+  try {
+    const body = { title, content };
+
+    const response = await fetch(`${BASE_URL}articles`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!response.ok) {
+      if (response.status === 401) {
+        const newToken = await refreshAccessToken();
+        token = newToken;
+
+        const retryResponse = await fetch(`${BASE_URL}articles`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(body),
+        });
+
+        if (!retryResponse.ok) {
+          throw new Error("게시물 등록 실패");
+        }
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "게시물 등록 실패");
+      }
+    }
+  } catch (error) {
+    throw new Error(error instanceof Error ? error.message : "오류 발생");
   }
 };
