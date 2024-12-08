@@ -126,7 +126,7 @@ export default function Login() {
                 <button
                   type="submit"
                   id="login-button"
-                  className={`button large-button ${isButtonEnabled ? 'active' : ''}`}
+                  className={`${styles.loginButton} ${isButtonEnabled ? styles.loginButtonActive : ''}`}
                   disabled={!isButtonEnabled}
                 >
                   로그인

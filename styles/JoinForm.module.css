@@ -95,6 +95,21 @@
   text-align: center;
 }
 
+.loginButton {
+  border-radius: 4rem;
+  padding: 1.6rem 12.4rem;
+  background-color: var(--gray-400);
+  color: var(--white);
+  text-align: center;
+  font-weight: var(--medium);
+  font-size: 2rem;
+  line-height: 2.4rem;
+  text-align: center;
+}
+.loginButtonActive {
+  background-color: var(--primary);
+}
+
 .simpleAuth {
   display: flex;
   align-items: center;
@@ -186,7 +201,7 @@
     line-height: 8.9rem;
   }
 
-  .button{
+  .button {
     width: 100%;
     gap: 1rem;
     display: flex;

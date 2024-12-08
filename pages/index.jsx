@@ -14,6 +14,7 @@ import instagram from '@/public/icons/ic_instagram.svg';
 import youtube from '@/public/icons/ic_youtube.svg';
 import { useRouter } from 'next/router';
 import styles from '@/styles/Home.module.css';
+import Button from '@/components/common/Button';
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -52,16 +53,16 @@ export default function Home() {
               <Image src={login} alt="로그인" />
             </button>
             {showLogout && (
-              <button onClick={handleLogout} className="button small-button">
+              <button onClick={handleLogout} className={styles.logoutButton}>
                 로그아웃
               </button>
             )}
           </>
         ) : (
-          <Link href="/login" className="button small-button">
-            <button type="button" className="button small-button">
+          <Link href="/login">
+            <Button type="button" size="medium">
               로그인
-            </button>
+            </Button>
           </Link>
         )}
       </div>
@@ -73,10 +74,10 @@ export default function Home() {
                 일상의 모든 물건을 <br />
                 거래해 보세요
               </h2>
-              <Link href="/items" className="button large-button">
-                <button type="button" className="button large-button">
+              <Link href="/items">
+                <Button type="button" size="large">
                   구경하러 가기
-                </button>
+                </Button>
               </Link>
             </div>
             <Image width={'746'} height={'340'} src={homeTop} alt="거래하는 판다" />
@@ -123,7 +124,7 @@ export default function Home() {
           </div>
         </section>
         <section className={styles.eachSection}>
-          <div className={styles.sectionContent}>
+          <div className={styles.sectionThirdContent}>
             <Image width={'579'} height={'444'} src={thirdSection} alt="상품 등록하기" />
             <div className={styles.sectionImage}>
               <span className={styles.sectionSpan}>Resister</span>

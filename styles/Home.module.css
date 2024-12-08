@@ -30,6 +30,18 @@
   background-color: var(--gray-10);
 }
 
+.logoutButton {
+  width: 13.9rem;
+  border-radius: 0.8rem;
+  border: 0.1rem 0.1rem 0 0.1rem solid var(--gray-300);
+  font-weight: var(--thin);
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  text-align: center;
+  color: var(--gray-500);
+  background-color: var(--white);
+}
+
 .blueSection {
   display: flex;
   justify-content: center;
@@ -75,14 +87,18 @@
 }
 
 .sectionContent,
-.sectionReverseContent {
+.sectionReverseContent,
+.sectionThirdContent {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 6.4rem;
   border-radius: 1.2rem;
   background-color: var(--gray-10);
   padding: 0 1.4rem;
+}
+
+.sectionThirdContent {
+  padding: 0 0;
 }
 
 .sectionReverseContent {
@@ -93,13 +109,18 @@
 .sectionImageReverse {
   display: flex;
   flex-direction: column;
-  margin-right: 6.4rem;
   gap: 1.2rem;
+}
+
+.sectionImage {
+  margin-left: 6.4rem;
+  margin-right: 2.4rem;
 }
 
 .sectionImageReverse {
   text-align: right;
   align-items: flex-end;
+  margin-right: 6.4rem;
 }
 
 .sectionSpan {
@@ -186,28 +207,6 @@
   background-color: var(--primary);
 }
 
-.small-button {
-  font-size: 16px;
-}
-
-.small-button {
-  border-radius: 8px;
-  width: 128px;
-  height: 48px;
-  padding: 12px 23px;
-  color: var(--gray-100);
-}
-
-.large-button {
-  height: 56px;
-  color: var(--gray-50);
-  cursor: pointer;
-}
-
-.small-button {
-  line-height: 26px;
-}
-
 .sectionTextReverse {
   text-align: right;
   align-items: flex-end;
@@ -242,13 +241,6 @@
     display: flex;
     font-size: 32px;
     line-height: 44px;
-  }
-
-  .large-button {
-    height: 48px;
-    padding: 12px 71px;
-    font-size: 18px;
-    line-height: 26px;
   }
 
   .eachSection {

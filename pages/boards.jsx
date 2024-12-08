@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import BestBoard from '@/components/BestBoard'
 import EntireBoard from '@/components/EntireBoard';
-import SmallButton from '@/components/common/SmallButton';
+import Button from '@/components/common/Button';
 import axios from '@/pages/api/api';
 import search from '@/public/icons/ic_search.svg';
 import styles from '@/styles/Boards.module.css';
@@ -96,7 +96,7 @@ export default function Boards() {
         <div className={styles.entireBoardHeader}>
           <h2 className={styles.entireBoardTitle}>게시글</h2>
           <Link href="/addboard">
-            <SmallButton type="button">글쓰기</SmallButton>
+            <Button type="button">글쓰기</Button>
           </Link>
         </div>
         <div className={styles.entireBoardBody}>

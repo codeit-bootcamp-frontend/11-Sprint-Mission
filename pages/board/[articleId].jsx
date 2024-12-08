@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import axios from '@/pages/api/api';
 import SelectBox from '@/components/common/SelectBox';
-import SmallButton from '@/components/common/SmallButton';
+import Button from '@/components/common/Button';
 import Comment from '@/components/Comment';
 import Profile from '@/public/icons/ic_profile.svg';
 import Heart from '@/public/icons/ic_heart.svg';
@@ -123,9 +123,9 @@ export default function Board({ articleData, commentData: initialCommentData }) 
                 />
               </div>
               <div className={styles.commentButton}>
-                <SmallButton type="submit" disabled={!isFormValid}>
+                <Button type="submit" disabled={!isFormValid}>
                   등록
-                </SmallButton>
+                </Button>
               </div>
             </form>
           </section>
