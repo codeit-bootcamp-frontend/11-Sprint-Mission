@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { ReactComponent as Heart } from "../../../image/ic_heart.svg";
+import Heart from "@/public/images/ic_heart.svg";
 
 interface LikeButtonProps {
-  productId: string;
+  productId: number;
   isFavorite: boolean;
   favoriteCount: number;
 }

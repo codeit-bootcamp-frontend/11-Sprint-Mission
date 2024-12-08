@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import DetailComment from "./DetailComment";
 
-function DetailInput({ productId }) {
+interface DetailInputProps {
+  productId: number;
+}
+
+function DetailInput({ productId }: DetailInputProps) {
   const [inputValue, setInputValue] = useState("");
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setInputValue(e.target.value);
   };
 

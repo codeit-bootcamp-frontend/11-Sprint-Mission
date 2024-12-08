@@ -1,18 +1,9 @@
 import React from "react";
 import TagList from "./TagList";
 import LikeButton from "./LikeButton";
-import { ReactComponent as Kebab } from "../../../images/ic_kebab.svg";
-
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  tags: string[];
-  images: string[];
-  isFavorite: boolean;
-  favoriteCount: number;
-}
+import Kebab from "@/public/images/ic_kebab.svg";
+import { Product } from "@/types/Types";
+import Image from "next/image";
 
 interface ItemContentProps {
   product: Product;
@@ -30,7 +21,13 @@ function ItemContent({ product }: ItemContentProps) {
         <div className="mainDetail">
           {/* 더보기 버튼 */}
           <button className="kebabButton">
-            <Kebab className="kebobIcon" />
+            <Image
+              src={Kebab}
+              alt="kebab"
+              width={24}
+              height={24}
+              className="kebobIcon"
+            />
           </button>
 
           <div>
