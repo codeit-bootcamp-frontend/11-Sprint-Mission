@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 // import { useEffect } from "react";
-import PlusIcon from "../public/images/ic_plus.svg";
+import PlusIcon from "@/public/images/ic_plus.svg";
 import DeleteButton from "./DeleteButton";
 import Image from "next/image";
 

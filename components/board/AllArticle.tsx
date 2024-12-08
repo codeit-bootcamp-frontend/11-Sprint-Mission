@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import ArticleItem from "./ArticleItem";
 import Search from "@/components/ui/Search";
 import Dropdown from "@/components/ui/Dropdown";
+import Link from "next/link";
 
 interface AllArticlesProps {
   initialArticles: Article[];
@@ -52,7 +53,7 @@ const AllArticle = ({ initialArticles }: AllArticlesProps) => {
     <div>
       <div>
         <h2>게시글</h2>
-        <button>글쓰기</button>
+        <Link href="/addboard">글쓰기</Link>
       </div>
 
       <div>

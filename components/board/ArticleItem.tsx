@@ -17,10 +17,12 @@ const ArticleItem = ({ article }: ArticleItemProps) => {
             <div>
               <div>
                 <Image
-                  fill
                   src={article.image}
                   alt={`${article.id}번 게시글 이미지`}
                   style={{ objectFit: "contain" }}
+                  layout="responsive"
+                  width={1} // 비율 유지 (가로 1)
+                  height={1} // 비율 유지 (세로 1)
                 />
               </div>
             </div>
