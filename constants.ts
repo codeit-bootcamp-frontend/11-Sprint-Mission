@@ -1,0 +1,3 @@
+export const BEST_ARTICLE_SIZE = 3;
+export const ARTICLES_PER_MOBILE_PAGE = 7;
+export const ARTICLES_PER_DESCKTOP_PAGE = 10;

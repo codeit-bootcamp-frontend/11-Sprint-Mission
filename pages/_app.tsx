@@ -1,6 +1,17 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
+import '@styles/globals.css';
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.pathname === '/') {
+      router.replace('/boards');
+    }
+  }, [router]);
+
+  return <Component {...pageProps} />;
 }
