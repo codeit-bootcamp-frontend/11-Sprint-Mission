@@ -5,20 +5,6 @@
   gap: 40px;
 }
 
-@media (min-width: 768px) {
-  .container {
-    padding: 16px 24px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1200px;
-    padding: 24px 0;
-    margin: 0 auto;
-  }
-}
-
 .container-title {
   display: flex;
   justify-content: space-between;
@@ -37,7 +23,7 @@
 }
 
 .Registerbtn {
-  padding: 12px 23px 12px 23px;
+  padding: 12px 23px;
   gap: 10px;
   border-radius: 8px;
   border: 0;
@@ -55,34 +41,22 @@
   cursor: pointer;
 }
 
-.ProductImg {
+.ArticleImage {
   display: flex;
   flex-direction: column;
 }
 
-.ProductTitle {
+.ArticleTitle {
   display: flex;
   flex-direction: column;
 }
 
-.ProductIntro {
+.ArticleContent {
   display: flex;
   flex-direction: column;
 }
 
-.ProductPrice {
-  display: flex;
-  flex-direction: column;
-}
-
-.ProductTag {
-  display: flex;
-  flex-direction: column;
-}
-
-.ProductTitle > input,
-.ProductPrice > input,
-.ProductTag > input {
+.ArticleTitle > input {
   padding: 16px 24px 16px 24px;
   gap: 10px;
   border-radius: 12px;
@@ -96,11 +70,11 @@
   outline-color: #3692ff;
 }
 
-input::placeholder {
+.section-title-input::placeholder {
   color: #9ca3af;
 }
 
-.ProductIntro > textarea {
+.ArticleContent > textarea {
   padding: 16px 24px 16px 24px;
   gap: 10px;
   border-radius: 12px;
@@ -112,9 +86,10 @@ input::placeholder {
   line-height: 26px;
   text-align: left;
   outline-color: #3692ff;
+  resize: none;
 }
 
-.ProductIntro > textarea::placeholder {
+.ArticleContent > textarea::placeholder {
   color: #9ca3af;
 }
 
@@ -126,4 +101,18 @@ input::placeholder {
   text-align: left;
   color: #1f2937;
   gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 16px 24px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1200px;
+    padding: 24px 0;
+    margin: 0 auto;
+  }
 }

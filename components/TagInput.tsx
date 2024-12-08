@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import '../style/ProductCreateForm.css';
-import DeleteIcon from '../public/svgs/ic_X.svg';
+import DeleteIcon from '@public/svgs/ic_X.svg';
 import '../style/TagInput.css';
 
 interface TagInputProps {
@@ -26,10 +26,6 @@ function TagInput({ value, onChange }: TagInputProps) {
     setTags(newTags);
     onChange(newTags); // 태그 삭제 시 부모 컴포넌트에 알림
   };
-
-  useEffect(() => {
-    console.log('Tags updated:', tags);
-  }, [tags]);
 
   return (
     <div className="ProductTag section-title">

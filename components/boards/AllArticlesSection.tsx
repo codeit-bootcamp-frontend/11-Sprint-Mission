@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
-import styles from '../../styles/AllArticlesSection.module.css';
-import { getAllArticles } from '../../pages/api/boardApi';
+import styles from '@styles/AllArticlesSection.module.css';
+import { getAllArticles } from '@pages/api/boardApi';
 import Link from 'next/link';
 import Image from 'next/image';
-import Heart from '../../public/svgs/ic_heart.svg';
-import SearchBar from '../SearchBar';
+import Heart from '@public/svgs/ic_heart.svg';
+import SearchBar from '@components/SearchBar';
 import router, { useRouter } from 'next/router';
-import DropdownMenu from '../DropdownMenu';
-import { ArticleList, ArticleOrderBy } from '../types/articleTypes';
+import DropdownMenu from '@components/DropdownMenu';
+import { ArticleList, ArticleOrderBy } from '@components/types/articleTypes';
 import React from 'react';
 
 interface AllArticlesSectionProps {
@@ -148,13 +148,17 @@ export default function AllArticlesSection({
       {articles.length > 0 ? (
         <div className={styles['allarticle-list']}>
           {articles.map((article) => (
-            <div key={article.id} className={styles['allarticle-item']}>
+            <Link
+              href={`/board/${article.id}`}
+              key={article.id}
+              className={styles['allarticle-item']}
+            >
               <div className={styles['allarticle-body']}>
                 <h2 className={styles['allarticle-title']}>{article.title}</h2>
                 <Image
                   width={46}
                   height={46}
-                  src={article.image || '/images/Img_home_02.png'}
+                  src={article.image || '/pngs/Img_home_02.png'}
                   alt="게시글 이미지"
                   className={styles['allarticle-image']}
                 />
@@ -173,7 +177,7 @@ export default function AllArticlesSection({
                   {article.likeCount}
                 </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       ) : (

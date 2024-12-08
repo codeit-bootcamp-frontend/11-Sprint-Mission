@@ -1,7 +1,7 @@
 import '../style/FileInput.css';
-import FileInput from './FileInput';
+import FileInput from '@components/FileInput';
 import { useState, useEffect, ChangeEvent } from 'react';
-import TagInput from './TagInput';
+import TagInput from '@components/TagInput';
 
 interface ProductCreateFormProps {
   initialValues?: {

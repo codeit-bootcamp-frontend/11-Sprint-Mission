@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { getBestArticles } from '../../pages/api/boardApi';
-import useDimensions from '../../hooks/useDimensions';
-import styles from '../../styles/BestArticlesSection.module.css';
+import { getBestArticles } from '@pages/api/boardApi';
+import useDimensions from '@/hooks/useDimensions';
+import styles from '@styles/BestArticlesSection.module.css';
 import Image from 'next/image';
-import Heart from '../../public/svgs/ic_heart.svg';
-import Medal from '../../public/svgs/ic_medal.svg';
+import Heart from '@public/svgs/ic_heart.svg';
+import Medal from '@public/svgs/ic_medal.svg';
 
 interface ArticleList {
   id: number;

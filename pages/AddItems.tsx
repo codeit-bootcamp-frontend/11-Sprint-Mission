@@ -1,4 +1,4 @@
-import ProductCreateForm from '../components/ProductCreateForm';
+import ProductCreateForm from '@components/ProductCreateForm';
 
 function AddItems() {
   return (

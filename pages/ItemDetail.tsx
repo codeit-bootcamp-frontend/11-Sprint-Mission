@@ -1,11 +1,11 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../style/ItemDetail.css';
-import { ReactComponent as BackIcon } from '../images/ic_back.svg';
-import { ReactComponent as Heart } from '../images/ic_heart.svg';
-import { ReactComponent as Profile } from '../images/ic_profile.svg';
+import BackIcon from '@public/svgs/ic_back.svg';
+import Heart from '@public/svgs/ic_heart.svg';
+import Profile from '@public/svgs/ic_profile.svg';
 import { useState, useEffect, ChangeEvent } from 'react';
-import ItemComment from '../components/ItemComment';
-import axiosInstance from '../lib/axiosInstance';
+import ItemComment from '@components/ItemComment';
+import axiosInstance from '@lib/axiosInstance';
 
 const INITIAL_VALUES = {
   tags: [],
@@ -33,7 +33,6 @@ function ItemDetail({ initialValues = INITIAL_VALUES }) {
           limit: 10, // 요청에 'limit' 값을 쿼리 파라미터로 추가
         },
       });
-      console.log(response.data);
       setItemDetail(response.data); // 서버에서 받은 데이터를 상태에 저장
     } catch (error) {
       console.error('Error fetching comments:', error);

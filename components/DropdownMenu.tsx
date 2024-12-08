@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import SortIcon from '../public/svgs/ic_sort.svg';
-import styles from '../styles/DropdownMenu.module.css';
-import { ArticleOrderBy } from './types/articleTypes';
+import SortIcon from '@public/svgs/ic_sort.svg';
+import styles from '@styles/DropdownMenu.module.css';
+import { ArticleOrderBy } from '@components/types/articleTypes';
 
 interface DropdownMenuProps {
   onSelection: (Option: ArticleOrderBy) => void;

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import styles from '../../styles/Header.module.css';
+import styles from '@styles/Header.module.css';
 import Image from 'next/image';
 
 const Header = () => {
@@ -19,7 +19,7 @@ const Header = () => {
             />
           </Link>
           <div className={styles['nav-link']}>
-            <Link className={styles['nav-list']} href="/boards">
+            <Link className={styles['nav-list']} href="/board">
               자유게시판
             </Link>
             <Link
@@ -34,7 +34,7 @@ const Header = () => {
             </Link>
           </div>
         </div>
-        <Link className={styles['login']} href="/signin">
+        <Link className={styles['login']} href="/login">
           로그인
         </Link>
       </nav>

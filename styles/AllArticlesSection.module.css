@@ -33,11 +33,13 @@
 }
 
 .allarticle-item {
+  text-decoration: none;
   display: flex;
   gap: 16px;
   flex-direction: column;
   padding: 0 0 24px;
   border-bottom: 1px solid #e5e7eb;
+  color: #1f2937;
 }
 
 .allarticle-body {

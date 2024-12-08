@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { getProducts } from '../lib/api';
-import ItemCard from './ItemCard';
+import ItemCard from '@components/ItemCard';
 import '../style/Items.css';
-import SearchIcon from '../public/svgs/ic_search.svg';
+import SearchIcon from '@public/svgs/ic_search.svg';
 import {
   Product,
   ProductListResponse,

@@ -1,7 +1,7 @@
-import SearchIcon from '../public/svgs/ic_search.svg';
+import SearchIcon from '@public/svgs/ic_search.svg';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import styles from '../styles/SearchBar.module.css';
+import styles from '@styles/SearchBar.module.css';
 
 interface SearchBarProps {
   onSearch: (keyword: string) => void;
