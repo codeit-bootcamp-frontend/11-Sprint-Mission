@@ -9,6 +9,7 @@
   position: fixed;
   top: 0;
   z-index: 999;
+  background-color: #ffffff;
 }
 
 .navbar-left {
@@ -25,11 +26,15 @@
 .navbar li {
   display: flex;
   list-style-type: none;
-  gap: 10px;
+  gap: 30px;
   font-size: 18px;
   font-weight: 700;
   text-align: center;
   color: #4b5563;
+}
+
+.active {
+  color: #3692ff;
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
