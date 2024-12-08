@@ -10,6 +10,7 @@
 
 .form input {
   border: none;
+  outline: none;
   background-color: #f3f4f6;
   color: #9ca3af;
   font-size: 16px;

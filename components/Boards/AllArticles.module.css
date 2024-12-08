@@ -27,3 +27,64 @@
   gap: 24px;
   list-style: none;
 }
+
+.all-articles-container li {
+  background-color: #fcfcfc;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.title {
+  /* width: 256px; */
+  color: #1f2937;
+}
+
+.article-image {
+  background-color: #ffffff;
+}
+
+.title-image {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+}
+
+.title-image p {
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 600;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px 0 24px;
+}
+
+.info-left {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.likes {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 16px;
+  color: #6b7280;
+}
+
+.info span {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.writer {
+  color: #4b5563;
+}
+
+.date {
+  color: #9ca3af;
+}

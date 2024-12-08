@@ -65,21 +65,22 @@ export default function AllArticles({ articles }: { articles: ArticleList }) {
                   </div>
                   <div className={styles.info}>
                     <div className={styles["info-left"]}>
-                      <span>{article.writer.nickname}</span>
-                      <div className={styles.likes}>
-                        <Image
-                          src={Heart}
-                          alt="좋아요 버튼"
-                          width={16}
-                          height={16}
-                        />
-                        <span>{article.likeCount}</span>
-                      </div>
+                      <span className={styles.writer}>
+                        {article.writer.nickname}
+                      </span>
+                      <span className={styles.date}>
+                        {format(article.createdAt, "yyyy. MM. dd")}
+                      </span>
                     </div>
-                    {/* date-fns 라이브러리 활용 */}
-                    <span className={styles.date}>
-                      {format(article.createdAt, "yyyy. MM. dd")}
-                    </span>
+                    <div className={styles.likes}>
+                      <Image
+                        src={Heart}
+                        alt="좋아요 버튼"
+                        width={16}
+                        height={16}
+                      />
+                      <span>{article.likeCount}</span>
+                    </div>
                   </div>
                 </div>
               </Link>
