@@ -1,0 +1,29 @@
+.all-articles-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-button h2 {
+  font-size: 20px;
+  color: #1f2937;
+}
+
+.input-dropdown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.all-articles-container ul {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  list-style: none;
+}

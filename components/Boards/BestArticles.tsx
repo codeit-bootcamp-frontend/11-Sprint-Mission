@@ -2,7 +2,7 @@ import Image from "next/image";
 import Badge from "@/assets/images/ui/img_badge.svg";
 import Link from "next/link";
 import Heart from "@/assets/images/icons/ic_heart.svg";
-import styles from "@/styles/BestArticles.module.css";
+import styles from "@/components/Boards/BestArticles.module.css";
 import ImageTemplate from "@/assets/images/ui/empty-comments.svg";
 import { format } from "date-fns";
 

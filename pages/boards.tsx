@@ -1,9 +1,7 @@
 import styles from "@/styles/boards.module.css";
-import BestArticles from "../components/Boards/BestArticles";
-import SearchInput from "../components/common/SearchInput";
-import Button from "@/components/common/Button";
+import BestArticles from "../components/boards/BestArticles";
 import { InferGetServerSidePropsType } from "next";
-import AllArticles from "@/components/Boards/AllArticles";
+import AllArticles from "@/components/boards/AllArticles";
 import instance from "@/api/axiosApi";
 
 // 베스트 게시글은 계속 바뀌니까 서버사이드렌더링이 적합?
@@ -27,7 +25,7 @@ export default function Boards({
     <>
       <section className={styles.container}>
         <BestArticles articles={articles} />
-        <AllArticles />
+        <AllArticles articles={articles} />
       </section>
     </>
   );

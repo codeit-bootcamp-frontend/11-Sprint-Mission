@@ -1,5 +1,5 @@
-import Container from "@/components/Layout/Container";
-import Header from "@/components/Layout/Header";
+import Container from "@/components/layout/Container";
+import Header from "@/components/layout/Header";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
