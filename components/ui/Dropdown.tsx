@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import "./Dropdown.css";
-// import SortIcon from "../../public/images/ic_sort.svg";
+import SortIcon from "../../public/images/ic_sort.svg";
 import Image from "next/image";
 
 interface DropdownProps {
@@ -18,12 +18,7 @@ function Dropdown({ onSortSelection, sortOptions }: DropdownProps) {
   return (
     <div>
       <button onClick={toggleDropdown}>
-        <Image
-          src="/images/ic_sort.svg"
-          alt="Sort Icon"
-          width={24}
-          height={24}
-        />
+        <Image src={SortIcon} alt="Sort Icon" width={24} height={24} />
       </button>
 
       {isDropdownView && (

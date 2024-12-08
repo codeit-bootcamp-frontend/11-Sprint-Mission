@@ -15,12 +15,15 @@ const ItemCard = ({ item }: ItemCardProps) => {
         src={item.images[0]}
         alt={`${item.name} 상품 썸네일`}
         className="itemCardImg"
+        layout="responsive"
+        width={1} // 비율 유지 (가로 1)
+        height={1} // 비율 유지 (세로 1)
       />
       <div>
         <h2 className="itemName">{item.name}</h2>
         <p className="itemPrice">{item.price.toLocaleString()}원</p>
         <div className="favoriteCount">
-          <HeartIcon />
+          <Image src={HeartIcon} alt="좋아요" width={24} height={24} />
           {/* <Image
             src="/images/ic_heart.svg"
             alt="Heart Icon"

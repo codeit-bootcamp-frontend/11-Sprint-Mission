@@ -11,6 +11,7 @@ import { getProducts } from "@/api/api";
 import Pagination from "@/components/ui/Pagination";
 import { Product, ProductListResponse, ProductSortOption } from "@/types/Types";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 // 화면 사이즈
 const getPageSize = (width: number) => {
@@ -152,7 +153,7 @@ const AllProduct = () => {
             width={24}
             height={24}
           /> */}
-          <SearchIcon alt="Search Icon" />
+          <Image src={SearchIcon} alt="Search Icon" width={24} height={24} />
           <input
             className="searchInput"
             // onSearch={handleSearch}

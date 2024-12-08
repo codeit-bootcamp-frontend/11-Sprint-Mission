@@ -60,7 +60,7 @@ const ImageUpload = ({ title }: ImageUploadProps) => {
           >
             <div className="uploadBoxContent">
               <p className="textArea">
-                <PlusIcon />
+                <Image src={PlusIcon} alt="Plus" width={24} height={24} />
                 <br /> 이미지 등록
               </p>
             </div>

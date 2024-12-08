@@ -2,7 +2,7 @@ import React from "react";
 import Left from "@/public/images/left.svg";
 import Right from "@/public/images/right.svg";
 import "../../styles/Pagination.module.css";
-// import Image from "next/image";
+import Image from "next/image";
 
 interface PaginationProps {
   totalPageNum: number;
@@ -37,7 +37,7 @@ export default function Pagination({
         disabled={activePageNum === 1}
         onClick={() => onPageChange(activePageNum - 1)}
       >
-        <Left />
+        <Image src={Left} alt="Previous" width={40} height={40} />
         {/* <Image src="/images/left.svg" alt="Previous" width={40} height={40} /> */}
       </button>
       {pages.map((page) => (
@@ -56,7 +56,7 @@ export default function Pagination({
         disabled={activePageNum === totalPageNum}
         onClick={() => onPageChange(activePageNum + 1)}
       >
-        <Right />
+        <Image src={Right} alt="Next" width={40} height={40} />
         {/* <Image src="/images/right.svg" alt="Next" width={40} height={40} /> */}
       </button>
     </div>

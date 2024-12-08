@@ -1,6 +1,7 @@
 import SearchIcon from "@/public/images/ic_search.svg";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 interface SearchProps {
   onSearch: (keyword: string) => void;
@@ -31,7 +32,7 @@ const Search = ({
 
   return (
     <div>
-      <SearchIcon alt="검색" />
+      <Image src={SearchIcon} alt="검색 아이콘" width={24} height={24} />
       <input
         value={keyword}
         onChange={handleInputChange}
