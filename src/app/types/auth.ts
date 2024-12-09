@@ -33,12 +33,7 @@ export interface RefreshTokenArg {
 
 export interface loginForm {
   email: string;
+  nickname?: string;
   password: string;
-}
-
-export interface signUpForm {
-  email: string;
-  nickname: string;
-  password: string;
-  passwordConfirmation: string;
+  passwordConfirmation?: string;
 }
