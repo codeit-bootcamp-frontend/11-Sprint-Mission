@@ -18,9 +18,9 @@ export default function MainCard({
       >
         <div className="w-full h-auto lg:max-w-[579px]">
           <Image
+            className="object-contain"
             src={imgSrc}
             alt={alt}
-            layout="responsive"
             width={588}
             height={444}
           />

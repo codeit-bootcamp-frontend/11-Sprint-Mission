@@ -51,9 +51,9 @@ export default function Home() {
             </div>
             <div className="w-full h-auto md:max-w-[746px]">
               <Image
+                className="object-contain"
                 src="/Img_home_top.png"
                 alt="탑이미지"
-                layout="responsive"
                 width={746}
                 height={340}
               />
@@ -78,15 +78,15 @@ export default function Home() {
       </section>
       <div className="w-full h-[540px] md:h-[927px] lg:h-[540px] bg-mainbg relative">
         <div className="w-full md:max-w-[1100px] flex flex-col md:flex-row items-center gap-[131px] absolute bottom-0 md:left-1/2 md:-translate-x-1/2">
-          <p className="text-center text-[32px] font-bold leading-[45px]">
+          <p className="text-center text-[32px] font-bold leading-[45px] 2xl:text-left 2xl:whitespace-nowrap">
             믿을 수 있는
             <br /> 판다마켓 중고 거래
           </p>
           <div className="w-full h-auto md:max-w-[746px] ">
             <Image
+              className="object-contain"
               src="/Img_home_bottom.png"
               alt="바텀이미지"
-              layout="responsive"
               width={746}
               height={340}
             />
