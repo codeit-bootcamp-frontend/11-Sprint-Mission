@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import plus from '@/public/ic_plus.svg';
+import plus from '@/public/icons/ic_plus.svg';
 import styles from '@/styles/FileInput.module.css';
 
 function FileInput({ name, value, onChange }) {

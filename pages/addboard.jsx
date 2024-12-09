@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'; // Next.js의 useRouter를 사용해 페이지 이동 처리
-import SmallButton from '@/components/common/SmallButton';
+import Button from '@/components/common/Button';
 import FileInput from '@/components/FileInput';
 import axios from '@/pages/api/api';
 
@@ -52,9 +52,9 @@ export default function AddBoard() {
       <main className="formBody">
         <aside className="formTop">
           <h2 className="formTheme">게시글 쓰기</h2>
-          <SmallButton type="submit" disabled={!isFormValid}>
+          <Button type="submit" disabled={!isFormValid}>
             등록
-          </SmallButton>
+          </Button>
         </aside>
         <div className="formBody">
           <section className="formSection">

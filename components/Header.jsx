@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import logo from '@/public/ic_logo.svg';
-import login from '@/public/ic_login.svg';
-import styles from '@/styles/Header.module.css'
+import logo from '@/public/icons/ic_logo.svg';
+import login from '@/public/icons/ic_login.svg';
+import styles from '@/styles/Header.module.css' 
 
 function Header() {
   return (

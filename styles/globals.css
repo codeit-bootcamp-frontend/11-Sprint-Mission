@@ -20,6 +20,7 @@ body {
   --gray-500: #6b7280;
   --gray-400: #9ca3af;
   --light-gray: #dfdfdf;
+  --gray-300: #d1d5db;
   --gray-200: #e5e7eb;
   --gray-100: #f3f4f6;
   --gray-50: #f9fafb;
@@ -27,6 +28,9 @@ body {
   --black-900: #111827;
   --approx-midnight: #1f2937;
   --black-700: #374151;
+  --gray-800: #1f2937;
+  --Alice-Blue: #e6f2ff;
+  --tomato: #f74747;
 
   /*font-weight*/
   --thin: 400;
