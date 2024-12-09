@@ -11,10 +11,22 @@ export default function HeaderContainer() {
             href={"/"}
           >
             <div className="w-[40px] h-[40px] relative hidden md:block">
-              <Image src="/head/logo_face.png" fill alt="logo_face" />
+              <Image
+                className="object-contain"
+                src="/head/logo_face.png"
+                alt="logo_face"
+                width={40}
+                height={40}
+              />
             </div>
             <div className="w-[103px] h-[25px] relative ">
-              <Image src="/head/logo_txt.png" fill alt="logo_text" />
+              <Image
+                className="object-contain"
+                src="/head/logo_txt.png"
+                alt="logo_text"
+                width={103}
+                height={25}
+              />
             </div>
           </Link>
         </div>
@@ -28,7 +40,13 @@ export default function HeaderContainer() {
         </nav>
         <div className="w-[40px] h-[40px] relative">
           <Link href={"/login"}>
-            <Image src="/head/myPageIcon.png" fill alt="myPageIcon" />
+            <Image
+              className="object-contain"
+              src="/head/myPageIcon.png"
+              alt="myPageIcon"
+              width={40}
+              height={40}
+            />
           </Link>
         </div>
       </div>
