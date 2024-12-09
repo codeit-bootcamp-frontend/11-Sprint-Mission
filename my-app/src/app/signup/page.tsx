@@ -1,3 +1,5 @@
-export default function signup() {
-  return <div>회원가입</div>;
+import CommonForm from "../components/CommonForm";
+
+export default function Signup() {
+  return <CommonForm type="signup" />;
 }
