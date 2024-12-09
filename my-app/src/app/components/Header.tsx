@@ -38,7 +38,14 @@ export default function HeaderContainer() {
             중고마켓
           </Link>
         </nav>
-        <div className="w-[40px] h-[40px] relative">
+        <button className="w-[128px] h-[48px] bg-skyblue text-white rounded-[8px]">
+          <Link className="w-full h-full inline-block relative" href={"/login"}>
+            <span className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
+              로그인
+            </span>
+          </Link>
+        </button>
+        {/* <div className="w-[40px] h-[40px] relative">
           <Link href={"/login"}>
             <Image
               className="object-contain"
@@ -48,7 +55,7 @@ export default function HeaderContainer() {
               height={40}
             />
           </Link>
-        </div>
+        </div> */}
       </div>
     </header>
   );
