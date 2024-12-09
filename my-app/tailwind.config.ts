@@ -22,6 +22,7 @@ export default {
         skyblue: "#3692ff",
         mainbg: "#cfe5ff",
         ftbg: "#111827",
+        red: "#f74747",
       },
     },
   },
