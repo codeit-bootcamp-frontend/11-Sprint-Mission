@@ -1,5 +1,6 @@
-const API_BASE_URL = "https://panda-market-api.vercel.app";
+export const API_BASE_URL = "https://panda-market-api.vercel.app";
 
+// 기본 함수
 async function fetchApi(url: string, options = {}) {
   try {
     const response = await fetch(url, options);
@@ -15,6 +16,7 @@ async function fetchApi(url: string, options = {}) {
   }
 }
 
+// 상품 가져오기 함수
 export async function getProducts({
   page = "",
   pageSize = "",
@@ -24,15 +26,17 @@ export async function getProducts({
   const params = new URLSearchParams({ page, pageSize, orderBy, keyword });
   const url = `${API_BASE_URL}/products?${params}`;
 
-  return fetchApi(url);
+  return fetchWithAuth(url);
 }
 
+// 상품 id별 가져오기 함수
 export async function getProductsById(productId: string | undefined) {
   const url = `${API_BASE_URL}/products/${productId}`;
 
-  return fetchApi(url);
+  return fetchWithAuth(url);
 }
 
+// 댓글 가져오기 함수
 export async function getCommentsById(
   productId: string | undefined,
   { limit = "" }
@@ -40,13 +44,14 @@ export async function getCommentsById(
   const params = new URLSearchParams({ limit });
   const url = `${API_BASE_URL}/products/${productId}/comments?${params}`;
 
-  return fetchApi(url);
+  return fetchWithAuth(url);
 }
 
 interface UpdateCommentParams {
   content: string;
 }
 
+// 댓글 수정 함수
 export async function updateCommentsById(
   commentId: number,
   { content }: UpdateCommentParams
@@ -60,5 +65,138 @@ export async function updateCommentsById(
     body: JSON.stringify({ content }),
   };
 
+  return fetchWithAuth(url, options);
+}
+
+interface SignupParams {
+  email: string;
+  nickname: string;
+  password: string;
+  passwordConfirmation: string;
+}
+
+// 회원가입 함수
+export async function signup(data: SignupParams) {
+  const url = `${API_BASE_URL}/auth/signUp`;
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: data.email,
+      nickname: data.nickname,
+      password: data.password,
+      passwordConfirmation: data.passwordConfirmation,
+    }),
+  };
   return fetchApi(url, options);
+}
+
+interface LoginParams {
+  email: string;
+  password: string;
+}
+
+// 로그인 함수
+export async function login(data: LoginParams) {
+  const url = `${API_BASE_URL}/auth/signIn`;
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: data.email,
+      password: data.password,
+    }),
+  };
+  return fetchApi(url, options);
+}
+
+// 토큰을 디코딩하는 함수
+const parseJwt = (token: string) => {
+  try {
+    const base64Url = token.split(".")[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    const decodedPayload = JSON.parse(atob(base64));
+    return decodedPayload;
+  } catch (error) {
+    console.error("JWT 파싱 오류 : ", error);
+    return null;
+  }
+};
+
+// 토큰이 만료되었는지 비교하는 함수
+const isTokenExpired = (token: string) => {
+  if (!token) return true;
+
+  const decodedToken = parseJwt(token);
+  if (!decodedToken) return true;
+
+  const expirationTime = decodedToken.exp * 1000;
+  return Date.now() > expirationTime;
+};
+
+// 리프레시 토큰을 통해 새로운 엑세스 토큰을 받아오는 함수
+const refreshAccessToken = async (refreshToken: string) => {
+  const url = `${API_BASE_URL}/auth/refresh-token`;
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ refreshToken }),
+  };
+
+  try {
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      throw new Error("리프레시 토큰 요청 실패");
+    }
+
+    const data = await response.json();
+    const newAccessToken = data.accessToken;
+    if (newAccessToken) {
+      localStorage.setItem("access_token", newAccessToken);
+    }
+    return newAccessToken;
+  } catch (error) {
+    console.error("엑세스 토큰 갱신 오류:", error);
+    throw new Error("엑세스 토큰을 갱신할 수 없습니다.");
+  }
+};
+
+// 로컬 스토리지에서 엑세스 토큰을 가져오고 만료되었으면 리프레시 토큰으로 갱신하는 함수
+export const getAccessToken = async () => {
+  let accessToken = localStorage.getItem("access_token");
+  const refreshToken = localStorage.getItem("refresh_token");
+
+  if (accessToken && !isTokenExpired(accessToken)) {
+    return accessToken;
+  }
+
+  if (refreshToken) {
+    return await refreshAccessToken(refreshToken);
+  }
+
+  return null;
+};
+
+// 모든 API 보낼때 토큰 담아서 보내는 함수
+async function fetchWithAuth(url: string, options: RequestInit = {}) {
+  const accessToken = await getAccessToken();
+
+  if (!accessToken) {
+    throw new Error("로그인이 필요합니다.");
+  }
+
+  const authOptions = {
+    ...options,
+    headers: {
+      ...(options.headers || {}),
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+  return fetchApi(url, authOptions);
 }

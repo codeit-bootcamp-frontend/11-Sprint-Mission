@@ -11,3 +11,8 @@
 .to-signup-link {
   color: var(--blue);
 }
+
+.tosignup-button {
+  border: none;
+  background-color: var(--white);
+}
