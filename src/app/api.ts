@@ -6,7 +6,7 @@ import {
   UserInfo,
   RefreshToken,
   RefreshTokenArg,
-} from '@/types/sign';
+} from '@/types/auth';
 import { BoardForm } from '@/types/boardForm';
 import { Comments } from '@/types/comment';
 

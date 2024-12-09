@@ -14,7 +14,7 @@ import { Article } from '@/types/article';
 import FileUploadInput from '@/components/board/addboard/FileUploadInput';
 import Loading from '@/board/loading';
 import Error from '@/board/error';
-import { RefreshToken } from '@/types/sign';
+import { RefreshToken } from '@/types/auth';
 
 export default function Page() {
   const [title, setTitle] = useState<string>('');

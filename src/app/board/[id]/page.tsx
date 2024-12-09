@@ -9,7 +9,7 @@ import { getArticle, getComment, postComment, postRefreshToken } from '@/api';
 import useAsync from '@/hooks/useAsync';
 import { Article } from '@/types/article';
 import { Comments, Comment } from '@/types/comment';
-import { RefreshToken } from '@/types/sign';
+import { RefreshToken } from '@/types/auth';
 
 // 컴포넌트
 import ArticleDetail from '@/components/board/[id]/ArticleDetail';

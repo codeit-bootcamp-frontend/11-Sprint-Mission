@@ -30,3 +30,15 @@ export interface RefreshToken {
 export interface RefreshTokenArg {
   refreshToken: string;
 }
+
+export interface loginForm {
+  email: string;
+  password: string;
+}
+
+export interface signUpForm {
+  email: string;
+  nickname: string;
+  password: string;
+  passwordConfirmation: string;
+}
