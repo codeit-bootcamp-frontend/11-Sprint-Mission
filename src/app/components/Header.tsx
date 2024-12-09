@@ -39,14 +39,19 @@ export default function Header() {
               </Link>
             </div>
           </div>
-          <div className="relative w-[2.5rem] h-[2.5rem]">
+          {/* <div className="relative w-[2.5rem] h-[2.5rem]">
             <Image
               fill
               src="/images/profile.png"
               alt="프로필"
               sizes="(max-width: 640px) 2.5rem, 2.5rem"
             />
-          </div>
+          </div> */}
+          <Link href="/login">
+            <button className="w-[128px] h-12 text-gray-100 rounded-lg bg-blue">
+              로그인
+            </button>
+          </Link>
         </div>
       </div>
     </>
