@@ -1,5 +1,5 @@
 .nav-container {
-  border-bottom: 1px solid #dfdfdf;
+  border-bottom: 1px solid var(--border);
 }
 
 .nav-bar {
@@ -16,6 +16,8 @@
 }
 
 .nav-logo {
+  width: 153px;
+  height: 51px;
   display: flex;
   align-items: center;
   gap: 9px;
@@ -30,12 +32,12 @@
 }
 
 .nav-board a {
-  color: #4b5563;
+  color: var(--gray600);
   text-decoration: none;
 }
 
 .nav-board-used-market.active {
-  color: #3692ff;
+  color: var(--blue);
 }
 
 .nav-icon {
@@ -44,10 +46,48 @@
   height: 40px;
 }
 
+.login-button {
+  background-color: var(--blue);
+  color: var(--gray100);
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.login-button:hover {
+  background-color: var(--darkblue);
+}
+
+.profile-icon {
+  position: relative;
+}
+
+.logout-button {
+  position: absolute;
+  top: 60px;
+  background-color: var(--white);
+  border: 1px solid var(--gray200);
+  color: var(--gray500);
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-size: 16px;
+  min-width: 120px;
+}
+
+.logout-button:hover,
+.profile-icon:hover {
+  cursor: pointer;
+}
+
 @media (max-width: 1279px) {
   .nav-bar {
     padding-left: 24px;
     padding-right: 24px;
+  }
+
+  .logout-button {
+    right: 20px;
   }
 }
 
@@ -58,7 +98,7 @@
   }
 
   .nav-front {
-    gap: 12px;
+    gap: 8px;
   }
 
   .nav-logo {
@@ -69,9 +109,5 @@
   .nav-board {
     gap: 8px;
     font-size: 16px;
-  }
-
-  .nav-logo img:first-child {
-    display: none;
   }
 }

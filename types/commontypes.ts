@@ -1,27 +1,17 @@
 export interface GetProductsParams {
   page?: number;
   pageSize?: number;
-  keyword?: string | undefined;
+  keyword?: string;
   orderBy?: string;
 }
 
 export interface GetProductCommentsParams {
   limit?: number;
-  cursor?: string | undefined;
-}
-
-// 상품 타입 정의
-export interface Product {
-  id: number;
-  name: string;
-  price: number;
-  description?: string;
-  images: string[];
-  favoriteCount?: number;
+  cursor?: string;
 }
 
 export interface AllItemCardProps {
-  item: Product;
+  item: Product[];
 }
 
 // 상품 목록 응답 타입 정의
@@ -69,7 +59,7 @@ export interface GetCommentsResponse {
 export interface GetArticlesParams {
   page?: number;
   pageSize?: number;
-  keyword?: string | undefined;
+  keyword?: string;
   orderBy?: string;
 }
 
@@ -113,7 +103,7 @@ export interface ImageInputProps {
   className?: string;
   name: string;
   value: File | null;
-  initialPreview?: string | undefined;
+  initialPreview?: string | null;
   onChange: (name: string, file: File | null) => void;
 }
 
@@ -121,4 +111,37 @@ export interface FormValues {
   title: string;
   content: string;
   image: File | null;
+}
+
+export interface AddItemFormProps {
+  className?: string;
+  initialValues?: {
+    name: string;
+    favoriteCount: number;
+    description: string;
+    price: number;
+    images: File[] | null;
+    tags: string[];
+  };
+  initialPreview?: string;
+  onSubmit: (formData: FormData) => Promise<{ review: Product } | null>;
+  onSubmitSuccess: (review: Product) => void;
+}
+
+export interface Product {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  createdAt: string;
+  favoriteCount: number;
+  ownerNickname: string;
+  ownerId: number;
+  images: string[];
+  tags: string[];
+}
+
+export interface ProductListResponse {
+  totalCount: number;
+  list: Product[];
 }

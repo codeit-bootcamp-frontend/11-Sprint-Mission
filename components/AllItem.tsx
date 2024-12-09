@@ -6,18 +6,7 @@ import { Product } from "@/types/commontypes";
 import styles from "@/styles/items.module.css";
 import searchIcon from "@/public/svgs/ic_search.svg";
 import Image from "next/image";
-
-const getPageSize = () => {
-  if (typeof window === "undefined") return 10;
-  const width = window.innerWidth;
-  if (width < 768) {
-    return 4;
-  } else if (width < 1280) {
-    return 6;
-  } else {
-    return 10;
-  }
-};
+import getPageSize from "@/lib/utils/getPageSize";
 
 function AllItems() {
   const [orderBy, setOrderBy] = useState<string>("recent");
@@ -26,33 +15,44 @@ function AllItems() {
   const [items, setItems] = useState<Product[]>([]);
   const [isDropdown, setIsDropdown] = useState<boolean>(false);
   const [totalPageNum, setTotalPageNum] = useState<number>(0);
+  const [keyword, setKeyword] = useState<string>("");
+
+  const fetchProducts = async () => {
+    const products = await getProducts({
+      orderBy,
+      page,
+      pageSize,
+      keyword: keyword.trim(),
+    });
+
+    setItems(products.list);
+    setTotalPageNum(Math.ceil(products.totalCount / pageSize));
+  };
 
   useEffect(() => {
     const handleFixSize = () => {
       setPageSize(getPageSize());
     };
 
-    const fetchProducts = async ({
-      orderBy,
-      page,
-      pageSize,
-    }: {
-      orderBy: string;
-      page: number;
-      pageSize: number;
-    }) => {
-      const products = await getProducts({ orderBy, page, pageSize });
-      setItems(products.list);
-      setTotalPageNum(Math.ceil(products.totalCount / pageSize));
-    };
-
     window.addEventListener("resize", handleFixSize);
-    fetchProducts({ orderBy, page, pageSize });
+
+    fetchProducts();
 
     return () => {
       window.removeEventListener("resize", handleFixSize);
     };
   }, [orderBy, page, pageSize]);
+
+  const handleSearchSubmit = () => {
+    setPage(1);
+    fetchProducts();
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleSearchSubmit();
+    }
+  };
 
   const handleNextPage = (newPage: number) => {
     setPage(newPage);
@@ -68,6 +68,12 @@ function AllItems() {
     setIsDropdown(false);
   };
 
+  const handleSearchInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setKeyword(event.target.value);
+  };
+
   return (
     <div className={styles.all_item_container}>
       <div className={styles.all_item_content}>
@@ -75,16 +81,24 @@ function AllItems() {
           <div className={styles.all_item_header_front}>
             <div className={styles.all_item_title}>전체 상품</div>
             <div className={styles.all_item_search_container}>
-              <Image
-                className={styles.all_item_search_icon}
-                src={searchIcon}
-                alt="돋보기 아이콘"
-                width={24}
-                height={24}
-              />
+              <button
+                onClick={handleSearchSubmit}
+                className={styles.search_button}
+              >
+                <Image
+                  className={styles.all_item_search_icon}
+                  src={searchIcon}
+                  alt="돋보기 아이콘"
+                  width={24}
+                  height={24}
+                />
+              </button>
               <input
                 className={styles.all_item_search_input}
                 placeholder="검색할 상품을 입력해주세요"
+                value={keyword}
+                onChange={handleSearchInputChange}
+                onKeyDown={handleKeyDown}
               />
             </div>
           </div>

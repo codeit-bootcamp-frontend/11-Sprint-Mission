@@ -8,10 +8,12 @@ function BestItemCard({ item }: AllItemCardProps) {
   return (
     <Link href={`/items/${item.id}`} className={styles.link}>
       <div className={styles.item_card}>
-        <img
+        <Image
           src={item.images[0]}
           alt={item.name}
           className={styles.item_card_img}
+          width={282}
+          height={282}
         />
 
         <div className={styles.item_description}>

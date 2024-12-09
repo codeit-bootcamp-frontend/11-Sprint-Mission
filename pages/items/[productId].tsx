@@ -9,6 +9,7 @@ import plusBtn from "@/public/svgs/Group 33735 (1).svg";
 import backIcon from "@/public/svgs/ic_back.svg";
 import Image from "next/image";
 import styles from "@/styles/itemdetail.module.css";
+import defaultImg from "@/public/svgs/Group 33735 (1).svg";
 
 export default function ItemDetailForm() {
   const router = useRouter();
@@ -68,7 +69,7 @@ export default function ItemDetailForm() {
                 item.images.map((image, index) => (
                   <Image
                     key={index}
-                    src={image}
+                    src={image ? image : defaultImg.src}
                     alt={`상품 이미지 ${index + 1}`}
                     width={486}
                     height={486}

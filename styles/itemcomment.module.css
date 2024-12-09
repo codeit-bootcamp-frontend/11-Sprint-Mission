@@ -6,14 +6,14 @@
 }
 
 .item_inquiry_input {
-  background-color: #f3f4f6;
-  border: 1px solid #f3f4f6;
+  background-color: var(--gray100);
+  border: 1px solid var(--gray100);
   border-radius: 12px;
   padding: 16px 24px 70px 24px;
 }
 
 .item_inquiry_input:focus {
-  outline: 1px solid #3692ff;
+  outline: 1px solid var(--blue);
 }
 
 .item_inquiry_button_container {
@@ -23,23 +23,23 @@
 }
 
 .item_inquiry_button {
-  background-color: #9ca3af;
+  background-color: var(--gray400);
   border-style: none;
   border-radius: 8px;
   padding: 8px 23px;
-  color: #f3f4f6;
+  color: var(--gray100);
   font-size: 16px;
   line-height: 26px;
   cursor: not-allowed;
 }
 
 .item_inquiry_button:enabled {
-  background-color: #3692ff;
+  background-color: var(--blue);
   cursor: pointer;
 }
 
 .item_inquiry_button:enabled:hover {
-  background-color: #2e7ae4;
+  background-color: var(--darkblue);
 }
 
 .item_comments_section {
@@ -53,7 +53,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--gray200);
   padding-bottom: 12px;
 }
 
@@ -70,7 +70,7 @@
   word-wrap: break-word;
   font-size: 14px;
   line-height: 24px;
-  color: #1f2937;
+  color: var(--gray800);
 }
 
 .comment_actions {
@@ -79,7 +79,7 @@
   width: 140px;
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: var(--white);
   border: 1px solid #d1d5db;
   border-radius: 8px;
   right: 0;
@@ -94,7 +94,7 @@
   font-size: 16px;
   line-height: 26px;
   padding: 10px 41.5px;
-  color: #6b7280;
+  color: var(--gray500);
 }
 
 .item_detail_more {
@@ -121,13 +121,13 @@
 .comment_author_nickname {
   font-size: 12px;
   line-height: 18px;
-  color: #4b5563;
+  color: var(--gray600);
 }
 
 .comment_updated_at {
   font-size: 12px;
   line-height: 18px;
-  color: #9ca3af;
+  color: var(--gray400);
 }
 
 @media (max-width: 1279px) {

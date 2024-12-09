@@ -1,0 +1,212 @@
+.body_1 {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+}
+
+.section_container {
+  display: flex;
+  flex-direction: column;
+  width: 640px;
+  gap: 40px;
+  align-items: center;
+}
+
+.signup_simple_login_description,
+.signup_already_question {
+  color: var(--gray800);
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.email,
+.nickname,
+.password,
+.password_again {
+  color: var(--gray800);
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.signup_total_container {
+  display: flex;
+  flex-direction: column;
+  width: 640px;
+  gap: 24px;
+}
+
+.signup_main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.signup_main_input {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.signup_main_input_email,
+.signup_main_input_nickname,
+.signup_main_input_password,
+.signup_main_input_password_again {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.signup_main_input_password_container,
+.signup_main_input_password_again_container {
+  display: flex;
+  border: 1px solid var(--gray100);
+  height: 22px;
+  background-color: var(--gray100);
+  border-radius: 12px;
+  padding: 16px 24px;
+}
+
+.signup_main_input_password_container:focus_within,
+.signup_main_input_password_again_container:focus_within {
+  border-color: var(--blue);
+}
+
+.email_input,
+.nickname_input {
+  border: 1px solid var(--gray100);
+  height: 22px;
+  background-color: var(--gray100);
+  border-radius: 12px;
+  padding: 16px 24px;
+}
+
+.password_input,
+.password_again_input {
+  border-style: none;
+  background-color: var(--gray100);
+  width: 100%;
+}
+
+.eye_icon:hover {
+  cursor: pointer;
+}
+
+.email_input::placeholder,
+.nickname_input::placeholder,
+.password_input::placeholder,
+.password_again_input::placeholder {
+  display: flex;
+  color: var(--gray400);
+  font-size: 16px;
+}
+
+.email_input:focus,
+.nickname_input:focus,
+.password_input:focus,
+.password_again_input:focus {
+  border-color: var(--blue);
+  outline: none;
+}
+
+.input_error {
+  border-color: var(--red);
+}
+
+.error_message {
+  color: var(--red);
+  font-size: 14px;
+  padding-left: 16px;
+}
+
+.signup_main_button {
+  background-color: var(--gray400);
+  color: var(--gray100);
+  font-size: 20px;
+  font-weight: 600;
+  border-width: 0;
+  border-radius: 40px;
+  padding: 16px 124px 16px 124px;
+}
+
+.signup_main_button.active {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+.signup_main_button:disabled:hover {
+  background-color: var(--gray400);
+  cursor: not-allowed;
+}
+
+.signup_main_button.active:hover {
+  background-color: var(--darkblue);
+  cursor: pointer;
+}
+
+.signup_simple_login {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #e6f2ff;
+  border-radius: 8px;
+  padding: 16px 23px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.signup_simple_login_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.signup_simple_login_description {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--gray800);
+}
+
+.signup_simple_login_link {
+  display: flex;
+  gap: 16px;
+}
+
+.signup_already {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup_already_question {
+  color: var(--gray800);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.signup_login_link {
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media (max-width: 767px) {
+  .section_container {
+    padding: 0 16px;
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .signup_total_container {
+    width: 100%;
+  }
+
+  .big_logo {
+    width: 198px;
+    height: 66px;
+  }
+}

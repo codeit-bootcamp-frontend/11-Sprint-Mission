@@ -3,32 +3,12 @@ import { getProducts } from "@/lib/api";
 import { Product, GetProductsResponse } from "@/types/commontypes";
 import styles from "@/styles/items.module.css";
 import BestItemCard from "./BestItemCard";
-
-const getPageSize = () => {
-  if (typeof window === "undefined") return 4;
-  const width = window.innerWidth;
-  if (width < 768) {
-    return 1;
-  } else if (width < 1280) {
-    return 2;
-  } else {
-    return 4;
-  }
-};
-
-const debounce = (func: (...args: any[]) => void, delay: number) => {
-  let timeoutId: NodeJS.Timeout;
-  return (...args: any[]) => {
-    if (timeoutId) clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => {
-      func(...args);
-    }, delay);
-  };
-};
+import getPageSize from "@/lib/utils/getPageSize";
+import debounce from "@/lib/utils/debounce";
 
 function BestItem() {
   const [items, setItems] = useState<Product[]>([]);
-  const [pageSize, setPageSize] = useState<number>(getPageSize);
+  const [pageSize, setPageSize] = useState<number>(getPageSize("item"));
 
   const fetchProducts = async ({
     orderBy,
@@ -46,7 +26,7 @@ function BestItem() {
 
   useEffect(() => {
     const handleFixSize = debounce(() => {
-      setPageSize(getPageSize());
+      setPageSize(getPageSize("item"));
     }, 300); // 300ms 딜레이로 debounce 적용
 
     window.addEventListener("resize", handleFixSize);
