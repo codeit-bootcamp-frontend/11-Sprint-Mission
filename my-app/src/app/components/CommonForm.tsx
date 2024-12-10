@@ -45,18 +45,13 @@ export default function CommonForm({ type }: AuthFormProps) {
         const data = await login(loginData); // 로그인 API 호출
         if (data && data.accessToken) {
           localStorage.setItem("token", data.accessToken); // 토큰 저장
-          router.push("/item");
+          router.push("/");
           alert("로그인 성공!");
         } else {
           alert("로그인 실패: 토큰이 없습니다.");
-          console.error("로그인 실패: 응답 데이터", data); // 응답 데이터 로깅
         }
       }
     } catch (error: any) {
-      console.error(
-        `${type} 오류:`,
-        error.response?.data?.message || error.message || error
-      );
       const errorMessage =
         error.response?.data?.message ||
         error.message ||
