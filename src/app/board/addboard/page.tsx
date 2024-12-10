@@ -73,7 +73,7 @@ export default function Page() {
   }
 
   if (!user) {
-    return <Error error="로그인 후 이용해주세요." />;
+    return router.push('/login');
   }
 
   return (
@@ -85,7 +85,7 @@ export default function Page() {
               <h2 className="h2 mb-6">게시글 쓰기</h2>
               <button
                 type="submit"
-                disabled={!title.trim() && !content.trim()}
+                disabled={!title.trim() || !content.trim()}
                 className="bg-blue w-[74px] h-[42px] text-white rounded-lg font-medium flex items-center justify-center disabled:bg-gray-400"
               >
                 등록

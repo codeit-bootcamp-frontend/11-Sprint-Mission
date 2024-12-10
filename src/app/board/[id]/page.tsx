@@ -3,6 +3,7 @@
 // react, next
 import { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 // 함수, 타입, 컨텍스트
 import { getArticle, getComment, postComment } from '@/api';
@@ -27,9 +28,9 @@ export default function Page() {
 
   const [submitComment, setSubmitComment] = useState<string>('');
 
-  const [loginError, setLoginError] = useState<string>('');
-
   const { user } = useAuth();
+
+  const router = useRouter();
 
   // 필요한 API 호출
   const {
@@ -65,7 +66,7 @@ export default function Page() {
   // 댓글 작성 시 post 후 가져오는 함수
   const fetchPostComment = useCallback(async () => {
     if (submitComment) {
-      if (!user) return setLoginError('로그인 후 이용해주세요.');
+      if (!user) return router.push('/login');
 
       await postCommentWrappedFunction({
         id,
@@ -73,7 +74,6 @@ export default function Page() {
       } as {
         id: string;
         content: string;
-        accessToken: string;
       });
 
       fetchComment();
@@ -99,10 +99,6 @@ export default function Page() {
   if (articleError || commentsError || postCommentError) {
     const error = (articleError || commentsError || postCommentError) as string;
     return <Error error={error} />;
-  }
-
-  if (loginError) {
-    return <Error error={loginError} />;
   }
 
   return (

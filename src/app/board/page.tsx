@@ -7,10 +7,11 @@ import Link from 'next/link';
 // 외부 라이브러리
 import { throttle } from 'lodash';
 
-// 함수, 타입
+// 함수, 타입, 컨텍스트
 import { getArticles } from '@/api';
 import useAsync from '@/hooks/useAsync';
 import { Article } from '@/types/article';
+import { useAuth } from '@/context/AuthContext';
 
 // 컴포넌트
 import BoardBestItem from '@/components/board/BoardBestItem';
@@ -44,11 +45,11 @@ export default function Page() {
 
   const [searchKeyword, setSearchKeyword] = useState<string>('');
 
-  const refreshToken = useRef<string | null>(null);
-
   const { error, isLoading, wrappedFunction } = useAsync(getArticles);
 
   const wrappedFunctionRef = useRef(wrappedFunction);
+
+  const { user } = useAuth();
 
   // 전체 게시글 로드
   const fetchItemList = useCallback(async () => {
@@ -117,14 +118,6 @@ export default function Page() {
     fetchItemList();
   }, [fetchItemList]);
 
-  // 로컬 스토리지에 저장된 refreshToken로 로그인 상태 검증
-  useEffect(() => {
-    const localRefreshToken = localStorage.getItem('refreshToken');
-    if (localRefreshToken) {
-      refreshToken.current = localRefreshToken;
-    }
-  }, []);
-
   // isLoading, error 처리
   if (isLoading || (!searchKeyword && !article.length && !error)) {
     return <Loading />;
@@ -150,7 +143,7 @@ export default function Page() {
           </div>
           <div className="mt-12 flex items-center justify-between">
             <h2 className="h2">게시글</h2>
-            <Link href={refreshToken ? '/board/addboard' : '/login'}>
+            <Link href={user ? '/board/addboard' : '/login'}>
               <button className="w-[88px] h-[42px] bg-blue text-white rounded-lg font-medium">
                 글쓰기
               </button>
