@@ -3,8 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AuthFormProps } from "../type/type";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { signup, login } from "../api/api";
 
 export default function CommonForm({ type }: AuthFormProps) {
   const isLogin = type === "login";
@@ -15,9 +16,49 @@ export default function CommonForm({ type }: AuthFormProps) {
   const [repassword, setRePassword] = useState("");
   const [repasswordError, setRePasswordError] = useState("");
   const [nickname, setNickname] = useState(""); // 닉네임 상태 추가
+  const [nicknameError, setNicknameError] = useState("");
   const [showPassword, setShowPassword] = useState(false); // 비밀번호 보이기 상태 추가
   const [showRePassword, setShowRePassword] = useState(false); // 비밀번호 확인 보이기 상태 추가
   const router = useRouter();
+
+  useEffect(() => {}, [email, nickname, password, repassword]);
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    try {
+      if (type === "signup") {
+        const signupData = {
+          email,
+          nickname,
+          password,
+          passwordConfirmation: repassword,
+        };
+        await signup(signupData); // 회원가입 API 호출
+        router.push("/login");
+        alert("회원가입 성공!");
+      } else if (type === "login") {
+        const loginData = {
+          email,
+          password,
+        };
+        const data = await login(loginData); // 로그인 API 호출
+        localStorage.setItem("token", data.token); // 토큰 저장
+        router.push("/item");
+        alert("로그인 성공!");
+      }
+    } catch (error: any) {
+      console.error(
+        `${type} 오류:`,
+        error.response?.data?.message || error.message || error
+      ); // 구체적인 오류 메시지 확인
+      const errorMessage =
+        error.response?.data?.message ||
+        error.message ||
+        "알 수 없는 오류가 발생했습니다."; // error.message가 없으면 기본 메시지 제공
+      alert(errorMessage); // 사용자에게 오류 메시지 알림
+    }
+  };
   const validateEmail = (email: string) => {
     if (!email) {
       setEmailError("이메일을 입력해주세요");
@@ -46,18 +87,6 @@ export default function CommonForm({ type }: AuthFormProps) {
       setRePasswordError("");
     }
   };
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    if (!emailError && !passwordError && (!isLogin || !repasswordError)) {
-      if (isLogin) {
-        // 로그인인 경우
-        router.push("/item");
-      } else {
-        // 회원가입인 경우
-        router.push("/login"); // 회원가입 페이지로 이동
-      }
-    }
-  };
 
   // 이메일 입력 변경 시 에러 메시지 제거
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -83,6 +112,7 @@ export default function CommonForm({ type }: AuthFormProps) {
   // 닉네임 입력 변경 시
   const handleNicknameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNickname(e.target.value);
+    setNicknameError("");
   };
 
   const handlePasswordVisibilityToggle = () => {
@@ -227,7 +257,11 @@ export default function CommonForm({ type }: AuthFormProps) {
               <button
                 type="submit"
                 className="w-full h-[56px] text-center text-background text-[20px] text-gray100 bg-gray400 rounded-[40px]"
-                disabled={!!emailError || !!passwordError}
+                disabled={
+                  !!emailError ||
+                  !!passwordError ||
+                  (!isLogin && (!!nicknameError || !!repasswordError))
+                }
               >
                 {isLogin ? "로그인" : "회원가입"}
               </button>
