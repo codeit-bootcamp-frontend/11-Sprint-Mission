@@ -1,0 +1,164 @@
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.headerTitle {
+  flex-grow: 1;
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 700;
+  color: var(--gray-800);
+}
+
+.submitButton {
+  padding: 12px 23px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--blue);
+
+  color: var(--gray-200);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: var(--blue-hover);
+}
+
+.submitButton:active {
+  background-color: var(--blue-active);
+}
+
+.submitButton:disabled {
+  background-color: var(--inactive);
+  cursor: no-drop;
+}
+
+.fieldTitle,
+.fieldContent,
+.fieldImage {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: none;
+  margin-bottom: 24px;
+}
+
+.label {
+  color: var(--gray-800);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.inputTitle,
+.inputContent {
+  padding: 16px 24px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--gray-200);
+}
+
+.inputTitle:focus-visible,
+.inputContent:focus-visible {
+  outline: 2px solid var(--blue);
+}
+
+.inputTitle::placeholder,
+.inputContent::placeholder {
+  color: var(--gray-400);
+}
+
+.inputContent {
+  min-height: 282px;
+  resize: none;
+}
+
+.inputImageList {
+  display: flex;
+  gap: 12px;
+}
+
+.inputImageItem {
+  position: relative;
+  width: 282px;
+  height: 282px;
+}
+
+.inputImageButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 282px;
+  height: 282px;
+  border-radius: 12px;
+  background-color: var(--gray-200);
+  color: var(--gray-400);
+  cursor: pointer;
+}
+
+.inputImageIcon {
+  position: relative;
+  width: 48px;
+  height: 48px;
+}
+
+.previewImage {
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: 100ms ease;
+  color: var(--gray-400);
+  cursor: pointer;
+}
+
+.overlay:hover {
+  opacity: 1;
+}
+
+.inputImage {
+  display: none;
+}
+
+@media screen and (max-width: 1199px) {
+  .inputImageButton {
+    width: 168px;
+    height: 168px;
+  }
+
+  .inputImageItem {
+    width: 168px;
+    height: 168px;
+  }
+}
+
+/* @media screen and (max-width: 767px) {
+  .inputImageButton {
+    width: 168px;
+    height: 168px;
+  }
+
+  .inputImageItem {
+    width: 168px;
+    height: 168px;
+  }
+} */

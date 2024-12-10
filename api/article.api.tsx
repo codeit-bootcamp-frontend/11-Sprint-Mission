@@ -1,4 +1,4 @@
-import { ArticleList } from "@/types/Article.type";
+import { Article, ArticleList } from "@/types/Article.type";
 import axios from "./axios";
 
 interface GetArticleListParams {
@@ -27,5 +27,33 @@ async function getArticleList({
   return response.data;
 }
 
-export { getArticleList };
+async function getArticle({ id }: { id: number }): Promise<Article> {
+  const response = await axios.get(`/articles/${id}`);
+  return response.data;
+}
+
+interface PostArticle {
+  image?: string | undefined;
+  content: string;
+  title: string;
+}
+
+async function postArticle({
+  image,
+  content,
+  title,
+}: PostArticle): Promise<Article> {
+  const response = await axios({
+    method: "post",
+    url: "/articles",
+    data: {
+      content,
+      title,
+      image,
+    },
+  });
+  return response.data;
+}
+
+export { getArticleList, getArticle, postArticle };
 export type { GetArticleListParams, OrderBy };

@@ -1,10 +1,17 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import "../styles/global.css";
+import "@/styles/global.css";
 import { DeviceTypeProvider } from "@/contexts/DeviceTypeContext";
 import Navigation from "@/components/Navigation";
+import Container from "@/components/Container";
+import { useRouter } from "next/router";
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const isShowNav = ["/", "/addboard", "/board", "/board/[id]"].includes(
+    router.pathname
+  );
+
   return (
     <>
       <Head>
@@ -14,8 +21,10 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/images/ic_logo.svg" />
       </Head>
       <DeviceTypeProvider>
-        <Navigation />
-        <Component {...pageProps} />
+        {isShowNav && <Navigation />}
+        <Container>
+          <Component {...pageProps} />
+        </Container>
       </DeviceTypeProvider>
     </>
   );

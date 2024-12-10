@@ -1,17 +1,16 @@
 import { Article, ArticleList } from "@/types/Article.type";
 import styles from "./BestPostBoard.module.css";
 import Image from "next/image";
-import formatDate from "../lib/formatDate";
+import formatDate from "@/lib/formatDate";
 import { useDeviceType } from "@/contexts/DeviceTypeContext";
-import { useState } from "react";
+import ImageSafe from "./ImageSafe";
+import Link from "next/link";
 
 const PAGE_SIZE = {
   desktop: 3,
   tablet: 2,
   mobile: 1,
 };
-
-const IMAGE_PLACEHOLDER = "/images/landscape-placeholder.svg";
 
 export default function BestPostBoard({ articles }: { articles: ArticleList }) {
   const deviceType = useDeviceType();
@@ -22,8 +21,8 @@ export default function BestPostBoard({ articles }: { articles: ArticleList }) {
         <h2 className={styles.BoardTitle}>베스트 게시글</h2>
       </header>
       <div className={styles.PostItemList}>
-        {articles.list.map((article, i) => {
-          if (i < PAGE_SIZE[deviceType]) {
+        {articles.list.map((article, postIndex) => {
+          if (postIndex < PAGE_SIZE[deviceType]) {
             return <PostItem key={article.id} article={article} />;
           }
         })}
@@ -33,12 +32,10 @@ export default function BestPostBoard({ articles }: { articles: ArticleList }) {
 }
 
 function PostItem({ article }: { article: Article }) {
-  const [imgSrc, setImgSrc] = useState(article.image || IMAGE_PLACEHOLDER);
-
   const createdAt = formatDate(article.createdAt);
 
   return (
-    <div className={styles.Item}>
+    <Link className={styles.Item} href={`/board/${article.id}`}>
       <div className={styles.badge}>
         <div className={styles.medal}>
           <Image fill src="/images/ic_medal.svg" alt="베스트" />
@@ -48,15 +45,7 @@ function PostItem({ article }: { article: Article }) {
       <div className={styles.main}>
         <h3 className={styles.title}>{article.title}</h3>
         <div className={styles.preview}>
-          <Image
-            fill
-            src={article.image}
-            alt={article.title}
-            style={{
-              objectFit: "cover",
-            }}
-            onError={() => setImgSrc(IMAGE_PLACEHOLDER)}
-          />
+          <ImageSafe src={article.image} alt={article.title} />
         </div>
       </div>
       <div className={styles.util}>
@@ -69,6 +58,6 @@ function PostItem({ article }: { article: Article }) {
         </div>
         <span>{createdAt}</span>
       </div>
-    </div>
+    </Link>
   );
 }

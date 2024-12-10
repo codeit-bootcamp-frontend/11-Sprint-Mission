@@ -1,23 +1,24 @@
 import { Article, ArticleList } from "@/types/Article.type";
 import Image from "next/image";
 import styles from "./PostBoard.module.css";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   getArticleList,
   GetArticleListParams,
   OrderBy,
 } from "@/api/article.api";
-import formatDate from "../lib/formatDate";
+import formatDate from "@/lib/formatDate";
 import { useDeviceType } from "@/contexts/DeviceTypeContext";
 import ImageSafe from "./ImageSafe";
+import useAsync from "@/hooks/useAsync";
+import useOutsideClick from "@/hooks/useOutsideClick";
+import Link from "next/link";
 
 const DEFAULT_PARAMS: GetArticleListParams = {
   page: 1,
   pageSize: 10,
   orderBy: "recent",
 };
-
-const IMAGE_PLACEHOLDER = "/images/landscape-placeholder.svg";
 
 export default function PostBoard({
   articles: initArticles,
@@ -27,34 +28,24 @@ export default function PostBoard({
   const [articles, setArticles] = useState(initArticles);
   const [params, setParams] = useState(DEFAULT_PARAMS);
   const [keyword, setKeyword] = useState("");
-  const [selectedDropdown, setSelecedDropdown] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const deviceType = useDeviceType();
-
-  const handleClickDropdown = () => setSelecedDropdown((prev) => !prev);
-
-  const handleClickOption = (event: React.MouseEvent<HTMLDivElement>) => {
-    const target = event.target;
-    if (!(target instanceof HTMLElement)) return;
-    if (!target.dataset.option) return;
-    setParams((prev) => {
-      return {
-        ...prev,
-        orderBy: target.dataset.option as OrderBy,
-      };
-    });
-  };
-
-  const handleClickDropdownOutside = (event: MouseEvent) => {
-    if (!dropdownRef.current) return;
-    if (dropdownRef.current.contains(event.target as Node)) return;
-    setSelecedDropdown(false);
-  };
+  const {
+    excute: getArticleListAsync,
+    loading,
+    error,
+  } = useAsync(getArticleList);
 
   const handleChangeKeyword = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!(event.target instanceof HTMLElement)) return;
     setKeyword(event.target.value.trim());
   };
+
+  const handleChangeOrderBy = (option: OrderBy) =>
+    setParams((prev) => {
+      return {
+        ...prev,
+        orderBy: option,
+      };
+    });
 
   const handleSubmitSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -69,22 +60,19 @@ export default function PostBoard({
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const data = await getArticleList(params);
-      setArticles(data);
+      const data = await getArticleListAsync(params);
+      if (data) setArticles(data);
     };
     fetchArticles();
-
-    document.addEventListener("click", handleClickDropdownOutside);
-
-    return () =>
-      document.removeEventListener("click", handleClickDropdownOutside);
-  }, [params]);
+  }, [params, getArticleListAsync]);
 
   return (
     <div className={styles.Board}>
       <header className={styles.BoardHeader}>
         <h2 className={styles.BoardTitle}>게시글</h2>
-        <button className={styles.BoardBlueButton}>글쓰기</button>
+        <Link href="/addboard" className={styles.BoardBlueButton}>
+          글쓰기
+        </Link>
       </header>
       <div className={styles.BoardUtil}>
         <form className={styles.PostSearchFrom} onSubmit={handleSubmitSearch}>
@@ -100,38 +88,10 @@ export default function PostBoard({
             />
           </fieldset>
         </form>
-        <div
-          className={styles.OrderByDropdown}
-          onClick={handleClickDropdown}
-          ref={dropdownRef}
-        >
-          <div className={styles.select}>
-            {deviceType !== "mobile" && (
-              <span>{params.orderBy === "recent" ? "최신순" : "인기순"}</span>
-            )}
-            <div className={styles.image}>
-              <Image
-                fill
-                src={
-                  deviceType !== "mobile"
-                    ? "/images/ic_arrow_down.svg"
-                    : "/images/ic_sort.svg"
-                }
-                alt="정렬"
-              />
-            </div>
-          </div>
-          {selectedDropdown && (
-            <div className={styles.wrap} onClick={handleClickOption}>
-              <div className={styles.option} data-option="recent">
-                최신순
-              </div>
-              <div className={styles.option} data-option="like">
-                인기순
-              </div>
-            </div>
-          )}
-        </div>
+        <Dropdown
+          orderBy={params.orderBy as OrderBy}
+          onChange={handleChangeOrderBy}
+        />
       </div>
       <div className={styles.PostItemList}>
         {articles?.list.map((article) => (
@@ -146,7 +106,7 @@ function PostItem({ article }: { article: Article }) {
   const createdAt = formatDate(article.createdAt);
 
   return (
-    <div className={styles.Item}>
+    <Link className={styles.Item} href={`/board/${article.id}`}>
       <div className={styles.ItemContent}>
         <h3 className={styles.ItemTitle}> {article.title}</h3>
         <div className={styles.ItemPreview}>
@@ -178,6 +138,67 @@ function PostItem({ article }: { article: Article }) {
           </span>
         </div>
       </div>
+    </Link>
+  );
+}
+
+function Dropdown({
+  orderBy,
+  onChange,
+}: {
+  orderBy: OrderBy;
+  onChange: (option: OrderBy) => void;
+}) {
+  const [selectedDropdown, setSelecedDropdown] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const { flag } = useOutsideClick(dropdownRef);
+  const deviceType = useDeviceType();
+
+  const handleClickDropdown = () => setSelecedDropdown((prev) => !prev);
+
+  const handleClickOption = (event: React.MouseEvent<HTMLDivElement>) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+    if (!target.dataset.option) return;
+    onChange(target.dataset.option as OrderBy);
+  };
+
+  useEffect(() => {
+    setSelecedDropdown(!flag);
+  }, [flag]);
+
+  return (
+    <div
+      className={styles.OrderByDropdown}
+      onClick={handleClickDropdown}
+      ref={dropdownRef}
+    >
+      <div className={styles.select}>
+        {deviceType !== "mobile" && (
+          <span>{orderBy === "recent" ? "최신순" : "인기순"}</span>
+        )}
+        <div className={styles.image}>
+          <Image
+            fill
+            src={
+              deviceType !== "mobile"
+                ? "/images/ic_arrow_down.svg"
+                : "/images/ic_sort.svg"
+            }
+            alt="정렬"
+          />
+        </div>
+      </div>
+      {selectedDropdown && (
+        <div className={styles.wrap} onClick={handleClickOption}>
+          <div className={styles.option} data-option="recent">
+            최신순
+          </div>
+          <div className={styles.option} data-option="like">
+            인기순
+          </div>
+        </div>
+      )}
     </div>
   );
 }

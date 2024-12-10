@@ -1,4 +1,3 @@
-import getConfig from "next/config";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
@@ -13,16 +12,12 @@ export default function ImageSafe({ src, alt }: { src: string; alt: string }) {
         const res = await fetch(
           "/api/check-image?url=" + encodeURIComponent(src)
         );
-        console.log(res);
         if (res.ok) {
           setImageSrc(src);
         } else {
-          console.error("Image source not configured in next.config.js");
-          console.log(res);
           setImageSrc(IMAGE_PLACEHOLDER);
         }
       } catch (error) {
-        console.error("Error checking image configuration:", error);
         setImageSrc(IMAGE_PLACEHOLDER);
       }
     };

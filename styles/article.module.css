@@ -1,0 +1,222 @@
+.header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--gray-300);
+  margin-bottom: 16px;
+}
+
+.title {
+  flex-grow: 1;
+  color: var(--gray-800);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.wrap {
+  display: flex;
+  align-items: center;
+  flex-basis: 100%;
+  margin-bottom: 16px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-right: 32px;
+  border-right: 1px solid var(--gray-300);
+}
+
+.profile {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.writer {
+  color: var(--gray-600);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.createdAt {
+  color: var(--gray-400);
+  font-size: 14px;
+}
+
+.likeCount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 12px;
+  border: 1px solid var(--gray-300);
+  border-radius: 35px;
+  margin-left: 32px;
+  color: var(--gray-500);
+  font-weight: 500;
+}
+
+.heart {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+
+.content {
+  margin-top: 24px;
+  margin-bottom: 32px;
+
+  color: var(--gray-800);
+  font-size: 18px;
+}
+
+.Dropdown {
+  position: relative;
+  user-select: none;
+  width: 24px;
+  height: 24px;
+}
+
+.Dropdown .optionWrap {
+  position: absolute;
+  right: 0;
+  bottom: -92px;
+  z-index: 10;
+}
+
+.Dropdown .option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 42px;
+  border: 1px solid var(--gray-300);
+  background-color: #ffffff;
+  color: var(--gray-800);
+}
+
+.Dropdown .option:first-of-type {
+  border-bottom: none;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.Dropdown .option:last-of-type {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-bottom: 40px;
+}
+
+.fieldContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  border: none;
+  margin-bottom: 16px;
+}
+
+.label {
+  color: var(--gray-800);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.inputContent {
+  min-height: 104px;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--gray-200);
+  resize: none;
+}
+
+.inputContent:focus-visible {
+  outline: 2px solid var(--blue);
+}
+
+.inputContent::placeholder {
+  color: var(--gray-400);
+}
+
+.submitButton {
+  padding: 12px 23px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--blue);
+
+  color: var(--gray-200);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: var(--blue-hover);
+}
+
+.submitButton:active {
+  background-color: var(--blue-active);
+}
+
+.submitButton:disabled {
+  background-color: var(--inactive);
+  cursor: no-drop;
+}
+
+.CommentItem {
+  border-bottom: 1px solid var(--gray-300);
+}
+
+.commentMain,
+.commentHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 8px;
+}
+
+.commentContent {
+  flex-grow: 1;
+  color: var(--gray-800);
+  font-size: 14px;
+}
+
+.commentInfo {
+  display: flex;
+  flex-direction: column;
+}
+.buttonBack {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 12px 64px;
+  border-radius: 40px;
+  margin: 64px auto;
+  background-color: var(--blue);
+  color: var(--gray-100);
+}
+
+.buttonBack:hover {
+  background-color: var(--blue-hover);
+}
+
+.buttonBack:active {
+  background-color: var(--blue-active);
+}
+
+.iconBack {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
