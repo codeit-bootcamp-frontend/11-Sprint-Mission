@@ -1,31 +1,65 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { FormEvent, useEffect, useMemo, useState } from 'react';
 import styles from '@/styles/Board.module.css';
 import BestCard from '@/components/BestCard';
 import Button from '@/components/common/Button';
-import Search from '@/components/common/Search';
-import Card from '@/components/Card';
+import Card, { Product } from '@/components/Card';
 import useResize, { ScreenType } from '@/hooks/useResize';
-import {
-  getProducts,
-  OrderType,
-  Product,
-  ProductResult,
-} from '@/api/productApi';
-import Dropdown from '@/components/common/Dropdown';
+import { GetProduct, getProducts, OrderType } from '@/api/productApi';
+import Dropdown, { DropdownItem } from '@/components/common/Dropdown';
 import debounce from 'lodash.debounce';
-import { usePathname, useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
+import InputIcon from '@/public/ic_search.svg';
+import Input from '@/components/common/Input';
+import Image from 'next/image';
+import { GetServerSidePropsContext } from 'next';
 
-const items = [
+const items: DropdownItem[] = [
   { id: 0, label: '최신순', value: 'recent' },
   { id: 1, label: '좋아요순', value: 'favorite' },
 ];
 
-const Board = () => {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  try {
+    const bestProductsResponse = await getProducts({
+      orderBy: 'favorite',
+      page: 1,
+      pageSize: 1,
+    });
+    const allProductsResponse = await getProducts({
+      orderBy: 'recent',
+      page: 1,
+      pageSize: 10,
+    });
+
+    return {
+      props: {
+        initialBestProducts: bestProductsResponse.data.list,
+        initialAllProducts: allProductsResponse.data.list,
+      },
+    };
+  } catch (error) {
+    console.error('데이터를 불러오는 데 실패했습니다:', error);
+    return {
+      props: {
+        initialBestProducts: [],
+        initialAllProducts: [],
+      },
+    };
+  }
+}
+
+const Board = ({
+  initialBestProducts,
+  initialAllProducts,
+}: {
+  initialBestProducts: Product[];
+  initialAllProducts: Product[];
+}) => {
   const screenType = useResize(); // useResize 훅 사용
   const [page, setPage] = useState(1); // 페이지 번호
-  const [bestProducts, setBestProducts] = useState<ProductResult[]>([]);
-  const [allProducts, setAllProducts] = useState<ProductResult[]>([]);
+  const [bestProducts, setBestProducts] =
+    useState<Product[]>(initialBestProducts);
+  const [allProducts, setAllProducts] = useState<Product[]>(initialAllProducts);
   const [order, setOrder] = useState<OrderType>('recent');
   const router = useRouter();
 
@@ -43,7 +77,7 @@ const Board = () => {
     return sizeMap[screenType] || 1;
   };
 
-  const fetchBestProducts = async (param: Product): Promise<void> => {
+  const fetchBestProducts = async (param: GetProduct): Promise<void> => {
     try {
       const response = await getProducts(param);
       setBestProducts(response.data.list);
@@ -66,8 +100,7 @@ const Board = () => {
   );
 
   const handleClick = () => {
-    router.push(`/posts?query=테스트!`);
-    console.log('클릭');
+    router.push('addboard');
   };
 
   const handleSearch = (query: string) => {
@@ -83,7 +116,7 @@ const Board = () => {
     if (!screenType) return;
 
     const size = getSizeForScreenType(screenType);
-    const param: Product = {
+    const param = {
       page: page,
       pageSize: size,
       orderBy: 'favorite',
@@ -119,7 +152,16 @@ const Board = () => {
           </Button>
         </div>
         <div className={styles.searchBox}>
-          <Search onSearch={handleSearch} addClassName="boardSearch" />
+          <Input
+            onInput={handleSearch}
+            addClassName="boardSearch"
+            image={true}
+            placeholder="검색할 상품을 입력해주세요"
+          >
+            <div className={styles['input-icon']}>
+              <Image src={InputIcon} alt="검색 아이콘" width={20} height={20} />
+            </div>
+          </Input>
           <Dropdown
             items={items}
             screenType={screenType}

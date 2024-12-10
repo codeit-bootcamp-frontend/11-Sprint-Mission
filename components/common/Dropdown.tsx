@@ -6,10 +6,10 @@ import { ScreenType } from '@/hooks/useResize';
 import sortImage from '@/public/ic_sort.svg';
 import { OrderType } from '@/api/productApi';
 
-type DropdownItem = {
+export type DropdownItem = {
   id: number;
   label: string;
-  value: string;
+  value: OrderType;
 };
 
 interface DropdownProps {

@@ -1,0 +1,44 @@
+.comment {
+  padding-top: 4rem;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #fcfcfc;
+}
+
+.comment-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content {
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  color: #1f2937;
+}
+
+.comment-bottom {
+  padding: 2.4rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+
+.nickName {
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  color: #4b5563;
+}
+
+.date {
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  color: #9ca3af;
+}
