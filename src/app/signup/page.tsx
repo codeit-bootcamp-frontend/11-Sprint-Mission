@@ -23,7 +23,6 @@ export default function Page() {
   const [passwordConfirmationVisible, setPasswordConfirmationVisible] =
     useState<boolean>(false);
 
-  const [loginError, setLoginError] = useState<string | null>(null);
   const { signup } = useAuth();
   const router = useRouter();
 
@@ -45,7 +44,7 @@ export default function Page() {
     } catch (error) {
       const axiosError = error as AxiosError;
       if (axiosError) {
-        return setLoginError('이미 존재하는 이메일 또는 닉네임입니다.');
+        return alert('이미 존재하는 이메일 또는 닉네임입니다.');
       }
     }
 
@@ -127,9 +126,6 @@ export default function Page() {
             </div>
           </div>
           <AuthSubmitButton isValid={isValid} text="회원가입" />
-          {loginError && (
-            <span className="text-red-600 mt-4">{loginError}</span>
-          )}
         </form>
         <SocialLogin />
         <div className="flex items-center justify-center gap-1">

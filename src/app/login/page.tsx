@@ -20,7 +20,6 @@ import { useAuth } from '@/context/AuthContext';
 
 export default function Page() {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
-  const [loginError, setLoginError] = useState<string | null>(null);
   const { login } = useAuth();
   const router = useRouter();
 
@@ -41,9 +40,9 @@ export default function Page() {
     } catch (error) {
       const axiosError = error as AxiosError;
       if (axiosError.response?.status === 400) {
-        return setLoginError('이메일 또는 비밀번호가 일치하지 않습니다.');
+        return alert('이메일 또는 비밀번호가 일치하지 않습니다.');
       } else {
-        return setLoginError('잠시 후 다시 시도해주세요.');
+        return alert('잠시 후 다시 시도해주세요.');
       }
     }
 
@@ -95,9 +94,6 @@ export default function Page() {
             </div>
           </div>
           <AuthSubmitButton isValid={isValid} text="로그인" />
-          {loginError && (
-            <span className="text-red-600 mt-4">{loginError}</span>
-          )}
         </form>
         <SocialLogin />
         <div className="flex items-center justify-center gap-1">
