@@ -1,12 +1,6 @@
 import axios from 'axios';
 import { Article, ArticleList } from '@/types/article';
-import {
-  SignUp,
-  SignIn,
-  UserInfo,
-  RefreshToken,
-  RefreshTokenArg,
-} from '@/types/auth';
+import { SignUp, SignIn, UserInfo } from '@/types/auth';
 import { BoardForm } from '@/types/boardForm';
 import { Comments } from '@/types/comment';
 
@@ -16,6 +10,42 @@ const instance = axios.create({
     'Content-Type': 'application/json',
   },
 });
+
+instance.interceptors.response.use(
+  (res) => res,
+  async (error) => {
+    const originalRequest = error.config;
+
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      const refreshToken: string | null = localStorage.getItem('refreshToken');
+
+      if (refreshToken) {
+        try {
+          const response = await instance.post(
+            '/auth/refresh-token',
+            { refreshToken: refreshToken },
+            {
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            }
+          );
+          const accessToken = response.data.accessToken;
+
+          localStorage.setItem('accessToken', accessToken);
+
+          originalRequest.headers.Authorization = `Bearer ${accessToken}`;
+          originalRequest._retry = true;
+          return instance(originalRequest);
+        } catch (error) {
+          return Promise.reject(error);
+        }
+      }
+    }
+
+    return Promise.reject(error);
+  }
+);
 
 /**
  * 전체 게시글 리스트를 가져옵니다.
@@ -141,22 +171,6 @@ async function postSignIn(signInInfo: SignIn): Promise<UserInfo> {
   return response.data;
 }
 
-/**
- * 토큰을 갱신합니다.
- * @param {string} refreshToken - 리프레시 토큰
- * @returns {Promise<object>} - 엑세스 토큰 (.accessToken)
- */
-async function postRefreshToken(
-  refreshToken: RefreshTokenArg
-): Promise<RefreshToken> {
-  const response = await instance.post('/auth/refresh-Token', refreshToken, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  return response.data;
-}
-
 export {
   getArticles,
   getArticle,
@@ -165,5 +179,4 @@ export {
   postComment,
   postSignUp,
   postSignIn,
-  postRefreshToken,
 };

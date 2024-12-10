@@ -23,14 +23,6 @@ export interface UserInfo {
   };
 }
 
-export interface RefreshToken {
-  accessToken: string;
-}
-
-export interface RefreshTokenArg {
-  refreshToken: string;
-}
-
 export interface loginForm {
   email: string;
   nickname?: string;

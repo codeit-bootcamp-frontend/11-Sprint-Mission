@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 // 함수, 타입
-import { postArticle, postRefreshToken, postSignIn } from '@/api';
+import { postArticle, postSignIn } from '@/api';
 import useAsync from '@/hooks/useAsync';
 import { BoardForm } from '@/types/boardForm';
 import { Article } from '@/types/article';
@@ -14,17 +14,16 @@ import { Article } from '@/types/article';
 import FileUploadInput from '@/components/board/addboard/FileUploadInput';
 import Loading from '@/board/loading';
 import Error from '@/board/error';
-import { RefreshToken } from '@/types/auth';
 
 export default function Page() {
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
   const [image, setImage] = useState<string | null>(null);
 
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [refreshToken, setRefreshToken] = useState<string | null>(null);
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const router = useRouter();
 
@@ -34,12 +33,6 @@ export default function Page() {
     isLoading: articleIsLoading,
     wrappedFunction: articleWrappedFunction,
   } = useAsync(postArticle);
-
-  const {
-    error: refreshTokenError,
-    isLoading: refreshTokenIsLoading,
-    wrappedFunction: refreshTokenWrappedFunction,
-  } = useAsync(postRefreshToken);
 
   // title, content input 값 있을 때만 등록 버튼 활성화
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -87,37 +80,22 @@ export default function Page() {
     }
   };
 
-  // 로컬 스토리지에 저장된 토큰 가져오기, refreshToken이 있을 경우 accessToken 갱신
   useEffect(() => {
-    const localAccessToken = localStorage.getItem('accessToken');
-    const localRefreshToken = localStorage.getItem('refreshToken');
+    const accessToken = localStorage.getItem('accessToken');
+    const refreshToken = localStorage.getItem('refreshToken');
 
-    setAccessToken(localAccessToken);
-    setRefreshToken(localRefreshToken);
-
-    if (localRefreshToken) {
-      const refreshToken = async () => {
-        const tokenResult = (await refreshTokenWrappedFunction({
-          refreshToken: localRefreshToken,
-        })) as RefreshToken;
-
-        localStorage.setItem('accessToken', tokenResult.accessToken);
-        setAccessToken(tokenResult.accessToken);
-      };
-
-      refreshToken();
-    }
-
+    setAccessToken(accessToken);
+    setRefreshToken(refreshToken);
     setIsLoading(false);
-  }, [refreshTokenWrappedFunction]);
+  }, []);
 
   // 로딩, 에러 처리
-  if (articleIsLoading || refreshTokenIsLoading || isLoading) {
+  if (articleIsLoading || isLoading) {
     return <Loading />;
   }
 
-  if (articleError || refreshTokenError) {
-    const error = (articleError || refreshTokenError) as string;
+  if (articleError) {
+    const error = articleError as string;
     return <Error error={error} />;
   }
 

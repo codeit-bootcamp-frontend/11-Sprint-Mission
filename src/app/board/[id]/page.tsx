@@ -5,11 +5,10 @@ import { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 
 // 함수, 타입
-import { getArticle, getComment, postComment, postRefreshToken } from '@/api';
+import { getArticle, getComment, postComment } from '@/api';
 import useAsync from '@/hooks/useAsync';
 import { Article } from '@/types/article';
 import { Comments, Comment } from '@/types/comment';
-import { RefreshToken } from '@/types/auth';
 
 // 컴포넌트
 import ArticleDetail from '@/components/board/[id]/ArticleDetail';
@@ -50,12 +49,6 @@ export default function Page() {
     isLoading: postCommentIsLoading,
     wrappedFunction: postCommentWrappedFunction,
   } = useAsync(postComment);
-
-  const {
-    error: refreshTokenError,
-    isLoading: refreshTokenIsLoading,
-    wrappedFunction: refreshTokenWrappedFunction,
-  } = useAsync(postRefreshToken);
 
   // 게시글 가져오는 함수
   const fetchItem = useCallback(async () => {
@@ -111,21 +104,8 @@ export default function Page() {
     setAccessToken(localAccessToken);
     setRefreshToken(localRefreshToken);
 
-    if (localRefreshToken) {
-      const refreshToken = async () => {
-        const tokenResult = (await refreshTokenWrappedFunction({
-          refreshToken: localRefreshToken,
-        })) as RefreshToken;
-
-        localStorage.setItem('accessToken', tokenResult.accessToken);
-        setAccessToken(tokenResult.accessToken);
-      };
-
-      refreshToken();
-    }
-
     setIsLoading(false);
-  }, [refreshTokenWrappedFunction]);
+  }, []);
 
   // 로딩, 에러 처리
 
@@ -133,17 +113,13 @@ export default function Page() {
     articleIsLoading ||
     commentsIsLoading ||
     postCommentIsLoading ||
-    refreshTokenIsLoading ||
     isLoading
   ) {
     return <Loading />;
   }
 
-  if (articleError || commentsError || postCommentError || refreshTokenError) {
-    const error = (articleError ||
-      commentsError ||
-      postCommentError ||
-      refreshTokenError) as string;
+  if (articleError || commentsError || postCommentError) {
+    const error = (articleError || commentsError || postCommentError) as string;
     return <Error error={error} />;
   }
 
