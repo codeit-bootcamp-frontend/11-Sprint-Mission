@@ -1,21 +1,23 @@
-export default function getPageSize(context = "default") {
-  if (typeof window === "undefined") return context === "default" ? 3 : 10;
+type Context = "default" | "article" | "item";
+
+const pageSize: Record<
+  Context,
+  { small: number; medium: number; large: number }
+> = {
+  article: { small: 1, medium: 2, large: 3 },
+  item: { small: 1, medium: 2, large: 4 },
+  default: { small: 4, medium: 6, large: 10 },
+};
+
+export default function getPageSize(context: Context = "default"): number {
+  if (typeof window === "undefined") {
+    return context === "default" ? 3 : 10;
+  }
 
   const width = window.innerWidth;
+  const size = pageSize[context];
 
-  if (context === "article") {
-    if (width < 768) return 1;
-    if (width < 1280) return 2;
-    return 3;
-  }
-
-  if (context === "item") {
-    if (width < 768) return 1;
-    if (width < 1280) return 2;
-    return 4;
-  }
-
-  if (width < 768) return 4;
-  if (width < 1280) return 6;
-  return 10;
+  if (width < 768) return size.small;
+  if (width < 1280) return size.medium;
+  return size.large;
 }

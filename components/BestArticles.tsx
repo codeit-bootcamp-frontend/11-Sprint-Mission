@@ -11,7 +11,9 @@ import getPageSize from "@/lib/utils/getPageSize";
 
 export default function BestArticles() {
   const [articles, setArticles] = useState<Article[]>([]);
-  const [pageSize, setPageSize] = useState<number>(getPageSize("article"));
+  const [pageSize, setPageSize] = useState<number>(() =>
+    getPageSize("article")
+  );
 
   useEffect(() => {
     const fetchArticles = async ({

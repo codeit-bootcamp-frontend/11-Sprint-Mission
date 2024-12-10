@@ -4,12 +4,13 @@ import { getProducts } from "@/lib/api";
 import Pagination from "@/components/Pagination";
 import { Product } from "@/types/commontypes";
 import styles from "@/styles/items.module.css";
-import searchIcon from "@/public/svgs/ic_search.svg";
-import Image from "next/image";
+import SearchIcon from "@/public/svgs/ic_search.svg";
 import getPageSize from "@/lib/utils/getPageSize";
 
-function AllItems() {
-  const [orderBy, setOrderBy] = useState<string>("recent");
+type OrderBy = "recent" | "favorite";
+
+export default function AllItems() {
+  const [orderBy, setOrderBy] = useState<OrderBy>("recent");
   const [page, setPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(getPageSize());
   const [items, setItems] = useState<Product[]>([]);
@@ -62,7 +63,7 @@ function AllItems() {
     setIsDropdown(!isDropdown);
   };
 
-  const handleOrderByChange = (newOrderBy: string) => {
+  const handleOrderByChange = (newOrderBy: OrderBy) => {
     setOrderBy(newOrderBy);
     setPage(1);
     setIsDropdown(false);
@@ -85,13 +86,7 @@ function AllItems() {
                 onClick={handleSearchSubmit}
                 className={styles.search_button}
               >
-                <Image
-                  className={styles.all_item_search_icon}
-                  src={searchIcon}
-                  alt="돋보기 아이콘"
-                  width={24}
-                  height={24}
-                />
+                <SearchIcon className={styles.all_item_search_icon} />
               </button>
               <input
                 className={styles.all_item_search_input}
@@ -129,7 +124,7 @@ function AllItems() {
           </div>
         </div>
         <div className={styles.all_item_card_container}>
-          {items?.map((item) => (
+          {items.map((item) => (
             <ItemCard item={item} key={`all_item_${item.id}`} />
           ))}
         </div>
@@ -142,5 +137,3 @@ function AllItems() {
     </div>
   );
 }
-
-export default AllItems;

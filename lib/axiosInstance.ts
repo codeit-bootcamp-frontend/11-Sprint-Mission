@@ -18,4 +18,25 @@ instance.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
+instance.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    if (error.response) {
+      const { status, data } = error.response;
+
+      if (status === 401) {
+        // 로컬 스토리지에서 토큰 제거
+        localStorage.removeItem("accessToken");
+        // 로그인 페이지로 리디렉션
+        if (typeof window !== "undefined") {
+          window.location.href = "/login";
+        }
+      }
+    }
+    return Promise.reject(error);
+  }
+);
+
 export default instance;

@@ -6,7 +6,7 @@ import BestItemCard from "./BestItemCard";
 import getPageSize from "@/lib/utils/getPageSize";
 import debounce from "@/lib/utils/debounce";
 
-function BestItem() {
+export default function BestItem() {
   const [items, setItems] = useState<Product[]>([]);
   const [pageSize, setPageSize] = useState<number>(getPageSize("item"));
 
@@ -50,5 +50,3 @@ function BestItem() {
     </div>
   );
 }
-
-export default BestItem;

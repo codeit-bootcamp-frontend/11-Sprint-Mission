@@ -47,7 +47,7 @@ export async function getProductDetail(
 /**
  * 특정 상품의 댓글 목록을 가져옵니다.
  * @param {string} productId - 상품의 ID
- * @param {number} [limit=10] - 가져올 댓글의 개수 (기본값: 10)
+ * @param {number} [limit=9999] - 가져올 댓글의 개수
  * @param {string|null} [cursor=null] - 페이지네이션을 위한 커서 (기본값: null)
  * @returns {Promise<Object>} 댓글 데이터를 반환합니다.
  * @throws {Error} 댓글 정보 불러오기 실패 시 에러를 발생시킵니다.

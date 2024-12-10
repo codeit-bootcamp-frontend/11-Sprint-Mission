@@ -4,7 +4,7 @@ import styles from "@/styles/bestitem.module.css";
 import heartIcon from "@/public/svgs/ic_heart (1).svg";
 import Image from "next/image";
 
-function BestItemCard({ item }: AllItemCardProps) {
+export default function BestItemCard({ item }: AllItemCardProps) {
   return (
     <Link href={`/items/${item.id}`} className={styles.link}>
       <div className={styles.item_card}>
@@ -30,5 +30,3 @@ function BestItemCard({ item }: AllItemCardProps) {
     </Link>
   );
 }
-
-export default BestItemCard;

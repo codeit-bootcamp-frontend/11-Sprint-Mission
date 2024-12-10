@@ -5,8 +5,8 @@ import Image from "next/image";
 import logoLarge from "@/public/pngs/logo.png";
 import btnOn from "@/public/svgs/btn_visibility_on_24px.svg";
 import btnOff from "@/public/svgs/btn_visibility_off_24px.svg";
-import kakao from "@/public/pngs/Component 3.png";
-import google from "@/public/pngs/Component 2.png";
+import kakao from "@/public/pngs/Component_3.png";
+import google from "@/public/pngs/Component_2.png";
 import Link from "next/link";
 import { signIn } from "@/lib/api";
 
@@ -34,9 +34,7 @@ export default function Login() {
   };
 
   // 로그인 버튼 활성화 여부 판단
-  const isLoginEnabled = (): boolean => {
-    return validateEmail(email) && password.length >= 8;
-  };
+  const isLoginEnabled: boolean = validateEmail(email) && password.length >= 8;
 
   // 이메일 입력 핸들러
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,7 +68,7 @@ export default function Login() {
 
   // 로그인 버튼 클릭 핸들러
   const handleLogin = async () => {
-    if (isLoginEnabled()) {
+    if (isLoginEnabled) {
       try {
         // 서버로 로그인 요청
         const response = await signIn({ email, password });
@@ -156,9 +154,9 @@ export default function Login() {
             </form>
             <button
               className={`${styles.login_main_button} ${
-                isLoginEnabled() ? styles.active : ""
+                isLoginEnabled ? styles.active : ""
               }`}
-              disabled={!isLoginEnabled()}
+              disabled={!isLoginEnabled}
               onClick={handleLogin}
             >
               로그인

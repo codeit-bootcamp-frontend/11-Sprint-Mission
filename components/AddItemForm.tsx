@@ -34,8 +34,8 @@ export default function AddItemForm({
     values.tags.length > 0;
 
   const handleChange = (name: string, value: any) => {
-    setValues((initialValues) => ({
-      ...initialValues,
+    setValues((prevState) => ({
+      ...prevState,
       [name]: value,
     }));
   };
@@ -78,16 +78,19 @@ export default function AddItemForm({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     const formData = new FormData();
     formData.append("name", values.name);
     formData.append("favorite", values.favoriteCount.toString());
     formData.append("description", values.description);
     formData.append("price", values.price.toString());
+
     if (values.images) {
       values.images.forEach((image, index) => {
         formData.append(`images[${index}]`, image);
       });
     }
+
     formData.append("tags", JSON.stringify(values.tags));
 
     const result = await onSubmit(formData);
