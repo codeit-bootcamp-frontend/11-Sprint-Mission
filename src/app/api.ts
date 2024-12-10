@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { Article, ArticleList } from '@/types/article';
-import { SignUp, SignIn, UserInfo } from '@/types/auth';
 import { BoardForm } from '@/types/boardForm';
 import { Comments } from '@/types/comment';
 
@@ -11,6 +10,7 @@ const instance = axios.create({
   },
 });
 
+// 인터셉터로 401 에러 발생 시 토큰 갱신
 instance.interceptors.response.use(
   (res) => res,
   async (error) => {
@@ -31,7 +31,6 @@ instance.interceptors.response.use(
             }
           );
           const accessToken = response.data.accessToken;
-
           localStorage.setItem('accessToken', accessToken);
 
           originalRequest.headers.Authorization = `Bearer ${accessToken}`;
@@ -72,16 +71,14 @@ async function getArticle(id: string): Promise<Article> {
  * @param {string} boardForm.title - 게시글 제목
  * @param {string} boardForm.content - 게시글 내용
  * @param {string} boardForm.image - (선택) 게시글 이미지
- * @param {string} accessToken - 엑세스 토큰
  * @returns {Promise<Object>} - 게시글
  */
 async function postArticle({
   boardForm,
-  accessToken,
 }: {
   boardForm: BoardForm;
-  accessToken: string;
 }): Promise<Article> {
+  const accessToken = localStorage.getItem('accessToken');
   const response = await instance.post('/articles', boardForm, {
     headers: {
       'Content-Type': 'application/json',
@@ -112,18 +109,16 @@ async function getComment({
  * @param {Object} comment - 댓글 작성 폼
  * @param {string} comment.id - 게시글 ID
  * @param {string} comment.content - 댓글 내용
- * @param {string} accessToken - 엑세스 토큰
  * @returns {Promise<Object>} - 댓글
  */
 async function postComment({
   id,
   content,
-  accessToken,
 }: {
   id: string;
   content: string;
-  accessToken: string;
 }): Promise<Comment> {
+  const accessToken = localStorage.getItem('accessToken');
   const response = await instance.post(
     `/articles/${id}/comments`,
     { content },
@@ -137,46 +132,11 @@ async function postComment({
   return response.data;
 }
 
-/**
- * 회원가입 요청을 보냅니다.
- * @param {Object} signUpInfo - 회원가입 정보
- * @param {string} signUpInfo.email - 이메일
- * @param {string} signUpInfo.nickname - 닉네임
- * @param {string} signUpInfo.password - 비밀번호
- * @param {string} signUpInfo.passwordConfirmation - 비밀번호 확인
- * @returns {Promise<Object>} - 회원가입 정보
- */
-async function postSignUp(signUpInfo: SignUp): Promise<UserInfo> {
-  const response = await instance.post('/auth/signUp', signUpInfo, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  return response.data;
-}
-
-/**
- * 로그인 요청을 보냅니다.
- * @param {Object} signInInfo - 로그인 정보
- * @param {string} signInInfo.email - 이메일
- * @param {string} signInInfo.password - 비밀번호
- * @returns {Promise<Object>} - 유저 정보
- */
-async function postSignIn(signInInfo: SignIn): Promise<UserInfo> {
-  const response = await instance.post('/auth/signIn', signInInfo, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  return response.data;
-}
-
 export {
+  instance,
   getArticles,
   getArticle,
   postArticle,
   getComment,
   postComment,
-  postSignUp,
-  postSignIn,
 };

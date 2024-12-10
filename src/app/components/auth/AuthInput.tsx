@@ -1,5 +1,5 @@
 import { UseFormRegister, FieldErrors, RegisterOptions } from 'react-hook-form';
-import { loginForm } from '@/types/auth';
+import { Auth } from '@/types/auth';
 
 export default function AuthInput({
   name,
@@ -10,11 +10,11 @@ export default function AuthInput({
   validate = {},
 }: Readonly<{
   name: string;
-  id: keyof loginForm;
+  id: keyof Auth;
   type: string;
-  errors: FieldErrors<loginForm>;
-  register: UseFormRegister<loginForm>;
-  validate?: RegisterOptions<loginForm>;
+  errors: FieldErrors<Auth>;
+  register: UseFormRegister<Auth>;
+  validate?: RegisterOptions<Auth>;
 }>) {
   // value 값에 공백이 들어가지 않도록 처리
   const preventSpace = (e: React.ChangeEvent<HTMLInputElement>) => {

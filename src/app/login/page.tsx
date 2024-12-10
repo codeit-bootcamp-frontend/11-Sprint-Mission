@@ -1,32 +1,53 @@
 'use client';
 
-// react, next
+// react, next, axios
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { AxiosError } from 'axios';
 
 // types
-import { loginForm } from '@/types/auth';
+import { Auth } from '@/types/auth';
 
-// components
+// components, context
 import AuthLogo from '@/components/auth/AuthLogo';
 import AuthInput from '@/components/auth/AuthInput';
 import SocialLogin from '@/components/auth/SocialLogin';
 import PasswordEyeVisibility from '@/components/auth/PasswordEyeVisibility';
 import AuthSubmitButton from '@/components/auth/AuthSubmitButton';
+import { useAuth } from '@/context/AuthContext';
 
 export default function Page() {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
+  const [loginError, setLoginError] = useState<string | null>(null);
+  const { login } = useAuth();
+  const router = useRouter();
 
   // useForm hook
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<loginForm>({ mode: 'onChange' });
+  } = useForm<Auth>({ mode: 'onChange' });
 
-  const handleSubmitForm = (data: { email: string; password: string }) => {
-    console.log(data);
+  // 로그인 시 실행되는 함수
+  const handleSubmitForm = async (data: {
+    email: string;
+    password: string;
+  }) => {
+    try {
+      await login(data);
+    } catch (error) {
+      const axiosError = error as AxiosError;
+      if (axiosError.response?.status === 400) {
+        return setLoginError('이메일 또는 비밀번호가 일치하지 않습니다.');
+      } else {
+        return setLoginError('잠시 후 다시 시도해주세요.');
+      }
+    }
+
+    router.push('/');
   };
 
   return (
@@ -74,6 +95,9 @@ export default function Page() {
             </div>
           </div>
           <AuthSubmitButton isValid={isValid} text="로그인" />
+          {loginError && (
+            <span className="text-red-600 mt-4">{loginError}</span>
+          )}
         </form>
         <SocialLogin />
         <div className="flex items-center justify-center gap-1">

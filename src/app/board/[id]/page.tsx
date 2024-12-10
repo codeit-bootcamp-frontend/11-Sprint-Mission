@@ -4,11 +4,12 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 
-// 함수, 타입
+// 함수, 타입, 컨텍스트
 import { getArticle, getComment, postComment } from '@/api';
 import useAsync from '@/hooks/useAsync';
 import { Article } from '@/types/article';
 import { Comments, Comment } from '@/types/comment';
+import { useAuth } from '@/context/AuthContext';
 
 // 컴포넌트
 import ArticleDetail from '@/components/board/[id]/ArticleDetail';
@@ -26,10 +27,9 @@ export default function Page() {
 
   const [submitComment, setSubmitComment] = useState<string>('');
 
-  const [accessToken, setAccessToken] = useState<string | null>(null);
-  const [refreshToken, setRefreshToken] = useState<string | null>(null);
+  const [loginError, setLoginError] = useState<string>('');
 
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const { user } = useAuth();
 
   // 필요한 API 호출
   const {
@@ -65,10 +65,11 @@ export default function Page() {
   // 댓글 작성 시 post 후 가져오는 함수
   const fetchPostComment = useCallback(async () => {
     if (submitComment) {
+      if (!user) return setLoginError('로그인 후 이용해주세요.');
+
       await postCommentWrappedFunction({
         id,
         content: submitComment,
-        accessToken,
       } as {
         id: string;
         content: string;
@@ -77,13 +78,7 @@ export default function Page() {
 
       fetchComment();
     }
-  }, [
-    submitComment,
-    id,
-    accessToken,
-    postCommentWrappedFunction,
-    fetchComment,
-  ]);
+  }, [submitComment, id, postCommentWrappedFunction, fetchComment, user]);
 
   // submitComment 값이 바뀔 때마다 댓글 post 후 가져오는 함수 실행 (댓글 등록 시 submitComment 업데이트)
   useEffect(() => {
@@ -96,25 +91,8 @@ export default function Page() {
     fetchComment();
   }, [fetchItem, fetchComment]);
 
-  // 로컬 스토리지에 저장된 토큰 가져오기, refreshToken이 있을 경우 accessToken 갱신
-  useEffect(() => {
-    const localAccessToken = localStorage.getItem('accessToken');
-    const localRefreshToken = localStorage.getItem('refreshToken');
-
-    setAccessToken(localAccessToken);
-    setRefreshToken(localRefreshToken);
-
-    setIsLoading(false);
-  }, []);
-
   // 로딩, 에러 처리
-
-  if (
-    articleIsLoading ||
-    commentsIsLoading ||
-    postCommentIsLoading ||
-    isLoading
-  ) {
+  if (articleIsLoading || commentsIsLoading || postCommentIsLoading) {
     return <Loading />;
   }
 
@@ -123,8 +101,8 @@ export default function Page() {
     return <Error error={error} />;
   }
 
-  if (!accessToken && !refreshToken) {
-    return <Error error="로그인 혹은 재로그인 후 이용해주세요." />;
+  if (loginError) {
+    return <Error error={loginError} />;
   }
 
   return (

@@ -1,14 +1,15 @@
 'use client';
 
 // react, next
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-// 함수, 타입
-import { postArticle, postSignIn } from '@/api';
+// 함수, 타입, 컨텍스트
+import { postArticle } from '@/api';
 import useAsync from '@/hooks/useAsync';
 import { BoardForm } from '@/types/boardForm';
 import { Article } from '@/types/article';
+import { useAuth } from '@/context/AuthContext';
 
 // 컴포넌트
 import FileUploadInput from '@/components/board/addboard/FileUploadInput';
@@ -20,10 +21,7 @@ export default function Page() {
   const [content, setContent] = useState<string>('');
   const [image, setImage] = useState<string | null>(null);
 
-  const [accessToken, setAccessToken] = useState<string | null>(null);
-  const [refreshToken, setRefreshToken] = useState<string | null>(null);
-
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const { user } = useAuth();
 
   const router = useRouter();
 
@@ -59,38 +57,13 @@ export default function Page() {
 
     const articleResult = (await articleWrappedFunction({
       boardForm,
-      accessToken: accessToken as string,
     })) as Article;
 
     router.push(`/board/${articleResult.id}`);
   };
 
-  // 테스트용 토큰 발급 버튼 (다음 미션 작업 시 삭제)
-  const getTestToken = async () => {
-    const result = await postSignIn({
-      email: '123@123.com',
-      password: '123123123',
-    });
-
-    if (result) {
-      localStorage.setItem('accessToken', result.accessToken);
-      localStorage.setItem('refreshToken', result.refreshToken);
-      setAccessToken(result.accessToken);
-      setRefreshToken(result.refreshToken);
-    }
-  };
-
-  useEffect(() => {
-    const accessToken = localStorage.getItem('accessToken');
-    const refreshToken = localStorage.getItem('refreshToken');
-
-    setAccessToken(accessToken);
-    setRefreshToken(refreshToken);
-    setIsLoading(false);
-  }, []);
-
   // 로딩, 에러 처리
-  if (articleIsLoading || isLoading) {
+  if (articleIsLoading) {
     return <Loading />;
   }
 
@@ -99,8 +72,8 @@ export default function Page() {
     return <Error error={error} />;
   }
 
-  if (!accessToken && !refreshToken) {
-    return <Error error="로그인 혹은 재로그인 후 이용해주세요." />;
+  if (!user) {
+    return <Error error="로그인 후 이용해주세요." />;
   }
 
   return (
@@ -110,12 +83,6 @@ export default function Page() {
           <form onSubmit={handleSubmit}>
             <div className="flex justify-center justify-between">
               <h2 className="h2 mb-6">게시글 쓰기</h2>
-              <button
-                className="bg-blue w-[140px] h-[42px] text-white rounded-lg font-medium flex items-center justify-center"
-                onClick={getTestToken}
-              >
-                토큰 임시 발급
-              </button>
               <button
                 type="submit"
                 disabled={!title.trim() && !content.trim()}

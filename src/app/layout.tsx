@@ -4,8 +4,9 @@
 import Head from 'next/head';
 import { usePathname } from 'next/navigation';
 
-// components
+// components, context
 import Header from '@/components/Header';
+import { AuthProvider } from './context/AuthContext';
 
 // css
 import '@/globals.css';
@@ -25,8 +26,10 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body className="antialiased">
-        {pathname !== '/login' && pathname !== '/signup' && <Header />}
-        {children}
+        <AuthProvider>
+          {pathname !== '/login' && pathname !== '/signup' && <Header />}
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

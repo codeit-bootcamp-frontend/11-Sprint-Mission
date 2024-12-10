@@ -1,24 +1,31 @@
 'use client';
 
-// react, next
+// react, next, axios
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { AxiosError } from 'axios';
 
 // types
-import { loginForm } from '@/types/auth';
+import { Auth } from '@/types/auth';
 
-// components
+// components, context
 import AuthLogo from '@/components/auth/AuthLogo';
 import AuthInput from '@/components/auth/AuthInput';
 import SocialLogin from '@/components/auth/SocialLogin';
 import PasswordEyeVisibility from '@/components/auth/PasswordEyeVisibility';
 import AuthSubmitButton from '@/components/auth/AuthSubmitButton';
+import { useAuth } from '@/context/AuthContext';
 
 export default function Page() {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const [passwordConfirmationVisible, setPasswordConfirmationVisible] =
     useState<boolean>(false);
+
+  const [loginError, setLoginError] = useState<string | null>(null);
+  const { signup } = useAuth();
+  const router = useRouter();
 
   // useForm hook
   const {
@@ -26,13 +33,23 @@ export default function Page() {
     handleSubmit,
     formState: { errors, isValid },
     watch,
-  } = useForm<loginForm>({ mode: 'onChange' });
+  } = useForm<Auth>({ mode: 'onChange' });
 
   // 비밀번호 일치 여부를 위한 추적 값
   const password = watch('password');
 
-  const handleSubmitForm = (data: { email: string; password: string }) => {
-    console.log(data);
+  // 회원가입 시 실행되는 함수
+  const handleSubmitForm = async (data: Auth) => {
+    try {
+      await signup(data);
+    } catch (error) {
+      const axiosError = error as AxiosError;
+      if (axiosError) {
+        return setLoginError('이미 존재하는 이메일 또는 닉네임입니다.');
+      }
+    }
+
+    router.push('/');
   };
 
   return (
@@ -110,6 +127,9 @@ export default function Page() {
             </div>
           </div>
           <AuthSubmitButton isValid={isValid} text="회원가입" />
+          {loginError && (
+            <span className="text-red-600 mt-4">{loginError}</span>
+          )}
         </form>
         <SocialLogin />
         <div className="flex items-center justify-center gap-1">
