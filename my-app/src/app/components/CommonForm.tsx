@@ -15,10 +15,10 @@ export default function CommonForm({ type }: AuthFormProps) {
   const [passwordError, setPasswordError] = useState("");
   const [repassword, setRePassword] = useState("");
   const [repasswordError, setRePasswordError] = useState("");
-  const [nickname, setNickname] = useState(""); // 닉네임 상태 추가
+  const [nickname, setNickname] = useState("");
   const [nicknameError, setNicknameError] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // 비밀번호 보이기 상태 추가
-  const [showRePassword, setShowRePassword] = useState(false); // 비밀번호 확인 보이기 상태 추가
+  const [showPassword, setShowPassword] = useState(false);
+  const [showRePassword, setShowRePassword] = useState(false);
   const router = useRouter();
 
   useEffect(() => {}, [email, nickname, password, repassword]);
@@ -43,20 +43,25 @@ export default function CommonForm({ type }: AuthFormProps) {
           password,
         };
         const data = await login(loginData); // 로그인 API 호출
-        localStorage.setItem("token", data.token); // 토큰 저장
-        router.push("/item");
-        alert("로그인 성공!");
+        if (data && data.accessToken) {
+          localStorage.setItem("token", data.accessToken); // 토큰 저장
+          router.push("/item");
+          alert("로그인 성공!");
+        } else {
+          alert("로그인 실패: 토큰이 없습니다.");
+          console.error("로그인 실패: 응답 데이터", data); // 응답 데이터 로깅
+        }
       }
     } catch (error: any) {
       console.error(
         `${type} 오류:`,
         error.response?.data?.message || error.message || error
-      ); // 구체적인 오류 메시지 확인
+      );
       const errorMessage =
         error.response?.data?.message ||
         error.message ||
-        "알 수 없는 오류가 발생했습니다."; // error.message가 없으면 기본 메시지 제공
-      alert(errorMessage); // 사용자에게 오류 메시지 알림
+        "알 수 없는 오류가 발생했습니다.";
+      alert(errorMessage);
     }
   };
   const validateEmail = (email: string) => {

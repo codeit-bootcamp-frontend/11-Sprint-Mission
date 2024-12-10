@@ -29,5 +29,6 @@ export const login = async (data: { email: string; password: string }) => {
     throw new Error("로그인 실패");
   }
 
-  return response.json();
+  const responseData = await response.json();
+  return responseData;
 };
