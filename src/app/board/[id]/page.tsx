@@ -78,7 +78,14 @@ export default function Page() {
 
       fetchComment();
     }
-  }, [submitComment, id, postCommentWrappedFunction, fetchComment, user]);
+  }, [
+    submitComment,
+    id,
+    postCommentWrappedFunction,
+    fetchComment,
+    user,
+    router,
+  ]);
 
   // submitComment 값이 바뀔 때마다 댓글 post 후 가져오는 함수 실행 (댓글 등록 시 submitComment 업데이트)
   useEffect(() => {

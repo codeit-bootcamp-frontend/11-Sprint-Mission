@@ -61,7 +61,7 @@ export default function Header() {
             </div>
           ) : (
             <Link href="/login">
-              <button className="w-[128px] h-12 text-gray-100 rounded-lg bg-blue">
+              <button className="w-[110px] h-11 text-gray-100 rounded-lg bg-blue font-semibold">
                 로그인
               </button>
             </Link>
