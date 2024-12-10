@@ -1,0 +1,173 @@
+/*!***********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/styles/login.module.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************/
+.login_login__naZuj {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.login_loginLogo__ArTKq {
+  width: 25rem;
+  display: flex;
+  align-items: center;
+  margin: 0 auto 2.5rem;
+}
+
+.login_inputArea__Rc_ku {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.login_label__ctrk7 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.login_input__3uA_r {
+  width: 37rem;
+  height: 2rem;
+  padding: 1rem 1.5rem;
+  background-color: var(--gray-100);
+  border: none;
+  outline: none;
+  border-radius: 1rem;
+  margin-top: 1rem;
+}
+
+.login_inputContainer__cOR_B {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login_input__3uA_r:focus {
+  border: 2px solid var(--blue);
+}
+
+.login_placeholder__UYDHS {
+  color: var(--gray-400);
+  width: 37rem;
+}
+
+.login_error__dHxTf {
+  border: 2px solid red;
+}
+
+.login_errorMessage__jeRLt {
+  display: block; /* 수정: 보이지 않는 문제가 있을 경우 */
+  margin-top: 10px;
+  padding-left: 10px;
+  color: #f74747;
+  font-size: 14px;
+  font-weight: 550;
+}
+
+.login_eyeIcon__DsN_F {
+  position: absolute;
+  width: 1.5rem;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%); /* 아이콘 중앙 정렬 */
+  cursor: pointer;
+}
+
+.login_loginBtn__eHUnt {
+  display: flex;
+  width: 40rem;
+  height: 4rem;
+  background-color: var(--gray-400);
+  border-radius: 2.5rem;
+  color: var(--gray-100);
+  font-size: 1.5rem;
+  font-weight: 600;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: none;
+  margin-bottom: 2rem;
+  cursor: not-allowed;
+}
+
+.login_loginBtn__eHUnt.login_active__4wvlY {
+  background-color: var(--blue);
+  cursor: pointer;
+}
+
+.login_simpleLogin__djhCe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e6f2ff;
+  height: 5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.login_simpleLoginInner__XNQm9 {
+  width: 37rem;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+  justify-content: space-between;
+}
+
+.login_loginIcon__ior8P {
+  display: flex;
+  gap: 1rem;
+}
+
+.login_loginIcon__ior8P img {
+  width: 3rem;
+}
+
+.login_firstUser__Mxzw6 {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--gray-800);
+  margin-bottom: 2rem;
+}
+
+.login_firstUser__Mxzw6 a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .login_login__naZuj {
+    padding: 0 1rem;
+  }
+
+  .login_loginLogo__ArTKq {
+    width: 65%;
+  }
+
+  .login_label__ctrk7 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .login_input__3uA_r {
+    width: 100%;
+    max-width: 25rem;
+    margin: 0 auto;
+    padding: 1rem 0;
+    margin-top: 1rem;
+  }
+
+  .login_loginBtn__eHUnt {
+    width: 100%;
+  }
+
+  .login_simpleLoginInner__XNQm9 {
+    width: 100%;
+    padding: 0 1.5rem;
+  }
+}
+

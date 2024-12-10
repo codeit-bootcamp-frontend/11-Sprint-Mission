@@ -1,0 +1,222 @@
+/* Variables specific to the component */
+
+.header {
+  position: sticky;
+  top: 0;
+  height: 4.375rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12.5rem;
+  border-bottom: 0.0625rem solid var(--gray-200);
+  background-color: #ffffff;
+}
+
+.logo {
+  width: 153px;
+  height: 51px;
+  cursor: pointer;
+}
+
+.login {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--blue);
+  color: var(--gray-50);
+  width: 8rem;
+  height: 3rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.heroSection {
+  width: 100%;
+  height: 33.75rem;
+  background-color: #cfe5ff;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.heroContent {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.heroText {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 3.5rem;
+  color: var(--gray-700);
+}
+
+.subtitle {
+  font-size: 2.5rem;
+  line-height: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.subContent {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 2rem;
+}
+
+.ctaButton {
+  display: block;
+  text-decoration: none;
+  color: var(--gray-50);
+  background-color: var(--blue);
+  text-align: center;
+  border-radius: 2.5rem;
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-top: 2rem;
+  width: 357px;
+  height: 56px;
+}
+
+.popularItemsSection,
+.searchItemsSection,
+.registerItemsSection {
+  width: 100%;
+  height: 45rem;
+  display: flex;
+  align-items: center;
+}
+
+.popularItemsContent,
+.searchItemsContent,
+.registerItemsContent {
+  display: flex;
+  width: 60.25rem;
+  background-color: var(--gray-50);
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 0.75rem;
+}
+
+.trustSection {
+  width: 100%;
+  height: 33.75rem;
+  background-color: #cfe5ff;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.trustContent {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 3.5rem;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  color: var(--gray-700);
+}
+
+.footer {
+  height: 10rem;
+  background-color: var(--gray-900);
+  display: flex;
+}
+
+.footerSection {
+  width: 70rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.footerContent {
+  color: var(--gray-400);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.footerPolicyFaq a {
+  text-decoration: none;
+  color: var(--gray-200);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.footerSns {
+  display: flex;
+  width: 7.25rem;
+  gap: 0.75rem;
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .header {
+    padding: 0 24px;
+  }
+
+  .heroSection {
+    height: 771px;
+  }
+
+  .heroContent {
+    flex-direction: column;
+  }
+
+  .ctaButton {
+    margin: auto;
+    margin-top: 24px;
+  }
+
+  .trustSection {
+    height: 927px;
+    background-color: #cfe5ff;
+  }
+
+  .trustContent {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .header {
+    padding: 0 24px;
+  }
+
+  .heroSection {
+    height: 540px;
+  }
+
+  .heroContent {
+    flex-direction: column;
+  }
+
+  .heroText {
+    font-size: 2rem;
+    text-align: center;
+    line-height: 45px;
+  }
+
+  .ctaButton {
+    margin: auto;
+    margin-top: 24px;
+    font-size: 18px;
+  }
+
+  .trustSection {
+    height: 540px;
+  }
+
+  .trustContent {
+    font-size: 2rem;
+    line-height: 43px;
+    text-align: center;
+  }
+}
