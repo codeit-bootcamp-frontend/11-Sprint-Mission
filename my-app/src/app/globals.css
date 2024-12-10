@@ -12,3 +12,18 @@ body {
   background: var(--background);
   @apply text-base;
 }
+
+.t-pc-br {
+  display: none;
+}
+.pc-br {
+  display: none;
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  .pc-br {
+    display: block;
+  }
+  .t-pc-br {
+    display: block;
+  }
+}

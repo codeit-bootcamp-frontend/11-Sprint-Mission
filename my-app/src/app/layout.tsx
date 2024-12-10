@@ -1,3 +1,6 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./components/Header";
@@ -13,10 +16,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+  const hiddenPaths = ["/login", "/signup"];
+  const showHeader = !hiddenPaths.includes(pathname);
   return (
     <html lang="ko">
       <body className={`${pretendard.className}  antialiased`}>
-        <Header />
+        {showHeader && <Header />}
         <main className="mt-[72px]">{children}</main>
       </body>
     </html>

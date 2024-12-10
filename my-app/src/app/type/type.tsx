@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface BestItemData {
   id: number;
   title: string;
@@ -29,3 +31,17 @@ export interface Comment {
     nickname: string;
   };
 }
+
+export interface Mcard {
+  imgSrc: string;
+  alt: string;
+  title: string;
+  description1: string;
+  description2: string;
+  isSpecial: boolean;
+}
+
+export type AuthFormProps = {
+  type: "login" | "signup";
+  nickName?: ReactNode;
+};
