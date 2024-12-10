@@ -12,7 +12,7 @@ const BestArticleCard = ({ article }: { article: Article }) => {
     <>
       <Link href={`/board/${article.id}`}>
         <div>
-          <MedalIcon alt="베스트 게시글" />
+          <Image src={MedalIcon} alt="베스트 게시글" width={24} height={24} />
           Best
         </div>
 
@@ -22,10 +22,11 @@ const BestArticleCard = ({ article }: { article: Article }) => {
             {article.image && (
               <div>
                 <Image
-                  fill
                   src={article.image}
                   alt={`${article.id}번 게시글 이미지`}
-                  style={{ objectFit: "contain" }}
+                  // style={{ objectFit: "contain" }}
+                  width="24"
+                  height="24"
                 />
               </div>
             )}

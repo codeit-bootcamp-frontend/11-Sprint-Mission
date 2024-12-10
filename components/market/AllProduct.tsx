@@ -4,13 +4,14 @@ import Link from "next/link";
 import SearchIcon from "@/public/images/ic_search.svg";
 // import Image from "next/image";
 import Dropdown from "@/components/ui/Dropdown";
-import "@/styles/AllProduct.module.css";
+// import styles from "@/styles/AllProduct.module.css";
 import { useEffect, useState } from "react";
 import ItemCard from "@/components/market/ItemCard";
 import { getProducts } from "@/api/api";
 import Pagination from "@/components/ui/Pagination";
 import { Product, ProductListResponse, ProductSortOption } from "@/types/Types";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 // 화면 사이즈
 const getPageSize = (width: number) => {
@@ -152,7 +153,7 @@ const AllProduct = () => {
             width={24}
             height={24}
           /> */}
-          <SearchIcon alt="Search Icon" />
+          <Image src={SearchIcon} alt="Search Icon" width={24} height={24} />
           <input
             className="searchInput"
             // onSearch={handleSearch}

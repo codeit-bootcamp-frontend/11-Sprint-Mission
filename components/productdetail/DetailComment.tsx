@@ -4,19 +4,7 @@ import { getProductComments } from "@/api/api";
 import InquiryEmpty from "../../../public/images/inquiry_empty.svg";
 import ProfileImg from "../../../images/profile.png";
 import Kebab from "../../../public/images/ic_kebab.svg";
-
-// 댓글 데이터 타입 정의
-interface Comment {
-  id: string;
-  content: string;
-  updatedAt: Date;
-  createdAt: Date;
-  writer: {
-    image: string | null;
-    nickname: string;
-    id: string;
-  };
-}
+import { Comment } from "@/types/Types";
 
 // CommentItem 컴포넌트
 type CommentItemProps = {
@@ -106,7 +94,7 @@ const EmptyState = () => {
 
 // DetailComment 컴포넌트
 type DetailCommentProps = {
-  productId: string;
+  productId: number;
 };
 
 interface ProductCommentList {
@@ -126,9 +114,9 @@ function DetailComment({ productId }: DetailCommentProps) {
       setIsLoading(true);
 
       try {
-        const response: ProductCommentList = await getProductComments(
-          productId
-        );
+        const response: ProductCommentList = await getProductComments({
+          productId,
+        });
         setComments(response.list);
         setError(null);
       } catch (error) {

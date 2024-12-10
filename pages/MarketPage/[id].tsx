@@ -1,18 +1,22 @@
-import { useParams } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import { getDetailComments } from "@/api/api";
+import DetailInput from "@/components/productdetail/DetailInput";
+import ItemContent from "@/components/productdetail/ItemContent";
+import { Product } from "@/types/Types";
+import Image from "next/image";
+import BackIcon from "@/public/images/ic_back.svg";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
-import { getDetailComments } from "../../api/api";
-import BackIcon from "../../images/ic_back.svg";
-import DetailInput from "../../components/productdetail/DetailInput";
-import ItemContent from "../../components/productdetail/ItemContent";
-
-export default function ProductDetail() {
-  const [product, setProduct] = useState(null);
+const ItemPage = () => {
+  const [product, setProduct] = useState<Product | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const { productId } = useParams();
+  const router = useRouter();
+  const { id } = router.query;
+
+  const productId = Number(id);
 
   useEffect(() => {
     async function fetchProduct() {
@@ -24,12 +28,12 @@ export default function ProductDetail() {
 
       setIsLoading(true);
       try {
-        const data = await getDetailComments(productId);
+        const data: Product = await getDetailComments(productId);
         if (!data) {
           throw new Error("해당 상품의 데이터를 찾을 수 없습니다.");
         }
         setProduct(data);
-      } catch (error) {
+      } catch (error: any) {
         setError(error.message);
       } finally {
         setIsLoading(false);
@@ -63,9 +67,17 @@ export default function ProductDetail() {
         {/* 목록으로 돌아가기 버튼 */}
         <Link className="backHomePage" href="/items">
           목록으로 돌아가기
-          <BackIcon className="backIcon" />
+          <Image
+            src={BackIcon}
+            alt="돌아가기"
+            width={24}
+            height={24}
+            className="backIcon"
+          />
         </Link>
       </div>
     </div>
   );
-}
+};
+
+export default ItemPage;

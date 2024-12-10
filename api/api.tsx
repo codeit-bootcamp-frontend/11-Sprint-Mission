@@ -21,7 +21,7 @@ export async function getProducts({
   }
 }
 
-export async function getDetailComments(productId: string) {
+export async function getDetailComments(productId: number) {
   if (!productId) {
     throw new Error("Invalid product ID");
   }
@@ -52,10 +52,15 @@ export async function getProductComments({
     throw new Error("Invalid product ID");
   }
 
+  const params = {
+    limit: String(limit),
+  };
+
   try {
     // 올바르게 URLSearchParams 생성
     // const query = new URLSearchParams().toString(); // 빈 쿼리 문자열을 생성
-    const query = `limit=${limit}`;
+    // const query = `limit=${limit}`;
+    const query = new URLSearchParams(params).toString();
     const response = await fetch(
       `https://panda-market-api.vercel.app/products/${productId}/comments?${query}`
     ); // api 호출

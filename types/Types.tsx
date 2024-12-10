@@ -57,3 +57,20 @@ export interface ArticleList {
 }
 
 export type ArticleSortOption = "recent" | "like";
+
+export interface Comment {
+  writer: {
+    image: string;
+    nickname: string;
+    id: number;
+  };
+  updatedAt: Date;
+  createdAt: Date;
+  content: string;
+  id: number;
+}
+
+export interface CommentList {
+  nextCursor: number;
+  list: Comment[];
+}

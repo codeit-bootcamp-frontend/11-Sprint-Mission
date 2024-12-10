@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 // import { useEffect } from "react";
-import PlusIcon from "../public/images/ic_plus.svg";
+import PlusIcon from "@/public/images/ic_plus.svg";
 import DeleteButton from "./DeleteButton";
 import Image from "next/image";
 
@@ -60,7 +60,7 @@ const ImageUpload = ({ title }: ImageUploadProps) => {
           >
             <div className="uploadBoxContent">
               <p className="textArea">
-                <PlusIcon />
+                <Image src={PlusIcon} alt="Plus" width={24} height={24} />
                 <br /> 이미지 등록
               </p>
             </div>

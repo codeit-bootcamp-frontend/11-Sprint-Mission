@@ -1,6 +1,7 @@
 import Profile from "@/public/images/profile.svg";
 import { Article } from "@/types/Types";
 import { formatDate } from "date-fns";
+import Image from "next/image";
 
 interface ArticleInfoProps {
   article: Article;
@@ -11,7 +12,7 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
 
   return (
     <div>
-      <Profile width={24} heigt={24} />
+      <Image src={Profile} alt="프로필" width={24} height={24} />
       {article.writer.nickname} {formetDate}
     </div>
   );
