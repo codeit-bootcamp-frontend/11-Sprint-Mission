@@ -1,7 +1,42 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function HeaderContainer() {
+  const [token, setToken] = useState<string | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    setToken(storedToken);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setToken(null);
+    router.push("/login");
+    alert("로그아웃이 되었습니다.");
+  };
+
+  const handleToggle = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsOpen(!isOpen);
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      const handleClickOutside = () => setIsOpen(false);
+      document.addEventListener("click", handleClickOutside);
+
+      return () => {
+        document.removeEventListener("click", handleClickOutside);
+      };
+    }
+  }, [isOpen]);
+
   return (
     <header className="w-full border-b-2 border-solid border-bordergray fixed top-0 left-0 right-0 py-0 px-4 md:px-6 bg-background z-50">
       <div className="w-full max-w-[1440px] h-[70px] mx-auto flex items-center ">
@@ -38,15 +73,11 @@ export default function HeaderContainer() {
             중고마켓
           </Link>
         </nav>
-        <button className="w-[128px] h-[48px] bg-skyblue text-white rounded-[8px]">
-          <Link className="w-full h-full inline-block relative" href={"/login"}>
-            <span className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
-              로그인
-            </span>
-          </Link>
-        </button>
-        {/* <div className="w-[40px] h-[40px] relative">
-          <Link href={"/login"}>
+        {token ? (
+          <div
+            className="w-[40px] h-[40px] relative cursor-pointer"
+            onClick={handleToggle}
+          >
             <Image
               className="object-contain"
               src="/head/myPageIcon.png"
@@ -54,8 +85,27 @@ export default function HeaderContainer() {
               width={40}
               height={40}
             />
-          </Link>
-        </div> */}
+            <button
+              className={`absolute left-[-65px] lg:left-[-100px] w-[102px] lg:w-[139px] h-[51px] rounded-[8px] bg-background text-foreground border border-bordergray ${
+                isOpen ? "block" : "hidden"
+              }`}
+              onClick={handleLogout}
+            >
+              로그아웃
+            </button>
+          </div>
+        ) : (
+          <button className="w-[128px] h-[48px] bg-skyblue text-white rounded-[8px]">
+            <Link
+              className="w-full h-full inline-block relative"
+              href={"/login"}
+            >
+              <span className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
+                로그인
+              </span>
+            </Link>
+          </button>
+        )}
       </div>
     </header>
   );
