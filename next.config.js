@@ -31,6 +31,16 @@ const nextConfig = {
         hostname: "flexible.img.hani.co.kr",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "mblogthumb-phinf.pstatic.net",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "ibb.co",
+        pathname: "/**",
+      },
     ],
   },
 };

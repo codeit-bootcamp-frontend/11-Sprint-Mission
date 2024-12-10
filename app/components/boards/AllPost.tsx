@@ -8,6 +8,7 @@ import SearchInput from "@/app/components/ui/SearchInput";
 import { fetchArticles, Article } from "@/app/lib/api/api";
 import Image from "next/image";
 import Dropdown from "../ui/Dropdown";
+import Pagination from "./AllPostPagination";
 
 export default function AllPost() {
   const router = useRouter();
@@ -42,7 +43,11 @@ export default function AllPost() {
   };
 
   useEffect(() => {
-    const query = searchParams.get("q") || "";
+    const getSearchQuery = (): string => {
+      return searchParams.get("q") || "";
+    };
+
+    const query = getSearchQuery();
     fetchArticlesFromApi(query);
   }, [searchParams]);
 
@@ -73,6 +78,54 @@ export default function AllPost() {
 
   const paginatedArticles = getPaginatedArticles();
 
+  const PostList = ({ articles }: { articles: Article[] }) => (
+    <div className={styles.postsContainer}>
+      {articles.length > 0 ? (
+        articles.map((article) => (
+          <Link
+            key={article.id}
+            href={`/boards/${article.id}`}
+            className={styles.postLink}
+          >
+            <div className={styles.post}>
+              <div className={styles.postContents}>
+                <h3 className={styles.title}>{article.title}</h3>
+                <div className={styles.imgContainer}>
+                  <Image
+                    src={article.image || "/images/default.png"}
+                    alt={article.title || "default"}
+                    width={48}
+                    height={48}
+                    className={styles.image}
+                  />
+                </div>
+              </div>
+              <div className={styles.postFooter}>
+                <div className={styles.info}>
+                  <p>{article.writer.nickname}</p>
+                  <div className={styles.metaDate}>
+                    {new Date(article.createdAt).toLocaleDateString()}
+                  </div>
+                </div>
+                <div className={styles.metaLike}>
+                  <Image
+                    width={16}
+                    height={16}
+                    src="/images/ic_heart.png"
+                    alt="하트"
+                  />
+                  {article.likeCount}
+                </div>
+              </div>
+            </div>
+          </Link>
+        ))
+      ) : (
+        <p>검색 결과가 없습니다.</p>
+      )}
+    </div>
+  );
+
   return (
     <div className="container">
       <div className={styles.titleContainer}>
@@ -101,81 +154,13 @@ export default function AllPost() {
         )}
       </div>
 
-      <div className={styles.postsContainer}>
-        {paginatedArticles.length > 0 ? (
-          paginatedArticles.map((article) => (
-            <Link
-              key={article.id}
-              href={`/boards/${article.id}`}
-              className={styles.postLink}
-            >
-              <div className={styles.post}>
-                <div className={styles.postContents}>
-                  <h3 className={styles.title}>{article.title}</h3>
-                  <div className={styles.imgContainer}>
-                    <Image
-                      src={article.image || "/images/default.png"}
-                      alt={article.title || "default"}
-                      width={48}
-                      height={48}
-                      className={styles.image}
-                    />
-                  </div>
-                </div>
-                <div className={styles.postFooter}>
-                  <div className={styles.info}>
-                    <p>{article.writer.nickname}</p>
-                    <div className={styles.metaDate}>
-                      {new Date(article.createdAt).toLocaleDateString()}
-                    </div>
-                  </div>
-                  <div className={styles.metaLike}>
-                    <Image
-                      width={16}
-                      height={16}
-                      src="/images/ic_heart.png"
-                      alt="하트"
-                    />
-                    {article.likeCount}
-                  </div>
-                </div>
-              </div>
-            </Link>
-          ))
-        ) : (
-          <p>검색 결과가 없습니다.</p>
-        )}
-      </div>
+      <PostList articles={paginatedArticles} />
 
-      <div className={styles.pagination}>
-        <button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-          className={styles.paginationButton}
-        >
-          <Image
-            width={20}
-            height={20}
-            src="/images/ic_left.png"
-            alt="왼쪽 화살표"
-          />
-        </button>
-        <span>{currentPage}</span>
-        <button
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={
-            paginatedArticles.length < 10 || currentPage * 10 >= articles.length
-          }
-          className={styles.paginationButton}
-        >
-          <Image
-            width={20}
-            height={20}
-            src="/images/ic_right.png"
-            alt="오른쪽 화살표"
-          />
-        </button>
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        totalArticles={articles.length}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 }

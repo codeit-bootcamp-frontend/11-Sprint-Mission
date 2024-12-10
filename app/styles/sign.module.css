@@ -1,0 +1,118 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoContainer {
+  position: relative;
+  width: 396px;
+  height: 132px;
+}
+
+.loginLogo {
+  object-fit: contain;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 640px;
+  width: 100%;
+}
+
+.info {
+  margin: 1.5625em 0 1.875em;
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.625rem;
+}
+
+.inputfield {
+  width: 100%;
+  height: 3.5em;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.625rem;
+  background-color: #f3f4f6;
+  padding: 1em 1.5em;
+  margin: 0.75em 0;
+}
+
+.inputfield::placeholder {
+  color: #9ca3af;
+}
+
+.passwordLabel,
+.passwordRepeat {
+  position: relative;
+}
+
+.formError {
+  color: #f74747;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.loginButton {
+  width: 100%;
+  background-color: #9ca3af;
+  height: 3.111em;
+  border-radius: 2.5rem;
+  border: none;
+  color: #f3f4f6;
+  line-height: 2rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: not-allowed;
+}
+
+.activeLoginButton {
+  background-color: #3692ff;
+  cursor: pointer;
+}
+
+.simpleLogin {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.625rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e6f2ff;
+  padding: 1em 1.4375em;
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.signup {
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.9375em;
+  gap: 4px;
+}
+
+.textDecorationUnderline {
+  text-decoration: underline;
+  color: #3282f6;
+}
+
+@media (max-width: 1200px) {
+  .logoContainer {
+    width: 266px;
+    height: 90px;
+  }
+}

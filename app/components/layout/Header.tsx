@@ -21,7 +21,7 @@ function Header() {
           <Image
             width={150}
             height={50}
-            src="/logos/panda.png"
+            src="/logos/logo.png"
             alt="판다마켓"
             priority
             className={styles.headerLogo}

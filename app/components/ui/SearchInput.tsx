@@ -6,7 +6,7 @@ import Image from "next/image";
 
 interface SearchInputProps {
   placeholder?: string;
-  onSearch: (value: string) => void; // 검색어를 상위로 전달
+  onSearch: (value: string) => void;
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({

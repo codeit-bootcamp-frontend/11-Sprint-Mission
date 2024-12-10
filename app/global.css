@@ -15,6 +15,19 @@ a {
   color: inherit;
 }
 
+input {
+  outline: none;
+  border: none;
+}
+
+input:focus {
+  border: 2px solid var(--blue);
+}
+
+input::placeholder {
+  color: var(--gray400);
+}
+
 @media (min-width: 375px) {
   .container {
     margin: 70px 20px 0;
