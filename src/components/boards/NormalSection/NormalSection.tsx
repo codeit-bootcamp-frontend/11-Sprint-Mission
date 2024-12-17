@@ -3,7 +3,7 @@
 import Articles from "@/components/boards/Article";
 import SearchArticles from "@/components/boards/SearchArticles/SearchArticles";
 import SortToggle from "@/components/boards/SortToggle/SortToggle";
-import { useArticles } from "@/api/apiGetArticles";
+import { useArticles } from "@/hooks/useArticles";
 import { useDeviceType } from "@/hooks/useDeviceType";
 import { useArticleStore } from "@/store/articleStore";
 import { createSkeletonArray } from "@/utils/skeleton";

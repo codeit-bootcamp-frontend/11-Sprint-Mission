@@ -1,5 +1,4 @@
 import { ArticleParams, ArticleResponse } from "@/types/article";
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -18,9 +17,7 @@ const createQueryParams = ({
     ...(keyword && { keyword }) /*Keyword가 있으면 쿼리에 추가*/,
   });
 
-const apiGetArticles = async (
-  params: ArticleParams
-): Promise<ArticleResponse> => {
+export const fetchArticles = async (params: ArticleParams): Promise<ArticleResponse> => {
   try {
     const { data } = await axios.get<ArticleResponse>(
       `${baseUrl}/articles?${createQueryParams(params)}`
@@ -28,17 +25,10 @@ const apiGetArticles = async (
     return data;
   } catch (error) {
     const message = axios.isAxiosError(error)
-      ? error.response?.data?.message ??
-        "error occurred & server error message is missing"
-      : "An unexpected error occurred(not axios error)";
+      ? error.response?.data?.message ?? "Failed to fetch articles"
+      : "An unexpected error occurred";
     throw new Error(message);
   }
 };
-
-export const useArticles = (params: ArticleParams) =>
-  useQuery({
-    queryKey: ["articles", params],
-    queryFn: () => apiGetArticles(params),
-  });
 
 export type { ArticleParams, ArticleResponse };
