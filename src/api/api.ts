@@ -209,6 +209,7 @@ export interface newProductData {
   name: string;
 }
 
+// 물건 등록하기 - 리액트 쿼리
 export async function postProduct(newProduct: newProductData) {
   const accessToken = await getAccessToken();
   const response = await fetch(`${API_BASE_URL}/products`, {
@@ -222,6 +223,27 @@ export async function postProduct(newProduct: newProductData) {
 
   if (!response.ok) {
     throw new Error("Failed to upload the post.");
+  }
+  return await response.json();
+}
+
+// 댓글 작성하기 - 리액트 쿼리
+export async function postComments(content: string, productId: number) {
+  const accessToken = await getAccessToken();
+  const response = await fetch(
+    `${API_BASE_URL}/products/${productId}/comments`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify(content),
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to upload the comment.");
   }
   return await response.json();
 }

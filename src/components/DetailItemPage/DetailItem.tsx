@@ -9,6 +9,8 @@ import QuestionForm from "./QuestionForm";
 import FavoriteCount from "./FavoriteCount";
 import moreMenu from "../../assets/image/Group 33735.png";
 import arrow from "../../assets/image/Group 33736.png";
+import { useDispatch } from "react-redux";
+import { setProductInfo } from "../../redux/productSlice";
 
 interface Product {
   createdAt: Date;
@@ -29,12 +31,14 @@ const DetailItem = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [product, setProduct] = useState<Product | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchProductsById = async () => {
       try {
         setLoading(true);
         const result = await getProductsById(productId);
+        dispatch(setProductInfo(result));
         setProduct(result);
       } catch (err) {
         setError((err as Error).message);

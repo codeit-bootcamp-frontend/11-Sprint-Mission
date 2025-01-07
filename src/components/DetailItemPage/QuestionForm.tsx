@@ -1,4 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { postComments } from "../../api/api";
 
 const QuestionForm = () => {
   const [question, setQuestion] = useState<string>("");
@@ -6,6 +8,29 @@ const QuestionForm = () => {
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>): void => {
     setQuestion(e.target.value);
   };
+
+  // const mutation = useMutation({
+  //   mutationFn: (content: string) => postComments(content),
+  //   onSuccess: (data) => {
+  //     alert("문의사항 등록이 완료되었습니다.");
+  //     setQuestion("");
+  //   },
+  //   onError: () => {
+  //     alert("문의사항 등록에 실패했습니다. 다시 시도해주세요");
+  //   },
+  // });
+
+  // const handleSubmit = () => {
+  //   if (!question) {
+  //     alert("문의사항을 입력해주세요");
+  //     return;
+  //   }
+
+  //   const newComment = {
+  //     content: question,
+  //   };
+  //   mutation.mutate(content);
+  // };
 
   return (
     <section className="question-container">
@@ -19,7 +44,11 @@ const QuestionForm = () => {
           onChange={handleChange}
         ></textarea>
         <div className="button-box">
-          <button className="question-register-button" disabled={!question}>
+          <button
+            className="question-register-button"
+            disabled={!question}
+            // onClick={handleSubmit}
+          >
             등록
           </button>
         </div>
