@@ -1,0 +1,47 @@
+@import "../../css/Palette.css";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.sign-main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-main-box {
+  width: 640px;
+  padding: 48px 0;
+}
+
+.sub-box {
+  width: 100%;
+}
+
+.to-signup {
+  text-align: center;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: bold;
+  font-family: "Pretendard";
+}
+
+.to-signup-link {
+  color: var(--blue);
+}
+
+/* 반응형 - Mobile*/
+@media screen and (max-width: 767px) and (min-width: 375px) {
+  .sign-main {
+    padding: 0 16px;
+  }
+
+  .sign-main-box {
+    width: 100%;
+    max-width: 400px;
+  }
+}

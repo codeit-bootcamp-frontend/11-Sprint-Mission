@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.login-main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-main-box {
+  width: 640px;
+}
+
+.login-main-box-logo {
+  text-align: center;
+}
+
+.login-logo {
+  width: 396px;
+  height: 132px;
+  margin-bottom: 40px;
+}
+
+.sub-box {
+  width: 100%;
+}
+
+@media screen and (max-width: 767px) and (min-width: 375px) {
+  .login-main {
+    padding: 0 16px;
+  }
+
+  .login-main-box {
+    width: 100%;
+    max-width: 400px;
+  }
+}

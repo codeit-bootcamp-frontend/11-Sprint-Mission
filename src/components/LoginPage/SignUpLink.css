@@ -1,0 +1,18 @@
+@import "../../css/Palette.css";
+
+.to-signup {
+  text-align: center;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: bold;
+  font-family: "Pretendard";
+}
+
+.to-signup-link {
+  color: var(--blue);
+}
+
+.tosignup-button {
+  border: none;
+  background-color: var(--white);
+}
