@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "./counterAccessToken";
+import userInfoReducer from "./userSlice";
 
 // localStorage에서 상태 불러오기
 const loadState = () => {
@@ -23,6 +24,7 @@ const store = configureStore({
   reducer: {
     // 상태 업데이트하는 리듀서 정의
     counter: counterReducer,
+    userInfo: userInfoReducer,
   },
   preloadedState: loadState(), // 초기 상태 설정
   // 앱이 다시 시작될 때도 이전 상태를 유지해야하는 경우 사용하는 옵션
