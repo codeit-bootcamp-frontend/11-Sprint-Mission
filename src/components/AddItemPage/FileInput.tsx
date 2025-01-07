@@ -153,7 +153,7 @@ const FileInput = ({ initialValues = INITIAL_VALUES }) => {
         <div className="tag-container">
           {tags.map((tag, index) => (
             <div key={index} className="tag-box">
-              #{tag}
+              <div className="tag-name">#{tag}</div>
               <DeleteButton
                 altText="태그 삭제 버튼"
                 onClick={() => handleRemoveTag(index)}
