@@ -10,32 +10,37 @@ import FAQ from "./components/FAQ";
 import LoginPage from "./page/LoginPage";
 import RegisterPage from "./page/RegisterPage";
 import { useSelector } from "react-redux";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
   const count = useSelector((state: any) => state.counter.value);
   return (
-    <Routes>
-      <Route path={ROUTES.LANDING} element={<LandingPage />} />
-      <Route
-        path={ROUTES.LOGIN}
-        element={
-          count === true ? <Navigate to={ROUTES.LANDING} /> : <LoginPage />
-        }
-      />
-      <Route
-        path={ROUTES.REGISTER}
-        element={
-          count === true ? <Navigate to={ROUTES.LANDING} /> : <RegisterPage />
-        }
-      />
-      <Route path={ROUTES.PRIVACY} element={<Privacy />} />
-      <Route path={ROUTES.FAQ} element={<FAQ />} />
-      <Route path={ROUTES.MAIN}>
-        <Route index element={<MainPage />} />
-        <Route path=":productId" element={<DetailItemPage />} />
-      </Route>
-      <Route path={ROUTES.ADD_ITEM} element={<AddItemPage />} />
-    </Routes>
+    <QueryClientProvider client={queryClient}>
+      <Routes>
+        <Route path={ROUTES.LANDING} element={<LandingPage />} />
+        <Route
+          path={ROUTES.LOGIN}
+          element={
+            count === true ? <Navigate to={ROUTES.LANDING} /> : <LoginPage />
+          }
+        />
+        <Route
+          path={ROUTES.REGISTER}
+          element={
+            count === true ? <Navigate to={ROUTES.LANDING} /> : <RegisterPage />
+          }
+        />
+        <Route path={ROUTES.PRIVACY} element={<Privacy />} />
+        <Route path={ROUTES.FAQ} element={<FAQ />} />
+        <Route path={ROUTES.MAIN}>
+          <Route index element={<MainPage />} />
+          <Route path=":productId" element={<DetailItemPage />} />
+        </Route>
+        <Route path={ROUTES.ADD_ITEM} element={<AddItemPage />} />
+      </Routes>
+    </QueryClientProvider>
   );
 }
 

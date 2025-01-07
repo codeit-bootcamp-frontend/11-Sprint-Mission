@@ -1,6 +1,10 @@
 import React, { useState, useEffect, ChangeEvent, KeyboardEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import DeleteButton from "../../common/DeleteButton";
+import { useMutation } from "@tanstack/react-query";
+import { newProductData } from "../../api/api";
 import "./FileInput.css";
+import { postProduct } from "../../api/api";
 
 interface InitialValues {
   name: string;
@@ -20,6 +24,8 @@ const FileInput = ({ initialValues = INITIAL_VALUES }) => {
   const [tags, setTags] = useState<string[]>([]);
   const [values, setValues] = useState<InitialValues>(initialValues);
   const [imgError, setImgError] = useState<string>("");
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     return () => {
@@ -38,12 +44,14 @@ const FileInput = ({ initialValues = INITIAL_VALUES }) => {
     if (nextValue) {
       const imgURL = URL.createObjectURL(nextValue);
       setPreview(imgURL);
+      setImageFile(nextValue);
     }
   };
 
   const handleRemovePreview = () => {
     setPreview(null);
     setImgError("");
+    setImageFile(null);
   };
 
   const handleTagChange = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -68,6 +76,38 @@ const FileInput = ({ initialValues = INITIAL_VALUES }) => {
       }));
     };
 
+  const mutation = useMutation({
+    mutationFn: (newProduct: newProductData) => postProduct(newProduct),
+    onSuccess: (data) => {
+      alert("상품 등록이 완료되었습니다.");
+      setValues(INITIAL_VALUES);
+      setTags([]);
+      setPreview(null);
+      setImageFile(null);
+      navigate(`/items/${data.id}`);
+    },
+    onError: () => {
+      alert("상품 등록에 실패했습니다. 다시 시도해주세요");
+    },
+  });
+
+  const handleSubmit = () => {
+    if (!isFormValid()) {
+      alert("모든 입력창을 올바르게 입력해주세요");
+      return;
+    }
+
+    const newProduct: newProductData = {
+      name: values.name,
+      price: Number(values.price),
+      description: values.description,
+      tags: tags,
+      images: imageFile ? [imageFile] : [],
+    };
+
+    mutation.mutate(newProduct);
+  };
+
   const isFormValid = () =>
     values.name && values.description && values.price && tags.length;
 
@@ -75,7 +115,11 @@ const FileInput = ({ initialValues = INITIAL_VALUES }) => {
     <div className="fileInput-box">
       <section className="register-box">
         <p className="register-box-header">상품 등록하기</p>
-        <button className="register-box-button" disabled={!isFormValid()}>
+        <button
+          className="register-box-button"
+          disabled={!isFormValid()}
+          onClick={handleSubmit}
+        >
           등록
         </button>
       </section>

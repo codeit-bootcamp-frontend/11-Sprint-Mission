@@ -200,3 +200,28 @@ async function fetchWithAuth(url: string, options: RequestInit = {}) {
   };
   return fetchApi(url, authOptions);
 }
+
+export interface newProductData {
+  images?: File[];
+  tags: string[];
+  price: number;
+  description: string;
+  name: string;
+}
+
+export async function postProduct(newProduct: newProductData) {
+  const accessToken = await getAccessToken();
+  const response = await fetch(`${API_BASE_URL}/products`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify(newProduct),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to upload the post.");
+  }
+  return await response.json();
+}
