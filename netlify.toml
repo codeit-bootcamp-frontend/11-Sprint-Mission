@@ -1,7 +1,0 @@
-[build]
-  command = "next build"
-  base = "./Next-김성종"  # Next-김성종 디렉토리 내에서 빌드를 수행
-  publish = "./Next-김성종/.next"  # .next 디렉토리를 퍼블리시 디렉토리로 설정
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
