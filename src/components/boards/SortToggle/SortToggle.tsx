@@ -24,10 +24,8 @@ function SortToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        className="flex items-center justify-center gap-2 h-[42px] rounded-[12px] border bg-white hover:bg-gray-50
-        w-[42px ]
-        tablet:w-[130px]
-      "
+        className="flex-center gap-2 h-[42px] rounded-[12px] border bg-white hover:bg-gray-50
+          w-[42px] tablet:w-[130px]"
       >
         <span className="text-sm font-medium">{getSortText()}</span>
         <ChevronDown className="h-4 w-4" />
