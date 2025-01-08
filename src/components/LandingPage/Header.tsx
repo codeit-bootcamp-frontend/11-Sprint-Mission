@@ -16,9 +16,8 @@ function Header() {
   };
 
   const handleLogout = () => {
-    localStorage.clear();
     dispatch(reset());
-    window.location.reload(); // 로그아웃 되면 새로고침
+    localStorage.clear();
   };
 
   return (
