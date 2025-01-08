@@ -68,6 +68,19 @@ export async function updateCommentsById(
   return fetchWithAuth(url, options);
 }
 
+// 댓글 삭제 함수
+export async function deleteCommentsById(commentId: number) {
+  const url = `${API_BASE_URL}/comments/${commentId}`;
+  const options = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  return fetchWithAuth(url, options);
+}
+
 interface SignupParams {
   email: string;
   nickname: string;

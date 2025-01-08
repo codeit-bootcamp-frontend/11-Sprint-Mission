@@ -7,6 +7,7 @@ interface CommentComponentProps {
   comment: CommentProps;
   isEditing: boolean;
   onEditClick: (comment: CommentProps) => void;
+  onDeleteClick: (id: number) => void;
   onEditSave: (id: number, content: string) => void;
   onEditCancel: () => void;
   activeDropdown: number | null;
@@ -28,6 +29,7 @@ interface CommentProps {
 const Comment = ({
   comment,
   onEditClick,
+  onDeleteClick,
   isEditing,
   onEditSave,
   onEditCancel,
@@ -35,6 +37,7 @@ const Comment = ({
   onDropdownToggle,
 }: CommentComponentProps) => {
   const [editedContent, setEditedContent] = useState<string>(comment.content); // 수정할 내용
+
   return (
     <li key={comment.id} className="comments-list">
       <div className="comments-content-box">
@@ -71,6 +74,7 @@ const Comment = ({
             />
           </>
         )}
+        {/* 드롭다운 클릭한 댓글 id 와 해당 id가 같으면 UI 나타내기 */}
         {activeDropdown === comment.id && (
           <div className="dropdown-menu">
             <button
@@ -79,7 +83,12 @@ const Comment = ({
             >
               수정하기
             </button>
-            <button className="dropdown-text">삭제하기</button>
+            <button
+              className="dropdown-text"
+              onClick={() => onDeleteClick(comment.id)}
+            >
+              삭제하기
+            </button>
           </div>
         )}
       </div>

@@ -12,6 +12,7 @@
   padding: 0 200px;
   border-bottom: 1px solid #dfdfdf;
   background-color: #ffffff;
+  z-index: 1;
 }
 
 .Nav-first-section {
