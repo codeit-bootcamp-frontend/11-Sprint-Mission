@@ -5,7 +5,7 @@ export interface ProductInfoState {
   favoriteCount: number;
   ownerNickname: string;
   ownerId: number;
-  images: File[];
+  images: [];
   tags: string[];
   price: number;
   description: string;

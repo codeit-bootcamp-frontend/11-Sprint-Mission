@@ -81,6 +81,19 @@ export async function deleteCommentsById(commentId: number) {
   return fetchWithAuth(url, options);
 }
 
+// 물품 삭제 함수
+export async function deleteProductById(productId: number) {
+  const url = `${API_BASE_URL}/products/${productId}`;
+  const options = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  return fetchWithAuth(url, options);
+}
+
 interface SignupParams {
   email: string;
   nickname: string;
@@ -215,7 +228,7 @@ async function fetchWithAuth(url: string, options: RequestInit = {}) {
 }
 
 export interface newProductData {
-  images?: File[];
+  images?: (string | File)[];
   tags: string[];
   price: number;
   description: string;
@@ -227,6 +240,27 @@ export async function postProduct(newProduct: newProductData) {
   const accessToken = await getAccessToken();
   const response = await fetch(`${API_BASE_URL}/products`, {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify(newProduct),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to upload the post.");
+  }
+  return await response.json();
+}
+
+// 물건 수정하기 - 리액트 쿼리
+export async function editProduct(
+  newProduct: newProductData,
+  productId: string
+) {
+  const accessToken = await getAccessToken();
+  const response = await fetch(`${API_BASE_URL}/products/${productId}`, {
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${accessToken}`,
@@ -262,4 +296,35 @@ export async function postComments(
   }
 
   return await response.json();
+}
+
+//이미지 등록하기기
+export async function uploadImage(file: File): Promise<string> {
+  try {
+    const accessToken = await getAccessToken();
+    const formData = new FormData();
+    formData.append("image", file);
+
+    const res = await fetch(`${API_BASE_URL}/images/upload`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: formData,
+    });
+
+    if (!res.ok) {
+      const errorMessage = await res.text();
+      throw new Error(`이미지 업로드에 실패했어요: ${errorMessage}`);
+    }
+
+    const data = await res.json();
+    return data.url;
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw new Error(`이미지 업로드에 실패했어요: ${error.message}`);
+    } else {
+      throw new Error("이미지 업로드에 실패했어요: 알 수 없는 오류");
+    }
+  }
 }

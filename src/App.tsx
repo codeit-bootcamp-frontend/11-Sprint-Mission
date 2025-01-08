@@ -11,6 +11,7 @@ import LoginPage from "./page/LoginPage";
 import RegisterPage from "./page/RegisterPage";
 import { useSelector } from "react-redux";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import FileInput from "./components/AddItemPage/FileInput";
 
 const queryClient = new QueryClient();
 
@@ -38,7 +39,10 @@ function App() {
           <Route index element={<MainPage />} />
           <Route path=":productId" element={<DetailItemPage />} />
         </Route>
-        <Route path={ROUTES.ADD_ITEM} element={<AddItemPage />} />
+        <Route path={ROUTES.ADD_ITEM}>
+          <Route index element={<AddItemPage />} />
+          <Route path=":productId" element={<AddItemPage />} />
+        </Route>
       </Routes>
     </QueryClientProvider>
   );

@@ -11,7 +11,6 @@ import panda from "../../assets/image/Group 33739.png";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store";
 import { setComment } from "../../redux/commentSlice";
-import { writer } from "repl";
 
 const CommentsList = () => {
   const { productId } = useParams<{ productId: string }>();
