@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import heart from "../../assets/image/Icon.png";
+import panda from "../../assets/image/Group 33739.png";
 
 interface ProductCardProps {
   product: {
@@ -16,15 +17,14 @@ const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <Link to={`/items/${product.id}`} className="detail-link">
       <li className="all-product-list">
-        {product.images.length > 0 && (
-          <div className="all-product-image-box">
-            <img
-              className="all-product-image"
-              src={product.images[0]}
-              alt={product.name}
-            />
-          </div>
-        )}
+        <div className="all-product-image-box">
+          <img
+            className="all-product-image"
+            src={product.images[0] || panda}
+            alt={product.images[0] ? product.name : "기본이미지"}
+          />
+        </div>
+
         <h3 className="all-product-name">{product.name}</h3>
         <p className="all-product-price">{product.price}원</p>
         <div className="all-product-count-box">

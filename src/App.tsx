@@ -11,7 +11,6 @@ import LoginPage from "./page/LoginPage";
 import RegisterPage from "./page/RegisterPage";
 import { useSelector } from "react-redux";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import FileInput from "./components/AddItemPage/FileInput";
 
 const queryClient = new QueryClient();
 

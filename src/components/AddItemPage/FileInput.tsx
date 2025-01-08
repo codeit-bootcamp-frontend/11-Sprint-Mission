@@ -61,14 +61,14 @@ const FileInput = ({ initialValues = INITIAL_VALUES }) => {
     mutationFn: async (newProduct: newProductData) => {
       if (productId) {
         // 상품 수정 모드
-        return editProduct(newProduct, productId); // editProduct는 상품 수정 API 호출 함수
+        return editProduct(newProduct, productId); // 상품 수정 API 호출 함수
       } else {
         // 상품 등록 모드
-        return postProduct(newProduct); // postProduct는 상품 등록 API 호출 함수
+        return postProduct(newProduct); // 상품 등록 API 호출 함수
       }
     },
     onSuccess: (data) => {
-      alert("상품 등록이 완료되었습니다.");
+      alert("요청하신 작업이 완료되었습니다.");
       setValues(INITIAL_VALUES);
       setTags([]);
       setPreview(null);
@@ -76,7 +76,7 @@ const FileInput = ({ initialValues = INITIAL_VALUES }) => {
       navigate(`/items/${data.id}`);
     },
     onError: () => {
-      alert("상품 등록에 실패했습니다. 다시 시도해주세요");
+      alert("요청하신 작업에 실패했습니다. 다시 시도해주세요");
     },
   });
 

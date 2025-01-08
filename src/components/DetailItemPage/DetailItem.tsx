@@ -9,6 +9,7 @@ import QuestionForm from "./QuestionForm";
 import FavoriteCount from "./FavoriteCount";
 import moreMenu from "../../assets/image/Group 33735.png";
 import arrow from "../../assets/image/Group 33736.png";
+import panda from "../../assets/image/Group 33739.png";
 import { useDispatch, useSelector } from "react-redux";
 import { setProductInfo } from "../../redux/productSlice";
 import { RootState } from "../../redux/store";
@@ -99,8 +100,8 @@ const DetailItem = () => {
         <div className="deatilItem-image-box">
           <img
             className="deatilItem-image"
-            src={product.images[0]}
-            alt={product.name}
+            src={product.images[0] || panda}
+            alt={product.images[0] ? product.name : "기본 이미지"}
           />
         </div>
         <div className="detailItem-content-box">
