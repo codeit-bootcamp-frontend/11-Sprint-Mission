@@ -91,7 +91,8 @@ const FileInput = ({ initialValues = INITIAL_VALUES }) => {
     },
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     if (!isFormValid()) {
       alert("모든 입력창을 올바르게 입력해주세요");
       return;

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface ProductInfoState {
+export interface ProductInfoState {
   createdAt: string;
   favoriteCount: number;
   ownerNickname: string;

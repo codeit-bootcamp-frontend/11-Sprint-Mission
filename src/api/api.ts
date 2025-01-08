@@ -228,7 +228,10 @@ export async function postProduct(newProduct: newProductData) {
 }
 
 // 댓글 작성하기 - 리액트 쿼리
-export async function postComments(content: string, productId: number) {
+export async function postComments(
+  content: { content: string },
+  productId: number
+) {
   const accessToken = await getAccessToken();
   const response = await fetch(
     `${API_BASE_URL}/products/${productId}/comments`,
@@ -241,9 +244,9 @@ export async function postComments(content: string, productId: number) {
       body: JSON.stringify(content),
     }
   );
-
   if (!response.ok) {
     throw new Error("Failed to upload the comment.");
   }
+
   return await response.json();
 }

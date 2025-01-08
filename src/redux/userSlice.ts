@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface UserInfoState {
+export interface UserInfoState {
   accessToken: string;
   refreshToken: string;
   user: {

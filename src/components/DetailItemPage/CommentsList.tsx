@@ -4,6 +4,9 @@ import { getCommentsById, updateCommentsById } from "../../api/api";
 import "./CommentsList.css";
 import Comment from "./Comment";
 import panda from "../../assets/image/Group 33739.png";
+import { useSelector, useDispatch } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/store";
+import { setComment } from "../../redux/commentSlice";
 
 interface CommentProps {
   writer: {
@@ -20,13 +23,18 @@ interface CommentProps {
 const CommentsList = () => {
   const { productId } = useParams<{ productId: string }>();
   const [loading, setLoading] = useState<boolean>(false);
-  const [comments, setComments] = useState<CommentProps[]>([]);
+  // const [comments, setComments] = useState<CommentProps[]>([]);
   const [error, setError] = useState<string | null>(null);
   // const [limit, setLimit] = useState<number>(100);
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
   const [editingCommentId, setEditingCommentId] = useState<number | null>(null); // 수정 중인 댓글 ID
-
+  const dispatch = useDispatch<AppDispatch>();
+  const comments = useSelector(
+    (state: RootState) => state.commentList.comments
+  );
+  console.log(comments);
   const limit = 100;
+
   useEffect(() => {
     const fetchCommentsById = async () => {
       try {
@@ -34,7 +42,8 @@ const CommentsList = () => {
         const result = await getCommentsById(productId, {
           limit: String(limit),
         });
-        setComments(result.list);
+        dispatch(setComment(result.list));
+        // setComments(result.list);
       } catch (err) {
         setError((err as Error).message);
       } finally {
@@ -43,7 +52,7 @@ const CommentsList = () => {
     };
 
     fetchCommentsById();
-  }, [productId, limit]);
+  }, [productId, limit, dispatch]);
 
   const handleDropdownToggle = (commentId: number) => {
     if (activeDropdown === commentId) {
@@ -68,13 +77,15 @@ const CommentsList = () => {
     //수정 완료 이벤트
     try {
       await updateCommentsById(commentId, { content: editedContent });
-      setComments((prevComments) =>
-        prevComments.map((comment) =>
-          comment.id === commentId
-            ? { ...comment, content: editedContent }
-            : comment
+      dispatch(
+        setComment(
+          comments.map((comment) =>
+            comment.id === commentId
+              ? { ...comment, content: editedContent }
+              : comment
+          )
         )
-      );
+      ); // 리덕스 상태에 직접 업데이트 반영
       setEditingCommentId(null); // 수정 모드 종료
     } catch (error) {
       console.error("댓글 수정 실패:", error);

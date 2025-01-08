@@ -1,36 +1,46 @@
 import React, { ChangeEvent, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { postComments } from "../../api/api";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../redux/store";
+import { addComment } from "../../redux/commentSlice";
+import { useQueryClient } from "@tanstack/react-query";
 
 const QuestionForm = () => {
   const [question, setQuestion] = useState<string>("");
+  const product = useSelector((state: RootState) => state.productInfo);
+  const dispatch = useDispatch();
+  const queryClient = useQueryClient();
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>): void => {
     setQuestion(e.target.value);
   };
 
-  // const mutation = useMutation({
-  //   mutationFn: (content: string) => postComments(content),
-  //   onSuccess: (data) => {
-  //     alert("문의사항 등록이 완료되었습니다.");
-  //     setQuestion("");
-  //   },
-  //   onError: () => {
-  //     alert("문의사항 등록에 실패했습니다. 다시 시도해주세요");
-  //   },
-  // });
+  const mutation = useMutation({
+    mutationFn: (content: { content: string }) =>
+      postComments(content, product.id),
+    onSuccess: (data) => {
+      dispatch(addComment(data));
+      alert("문의사항 등록이 완료되었습니다.");
+      setQuestion("");
+    },
+    onError: () => {
+      alert("문의사항 등록에 실패했습니다. 다시 시도해주세요");
+    },
+  });
 
-  // const handleSubmit = () => {
-  //   if (!question) {
-  //     alert("문의사항을 입력해주세요");
-  //     return;
-  //   }
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (!question) {
+      alert("문의사항을 입력해주세요");
+      return;
+    }
 
-  //   const newComment = {
-  //     content: question,
-  //   };
-  //   mutation.mutate(content);
-  // };
+    const content = {
+      content: question,
+    };
+    mutation.mutate(content);
+  };
 
   return (
     <section className="question-container">
@@ -42,12 +52,13 @@ const QuestionForm = () => {
           id="question-input"
           name="question"
           onChange={handleChange}
+          value={question}
         ></textarea>
         <div className="button-box">
           <button
             className="question-register-button"
             disabled={!question}
-            // onClick={handleSubmit}
+            onClick={handleSubmit}
           >
             등록
           </button>
