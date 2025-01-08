@@ -30,15 +30,15 @@ interface Product {
 }
 
 const DetailItem = () => {
-  const { productId } = useParams<{ productId: string }>();
   const [loading, setLoading] = useState<boolean>(false);
   const [product, setProduct] = useState<Product | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [activeDropdown, setActiveDropdown] = useState<boolean>(false);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { productId } = useParams<{ productId: string }>();
   const productDetail = useSelector((state: RootState) => state.productInfo);
   const user = useSelector((state: RootState) => state.userInfo.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProductsById = async () => {

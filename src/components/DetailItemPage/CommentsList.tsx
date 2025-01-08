@@ -17,9 +17,8 @@ const CommentsList = () => {
   const { productId } = useParams<{ productId: string }>();
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  // const [limit, setLimit] = useState<number>(100);
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
-  const [editingCommentId, setEditingCommentId] = useState<number | null>(null); // 수정 중인 댓글 ID
+  const [editingCommentId, setEditingCommentId] = useState<number | null>(null);
   const dispatch = useDispatch<AppDispatch>();
   const comments = useSelector(
     (state: RootState) => state.commentList.comments
@@ -35,7 +34,6 @@ const CommentsList = () => {
           limit: String(limit),
         });
         dispatch(setComment(result.list));
-        // setComments(result.list);
       } catch (err) {
         setError((err as Error).message);
       } finally {
@@ -65,7 +63,7 @@ const CommentsList = () => {
   };
 
   const handleEditCancel = () => {
-    //수정 취소 이벤트
+    //수정 취소
     setEditingCommentId(null);
   };
 

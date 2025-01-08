@@ -4,14 +4,12 @@ import { postComments } from "../../api/api";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/store";
 import { addComment } from "../../redux/commentSlice";
-import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
 const QuestionForm = () => {
   const [question, setQuestion] = useState<string>("");
   const product = useSelector((state: RootState) => state.productInfo);
   const dispatch = useDispatch();
-  const queryClient = useQueryClient();
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>): void => {
     setQuestion(e.target.value);

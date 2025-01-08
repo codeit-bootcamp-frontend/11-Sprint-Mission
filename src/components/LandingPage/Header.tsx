@@ -5,11 +5,12 @@ import logo from "../../assets/image/Property 1=lg.png";
 import profile from "../../assets/image/size=large.png";
 import { useDispatch, useSelector } from "react-redux";
 import { reset } from "../../redux/counterAccessToken";
+import { RootState } from "../../redux/store";
 
 function Header() {
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const [isDropdownVisible, setIsDropdownVisible] = useState<boolean>(false);
+  const count = useSelector((state: RootState) => state.counter.value);
   const dispatch = useDispatch();
-  const count = useSelector((state: any) => state.counter.value);
 
   const toggleDropdown = () => {
     setIsDropdownVisible((prev) => !prev);

@@ -38,7 +38,7 @@ const store = configureStore({
 });
 
 export type RootState = {
-  render: any;
+  counter: any;
   userInfo: UserInfoState;
   productInfo: ProductInfoState;
   commentList: CommentState;

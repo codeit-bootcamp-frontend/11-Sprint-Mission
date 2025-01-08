@@ -22,7 +22,6 @@ const INITIAL_VALUES = {
 };
 
 const FileInput = ({ initialValues = INITIAL_VALUES }) => {
-  // 이미지와 태그 상태를 별도로 관리
   const [preview, setPreview] = useState<string | null | undefined>(null);
   const [tags, setTags] = useState<string[]>([]);
   const [values, setValues] = useState<InitialValues>(initialValues);

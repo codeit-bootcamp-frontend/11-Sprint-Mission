@@ -36,7 +36,7 @@ const Comment = ({
   activeDropdown,
   onDropdownToggle,
 }: CommentComponentProps) => {
-  const [editedContent, setEditedContent] = useState<string>(comment.content); // 수정할 내용
+  const [editedContent, setEditedContent] = useState<string>(comment.content);
 
   return (
     <li key={comment.id} className="comments-list">
