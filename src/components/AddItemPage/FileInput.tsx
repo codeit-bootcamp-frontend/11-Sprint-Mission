@@ -83,7 +83,7 @@ const FileInput = ({ initialValues = INITIAL_VALUES }) => {
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (!isFormValid()) {
+    if (!isFormValid) {
       toast.warning("모든 입력창을 올바르게 입력해주세요");
       return;
     }
@@ -140,17 +140,35 @@ const FileInput = ({ initialValues = INITIAL_VALUES }) => {
     setTags((prevTags) => prevTags.filter((_, i) => i !== index));
   };
 
-  const handleValueChange =
-    (name: keyof InitialValues) =>
-    (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      setValues((prevValues) => ({
-        ...prevValues,
-        [name]: e.target.value,
-      }));
-    };
+  const handleValueChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
 
-  const isFormValid = () =>
-    values.name && values.description && values.price && tags.length;
+  const isFormChanged = () => {
+    if (!productId) return true; // 등록 모드에서는 무조건 활성화
+
+    // 초기값과 현재 값을 비교
+    return (
+      values.name !== productDetail.name ||
+      values.price !== String(productDetail.price) ||
+      values.description !== productDetail.description ||
+      JSON.stringify(tags) !== JSON.stringify(productDetail.tags) ||
+      preview !== (productDetail.images as string[])[0]
+    );
+  };
+
+  const isFormValid =
+    values.name &&
+    values.description &&
+    values.price &&
+    tags.length &&
+    isFormChanged();
 
   return (
     <div className="fileInput-box">
@@ -160,7 +178,7 @@ const FileInput = ({ initialValues = INITIAL_VALUES }) => {
         </p>
         <button
           className="register-box-button"
-          disabled={!isFormValid()}
+          disabled={!isFormValid}
           onClick={handleSubmit}
         >
           {productId ? `수정` : `등록`}
@@ -207,7 +225,8 @@ const FileInput = ({ initialValues = INITIAL_VALUES }) => {
           className="name-input input"
           placeholder="상품명을 입력해주세요"
           value={values.name}
-          onChange={handleValueChange("name")}
+          name="name"
+          onChange={handleValueChange}
         />
       </section>
       <section className="product-content-box in-box">
@@ -216,7 +235,8 @@ const FileInput = ({ initialValues = INITIAL_VALUES }) => {
           value={values.description}
           className="content-input input"
           placeholder="상품소개를 입력해주세요"
-          onChange={handleValueChange("description")}
+          name="description"
+          onChange={handleValueChange}
         />
       </section>
       <section className="in-box">
@@ -226,7 +246,8 @@ const FileInput = ({ initialValues = INITIAL_VALUES }) => {
           value={values.price}
           className="input"
           placeholder="판매가격을 입력해주세요"
-          onChange={handleValueChange("price")}
+          name="price"
+          onChange={handleValueChange}
         />
       </section>
       <section className="in-box tags-box">

@@ -36,13 +36,10 @@ const Login = () => {
       toast.success("로그인이 정상적으로 완료되었습니다.");
       navigate("/");
     } catch (error: any) {
-      console.error(
-        "회원가입 실패:",
-        error.res?.data?.message || error.message
-      );
+      console.error("로그인 실패:", error.res?.data?.message || error.message);
       toast.error(
-        `회원가입 실패: ${
-          error.response?.data?.message || "회원가입 중 오류가 발생했습니다."
+        `로그인 실패: ${
+          error.response?.data?.message || "로그인 중 오류가 발생했습니다."
         }`
       );
     }

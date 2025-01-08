@@ -205,7 +205,8 @@ export const getAccessToken = async () => {
   if (refreshToken) {
     return await refreshAccessToken(refreshToken);
   }
-
+  localStorage.clear();
+  window.location.href = "/login";
   return null;
 };
 
