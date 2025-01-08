@@ -13,6 +13,7 @@ import panda from "../../assets/image/Group 33739.png";
 import { useDispatch, useSelector } from "react-redux";
 import { setProductInfo } from "../../redux/productSlice";
 import { RootState } from "../../redux/store";
+import { toast } from "react-toastify";
 
 interface Product {
   createdAt: Date;
@@ -62,7 +63,7 @@ const DetailItem = () => {
 
   const handleEditProduct = (writerId: number) => {
     if (writerId !== user.id) {
-      alert("본인이 등록한 물품만 수정할 수 있습니다.");
+      toast.warning("본인이 등록한 물품만 수정할 수 있습니다.");
       return;
     }
     navigate(`/additem/${productId}`);
@@ -70,14 +71,15 @@ const DetailItem = () => {
 
   const handleDeleteProduct = async (productId: number, writerId: number) => {
     if (writerId !== user.id) {
-      alert("본인이 등록한 물품만 삭제할 수 있습니다.");
+      toast.warning("본인이 등록한 물품만 삭제할 수 있습니다.");
       return;
     }
     try {
       await deleteProductById(productId);
-      alert("상품이 삭제되었습니다.");
+      toast.success("상품이 삭제되었습니다.");
       navigate("/items");
     } catch (error) {
+      toast.error("상품 삭제 실패");
       console.error("상품 삭제 실패:", error);
     }
   };

@@ -7,6 +7,7 @@ import "./FileInput.css";
 import { postProduct } from "../../api/api";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+import { toast } from "react-toastify";
 
 interface InitialValues {
   name: string;
@@ -68,7 +69,7 @@ const FileInput = ({ initialValues = INITIAL_VALUES }) => {
       }
     },
     onSuccess: (data) => {
-      alert("요청하신 작업이 완료되었습니다.");
+      toast.success("요청하신 작업이 완료되었습니다.");
       setValues(INITIAL_VALUES);
       setTags([]);
       setPreview(null);
@@ -76,14 +77,14 @@ const FileInput = ({ initialValues = INITIAL_VALUES }) => {
       navigate(`/items/${data.id}`);
     },
     onError: () => {
-      alert("요청하신 작업에 실패했습니다. 다시 시도해주세요");
+      toast.error("요청하신 작업에 실패했습니다. 다시 시도해주세요");
     },
   });
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!isFormValid()) {
-      alert("모든 입력창을 올바르게 입력해주세요");
+      toast.warning("모든 입력창을 올바르게 입력해주세요");
       return;
     }
     let imageUrl = null;

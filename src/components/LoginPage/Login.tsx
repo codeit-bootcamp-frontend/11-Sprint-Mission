@@ -10,6 +10,7 @@ import { login } from "../../api/api";
 import { useDispatch } from "react-redux";
 import { check } from "../../redux/counterAccessToken";
 import { setUserInfo } from "../../redux/userSlice";
+import { toast } from "react-toastify";
 
 interface FormValues {
   email: string;
@@ -32,14 +33,14 @@ const Login = () => {
       localStorage.setItem("refresh_token", res.refreshToken);
       dispatch(check());
       dispatch(setUserInfo(res));
-      alert("로그인이 정상적으로 완료되었습니다.");
+      toast.success("로그인이 정상적으로 완료되었습니다.");
       navigate("/");
     } catch (error: any) {
       console.error(
         "회원가입 실패:",
         error.res?.data?.message || error.message
       );
-      alert(
+      toast.error(
         `회원가입 실패: ${
           error.response?.data?.message || "회원가입 중 오류가 발생했습니다."
         }`

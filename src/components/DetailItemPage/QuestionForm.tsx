@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/store";
 import { addComment } from "../../redux/commentSlice";
 import { useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 
 const QuestionForm = () => {
   const [question, setQuestion] = useState<string>("");
@@ -21,18 +22,18 @@ const QuestionForm = () => {
       postComments(content, product.id),
     onSuccess: (data) => {
       dispatch(addComment(data));
-      alert("문의사항 등록이 완료되었습니다.");
+      toast.success("문의사항 등록이 완료되었습니다.");
       setQuestion("");
     },
     onError: () => {
-      alert("문의사항 등록에 실패했습니다. 다시 시도해주세요");
+      toast.error("문의사항 등록에 실패했습니다. 다시 시도해주세요");
     },
   });
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!question) {
-      alert("문의사항을 입력해주세요");
+      toast.warning("문의사항을 입력해주세요");
       return;
     }
 

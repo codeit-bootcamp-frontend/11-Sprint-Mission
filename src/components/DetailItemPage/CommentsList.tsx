@@ -11,6 +11,7 @@ import panda from "../../assets/image/Group 33739.png";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store";
 import { setComment } from "../../redux/commentSlice";
+import { toast } from "react-toastify";
 
 const CommentsList = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -59,7 +60,7 @@ const CommentsList = () => {
       setActiveDropdown(null); // 드롭다운 닫기
     } else {
       setActiveDropdown(null);
-      alert("본인의 댓글만 수정할 수 있습니다.");
+      toast.warning("본인의 댓글만 수정할 수 있습니다.");
     }
   };
 
@@ -77,10 +78,11 @@ const CommentsList = () => {
           ? { ...comment, content: editedContent }
           : comment
       );
-      alert("댓글 수정 완료");
+      toast.success("댓글 수정 완료");
       dispatch(setComment(updatedComments));
       setEditingCommentId(null); // 수정 모드 종료
     } catch (error) {
+      toast.error("댓글 수정 실패");
       console.error("댓글 수정 실패:", error);
     }
   };
@@ -89,7 +91,7 @@ const CommentsList = () => {
     //댓글 삭제 이벤트
     if (writerId !== user.id) {
       setActiveDropdown(null);
-      alert("본인의 댓글만 삭제할 수 있습니다.");
+      toast.warning("본인의 댓글만 삭제할 수 있습니다.");
       return;
     }
     try {
@@ -97,10 +99,11 @@ const CommentsList = () => {
       const updatedComments = comments.filter(
         (comment) => comment.id !== commentId
       );
-      alert("댓글 삭제 완료");
+      toast.success("댓글 삭제 완료");
       dispatch(setComment(updatedComments));
       setEditingCommentId(null); // 수정 모드 종료
     } catch (error) {
+      toast.error("댓글 삭제 실패");
       console.error("댓글 삭제 실패:", error);
     }
   };
