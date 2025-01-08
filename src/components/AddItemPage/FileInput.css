@@ -37,11 +37,20 @@
   color: #f3f4f6;
   font-size: 16px;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .register-box-button:disabled {
   background-color: #9ca3af;
   color: #f3f4f6;
+  cursor: not-allowed;
+}
+
+.register-box-button:enabled {
+  &:hover {
+    background-color: #6babfa;
+    transform: translateY(-3px);
+  }
 }
 
 .image-register-box {

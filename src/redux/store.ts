@@ -5,7 +5,7 @@ import productInfoReducer from "./productSlice";
 import { UserInfoState } from "./userSlice";
 import { ProductInfoState } from "./productSlice";
 import commentReducer from "./commentSlice";
-import { Comment, CommentState } from "./commentSlice";
+import { CommentState } from "./commentSlice";
 
 // localStorage에서 상태 불러오기
 const loadState = () => {

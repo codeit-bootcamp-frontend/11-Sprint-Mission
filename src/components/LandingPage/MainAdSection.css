@@ -30,6 +30,11 @@
   text-decoration: none;
 }
 
+.main-ad-link:hover {
+  background-color: #6babfa;
+  transform: translateY(-3px);
+}
+
 .main-ad-head {
   font-family: "Pretendard";
   font-size: 40px;
