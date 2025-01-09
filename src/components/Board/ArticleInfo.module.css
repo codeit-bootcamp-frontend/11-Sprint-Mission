@@ -93,7 +93,7 @@
   border-radius: 35px;
   height: 40px;
   padding: 4px 12px;
-
+  cursor: pointer;
   @media screen and (max-width: 376px) {
     height: 32px;
   }

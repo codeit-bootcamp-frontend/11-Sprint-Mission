@@ -8,6 +8,9 @@ import styles from "./BoardPage.module.css";
 import { Link } from "react-router-dom";
 import NavBar from "../common/NavBar";
 import returnIcon from "../assets/images/returnIcon.svg";
+import { useDispatch } from "react-redux";
+import { setArticleDetail } from "../redux/articleSlice";
+import { getArticleById } from "../api/api";
 
 interface Article {
   id: number;
@@ -20,6 +23,7 @@ interface Article {
   likeCount: number;
   createdAt: string;
   updatedAt: string;
+  isLiked: boolean;
 }
 
 type Comment = {
@@ -34,35 +38,33 @@ type Comment = {
 
 type ArticleComment = Comment;
 
-interface DetailBoardProps {
-  article: Article;
-  articleComments: Comment[];
-}
-
 const BoardPage = () => {
-  const { id } = useParams<{ id: string }>(); // react-router-dom을 사용하여 params 받아옴
+  const dispatch = useDispatch();
+  const { id } = useParams<{ id: string }>();
   const [article, setArticle] = useState<Article | null>(null);
   const [articleComments, setArticleComments] = useState<ArticleComment[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
-  // 컴포넌트 마운트 시 데이터 가져오기
   useEffect(() => {
     const fetchArticleData = async () => {
       try {
-        const articleRes = await axios.get(`/articles/${id}`);
-        setArticle(articleRes.data);
-
+        setLoading(true);
+        const result = await getArticleById(id);
+        setArticle(result);
+        dispatch(setArticleDetail(result));
         const commentsRes = await axios.get(
           `/articles/${id}/comments?limit=100`
         );
         setArticleComments(commentsRes.data.list ?? []);
-      } catch (error) {
-        console.error("Error fetching article data:", error);
+      } catch (err) {
+        setError((err as Error).message);
+      } finally {
+        setLoading(false);
       }
     };
 
-    if (id) {
-      fetchArticleData();
-    }
+    fetchArticleData();
   }, [id]);
 
   if (!article) {
@@ -78,7 +80,10 @@ const BoardPage = () => {
       <NavBar />
       <div className={styles.container}>
         <ArticleInfo article={article} />
-        <CommentInput articleId={article.id} onAddComment={handleAddComment} />
+        <CommentInput
+          articleId={article.id}
+          onAddComment={() => handleAddComment}
+        />
         <ArticleCommentInfo articleComments={articleComments} />
         <Link to="/boards" className={styles.link}>
           <button className={styles.button}>

@@ -36,6 +36,13 @@ export async function getProductsById(productId: string | undefined) {
   return fetchWithAuth(url);
 }
 
+// 게시글 id별 가져오기 함수
+export async function getArticleById(articleId: string | undefined) {
+  const url = `${API_BASE_URL}/articles/${articleId}`;
+
+  return fetchWithAuth(url);
+}
+
 // 댓글 가져오기 함수
 export async function getCommentsById(
   productId: string | undefined,

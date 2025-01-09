@@ -6,6 +6,7 @@ import { UserInfoState } from "./userSlice";
 import { ProductInfoState } from "./productSlice";
 import commentReducer from "./commentSlice";
 import { CommentState } from "./commentSlice";
+import articleReducer, { ArticleState } from "./articleSlice";
 
 // localStorage에서 상태 불러오기
 const loadState = () => {
@@ -32,6 +33,7 @@ const store = configureStore({
     userInfo: userInfoReducer,
     productInfo: productInfoReducer,
     commentList: commentReducer,
+    article: articleReducer,
   } as any,
   preloadedState: loadState(), // 초기 상태 설정
   // 앱이 다시 시작될 때도 이전 상태를 유지해야하는 경우 사용하는 옵션
@@ -42,6 +44,7 @@ export type RootState = {
   userInfo: UserInfoState;
   productInfo: ProductInfoState;
   commentList: CommentState;
+  article: ArticleState;
 };
 export type AppDispatch = typeof store.dispatch;
 
