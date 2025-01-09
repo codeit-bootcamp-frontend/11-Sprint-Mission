@@ -4,6 +4,7 @@
 
 .article-box {
   display: flex;
+  gap: 16px;
   flex-direction: column;
   border-bottom: 1px solid var(--color-white-300);
   height: 138px;

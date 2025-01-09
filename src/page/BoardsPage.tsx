@@ -1,10 +1,7 @@
 import BestBoardList from "../components/Boards/BestBoardList";
 import BoardList from "../components/Boards/BoardList";
-// import axios from "../util/axios";
-// import { Articles } from "../util/types";
 import { setupResizeListener } from "../util/resize";
 import { setupScrollListener } from "../util/scroll";
-// import { prefetchArticles } from "../api/prefetchArticles";
 import React, { useEffect, useState, useRef } from "react";
 import styles from "./BoardsPage.module.css";
 import { useArticles } from "../hooks/useArticles";

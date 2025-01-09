@@ -35,8 +35,8 @@ const BoardList = ({ articles, onOrderChange }: BoardListProps) => {
         onOrderChange={onOrderChange}
       />
       <div className={styles["article-container"]}>
-        {filteredArticles.map((article) => (
-          <ArticleCard key={article.id} article={article} />
+        {filteredArticles.map((article, index) => (
+          <ArticleCard key={`${index}_${article.id}`} article={article} />
         ))}
       </div>
     </div>

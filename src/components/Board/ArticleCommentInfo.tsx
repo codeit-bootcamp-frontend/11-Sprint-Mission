@@ -1,4 +1,5 @@
 import React from "react";
+import { FormatDateAgo } from "../../util/FormatDate";
 import styles from "./ArticleCommentInfo.module.css";
 import dotIcon from "../../assets/images/dotIcon.svg";
 import profileBig from "../../assets/images/profileBig.svg";
@@ -61,7 +62,7 @@ const ArticleCommentInfo = ({ articleComments }: ArticleCommentInfoProps) => {
             </div>
             <div className={styles.info}>
               <p className={styles.nickname}>{comment.writer.nickname}</p>
-              <p className={styles.date}>{comment.createdAt}</p>
+              <p className={styles.date}>{FormatDateAgo(comment.createdAt)}</p>
             </div>
           </div>
         </div>

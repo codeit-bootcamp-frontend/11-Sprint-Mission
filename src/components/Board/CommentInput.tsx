@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./CommentInput.module.css";
 import { createComment } from "../../api/posts";
+import { toast } from "react-toastify";
 
 interface Comment {
   id: number;
@@ -35,7 +36,9 @@ const CommentInput = ({ articleId, onAddComment }: CommentInputProps) => {
       const newComment = await createComment(articleId, commentData);
       setValue({ content: "" });
       onAddComment(newComment);
+      toast.success("댓글이 성공적으로 작성되었습니다.");
     } catch (error) {
+      toast.error("댓글 작성 실패");
       console.error("댓글 작성 실패", error);
     }
   };
