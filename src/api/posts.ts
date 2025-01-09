@@ -99,3 +99,72 @@ export const createComment = async (
   }
   return res.json();
 };
+
+// 상품 좋아요 버튼 누르기
+export async function postFavorite(
+  productId: number
+): Promise<{ success: boolean; message?: string }> {
+  const accessToken = await getAccessToken();
+
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}/products/${productId}/favorite`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+
+    if (!response.ok) {
+      const errorResponse = await response.json();
+      throw new Error(
+        errorResponse?.message || "상품 좋아요 요청에 실패했습니다."
+      );
+    }
+
+    return await response.json();
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw new Error(`${error.message}`);
+    } else {
+      throw new Error("상품 좋아요 요청에 실패했습니다: 알 수 없는 오류");
+    }
+  }
+}
+// 상품 좋아요 취소
+export async function deleteFavorite(
+  productId: number
+): Promise<{ success: boolean; message?: string }> {
+  const accessToken = await getAccessToken();
+
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}/products/${productId}/favorite`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+
+    if (!response.ok) {
+      const errorResponse = await response.json();
+      throw new Error(
+        errorResponse?.message || "상품 좋아요 취소 요청청에 실패했습니다."
+      );
+    }
+
+    return await response.json();
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw new Error(`${error.message}`);
+    } else {
+      throw new Error("상품 좋아요 취소 요청에 실패했습니다: 알 수 없는 오류");
+    }
+  }
+}
