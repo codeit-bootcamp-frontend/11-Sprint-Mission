@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import AddBoardPage from "./page/AddBoardPage";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +49,7 @@ function App() {
         />
         <Route path={ROUTES.PRIVACY} element={<Privacy />} />
         <Route path={ROUTES.FAQ} element={<FAQ />} />
+        <Route path={ROUTES.ADD_BOARD} element={<AddBoardPage />} />
         <Route path={ROUTES.MAIN}>
           <Route index element={<MainPage />} />
           <Route path=":productId" element={<DetailItemPage />} />
