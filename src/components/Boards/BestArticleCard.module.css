@@ -1,0 +1,144 @@
+.link {
+  text-decoration: none;
+}
+
+.article-box {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white-100);
+  width: 384px;
+  height: 169px;
+  border-radius: 8px;
+  gap: 10px;
+  padding: 0 24px;
+
+  @media screen and (max-width: 744px) {
+    width: 340px;
+    height: 198px;
+    padding: 0 16px 24px;
+  }
+
+  @media screen and (max-width: 376px) {
+    width: 343px;
+    height: 198px;
+    gap: 16px;
+    padding: 0 16px 24px;
+  }
+}
+
+.best-sticker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-blue-200);
+  width: 102px;
+  height: 30px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  gap: 5px;
+}
+
+.best-img {
+  width: 16px;
+  height: 16px;
+  position: relative;
+}
+
+.image-component {
+  position: absolute;
+}
+
+.best-title {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--color-white-200);
+}
+
+.title-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+
+  @media screen and (max-width: 744px) {
+    gap: 40px;
+  }
+
+  @media screen and (max-width: 376px) {
+    gap: 40px;
+  }
+}
+
+.article-title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 32px;
+  color: var(--color-blue-300);
+  white-space: nowrap;
+
+  @media screen and (max-width: 744px) {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  @media screen and (max-width: 376px) {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+
+.product-img {
+  width: 72px;
+  height: 72px;
+  border: 1px solid var(--color-white-300);
+  border-radius: 6px;
+  object-fit: contain;
+  position: relative;
+}
+
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nickname {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--color-blue-400);
+  margin-right: 8px;
+}
+
+.info-img {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  position: relative;
+}
+
+.like-count {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--color-blue-500);
+}
+
+.create-date {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--color-blue-600);
+}
+
+.image-component {
+  position: absolute;
+}

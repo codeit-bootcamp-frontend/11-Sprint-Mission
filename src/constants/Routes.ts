@@ -7,6 +7,7 @@ interface RoutesType {
   MAIN: string;
   ADD_ITEM: string;
   ADD_BOARD: string;
+  BOARDS: string;
   REDIRECT: string;
 }
 
@@ -19,5 +20,6 @@ export const ROUTES: RoutesType = {
   MAIN: "/items",
   ADD_ITEM: "/additem",
   ADD_BOARD: "/addboard",
+  BOARDS: "/boards",
   REDIRECT: "/",
 };
