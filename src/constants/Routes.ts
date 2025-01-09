@@ -8,6 +8,7 @@ interface RoutesType {
   ADD_ITEM: string;
   ADD_BOARD: string;
   BOARDS: string;
+  BOARD: string;
   REDIRECT: string;
 }
 
@@ -21,5 +22,6 @@ export const ROUTES: RoutesType = {
   ADD_ITEM: "/additem",
   ADD_BOARD: "/addboard",
   BOARDS: "/boards",
+  BOARD: "/board",
   REDIRECT: "/",
 };

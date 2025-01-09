@@ -3,6 +3,7 @@ import styles from "./AddBoard.module.css";
 import { createPost, uploadImage } from "../../api/posts";
 import ImageUploader from "./ImageUploader";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 interface BoardValue {
   title: string;
@@ -46,14 +47,14 @@ const AddBoard = ({ initailValues = INITIAL_VALUES }) => {
         image: imageUrl,
       };
       const createdPost = await createPost(postData);
+      toast.success("게시글이 성공적으로 등록되었습니다.");
 
-      alert("게시글이 성공적으로 등록되었습니다.");
       navigate(`/board/${createdPost.id}`);
     } catch (error: unknown) {
       if (error instanceof Error) {
-        alert(error.message);
+        toast.error(error.message);
       } else {
-        alert("알 수 없는 오류가 발생했어요");
+        toast.error("알 수 없는 오류가 발생했어요");
       }
     } finally {
       setLoading(false);

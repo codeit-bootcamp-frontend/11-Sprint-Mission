@@ -8,6 +8,7 @@ import { setupScrollListener } from "../util/scroll";
 import React, { useEffect, useState, useRef } from "react";
 import styles from "./BoardsPage.module.css";
 import { useArticles } from "../hooks/useArticles";
+import NavBar from "../common/NavBar";
 
 const BoardsPage = () => {
   const [orderBy, setOrderBy] = useState<string>("recent");
@@ -39,10 +40,13 @@ const BoardsPage = () => {
   }, [onLoadMore]);
 
   return (
-    <div className={styles.container} ref={scrollBoxRef}>
-      <BestBoardList bestArticles={bestArticles} />
-      <BoardList articles={articles} onOrderChange={handleOrderChange} />
-    </div>
+    <>
+      <NavBar />
+      <div className={styles.container} ref={scrollBoxRef}>
+        <BestBoardList bestArticles={bestArticles} />
+        <BoardList articles={articles} onOrderChange={handleOrderChange} />
+      </div>
+    </>
   );
 };
 

@@ -1,5 +1,5 @@
 const ACCESS_TOKEN = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+const API_BASE_URL = process.env.API_BASE_URL;
 
 export interface CreatePostData {
   title: string;

@@ -1,0 +1,125 @@
+.container {
+  width: 100%;
+  margin-bottom: 64px;
+
+  @media screen and (max-width: 744px) {
+    margin-bottom: 56px;
+  }
+
+  @media screen and (max-width: 376px) {
+    margin-bottom: 52px;
+  }
+}
+
+.no-container {
+  width: 100%;
+  margin-bottom: 48px;
+
+  @media screen and (max-width: 744px) {
+    margin-bottom: 56px;
+  }
+
+  @media screen and (max-width: 376px) {
+    margin-bottom: 40px;
+  }
+}
+.no-comments {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-comments-box {
+  position: relative;
+  width: 140px;
+  height: 140px;
+}
+
+.no-text-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.no-text {
+  margin: 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--color-blue-600);
+}
+
+.box {
+  width: 100%;
+  background-color: var(--color-white-500);
+  border-bottom: 1px solid var(--color-white-300);
+  margin-bottom: 24px;
+
+  @media screen and (max-width: 376px) {
+    margin-bottom: 16px;
+  }
+}
+
+.content-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--color-blue-300);
+  margin: 0;
+}
+
+.dot {
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+.image {
+  position: absolute;
+  width: 100%;
+}
+
+.user-box {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.profile {
+  width: 32px;
+  height: 32px;
+  position: relative;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nickname {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--color-blue-400);
+  margin: 0;
+}
+
+.date {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--color-blue-600);
+  margin: 0;
+}

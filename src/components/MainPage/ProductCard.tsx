@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import heart from "../../assets/image/Icon.png";
-import panda from "../../assets/image/Group 33739.png";
+import noPic from "../../assets/image/noPic.png";
 
 interface ProductCardProps {
   product: {
@@ -20,8 +20,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <div className="all-product-image-box">
           <img
             className="all-product-image"
-            src={product.images[0] || panda}
+            src={product.images[0] || noPic}
             alt={product.images[0] ? product.name : "기본이미지"}
+            onError={(e) => (e.currentTarget.src = noPic)}
           />
         </div>
 

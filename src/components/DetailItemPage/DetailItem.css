@@ -20,7 +20,7 @@
 }
 
 .deatilItem-image-box {
-  width: 486px;
+  min-width: 486px;
   height: 486px;
 }
 
@@ -199,10 +199,12 @@
   font-weight: 600;
   color: #f3f4f6;
   margin-top: 16px;
+  cursor: pointer;
 }
 
 .question-register-button:disabled {
   background-color: #9ca3af;
+  cursor: not-allowed;
 }
 
 .question-register-button:not(:disabled) {
@@ -300,7 +302,7 @@
   }
 
   .deatilItem-image-box {
-    width: 340px;
+    min-width: 340px;
     height: 340px;
   }
 

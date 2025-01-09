@@ -45,6 +45,7 @@
 }
 
 .image-component {
+  width: 100%;
   position: absolute;
 }
 

@@ -15,6 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import AddBoardPage from "./page/AddBoardPage";
 import BoardsPage from "./page/BoardsPage";
+import BoardPage from "./page/BoardPage";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +56,10 @@ function App() {
         <Route path={ROUTES.MAIN}>
           <Route index element={<MainPage />} />
           <Route path=":productId" element={<DetailItemPage />} />
+        </Route>
+        <Route path={ROUTES.BOARD}>
+          <Route index element={<BoardPage />} />
+          <Route path=":id" element={<BoardPage />} />
         </Route>
         <Route path={ROUTES.ADD_ITEM}>
           <Route index element={<AddItemPage />} />

@@ -35,18 +35,26 @@
   line-height: 26px;
 }
 
-.menu-free {
-  font-size: 18px;
-  font-weight: 700;
+.Nav-menu-box p {
   color: #4b5563;
-  white-space: nowrap;
 }
 
+.Nav-menu-box p.active {
+  color: #3692ff;
+}
+
+.Nav-menu-link {
+  text-decoration: none;
+}
+
+.menu-free,
 .menu-used {
   font-size: 18px;
   font-weight: 700;
-  color: #3692ff;
   white-space: nowrap;
+  &:hover {
+    opacity: 0.5;
+  }
 }
 
 /* 반응형 - Tablet*/

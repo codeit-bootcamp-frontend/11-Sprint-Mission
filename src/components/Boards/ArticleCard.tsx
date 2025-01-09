@@ -3,6 +3,9 @@ import { Articles } from "../../util/types";
 import styles from "./ArticleCard.module.css";
 import { formatDate } from "../../util/formatDates";
 import { Link } from "react-router-dom";
+import profileBig from "../../assets/images/profileBig.svg";
+import heartIcon from "../../assets/images/heartIcon.svg";
+import noPic from "../../assets/image/noPic.png";
 
 interface ArticleCardProps {
   article: Articles;
@@ -16,8 +19,9 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
           <p className={styles["article-title"]}>{article.title}</p>
           <img
             className={styles["product-img"]}
-            src={article.image}
+            src={article.image || noPic}
             alt="물품 이미지"
+            onError={(e) => (e.currentTarget.src = noPic)}
           />
         </div>
         <div className={styles["info-box"]}>
@@ -25,7 +29,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
             <div className={styles["user-profile"]}>
               <img
                 className={styles["image-component"]}
-                src="/images/profileBig.svg"
+                src={profileBig}
                 alt="프로필 이미지"
               />
             </div>
@@ -36,7 +40,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
             <div className={styles.heart}>
               <img
                 className={styles["image-component"]}
-                src="/images/heartIcon.svg"
+                src={heartIcon}
                 alt="좋아요 하트 이미지"
               />
             </div>

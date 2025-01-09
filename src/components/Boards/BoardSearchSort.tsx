@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./BoardSearchSort.module.css";
+import sortIcon from "../../assets/images/sortIcon.svg";
 
 interface BoardSearchSortProps {
   searchQuery: string;
@@ -35,7 +36,7 @@ const BoardSearchSort = ({
         <div className={styles["sort-icon"]}>
           <img
             className={styles["image-component"]}
-            src="/images/sortIcon.svg"
+            src={sortIcon}
             alt="화살표"
           />
         </div>
