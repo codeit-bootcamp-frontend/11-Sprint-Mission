@@ -25,6 +25,7 @@
 .image {
   position: absolute;
   width: 100%;
+  cursor: pointer;
 }
 
 .info-box {
@@ -133,4 +134,40 @@
     margin-bottom: 32px;
     font-size: 16px;
   }
+}
+
+.dropdown-menu {
+  width: 139px;
+  position: absolute;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 8px;
+  z-index: 1;
+  top: 40px;
+  right: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f3f4f6;
+}
+
+.dropdown-text {
+  font-size: 16px;
+  font-weight: 400;
+  color: #6b7280;
+  background: none;
+  border: none;
+  padding-top: 16px;
+  padding-bottom: 12px;
+  font-size: 14px;
+  color: #1f2937;
+  cursor: pointer;
+  height: 46px;
+}
+
+.dropdown-image {
+  cursor: pointer;
 }

@@ -51,7 +51,6 @@ function App() {
         />
         <Route path={ROUTES.PRIVACY} element={<Privacy />} />
         <Route path={ROUTES.FAQ} element={<FAQ />} />
-        <Route path={ROUTES.ADD_BOARD} element={<AddBoardPage />} />
         <Route path={ROUTES.BOARDS} element={<BoardsPage />} />
         <Route path={ROUTES.MAIN}>
           <Route index element={<MainPage />} />
@@ -64,6 +63,10 @@ function App() {
         <Route path={ROUTES.ADD_ITEM}>
           <Route index element={<AddItemPage />} />
           <Route path=":productId" element={<AddItemPage />} />
+        </Route>
+        <Route path={ROUTES.ADD_BOARD}>
+          <Route index element={<AddBoardPage />} />
+          <Route path=":articleId" element={<AddBoardPage />} />
         </Route>
       </Routes>
     </QueryClientProvider>

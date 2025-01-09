@@ -101,6 +101,19 @@ export async function deleteProductById(productId: number) {
   return fetchWithAuth(url, options);
 }
 
+// 게시글 삭제 함수
+export async function deleteArticleById(articleId: number) {
+  const url = `${API_BASE_URL}/articles/${articleId}`;
+  const options = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  return fetchWithAuth(url, options);
+}
+
 interface SignupParams {
   email: string;
   nickname: string;
@@ -243,6 +256,12 @@ export interface newProductData {
   name: string;
 }
 
+export interface newArticleData {
+  images?: (string | File)[];
+  content: string;
+  title: string;
+}
+
 // 물건 등록하기 - 리액트 쿼리
 export async function postProduct(newProduct: newProductData) {
   const accessToken = await getAccessToken();
@@ -278,6 +297,27 @@ export async function editProduct(
 
   if (!response.ok) {
     throw new Error("Failed to upload the post.");
+  }
+  return await response.json();
+}
+
+// 게시글 수정하기
+export async function editArticle(
+  newArticle: newArticleData,
+  articleId: string
+) {
+  const accessToken = await getAccessToken();
+  const response = await fetch(`${API_BASE_URL}/articles/${articleId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify(newArticle),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to upload the article.");
   }
   return await response.json();
 }

@@ -10,6 +10,8 @@ import profileBig from "../../assets/images/profileBig.svg";
 import heartIcon from "../../assets/images/heartIcon.svg";
 import heartIconRed from "../../assets/images/heartIconRed.svg";
 import { deleteArticleFavorite, postArticleFavorite } from "../../api/posts";
+import { useNavigate } from "react-router-dom";
+import { deleteArticleById } from "../../api/api";
 
 interface Article {
   id: number;
@@ -30,13 +32,16 @@ interface ArticleInfoProps {
 
 const ArticleInfo = ({ article }: ArticleInfoProps) => {
   const [currentCount, setCurrentCount] = useState(article.likeCount);
+  const [activeDropdown, setActiveDropdown] = useState<boolean>(false);
   const articleDetail = useSelector(
     (state: RootState) => state.article.article
   );
+  const user = useSelector((state: RootState) => state.userInfo.user);
   const [clickFavorite, setClickFavorite] = useState(
     articleDetail?.isLiked || article.isLiked
   );
-
+  const navigate = useNavigate();
+  console.log(article);
   const postMutation = useMutation({
     mutationFn: () => postArticleFavorite(article.id),
     onSuccess: () => {
@@ -77,6 +82,33 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
     }
   };
 
+  const handleEditArticle = (writerId: number) => {
+    if (writerId !== article.writer.id) {
+      toast.warning("본인이 등록한 게시글만 수정할 수 있습니다.");
+      return;
+    }
+    navigate(`/addboard/${article.id}`);
+  };
+
+  const handleDeleteArticle = async (articleId: number, writerId: number) => {
+    if (writerId !== article.writer.id) {
+      toast.warning("본인이 등록한 게시글만 삭제할 수 있습니다.");
+      return;
+    }
+    try {
+      await deleteArticleById(articleId);
+      toast.success("게시글이 삭제되었습니다.");
+      navigate("/boards");
+    } catch (error) {
+      toast.error("게시글 삭제 실패");
+      console.error("게시글 삭제 실패:", error);
+    }
+  };
+
+  const isDropdown = () => {
+    setActiveDropdown((prev) => !prev);
+  };
+
   return (
     <section className={styles.container}>
       <div className={styles.box}>
@@ -86,7 +118,24 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
             className={styles.image}
             src={dotIcon}
             alt="추가 메뉴 클릭 이미지"
+            onClick={isDropdown}
           />
+          {activeDropdown && (
+            <div className="dropdown-menu">
+              <button
+                className="dropdown-text"
+                onClick={() => handleEditArticle(user.id)}
+              >
+                수정하기
+              </button>
+              <button
+                className="dropdown-text"
+                onClick={() => handleDeleteArticle(article.id, user.id)}
+              >
+                삭제하기
+              </button>
+            </div>
+          )}
         </div>
       </div>
       <div className={styles["info-box"]}>

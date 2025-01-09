@@ -80,10 +80,7 @@ const BoardPage = () => {
       <NavBar />
       <div className={styles.container}>
         <ArticleInfo article={article} />
-        <CommentInput
-          articleId={article.id}
-          onAddComment={() => handleAddComment}
-        />
+        <CommentInput articleId={article.id} onAddComment={handleAddComment} />
         <ArticleCommentInfo articleComments={articleComments} />
         <Link to="/boards" className={styles.link}>
           <button className={styles.button}>

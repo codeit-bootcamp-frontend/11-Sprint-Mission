@@ -3,10 +3,14 @@ import styles from "./ImageUploader.module.css";
 
 interface ImageUploaderProps {
   onImageChange: (image: File | null) => void;
+  initialImage?: string | null;
 }
 
-const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageChange }) => {
-  const [preview, setPreview] = useState<string | null>(null);
+const ImageUploader: React.FC<ImageUploaderProps> = ({
+  onImageChange,
+  initialImage = null,
+}) => {
+  const [preview, setPreview] = useState<string | null>(initialImage);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];

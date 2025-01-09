@@ -4,6 +4,7 @@ interface Article {
   id: number;
   title: string;
   content: string;
+  image?: string;
   writer: {
     id: number;
     nickname: string;
