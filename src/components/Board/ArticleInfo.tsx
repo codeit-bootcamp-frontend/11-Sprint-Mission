@@ -41,7 +41,7 @@ const ArticleInfo = ({ article }: ArticleInfoProps) => {
     articleDetail?.isLiked || article.isLiked
   );
   const navigate = useNavigate();
-  console.log(article);
+
   const postMutation = useMutation({
     mutationFn: () => postArticleFavorite(article.id),
     onSuccess: () => {

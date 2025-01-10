@@ -34,7 +34,7 @@ const CommentInput = ({ articleId, onAddComment }: CommentInputProps) => {
     try {
       const commentData = { content: value.content };
       const newComment = await createComment(articleId, commentData);
-      console.log(newComment);
+
       setValue({ content: "" });
       onAddComment(newComment);
       toast.success("댓글이 성공적으로 작성되었습니다.");
