@@ -249,3 +249,45 @@ export async function deleteProduct(productId: string): Promise<void> {
     throw new Error("상품 삭제 요청 중 문제가 발생했습니다.");
   }
 }
+
+/**
+ * 댓글 등록 요청을 보냅니다.
+ * @param {string} productId - 댓글을 등록할 상품 ID
+ * @param {string} content - 댓글 내용
+ * @returns {Promise<void>} 성공 시 void를 반환합니다.
+ * @throws {Error} 댓글 등록 실패 시 에러를 발생시킵니다.
+ */
+export async function addComment(
+  productId: string,
+  content: string
+): Promise<void> {
+  try {
+    await axiosInstance.post(`/products/${productId}/comments`, { content });
+  } catch (error: any) {
+    if (error.response) {
+      throw new Error(
+        error.response.data.message || "댓글 등록에 실패했습니다."
+      );
+    }
+    throw new Error("댓글 등록 요청 중 문제가 발생했습니다.");
+  }
+}
+
+/**
+ * 댓글을 삭제합니다.
+ * @param {number} commentId - 삭제할 댓글의 ID
+ * @returns {Promise<void>} 삭제 성공 시 아무것도 반환하지 않습니다.
+ * @throws {Error} 삭제 실패 시 에러를 발생시킵니다.
+ */
+export async function deleteComment(commentId: number): Promise<void> {
+  try {
+    await axiosInstance.delete(`/comments/${commentId}`);
+  } catch (error: any) {
+    if (error.response) {
+      throw new Error(
+        error.response.data.message || "댓글 삭제에 실패했습니다."
+      );
+    }
+    throw new Error("댓글 삭제 요청 중 문제가 발생했습니다.");
+  }
+}
