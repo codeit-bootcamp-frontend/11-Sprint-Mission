@@ -6,6 +6,7 @@ import SelectOrderBy from "./SelectOrderBy";
 import Pagination from "../../util/Pagination";
 import ProductCard from "./ProductCard";
 import usePageSize from "../../hooks/usePageSize";
+import useDebounce from "../../hooks/useDebounce";
 
 interface Product {
   id: string;
@@ -36,34 +37,32 @@ const AllItem = () => {
   const pageSize = usePageSize();
 
   const totalPage = Math.ceil(totalCount / pageSize);
+  const debouncedSearchText = useDebounce(searchText, 500); // 디바운스를 적용한 검색어 상태
+
+  // 제품 데이터를 fetching하는 함수
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      const result: ProductResponse = await getProducts({
+        page: String(page),
+        pageSize: String(pageSize),
+        orderBy: orderBy,
+        keyword: debouncedSearchText,
+      });
+      setProducts(result.list);
+      setTotalCount(result.totalCount);
+    } catch (err) {
+      setError((err as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setLoading(true);
-        const result: ProductResponse = await getProducts({
-          page: String(page),
-          pageSize: String(pageSize),
-          orderBy: orderBy,
-          keyword: "",
-        });
-        setProducts(result.list);
-        setTotalCount(result.totalCount);
-      } catch (err) {
-        setError((err as Error).message);
-        return;
-      } finally {
-        setLoading(false);
-      }
-    };
+    fetchProducts(); // 처음 렌더링 시에도 호출
+  }, [debouncedSearchText, orderBy, page, pageSize]);
 
-    fetchProducts();
-  }, [orderBy, page, pageSize]);
-
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchText.toLowerCase())
-  );
-
+  // 검색어 필터링
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
   };
@@ -107,7 +106,7 @@ const AllItem = () => {
             placeholder="검색할 상품을 입력해주세요"
             value={searchText}
             onChange={handleSearch}
-          ></input>
+          />
           <Link to="/additem">
             <button className="add-button">상품 등록하기</button>
           </Link>
@@ -119,8 +118,8 @@ const AllItem = () => {
         </div>
       </div>
       <ul className="all-product-list-container">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
+        {products.length > 0 ? (
+          products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))
         ) : (
