@@ -108,6 +108,8 @@
 
   "devDependencies": {
 
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+
     "@types/lodash": "^4.17.14",
 
     "@types/react-router-dom": "^5.3.3"
