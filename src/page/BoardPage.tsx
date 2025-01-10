@@ -11,6 +11,7 @@ import returnIcon from "../assets/images/returnIcon.svg";
 import { useDispatch } from "react-redux";
 import { setArticleDetail } from "../redux/articleSlice";
 import { getArticleById } from "../api/api";
+import { setComment } from "../redux/commentSlice";
 
 interface Article {
   id: number;
@@ -57,6 +58,7 @@ const BoardPage = () => {
           `/articles/${id}/comments?limit=100`
         );
         setArticleComments(commentsRes.data.list ?? []);
+        dispatch(setComment(commentsRes.data.list));
       } catch (err) {
         setError((err as Error).message);
       } finally {
@@ -81,7 +83,10 @@ const BoardPage = () => {
       <div className={styles.container}>
         <ArticleInfo article={article} />
         <CommentInput articleId={article.id} onAddComment={handleAddComment} />
-        <ArticleCommentInfo articleComments={articleComments} />
+        <ArticleCommentInfo
+          articleComments={articleComments}
+          updateComments={setArticleComments}
+        />
         <Link to="/boards" className={styles.link}>
           <button className={styles.button}>
             <p className={styles.text}>목록으로 돌아가기</p>

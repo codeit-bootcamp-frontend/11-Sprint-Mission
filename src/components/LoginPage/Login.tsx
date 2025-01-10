@@ -29,8 +29,8 @@ const Login = () => {
   const onsubmit: SubmitHandler<FormValues> = async (data) => {
     try {
       const res = await login(data);
-      localStorage.setItem("access_token", res.accessToken);
-      localStorage.setItem("refresh_token", res.refreshToken);
+      // localStorage.setItem("access_token", res.accessToken);
+      // localStorage.setItem("refresh_token", res.refreshToken);
       dispatch(check());
       dispatch(setUserInfo(res));
       toast.success("로그인이 정상적으로 완료되었습니다.");

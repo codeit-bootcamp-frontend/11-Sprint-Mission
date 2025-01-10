@@ -1,24 +1,93 @@
-import React from "react";
+import React, { useState } from "react";
 import { FormatDateAgo } from "../../util/FormatDate";
 import styles from "./ArticleCommentInfo.module.css";
 import dotIcon from "../../assets/images/dotIcon.svg";
 import profileBig from "../../assets/images/profileBig.svg";
 import noArticleComments from "../../assets/images/noArticleComments.svg";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { deleteCommentsById, updateCommentsById } from "../../api/api";
+import { setComment } from "../../redux/commentSlice";
 
 interface ArticleComment {
   id: number;
   content: string;
   writer: {
     nickname: string;
+    id: number;
   };
   createdAt: string;
 }
 
 interface ArticleCommentInfoProps {
   articleComments: ArticleComment[];
+  updateComments: React.Dispatch<React.SetStateAction<ArticleComment[]>>;
 }
 
-const ArticleCommentInfo = ({ articleComments }: ArticleCommentInfoProps) => {
+const ArticleCommentInfo = ({
+  articleComments,
+  updateComments,
+}: ArticleCommentInfoProps) => {
+  const [editingCommentId, setEditingCommentId] = useState<number | null>(null);
+  const [editedContent, setEditedContent] = useState<string>("");
+  const [activeDropdownId, setActiveDropdownId] = useState<number | null>(null);
+
+  const dispatch = useDispatch();
+  const comments = useSelector(
+    (state: RootState) => state.commentList.comments
+  );
+  const user = useSelector((state: RootState) => state.userInfo.user);
+
+  const handleEditClick = (comment: ArticleComment) => {
+    setEditingCommentId(comment.id);
+    setEditedContent(comment.content);
+    setActiveDropdownId(null);
+  };
+
+  const handleEditSave = async (commentId: number, writerId: number) => {
+    if (writerId !== user.id) {
+      toast.warning("본인의 댓글만 수정할 수 있습니다.");
+      return;
+    }
+    try {
+      await updateCommentsById(commentId, { content: editedContent });
+      updateComments((prev) =>
+        prev.map((comment) =>
+          comment.id === commentId
+            ? { ...comment, content: editedContent }
+            : comment
+        )
+      );
+      toast.success("댓글 수정 완료");
+      setEditingCommentId(null);
+    } catch (error) {
+      toast.error("댓글 수정 실패");
+      console.error(error);
+    }
+  };
+
+  const handleDeleteClick = async (commentId: number, writerId: number) => {
+    if (writerId !== user.id) {
+      toast.warning("본인의 댓글만 삭제할 수 있습니다.");
+      return;
+    }
+    try {
+      await deleteCommentsById(commentId);
+      updateComments((prev) =>
+        prev.filter((comment) => comment.id !== commentId)
+      );
+      toast.success("댓글 삭제 완료");
+    } catch (error) {
+      toast.error("댓글 삭제 실패");
+      console.error(error);
+    }
+  };
+
+  const toggleDropdown = (commentId: number) => {
+    setActiveDropdownId((prev) => (prev === commentId ? null : commentId));
+  };
+
   if (!articleComments || articleComments.length === 0) {
     return (
       <section className={styles["no-container"]}>
@@ -38,31 +107,75 @@ const ArticleCommentInfo = ({ articleComments }: ArticleCommentInfoProps) => {
       </section>
     );
   }
+
   return (
     <section className={styles.container}>
       {articleComments.map((comment) => (
         <div key={comment.id} className={styles.box}>
           <div className={styles["content-box"]}>
-            <p className={styles.title}>{comment.content}</p>
-            <div className={styles.dot}>
-              <img
-                className={styles.image}
-                src={dotIcon}
-                alt="추가 메뉴 클릭 이미지"
-              />
-            </div>
+            {editingCommentId === comment.id ? (
+              <div className={styles["update-input-box"]}>
+                <textarea
+                  className={styles["update-input"]}
+                  value={editedContent}
+                  onChange={(e) => setEditedContent(e.target.value)}
+                />
+                <div className={styles["edit-button-box"]}>
+                  <button
+                    className={styles["cancel-button"]}
+                    onClick={() => setEditingCommentId(null)}
+                  >
+                    취소
+                  </button>
+                  <button
+                    className={styles["edit-button"]}
+                    onClick={() =>
+                      handleEditSave(comment.id, comment.writer.id)
+                    }
+                  >
+                    수정 완료
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <>
+                <p className={styles.title}>{comment.content}</p>
+                <img
+                  className={styles["dot-icon"]}
+                  src={dotIcon}
+                  alt="추가 메뉴"
+                  onClick={() => toggleDropdown(comment.id)}
+                />
+                {activeDropdownId === comment.id && (
+                  <div className={styles["dropdown-menu"]}>
+                    <button
+                      className={styles["dropdown-text"]}
+                      onClick={() => handleEditClick(comment)}
+                    >
+                      수정하기
+                    </button>
+                    <button
+                      className={styles["dropdown-text"]}
+                      onClick={() =>
+                        handleDeleteClick(comment.id, comment.writer.id)
+                      }
+                    >
+                      삭제하기
+                    </button>
+                  </div>
+                )}
+              </>
+            )}
           </div>
           <div className={styles["user-box"]}>
-            <div className={styles.profile}>
-              <img
-                className={styles.image}
-                src={profileBig}
-                alt="추가 메뉴 클릭 이미지"
-              />
-            </div>
-            <div className={styles.info}>
-              <p className={styles.nickname}>{comment.writer.nickname}</p>
-              <p className={styles.date}>{FormatDateAgo(comment.createdAt)}</p>
+            <img
+              className={styles.profile}
+              src={profileBig}
+              alt="프로필 이미지"
+            />
+            <div>
+              <p>{comment.writer.nickname}</p>
+              <p>{FormatDateAgo(comment.createdAt)}</p>
             </div>
           </div>
         </div>

@@ -215,19 +215,28 @@ const refreshAccessToken = async (refreshToken: string) => {
 
 // 로컬 스토리지에서 엑세스 토큰을 가져오고 만료되었으면 리프레시 토큰으로 갱신하는 함수
 export const getAccessToken = async () => {
-  let accessToken = localStorage.getItem("access_token");
-  const refreshToken = localStorage.getItem("refresh_token");
+  const reduxState = localStorage.getItem("reduxState");
 
-  if (accessToken && !isTokenExpired(accessToken)) {
-    return accessToken;
-  }
+  if (reduxState) {
+    try {
+      const parsedState = JSON.parse(reduxState);
+      const accessToken = parsedState.userInfo?.accessToken;
+      const refreshToken = parsedState.userInfo?.refreshToken;
 
-  if (refreshToken) {
-    return await refreshAccessToken(refreshToken);
+      if (accessToken && !isTokenExpired(accessToken)) {
+        return accessToken;
+      }
+
+      if (refreshToken) {
+        return await refreshAccessToken(refreshToken);
+      }
+      localStorage.clear();
+      window.location.href = "/login";
+      return null;
+    } catch (error) {
+      console.error("실패했어요:", error);
+    }
   }
-  localStorage.clear();
-  window.location.href = "/login";
-  return null;
 };
 
 // 모든 API 보낼때 토큰 담아서 보내는 함수
