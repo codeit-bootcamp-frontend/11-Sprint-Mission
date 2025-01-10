@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { getProductDetail } from "@/lib/api";
+import { getProductDetail, deleteProduct } from "@/lib/api";
 import { ProductDetail } from "@/types/commontypes";
 import ItemComments from "@/components/ItemComment";
 import favoriteIcon from "@/public/svgs/ic_heart (1).svg";
@@ -17,6 +17,11 @@ export default function ItemDetailForm() {
   const [item, setItem] = useState<ProductDetail | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
 
   const dateOnly =
     item && item.createdAt
@@ -45,6 +50,24 @@ export default function ItemDetailForm() {
 
   const handleGoBack = () => {
     router.push("/items");
+  };
+
+  const handleDelete = async () => {
+    if (!item) {
+      alert("상품 정보가 없습니다.");
+      return;
+    }
+
+    if (confirm("정말로 삭제하시겠습니까?")) {
+      try {
+        await deleteProduct(item.id); // `item`이 null이 아님을 확인한 후 호출
+        alert("상품이 삭제되었습니다.");
+        router.push("/items"); // 삭제 후 목록 페이지로 이동
+      } catch (error) {
+        alert(error.message);
+        console.error(error);
+      }
+    }
   };
 
   if (loading) {
@@ -86,14 +109,34 @@ export default function ItemDetailForm() {
                 <div className={styles.item_detail_title}>
                   <div className={styles.item_detail_name_container}>
                     <div className={styles.item_detail_name}>{item.name}</div>
-                    <Image
-                      src={plusBtn}
-                      width={3}
-                      height={13}
-                      className={styles.item_detail_more}
-                      alt="더보기 아이콘"
-                    />
+                    <div className={styles.item_detail_more_container}>
+                      <Image
+                        src={plusBtn}
+                        width={3}
+                        height={13}
+                        className={styles.item_detail_more}
+                        alt="더보기 아이콘"
+                        onClick={toggleDropdown}
+                      />
+                      {dropdownOpen && (
+                        <div className={styles.dropdown_menu}>
+                          <div
+                            className={styles.dropdown_menu_item}
+                            onClick={() => console.log("수정하기 클릭됨")}
+                          >
+                            수정하기
+                          </div>
+                          <div
+                            className={styles.dropdown_menu_item}
+                            onClick={handleDelete}
+                          >
+                            삭제하기
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
+
                   <div className={styles.item_detail_price}>
                     {item.price.toLocaleString()}원
                   </div>

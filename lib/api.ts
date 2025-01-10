@@ -230,3 +230,22 @@ export async function addItem(itemData: {
     throw new Error("상품 등록 요청 중 문제가 발생했습니다.");
   }
 }
+
+/**
+ * 특정 상품을 삭제합니다.
+ * @param {string} productId - 삭제할 상품의 ID
+ * @returns {Promise<void>} 삭제 성공 시 아무것도 반환하지 않습니다.
+ * @throws {Error} 삭제 실패 시 에러를 발생시킵니다.
+ */
+export async function deleteProduct(productId: string): Promise<void> {
+  try {
+    await axiosInstance.delete(`/products/${productId}`);
+  } catch (error: any) {
+    if (error.response) {
+      throw new Error(
+        error.response.data.message || "상품 삭제에 실패했습니다."
+      );
+    }
+    throw new Error("상품 삭제 요청 중 문제가 발생했습니다.");
+  }
+}
