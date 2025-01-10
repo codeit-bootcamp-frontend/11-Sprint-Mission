@@ -57,6 +57,14 @@
   }
 }
 
+.dropdown-box {
+  position: relative;
+}
+
+.profile-navbar {
+  cursor: pointer;
+}
+
 /* 반응형 - Tablet*/
 @media screen and (max-width: 1199px) and (min-width: 768px) {
   .Nav {

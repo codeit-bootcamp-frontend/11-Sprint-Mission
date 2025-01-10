@@ -32,6 +32,7 @@ const AllItem = () => {
   const [orderBy, setOrderBy] = useState<string>("recent");
   const [page, setPage] = useState<number>(1);
   const [totalCount, setTotalCount] = useState<number>(0);
+  const [searchText, setSearchText] = useState<string>("");
   const pageSize = usePageSize();
 
   const totalPage = Math.ceil(totalCount / pageSize);
@@ -58,6 +59,14 @@ const AllItem = () => {
 
     fetchProducts();
   }, [orderBy, page, pageSize]);
+
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchText.toLowerCase())
+  );
+
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchText(e.target.value);
+  };
 
   const handleOrderChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setOrderBy(e.target.value);
@@ -96,6 +105,8 @@ const AllItem = () => {
             type="text"
             className="product-search"
             placeholder="검색할 상품을 입력해주세요"
+            value={searchText}
+            onChange={handleSearch}
           ></input>
           <Link to="/additem">
             <button className="add-button">상품 등록하기</button>
@@ -108,8 +119,8 @@ const AllItem = () => {
         </div>
       </div>
       <ul className="all-product-list-container">
-        {products.length > 0 ? (
-          products.map((product) => (
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))
         ) : (

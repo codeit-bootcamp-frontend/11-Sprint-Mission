@@ -56,16 +56,17 @@ const AddBoard = ({ initailValues = INITIAL_VALUES }) => {
     if (!isFormValid) return;
     setLoading(true);
     try {
-      let imageUrl = articleDetail?.image || null;
-      if (image) {
-        imageUrl = await uploadImage(image);
-      }
-
-      const postData = {
+      let postData: any = {
         title: value.title,
         content: value.content,
-        image: imageUrl,
       };
+
+      // 이미지가 있을 경우만 imageUrl을 추가
+      if (image) {
+        postData.image = await uploadImage(image);
+      } else if (articleDetail?.image) {
+        postData.image = articleDetail.image;
+      }
       if (articleId) {
         // 게시글 수정
         await editArticle(postData, articleId);
@@ -99,7 +100,7 @@ const AddBoard = ({ initailValues = INITIAL_VALUES }) => {
           disabled={!isFormValid()}
           onClick={handleSubmit}
         >
-          {articleId ? `수정` : `등록록`}
+          {articleId ? `수정` : `등록`}
         </button>
       </section>
       <section className={styles.body}>
