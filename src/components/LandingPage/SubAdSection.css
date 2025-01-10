@@ -12,7 +12,7 @@
 }
 
 .sub-ad-box {
-  width: 100vw;
+  width: 100%;
   gap: 7px;
   display: flex;
   position: absolute;

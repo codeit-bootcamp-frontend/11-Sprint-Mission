@@ -19,9 +19,9 @@ interface Product {
 }
 
 const FavoriteItem = () => {
-  const [products, setProducts] = useState<Product[]>([]); // 제품 리스트 저장 상태
-  const [loading, setLoading] = useState<boolean>(false); // 로딩 상태
-  const [error, setError] = useState<string | null>(null); // 에러 상태
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
   const [pageSize, setPageSize] = useState<number>(
     getPageSize(window.innerWidth)
   );
@@ -74,11 +74,11 @@ const FavoriteItem = () => {
   }, [pageSize]);
 
   if (loading) {
-    return <p>Loading...</p>; // 로딩 중일 때 표시할 내용
+    return <p>Loading...</p>;
   }
 
   if (error) {
-    return <p>Error: {error}</p>; // 에러 발생 시 표시할 내용
+    return <p>Error: {error}</p>;
   }
 
   return (

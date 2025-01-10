@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
-import { getProductsById } from "../../api/api";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { deleteProductById, getProductsById } from "../../api/api";
 import CommentsList from "./CommentsList";
 import "./DetailItem.css";
 import UserInfo from "./UserInfo";
@@ -9,6 +9,11 @@ import QuestionForm from "./QuestionForm";
 import FavoriteCount from "./FavoriteCount";
 import moreMenu from "../../assets/image/Group 33735.png";
 import arrow from "../../assets/image/Group 33736.png";
+import noPic from "../../assets/image/noPic.png";
+import { useDispatch, useSelector } from "react-redux";
+import { setProductInfo } from "../../redux/productSlice";
+import { RootState } from "../../redux/store";
+import { toast } from "react-toastify";
 
 interface Product {
   createdAt: Date;
@@ -25,16 +30,22 @@ interface Product {
 }
 
 const DetailItem = () => {
-  const { productId } = useParams<{ productId: string }>();
   const [loading, setLoading] = useState<boolean>(false);
   const [product, setProduct] = useState<Product | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [activeDropdown, setActiveDropdown] = useState<boolean>(false);
+  const { productId } = useParams<{ productId: string }>();
+  const productDetail = useSelector((state: RootState) => state.productInfo);
+  const user = useSelector((state: RootState) => state.userInfo.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProductsById = async () => {
       try {
         setLoading(true);
         const result = await getProductsById(productId);
+        dispatch(setProductInfo(result));
         setProduct(result);
       } catch (err) {
         setError((err as Error).message);
@@ -45,6 +56,33 @@ const DetailItem = () => {
 
     fetchProductsById();
   }, [productId]);
+
+  const isDropdown = () => {
+    setActiveDropdown((prev) => !prev);
+  };
+
+  const handleEditProduct = (writerId: number) => {
+    if (writerId !== user.id) {
+      toast.warning("본인이 등록한 물품만 수정할 수 있습니다.");
+      return;
+    }
+    navigate(`/additem/${productId}`);
+  };
+
+  const handleDeleteProduct = async (productId: number, writerId: number) => {
+    if (writerId !== user.id) {
+      toast.warning("본인이 등록한 물품만 삭제할 수 있습니다.");
+      return;
+    }
+    try {
+      await deleteProductById(productId);
+      toast.success("상품이 삭제되었습니다.");
+      navigate("/items");
+    } catch (error) {
+      toast.error("상품 삭제 실패");
+      console.error("상품 삭제 실패:", error);
+    }
+  };
 
   if (loading) {
     return <p>Loading...</p>;
@@ -64,8 +102,9 @@ const DetailItem = () => {
         <div className="deatilItem-image-box">
           <img
             className="deatilItem-image"
-            src={product.images[0]}
-            alt={product.name}
+            src={product.images[0] || noPic}
+            alt={product.images[0] ? product.name : "기본 이미지"}
+            onError={(e) => (e.currentTarget.src = noPic)}
           />
         </div>
         <div className="detailItem-content-box">
@@ -76,7 +115,29 @@ const DetailItem = () => {
                 className="detailItem-menu"
                 src={moreMenu}
                 alt="메뉴 더보기 버튼"
+                onClick={isDropdown}
               />
+              {activeDropdown && (
+                <div className="dropdown-menu">
+                  <button
+                    className="dropdown-text"
+                    onClick={() => handleEditProduct(productDetail.ownerId)}
+                  >
+                    수정하기
+                  </button>
+                  <button
+                    className="dropdown-text"
+                    onClick={() =>
+                      handleDeleteProduct(
+                        productDetail.id,
+                        productDetail.ownerId
+                      )
+                    }
+                  >
+                    삭제하기
+                  </button>
+                </div>
+              )}
             </div>
             <p className="detailItem-price">{product.price}원</p>
           </div>

@@ -1,0 +1,102 @@
+.link {
+  text-decoration: none;
+}
+
+.article-box {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  border-bottom: 1px solid var(--color-white-300);
+  height: 138px;
+  background-color: var(--color-white-500);
+
+  @media screen and (max-width: 376px) {
+    height: 136px;
+  }
+}
+
+.article-title-box {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.article-title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 32px;
+  color: var(--color-blue-300);
+  margin: 0;
+
+  @media screen and (max-width: 376px) {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+
+.product-img {
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+  border: 1px solid var(--color-white-400);
+  object-fit: contain;
+  position: relative;
+}
+
+.info-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-info-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-profile {
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+.user-nickname {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--color-blue-400);
+}
+
+.date {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--color-blue-600);
+}
+
+.like-count-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.heart {
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+.like-count {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--color-blue-500);
+}
+
+.image-component {
+  position: absolute;
+  width: 100%;
+}

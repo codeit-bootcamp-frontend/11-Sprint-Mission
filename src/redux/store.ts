@@ -1,5 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "./counterAccessToken";
+import userInfoReducer from "./userSlice";
+import productInfoReducer from "./productSlice";
+import { UserInfoState } from "./userSlice";
+import { ProductInfoState } from "./productSlice";
+import commentReducer from "./commentSlice";
+import { CommentState } from "./commentSlice";
+import articleReducer, { ArticleState } from "./articleSlice";
 
 // localStorage에서 상태 불러오기
 const loadState = () => {
@@ -23,10 +30,23 @@ const store = configureStore({
   reducer: {
     // 상태 업데이트하는 리듀서 정의
     counter: counterReducer,
-  },
+    userInfo: userInfoReducer,
+    productInfo: productInfoReducer,
+    commentList: commentReducer,
+    article: articleReducer,
+  } as any,
   preloadedState: loadState(), // 초기 상태 설정
   // 앱이 다시 시작될 때도 이전 상태를 유지해야하는 경우 사용하는 옵션
 });
+
+export type RootState = {
+  counter: any;
+  userInfo: UserInfoState;
+  productInfo: ProductInfoState;
+  commentList: CommentState;
+  article: ArticleState;
+};
+export type AppDispatch = typeof store.dispatch;
 
 // Redux 상태가 변경될 때 localStorage에 저장
 store.subscribe(() => {

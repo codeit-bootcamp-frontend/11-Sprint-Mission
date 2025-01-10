@@ -12,7 +12,7 @@
 }
 
 .main-ad-box {
-  width: 100vw;
+  width: 100%;
   gap: 7px;
   display: flex;
   position: absolute;
@@ -30,11 +30,17 @@
   text-decoration: none;
 }
 
+.main-ad-link:hover {
+  background-color: #6babfa;
+  transform: translateY(-3px);
+}
+
 .main-ad-head {
   font-family: "Pretendard";
   font-size: 40px;
   font-weight: 700;
   line-height: 56px;
+  color: #374151;
 }
 
 .main-link {

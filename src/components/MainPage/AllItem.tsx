@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import "./AllItem.css";
 import SelectOrderBy from "./SelectOrderBy";
 import Pagination from "../../util/Pagination";
-import heart from "../../assets/image/Icon.png";
+import ProductCard from "./ProductCard";
+import usePageSize from "../../hooks/usePageSize";
+import useDebounce from "../../hooks/useDebounce";
 
 interface Product {
   id: string;
@@ -25,80 +27,57 @@ interface ProductResponse {
 }
 
 const AllItem = () => {
-  const [products, setProducts] = useState<Product[]>([]); // 제품 리스트 저장 상태
-  const [loading, setLoading] = useState<boolean>(false); // 로딩 상태
-  const [error, setError] = useState<string | null>(null); // 에러 상태
-  const [orderBy, setOrderBy] = useState<string>("recent"); //정렬 상태
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [orderBy, setOrderBy] = useState<string>("recent");
   const [page, setPage] = useState<number>(1);
   const [totalCount, setTotalCount] = useState<number>(0);
-  const [pageSize, setPageSize] = useState<number>(
-    getPageSize(window.innerWidth)
-  );
+  const [searchText, setSearchText] = useState<string>("");
+  const pageSize = usePageSize();
 
-  function getPageSize(width: number): number {
-    // 윈도우 크기에 따라 pageSize 계산하는 함수
-    if (width >= 1200) {
-      return 10;
-    } else if (width >= 768) {
-      return 6;
-    } else {
-      return 4;
+  const totalPage = Math.ceil(totalCount / pageSize);
+  const debouncedSearchText = useDebounce(searchText, 500); // 디바운스를 적용한 검색어 상태
+
+  // 제품 데이터를 fetching하는 함수
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      const result: ProductResponse = await getProducts({
+        page: String(page),
+        pageSize: String(pageSize),
+        orderBy: orderBy,
+        keyword: debouncedSearchText,
+      });
+      setProducts(result.list);
+      setTotalCount(result.totalCount);
+    } catch (err) {
+      setError((err as Error).message);
+    } finally {
+      setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
-    // 윈도우 크기 변경 시 pageSize를 업데이트
-    const handleResize = () => {
-      setPageSize(getPageSize(window.innerWidth));
-    };
+    fetchProducts(); // 처음 렌더링 시에도 호출
+  }, [debouncedSearchText, orderBy, page, pageSize]);
 
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const totalPage = Math.ceil(totalCount / pageSize); // 전체 페이지 개수 구하기
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setLoading(true);
-        const result: ProductResponse = await getProducts({
-          page: String(page),
-          pageSize: String(pageSize),
-          orderBy: orderBy,
-          keyword: "",
-        });
-        setProducts(result.list);
-        setTotalCount(result.totalCount);
-      } catch (err) {
-        setError((err as Error).message);
-        return;
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, [orderBy, page, pageSize]);
+  // 검색어 필터링
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchText(e.target.value);
+  };
 
   const handleOrderChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    //정렬 방식 변경
     setOrderBy(e.target.value);
   };
 
   const handleNextPage = () => {
-    //페이지네이션 다음 버튼 이벤트
     if (page < totalPage) {
       setPage((prev) => prev + 1);
     }
   };
 
   const handlePrevPage = () => {
-    // 페이지네이션 이전 버튼 이벤트
     if (page > 1) {
       setPage((prev) => prev - 1);
     }
@@ -109,11 +88,11 @@ const AllItem = () => {
   };
 
   if (loading) {
-    return <p>Loading...</p>; // 로딩 중일 때 표시할 내용
+    return <p>Loading...</p>;
   }
 
   if (error) {
-    return <p>Error: {error}</p>; // 에러 발생 시 표시할 내용
+    return <p>Error: {error}</p>;
   }
 
   return (
@@ -125,7 +104,9 @@ const AllItem = () => {
             type="text"
             className="product-search"
             placeholder="검색할 상품을 입력해주세요"
-          ></input>
+            value={searchText}
+            onChange={handleSearch}
+          />
           <Link to="/additem">
             <button className="add-button">상품 등록하기</button>
           </Link>
@@ -139,33 +120,7 @@ const AllItem = () => {
       <ul className="all-product-list-container">
         {products.length > 0 ? (
           products.map((product) => (
-            <Link
-              to={`/items/${product.id}`}
-              key={product.id}
-              className="detail-link"
-            >
-              <li className="all-product-list">
-                {product.images.length > 0 && (
-                  <div className="all-product-image-box">
-                    <img
-                      className="all-product-image"
-                      src={product.images[0]}
-                      alt={product.name}
-                    />
-                  </div>
-                )}
-                <h3 className="all-product-name">{product.name}</h3>
-                <p className="all-product-price">{product.price}원</p>
-                <div className="all-product-count-box">
-                  <img
-                    className="all-product-count-image"
-                    src={heart}
-                    alt="좋아요 하트 기호"
-                  ></img>
-                  <p className="all-product-count">{product.favoriteCount}</p>
-                </div>
-              </li>
-            </Link>
+            <ProductCard key={product.id} product={product} />
           ))
         ) : (
           <p>No products available</p>
