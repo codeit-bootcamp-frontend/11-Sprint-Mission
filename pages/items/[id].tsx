@@ -1,6 +1,8 @@
 import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import Header from "@/components/common/Header";
 import {
+  deleteComment,
+  deleteProduct,
   fetchInquiryById,
   fetchProductById,
   postComment,
@@ -12,6 +14,12 @@ import InquiryEmpty from "@/components/detail/InquiryEmpty";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import BackIcon from "@/components/Icons/BackIcon";
+import {
+  useInfiniteQuery,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
 
 interface InputState {
   name: string;
@@ -55,41 +63,77 @@ const INITIAL_DETAILS: InputState = {
 const INITIAL_COMMENTS: CommentInterface = { list: [], nextCursor: null };
 
 function Detail() {
+  const queryClient = useQueryClient();
   const router = useRouter();
   const { id } = router.query;
   const productId = Array.isArray(id) ? id[0] : id;
   const [newComment, setNewComment] = useState("");
-  const [product, setProduct] = useState(INITIAL_DETAILS); // 상품 정보 할당할 state
-  const [comments, setComments] = useState<CommentInterface>(INITIAL_COMMENTS); // 상품 댓글 정보 할당할 state
-  const { list, nextCursor } = comments;
   const endRef = useRef(null); // infinity scroll 구현을 위한 endPoint를 할당할 Ref
 
-  /**
-   * 서버에서 상품 상세 정보를 가져오는 함수
-   * @param {*} id 상품 id
-   */
-  const loadProductById = useCallback((id: string) => {
-    fetchProductById(id).then((response) => {
-      setProduct(response);
-    });
-  }, []);
+  const { data: product, isLoading: productLoading } = useQuery({
+    queryKey: ["product", productId],
+    queryFn: () => fetchProductById(productId!),
+    enabled: !!productId,
+  });
 
-  /**
-   * 서버에서 상품 댓글을 가져오는 함수
-   * @param {*} id 상품 id
-   * @param {*} nextCursor infinity scroll을 위한 변수
-   */
-  const loadInquiryById = useCallback(
-    (id: string, nextCursor: string | null = null) => {
-      fetchInquiryById(id, nextCursor).then(({ list, nextCursor }) => {
-        setComments((prev) => ({
-          list: [...prev.list, ...list],
-          nextCursor,
-        }));
-      });
+  // 댓글 정보 (무한 스크롤)
+  const {
+    data: commentsData,
+    fetchNextPage,
+    hasNextPage,
+    isLoading: commentsLoading,
+    isFetchingNextPage,
+  } = useInfiniteQuery<CommentInterface>({
+    queryKey: ["inquiries", productId],
+    queryFn: ({ pageParam }) =>
+      fetchInquiryById(productId!, pageParam as string),
+    initialPageParam: null,
+    getNextPageParam: (lastPage) => lastPage.nextCursor ?? null,
+    enabled: !!productId,
+  });
+
+  // 댓글 추가 핸들러
+  const addCommentMutation = useMutation({
+    mutationFn: (newComment: string) =>
+      postComment(productId!, { content: newComment }),
+    onSuccess: () => {
+      setNewComment("");
+      if (productId) {
+        queryClient.invalidateQueries({ queryKey: ["inquiries", productId] });
+      }
     },
-    []
-  );
+    onError: (error) => {
+      console.error("댓글 추가 실패:", error);
+    },
+  });
+
+  const deleteProductHandler = async (id: string) => {
+    try {
+      const response = await deleteProduct(id);
+
+      if (response.ok) {
+        queryClient.invalidateQueries({
+          queryKey: ["products"],
+          exact: false, // 모든 "products"로 시작하는 쿼리를 무효화
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const updateCommentHandler = () => {
+    queryClient.invalidateQueries({ queryKey: ["inquiries", productId] });
+  };
+
+  const deleteCommentHandler = async (id: string) => {
+    try {
+      await deleteComment(id);
+      queryClient.invalidateQueries({ queryKey: ["inquiries", productId] });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   /**
    * 댓글 추가 핸들러
@@ -101,53 +145,48 @@ function Detail() {
       if (!productId) {
         throw new Error("Id is null");
       }
-      postComment(productId, { content: newComment }); // Jwt Token 추가 예정
-      setNewComment("");
+      addCommentMutation.mutate(newComment);
     },
-    [productId, newComment]
+    [productId, newComment, addCommentMutation]
   );
 
-  /**
-   * IntersectionObserver API를 사용한 inifinity scroll
-   */
-  const handleObserver = useCallback(
-    (entries: IntersectionObserverEntry[]) => {
-      const [entry] = entries; // 감시 대상 : endRef
-      if (entry.isIntersecting && nextCursor && productId) {
-        // 대상이 viewport에 들어왔을 때, nextCursor가 null이 아닌경우 다음 댓글 요청
-        loadInquiryById(productId, nextCursor);
+  // IntersectionObserver를 사용한 무한 스크롤 처리
+  useEffect(() => {
+    if (!hasNextPage || isFetchingNextPage) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          fetchNextPage();
+        }
+      },
+      {
+        rootMargin: "100px",
       }
-    },
-    [productId, nextCursor, loadInquiryById]
-  );
+    );
 
-  useEffect(() => {
-    if (!productId) return;
-    loadProductById(productId);
-    loadInquiryById(productId);
-  }, [productId, loadProductById, loadInquiryById]);
-
-  /**
-   * Intersection Obsever API를 사용해 endRef(.end-point)의 영역을 비동기 감시
-   */
-  useEffect(() => {
-    const observer = new IntersectionObserver(handleObserver, {
-      root: null, // 감시 기준 : viewport
-      threshold: 1.0, // 대상이 viewport에 완전히 노출될 때
-    });
     const current = endRef.current;
-
-    if (current) observer.observe(current);
+    if (current) {
+      observer.observe(current);
+    }
 
     return () => {
-      if (current) observer.unobserve(current);
+      if (current) {
+        observer.unobserve(current);
+      }
     };
-  }, [handleObserver]);
+  }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
+
+  if (!productId) return null;
+
   return (
     <>
       <Header />
       <div className='page-detail'>
-        <DetailProduct {...product} />
+        {productLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <DetailProduct {...product} onDelete={deleteProductHandler} />
+        )}
         <div className='product-inquiry-wrap'>
           <form onSubmit={handleSubmit}>
             <label htmlFor='input_inquiry'>문의하기</label>
@@ -161,21 +200,29 @@ function Detail() {
               등록
             </PrimaryButton>
           </form>
-          {list.length > 0 ? (
-            list.map(({ id, content, writer, updatedAt }) => (
-              <DetailInquiry
-                key={id}
-                id={id.toString()}
-                content={content}
-                writer={writer}
-                updatedAt={updatedAt}
-              />
-            ))
+          {commentsLoading ? (
+            <p>Loading...</p>
+          ) : commentsData?.pages[0]?.list.length ? (
+            commentsData.pages.map((page) =>
+              page.list.map(({ id, content, writer, updatedAt }) => (
+                <DetailInquiry
+                  key={id}
+                  id={id.toString()}
+                  content={content}
+                  writer={writer}
+                  updatedAt={updatedAt}
+                  onUpdate={updateCommentHandler}
+                  onDelete={deleteCommentHandler}
+                />
+              ))
+            )
           ) : (
             <InquiryEmpty />
           )}
         </div>
-        {nextCursor && <div className='end-point' ref={endRef} />}
+        {hasNextPage && !isFetchingNextPage && (
+          <div ref={endRef} style={{ height: "20px" }} />
+        )}
         <Link href='/items' className='navigate-to-items'>
           목록으로 돌아가기
           <span>

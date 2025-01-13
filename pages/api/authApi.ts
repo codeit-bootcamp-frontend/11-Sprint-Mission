@@ -17,11 +17,12 @@ const loginAndSetToken = async ({ email, password }: LoginInterface) => {
     );
 
     if (response.ok) {
-      const { accessToken, refreshToken } = await response.json();
+      const { user, accessToken, refreshToken } = await response.json();
 
       // localStorage에 토큰 저장
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
+      localStorage.setItem("userId", user.id);
 
       console.log("토큰이 성공적으로 설정되었습니다.");
     } else {

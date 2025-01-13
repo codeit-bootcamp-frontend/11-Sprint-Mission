@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  // reactStrictMode: true,
   images: {
     remotePatterns: [
       {
@@ -47,6 +47,11 @@ const nextConfig = {
         protocol: "https",
         hostname: "example.com",
         pathname: "/...",
+      },
+      {
+        protocol: "https",
+        hostname: "example.com",
+        pathname: "/..123.",
       },
     ],
   },

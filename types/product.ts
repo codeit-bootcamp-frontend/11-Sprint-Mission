@@ -19,10 +19,11 @@ interface ProductInputState {
 }
 
 type ProductInputAction =
-  | { type: "SET_IMAGES"; payload: string[] }
+  | { type: "SET_IMAGES"; payload: File[] }
   | { type: "SET_NAME"; payload: string }
   | { type: "SET_DESCRIPTION"; payload: string }
   | { type: "SET_PRICE"; payload: number }
-  | { type: "SET_TAGS"; payload: string[] };
+  | { type: "SET_TAGS"; payload: string[] }
+  | { type: "RESET_INPUT"; payload: ProductInputState };
 
 export type { ProductInterface, ProductInputState, ProductInputAction };

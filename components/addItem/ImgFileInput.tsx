@@ -25,6 +25,7 @@ function ImgFileInput({
   dispatch,
 }: PropsWithChildren<ImgFileInputProps>) {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [thumbnailUrl, setThumbnailUrl] = useState<string | null>(images[0]);
   const [showWarn, setShowWarn] = useState(false); // 이미지를 1개 이상 추가하려고 할 때를 위한 state
   const isFilled = images.length > 0;
 
@@ -32,8 +33,14 @@ function ImgFileInput({
    * form의 이미지를 저장하고 화면에 추가한 이미지를 렌더링
    * @param {*} path 인코딩된 파일 스트링
    */
-  const setImg = (path?: string) => {
-    dispatch({ type: "SET_IMAGES", payload: path ? [path] : [] });
+  const setImg = (path?: File) => {
+    if (path) {
+      setThumbnailUrl(URL.createObjectURL(path));
+      dispatch({ type: "SET_IMAGES", payload: [path] });
+    } else {
+      setThumbnailUrl(null);
+      dispatch({ type: "SET_IMAGES", payload: [] });
+    }
   };
 
   /**
@@ -52,8 +59,7 @@ function ImgFileInput({
     const files = e.target.files;
     if (files && files[0]) {
       const imgUrl = files[0];
-      const imgPath = URL.createObjectURL(imgUrl);
-      setImg(imgPath);
+      setImg(imgUrl);
 
       if (inputRef.current) inputRef.current.value = "";
     }
@@ -68,13 +74,13 @@ function ImgFileInput({
   };
 
   /**
-   * 컴포넌트 언마운트 시 객체 URL이 있으면 해제
+   * 컴포넌트 언마운트 시 생성한 URL 해제
    */
   useEffect(() => {
     return () => {
-      if (images.length > 0) URL.revokeObjectURL(images[0]);
+      if (thumbnailUrl) URL.revokeObjectURL(thumbnailUrl);
     };
-  }, [images]);
+  }, [thumbnailUrl]);
 
   return (
     <div className='form-input-wrap'>
@@ -100,9 +106,9 @@ function ImgFileInput({
           </span>
           이미지 등록
         </button>
-        {isFilled && (
+        {thumbnailUrl && (
           <div className='thumbnail'>
-            <Image fill src={images[0]} alt='thumbnail' />
+            <Image fill src={thumbnailUrl} alt='thumbnail' />
             <button
               type='button'
               className='btn-delete-thumbnail'

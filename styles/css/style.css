@@ -1017,13 +1017,20 @@ footer .footer-wrap .sns a img {
   margin: 2.4rem auto 0;
 }
 .page-detail .product-detail-contents {
+  position: relative;
   display: flex;
   gap: 1.6rem;
   margin-bottom: 4rem;
   padding-bottom: 4rem;
   border-bottom: 0.1rem solid var(--gray200);
 }
+.page-detail .product-detail-contents .menu {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
 .page-detail .product-detail-contents .img-wrap {
+  flex-shrink: 0;
   position: relative;
   width: 48.6rem;
   height: 48.6rem;
@@ -1038,12 +1045,18 @@ footer .footer-wrap .sns a img {
   flex: 1;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  overflow: hidden;
 }
 .page-detail .product-detail-contents .desc-wrap .detail-name {
+  width: 100%;
+  padding-right: 30px;
   font-size: 2.4rem;
   font-weight: var(--semiBold);
   line-height: 3.2rem;
   color: var(--gray800);
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .page-detail .product-detail-contents .desc-wrap .detail-price {
   margin-bottom: 2.4rem;
@@ -1079,6 +1092,9 @@ footer .footer-wrap .sns a img {
   gap: 0.8rem;
 }
 .page-detail .product-detail-contents .desc-wrap .detail-tag-wrap .detail-tags .detail-tag {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
   padding: 0.5rem 1.6rem;
   border-radius: 2.6rem;
   background-color: var(--gray100);
@@ -1640,6 +1656,67 @@ footer .footer-wrap .sns a img {
     line-height: 2.6rem;
   }
 }
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--black);
+  opacity: 0.5;
+}
+.modal-container {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  max-width: 100rem;
+  width: 80%;
+  max-height: 80%;
+  height: 100%;
+  padding: 4rem 2rem 2rem;
+  border-radius: 2rem;
+  background-color: var(--white);
+}
+.modal-container .edit-product-form {
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+}
+.modal-container .edit-product-form .button-wrap {
+  display: flex;
+  gap: 1rem;
+}
+.modal-container .edit-product-form .button-wrap button {
+  flex: 1;
+  height: 4rem;
+  border: 0;
+  border-radius: 5px;
+  background-color: var(--gray400);
+  font-size: 1.8rem;
+  font-weight: var(--bold);
+  color: var(--white);
+}
+.modal-container .edit-product-form .button-wrap button[type=submit] {
+  background-color: var(--primary200);
+}
+.modal-container .edit-product-form .button-wrap button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
 /* Main & Section */
 .section-layout {
   display: flex;

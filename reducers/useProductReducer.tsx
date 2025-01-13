@@ -20,6 +20,8 @@ const ProductInputReducer = (
     case "SET_PRICE":
     case "SET_TAGS":
       return { ...state, [target]: action.payload };
+    case "RESET_INPUT":
+      return { ...action.payload };
     default:
       return state;
   }

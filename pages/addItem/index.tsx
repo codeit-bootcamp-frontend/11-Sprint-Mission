@@ -11,17 +11,21 @@ import TextInput from "@/components/addItem/TextInput";
 import Description from "@/components/addItem/Description";
 import PriceInput from "@/components/addItem/PriceInput";
 import TagInput from "@/components/addItem/TagInput";
+import { useRouter } from "next/router";
+import queryClient from "@/lib/queryClient";
 
 function AddItem() {
+  const router = useRouter();
   const [userInput, dispatch] = useReducer(ProductInputReducer, INITIAL_INPUT);
   const { images, name, description, price, tags } = userInput;
   const [isFormValid, setIsFormValid] = useState(false);
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
     if (isFormValid) {
-      // 추후 POST API 연동 예정
-      // console.log(e);
-      postProduct({ content: userInput });
+      const { id } = await postProduct({ content: userInput });
+      queryClient.invalidateQueries({ queryKey: ["products"], exact: false });
+      router.push(`/items/${id}`);
     }
   };
 

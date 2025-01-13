@@ -144,6 +144,8 @@ function Detail() {
                 content={content}
                 writer={writer}
                 updatedAt={updatedAt}
+                onUpdate={() => {}}
+                onDelete={() => {}}
               />
             ))
           ) : (

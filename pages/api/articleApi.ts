@@ -100,6 +100,10 @@ const retryFetch = async (
 };
 
 const uploadImage = async (file: string) => {
+  if (!file) {
+    return null; // 이미지가 없으면 null 반환
+  }
+
   const formData = new FormData();
   formData.append("image", file);
 
@@ -136,7 +140,7 @@ const postArticle = async ({ title, content, image }: FormInputInterface) => {
   }
 
   const data = {
-    image: imageUrl,
+    image: imageUrl || undefined,
     content,
     title,
   };

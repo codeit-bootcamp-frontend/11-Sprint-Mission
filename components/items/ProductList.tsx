@@ -8,6 +8,7 @@ import PrimaryButton from "../common/PrimaryButton";
 import Link from "next/link";
 import useWindowSize from "@/hooks/useWindowSize";
 import { ProductInterface } from "@/types/product";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 const sortOptions = [
   {
@@ -22,46 +23,36 @@ const sortOptions = [
 
 function ProductList() {
   const { page } = useWindowSize();
-  const [products, setProducts] = useState<{
-    list: ProductInterface[];
-    totalProductsCount: number;
-  }>({ list: [], totalProductsCount: 0 }); // 서버에서 받아올 Proudcts를 할당할 state
   const [productsPerPage, setProductsPerPage] = useState<number | null>(null); // 반응형에 따라 보여줄 Product 수를 할당할 state
   const [order, setOrder] = useState(sortOptions[0].value); // 데이터 정렬을 위한 queryParam [orderBy]
   const [currentPage, setCurrentPage] = useState(1); // 데이터 호출을 위한 queryParam [page]
   const [keyword, setKeyword] = useState("");
 
   /**
-   * 서버에서 데이터를 가져오는 함수
-   * 재사용을 위해 useCallback Hook으로 함수 캐싱 -> React: exhustive-deps Eslint 방지
+   * React Query를 사용한 데이터 로딩
    */
-  const loadProducts = useCallback(
-    (page = currentPage.toString(), pageSize = productsPerPage?.toString()) => {
-      if (productsPerPage === null) return;
-      fetchProducts({ page, pageSize, orderBy: order, keyword: keyword }).then(
-        ({ list, totalCount }) => {
-          const totalPageCount = Math.ceil(totalCount / productsPerPage);
-          setProducts({ list: list, totalProductsCount: totalPageCount });
-          if (!keyword && currentPage > totalPageCount)
-            setCurrentPage(totalPageCount);
-        }
-      );
-    },
-    [currentPage, productsPerPage, order, keyword]
-  );
+  const { data } = useQuery({
+    queryKey: ["products", currentPage, productsPerPage, order, keyword],
+    queryFn: () =>
+      fetchProducts({
+        page: currentPage.toString(),
+        pageSize: productsPerPage?.toString() || "10",
+        orderBy: order,
+        keyword: keyword,
+      }),
+    placeholderData: keepPreviousData,
+  });
 
   /**
    * pagination 핸들러
    * @param {*} page active 페이지
    */
-  const handlePageChange = (page: number) => setCurrentPage(page);
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
   useEffect(() => {
-    // initial 데이터 로드
-    loadProducts();
-  }, [loadProducts]);
-
-  useEffect(() => {
+    setCurrentPage(1);
     setProductsPerPage(page);
   }, [page]);
 
@@ -81,17 +72,17 @@ function ProductList() {
           <DropDown order={sortOptions} setOrder={setOrder} />
         </div>
       </div>
-      {products.list.length > 0 ? (
+      {data?.list.length > 0 ? (
         <>
           <ul className='products-wrap all'>
-            {products.list.map((product) => (
+            {data?.list.map((product: ProductInterface) => (
               <li key={product.id} className='product-item'>
                 <Product product={product} />
               </li>
             ))}
           </ul>
           <Paginations
-            totalPage={products.totalProductsCount}
+            totalPage={Math.ceil(data?.totalCount / (productsPerPage || 10))}
             currentPage={currentPage}
             handlePageChange={handlePageChange}
           />

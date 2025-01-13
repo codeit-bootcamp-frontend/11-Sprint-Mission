@@ -10,29 +10,35 @@ interface DetailInquiryProps {
   content: string;
   writer: any;
   updatedAt: string;
+  onUpdate: (id: string, updatedContent: string) => void;
+  onDelete: (id: string) => void;
 }
 
-function DetailInquiry({ id, content, writer, updatedAt }: DetailInquiryProps) {
+function DetailInquiry({
+  id,
+  content,
+  writer,
+  updatedAt,
+  onUpdate,
+  onDelete,
+}: DetailInquiryProps) {
   const [isEditing, setIsEditing] = useState(false); // 수정 상태를 할당할 state
   const [comment, setComment] = useState(content); // 문의하기 text를 할당할 state
+  const userId = localStorage.getItem("userId");
 
-  /**
-   * 취소 버튼 클릭 시 comment에 부모에서 받은 content를 할당
-   */
   const handleCancelEdit = () => {
     setIsEditing(false);
     setComment(content);
   };
 
-  /**
-   * save하면 서버에 request 보내고 response 받아서 commnets 업데이트
-   */
   const handleSaveEdit = async () => {
     try {
       const updateData: updateCommentInterface = { content: comment };
-      const response = await updateComment(id, updateData); // Jwt Token 추가 예정
-      const data = await response.json(); // 서버에서 받은 response로 새 댓글 추가하는 기능은 추후 추가
-      console.log(data); // netlify build error 방지 임시 콘솔 추가 - The build failure is due to a linting error
+      const response = await updateComment(id, updateData);
+
+      if (response.ok) {
+        onUpdate(id, comment);
+      }
       setIsEditing(false);
     } catch (error) {
       console.log(error);
@@ -41,7 +47,12 @@ function DetailInquiry({ id, content, writer, updatedAt }: DetailInquiryProps) {
 
   return (
     <div className='content-inquiry'>
-      {!isEditing && <DropDownInquiry setIsEditting={setIsEditing} />}
+      {!isEditing && String(writer.id) === userId && (
+        <DropDownInquiry
+          onEdit={() => setIsEditing(true)}
+          onDelete={() => onDelete(id)}
+        />
+      )}
       <div className='inquiry-comment'>
         {isEditing ? (
           <textarea
