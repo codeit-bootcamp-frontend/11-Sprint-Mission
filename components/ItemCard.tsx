@@ -6,7 +6,7 @@ import heartIcon from "@/public/svgs/ic_heart (1).svg";
 import Image from "next/image";
 import defaultImg from "@/public/pngs/noImage.png";
 
-export default function AllItemCard({ item }: AllItemCardProps) {
+export default function ItemCard({ item }: AllItemCardProps) {
   const [imageSrc, setImageSrc] = useState(item.images[0] || defaultImg.src);
 
   const handleImageError = () => {

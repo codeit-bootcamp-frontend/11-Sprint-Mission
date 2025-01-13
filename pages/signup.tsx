@@ -6,8 +6,8 @@ import Link from "next/link";
 import logoLarge from "@/public/pngs/logo.png";
 import btnOn from "@/public/svgs/btn_visibility_on_24px.svg";
 import btnOff from "@/public/svgs/btn_visibility_off_24px.svg";
-import kakao from "@/public/pngs/Component 3.png";
-import google from "@/public/pngs/Component 2.png";
+import kakao from "@/public/pngs/Component_3.png";
+import google from "@/public/pngs/Component_2.png";
 import { signUp } from "@/lib/api";
 
 Signup.getLayout = function (page: React.ReactNode) {

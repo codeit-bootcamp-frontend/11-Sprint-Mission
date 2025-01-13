@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-export function Logout() {
+export default function Logout() {
   localStorage.removeItem("accessToken");
   localStorage.removeItem("refreshToken");
 

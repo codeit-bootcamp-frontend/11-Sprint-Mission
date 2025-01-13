@@ -1,4 +1,4 @@
-import { getProductComments } from "@/lib/api";
+import { getProductComments, addComment, deleteComment } from "@/lib/api";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import plusBtn from "@/public/svgs/Group 33735 (1).svg";
@@ -24,6 +24,11 @@ export default function ItemComments() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
   const [showMore, setShowMore] = useState<Record<number, boolean>>({});
+  const [newComment, setNewComment] = useState<string>("");
+
+  const handleCommentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNewComment(event.target.value);
+  };
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -52,6 +57,48 @@ export default function ItemComments() {
     }));
   };
 
+  const handleAddComment = async () => {
+    if (!productId || typeof productId !== "string") {
+      alert("상품 ID가 없습니다.");
+      return;
+    }
+
+    if (!inputValue.trim()) {
+      alert("댓글 내용을 입력해주세요.");
+      return;
+    }
+
+    try {
+      await addComment(productId, inputValue); // 댓글 등록 API 호출
+      alert("댓글이 등록되었습니다.");
+      setInputValue("");
+      const updatedComments = await getProductComments(productId);
+      setComments(updatedComments.list);
+    } catch (error: any) {
+      alert(error.message);
+      console.error(error);
+    }
+  };
+
+  const handleDeleteComment = async (commentId: number) => {
+    if (!productId || typeof productId !== "string") {
+      alert("상품 ID가 없습니다.");
+      return;
+    }
+
+    if (window.confirm("정말로 이 댓글을 삭제하시겠습니까?")) {
+      try {
+        await deleteComment(commentId); // 삭제 API 호출
+        alert("댓글이 삭제되었습니다.");
+        const updatedComments = await getProductComments(productId); // 삭제 후 댓글 목록 갱신
+        setComments(updatedComments.list);
+      } catch (error: any) {
+        alert(error.message || "댓글 삭제 중 오류가 발생했습니다.");
+        console.error(error);
+      }
+    }
+  };
+
   if (loading) return <div>댓글을 불러오는 중입니다...</div>;
   if (error) return <div>{error}</div>;
 
@@ -65,7 +112,11 @@ export default function ItemComments() {
         onChange={handleInputChange}
       />
       <div className={styles.item_inquiry_button_container}>
-        <button className={styles.item_inquiry_button} disabled={!inputValue}>
+        <button
+          className={styles.item_inquiry_button}
+          disabled={!inputValue}
+          onClick={handleAddComment}
+        >
           등록
         </button>
       </div>
@@ -88,7 +139,10 @@ export default function ItemComments() {
                       <button className={styles.comment_edit_button}>
                         수정하기
                       </button>
-                      <button className={styles.comment_delete_button}>
+                      <button
+                        className={styles.comment_delete_button}
+                        onClick={() => handleDeleteComment(comment.id)}
+                      >
                         삭제하기
                       </button>
                     </div>
