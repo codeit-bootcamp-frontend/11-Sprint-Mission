@@ -6,6 +6,7 @@ import SignButton from "./SignButton";
 import SocialLogin from "../LoginPage/SocialLogin";
 import "./Signup.css";
 import { signup } from "../../api/api";
+import { toast } from "react-toastify";
 
 interface FormValues {
   email: string;
@@ -28,14 +29,14 @@ const Signup = () => {
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
       await signup(data);
-      alert("회원가입이 정상적으로 완료되었습니다.");
+      toast.success("회원가입이 정상적으로 완료되었습니다.");
       navigate("/login");
     } catch (error: any) {
       console.error(
         "회원가입 실패:",
         error.res?.data?.message || error.message
       );
-      alert(
+      toast.error(
         `회원가입 실패: ${
           error.response?.data?.message || "회원가입 중 오류가 발생했습니다."
         }`

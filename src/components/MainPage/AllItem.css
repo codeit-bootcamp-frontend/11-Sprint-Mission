@@ -118,14 +118,12 @@
   background-color: #ffffff;
   padding: 12px 20px 12px 20px;
   font-size: 16px;
-  line-height: 26px;
   font-weight: 400;
   cursor: pointer;
 }
 
 .option {
   font-size: 16px;
-  line-height: 26px;
   font-weight: 400;
   color: #1f2937;
   border: 1px solid #e5e7eb;

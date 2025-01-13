@@ -1,5 +1,6 @@
 import React, { forwardRef, useState } from "react";
 import "./InputField.css";
+import clsx from "clsx";
 import visible from "../../assets/image/gnb/btn_visibility_off_24px.png";
 import unvisible from "../../assets/image/gnb/btn_visibility_on_24px.png";
 
@@ -25,7 +26,7 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
         <div className="input-pass-box">
           <input
             ref={ref}
-            className={`input-tag ${error ? "input-error" : ""}`}
+            className={clsx("input-tag", { "input-error": error })}
             type={
               type === "password" && !isPasswordVisible ? "password" : "text"
             }

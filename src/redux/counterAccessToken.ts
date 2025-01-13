@@ -6,6 +6,7 @@ const counterSlice = createSlice({
     value: false,
   },
   reducers: {
+    //액션을 설정한다.
     check: (state) => {
       state.value = true;
     },

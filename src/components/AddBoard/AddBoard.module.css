@@ -1,0 +1,103 @@
+.container {
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 0 100px;
+
+  @media screen and (max-width: 744px) {
+    padding: 0 24px;
+  }
+
+  @media screen and (max-width: 376px) {
+    padding: 0 16px;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.topic {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  color: var(--color-blue-300);
+}
+
+.button {
+  width: 74px;
+  height: 42px;
+  border-radius: 8px;
+  border: none;
+  padding: 12px 23px;
+  font-weight: 600;
+  font-size: 16px;
+  background-color: var(--color-blue-200);
+  color: var(--color-white-200);
+  cursor: pointer;
+}
+
+.button:disabled {
+  background-color: var(--color-blue-600);
+  color: var(--color-white-400);
+  cursor: not-allowed;
+}
+
+.body {
+  margin-bottom: 130px;
+
+  @media screen and (max-width: 744px) {
+    margin-bottom: 305px;
+  }
+
+  @media screen and (max-width: 376px) {
+    margin-bottom: 406px;
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  color: var(--color-blue-300);
+  margin-bottom: 12px;
+
+  @media screen and (max-width: 376px) {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
+
+.input {
+  width: 100%;
+  background-color: var(--color-white-400);
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+  margin-bottom: 24px;
+
+  @media screen and (max-width: 376px) {
+    margin-bottom: 16px;
+  }
+}
+
+.input::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--color-blue-600);
+}
+
+.name {
+  height: 56px;
+}
+
+.content {
+  height: 282px;
+
+  @media screen and (max-width: 376px) {
+    height: 200px;
+  }
+}

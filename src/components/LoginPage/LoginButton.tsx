@@ -1,4 +1,3 @@
-import React from "react";
 import "./LoginButton.css";
 
 interface LoginButtonProps {

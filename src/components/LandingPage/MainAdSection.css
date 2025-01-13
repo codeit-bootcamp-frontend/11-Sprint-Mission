@@ -12,7 +12,7 @@
 }
 
 .main-ad-box {
-  width: 100vw;
+  width: 100%;
   gap: 7px;
   display: flex;
   position: absolute;
@@ -28,6 +28,11 @@
 
 .main-ad-link {
   text-decoration: none;
+}
+
+.main-ad-link:hover {
+  background-color: #6babfa;
+  transform: translateY(-3px);
 }
 
 .main-ad-head {

@@ -1,32 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { getCommentsById, updateCommentsById } from "../../api/api";
+import {
+  deleteCommentsById,
+  getCommentsById,
+  updateCommentsById,
+} from "../../api/api";
 import "./CommentsList.css";
 import Comment from "./Comment";
 import panda from "../../assets/image/Group 33739.png";
-
-interface CommentProps {
-  writer: {
-    image: string;
-    nickname: string;
-    id: number;
-  };
-  updatedAt: Date;
-  createdAt: Date;
-  content: string;
-  id: number;
-}
+import { useSelector, useDispatch } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/store";
+import { setComment } from "../../redux/commentSlice";
+import { toast } from "react-toastify";
 
 const CommentsList = () => {
   const { productId } = useParams<{ productId: string }>();
   const [loading, setLoading] = useState<boolean>(false);
-  const [comments, setComments] = useState<CommentProps[]>([]);
   const [error, setError] = useState<string | null>(null);
-  // const [limit, setLimit] = useState<number>(100);
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
-  const [editingCommentId, setEditingCommentId] = useState<number | null>(null); // 수정 중인 댓글 ID
-
+  const [editingCommentId, setEditingCommentId] = useState<number | null>(null);
+  const dispatch = useDispatch<AppDispatch>();
+  const comments = useSelector(
+    (state: RootState) => state.commentList.comments
+  );
+  const user = useSelector((state: RootState) => state.userInfo.user);
   const limit = 100;
+
   useEffect(() => {
     const fetchCommentsById = async () => {
       try {
@@ -34,7 +33,7 @@ const CommentsList = () => {
         const result = await getCommentsById(productId, {
           limit: String(limit),
         });
-        setComments(result.list);
+        dispatch(setComment(result.list));
       } catch (err) {
         setError((err as Error).message);
       } finally {
@@ -43,7 +42,7 @@ const CommentsList = () => {
     };
 
     fetchCommentsById();
-  }, [productId, limit]);
+  }, [productId, limit, dispatch]);
 
   const handleDropdownToggle = (commentId: number) => {
     if (activeDropdown === commentId) {
@@ -53,14 +52,18 @@ const CommentsList = () => {
     }
   };
 
-  const handleEditClick = (comment: CommentProps) => {
-    //수정하기 클릭 이벤트
-    setEditingCommentId(comment.id); // 수정할 댓글 ID 설정
-    setActiveDropdown(null); // 드롭다운 닫기
+  const handleEditClick = (commentId: number, writerId: number) => {
+    if (writerId === user.id) {
+      setEditingCommentId(commentId); // 수정 모드로 전환
+      setActiveDropdown(null); // 드롭다운 닫기
+    } else {
+      setActiveDropdown(null);
+      toast.warning("본인의 댓글만 수정할 수 있습니다.");
+    }
   };
 
   const handleEditCancel = () => {
-    //수정 취소 이벤트
+    //수정 취소
     setEditingCommentId(null);
   };
 
@@ -68,16 +71,38 @@ const CommentsList = () => {
     //수정 완료 이벤트
     try {
       await updateCommentsById(commentId, { content: editedContent });
-      setComments((prevComments) =>
-        prevComments.map((comment) =>
-          comment.id === commentId
-            ? { ...comment, content: editedContent }
-            : comment
-        )
+      const updatedComments = comments.map((comment) =>
+        comment.id === commentId
+          ? { ...comment, content: editedContent }
+          : comment
       );
+      toast.success("댓글 수정 완료");
+      dispatch(setComment(updatedComments));
       setEditingCommentId(null); // 수정 모드 종료
     } catch (error) {
+      toast.error("댓글 수정 실패");
       console.error("댓글 수정 실패:", error);
+    }
+  };
+
+  const handleDeleteClick = async (commentId: number, writerId: number) => {
+    //댓글 삭제 이벤트
+    if (writerId !== user.id) {
+      setActiveDropdown(null);
+      toast.warning("본인의 댓글만 삭제할 수 있습니다.");
+      return;
+    }
+    try {
+      await deleteCommentsById(commentId);
+      const updatedComments = comments.filter(
+        (comment) => comment.id !== commentId
+      );
+      toast.success("댓글 삭제 완료");
+      dispatch(setComment(updatedComments));
+      setEditingCommentId(null); // 수정 모드 종료
+    } catch (error) {
+      toast.error("댓글 삭제 실패");
+      console.error("댓글 삭제 실패:", error);
     }
   };
 
@@ -109,7 +134,10 @@ const CommentsList = () => {
           <Comment
             key={comment.id}
             comment={comment}
-            onEditClick={handleEditClick}
+            onEditClick={() => handleEditClick(comment.id, comment.writer.id)}
+            onDeleteClick={() =>
+              handleDeleteClick(comment.id, comment.writer.id)
+            }
             isEditing={editingCommentId === comment.id}
             onEditSave={handleEditSave}
             onEditCancel={handleEditCancel}

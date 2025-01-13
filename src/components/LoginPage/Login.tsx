@@ -1,4 +1,3 @@
-import React, { ChangeEvent, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import InputField from "./InputField";
@@ -10,6 +9,8 @@ import logo from "../../assets/image/Property 1=lg.png";
 import { login } from "../../api/api";
 import { useDispatch } from "react-redux";
 import { check } from "../../redux/counterAccessToken";
+import { setUserInfo } from "../../redux/userSlice";
+import { toast } from "react-toastify";
 
 interface FormValues {
   email: string;
@@ -28,19 +29,17 @@ const Login = () => {
   const onsubmit: SubmitHandler<FormValues> = async (data) => {
     try {
       const res = await login(data);
-      localStorage.setItem("access_token", res.accessToken);
-      localStorage.setItem("refresh_token", res.refreshToken);
+      // localStorage.setItem("access_token", res.accessToken);
+      // localStorage.setItem("refresh_token", res.refreshToken);
       dispatch(check());
-      alert("로그인이 정상적으로 완료되었습니다.");
+      dispatch(setUserInfo(res));
+      toast.success("로그인이 정상적으로 완료되었습니다.");
       navigate("/");
     } catch (error: any) {
-      console.error(
-        "회원가입 실패:",
-        error.res?.data?.message || error.message
-      );
-      alert(
-        `회원가입 실패: ${
-          error.response?.data?.message || "회원가입 중 오류가 발생했습니다."
+      console.error("로그인 실패:", error.res?.data?.message || error.message);
+      toast.error(
+        `로그인 실패: ${
+          error.response?.data?.message || "로그인 중 오류가 발생했습니다."
         }`
       );
     }

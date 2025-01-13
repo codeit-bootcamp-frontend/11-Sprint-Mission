@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import "./MainAdSection.css";
 import mainAd from "../../assets/image/Img_home_top.png";

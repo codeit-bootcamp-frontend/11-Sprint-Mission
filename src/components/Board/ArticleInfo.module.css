@@ -1,0 +1,173 @@
+.container {
+  width: 100%;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.article {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  color: var(--color-blue-300);
+}
+
+.dot {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.image {
+  position: absolute;
+  width: 100%;
+  cursor: pointer;
+}
+
+.info-box {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-white-300);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+
+  @media screen and (max-width: 744px) {
+    margin-bottom: 16px;
+  }
+
+  @media screen and (max-width: 376px) {
+    margin-bottom: 16px;
+  }
+}
+
+.profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  border-right: 1px solid var(--color-white-300);
+  margin-right: 32px;
+  padding-right: 32px;
+
+  @media screen and (max-width: 376px) {
+    gap: 2px;
+    margin-right: 16px;
+    padding-right: 16px;
+  }
+}
+
+.profile-image {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+
+  @media screen and (max-width: 376px) {
+    margin-right: 14px;
+  }
+}
+
+.nickname {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--color-blue-400);
+}
+
+.date {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--color-blue-600);
+}
+
+.like {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--color-white-300);
+  border-radius: 35px;
+  height: 40px;
+  padding: 4px 12px;
+  cursor: pointer;
+  @media screen and (max-width: 376px) {
+    height: 32px;
+  }
+}
+
+.heart {
+  width: 26px;
+  height: 23px;
+  position: relative;
+
+  @media screen and (max-width: 376px) {
+    width: 20px;
+    height: 17px;
+  }
+}
+
+.count {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--color-blue-500);
+}
+
+.content {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  color: var(--color-blue-300);
+  margin-bottom: 32px;
+
+  @media screen and (max-width: 744px) {
+    margin-bottom: 40px;
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 376px) {
+    margin-bottom: 32px;
+    font-size: 16px;
+  }
+}
+
+.dropdown-menu {
+  width: 139px;
+  position: absolute;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 8px;
+  z-index: 1;
+  top: 40px;
+  right: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f3f4f6;
+}
+
+.dropdown-text {
+  font-size: 16px;
+  font-weight: 400;
+  color: #6b7280;
+  background: none;
+  border: none;
+  padding-top: 16px;
+  padding-bottom: 12px;
+  font-size: 14px;
+  color: #1f2937;
+  cursor: pointer;
+  height: 46px;
+}
+
+.dropdown-image {
+  cursor: pointer;
+}
