@@ -1,46 +1,37 @@
-import { useEffect, useRef, useState } from 'react';
+import { useInfiniteQuery } from 'react-query';
 import styles from '@styles/AllArticlesSection.module.css';
 import { getAllArticles } from '@pages/api/boardApi';
 import Link from 'next/link';
 import Image from 'next/image';
 import Heart from '@public/svgs/ic_heart.svg';
 import SearchBar from '@components/SearchBar';
-import router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import DropdownMenu from '@components/DropdownMenu';
 import { ArticleList, ArticleOrderBy } from '@components/types/articleTypes';
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 
-interface AllArticlesSectionProps {
-  initialArticles: ArticleList[];
-}
-
-export default function AllArticlesSection({
-  initialArticles,
-}: AllArticlesSectionProps) {
-  const [articles, setArticles] = useState<ArticleList[]>(initialArticles);
-  const [orderBy, setOrderBy] = useState<ArticleOrderBy>('recent');
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(initialArticles.length > 0);
-  const [loading, setLoading] = useState(false);
+export default function AllArticlesSection() {
   const router = useRouter();
-  const keyword = (router.query.q as string) || '';
-  const loadMoreRef = useRef(null);
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
 
-  const formatDate = (isoDate: string) => {
-    const date = new Date(isoDate);
-    return date
-      .toLocaleDateString('ko-KR', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-      })
-      .replace(/\. /g, '. ')
-      .slice(0, -1); // 공백 제거
-  };
+  const keyword = (router.query.q as string) || '';
+  const [orderBy, setOrderBy] = React.useState<ArticleOrderBy>('recent');
+
+  const { data, fetchNextPage, hasNextPage, isFetching, isLoading, refetch } =
+    useInfiniteQuery(
+      ['allArticles', { orderBy, keyword }],
+      ({ pageParam = 1 }) => getAllArticles(pageParam, orderBy, keyword),
+      {
+        getNextPageParam: (lastPage, allPages) => {
+          return lastPage.list.length > 0 ? allPages.length + 1 : undefined;
+        },
+        staleTime: 1000 * 60 * 5, // Cache for 5 minutes
+      },
+    );
 
   const handleSortSelection = (sortOption: ArticleOrderBy) => {
     setOrderBy(sortOption);
-    resetData();
+    refetch();
   };
 
   const handleSearch = (searchKeyword: string) => {
@@ -56,42 +47,6 @@ export default function AllArticlesSection({
     });
   };
 
-  const resetData = () => {
-    setArticles([]);
-    setPage(1);
-    setHasMore(true);
-  };
-
-  const fetchAllArticles = async (currentPage: number) => {
-    setLoading(true);
-    try {
-      const data = await getAllArticles(currentPage, orderBy, keyword);
-      if (data.list.length > 0) {
-        setArticles((prevArticles) => [...prevArticles, ...data.list]);
-      } else {
-        setHasMore(false);
-      }
-    } catch (error) {
-      console.error('데이터를 불러오는데 실패 했습니다.', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    if (page === 1 && articles === initialArticles) return; // 중복 호출 방지
-    if (page > 1) {
-      fetchAllArticles(page);
-    }
-  }, [page]);
-
-  useEffect(() => {
-    if (articles !== initialArticles) {
-      resetData();
-      fetchAllArticles(1);
-    }
-  }, [orderBy, keyword]);
-
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -101,28 +56,26 @@ export default function AllArticlesSection({
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting && hasMore && !loading) {
-          setPage((prevPage) => prevPage + 1);
+        if (entry.isIntersecting && hasNextPage && !isFetching) {
+          fetchNextPage();
         }
       });
     };
 
-    const observerInstance = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       observerCallback,
       observerOptions,
     );
     const currentRef = loadMoreRef.current;
 
-    if (currentRef) {
-      observerInstance.observe(currentRef);
-    }
+    if (currentRef) observer.observe(currentRef);
 
     return () => {
-      if (currentRef) {
-        observerInstance.unobserve(currentRef);
-      }
+      if (currentRef) observer.unobserve(currentRef);
     };
-  }, [hasMore, loading]);
+  }, [hasNextPage, isFetching, fetchNextPage]);
+
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div>
@@ -142,12 +95,12 @@ export default function AllArticlesSection({
           ]}
         />
       </div>
-      {!loading && articles.length === 0 && (
+      {!isFetching && data?.pages[0]?.list.length === 0 && (
         <div>데이터가 존재하지 않습니다.</div>
       )}
-      {articles.length > 0 ? (
-        <div className={styles['allarticle-list']}>
-          {articles.map((article) => (
+      {data?.pages.map((page, pageIndex) => (
+        <div key={pageIndex} className={styles['allarticle-list']}>
+          {page.list.map((article: ArticleList) => (
             <Link
               href={`/board/${article.id}`}
               key={article.id}
@@ -169,7 +122,7 @@ export default function AllArticlesSection({
                     {article.writer.nickname}
                   </span>
                   <span className={styles['allarticle-updatedAt']}>
-                    {formatDate(article.createdAt)}
+                    {new Date(article.createdAt).toLocaleDateString()}
                   </span>
                 </div>
                 <span className={styles['allarticle-likes']}>
@@ -180,10 +133,9 @@ export default function AllArticlesSection({
             </Link>
           ))}
         </div>
-      ) : (
-        loading && <div>데이터를 불러오는 중...</div>
-      )}
-      {hasMore && !loading && <div ref={loadMoreRef} className="h-10" />}
+      ))}
+      {hasNextPage && !isFetching && <div ref={loadMoreRef} className="h-10" />}
+      {isFetching && <div>Loading more...</div>}
     </div>
   );
 }

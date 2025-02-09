@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axiosInstance from '@lib/axiosInstance';
 import Profile from '@public/svgs/ic_profile.svg';
 import EmptyComment from '@pubilc/svgs/Img_inquiry_empty.svg';
-import '../style/ItemComment.css';
+import styles from '@style/ItemComment.module.css';
 import DropdownMenu from '@components/DropdownMenu';
 import { Product } from '@components/types/productTypes';
 
@@ -93,11 +93,11 @@ function ItemComment({ item }: ItemCommentProps) {
       {comments.length > 0 ? (
         <div>
           {comments.map((comment, index) => (
-            <div className="comment-container" key={index}>
-              <div className="comment-header">
+            <div className={styles['comment-container']} key={index}>
+              <div className={styles['comment-header']}>
                 {comment.isEditing ? (
                   <textarea
-                    className="comment-edit-content"
+                    className={styles['comment-edit-content']}
                     value={comment.content}
                     onChange={(e) =>
                       setComments((prevComments) =>
@@ -109,7 +109,9 @@ function ItemComment({ item }: ItemCommentProps) {
                   />
                 ) : (
                   <>
-                    <div className="comment-content">{comment.content}</div>
+                    <div className={styles['comment-content']}>
+                      {comment.content}
+                    </div>
                     <DropdownMenu
                       onSelection={(action: string) => {
                         if (action === 'fixed') {
@@ -123,31 +125,34 @@ function ItemComment({ item }: ItemCommentProps) {
                   </>
                 )}
               </div>
-              <div className="comment-info">
-                <div className="comment-info-content">
+              <div className={styles['comment-info']}>
+                <div className={styles['comment-info-content']}>
                   {comment.writer.image ? (
-                    <img className="profile-icon" src={comment.writer.image} />
+                    <img
+                      className={styles['profile-icon']}
+                      src={comment.writer.image}
+                    />
                   ) : (
-                    <Profile className="profile-icon" />
+                    <Profile className={styles['profile-icon']} />
                   )}
-                  <div className="comment-user-info">
-                    <div className="comment-nickname">
+                  <div className={styles['comment-user-info']}>
+                    <div className={styles['comment-nickname']}>
                       {comment.writer.nickname}
                     </div>
-                    <div className="comment-updatedAt">
+                    <div className={styles['comment-updatedAt']}>
                       {formatDate(comment.updatedAt)}
                     </div>
                   </div>
                 </div>
                 {comment.isEditing && (
-                  <div className="comment-edit-actions">
+                  <div className={styles['comment-edit-actions']}>
                     <button
-                      className="comment-edit-cancelbtn"
+                      className={styles['comment-edit-cancelbtn']}
                       onClick={() => handleCancelEdit(index)}
                     >
                       취소
                     </button>
-                    <button className="comment-edit-successbtn">
+                    <button className={styles['comment-edit-successbtn']}>
                       수정 완료
                     </button>
                   </div>
@@ -157,9 +162,11 @@ function ItemComment({ item }: ItemCommentProps) {
           ))}
         </div>
       ) : (
-        <div className="comment-empty">
-          <EmptyComment className="comment-empty-icon" />
-          <div className="comment-empty-content">아직 문의가 없어요</div>
+        <div className={styles['comment-empty']}>
+          <EmptyComment className={styles['comment-empty-icon']} />
+          <div className={styles['comment-empty-content']}>
+            아직 문의가 없어요
+          </div>
         </div>
       )}
     </div>

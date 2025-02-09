@@ -70,7 +70,6 @@ export default function AddBoardPage({
           'Content-Type': 'application/json',
         },
       });
-      console.log('게시글 등록 성공:', response.data);
       alert('게시글이 등록되었습니다.');
     } catch (error) {
       console.error('게시글 등록 실패:', error);

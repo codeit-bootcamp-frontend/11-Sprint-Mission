@@ -12,12 +12,11 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: [
-      'flexible.img.hani.co.kr',
-      'via.placeholder.com',
-      'example.com',
-      'sprint-fe-project.s3.ap-northeast-2.amazonaws.com',
-      'ibb.co',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
     ],
   },
   reactStrictMode: true,

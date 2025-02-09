@@ -1,5 +1,5 @@
-import AllItemsSection from '@components/AllItemsSection';
-import BestItemSection from '@components/BestItemsSection';
+import AllItemsSection from '@/components/items/AllItemsSection';
+import BestItemSection from '@/components/items/BestItemsSection';
 
 function Items() {
   return (

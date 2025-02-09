@@ -41,3 +41,24 @@ export async function getArticles(id) {
     errorMessage: '게시글을 불러오는데 실패했습니다.',
   });
 }
+
+export async function getComments(id) {
+  const response = await axiosInstance.get(`/articles/${id}/comments`, {
+    params: { limit: 10 },
+  });
+  return response.data.list;
+}
+
+export async function addComment(id, comment) {
+  const response = await axiosInstance.post(
+    `/articles/${id}/comments`,
+    comment,
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        'Content-Type': 'application/json',
+      },
+    },
+  );
+  return response.data;
+}

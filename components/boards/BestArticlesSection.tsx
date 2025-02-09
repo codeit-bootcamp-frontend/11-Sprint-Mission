@@ -1,24 +1,10 @@
-import { useEffect, useState } from 'react';
-import { getBestArticles } from '@pages/api/boardApi';
 import useDimensions from '@/hooks/useDimensions';
 import styles from '@styles/BestArticlesSection.module.css';
 import Image from 'next/image';
 import Heart from '@public/svgs/ic_heart.svg';
 import Medal from '@public/svgs/ic_medal.svg';
-
-interface ArticleList {
-  id: number;
-  title: string;
-  content: string;
-  image: string;
-  likeCount: number;
-  createdAt: string;
-  updatedAt: string;
-  writer: {
-    id: number;
-    nickname: string;
-  };
-}
+import { useBestArticles } from '@/hooks/useBestArticles';
+import { ArticleList } from '../types/articleTypes';
 
 const getPageSize = (width: number): number => {
   if (width < 768) {
@@ -31,10 +17,10 @@ const getPageSize = (width: number): number => {
 };
 
 export default function BestArticlesSection() {
-  const [articles, setArticles] = useState<ArticleList[] | null>(null);
-  const [pageSize, setPageSize] = useState<number | null>(null);
-
   const viewWidth = useDimensions();
+  const pageSize = getPageSize(viewWidth);
+
+  const { data: articles, isLoading, isError } = useBestArticles(pageSize);
 
   const formatDate = (isoDate: string) => {
     const date = new Date(isoDate);
@@ -48,33 +34,20 @@ export default function BestArticlesSection() {
       .slice(0, -1); // 공백 제거
   };
 
-  useEffect(() => {
-    if (viewWidth === 0) return;
+  if (isLoading) {
+    return <div>데이터를 불러오는 중...</div>;
+  }
 
-    const newPageSize = getPageSize(viewWidth);
-
-    if (newPageSize !== pageSize) {
-      setPageSize(newPageSize);
-
-      const fetchBestArticles = async (size: number) => {
-        try {
-          const data = await getBestArticles(size);
-          setArticles(data.list);
-        } catch (error) {
-          console.error('데이터를 불러오는데 실패 했습니다.', error);
-        }
-      };
-
-      fetchBestArticles(newPageSize);
-    }
-  }, [viewWidth, pageSize]);
+  if (isError) {
+    return <div>데이터를 불러오는 중 오류가 발생했습니다.</div>;
+  }
 
   return (
     <div className={styles['best-section']}>
       <div className={styles['best-title']}>베스트 게시글</div>
       {articles ? (
         <div className={styles['article-list']}>
-          {articles.map((article) => (
+          {articles.list.map((article: ArticleList) => (
             <div key={article.id} className={styles['article-item']}>
               <div className={styles['article-header']}>
                 <Medal />
@@ -108,7 +81,7 @@ export default function BestArticlesSection() {
           ))}
         </div>
       ) : (
-        <div>데이터를 불러오는 중...</div>
+        <div>게시글이 없습니다.</div>
       )}
     </div>
   );
